@@ -7,6 +7,6 @@ public class Tullball
 		System.out.println("Test");
 
 		JOptionPane.showMessageDialog(null,"Detta prosjektet kommer til å bli helt awesome !!");
-		// test!
+		// test! ttt
 	}
 }
