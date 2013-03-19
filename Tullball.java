@@ -8,5 +8,7 @@ public class Tullball
 
 		JOptionPane.showMessageDialog(null,"Detta prosjektet kommer til å bli helt awesome !!");
 		// test! ttt
+		// din endring
+		
 	}
 }
