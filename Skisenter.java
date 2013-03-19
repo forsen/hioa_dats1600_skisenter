@@ -1,18 +1,14 @@
 public class Skisenter
 {
-	private Personlist personregistry;
-	private Liftlist liftregistry;
-	private Skicardlist cardregistry;
+	<datafelter>
 
-	public Skisenter(Personlist p, Liftlist l, Skicardlist c)
-	{
-		personregistry = p;
-		liftregistry = l;
-		cardregistry = c;
-	}
+	<konstruktør som oppretter alle lister / vinduer>
 
-	
+	<usikkert hva annet som skal være av metoder her>
 
+	<metode for å lese fra fil>
+	<main metoden>
 
+	<vinduslytter for å lagre til fil>
 
 }
