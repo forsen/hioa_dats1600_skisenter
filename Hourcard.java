@@ -16,6 +16,6 @@ public class Hourcard extends Skicard
 	public int getHeiskort()
 	{
 		return heiskortnr; 
-	}// end of method
+	}// end of methodoeunthaosetnuhasoneuhtasnoteuhaoe
 
 }// end of class Hourcard
