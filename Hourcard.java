@@ -1,21 +1,14 @@
 public class Hourcard extends Skicard
 {
-	private boolean gyldig; 
-	private int heiskortnr; 
+	
+	<datafelter>
 
-	public Hourcard( <dataverdi?> )
-	{
-		gyldig = true; 
-	}
 
-	public boolean gyldig()
-	{
-		return gyldig;
-	}
+	<konstruktør som gir startverdier>
 
-	public int getHeiskort()
-	{
-		return heiskortnr; 
-	}// end of methodoeunthaosetnuhasoneuhtasnoteuhaoe
+	<metode for å sjekke om kortet er gyldig>
+
+
+
 
 }// end of class Hourcard
