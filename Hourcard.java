@@ -18,5 +18,4 @@ public class Hourcard extends Skicard
 		return heiskortnr; 
 	}
 
-
-}
+}// end of class Hourcard
