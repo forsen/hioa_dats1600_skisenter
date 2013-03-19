@@ -1,4 +1,0 @@
-Tullbnall
-
-
-Fjernet linje
