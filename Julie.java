@@ -1,3 +1,4 @@
 Tullbnall
 
-la til noe dritt
+
+Fjernet linje
