@@ -5,48 +5,75 @@ import java.awt.*;
 public class Salesclerk extends JFrame
 {
 
-	private JButton button;
-	private JButton button2;
-	private JPanel panel;
-	private JPanel panel2;
-	private JPanel panel3;
-	private JTextArea txtarea;
-	private JTextArea txtarea2;
+	private final int LEFT = 20;
+	private final int RIGHT = 40;
+	private JButton custWindowBtn, salesWindowBtn, replaceWindowBtn, refillWindowBtn;
+	private JPanel topMenuPnl, custWindowPnl, salesWindowPnl, replaceWindowPnl, refillWindowPnl, statusPnl; 
+	private JTextArea custWindowTxt, salesWindowTxt, replaceWindowTxt, refillWindowTxt, statusTxt;
 	private Listener listener;
 
 	public Salesclerk()
 	{
 		super("Testvindu");
 
-		button = new JButton("Test1");
-		button2 = new JButton("Test2");
-		panel = new JPanel();
-		panel2 = new JPanel();
-		panel3 = new JPanel();
-		txtarea = new JTextArea(20,20);
-		txtarea2 = new JTextArea(20,20);
+		custWindowBtn = new JButton("Kunde");
+		salesWindowBtn = new JButton("NySalg");
+		refillWindowBtn = new JButton("Påfyll");
+		replaceWindowBtn = new JButton("Erstatt");
+
+		topMenuPnl = new JPanel( new FlowLayout() );
+		custWindowPnl = new JPanel( new FlowLayout() );
+		salesWindowPnl = new JPanel( new FlowLayout() );
+		replaceWindowPnl = new JPanel( new FlowLayout() );
+		refillWindowPnl = new JPanel( new FlowLayout() );
+		statusPnl = new JPanel( new FlowLayout() );
+
+		custWindowTxt = new JTextArea(LEFT,RIGHT);
+		salesWindowTxt = new JTextArea(LEFT,RIGHT);
+		refillWindowTxt = new JTextArea(LEFT, RIGHT);
+		replaceWindowTxt = new JTextArea(LEFT, RIGHT);
+
+		statusTxt = new JTextArea(10,40);
 		listener = new Listener(); 
 
 		Container c = getContentPane();
 		c.setLayout( new FlowLayout() );
-		c.add(panel);
-		c.add(panel2);
-		c.add(panel3);
+		c.add(topMenuPnl);
+		c.add(custWindowPnl);
+		c.add(refillWindowPnl);
+		c.add(replaceWindowPnl);
+		c.add(salesWindowPnl);
+		c.add(statusPnl);
 
-		panel.add(button);
-		panel.add(button2);
-		button.addActionListener( listener );
-		button2.addActionListener( listener );
-		panel2.add(txtarea);
-		panel3.add(txtarea2);
+		topMenuPnl.add(custWindowBtn);
+		topMenuPnl.add(salesWindowBtn);
+		topMenuPnl.add(replaceWindowBtn);
+		topMenuPnl.add(refillWindowBtn);
 
-		txtarea.setText("Vindu1");
-		txtarea2.setText("Vindu2");
-		setSize(300,300);
+		custWindowBtn.addActionListener( listener );
+		salesWindowBtn.addActionListener( listener );
+		refillWindowBtn.addActionListener(listener);
+		replaceWindowBtn.addActionListener(listener);
+
+		custWindowPnl.add(custWindowTxt);
+		salesWindowPnl.add(salesWindowTxt);
+		refillWindowPnl.add(refillWindowTxt);
+		replaceWindowPnl.add(replaceWindowTxt);
+		statusPnl.add(statusTxt);
+
+		custWindowTxt.setText("Ny kunde vindu");
+		salesWindowTxt.setText("Nytt salg vindu");
+		statusTxt.setText("Status ting her!");
+
+		//txtarea.setText("Vindu1");
+		//txtarea2.setText("Vindu2");
+		setSize(600,600);
 		setVisible(true);
-		panel2.setVisible(false);
-		panel3.setVisible(false);
-
+		custWindowPnl.setVisible(true);
+		salesWindowPnl.setVisible(false);
+		refillWindowPnl.setVisible(false);
+		replaceWindowPnl.setVisible(false);
+		statusPnl.setVisible(true);
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 
 	}
@@ -55,16 +82,24 @@ public class Salesclerk extends JFrame
 	{
 		public void actionPerformed( ActionEvent e )
 		{
-			if( e.getSource() == button )
+			salesWindowPnl.setVisible(false);
+			custWindowPnl.setVisible(false);
+			replaceWindowPnl.setVisible(false);
+			refillWindowPnl.setVisible(false);
+
+			if( e.getSource() == custWindowBtn )
 			{
-				panel3.setVisible(false);
-				panel2.setVisible(true);
+				custWindowPnl.setVisible(true);
 			}
-			else if( e.getSource() == button2 )
+			else if( e.getSource() == salesWindowBtn )
 			{
-				panel2.setVisible(false);
-				panel3.setVisible(true);
+				salesWindowPnl.setVisible(true);
 			}
+
+			else if( e.getSource() == refillWindowBtn )
+				refillWindowPnl.setVisible(true);
+			else if( e.getSource() == replaceWindowBtn )
+				replaceWindowPnl.setVisible(true);
 		}
 	}
 
