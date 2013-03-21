@@ -1,6 +1,12 @@
 public class Skisenter
 {
-	<datafelter>
+
+	public static void main(String[] args)
+	{
+		Salesclerk w = new Salesclerk();
+	}
+
+/*	<datafelter>
 
 	<konstruktør som oppretter alle lister / vinduer>
 
@@ -9,6 +15,6 @@ public class Skisenter
 	<metode for å lese fra fil>
 	<main metoden>
 
-	<vinduslytter for å lagre til fil>
+	<vinduslytter for å lagre til fil>*/
 
 }

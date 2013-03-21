@@ -5,8 +5,16 @@ public class Daycard extends Skicard
 	int heiskortnr;
 
 	<konstruktør som gir startverdier>
+	{
+		pris = Info.DAGSKORTPRIS; 
+	}
 
-	<metode for å sjekke gyldighet>
+	<metode(r) for å sjekke gyldighet (evt datometoder for å holde styr på tider)>
 
 	<getmetode for heiskortnr>
+
+	<metode for å sette ugyldig>
+
+	<metode for å legge til mere tid>
+
 }

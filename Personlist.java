@@ -1,4 +1,4 @@
-public class Personlist
+public class Personlist implements Serializable
 {
 	<datafelter>
 
@@ -11,5 +11,7 @@ public class Personlist
 	<metode for å søke personer basert på heiskort>
 
 	<metode for å søke personer på navn>
+
+	<metode for å sjekke om lista er tom>
 
 }

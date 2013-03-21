@@ -6,7 +6,8 @@ public abstract class Window extends JFrame
 
   <konstruktør som gir startverdier på størrelser, setter en layout, og liknende  >
 
-  <
+  <diverse abstrakte metoder dersom det faller seg naturlig>
+  
 
 
   
