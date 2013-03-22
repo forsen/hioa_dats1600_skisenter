@@ -7,9 +7,10 @@ public class Salesclerk extends JFrame
 
 	private final int LEFT = 20;
 	private final int RIGHT = 40;
-	private JButton custWindowBtn, salesWindowBtn, replaceWindowBtn, refillWindowBtn;
+	private JButton custWindowBtn, salesWindowBtn, replaceWindowBtn, refillWindowBtn, custWindowSearchBtn, custWindowRegBtn;
 	private JPanel topMenuPnl, custWindowPnl, salesWindowPnl, replaceWindowPnl, refillWindowPnl, statusPnl; 
-	private JTextArea custWindowTxt, salesWindowTxt, replaceWindowTxt, refillWindowTxt, statusTxt;
+	private JTextField custWindowName, custWindowPhone, custWindowBorn;
+	private JTextArea salesWindowTxt, replaceWindowTxt, refillWindowTxt, statusTxt;
 	private Listener listener;
 
 	public Salesclerk()
@@ -28,10 +29,17 @@ public class Salesclerk extends JFrame
 		refillWindowPnl = new JPanel( new FlowLayout() );
 		statusPnl = new JPanel( new FlowLayout() );
 
-		custWindowTxt = new JTextArea(LEFT,RIGHT);
 		salesWindowTxt = new JTextArea(LEFT,RIGHT);
 		refillWindowTxt = new JTextArea(LEFT, RIGHT);
 		replaceWindowTxt = new JTextArea(LEFT, RIGHT);
+
+		custWindowSearchBtn = new JButton("Søk");
+		custWindowRegBtn = new JButton("Ny kunde");
+
+		custWindowName = new JTextField(10);
+		custWindowPhone = new JTextField(10);
+		custWindowBorn = new JTextField(10);
+
 
 		statusTxt = new JTextArea(10,40);
 		listener = new Listener(); 
@@ -55,18 +63,25 @@ public class Salesclerk extends JFrame
 		refillWindowBtn.addActionListener(listener);
 		replaceWindowBtn.addActionListener(listener);
 
-		custWindowPnl.add(custWindowTxt);
+		custWindowPnl.add( new JLabel( "Navn" ) );
+		custWindowPnl.add( custWindowName );
+		custWindowPnl.add( new JLabel( "Telefon" ) );
+		custWindowPnl.add( custWindowPhone );
+		custWindowPnl.add( new JLabel( "Født") );
+		custWindowPnl.add( custWindowBorn );
+		custWindowPnl.add( custWindowRegBtn );
+		custWindowPnl.add( custWindowSearchBtn );
 		salesWindowPnl.add(salesWindowTxt);
 		refillWindowPnl.add(refillWindowTxt);
 		replaceWindowPnl.add(replaceWindowTxt);
 		statusPnl.add(statusTxt);
 
-		custWindowTxt.setText("Ny kunde vindu");
 		salesWindowTxt.setText("Nytt salg vindu");
+		refillWindowTxt.setText("Her kan man fylle på heiskort");
+		replaceWindowTxt.setText("Her kan man erstatte kort");
 		statusTxt.setText("Status ting her!");
 
-		//txtarea.setText("Vindu1");
-		//txtarea2.setText("Vindu2");
+
 		setSize(600,600);
 		setVisible(true);
 		custWindowPnl.setVisible(true);
@@ -88,14 +103,9 @@ public class Salesclerk extends JFrame
 			refillWindowPnl.setVisible(false);
 
 			if( e.getSource() == custWindowBtn )
-			{
 				custWindowPnl.setVisible(true);
-			}
 			else if( e.getSource() == salesWindowBtn )
-			{
 				salesWindowPnl.setVisible(true);
-			}
-
 			else if( e.getSource() == refillWindowBtn )
 				refillWindowPnl.setVisible(true);
 			else if( e.getSource() == replaceWindowBtn )
