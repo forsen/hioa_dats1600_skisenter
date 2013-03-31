@@ -1,6 +1,12 @@
-public class Tcuplift extends Lift
+public class Tcuplift extends Lift implements Serializable
 {
-	<datafelt>
+	
+
+	public Tcupift(int l, String n,int c, int m)
+	{
+		super(l,n,c,m);
+
+	/*<datafelt>
 
 	<konstruktør som gir startverdier>
 
@@ -10,5 +16,5 @@ public class Tcuplift extends Lift
 
 	<metode for å trekke Y klipp>
 
-	<registrere passering>
+	<registrere passering>*/
 }

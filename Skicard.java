@@ -2,11 +2,11 @@
 
 public abstract class Skicard 
 {
-	<datafelt>
+	/*<datafelt>
 
 	<konstuktør>
 
 	<astrakt get-metoder for å hente ut datafeltene til kortene>
-	<abstrakt metode for å skjekke om kortet er gyldig>
+	<abstrakt metode for å skjekke om kortet er gyldig>*/
 	 
 }

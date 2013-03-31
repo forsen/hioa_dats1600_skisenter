@@ -2,11 +2,11 @@
 
 public abstract class Window extends JFrame
 {
-  <datafelter>
+  /*<datafelter>
 
   <konstruktør som gir startverdier på størrelser, setter en layout, og liknende  >
 
-  <diverse abstrakte metoder dersom det faller seg naturlig>
+  <diverse abstrakte metoder dersom det faller seg naturlig>*/
   
 
 

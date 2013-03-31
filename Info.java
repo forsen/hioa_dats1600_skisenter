@@ -1,6 +1,6 @@
 public class Info extends Window
 {
-	<datafelt, inkludert statiske priskonstanter som brukes av de forskjellige heiskortklassene>
+	/*<datafelt, inkludert statiske priskonstanter som brukes av de forskjellige heiskortklassene>
 
 	<konstruktør som oppretter vindu>
 
@@ -9,6 +9,6 @@ public class Info extends Window
 
 	<metode for å hente ut informasjon om åpne heiser>
 
-	<diverse knappelyttere og slikt>
+	<diverse knappelyttere og slikt>*/
 
 }

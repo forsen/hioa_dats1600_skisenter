@@ -1,7 +1,54 @@
-public abstract class Lift
+public abstract class Lift implements Serializable
 {
+	private int liftNr;
+	private String name;
+	private int clips;
+	private int length;
 
-	<datafelt>
+	public Lift(int l, String n,int c, int m)
+	{
+		liftNr = l;
+		name = n;
+		clips = c;
+		length = m;
+	}
+
+	public int getLiftNr()
+	{
+		return liftNr;
+	}
+
+	public String getName()
+	{
+		return name;
+	}
+
+	public int getclips()
+	{
+		return clips;
+	}
+
+	public int getLength()
+	{
+		return length;
+	}
+
+	public boolean isValid()
+	{
+
+	}
+
+	public void stampCard()
+	{
+
+	}
+
+
+
+
+	
+
+	/*<datafelt>
 
 	<konstruktør som gir startverdier>
 
@@ -11,6 +58,6 @@ public abstract class Lift
 
 	<abstrakt metode for å trekke X klipp>
 
-	<abstrakt metode for å registrere passering>
+	<abstrakt metode for å registrere passering>--> DENNE TROR JEG BURDE GJØRES I KONTROLLVINDUET*/
 
 }

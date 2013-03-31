@@ -1,6 +1,6 @@
 public class Daycard extends Skicard
 {
-	<datafelt>
+	/*<datafelt>
 	boolean gyldig;
 	int heiskortnr;
 
@@ -15,6 +15,6 @@ public class Daycard extends Skicard
 
 	<metode for å sette ugyldig>
 
-	<metode for å legge til mere tid>
+	<metode for å legge til mere tid>*/
 
 }

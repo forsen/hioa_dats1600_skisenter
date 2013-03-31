@@ -1,6 +1,6 @@
 public class Admin extends Window
 {
-	<datafelter>
+	/*<datafelter>
 
 	<konstruktør som oppretter vinduet>
 
@@ -16,6 +16,6 @@ public class Admin extends Window
 
 	private class knappeLytter()
 	{
-		<metode for å lytte på knappene>
+		<metode for å lytte på knappene>*/
 	}
 }

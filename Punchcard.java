@@ -1,6 +1,6 @@
 public class Punchcard extends Skicard
 {
-	<datafelter>
+	/*<datafelter>
 
 	<konstruktør som gir startverdier, inkludert pris pr klipp fra Info og antall klipp>
 
@@ -8,7 +8,7 @@ public class Punchcard extends Skicard
 
 	<metode for å sjekke at det er nok klipp igjen>
 
-	<metode for å legge til flere klipp>
+	<metode for å legge til flere klipp>*/
 
 
 }

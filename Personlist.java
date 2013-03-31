@@ -1,6 +1,117 @@
-public class Personlist implements Serializable
+import java.io.*;
+import java.util.*;
+
+public class Personlist<Person> implements Serializable
 {
-	<datafelter>
+	
+	private List<Person> registry = new LinkedList<>();
+
+
+	public boolean isEmpty()
+	{
+		return registry == null || registry.size() == 0;
+	}
+
+	public void input(Person obj)
+	{
+		registry.add(obj);
+	}
+
+	
+
+	public Person findPerson(int kundeNr)
+	{
+		Iterator<Person> it = registry.iterator();
+
+		while(it.hasnext())
+		{
+			Person owner = it.next();
+
+			if(owner.getKundeNr() == kundeNr)
+			{
+				return owner;
+			}
+		    
+		}
+		return null;
+		
+	}
+
+	public Person deletePerson(Person obj)
+	{
+		/*if(isEmpty())
+			return null;*/
+
+		Iterator<Person> it = registry.iterator();
+
+		
+		while(it.hasnext())
+		{
+			if(it.next().eguals(obj) )
+			{
+				it.remove();
+			 	return obj;
+			}
+		}	
+		return null;
+	}
+
+
+	public Person findCardOwner(Skicard card)
+	{
+		Iterator<Person> it = registry.iterator();
+
+		while(it.hasnext())
+		{
+			Person owner = it.next();
+
+			if(owner.ownsCard(card))
+			{
+				return owner;
+			}
+		    
+		}
+		return null;
+
+	}
+	
+	public String toString()
+	{
+		StringBuilder text = new StringBuilder();
+		
+		Iterator<Person> it = registry.iterator();
+		
+		while( it.hasnext())
+		{
+			Person runner = it.next();
+			text.append("\n");
+			text.append(runner.toString());
+		
+		} 
+		
+		String doneText = text.toString();
+		
+		return doneText;
+	}
+
+}
+
+	
+
+
+
+
+	
+	
+
+
+
+
+
+
+
+
+	/*<datafelter>
 
 	<konstruktør som oppretter listen>
 
@@ -12,6 +123,5 @@ public class Personlist implements Serializable
 
 	<metode for å søke personer på navn>
 
-	<metode for å sjekke om lista er tom>
+	<metode for å sjekke om lista er tom>*/
 
-}

@@ -1,6 +1,15 @@
-public class Chairlift extends Lift
+public class Chairlift extends Lift implements Serializable
 {
-	<datafelt>
+	
+	private int seats;
+
+
+	public Chairlift(int l, String n,int c, int m, int s)
+	{
+		super(l,n,c,m);
+		seats = s;
+	}
+	/*<datafelt>
 
 	<konstruktør som gir startverdier>
 
@@ -10,5 +19,5 @@ public class Chairlift extends Lift
 
 	<metode for å trekke X klipp>
 
-	<registrere passering>
+	<registrere passering>*/
 }
