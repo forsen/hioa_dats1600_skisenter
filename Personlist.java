@@ -19,7 +19,7 @@ public class Personlist<Person> implements Serializable
 
 	
 
-	public Person findPerson(int kundeNr)
+	public Person findPerson(String name)
 	{
 		Iterator<Person> it = registry.iterator();
 
@@ -27,7 +27,7 @@ public class Personlist<Person> implements Serializable
 		{
 			Person owner = it.next();
 
-			if(owner.getKundeNr() == kundeNr)
+			if(owner.getName().eguals(name))
 			{
 				return owner;
 			}
