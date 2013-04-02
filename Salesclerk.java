@@ -9,11 +9,12 @@ public class Salesclerk extends JFrame
 	private final int RIGHT = 40;
 	private JButton custWindowBtn, salesWindowBtn, replaceWindowBtn, refillWindowBtn, custWindowSearchBtn, custWindowRegBtn;
 	private JPanel topMenuPnl, custWindowPnl, salesWindowPnl, replaceWindowPnl, refillWindowPnl, statusPnl; 
+	private JPanel custWindowNamePnl, custWindowPhonePnl, custWindowBornPnl, custWindowBtnPnl;
 	private JTextField custWindowName, custWindowPhone, custWindowBorn;
 	private JTextArea salesWindowTxt, replaceWindowTxt, refillWindowTxt, statusTxt;
 	private Listener listener;
 
-	public Salesclerk()
+	public Salesclerk( Personlist custRegistry )
 	{
 		super("Testvindu");
 
@@ -23,7 +24,10 @@ public class Salesclerk extends JFrame
 		replaceWindowBtn = new JButton("Erstatt");
 
 		topMenuPnl = new JPanel( new FlowLayout() );
-		custWindowPnl = new JPanel( new FlowLayout() );
+		custWindowPnl = new JPanel();
+		custWindowPnl.setLayout( new BoxLayout( custWindowPnl, BoxLayout.PAGE_AXIS) );
+
+
 		salesWindowPnl = new JPanel( new FlowLayout() );
 		replaceWindowPnl = new JPanel( new FlowLayout() );
 		refillWindowPnl = new JPanel( new FlowLayout() );
@@ -36,9 +40,14 @@ public class Salesclerk extends JFrame
 		custWindowSearchBtn = new JButton("Søk");
 		custWindowRegBtn = new JButton("Ny kunde");
 
-		custWindowName = new JTextField(10);
-		custWindowPhone = new JTextField(10);
-		custWindowBorn = new JTextField(10);
+		custWindowNamePnl = new JPanel( new FlowLayout() );
+		custWindowPhonePnl = new JPanel( new FlowLayout() );
+		custWindowBornPnl = new JPanel( new FlowLayout() );
+		custWindowBtnPnl = new JPanel( new FlowLayout() );
+
+		custWindowName = new JTextField(25);
+		custWindowPhone = new JTextField(25);
+		custWindowBorn = new JTextField(25);
 
 
 		statusTxt = new JTextArea(10,40);
@@ -62,15 +71,18 @@ public class Salesclerk extends JFrame
 		salesWindowBtn.addActionListener( listener );
 		refillWindowBtn.addActionListener(listener);
 		replaceWindowBtn.addActionListener(listener);
-
-		custWindowPnl.add( new JLabel( "Navn" ) );
-		custWindowPnl.add( custWindowName );
-		custWindowPnl.add( new JLabel( "Telefon" ) );
-		custWindowPnl.add( custWindowPhone );
-		custWindowPnl.add( new JLabel( "Født") );
-		custWindowPnl.add( custWindowBorn );
-		custWindowPnl.add( custWindowRegBtn );
-		custWindowPnl.add( custWindowSearchBtn );
+		custWindowPnl.add(custWindowNamePnl);
+		custWindowPnl.add(custWindowPhonePnl);
+		custWindowPnl.add(custWindowBornPnl);
+		custWindowPnl.add(custWindowBtnPnl);
+		custWindowNamePnl.add( new JLabel( "Navn" ) );
+		custWindowNamePnl.add( custWindowName );
+		custWindowPhonePnl.add( new JLabel( "Telefon" ) );
+		custWindowPhonePnl.add( custWindowPhone );
+		custWindowBornPnl.add( new JLabel( "Født") );
+		custWindowBornPnl.add( custWindowBorn );
+		custWindowBtnPnl.add( custWindowRegBtn );
+		custWindowBtnPnl.add( custWindowSearchBtn );
 		salesWindowPnl.add(salesWindowTxt);
 		refillWindowPnl.add(refillWindowTxt);
 		replaceWindowPnl.add(replaceWindowTxt);
@@ -91,6 +103,19 @@ public class Salesclerk extends JFrame
 		statusPnl.setVisible(true);
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 
+	}
+
+	private void registerPerson()
+	{
+		String name = custWindowName.getText();
+		int number = Integer.parseInt(custWindowPhone.getText());
+		int age = Integer.parseInt(custWindowBorn.getText());
+
+		Person p = new Person( name, number, age );
+
+		custRegistry.input( p ); 
+
+		
 	}
 
 	private class Listener implements ActionListener

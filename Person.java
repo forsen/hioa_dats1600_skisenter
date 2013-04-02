@@ -1,73 +1,100 @@
 import java.io.*;
+import java.util.*;
 
 
-public abstract class Person implements Serializable 
+public class Person implements Serializable 
 {
 	
-	private int kundeNr;
+	private int custId = 0;
+  private private static int next;
 	private String name;
 	private int phoneNr;
 	private int age;
-	//BILDEDATAFELT?????
+	//BILDEDATAFELT??
 	
-	protected Skicardlist list;
+	private List<Skicard> list;
 
-  	public Person( int k, String n, int p, int a )
-  	{
-   	 	kundeNr = k;
+  public Person( String n, int p, int a )
+  {
+   	 	custId = ++next;
    	 	name = n;
    		phoneNr = p;
    		age = a;
-   		list  = new Skicardlist();
+   		list  = new LinkedList<>();
  	}
 
 	public int getKundeNr()
-  	{
-    	return kundeNr;
-  	}
+  {
+      return kundeNr;
+  }
 
  	public String getName()
-  	{
+  {
     	return name;
-  	}
+  }
 
-  	public int getphoneNr()
-  	{
+  public int getphoneNr()
+  {
     	return phoneNr;
-  	}
+  }
 
-  	public int getAge()
-  	{
+  public int getAge()
+  {
     	return age;
-  	}
+  }
 
-  	public boolean hasCard()
-  	{
+  public boolean hasCard()
+  {
   		return (list != null) && (!list.isEmpty());
-  	}
+  }
 
-  	public String newCard( Object c )
-  	{
-  		Skicard card = new SkiCard(t,p,o,s,v);
-		if(list.newCard(card))
-		{
-			return "Skipass registrert";
-		}
-		return "Skipasset er allerede registrert";
-  	}
+  public void addCard( Skicard c )
+  {
+    list.add(c);
+  }
 
-  	public boolean equals( Object p )
+  public boolean equals( Person p )
 	{
-	  	return ((Person)p).getKundeNr().equals( kundeNr ) && ((Person)p).getName().equals( name ) &&
-	          ((Person)p).getphoneNr().equals( phoneNr )  && ((Person)p).getAge().equals( age );
-  	}
+	  	return (p.getKundeNr()==( kundeNr )) && p.getName().equals( name ) &&
+	          (p.getphoneNr() == ( phoneNr ) ) && p.getAge() == ( age );
+  }
+
+  public Person ownsCard(Skicard card)
+  {
+    Iterator<Skicard> it = list.iterator();
+
+    if(it.hasNext())
+    {
+        Skicard pass = it.next();
+
+        if(pass.getCardNr().eqals(card.getCardNr()) )
+        {
+          return this;
+        }
+    } 
+    return null; 
+  }
 
 
-  	abstract public String toString();
+
+  public String toString()
+  {
+    StringBuilder text = new StringBuilder();
+    
+    text.append(name); 
+    text.append("\ntlf: "); 
+    text.append(phoneNr); 
+    text.append("\nAlder "); 
+    text.append(age); 
+    text.append("\n"); 
+    
+    String doneTekst = text.toString();
+    
+    return doneTekst;
+  }
 
 
 
-  	abstract public boolean ownsCard(SkiCard card);
 
   	
 
