@@ -1,4 +1,7 @@
 //a list over all of the skicards a person holds and all cards ever sold
+import java.io.*;
+import java.util.*;
+
 public class Skicardlist implements Serializable
 {
 	private List<Skicard> registry = new LinkedList<>();
@@ -13,7 +16,7 @@ public class Skicardlist implements Serializable
 		registry.add(obj);
 	}
 
-	public void deleteCard(Skicard obj)
+	public Skicard deleteCard(Skicard obj)
 	{
 		Iterator<Skicard> it = registry.iterator();
 
@@ -24,6 +27,22 @@ public class Skicardlist implements Serializable
 				it.remove();
 				return obj;
 			}
+		}
+		return null;
+	}
+
+	public Skicard findCard(int cardNumber)
+	{
+		Iterator<Skicard> it = registry.iterator();
+
+		while (it.hasNext())
+		{
+			Skicard card = it.next();
+			if(card.getCardNr() == cardNumber)
+			{
+				return card;
+			}
+
 		}
 		return null;
 	}
