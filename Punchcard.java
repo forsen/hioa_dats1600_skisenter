@@ -1,14 +1,33 @@
 public class Punchcard extends Skicard
 {
-	/*<datafelter>
+	private int clipCount;
 
-	<konstruktør som gir startverdier, inkludert pris pr klipp fra Info og antall klipp>
+	public Punchcard(int cc, int p, int d, String ag)
+	{
+		super(p, d, ag);
+		clipCount = cc;
+		//pris per klipp fra Info
+	}
 
-	<metode for å registrere bruk av klipp>
+	public boolean isValid()
+	{
+		if(clipCount > 0)
+		{
+			return true;
+		}
+		return false;
+	}
 
-	<metode for å sjekke at det er nok klipp igjen>
+	public void usePunchCard()
+	{
+		if(isValid());
+		{
+			clipCount = (clipCount-1);
+		}
+	}
 
-	<metode for å legge til flere klipp>*/
-
-
+	public void addClip(int clip)
+	{
+		clipCount = clipCount + clip; 
+	}
 }
