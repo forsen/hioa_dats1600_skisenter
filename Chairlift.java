@@ -1,4 +1,4 @@
-// kommentar
+// Flott kommentar! 
 public class Chairlift extends Lift implements Serializable
 {
 	
