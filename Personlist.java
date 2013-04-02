@@ -12,7 +12,7 @@ public class Personlist implements Serializable
 		return registry == null || registry.size() == 0;
 	}
 
-	public void input(Person obj)
+	public String input(Person obj)
 	{
 		Iterator<Person> it = registry.iterator();
 
@@ -21,9 +21,13 @@ public class Personlist implements Serializable
 			Person p = it.next();
 
 			if( p.equals(obj)== false)
-				
+			{	
 				registry.add(obj);
+				return obj.getName() + "Ble opprettet med kunde nr " + obj.getCustId(); 
+			} 
+			return "Kunden finnes allerede";
 		}
+		return "Listen er tom";
 	}
 
 	
