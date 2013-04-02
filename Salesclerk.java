@@ -13,11 +13,16 @@ public class Salesclerk extends JFrame
 	private JTextField custWindowName, custWindowPhone, custWindowBorn;
 	private JTextArea salesWindowTxt, replaceWindowTxt, refillWindowTxt, statusTxt;
 	private Listener listener;
+	private CustListener custListener;
 
-	public Salesclerk( Personlist custRegistry )
+	private Personlist custRegistry; 
+
+	public Salesclerk( Personlist cr )
 	{
 		super("Testvindu");
 
+
+		custRegistry = cr; 
 		custWindowBtn = new JButton("Kunde");
 		salesWindowBtn = new JButton("NySalg");
 		refillWindowBtn = new JButton("Påfyll");
@@ -52,6 +57,7 @@ public class Salesclerk extends JFrame
 
 		statusTxt = new JTextArea(10,40);
 		listener = new Listener(); 
+		custListener = new CustListener();
 
 		Container c = getContentPane();
 		c.setLayout( new FlowLayout() );
@@ -68,6 +74,8 @@ public class Salesclerk extends JFrame
 		topMenuPnl.add(refillWindowBtn);
 
 		custWindowBtn.addActionListener( listener );
+		custWindowRegBtn.addActionListener( custListener );
+		custWindowSearchBtn.addActionListener( custListener );
 		salesWindowBtn.addActionListener( listener );
 		refillWindowBtn.addActionListener(listener);
 		replaceWindowBtn.addActionListener(listener);
@@ -111,11 +119,22 @@ public class Salesclerk extends JFrame
 		int number = Integer.parseInt(custWindowPhone.getText());
 		int age = Integer.parseInt(custWindowBorn.getText());
 
+		System.out.println("test");
+
 		Person p = new Person( name, number, age );
 
 		custRegistry.input( p ); 
 
-		status.setText(name + " ble opprettet med kundenr: " + p.getCustId());
+		statusTxt.setText(name + " ble opprettet med kundenr: " + p.getCustId());
+	}
+
+	private class CustListener implements ActionListener
+	{
+		public void actionPerformed( ActionEvent e )
+		{
+			if( e.getSource() == custWindowRegBtn )
+				registerPerson();
+		}
 	}
 
 	private class Listener implements ActionListener
@@ -135,6 +154,7 @@ public class Salesclerk extends JFrame
 				refillWindowPnl.setVisible(true);
 			else if( e.getSource() == replaceWindowBtn )
 				replaceWindowPnl.setVisible(true);
+
 		}
 	}
 
