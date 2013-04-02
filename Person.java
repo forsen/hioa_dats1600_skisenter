@@ -6,7 +6,7 @@ public class Person implements Serializable
 {
 	
 	private int custId = 0;
-  private private static int next;
+  private static int next;
 	private String name;
 	private int phoneNr;
 	private int age;
@@ -23,9 +23,9 @@ public class Person implements Serializable
    		list  = new LinkedList<>();
  	}
 
-	public int getKundeNr()
+	public int getCustId()
   {
-      return kundeNr;
+      return custId;
   }
 
  	public String getName()
@@ -55,7 +55,7 @@ public class Person implements Serializable
 
   public boolean equals( Person p )
 	{
-	  	return (p.getKundeNr()==( kundeNr )) && p.getName().equals( name ) &&
+	  	return (p.getCustId()==( custId)) && p.getName().equals( name ) &&
 	          (p.getphoneNr() == ( phoneNr ) ) && p.getAge() == ( age );
   }
 
@@ -63,11 +63,11 @@ public class Person implements Serializable
   {
     Iterator<Skicard> it = list.iterator();
 
-    if(it.hasNext())
+    while(it.hasNext())
     {
         Skicard pass = it.next();
 
-        if(pass.getCardNr().eqals(card.getCardNr()) )
+        if(pass.getCardNr()==card.getCardNr() )
         {
           return this;
         }

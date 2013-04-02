@@ -5,7 +5,7 @@ public abstract class Lift implements Serializable
 	private int clips;
 	private int length;
 
-	public Lift(int l, String n,int c, int m)
+	public Lift(int l, String n, int c, int m)
 	{
 		liftNr = l;
 		name = n;
@@ -33,15 +33,26 @@ public abstract class Lift implements Serializable
 		return length;
 	}
 
-	public boolean isValid()
+	public String toString()
 	{
 
+    	StringBuilder text = new StringBuilder();
+    
+    	text.append(name); 
+    	text.append("\nHeisnummer: "); 
+    	text.append(liftNr); 
+    	text.append("\nKlipp som trengs for å kunne kjøre: "); 
+    	text.append(clips); 
+   	 	text.append("\nlengde"); 
+   	 	text.append(length); 
+   		text.append("\n"); 
+    
+    	String doneTekst = text.toString();
+    
+    	return doneTekst;
+  
 	}
-
-	public void stampCard()
-	{
-
-	}
+	
 
 
 
@@ -54,9 +65,6 @@ public abstract class Lift implements Serializable
 
 	<abstrakte metoder for å hente ut relevante datafelter>
 
-	<abstrakte metode for å undersøke om et tidsbasert skikort er gyldig>
-
-	<abstrakt metode for å trekke X klipp>
 
 	<abstrakt metode for å registrere passering>--> DENNE TROR JEG BURDE GJØRES I KONTROLLVINDUET*/
 
