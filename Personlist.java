@@ -16,6 +16,12 @@ public class Personlist implements Serializable
 	{
 		Iterator<Person> it = registry.iterator();
 
+		if(isEmpty())
+		{
+			registry.add(obj);
+				return obj.getName() + "Ble opprettet med kunde nr " + obj.getCustId(); 
+		}	
+
 		while(it.hasNext())
 		{
 			Person p = it.next();
@@ -26,8 +32,9 @@ public class Personlist implements Serializable
 				return obj.getName() + "Ble opprettet med kunde nr " + obj.getCustId(); 
 			} 
 			return "Kunden finnes allerede";
-		}
-		return "Listen er tom";
+		} 
+		return "Listen er tom !";
+
 	}
 
 	
