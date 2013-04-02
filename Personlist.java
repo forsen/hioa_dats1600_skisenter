@@ -14,7 +14,16 @@ public class Personlist implements Serializable
 
 	public void input(Person obj)
 	{
-		registry.add(obj);
+		Iterator<Person> it = registry.iterator();
+
+		while(it.hasNext())
+		{
+			Person p = it.next();
+
+			if( p.equals(obj)== false)
+				
+				registry.add(obj);
+		}
 	}
 
 	
@@ -36,6 +45,26 @@ public class Personlist implements Serializable
 		return null;
 		
 	}
+
+
+	public Person findPerson(int nr)
+	{
+		Iterator<Person> it = registry.iterator();
+
+		while(it.hasNext())
+		{
+			Person owner = it.next();
+
+			if(owner.getphoneNr()==nr)
+			{
+				return owner;
+			}
+		    
+		}
+		return null;
+		
+	}
+
 
 	public Person deletePerson(Person obj)
 	{

@@ -1,3 +1,5 @@
+import java.io.*;
+
 public abstract class Lift implements Serializable
 {
 	private int liftNr;

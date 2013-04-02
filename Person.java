@@ -9,17 +9,17 @@ public class Person implements Serializable
   private static int next;
 	private String name;
 	private int phoneNr;
-	private int age;
+	private Date born;
 	//BILDEDATAFELT??
 	
 	private List<Skicard> list;
 
-  public Person( String n, int p, int a )
+  public Person( String n, int p, Date b )
   {
    	 	custId = ++next;
    	 	name = n;
    		phoneNr = p;
-   		age = a;
+   		born = b;
    		list  = new LinkedList<>();
  	}
 
@@ -38,9 +38,9 @@ public class Person implements Serializable
     	return phoneNr;
   }
 
-  public int getAge()
+  public Date getBirth()
   {
-    	return age;
+    	return born;
   }
 
   public boolean hasCard()
@@ -56,7 +56,7 @@ public class Person implements Serializable
   public boolean equals( Person p )
 	{
 	  	return (p.getCustId()==( custId)) && p.getName().equals( name ) &&
-	          (p.getphoneNr() == ( phoneNr ) ) && p.getAge() == ( age );
+	          (p.getphoneNr() == ( phoneNr ) ) && (p.getBirth().compareTo( born ) == 0);
   }
 
   public Person ownsCard(Skicard card)
@@ -85,7 +85,7 @@ public class Person implements Serializable
     text.append("\ntlf: "); 
     text.append(phoneNr); 
     text.append("\nAlder "); 
-    text.append(age); 
+    text.append(born); 
     text.append("\n"); 
     
     String doneTekst = text.toString();
