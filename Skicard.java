@@ -1,33 +1,41 @@
+import java.io.*;
+import java.util.*;
+
 //Superclass for all the different cardtypes 
 
 public abstract class Skicard implements Serializable 
 {
 	private int cardNumber;
+	private static int nesteNr = 1;
+	private int pris;
+	private int rabatt;
+	private String aldersgruppe;
 
 
-	public Skicard(int cN)
+
+	public Skicard(int p, int r, String ag)
 	{
-		cardNumber = cN;
+		cardNumber = nesteNr++;
+		pris = p;
+		rabatt = r;
+		aldersgruppe = ag;
 	}
 
-	public abstract int getCardNumber()
+	public int getCardNumber()
 	{
 		return cardNumber;
 	}
 
-	public abstract boolean isValid()
+	public int getPris()
 	{
-		if () 
-		{
-			return true;
-		}
-		return false;
+		return pris;
 	}
-	/*<datafelt>
 
-	<konstuktør>
+	public int getRabatt()
+	{
+		return rabatt;
+	}
 
-	<astrakt get-metoder for å hente ut datafeltene til kortene>
-	<abstrakt metode for å skjekke om kortet er gyldig>*/
+	public abstract boolean isValid();
 	 
 }
