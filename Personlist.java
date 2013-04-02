@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class Personlist<Person> implements Serializable
+public class Personlist implements Serializable
 {
 	
 	private List<Person> registry = new LinkedList<>();

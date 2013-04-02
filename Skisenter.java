@@ -3,7 +3,8 @@ public class Skisenter
 
 	public static void main(String[] args)
 	{
-		Salesclerk w = new Salesclerk();
+		Personlist registry = new Personlist(); 
+		Salesclerk w = new Salesclerk( registry );
 	}
 
 /*	<datafelter>

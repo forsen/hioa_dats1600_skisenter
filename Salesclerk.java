@@ -115,7 +115,7 @@ public class Salesclerk extends JFrame
 
 		custRegistry.input( p ); 
 
-		
+		status.setText(name + " ble opprettet med kundenr: " + p.getCustId());
 	}
 
 	private class Listener implements ActionListener
