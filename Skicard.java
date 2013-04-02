@@ -6,36 +6,55 @@ import java.util.*;
 public abstract class Skicard implements Serializable 
 {
 	private int cardNumber;
-	private static int nesteNr = 1;
-	private int pris;
-	private int rabatt;
-	private String aldersgruppe;
+	private static int next = 1;
+	private int price;
+	private int discount;
+	private String agegroup;
 
 
 
-	public Skicard(int p, int r, String ag)
+	public Skicard(int p, int d, String ag)
 	{
-		cardNumber = nesteNr++;
-		pris = p;
-		rabatt = r;
-		aldersgruppe = ag;
+		cardNumber = next++;
+		price = p;
+		discount = d;
+		ageGroup = ag;
 	}
 
-	public int getCardNumber()
+	public int getCardNr()
 	{
 		return cardNumber;
 	}
 
-	public int getPris()
+	public int getPrice()
 	{
-		return pris;
+		return price;
 	}
 
-	public int getRabatt()
+	public int getDiscount()
 	{
-		return rabatt;
+		return discount;
+	}
+
+	public String getAgeGroup()
+	{
+		return ageGroup;
 	}
 
 	public abstract boolean isValid();
+
+	public String toString()
+	{
+		StringBuilder text = new StringBuilder();
+
+		text.append("Card ID: " + cardNumber + "\n");
+		text.append("Price: " + price + "\n");
+		text.append("Discount: " + discount + "\n");
+		text.append(ageGroup + "\n");
+
+		String doneText = text.toString();
+
+		return doneText;
+	}
 	 
 }
