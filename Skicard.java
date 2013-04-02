@@ -9,7 +9,7 @@ public abstract class Skicard implements Serializable
 	private static int next = 1;
 	private int price;
 	private int discount;
-	private String agegroup;
+	private String ageGroup;
 
 
 
