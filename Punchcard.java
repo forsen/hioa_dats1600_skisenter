@@ -6,7 +6,7 @@ public class Punchcard extends Skicard
 	{
 		super(p, d, ag);
 		clipCount = cc;
-		//pris per klipp fra Info
+		price = Info.PUNCHCARDPRICE;
 	}
 
 	public boolean isValid()
