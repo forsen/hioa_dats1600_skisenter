@@ -1,7 +1,28 @@
 //Superclass for all the different cardtypes 
 
-public abstract class Skicard 
+public abstract class Skicard implements Serializable 
 {
+	private int cardNumber;
+
+
+	public Skicard(int cN)
+	{
+		cardNumber = cN;
+	}
+
+	public abstract int getCardNumber()
+	{
+		return cardNumber;
+	}
+
+	public abstract boolean isValid()
+	{
+		if () 
+		{
+			return true;
+		}
+		return false;
+	}
 	/*<datafelt>
 
 	<konstuktør>
