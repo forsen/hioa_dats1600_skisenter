@@ -1,5 +1,5 @@
 import java.io.*;
-import java.util.*;
+
 
 public class Personlist<Person> implements Serializable
 {
@@ -23,11 +23,11 @@ public class Personlist<Person> implements Serializable
 	{
 		Iterator<Person> it = registry.iterator();
 
-		while(it.hasnext())
+		while(it.hasNext())
 		{
 			Person owner = it.next();
 
-			if(owner.getName().eguals(name))
+			if(owner.getName().equals(name))
 			{
 				return owner;
 			}
@@ -45,9 +45,9 @@ public class Personlist<Person> implements Serializable
 		Iterator<Person> it = registry.iterator();
 
 		
-		while(it.hasnext())
+		while(it.hasNext())
 		{
-			if(it.next().eguals(obj) )
+			if(it.next().equals(obj) )
 			{
 				it.remove();
 			 	return obj;
@@ -61,11 +61,11 @@ public class Personlist<Person> implements Serializable
 	{
 		Iterator<Person> it = registry.iterator();
 
-		while(it.hasnext())
+		while(it.hasNext())
 		{
 			Person owner = it.next();
 
-			if(owner.ownsCard(card))
+			if(owner.ownsCard(card) != null)
 			{
 				return owner;
 			}
@@ -81,7 +81,7 @@ public class Personlist<Person> implements Serializable
 		
 		Iterator<Person> it = registry.iterator();
 		
-		while( it.hasnext())
+		while( it.hasNext())
 		{
 			Person runner = it.next();
 			text.append("\n");
@@ -95,6 +95,7 @@ public class Personlist<Person> implements Serializable
 	}
 
 }
+
 
 	
 
