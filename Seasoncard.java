@@ -1,7 +1,7 @@
 public class Seasoncard extends Timebasedcard
 {
 	Date bought;
-	public Seasoncard(Date newBought)
+	public Seasoncard(int cNr, boolean v, Date newBought)
 	{
 		super(cNr, v)
 		pris = Info.SEASONCARDPRICE;

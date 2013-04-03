@@ -2,12 +2,11 @@ public abstract class Timebasedcard extends Skicard
 {
 	//<datafelter>
 	boolean valid;
-	int cardNumber;
 
-	public Timebasedcard(int cNr, boolean v )
+	public Timebasedcard(int p, int d, String ag, boolean v )
 	{
+		super(p, d, ag);
 		valid = v;
-		cardNumber = cNr; 
 	}
 
 	/*<abstrakt metode(r) for å sjekke gyldighet (evt datometoder for å holde styr på tider)>
