@@ -55,7 +55,7 @@ public class Person implements Serializable
 
   public boolean equivalent( Person p )
 	{
-	  	return (p.getCustId()==( custId)) && p.getName().equals( name ) &&
+	  	return  p.getName().equals( name ) &&
 	          (p.getphoneNr() == ( phoneNr ) ) && (p.getBirth().compareTo( born ) == 0);
   }
 
