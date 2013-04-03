@@ -120,7 +120,7 @@ public class Salesclerk extends JFrame
 		salesWindowTxt.setText("Nytt salg vindu");
 		refillWindowTxt.setText("Her kan man fylle på heiskort");
 		replaceWindowTxt.setText("Her kan man erstatte kort");
-		statusTxt.setText("Status ting her!");
+		statusTxt.setText(m);
 
 
 
