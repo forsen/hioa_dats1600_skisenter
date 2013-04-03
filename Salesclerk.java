@@ -22,10 +22,21 @@ public class Salesclerk extends JFrame
 
 	private Personlist custRegistry; 
 
+	private Toolkit toolbox;
+
 	public Salesclerk( Personlist cr )
 	{
 		super("Testvindu");
 
+		toolbox = Toolkit.getDefaultToolkit();
+
+		Dimension windowDimension = toolbox.getScreenSize();
+
+		int height = windowDimension.height;
+		int width = windowDimension.width; 
+
+		setSize( width/2, height/2 );
+		setLocationByPlatform( true );
 
 		custRegistry = cr; 
 		custWindowBtn = new JButton("Kunde");
@@ -107,14 +118,12 @@ public class Salesclerk extends JFrame
 		statusTxt.setText("Status ting her!");
 
 
-		setSize(600,600);
-		setVisible(true);
+
 		custWindowPnl.setVisible(true);
 		salesWindowPnl.setVisible(false);
 		refillWindowPnl.setVisible(false);
 		replaceWindowPnl.setVisible(false);
 		statusPnl.setVisible(true);
-		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 
 	}
 
