@@ -38,6 +38,11 @@ public class Personlist implements Serializable
 
 	}
 
+	public void sort()
+	{
+		Collections.sort(registry, new Sortorder());
+	}
+
 	
 
 	public Person findPerson(String name)

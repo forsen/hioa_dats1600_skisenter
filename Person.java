@@ -55,7 +55,7 @@ public Person( String n, int p, Date b )
 
 	public boolean equivalent( Person p )
 	{
-		return sant = p.getName().equals( name ) && (p.getphoneNr() == ( phoneNr ) ) && (p.getBirth().compareTo( born ) == 0);
+		return p.getName().equals( name ) && (p.getphoneNr() == ( phoneNr ) ) && (p.getBirth().compareTo( born ) == 0);
 	}
 
 	public Person ownsCard(Skicard card)
