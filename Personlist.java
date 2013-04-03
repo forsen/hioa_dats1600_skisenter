@@ -17,7 +17,7 @@ public class Personlist implements Serializable
 		if(isEmpty())
 		{
 			registry.add(obj);
-			return obj.getName() + "Ble opprettet med kunde nr " + obj.getCustId(); 
+			return obj.getFirstName() + " " + obj.getFirstName()+ "Ble opprettet med kunde nr " + obj.getCustId(); 
 		}	
 
 		Iterator<Person> it = registry.iterator();
@@ -33,7 +33,7 @@ public class Personlist implements Serializable
 
 		} 
 		registry.add(obj);
-		return obj.getName() + "Ble opprettet med kunde nr " + obj.getCustId(); 
+		return obj.getFirstName() + " " + obj.getFirstName()+ "Ble opprettet med kunde nr " + obj.getCustId(); 
 	}
 
 	public void sort()
@@ -43,7 +43,7 @@ public class Personlist implements Serializable
 
 	
 
-	public Person findPerson(String name)
+	public Person findPerson(String fn, String ln)
 	{
 		Iterator<Person> it = registry.iterator();
 
@@ -51,7 +51,12 @@ public class Personlist implements Serializable
 		{
 			Person owner = it.next();
 
-			if(owner.getName().equals(name))
+			if(fn != null || owner.getFirstName().equals(fn))
+			{
+				return owner;
+			}
+
+			if(ln != null || owner.getLastName().equals(ln))
 			{
 				return owner;
 			}
