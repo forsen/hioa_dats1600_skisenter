@@ -53,7 +53,7 @@ public class Person implements Serializable
     list.add(c);
   }
 
-  public boolean equals( Person p )
+  public boolean equivalent( Person p )
 	{
 	  	return (p.getCustId()==( custId)) && p.getName().equals( name ) &&
 	          (p.getphoneNr() == ( phoneNr ) ) && (p.getBirth().compareTo( born ) == 0);
@@ -84,7 +84,7 @@ public class Person implements Serializable
     text.append(name); 
     text.append("\ntlf: "); 
     text.append(phoneNr); 
-    text.append("\nAlder "); 
+    text.append("\nFødt "); 
     text.append(born); 
     text.append("\n"); 
     

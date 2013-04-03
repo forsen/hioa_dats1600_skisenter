@@ -14,19 +14,19 @@ public class Personlist implements Serializable
 
 	public String input(Person obj)
 	{
-		Iterator<Person> it = registry.iterator();
-
 		if(isEmpty())
 		{
 			registry.add(obj);
-				return obj.getName() + "Ble opprettet med kunde nr " + obj.getCustId(); 
+			return obj.getName() + "Ble opprettet med kunde nr " + obj.getCustId(); 
 		}	
+
+		Iterator<Person> it = registry.iterator();
 
 		while(it.hasNext())
 		{
 			Person p = it.next();
 
-			if( p.equals(obj)== false)
+			if( p.equivalent(obj) == false)
 			{	
 				registry.add(obj);
 				return obj.getName() + "Ble opprettet med kunde nr " + obj.getCustId(); 
