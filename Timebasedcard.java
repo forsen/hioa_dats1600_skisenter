@@ -1,16 +1,20 @@
 public abstract class Timebasedcard extends Skicard
 {
 	//<datafelter>
-	boolean gyldig;
-	int heiskortnr;
+	boolean valid;
+	int cardNumber;
 
-	/*<konstruktør som gir startverdier>
+	public Timebasedcard(int cNr, boolean v )
+	{
+		valid = v;
+		cardNumber = cNr; 
+	}
 
-	<abstrakt metode(r) for å sjekke gyldighet (evt datometoder for å holde styr på tider)>
+	/*<abstrakt metode(r) for å sjekke gyldighet (evt datometoder for å holde styr på tider)>
 
-	<abstrakt getmetode for heiskortnr>
+	<abstrakt getmetode for heiskortnr>*/
 
-	<abstrakt metode for å sette ugyldig>
+	abstract public void unvalidate(); /*<abstrakt metode for å sette ugyldig>*/
 
-	<abstrakt metode for å legge til mer tid>*/
+	abstract public void addTime(); /*<abstrakt metode for å legge til mer tid>*/
 }
