@@ -1,5 +1,6 @@
 import java.io.*;
 import javax.swing.JOptionPane;
+import java.awt.*;
 import java.awt.event.*;
 
 public class Skisenter
@@ -13,18 +14,23 @@ public class Skisenter
 		Skisenter test = new Skisenter(); 
 
 		test.readFile(); 
-
-		final Salesclerk w = new Salesclerk( registry );
-		
-		w.addWindowListener(
-			new WindowAdapter() {
-				public void windowClosing( WindowEvent e )
+		EventQueue.invokeLater( new Runnable()
+		{
+			public void run()
+			{
+				final Salesclerk s = new Salesclerk( registry ); 
+				s.setVisible( true );
+				s.addWindowListener( new WindowAdapter() 
 				{
-					saveFile();
-					System.exit( 0 ); 
-				}
-			});
+					public void windowClosing( WindowEvent e )
+					{
+						saveFile();
+						System.exit( 0 ); 
+					}
+				});
 
+			}
+		} );
 	}
 
 	private static void readFile()
