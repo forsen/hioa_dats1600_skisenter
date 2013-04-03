@@ -11,9 +11,21 @@ public class Skicardlist implements Serializable
 	<konstruktør som oppretter startverdier for datafeltene>
 	*/
 
+	public boolean isEmpty()
+	{
+		return registry == null || registry.size() == 0;
+	}
+
 	public void input(Skicard obj)
 	{
+		if
+		{
+			/* Her vi må vi vite om personen er en registrert kunde (har et kundenummer).*/
+		}
+
 		registry.add(obj);
+		return obj.getCardNr() + " Ble opprettet med kundenummer: ";
+		
 	}
 
 	public Skicard deleteCard(Skicard obj)
@@ -46,11 +58,8 @@ public class Skicardlist implements Serializable
 		}
 		return null;
 	}
-	/*
-	<metode for innsetting av kort i listen>
-	<metode for fjerning av kort i listen>
-	<metode for finne/søke etter kort i listen etter kort nr>
-	<metode for å finne eier av kort>
+
+/*	<metode for å finne eier av kort>
 	<metode for å sjekke om listen er tom>*/
 
 
