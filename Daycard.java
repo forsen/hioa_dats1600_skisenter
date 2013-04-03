@@ -1,26 +1,47 @@
-import java.util.Date;
+import java.util.*;
 
 public class Daycard extends Skicard
 {
-	Date date1 = new Date();
+	private boolean valid = true;
+	private Date bought;
+	
 
-	public Daycard(int cc, int p, int d, String ag, Date dat)
+	public Daycard(int cc, int p, int d, String ag, Date newBought, boolean v)
 	{
 		super(p, d, ag); 
-		date1 = dat;
+		valid = v;
+		bought = newBought;
+		
+	}
+
+	public void setDateBought()
+	{
+		Calendar calendar = Calendar.getInstance();
+		Date bought = calendar.getTime();
 	}
 
 	public boolean isValid()
 	{
-		Date date2 = new Date();
+		Calendar checktoday = Calendar.getInstance();
 
-		if(date1.equals(date2))
+		if(bought.equals(checktoday))
 		{
 			return true;
 		}
-		else return false;
+		else
+		unvalidate();
+		return false;
 	}
 
+	public void unvalidate()
+	{
+		valid = false;
+	}
+
+	public void addTime()
+	{
+		bought.add(Calendar.DAY_OF_YEAR, 1); /* Dette blir feil. */
+	}
 	/*<metode(r) for å sjekke gyldighet (evt datometoder for å holde styr på tider)>
 
 	<getmetode for heiskortnr>
