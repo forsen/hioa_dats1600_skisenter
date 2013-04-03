@@ -36,6 +36,11 @@ public class Personlist implements Serializable
 		return obj.getName() + "Ble opprettet med kunde nr " + obj.getCustId(); 
 	}
 
+	public void sort()
+	{
+		Collections.sort(registry, new Sortorder());
+	}
+
 	
 
 	public Person findPerson(String name)
