@@ -14,8 +14,8 @@ public class Salesclerk extends JFrame
 	private final int RIGHT = 40;
 	private JButton custWindowBtn, salesWindowBtn, replaceWindowBtn, refillWindowBtn, custWindowSearchBtn, custWindowRegBtn;
 	private JPanel topMenuPnl, custWindowPnl, salesWindowPnl, replaceWindowPnl, refillWindowPnl, statusPnl; 
-	private JPanel custWindowNamePnl, custWindowPhonePnl, custWindowBornPnl, custWindowBtnPnl;
-	private JTextField custWindowName, custWindowPhone, custWindowBorn;
+	private JPanel custWindowFirstNamePnl, custWindowLastNamePnl, custWindowPhonePnl, custWindowBornPnl, custWindowBtnPnl;
+	private JTextField custWindowFirstName, custWindowLastName, custWindowPhone, custWindowBorn;
 	private JTextArea salesWindowTxt, replaceWindowTxt, refillWindowTxt, statusTxt;
 	private Listener listener;
 	private CustListener custListener;
@@ -24,7 +24,7 @@ public class Salesclerk extends JFrame
 
 	private Toolkit toolbox;
 
-	public Salesclerk( Personlist cr )
+	public Salesclerk( Personlist cr, String m )
 	{
 		super("Testvindu");
 
@@ -61,12 +61,14 @@ public class Salesclerk extends JFrame
 		custWindowSearchBtn = new JButton("Søk");
 		custWindowRegBtn = new JButton("Ny kunde");
 
-		custWindowNamePnl = new JPanel( new FlowLayout() );
+		custWindowFirstNamePnl = new JPanel( new FlowLayout() );
+		custWindowLastNamePnl = new JPanel( new FlowLayout() );
 		custWindowPhonePnl = new JPanel( new FlowLayout() );
 		custWindowBornPnl = new JPanel( new FlowLayout() );
 		custWindowBtnPnl = new JPanel( new FlowLayout() );
 
-		custWindowName = new JTextField(25);
+		custWindowFirstName = new JTextField(25);
+		custWindowLastName = new JTextField(25);
 		custWindowPhone = new JTextField(25);
 		custWindowBorn = new JTextField(25);
 
@@ -95,12 +97,15 @@ public class Salesclerk extends JFrame
 		salesWindowBtn.addActionListener( listener );
 		refillWindowBtn.addActionListener(listener);
 		replaceWindowBtn.addActionListener(listener);
-		custWindowPnl.add(custWindowNamePnl);
+		custWindowPnl.add(custWindowFirstNamePnl);
+		custWindowPnl.add(custWindowLastNamePnl);
 		custWindowPnl.add(custWindowPhonePnl);
 		custWindowPnl.add(custWindowBornPnl);
 		custWindowPnl.add(custWindowBtnPnl);
-		custWindowNamePnl.add( new JLabel( "Navn" ) );
-		custWindowNamePnl.add( custWindowName );
+		custWindowFirstNamePnl.add( new JLabel( "Fornavn" ) );
+		custWindowFirstNamePnl.add( custWindowFirstName );
+		custWindowLastNamePnl.add( new JLabel( "Etternavn" ) );
+		custWindowLastNamePnl.add( custWindowLastName );
 		custWindowPhonePnl.add( new JLabel( "Telefon" ) );
 		custWindowPhonePnl.add( custWindowPhone );
 		custWindowBornPnl.add( new JLabel( "Født") );
@@ -129,12 +134,13 @@ public class Salesclerk extends JFrame
 
 	private void registerPerson()
 	{
-		String name = custWindowName.getText();
+		String firstname = custWindowFirstName.getText();
+		String lastname = custWindowLastName.getText();
 		int number = Integer.parseInt(custWindowPhone.getText());
 		try
 		{
 			Date born = new SimpleDateFormat("ddMMyy").parse(custWindowBorn.getText());
-			Person p = new Person( name, number, born );
+			Person p = new Person( firstname, lastname, number, born );
 			
 		
 
@@ -153,7 +159,8 @@ public class Salesclerk extends JFrame
 
 	private void findPerson()
 	{
-		String name = custWindowName.getText();
+		String firstname = custWindowFirstName.getText();
+		String lastname = custWindowLastName.getText();
 		try	
 		{
 			int number = Integer.parseInt(custWindowPhone.getText());
@@ -165,8 +172,8 @@ public class Salesclerk extends JFrame
 
 		}
 
-		if(name != null)
-			statusTxt.setText(custRegistry.findPerson(name).toString());
+		if(firstname != null)
+			statusTxt.setText(custRegistry.findPerson(firstname).toString());
 
 
 	}
