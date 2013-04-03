@@ -27,15 +27,17 @@ public class Sortorder implements Serializable, Comparator<Person>
 
     public int compare(Person p1, Person p2)
     {
-    	String name = p1.getName();
-    	String name2 = p2.getName();
+    	String lname = p1.getLastName();
+    	String lname2 = p2.getLastName();
+    	String fname = p1.getFirstName();
+    	String fname2 = p2.getFirstName();
 
-    	int r = col.compare(p1,p2);
+    	int r = col.compare(lname,lname2);
 
     	if(r != 0)
     		return r;
     	else
-    		return col.compare(p1,p2);
+    		return col.compare(fname,fname2);
     }
 
 
