@@ -33,7 +33,7 @@ public class Personlist implements Serializable
 
 		} 
 		registry.add(obj);
-		return obj.getFirstName() + " " + obj.getFirstName()+ "Ble opprettet med kunde nr " + obj.getCustId(); 
+		return obj.getFirstName() + " " + obj.getLastName()+ "Ble opprettet med kunde nr " + obj.getCustId(); 
 	}
 
 	public void sort()
@@ -47,9 +47,21 @@ public class Personlist implements Serializable
 	{
 		Iterator<Person> it = registry.iterator();
 
-		while(it.hasNext())
+		Person owner = it.next();
+
+		if(fn == null)
 		{
-			Person owner = it.next();
+
+		}
+
+		if(en == null)
+		{
+
+		}	
+
+		/*while(it.hasNext())
+		{
+			
 
 			if(fn != null || owner.getFirstName().equals(fn))
 			{
@@ -62,7 +74,7 @@ public class Personlist implements Serializable
 			}
 		    
 		}
-		return null;
+		return null;*/
 		
 	}
 
