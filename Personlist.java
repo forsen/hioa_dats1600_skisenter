@@ -31,11 +31,9 @@ public class Personlist implements Serializable
 				return "Kunden finnes allerede";
 			} 
 
-
 		} 
 		registry.add(obj);
 		return obj.getName() + "Ble opprettet med kunde nr " + obj.getCustId(); 
-
 	}
 
 	public void sort()

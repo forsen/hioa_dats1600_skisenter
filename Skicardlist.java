@@ -60,7 +60,6 @@ public class Skicardlist implements Serializable
 	}
 
 /*	<metode for å finne eier av kort>
-	<metode for å sjekke om listen er tom>*/
 
 
 }//end of class Skicardlist
