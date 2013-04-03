@@ -1,28 +1,26 @@
 import java.util.*;
 
-public class Daycard extends Skicard
+public class Daycard extends Timebasedcard
 {
-	private boolean valid = true;
 	private Date bought;
 	
 
-	public Daycard(int cc, int p, int d, String ag, Date newBought, boolean v)
+	public Daycard(int p, int d, String ag, Date newBought, boolean v)
 	{
-		super(p, d, ag); 
-		valid = v;
+		super(p, d, ag, v); 
 		bought = newBought;
 		
 	}
 
-	public void setDateBought()
+	public void firstTimeUsed()
 	{
-		Calendar calendar = Calendar.getInstance();
-		Date bought = calendar.getTime();
+		Date used = new Date();
+		bought = used;
 	}
 
 	public boolean isValid()
 	{
-		Calendar checktoday = Calendar.getInstance();
+		Date checktoday = new Date();
 
 		if(bought.equals(checktoday))
 		{
@@ -40,7 +38,11 @@ public class Daycard extends Skicard
 
 	public void addTime()
 	{
-		bought.add(Calendar.DAY_OF_YEAR, 1); /* Dette blir feil. */
+		if(isValid())
+		{
+			Date dateAfterFill = new Date(bought.getTime() + 1000 * 60 * 60 * 24);
+			bought = dateAfterFill;
+		}
 	}
 	/*<metode(r) for å sjekke gyldighet (evt datometoder for å holde styr på tider)>
 
