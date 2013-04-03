@@ -173,7 +173,7 @@ public class Salesclerk extends JFrame
 		}
 
 		if(firstname != null)
-			statusTxt.setText(custRegistry.findPerson(firstname).toString());
+			statusTxt.setText(custRegistry.findPerson(firstname, lastname));
 
 
 	}
