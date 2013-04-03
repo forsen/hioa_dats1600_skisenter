@@ -1,6 +1,11 @@
 import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.io.*;
+import java.text.ParseException;
+
 
 public class Salesclerk extends JFrame
 {
@@ -117,15 +122,44 @@ public class Salesclerk extends JFrame
 	{
 		String name = custWindowName.getText();
 		int number = Integer.parseInt(custWindowPhone.getText());
-		int age = Integer.parseInt(custWindowBorn.getText());
+		try
+		{
+			Date born = new SimpleDateFormat("ddMMyy").parse(custWindowBorn.getText());
+			Person p = new Person( name, number, born );
+			
+		
 
-		System.out.println("test");
+			statusTxt.setText(custRegistry.input( p ));
 
-		Person p = new Person( name, number, age );
+		}
+		catch( ParseException pe )
+		{
 
-		custRegistry.input( p ); 
+		}
 
-		statusTxt.setText(name + " ble opprettet med kundenr: " + p.getCustId());
+
+		
+
+	}
+
+	private void findPerson()
+	{
+		String name = custWindowName.getText();
+		try	
+		{
+			int number = Integer.parseInt(custWindowPhone.getText());
+
+			statusTxt.setText( custRegistry.findPerson(number).toString());
+		}
+		catch( NumberFormatException nfe )
+		{
+
+		}
+
+		if(name != null)
+			statusTxt.setText(custRegistry.findPerson(name).toString());
+
+
 	}
 
 	private class CustListener implements ActionListener
@@ -134,6 +168,8 @@ public class Salesclerk extends JFrame
 		{
 			if( e.getSource() == custWindowRegBtn )
 				registerPerson();
+			if( e.getSource() == custWindowSearchBtn )
+				findPerson();
 		}
 	}
 

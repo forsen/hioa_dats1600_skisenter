@@ -26,14 +26,15 @@ public class Personlist implements Serializable
 		{
 			Person p = it.next();
 
-			if( p.equivalent(obj) == false)
+			if( p.equivalent(obj) == true)
 			{	
-				registry.add(obj);
-				return obj.getName() + "Ble opprettet med kunde nr " + obj.getCustId(); 
+				return "Kunden finnes allerede";
 			} 
-			return "Kunden finnes allerede";
+
+
 		} 
-		return "Listen er tom !";
+		registry.add(obj);
+		return obj.getName() + "Ble opprettet med kunde nr " + obj.getCustId(); 
 
 	}
 
