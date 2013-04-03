@@ -43,26 +43,28 @@ public class Personlist implements Serializable
 
 	
 
-	public Person findPerson(String fn, String ln)
+	public String findPerson(String fn, String ln)
 	{
 		Iterator<Person> it = registry.iterator();
+
+		String result = ""; 
 
 		while(it.hasNext())
 		{
 			Person owner = it.next();
 
-			if(fn != null || owner.getFirstName().equals(fn))
+			if(fn != null && owner.getFirstName().equals(fn))
 			{
-				return owner;
+				result += owner.toString();
 			}
 
-			if(ln != null || owner.getLastName().equals(ln))
+			if(ln != null && owner.getLastName().equals(ln))
 			{
-				return owner;
+				result += owner.toString();
 			}
 		    
 		}
-		return null;
+		return result;
 		
 	}
 

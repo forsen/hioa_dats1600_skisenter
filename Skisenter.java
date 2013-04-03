@@ -18,7 +18,7 @@ public class Skisenter
 		{
 			public void run()
 			{
-				final Salesclerk s = new Salesclerk( registry ); 
+				final Salesclerk s = new Salesclerk( registry, message); 
 				s.setVisible( true );
 				s.addWindowListener( new WindowAdapter() 
 				{
