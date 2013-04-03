@@ -20,6 +20,10 @@ public class Salesclerk extends JFrame
 	private Listener listener;
 	private CustListener custListener;
 
+	private JList list; 
+	private JButton test; 
+	private DefaultListModel<Person> listmodel;
+
 	private Personlist custRegistry; 
 
 	private Toolkit toolbox;
@@ -27,6 +31,10 @@ public class Salesclerk extends JFrame
 	public Salesclerk( Personlist cr, String m )
 	{
 		super("Testvindu");
+
+		list = new JList(); 
+		test = new JButton("Klikk");
+		test.addActionListener(custListener);
 
 		toolbox = Toolkit.getDefaultToolkit();
 
@@ -91,6 +99,8 @@ public class Salesclerk extends JFrame
 		topMenuPnl.add(replaceWindowBtn);
 		topMenuPnl.add(refillWindowBtn);
 
+		test.addActionListener( custListener );
+
 		custWindowBtn.addActionListener( listener );
 		custWindowRegBtn.addActionListener( custListener );
 		custWindowSearchBtn.addActionListener( custListener );
@@ -102,6 +112,8 @@ public class Salesclerk extends JFrame
 		custWindowPnl.add(custWindowPhonePnl);
 		custWindowPnl.add(custWindowBornPnl);
 		custWindowPnl.add(custWindowBtnPnl);
+		custWindowPnl.add(list);
+		custWindowPnl.add(test);
 		custWindowFirstNamePnl.add( new JLabel( "Fornavn" ) );
 		custWindowFirstNamePnl.add( custWindowFirstName );
 		custWindowLastNamePnl.add( new JLabel( "Etternavn" ) );
@@ -172,8 +184,19 @@ public class Salesclerk extends JFrame
 
 		}
 
+
 		if(firstname != null)
-			statusTxt.setText(custRegistry.findPerson(firstname, lastname));
+		{
+			String item = ""; 
+
+			listmodel = custRegistry.findPerson( firstname, lastname );
+
+			list.setModel( listmodel );
+
+
+		}
+//		if(firstname != null)
+//			statusTxt.setText(custRegistry.findPerson(firstname, lastname));
 
 
 	}
@@ -186,6 +209,15 @@ public class Salesclerk extends JFrame
 				registerPerson();
 			if( e.getSource() == custWindowSearchBtn )
 				findPerson();
+
+			if( e.getSource() == test )
+			{
+				System.out.println("klikk");
+
+				Person x = listmodel.get(list.getSelectedIndex());
+
+				JOptionPane.showMessageDialog(null, x.getFirstName() );
+			}
 		}
 	}
 
