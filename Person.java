@@ -81,7 +81,16 @@ public Person( String fn, String ln, int p, Date b )
 		return null; 
 	}
 
+	// to be able to preserve next value when saving / loading data file
+	public static int readNext()
+	{
+		return next;
+	}
 
+	public static void setNext( int n )
+	{
+		next = n;
+	}
 
 	public String toString()
 	{

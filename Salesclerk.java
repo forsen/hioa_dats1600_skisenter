@@ -151,9 +151,10 @@ public class Salesclerk extends JFrame
 	{
 		String firstname = custWindowFirstName.getText();
 		String lastname = custWindowLastName.getText();
-		int number = Integer.parseInt(custWindowPhone.getText());
+		
 		try
 		{
+			int number = Integer.parseInt(custWindowPhone.getText());
 			Date born = new SimpleDateFormat("ddMMyy").parse(custWindowBorn.getText());
 			Person p = new Person( firstname, lastname, number, born );
 			
@@ -164,7 +165,11 @@ public class Salesclerk extends JFrame
 		}
 		catch( ParseException pe )
 		{
-
+			JOptionPane.showMessageDialog(null, "Fødselsdato må være på formen ddmmyy!");
+		}
+		catch( NumberFormatException nfe )
+		{
+			JOptionPane.showMessageDialog(null, "Telefonnummeret må kun bestå av siffer!");
 		}
 
 
