@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.event.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.util.Date;
@@ -14,15 +15,15 @@ public class Salesclerk extends JFrame
 	private final int RIGHT = 40;
 	private JButton custWindowBtn, salesWindowBtn, replaceWindowBtn, refillWindowBtn, custWindowSearchBtn, custWindowRegBtn;
 	private JPanel topMenuPnl, custWindowPnl, salesWindowPnl, replaceWindowPnl, refillWindowPnl, statusPnl; 
-	private JPanel custWindowFirstNamePnl, custWindowLastNamePnl, custWindowPhonePnl, custWindowBornPnl, custWindowBtnPnl;
+	private JPanel custWindowSearchInfoPnl, custWindowFirstNamePnl, custWindowLastNamePnl, custWindowPhonePnl, custWindowBornPnl, custWindowBtnPnl;
 	private JTextField custWindowFirstName, custWindowLastName, custWindowPhone, custWindowBorn;
-	private JTextArea salesWindowTxt, replaceWindowTxt, refillWindowTxt, statusTxt;
+	private JTextArea custWindowSearchInfoTxt, salesWindowTxt, replaceWindowTxt, refillWindowTxt, statusTxt;
 	private Listener listener;
 	private CustListener custListener;
 
 	private JList list; 
-	private JButton test; 
 	private DefaultListModel<Person> listmodel;
+	private ListListener listListener;
 
 	private Personlist custRegistry; 
 
@@ -33,8 +34,9 @@ public class Salesclerk extends JFrame
 		super("Testvindu");
 
 		list = new JList(); 
-		test = new JButton("Klikk");
-		test.addActionListener(custListener);
+
+		listListener = new ListListener(); 
+
 
 		toolbox = Toolkit.getDefaultToolkit();
 
@@ -62,6 +64,7 @@ public class Salesclerk extends JFrame
 		refillWindowPnl = new JPanel( new FlowLayout() );
 		statusPnl = new JPanel( new FlowLayout() );
 
+		custWindowSearchInfoTxt = new JTextArea( 4,4 ); 
 		salesWindowTxt = new JTextArea(LEFT,RIGHT);
 		refillWindowTxt = new JTextArea(LEFT, RIGHT);
 		replaceWindowTxt = new JTextArea(LEFT, RIGHT);
@@ -99,7 +102,7 @@ public class Salesclerk extends JFrame
 		topMenuPnl.add(replaceWindowBtn);
 		topMenuPnl.add(refillWindowBtn);
 
-		test.addActionListener( custListener );
+	 
 
 		custWindowBtn.addActionListener( listener );
 		custWindowRegBtn.addActionListener( custListener );
@@ -113,7 +116,7 @@ public class Salesclerk extends JFrame
 		custWindowPnl.add(custWindowBornPnl);
 		custWindowPnl.add(custWindowBtnPnl);
 		custWindowPnl.add(list);
-		custWindowPnl.add(test);
+		custWindowPnl.add(custWindowSearchInfoTxt);
 		custWindowFirstNamePnl.add( new JLabel( "Fornavn" ) );
 		custWindowFirstNamePnl.add( custWindowFirstName );
 		custWindowLastNamePnl.add( new JLabel( "Etternavn" ) );
@@ -190,7 +193,9 @@ public class Salesclerk extends JFrame
 			String item = ""; 
 
 			listmodel = custRegistry.findPerson( firstname, lastname );
-
+			list.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
+			list.setCellRenderer( new SearchListCellRenderer());
+			list.addListSelectionListener( listListener );
 			list.setModel( listmodel );
 
 
@@ -199,6 +204,17 @@ public class Salesclerk extends JFrame
 //			statusTxt.setText(custRegistry.findPerson(firstname, lastname));
 
 
+	}
+
+	private class ListListener implements ListSelectionListener
+	{
+		public void valueChanged( ListSelectionEvent lse )
+		{
+			System.out.println( "value changed" );
+			Person x = listmodel.get(list.getSelectedIndex());
+
+			custWindowSearchInfoTxt.setText( x.getCustId() + "\n" + x.toString() );
+		}
 	}
 
 	private class CustListener implements ActionListener
@@ -210,14 +226,6 @@ public class Salesclerk extends JFrame
 			if( e.getSource() == custWindowSearchBtn )
 				findPerson();
 
-			if( e.getSource() == test )
-			{
-				System.out.println("klikk");
-
-				Person x = listmodel.get(list.getSelectedIndex());
-
-				JOptionPane.showMessageDialog(null, x.getFirstName() );
-			}
 		}
 	}
 
