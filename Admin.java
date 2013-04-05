@@ -49,11 +49,13 @@ public class Admin extends JFrame
 		passes.addItemListener(checkListner);
 		c.add(passes);
 
+		box.setSelectedIndex(0);
 		c.add(box);
 		
 		
 		display = new JTextArea(15,30);
 		display.setEditable( false );
+		display.setText("Her kommer statestikk med paichart o.l");
 		c.add(display);
 
 
@@ -83,9 +85,9 @@ public class Admin extends JFrame
        			beregn();
       		}
       		
-      		JComboBox<String> box = (JComboBox) e.getSource();
-      		int n = box.getSelectedIndex();
-      		String type = box.getItemAt(n);
+      		JComboBox<String> box1 = (JComboBox) e.getSource();
+      		int n = box1.getSelectedIndex();
+      		String type = box1.getItemAt(n);
       		beregn();
     	}
 	}

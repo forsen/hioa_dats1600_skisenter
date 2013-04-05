@@ -53,20 +53,20 @@ public class Drittvindu extends JFrame
 
 	public void showPersons()
 	{
+		list.sort();
 		persontxt.setText(list.toString());
 	}
 
 	public void showCards()
 	{
-		cardtxt.setText("Her skulle det ha kommet opp en skikortliste, men denne er ikke opprettet enda !");
+		cardtxt.setText("Her kommer lista");
 	}
 
 	public void showPersWithCards()
 	{
-		persWcardtxt.setText("Her skulle det ha kommet opp en personliste med skikortliste, men dete er ikke opprettet enda !");
-	}
+		persWcardtxt.setText("Her kommer lista");
 
-	
+	}
  	
 
   	private class Lytter implements ActionListener
