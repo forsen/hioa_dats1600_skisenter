@@ -12,6 +12,7 @@ public class SalesWindowPanel extends JPanel
 	private JButton salesAddCartBtn, salesCheckoutBtn; 
 	private String[] cardTypeString; 
 	private CardListener cardListener;
+	private Person customer;
 
 	public SalesWindowPanel( Person p )
 	{
@@ -23,6 +24,8 @@ public class SalesWindowPanel extends JPanel
 		cardTypeString[1] = "1-timeskort";
 		cardTypeString[2] = "Dagskort";
 		cardTypeString[3] = "Sesongkort";
+
+		customer = p; 
 
 		cardListener = new CardListener();
 
@@ -36,8 +39,15 @@ public class SalesWindowPanel extends JPanel
 		add( cardTypeLbl );
 		add( cardTypeList );
 
+		setCustId();
 
 	} 
+
+	public void setCustId()
+	{
+		if( customer != null )
+			custIDtf.setText( "" + customer.getCustId() );
+	}
 
 	private class CardListener implements ListSelectionListener
 	{
