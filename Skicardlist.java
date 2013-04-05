@@ -16,13 +16,8 @@ public class Skicardlist implements Serializable
 		return registry == null || registry.size() == 0;
 	}
 
-	public void input(Skicard obj)
+	public String input(Skicard obj)
 	{
-		if
-		{
-			/* Her vi må vi vite om personen er en registrert kunde (har et kundenummer).*/
-		}
-
 		registry.add(obj);
 		return obj.getCardNr() + " Ble opprettet med kundenummer: ";
 		
@@ -59,7 +54,8 @@ public class Skicardlist implements Serializable
 		return null;
 	}
 
-/*	<metode for å finne eier av kort>
+
+/*	<metode for å finne eier av kort>*/
 
 
 }//end of class Skicardlist

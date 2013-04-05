@@ -30,7 +30,9 @@ public class Skisenter
 				});
 
 				final Drittvindu  vindu = new Drittvindu(registry);
-    			
+				final Control control = new Control();
+    			control.setVisible(true);
+    			control.setLocation(0, 500);
 
 			}
 		} );

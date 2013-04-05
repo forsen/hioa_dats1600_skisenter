@@ -56,4 +56,17 @@ public class SalesWindowPanel extends JPanel
 			System.out.println( cardTypeList.getSelectedIndex() );
 		}
 	}
+
+	private void registerCard()
+	{
+		int custID = custIDtf.getText();
+
+		try
+		{
+			Skicard c = new Skicard(cardNumber, price, discount, ag)
+
+			card
+		}
+
+	}
 }
