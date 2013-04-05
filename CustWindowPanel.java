@@ -95,6 +95,7 @@ public class CustWindowPanel extends JPanel
 
 			statusTxt.setText(custRegistry.input( p ));
 
+
 		}
 		catch( ParseException pe )
 		{

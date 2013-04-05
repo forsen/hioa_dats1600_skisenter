@@ -15,7 +15,9 @@ public class Salesclerk extends JFrame
 	private final int RIGHT = 40;
 	private JButton custWindowBtn, salesWindowBtn, replaceWindowBtn, refillWindowBtn;
 	private JPanel topMenuPnl, custWindowPnl, salesWindowPnl, replaceWindowPnl, refillWindowPnl, statusPnl; 
-	private JTextArea salesWindowTxt, replaceWindowTxt, refillWindowTxt, statusTxt;
+	private JTextArea replaceWindowTxt, refillWindowTxt, statusTxt;
+
+	private Person customer = null; 
 
 	private Listener listener;
 
@@ -49,23 +51,26 @@ public class Salesclerk extends JFrame
 		replaceWindowBtn = new JButton("Erstatt");
 
 		topMenuPnl = new JPanel( new FlowLayout() );
+		
+		statusTxt = new JTextArea(10,40);
+
 		custWindowPnl = new CustWindowPanel( custRegistry, statusTxt );
 		custWindowPnl.setLayout( new BoxLayout( custWindowPnl, BoxLayout.PAGE_AXIS) );
 
 
-		salesWindowPnl = new JPanel( new FlowLayout() );
+		salesWindowPnl = new SalesWindowPanel( customer );
 		replaceWindowPnl = new JPanel( new FlowLayout() );
 		refillWindowPnl = new JPanel( new FlowLayout() );
 		statusPnl = new JPanel( new FlowLayout() );
 
 
-		salesWindowTxt = new JTextArea(LEFT,RIGHT);
+
 		refillWindowTxt = new JTextArea(LEFT, RIGHT);
 		replaceWindowTxt = new JTextArea(LEFT, RIGHT);
 
 
 
-		statusTxt = new JTextArea(10,40);
+
 		listener = new Listener(); 
 
 
@@ -92,12 +97,12 @@ public class Salesclerk extends JFrame
 		replaceWindowBtn.addActionListener(listener);
 
 
-		salesWindowPnl.add(salesWindowTxt);
+
 		refillWindowPnl.add(refillWindowTxt);
 		replaceWindowPnl.add(replaceWindowTxt);
 		statusPnl.add(statusTxt);
 
-		salesWindowTxt.setText("Nytt salg vindu");
+
 		refillWindowTxt.setText("Her kan man fylle på heiskort");
 		replaceWindowTxt.setText("Her kan man erstatte kort");
 		statusTxt.setText(m);
