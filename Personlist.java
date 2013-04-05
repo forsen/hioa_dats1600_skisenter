@@ -161,7 +161,8 @@ public class Personlist implements Serializable
 		
 		Iterator<Person> it = registry.iterator();
 		
-		while( it.hasNext())
+		
+		while( true)
 		{
 			Person runner = it.next();
 			text.append("\n");
@@ -170,6 +171,8 @@ public class Personlist implements Serializable
 		} 
 		
 		String doneText = text.toString();
+
+
 		
 		return doneText;
 	}

@@ -30,6 +30,7 @@ public class Skisenter
 				});
 
 				final Drittvindu  vindu = new Drittvindu(registry);
+				vindu.setLocation(700,0);
     			
 
 			}
