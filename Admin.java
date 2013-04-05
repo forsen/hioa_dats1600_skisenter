@@ -11,12 +11,20 @@ public class Admin extends JFrame
 	private JTextArea display;
 	private Personlist list;
 	private Lytter listener;
+	private JCheckBox sale, passes;
+	private CheckListner checkListner;
+	private String[] type = {"Barn", "Innmeldt", "alle"};
+	private JComboBox<String> box;
 
 	public Admin(Personlist l)
 	{
 		super("Statestikk");
 		list = l;
 		listener = new Lytter();
+		checkListner = new CheckListner();
+		box = new JComboBox<String>(type);
+		
+
 
 		Container c = getContentPane();
    		c.setLayout( new FlowLayout() );
@@ -32,6 +40,16 @@ public class Admin extends JFrame
 		to = new JTextField(4);
 		to.setEditable( true );
 		c.add(to);
+
+		sale = new JCheckBox("Salg");
+		sale.addItemListener(checkListner);
+		c.add(sale);
+
+		passes = new JCheckBox("Passeringer");
+		passes.addItemListener(checkListner);
+		c.add(passes);
+
+		dyrevelger.setSelectedIndex(4);
 		
 		
 		display = new JTextArea(15,30);
@@ -59,17 +77,28 @@ public class Admin extends JFrame
   	private class Lytter implements ActionListener
   	{
    		public void actionPerformed( ActionEvent e )
-    	{
-	
-     		 
+    	{ 
      		if ( e.getSource() == beregnbn )
       		{
        			beregn();
       		}
-      		
-      
-     
+      		else if () 
+      		{
+      			JComboBox<String> box = (JComboBox) e.getSource();
+      		}
     	}
+	}
+
+	private class CheckListner implements ItemListener
+	{
+		public void itemStateChanged( ItemEvent e )
+		{
+			if(sale.isSelected())
+				beregn();
+
+			else if (passes.isSelected())
+				beregn();
+		}
 	}
 }
 	/*<datafelter>
