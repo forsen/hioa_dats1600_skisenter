@@ -77,18 +77,16 @@ public class Personlist implements Serializable
 
 		Iterator<Person> it = registry.iterator();
 
-		String result = ""; 
-
 		while(it.hasNext())
 		{
 			Person owner = it.next();
 
-			if(!fn.equals("") && owner.getFirstName().toLowerCase().matches((".*" + fn + ".*" ).toLowerCase() ))
+			if(!fn.isEmpty() && owner.getFirstName().toLowerCase().matches((".*" + fn + ".*" ).toLowerCase() ))
 			{
 				searchresult.addElement( owner );
 			}
 
-			if(!ln.equals("") && owner.getLastName().toLowerCase().matches((".*" + ln + ".*" ).toLowerCase() ))
+			if(!ln.isEmpty() && owner.getLastName().toLowerCase().matches((".*" + ln + ".*" ).toLowerCase() ))
 			{
 				searchresult.addElement( owner );
 			}
