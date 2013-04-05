@@ -1,5 +1,77 @@
-public class Admin extends Window
+import javax.swing.*;
+import javax.swing.event.*;
+import java.awt.event.*;
+import java.awt.*;
+import java.io.*;
+
+public class Admin extends JFrame
 {
+	private JButton beregnbn;
+	private JTextField from, to;
+	private JTextArea display;
+	private Personlist list;
+	private Lytter listener;
+
+	public Admin(Personlist l)
+	{
+		super("Statestikk");
+		list = l;
+		listener = new Lytter();
+
+		Container c = getContentPane();
+   		c.setLayout( new FlowLayout() );
+
+   		
+		c.add(new JLabel("Fra: "));
+		from = new JTextField(4);
+		from.setEditable( true );
+		c.add(from);
+
+		
+		c.add(new JLabel("Til: "));
+		to = new JTextField(4);
+		to.setEditable( true );
+		c.add(to);
+		
+		
+		display = new JTextArea(15,30);
+		display.setEditable( false );
+		c.add(display);
+
+
+		beregnbn = new JButton("Beregn");
+		beregnbn.addActionListener( listener );
+    	c.add( beregnbn );
+
+
+		setSize( 400, 380 );
+    	setVisible(true);
+	}
+
+	public void beregn()
+	{
+
+	}
+
+	
+ 	
+
+  	private class Lytter implements ActionListener
+  	{
+   		public void actionPerformed( ActionEvent e )
+    	{
+	
+     		 
+     		if ( e.getSource() == beregnbn )
+      		{
+       			beregn();
+      		}
+      		
+      
+     
+    	}
+	}
+}
 	/*<datafelter>
 
 	<konstruktør som oppretter vinduet>
@@ -16,6 +88,4 @@ public class Admin extends Window
 
 	private class knappeLytter()
 	{
-		<metode for å lytte på knappene>*/
-	}
-}
+	*/
