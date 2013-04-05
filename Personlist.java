@@ -73,7 +73,7 @@ public class Personlist implements Serializable
 
 	public DefaultListModel findPerson(String fn, String ln)
 	{
-		DefaultListModel searchresult = new DefaultListModel();  
+		DefaultListModel<Person> searchresult = new DefaultListModel<>();  
 
 		Iterator<Person> it = registry.iterator();
 
