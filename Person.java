@@ -96,13 +96,19 @@ public Person( String fn, String ln, int p, Date b )
 	{
 		StringBuilder text = new StringBuilder();
 
+		Calendar cal = Calendar.getInstance(); 
+
+		cal.setTime(born);
+
 		text.append(firstname); 
 		text.append(" ");
 		text.append(lastname);
 		text.append("\ntlf: "); 
 		text.append(phoneNr); 
-		text.append("\nFødt "); 
-		text.append(born); 
+		text.append("\nFødt: ");
+		text.append( "" + cal.get(Calendar.DAY_OF_MONTH) );
+		text.append( "." + (cal.get(Calendar.MONTH ) + 1) );
+		text.append( "." + cal.get(Calendar.YEAR ) );
 		text.append("\n"); 
 
 		String doneTekst = text.toString();
