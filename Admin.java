@@ -49,7 +49,7 @@ public class Admin extends JFrame
 		passes.addItemListener(checkListner);
 		c.add(passes);
 
-		dyrevelger.setSelectedIndex(4);
+		c.add(box);
 		
 		
 		display = new JTextArea(15,30);
@@ -82,10 +82,11 @@ public class Admin extends JFrame
       		{
        			beregn();
       		}
-      		else if () 
-      		{
-      			JComboBox<String> box = (JComboBox) e.getSource();
-      		}
+      		
+      		JComboBox<String> box = (JComboBox) e.getSource();
+      		int n = box.getSelectedIndex();
+      		String type = box.getItemAt(n);
+      		beregn();
     	}
 	}
 
