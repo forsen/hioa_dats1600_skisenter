@@ -46,7 +46,7 @@ public class Drittvindu extends JFrame
 
 
 
-		setSize( 700, 300 );
+		setSize( 600, 700 );
     	setVisible(true);
 	}
 
