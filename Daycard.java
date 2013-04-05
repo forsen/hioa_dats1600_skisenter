@@ -8,8 +8,7 @@ public class Daycard extends Timebasedcard
 	public Daycard(int p, int d, String ag, Date newBought, boolean v)
 	{
 		super(p, d, ag, v); 
-		bought = newBought;
-		
+		bought = newBought;	
 	}
 
 	public void firstTimeUsed()
