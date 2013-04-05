@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Hourcard extends Timebasedcard
 {
 	Date bought;
@@ -26,10 +28,11 @@ public class Hourcard extends Timebasedcard
 
 		Calendar cal2 = Calendar.getInstance();
 		cal2.setTime(checktoday);
+
 		
     	int hour2 = cal2.get(Calendar.HOUR);
 
-		if(hour2 > (hour1 + 1))
+		if(hour2 > hour1 + 1)
 		{
 			unvalidate();
 			return false;
