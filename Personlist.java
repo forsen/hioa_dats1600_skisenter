@@ -17,7 +17,7 @@ public class Personlist implements Serializable
 		if(isEmpty())
 		{
 			registry.add(obj);
-			return obj.getFirstName() + " " + obj.getFirstName()+ "Ble opprettet med kunde nr " + obj.getCustId(); 
+			return obj.getFirstName() + " " + obj.getLastName()+ " Ble opprettet med kunde nr " + obj.getCustId(); 
 		}	
 
 		Iterator<Person> it = registry.iterator();
@@ -53,12 +53,12 @@ public class Personlist implements Serializable
 		{
 			Person owner = it.next();
 
-			if(fn != null && owner.getFirstName().equals(fn))
+			if(fn != null && owner.getFirstName().toLowerCase().matches(".*"+fn.toLowerCase()+".*"))
 			{
 				result += owner.toString();
 			}
 
-			if(ln != null && owner.getLastName().equals(ln))
+			if(ln != null && owner.getLastName().toLowerCase().matches(".*"+ln.toLowerCase()+".*"))
 			{
 				result += owner.toString();
 			}
