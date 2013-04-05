@@ -21,15 +21,17 @@ public class CustWindowPanel extends JPanel
 	private DefaultListModel<Person> listmodel;
 	private ListListener listListener;
 
-
+	private Person customer;
 
 	private Toolkit toolbox;
 
 	private Personlist custRegistry; 
 
-	public CustWindowPanel( Personlist cr, JTextArea s )
+	public CustWindowPanel( Personlist cr, JTextArea s, Person p )
 	{
 		list = new JList(); 
+
+		customer = p; 
 
 		statusTxt = s;
 
@@ -156,9 +158,9 @@ public class CustWindowPanel extends JPanel
 		public void valueChanged( ListSelectionEvent lse )
 		{
 			System.out.println( "value changed" );
-			Person x = listmodel.get(list.getSelectedIndex());
+			customer = listmodel.get(list.getSelectedIndex());
 
-			custWindowSearchInfoTxt.setText( x.getCustId() + "\n" + x.toString() );
+			custWindowSearchInfoTxt.setText( customer.getCustId() + "\n" + customer.toString() );
 		}
 	}
 
