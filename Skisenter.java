@@ -29,6 +29,9 @@ public class Skisenter
 					}
 				});
 
+				final Drittvindu  vindu = new Drittvindu(registry);
+    			
+
 			}
 		} );
 	}

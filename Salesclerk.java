@@ -54,7 +54,7 @@ public class Salesclerk extends JFrame
 		
 		statusTxt = new JTextArea(10,40);
 
-		custWindowPnl = new CustWindowPanel( custRegistry, statusTxt );
+		custWindowPnl = new CustWindowPanel( custRegistry, statusTxt, customer );
 		custWindowPnl.setLayout( new BoxLayout( custWindowPnl, BoxLayout.PAGE_AXIS) );
 
 
@@ -132,7 +132,10 @@ public class Salesclerk extends JFrame
 			if( e.getSource() == custWindowBtn )
 				custWindowPnl.setVisible(true);
 			else if( e.getSource() == salesWindowBtn )
+			{
 				salesWindowPnl.setVisible(true);
+			}
+
 			else if( e.getSource() == refillWindowBtn )
 				refillWindowPnl.setVisible(true);
 			else if( e.getSource() == replaceWindowBtn )

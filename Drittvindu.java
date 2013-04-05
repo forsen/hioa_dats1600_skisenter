@@ -6,8 +6,8 @@ import java.io.*;
 
 public class Drittvindu extends JFrame
 {
-	private JButton showPersList, showCardList, showPersonWithCard;
-	private JTextArea personDisp, cardDisp, persWCardDisp;
+	private JButton persListbn, cardListbn, personWithCardbn;
+	private JTextArea persontxt, cardtxt, persWcardtxt;
 	private Personlist list;
 	private Lytter listener;
 
@@ -20,59 +20,54 @@ public class Drittvindu extends JFrame
 		Container c = getContentPane();
    		c.setLayout( new FlowLayout() );
 
-		showPersList = new JButton("Vis personliste");
-		showPersList.addActionListener( listener );
-    	c.add( showPersList );
+		persListbn = new JButton("Vis personliste");
+		persListbn.addActionListener( listener );
+    	c.add( persListbn );
 
-		showCardList = new JButton("Vis Skikortliste");
-		showCardList.addActionListener( listener );
-    	c.add( showCardList );
+		cardListbn = new JButton("Vis Skikortliste");
+		cardListbn.addActionListener( listener );
+    	c.add( cardListbn );
 
-		showPersonWithCard = new JButton("Vis personer med kort");
-		showPersonWithCard.addActionListener( listener );
-    	c.add( showPersonWithCard );
+		personWithCardbn = new JButton("Vis personer med kort");
+		personWithCardbn.addActionListener( listener );
+    	c.add( personWithCardbn );
 
-		personDisp = new JTextArea(20,40);
-		personDisp.setEditable( false );
+		persontxt = new JTextArea(40,15);
+		persontxt.setEditable( false );
+		c.add(persontxt);
 		
-		cardDisp = new JTextArea(20,40);
-		cardDisp.setEditable( false );
-		
-		persWCardDisp = new JTextArea(20,40);
-		persWCardDisp.setEditable( false );
+		cardtxt = new JTextArea(40,15);
+		cardtxt.setEditable( false );
+		c.add(cardtxt);
 
-		setSize( 900, 800 );
+		persWcardtxt = new JTextArea(40,15);
+		persWcardtxt.setEditable( false );
+		c.add(persWcardtxt);
+
+
+
+		setSize( 700, 300 );
     	setVisible(true);
 	}
 
 
-	showPersons()
+	public void showPersons()
 	{
-		
+		persontxt.setText(list.toString());
 	}
 
-	showCards()
+	public void showCards()
 	{
 
 	}
 
-	showPersWithCards()
+	public void showPersWithCards()
 	{
-		
+
 	}
 
-	public static void main( String[] args )
-  	{
-    	final Drittvindu  vindu = new Drittvindu();
-    	vindu.addWindowListener(
-      	new WindowAdapter() 
-      	{
-        	public void windowClosing( WindowEvent e )
-        	{
-				System.exit( 0 );
-        	}
-      	} );
- 	}
+	
+ 	
 
   	private class Lytter implements ActionListener
   	{
@@ -80,15 +75,15 @@ public class Drittvindu extends JFrame
     	{
 	
      		 
-     		if ( e.getSource() == showPersList )
+     		if ( e.getSource() == persListbn )
       		{
        			showPersons();
       		}
-      		else if ( e.getSource() == showCardList)
+      		else if ( e.getSource() == cardListbn)
       		{
         		showCards();
       		}
-      		else if ( e.getSource() == howPersonWithCard)
+      		else if ( e.getSource() == personWithCardbn)
       		{
         		showPersWithCards();
       		}
@@ -96,3 +91,4 @@ public class Drittvindu extends JFrame
      
     	}
 	}
+}
