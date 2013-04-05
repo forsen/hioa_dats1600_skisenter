@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import javax.swing.DefaultListModel;
 
 public class Personlist implements Serializable
 {
@@ -42,7 +43,7 @@ public class Personlist implements Serializable
 	}
 
 	
-
+/*
 	public String findPerson(String fn, String ln)
 	{
 		Iterator<Person> it = registry.iterator();
@@ -66,6 +67,35 @@ public class Personlist implements Serializable
 		}
 		return result;
 	}
+*/
+
+	// tester en ny måte å representere resultatet på. 
+
+	public DefaultListModel findPerson(String fn, String ln)
+	{
+		DefaultListModel<Person> searchresult = new DefaultListModel<>();  
+
+		Iterator<Person> it = registry.iterator();
+
+		while(it.hasNext())
+		{
+			Person owner = it.next();
+
+			if(!fn.isEmpty() && owner.getFirstName().toLowerCase().matches((".*" + fn + ".*" ).toLowerCase() ))
+			{
+				searchresult.addElement( owner );
+			}
+
+			if(!ln.isEmpty() && owner.getLastName().toLowerCase().matches((".*" + ln + ".*" ).toLowerCase() ))
+			{
+				searchresult.addElement( owner );
+			}
+		    
+		}
+		return searchresult;
+	}
+
+
 
 
 	public Person findPerson(int nr)

@@ -39,6 +39,7 @@ public class Skisenter
 			new FileInputStream( "data.dta" ) ) )
 		{
 			registry = (Personlist) input.readObject();
+			Person.setNext( input.readInt() );
 		}
 		catch( ClassNotFoundException cnfe )
 		{
@@ -63,6 +64,7 @@ public class Skisenter
 			new FileOutputStream( "data.dta" ) ) )
 		{
 			output.writeObject( registry );
+			output.writeInt( Person.readNext() );
 		}
 		catch( NotSerializableException nse )
 		{
