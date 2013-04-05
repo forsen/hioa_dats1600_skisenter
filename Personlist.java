@@ -83,13 +83,12 @@ public class Personlist implements Serializable
 		{
 			Person owner = it.next();
 
-			if(fn != null && owner.getFirstName().equals(fn))
+			if(!fn.equals("") && owner.getFirstName().toLowerCase().matches((".*" + fn + ".*" ).toLowerCase() ))
 			{
 				searchresult.addElement( owner );
-				System.out.println("test");
 			}
 
-			if(ln != null && owner.getLastName().equals(ln))
+			if(!ln.equals("") && owner.getLastName().toLowerCase().matches((".*" + ln + ".*" ).toLowerCase() ))
 			{
 				searchresult.addElement( owner );
 			}
