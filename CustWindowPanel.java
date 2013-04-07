@@ -64,10 +64,10 @@ public class CustWindowPanel extends JPanel
 		//custWindowBornPnl = new JPanel( new FlowLayout() );
 		//custWindowBtnPnl = new JPanel( new FlowLayout() );
 
-		custWindowFirstName = new JTextField(25);
-		custWindowLastName = new JTextField(25);
-		custWindowPhone = new JTextField(25);
-		custWindowBorn = new JTextField(25);
+		custWindowFirstName = new JTextField(10);
+		custWindowLastName = new JTextField(10);
+		custWindowPhone = new JTextField(10);
+		custWindowBorn = new JTextField(10);
 
 		custListener = new CustListener();
 
