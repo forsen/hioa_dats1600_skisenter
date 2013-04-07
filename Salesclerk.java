@@ -17,7 +17,7 @@ public class Salesclerk extends JFrame
 	private JPanel topMenuPnl, custWindowPnl, salesWindowPnl, replaceWindowPnl, refillWindowPnl, statusPnl; 
 	private JTextArea replaceWindowTxt, refillWindowTxt, statusTxt;
 
-	private Person customer = null; 
+	public static Person customer = null; 
 
 	private Listener listener;
 
@@ -54,11 +54,13 @@ public class Salesclerk extends JFrame
 		
 		statusTxt = new JTextArea(10,40);
 
-		custWindowPnl = new CustWindowPanel( custRegistry, statusTxt, customer );
+		//custWindowPnl = new CustWindowPanel( custRegistry, statusTxt, customer );
+		custWindowPnl = new CustWindowPanel( custRegistry, statusTxt );
 		custWindowPnl.setLayout( new BoxLayout( custWindowPnl, BoxLayout.PAGE_AXIS) );
 
 
-		salesWindowPnl = new SalesWindowPanel( customer );
+		//salesWindowPnl = new SalesWindowPanel( customer );
+		salesWindowPnl = new SalesWindowPanel();
 		replaceWindowPnl = new JPanel( new FlowLayout() );
 		refillWindowPnl = new JPanel( new FlowLayout() );
 		statusPnl = new JPanel( new FlowLayout() );

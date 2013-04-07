@@ -21,17 +21,18 @@ public class CustWindowPanel extends JPanel
 	private DefaultListModel<Person> listmodel;
 	private ListListener listListener;
 
-	private Person customer;
+	//private Person customer;
 
 	private Toolkit toolbox;
 
 	private Personlist custRegistry; 
 
-	public CustWindowPanel( Personlist cr, JTextArea s, Person p )
+	//public CustWindowPanel( Personlist cr, JTextArea s, Person p )
+	public CustWindowPanel( Personlist cr, JTextArea s )
 	{
 		list = new JList(); 
 
-		customer = p; 
+		//customer = p; 
 
 		statusTxt = s;
 
@@ -157,10 +158,20 @@ public class CustWindowPanel extends JPanel
 	{
 		public void valueChanged( ListSelectionEvent lse )
 		{
-			System.out.println( "value changed" );
-			customer = listmodel.get(list.getSelectedIndex());
+			try
+			{
+				Salesclerk.customer = listmodel.get(list.getSelectedIndex());
+				SalesWindowPanel.salesWindowCustIDtf.setText( "" + Salesclerk.customer.getCustId() );
+				custWindowSearchInfoTxt.setText( Salesclerk.customer.getCustId() + "\n" + Salesclerk.customer.toString() );
+			}
+			catch( ArrayIndexOutOfBoundsException aioobe )
+			{
+				// when making a new search, index will be out of bound. We use this exception 
+				// to clear the text field.
 
-			custWindowSearchInfoTxt.setText( customer.getCustId() + "\n" + customer.toString() );
+				custWindowSearchInfoTxt.setText( "" );
+			}
+
 		}
 	}
 
