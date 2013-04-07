@@ -15,6 +15,8 @@ public class CustWindowPanel extends JPanel
 	private JTextArea custWindowSearchInfoTxt;
 	private JTextArea statusTxt;
 
+	private JPanel formPnl, btnPnl, rsltPnl; 
+
 	private CustListener custListener;
 
 	private JList list; 
@@ -30,9 +32,19 @@ public class CustWindowPanel extends JPanel
 	//public CustWindowPanel( Personlist cr, JTextArea s, Person p )
 	public CustWindowPanel( Personlist cr, JTextArea s )
 	{
+		setLayout( new BorderLayout( 5, 5) );
+
+
 		list = new JList(); 
 
 		//customer = p; 
+
+		formPnl = new JPanel( new GridLayout( 4,2 ));
+		
+		btnPnl = new JPanel(); 
+		rsltPnl = new JPanel(); 
+
+
 
 		statusTxt = s;
 
@@ -41,16 +53,16 @@ public class CustWindowPanel extends JPanel
 
 		custRegistry = cr; 
 
-		custWindowSearchInfoTxt = new JTextArea( 4,4 ); 
+		custWindowSearchInfoTxt = new JTextArea( 5,20 ); 
 
 		custWindowSearchBtn = new JButton("Søk");
 		custWindowRegBtn = new JButton("Ny kunde");
 
-		custWindowFirstNamePnl = new JPanel( new FlowLayout() );
-		custWindowLastNamePnl = new JPanel( new FlowLayout() );
-		custWindowPhonePnl = new JPanel( new FlowLayout() );
-		custWindowBornPnl = new JPanel( new FlowLayout() );
-		custWindowBtnPnl = new JPanel( new FlowLayout() );
+		//custWindowFirstNamePnl = new JPanel( new FlowLayout() );
+		//custWindowLastNamePnl = new JPanel( new FlowLayout() );
+		//custWindowPhonePnl = new JPanel( new FlowLayout() );
+		//custWindowBornPnl = new JPanel( new FlowLayout() );
+		//custWindowBtnPnl = new JPanel( new FlowLayout() );
 
 		custWindowFirstName = new JTextField(25);
 		custWindowLastName = new JTextField(25);
@@ -61,7 +73,7 @@ public class CustWindowPanel extends JPanel
 
 		custWindowRegBtn.addActionListener( custListener );
 		custWindowSearchBtn.addActionListener( custListener );
-
+/*
 		add(custWindowFirstNamePnl);
 		add(custWindowLastNamePnl);
 		add(custWindowPhonePnl);
@@ -69,7 +81,11 @@ public class CustWindowPanel extends JPanel
 		add(custWindowBtnPnl);
 		add(list);
 		add(custWindowSearchInfoTxt);
-
+*/
+		add(formPnl, BorderLayout.CENTER );
+		add(rsltPnl, BorderLayout.LINE_END );
+		add(btnPnl, BorderLayout.PAGE_END );
+/*
 		custWindowFirstNamePnl.add( new JLabel( "Fornavn" ) );
 		custWindowFirstNamePnl.add( custWindowFirstName );
 		custWindowLastNamePnl.add( new JLabel( "Etternavn" ) );
@@ -80,7 +96,22 @@ public class CustWindowPanel extends JPanel
 		custWindowBornPnl.add( custWindowBorn );
 		custWindowBtnPnl.add( custWindowRegBtn );
 		custWindowBtnPnl.add( custWindowSearchBtn );
+*/
 
+		formPnl.add( new JLabel( "Fornavn" ) );
+		formPnl.add( custWindowFirstName );
+		formPnl.add( new JLabel( "Etternavn" ) );
+		formPnl.add( custWindowLastName );
+		formPnl.add( new JLabel( "Telefon" ) );
+		formPnl.add( custWindowPhone );
+		formPnl.add( new JLabel( "Født" ) );
+		formPnl.add( custWindowBorn );
+
+		rsltPnl.add( list );
+		rsltPnl.add( custWindowSearchInfoTxt );
+
+		btnPnl.add( custWindowRegBtn );
+		btnPnl.add( custWindowSearchBtn );
 	}
 
 	private void registerPerson()

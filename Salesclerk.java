@@ -15,6 +15,7 @@ public class Salesclerk extends JFrame
 	private final int RIGHT = 40;
 	private JButton custWindowBtn, salesWindowBtn, replaceWindowBtn, refillWindowBtn;
 	private JPanel topMenuPnl, custWindowPnl, salesWindowPnl, replaceWindowPnl, refillWindowPnl, statusPnl; 
+	private JPanel framePnl;
 	private JTextArea replaceWindowTxt, refillWindowTxt, statusTxt;
 
 	public static Person customer = null; 
@@ -25,6 +26,9 @@ public class Salesclerk extends JFrame
 
 	private Toolkit toolbox;
 
+	private Container c;
+	private BorderLayout layout;
+
 	public Salesclerk( Personlist cr, String m )
 	{
 		super("Testvindu");
@@ -33,7 +37,7 @@ public class Salesclerk extends JFrame
 		toolbox = Toolkit.getDefaultToolkit();
 
 
-
+		framePnl = new JPanel(); 
 
 
 		Dimension windowDimension = toolbox.getScreenSize();
@@ -52,38 +56,43 @@ public class Salesclerk extends JFrame
 
 		topMenuPnl = new JPanel( new FlowLayout() );
 		
-		statusTxt = new JTextArea(10,40);
+		statusTxt = new JTextArea(5,40);
 
 		//custWindowPnl = new CustWindowPanel( custRegistry, statusTxt, customer );
 		custWindowPnl = new CustWindowPanel( custRegistry, statusTxt );
-		custWindowPnl.setLayout( new BoxLayout( custWindowPnl, BoxLayout.PAGE_AXIS) );
+		//custWindowPnl.setLayout( new BoxLayout( custWindowPnl, BoxLayout.PAGE_AXIS) );
+		//custWindowPnl.setLayout( new BorderLayout( 5,5 ) );
 
 
 		//salesWindowPnl = new SalesWindowPanel( customer );
 		salesWindowPnl = new SalesWindowPanel();
 		replaceWindowPnl = new JPanel( new FlowLayout() );
 		refillWindowPnl = new JPanel( new FlowLayout() );
-		statusPnl = new JPanel( new FlowLayout() );
+		//statusPnl = new JPanel( new FlowLayout() );
 
 
 
 		refillWindowTxt = new JTextArea(LEFT, RIGHT);
 		replaceWindowTxt = new JTextArea(LEFT, RIGHT);
 
+		framePnl.add(custWindowPnl);
+		framePnl.add(refillWindowPnl );
+		framePnl.add(replaceWindowPnl );
+		framePnl.add(salesWindowPnl );
+
+
 
 
 
 		listener = new Listener(); 
 
-
-		Container c = getContentPane();
-		c.setLayout( new FlowLayout() );
-		c.add(topMenuPnl);
-		c.add(custWindowPnl);
-		c.add(refillWindowPnl);
-		c.add(replaceWindowPnl);
-		c.add(salesWindowPnl);
-		c.add(statusPnl);
+		layout = new BorderLayout( 5, 5 );
+		c = getContentPane();
+		
+		c.setLayout( layout );
+		c.add(topMenuPnl, BorderLayout.PAGE_START );
+		c.add(framePnl, BorderLayout.CENTER );
+		c.add(statusTxt, BorderLayout.PAGE_END );
 
 		topMenuPnl.add(custWindowBtn);
 		topMenuPnl.add(salesWindowBtn);
@@ -102,7 +111,7 @@ public class Salesclerk extends JFrame
 
 		refillWindowPnl.add(refillWindowTxt);
 		replaceWindowPnl.add(replaceWindowTxt);
-		statusPnl.add(statusTxt);
+		//statusPnl.add(statusTxt);
 
 
 		refillWindowTxt.setText("Her kan man fylle på heiskort");
@@ -115,7 +124,9 @@ public class Salesclerk extends JFrame
 		salesWindowPnl.setVisible(false);
 		refillWindowPnl.setVisible(false);
 		replaceWindowPnl.setVisible(false);
-		statusPnl.setVisible(true);
+		//statusPnl.setVisible(true);
+
+		layout.layoutContainer( c );
 
 	}
 
