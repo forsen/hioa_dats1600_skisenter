@@ -35,8 +35,17 @@ public class CustWindowPanel extends JPanel
 		setLayout( new BorderLayout( 5, 5) );
 
 
-		list = new JList(); 
+		list = new JList<>(); 
 
+		list.setVisibleRowCount(5);
+		list.setFixedCellHeight(15);
+		list.setFixedCellWidth(100);
+
+		list.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
+		list.setCellRenderer( new SearchListCellRenderer());
+
+
+//		list.setModel( listmodel );
 		//customer = p; 
 
 		formPnl = new JPanel( new GridLayout( 4,2 ));
@@ -49,6 +58,9 @@ public class CustWindowPanel extends JPanel
 		statusTxt = s;
 
 		listListener = new ListListener(); 
+
+		list.addListSelectionListener( listListener );
+
 		toolbox = Toolkit.getDefaultToolkit();
 
 		custRegistry = cr; 
@@ -166,9 +178,11 @@ public class CustWindowPanel extends JPanel
 			String item = ""; 
 
 			listmodel = custRegistry.findPerson( firstname, lastname );
-			list.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
+	
+/*			list.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
 			list.setCellRenderer( new SearchListCellRenderer());
 			list.addListSelectionListener( listListener );
+*/
 			list.setModel( listmodel );
 
 

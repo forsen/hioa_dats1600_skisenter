@@ -110,10 +110,6 @@ public class SalesWindowPanel extends JPanel
 				addCard();
 			}
 		}
-<<<<<<< HEAD
-=======
 
-		
->>>>>>> 5a8a70c1852420a48490220fd917999ce6bbb207
 	}
 }
