@@ -18,7 +18,7 @@ public class Admin extends JFrame
 
 	public Admin(Personlist l)
 	{
-		super("Stitestikk");
+		super("Statistikk");
 		list = l;
 		listener = new Lytter();
 		checkListner = new CheckListner();
@@ -55,7 +55,7 @@ public class Admin extends JFrame
 		
 		display = new JTextArea(15,30);
 		display.setEditable( false );
-		display.setText("Her kommer statestikk med paichart o.l");
+		display.setText("Her kommer statestikk med piechart o.l");
 		c.add(display);
 
 
