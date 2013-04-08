@@ -1,3 +1,4 @@
+
 import java.io.*;
 import java.util.*;
 
@@ -13,7 +14,7 @@ public class Person implements Serializable
 	private Date born;
 	//BILDEDATAFELT??
 	
-	private List<Skicard> list;
+	private Cardlist list;
 
 public Person( String fn, String ln, int p, Date b )
 {
@@ -22,7 +23,7 @@ public Person( String fn, String ln, int p, Date b )
 	lastname = ln;
 	phoneNr = p;
 	born = b;
-	list  = new LinkedList<>();
+	list  = new Cardlist();
 }
 
 	public int getCustId()
@@ -55,9 +56,9 @@ public Person( String fn, String ln, int p, Date b )
 		return (list != null) && (!list.isEmpty());
 	}
 
-	public void addCard( Skicard c )
+	public void addCard( Card c )
 	{
-		list.add(c);
+		list.input(c);
 	}
 
 	public boolean equivalent( Person p )
@@ -65,20 +66,9 @@ public Person( String fn, String ln, int p, Date b )
 		return p.getFirstName().equals( firstname ) && p.getLastName().equals( lastname )&& (p.getphoneNr() == ( phoneNr ) ) && (p.getBirth().compareTo( born ) == 0);
 	}
 
-	public Person ownsCard(Skicard card)
+	public Person ownsCard(Card card)
 	{
-		Iterator<Skicard> it = list.iterator();
-
-		while(it.hasNext())
-		{
-			Skicard pass = it.next();
-
-			if(pass.getCardNr()==card.getCardNr() )
-			{
-				return this;
-			}
-		} 
-		return null; 
+		return (list.ownsCard( card ) == true )? this : null ;
 	}
 
 	// to be able to preserve next value when saving / loading data file
