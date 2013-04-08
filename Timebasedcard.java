@@ -1,12 +1,15 @@
+import java.util.Date; 
+
 public abstract class Timebasedcard extends Skicard
 {
 	//<datafelter>
-	boolean valid;
+	private Date expires; 
+	private Date initialized; 
 
-	public Timebasedcard(int p, int d, String ag, boolean v )
+	public Timebasedcard(int p, int d, String ag, Date b )
 	{
-		super(p, d, ag);
-		valid = v;
+		super(p, d, ag, b);
+
 	}
 
 	/*<abstrakt metode(r) for å sjekke gyldighet (evt datometoder for å holde styr på tider)>

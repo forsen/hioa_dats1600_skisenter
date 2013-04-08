@@ -2,37 +2,33 @@ import java.util.*;
 
 public class Daycard extends Timebasedcard
 {
-	private Date bought;
-	
+	Calendar calHelper; 
 
-	public Daycard(int p, int d, String ag, Date newBought, boolean v)
+	public Daycard(int p, int d, String ag )
 	{
-		super(p, d, ag, v); 
-		bought = newBought;	
+		super(p, d, ag ); 
+		bought = new Date();  	
+		calHelper = Calendar.getInstance(); 		
 	}
 
-	public void firstTimeUsed()
+	public void initialized()
 	{
-		Date used = new Date();
-		bought = used;
+		expires = new Date( );
+
+
+		calHelper.setTime( expires );
+		calHelper.set( Calendar.HOUR_OF_DAY, 23 );
+		calHelper.set( Calendar.MINUTE, 0 );
+		calHelper.set( Calendar.SECOND, 0 );
+		expires = calHelper.getTime(); 
+
 	}
 
-	public boolean isValid()
-	{
-		Date checktoday = new Date();
-
-		if(bought.equals(checktoday))
-		{
-			return true;
-		}
-		else
-		unvalidate();
-		return false;
-	}
 
 	public void unvalidate()
 	{
-		valid = false;
+		calHelper.setTime( new Date() );
+		expires = calHelper.getTime();
 	}
 
 	public void addTime()

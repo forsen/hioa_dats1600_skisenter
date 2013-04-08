@@ -59,6 +59,7 @@ public class Skisenter
 		{
 			registry = (Personlist) input.readObject();
 			Person.setNext( input.readInt() );
+			Skicard.setNext( input.readInt() );
 		}
 		
 		catch( ClassNotFoundException cnfe )
@@ -85,6 +86,7 @@ public class Skisenter
 		{
 			output.writeObject( registry );
 			output.writeInt( Person.readNext() );
+			output.writeInt( Skicard.readNext() );
 		}
 		catch( NotSerializableException nse )
 		{

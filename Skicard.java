@@ -10,15 +10,16 @@ public abstract class Skicard implements Serializable
 	private int price;
 	private int discount;
 	private String ageGroup;
+	private Date bought; 
 
 
-
-	public Skicard(int p, int d, String ag)
+	public Skicard(int p, int d, String ag, Date b )
 	{
 		cardNumber = next++;
 		price = p;
 		discount = d;
 		ageGroup = ag;
+		bought = b; 
 	}
 
 	public int getCardNr()
@@ -42,6 +43,16 @@ public abstract class Skicard implements Serializable
 	}
 
 	public abstract boolean isValid();
+
+	public static int readNext()
+	{
+		return next;
+	}
+
+	public static void setNext( int n )
+	{
+		next = n;
+	}
 
 	public String toString()
 	{
