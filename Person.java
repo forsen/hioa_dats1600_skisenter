@@ -71,6 +71,10 @@ public Person( String fn, String ln, int p, Date b )
 		return (list.ownsCard( card ) == true )? this : null ;
 	}
 
+	// legg til en "add ski card" metode her, som tar imot
+	// et skikort, sammen med et kortid, og legger det til riktig 
+	// kort. 
+
 	// to be able to preserve next value when saving / loading data file
 	public static int readNext()
 	{
