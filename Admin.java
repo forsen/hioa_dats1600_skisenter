@@ -18,7 +18,7 @@ public class Admin extends JFrame
 
 	public Admin(Personlist l)
 	{
-		super("Statestikk");
+		super("Stitestikk");
 		list = l;
 		listener = new Lytter();
 		checkListner = new CheckListner();
