@@ -82,6 +82,7 @@ public class SalesWindowPanel extends JPanel
 		}
 	}
 
+
 /*
 	private void registerCard()
 	{
@@ -99,6 +100,7 @@ public class SalesWindowPanel extends JPanel
 		}
 	}
 */
+
 	private class BtnListener implements ActionListener
 	{
 		public void actionPerformed( ActionEvent ae )
@@ -108,5 +110,10 @@ public class SalesWindowPanel extends JPanel
 				addCard();
 			}
 		}
+<<<<<<< HEAD
+=======
+
+		
+>>>>>>> 5a8a70c1852420a48490220fd917999ce6bbb207
 	}
 }
