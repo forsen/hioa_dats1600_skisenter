@@ -30,11 +30,29 @@ public class Skisenter
 				});
 
 				final Drittvindu  vindu = new Drittvindu(registry);
+
+
 				final Control control = new Control();
     			control.setVisible(true);
     			control.setLocation(0, 500);
+				vindu.setLocation(700,0);    			
+
 
 			}
+
+				vindu.setLocation(700,0); 
+
+				final Admin a = new Admin(registry);
+				a.setLocation(0,425);    
+
+				final Control control = new Control();
+				control.setVisible(true);
+				control.setLocation(700,425);    
+
+			}			
+
+		
+
 		} );
 	}
 
@@ -46,6 +64,7 @@ public class Skisenter
 			registry = (Personlist) input.readObject();
 			Person.setNext( input.readInt() );
 		}
+		
 		catch( ClassNotFoundException cnfe )
 		{
 			message = "Ingen personliste funnet, oppretter ny";

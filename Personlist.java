@@ -162,17 +162,15 @@ public class Personlist implements Serializable
 		Iterator<Person> it = registry.iterator();
 		
 		
-		while( true)
+		while(it.hasNext())
 		{
 			Person runner = it.next();
-			text.append("\n");
 			text.append(runner.toString());
+			text.append("\n");
 		
 		} 
 		
 		String doneText = text.toString();
-
-
 		
 		return doneText;
 	}

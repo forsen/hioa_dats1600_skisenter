@@ -14,7 +14,7 @@ public class Drittvindu extends JFrame
 	public Drittvindu(Personlist l)
 	{
 		super("Testvindu");
-		list = new Personlist();
+		list = l;
 		listener = new Lytter();
 
 		Container c = getContentPane();
@@ -53,20 +53,20 @@ public class Drittvindu extends JFrame
 
 	public void showPersons()
 	{
+		list.sort();
 		persontxt.setText(list.toString());
 	}
 
 	public void showCards()
 	{
-
+		cardtxt.setText("Her kommer lista");
 	}
 
 	public void showPersWithCards()
 	{
+		persWcardtxt.setText("Her kommer lista");
 
 	}
-
-	
  	
 
   	private class Lytter implements ActionListener

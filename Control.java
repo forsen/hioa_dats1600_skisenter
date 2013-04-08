@@ -68,11 +68,7 @@ public class Control extends JFrame
 
 	}
 
-	public static void main(String[] args)
-	{
-		Control control = new Control();
-		control.setVisible(true);
-	}
+	
 	/*<konstruktør for å opprette vinduet>
 
 	<metoder for å validere kort basert på kortnr>
