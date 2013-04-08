@@ -23,6 +23,7 @@ public class CustWindowPanel extends JPanel
 	private DefaultListModel<Person> listmodel;
 	private ListListener listListener;
 
+	private JScrollPane scrolList;
 	//private Person customer;
 
 	private Toolkit toolbox;
@@ -35,7 +36,7 @@ public class CustWindowPanel extends JPanel
 		setLayout( new BorderLayout( 5, 5) );
 
 
-		list = new JList<>(); 
+		list = new JList<>( new DefaultListModel<>()); 
 
 		list.setVisibleRowCount(5);
 		list.setFixedCellHeight(15);
@@ -43,7 +44,9 @@ public class CustWindowPanel extends JPanel
 
 		list.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
 		list.setCellRenderer( new SearchListCellRenderer());
+		list.setVisible( true );
 
+		scrolList = new JScrollPane( list );
 
 //		list.setModel( listmodel );
 		//customer = p; 
@@ -94,6 +97,10 @@ public class CustWindowPanel extends JPanel
 		add(list);
 		add(custWindowSearchInfoTxt);
 */
+
+		rsltPnl.add( scrolList );
+		rsltPnl.add( custWindowSearchInfoTxt );
+
 		add(formPnl, BorderLayout.CENTER );
 		add(rsltPnl, BorderLayout.LINE_END );
 		add(btnPnl, BorderLayout.PAGE_END );
@@ -119,8 +126,7 @@ public class CustWindowPanel extends JPanel
 		formPnl.add( new JLabel( "Født" ) );
 		formPnl.add( custWindowBorn );
 
-		rsltPnl.add( list );
-		rsltPnl.add( custWindowSearchInfoTxt );
+
 
 		btnPnl.add( custWindowRegBtn );
 		btnPnl.add( custWindowSearchBtn );
