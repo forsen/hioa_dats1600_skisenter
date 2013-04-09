@@ -32,12 +32,12 @@ public class Card implements Serializable
 		return cardNumber; 
 	}
 
-	public int readNext()
+	public static int readNext()
 	{
 		return next;
 	}
 
-	public void setNext( int n )
+	public static void setNext( int n )
 	{
 		next = n; 
 	}
