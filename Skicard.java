@@ -5,6 +5,10 @@ import java.util.*;
 
 public abstract class Skicard implements Serializable 
 {
+	private final static int DAYCARD = 1;
+	private final static int HOURCARD = 2;
+	private final static int SEASONCARD = 3;
+	private final static int PUNCHCARD = 4; 
 
 	private int price;
 	private int discount;

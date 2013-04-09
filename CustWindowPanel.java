@@ -68,7 +68,6 @@ public class CustWindowPanel extends JPanel
 
 		custRegistry = cr; 
 
-		custWindowSearchInfoTxt = new JTextArea( 5,20 ); 
 
 		custWindowSearchBtn = new JButton("Søk");
 		custWindowRegBtn = new JButton("Ny kunde");
@@ -99,7 +98,7 @@ public class CustWindowPanel extends JPanel
 */
 
 		rsltPnl.add( scrolList );
-		rsltPnl.add( custWindowSearchInfoTxt );
+		//rsltPnl.add( custWindowSearchInfoTxt );
 
 		add(formPnl, BorderLayout.CENTER );
 		add(rsltPnl, BorderLayout.LINE_END );
@@ -213,7 +212,7 @@ public class CustWindowPanel extends JPanel
 			{
 				Salesclerk.customer = listmodel.get(list.getSelectedIndex());
 				SalesWindowPanel.salesWindowCustIDtf.setText( "" + Salesclerk.customer.getCustId() );
-				custWindowSearchInfoTxt.setText( Salesclerk.customer.getCustId() + "\n" + Salesclerk.customer.toString() );
+				Salesclerk.salesClerkSearchInfoTxt.setText( Salesclerk.customer.getCustId() + "\n" + Salesclerk.customer.toString() );
 				SalesWindowPanel.cardIDList.setModel( Salesclerk.customer.listCards() );
 			}
 			catch( ArrayIndexOutOfBoundsException aioobe )
@@ -221,7 +220,7 @@ public class CustWindowPanel extends JPanel
 				// when making a new search, index will be out of bound. We use this exception 
 				// to clear the text field.
 
-				custWindowSearchInfoTxt.setText( "" );
+				Salesclerk.salesClerkSearchInfoTxt.setText( "" );
 			}
 
 		}
