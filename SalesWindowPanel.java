@@ -9,6 +9,8 @@ public class SalesWindowPanel extends JPanel
 	private JLabel custIDLbl, cardTypeLbl;
 	public static JTextField salesWindowCustIDtf; 
 	private JList<String> cardTypeList;
+	public static JList cardIDList;
+	private DefaultListModel<Card> listmodel;
 	private JButton salesAddCartBtn, salesCheckoutBtn; 
 	private String[] cardTypeString; 
 	private CardListener cardListener;
@@ -18,6 +20,9 @@ public class SalesWindowPanel extends JPanel
 	//public SalesWindowPanel( Person p )
 	public SalesWindowPanel()
 	{
+
+
+		
 		custIDLbl = new JLabel( "Kundenr" );
 		cardTypeLbl = new JLabel( "Korttype" );
 		salesWindowCustIDtf = new JTextField( 3 );
@@ -43,8 +48,16 @@ public class SalesWindowPanel extends JPanel
 		cardTypeList.setSelectedIndex(0);
 		cardTypeList.addListSelectionListener( cardListener );
 
+		cardIDList = new JList<>( new DefaultListModel<>());
+		cardIDList.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
+		cardIDList.setCellRenderer( new CardListCellRenderer() );
+
+
+
+
 		add( custIDLbl );
 		add( salesWindowCustIDtf );
+		add( cardIDList );
 		add( cardTypeLbl );
 		add( cardTypeList );
 		add( salesAddCartBtn );

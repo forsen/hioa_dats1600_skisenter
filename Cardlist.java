@@ -1,6 +1,7 @@
 //a list over all of the skicards a person holds and all cards ever sold
 import java.io.*;
 import java.util.*;
+import javax.swing.DefaultListModel;
 
 public class Cardlist implements Serializable
 {
@@ -54,6 +55,20 @@ public class Cardlist implements Serializable
 		return null;
 	}
 
+	public DefaultListModel listCards()
+	{
+		DefaultListModel<Card> searchresult = new DefaultListModel<>();  
+
+		Iterator<Card> it = list.iterator();
+
+		while(it.hasNext())
+		{
+			Card card = it.next();
+			searchresult.addElement( card );
+		}
+
+		return searchresult;
+	}
 
 	public boolean ownsCard(Card card)
 	{
