@@ -16,7 +16,8 @@ public class Salesclerk extends JFrame
 	private JButton custWindowBtn, salesWindowBtn, replaceWindowBtn, refillWindowBtn;
 	private JPanel topMenuPnl, custWindowPnl, salesWindowPnl, replaceWindowPnl, refillWindowPnl, statusPnl; 
 	private JPanel framePnl;
-	private JTextArea replaceWindowTxt, refillWindowTxt, statusTxt;
+	private JTextArea refillWindowTxt, statusTxt;
+	//replaceWindowTxt
 
 	public static Person customer = null; 
 
@@ -73,7 +74,7 @@ public class Salesclerk extends JFrame
 
 
 		refillWindowTxt = new JTextArea(LEFT, RIGHT);
-		replaceWindowTxt = new JTextArea(LEFT, RIGHT);
+		//replaceWindowTxt = new JTextArea(LEFT, RIGHT);
 
 		framePnl.add(custWindowPnl);
 		framePnl.add(refillWindowPnl );
@@ -110,12 +111,12 @@ public class Salesclerk extends JFrame
 
 
 		refillWindowPnl.add(refillWindowTxt);
-		replaceWindowPnl.add(replaceWindowTxt);
+		//replaceWindowPnl.add(replaceWindowTxt);
 		//statusPnl.add(statusTxt);
 
 
 		refillWindowTxt.setText("Her kan man fylle på heiskort");
-		replaceWindowTxt.setText("Her kan man erstatte kort");
+		//replaceWindowTxt.setText("Her kan man erstatte kort");
 		statusTxt.setText(m);
 
 
