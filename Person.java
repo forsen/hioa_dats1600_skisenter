@@ -56,11 +56,6 @@ public Person( String fn, String ln, int p, Date b )
 		return (list != null) && (!list.isEmpty());
 	}
 
-	public void addCard( Card c )
-	{
-		list.input(c);
-	}
-
 	public boolean equivalent( Person p )
 	{
 		return p.getFirstName().equals( firstname ) && p.getLastName().equals( lastname )&& (p.getphoneNr() == ( phoneNr ) ) && (p.getBirth().compareTo( born ) == 0);
@@ -82,6 +77,10 @@ public Person( String fn, String ln, int p, Date b )
 		return list.listCards();
 	}
 
+	public int addCard( Card n )
+	{
+		return list.addCard( n );
+	}
 
 	public static int readNext()
 	{
