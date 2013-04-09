@@ -53,6 +53,9 @@ public class SalesWindowPanel extends JPanel
 		cardTypeList.addListSelectionListener( cardListener );
 
 		cardIDList = new JList<>( new DefaultListModel<>());
+		cardIDList.setFixedCellHeight(15);
+		cardIDList.setFixedCellWidth(100);
+		cardIDList.setVisibleRowCount( 4 );
 		cardIDList.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
 		cardIDList.setCellRenderer( new CardListCellRenderer() );
 
@@ -71,7 +74,7 @@ public class SalesWindowPanel extends JPanel
 
 	} 
 
-	private void addCard()
+	private void addProduct()
 	{
 		if( Salesclerk.customer == null )
 		{
@@ -89,8 +92,15 @@ public class SalesWindowPanel extends JPanel
 	private void newCard()
 	{
 		Card nCard = new Card(); 
-		if( Salesclerk.customer != null )
+		try
+		{
 			Salesclerk.customer.addCard( nCard );
+			SalesWindowPanel.cardIDList.setModel( Salesclerk.customer.listCards() );
+		}
+		catch( NullPointerException npe )
+		{
+			JOptionPane.showMessageDialog( null, "Du må velge en person først!" );
+		}
 	}
 /*
 	public void setCustId()
@@ -132,7 +142,7 @@ public class SalesWindowPanel extends JPanel
 		{
 			if( ae.getSource() == salesCheckoutBtn )
 			{
-				addCard();
+				addProduct();
 			}
 			if( ae.getSource() == salesNewCardBtn )
 			{
