@@ -22,7 +22,7 @@ public class SalesWindowPanel extends JPanel
 	public SalesWindowPanel()
 	{
 
-
+		setLayout( new GridLayout(3,3));
 		
 		custIDLbl = new JLabel( "Kundenr" );
 		cardTypeLbl = new JLabel( "Korttype" );
