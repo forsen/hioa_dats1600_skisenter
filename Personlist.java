@@ -136,7 +136,7 @@ public class Personlist implements Serializable
 		return null;
 	}
 
-
+/*
 	public Person findCardOwner(Skicard card)
 	{
 		Iterator<Person> it = registry.iterator();
@@ -154,7 +154,7 @@ public class Personlist implements Serializable
 		return null;
 
 	}
-	
+*/	
 	public String toString()
 	{
 		StringBuilder text = new StringBuilder();
