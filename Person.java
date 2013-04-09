@@ -6,8 +6,8 @@ import java.util.*;
 public class Person implements Serializable 
 {
 	
-	private int custId = 0;
-	private static int next;
+	private int custId;
+	private static int next = 10000;
 	private String firstname;
 	private String lastname;
 	private int phoneNr;

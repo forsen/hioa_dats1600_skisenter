@@ -7,12 +7,12 @@ public class Card implements Serializable
 	private List<Skicard> skiCardList; 
 	private int cardNumber;
 	private Skicard current; 
-	private static int next = 1;
+	private static int next = 100000;
 
 	public Card()
 	{
 		skiCardList = new LinkedList<>(); 
-		cardNumber = next++; 
+		cardNumber = ++next; 
 		current = null; 
 	}
 
