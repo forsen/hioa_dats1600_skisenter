@@ -11,10 +11,11 @@ public class SalesWindowPanel extends JPanel
 	private JList<String> cardTypeList;
 	public static JList cardIDList;
 	private DefaultListModel<Card> listmodel;
-	private JButton salesAddCartBtn, salesCheckoutBtn; 
+	private JButton salesAddCartBtn, salesCheckoutBtn, salesNewCardBtn; 
 	private String[] cardTypeString; 
 	private CardListener cardListener;
 	private BtnListener btnListener;
+	private JScrollPane cardScrolList;
 	//private Person customer;
 
 	//public SalesWindowPanel( Person p )
@@ -39,6 +40,9 @@ public class SalesWindowPanel extends JPanel
 
 		salesCheckoutBtn = new JButton("Til betaling");
 		salesCheckoutBtn.addActionListener( btnListener );
+
+		salesNewCardBtn = new JButton("Nytt kort");
+		salesNewCardBtn.addActionListener( btnListener );
 		//customer = p; 
 
 		cardListener = new CardListener();
@@ -52,16 +56,17 @@ public class SalesWindowPanel extends JPanel
 		cardIDList.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
 		cardIDList.setCellRenderer( new CardListCellRenderer() );
 
-
+		cardScrolList = new JScrollPane( cardIDList );
 
 
 		add( custIDLbl );
 		add( salesWindowCustIDtf );
-		add( cardIDList );
+		add( cardScrolList );
 		add( cardTypeLbl );
 		add( cardTypeList );
 		add( salesAddCartBtn );
 		add( salesCheckoutBtn );
+		add( salesNewCardBtn );
 
 
 	} 
@@ -79,6 +84,13 @@ public class SalesWindowPanel extends JPanel
 				"\n\nDette kortet er av typen:" +
 				cardTypeString[cardTypeList.getSelectedIndex()] );
 		}
+	}
+
+	private void newCard()
+	{
+		Card nCard = new Card(); 
+		if( Salesclerk.customer != null )
+			Salesclerk.customer.addCard( nCard );
 	}
 /*
 	public void setCustId()
@@ -121,6 +133,10 @@ public class SalesWindowPanel extends JPanel
 			if( ae.getSource() == salesCheckoutBtn )
 			{
 				addCard();
+			}
+			if( ae.getSource() == salesNewCardBtn )
+			{
+				newCard();
 			}
 		}
 

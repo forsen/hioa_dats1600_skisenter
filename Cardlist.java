@@ -55,6 +55,12 @@ public class Cardlist implements Serializable
 		return null;
 	}
 
+	public int addCard( Card n )
+	{
+		list.add( n );
+		return n.getCardID();
+	}
+
 	public DefaultListModel listCards()
 	{
 		DefaultListModel<Card> searchresult = new DefaultListModel<>();  
