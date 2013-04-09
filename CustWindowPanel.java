@@ -146,6 +146,8 @@ public class CustWindowPanel extends JPanel
 
 			statusTxt.setText(custRegistry.input( p ));
 
+			findPerson();
+
 
 		}
 		catch( ParseException pe )

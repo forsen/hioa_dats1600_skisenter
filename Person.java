@@ -77,6 +77,11 @@ public class Person implements Serializable
 		return list.listCards();
 	}
 
+	public boolean isEmpty()
+	{
+		return list.isEmpty();
+	}
+
 	public int addCard( Card n )
 	{
 		return list.addCard( n );

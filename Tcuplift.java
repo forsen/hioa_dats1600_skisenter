@@ -4,9 +4,9 @@ public class Tcuplift extends Lift implements Serializable
 {
 	private final int TCUPCLIP;
 
-	public Tcuplift(int l, String n,int c, int m, int v)
+	public Tcuplift( String n, int m)
 	{
-		super(l,n,c,m,v);
+		super(n,2,m);
 		TCUPCLIP = 1;
 	}
 }

@@ -1,20 +1,21 @@
 import java.io.*;
 
-public class Lift implements Serializable
+public abstract class Lift implements Serializable
 {
 	private int liftNr;
 	private String name;
 	private int clips;
 	private int length;
 	private int validations;
+	private static int next = 1; 
 
-	public Lift(int l, String n, int c, int m, int v)
+	public Lift( String n, int c, int m)
 	{
-		liftNr = l;
+		liftNr = next++;
 		name = n;
 		clips = c;
 		length = m;
-		validations = v;
+		
 	}
 
 	public int getLiftNr()
