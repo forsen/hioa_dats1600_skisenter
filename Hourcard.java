@@ -31,21 +31,4 @@ public class Hourcard extends Timebasedcard
 		expires = calHelper.getTime();
 	}
 
-	public void addTime()
-	{
-		Date dateAfterFill = (new Date() + 1000 * 60 * 60);
-		bought = dateAfterFill;
-	}
-
-	/*<konstruktør som gir startverdier>
-
-	<metode(r) for å sjekke gyldighet (evt datometoder for å holde styr på tider)>
-
-	<getmetode for heiskortnr>*/
-
-	/*<metode for å sette ugyldig>*/
-
-	/*<metode for å legge til mer tid>*/
-
-
 }// end of class Hourcard

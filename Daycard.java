@@ -4,9 +4,9 @@ public class Daycard extends Timebasedcard
 {
 	Calendar calHelper; 
 
-	public Daycard(int p, int d, String ag )
+	public Daycard(int p, int d, String ag, Date b)
 	{
-		super(p, d, ag ); 
+		super(p, d, ag, b); 
 		bought = new Date();  	
 		calHelper = Calendar.getInstance(); 		
 	}
@@ -24,27 +24,9 @@ public class Daycard extends Timebasedcard
 
 	}
 
-
 	public void unvalidate()
 	{
 		calHelper.setTime( new Date() );
 		expires = calHelper.getTime();
 	}
-
-	public void addTime()
-	{
-		if(isValid())
-		{
-			Date dateAfterFill = new Date(bought.getTime() + 1000 * 60 * 60 * 24);
-			bought = dateAfterFill;
-		}
-	}
-	/*<metode(r) for å sjekke gyldighet (evt datometoder for å holde styr på tider)>
-
-	<getmetode for heiskortnr>
-
-	<metode for å sette ugyldig>
-
-	<metode for å legge til mere tid>*/
-
 }

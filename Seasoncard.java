@@ -1,36 +1,30 @@
 import java.util.*;
-import java.text.*;
-import java.awt.*;
-import javax.swing.*;
 
 public class Seasoncard extends Timebasedcard
 {
-	Date bought;
-	SimpleDateFormat df = new SimpleDateFormat("yyyy-mm-dd");
-	Date seasonEnd = df.parse("2013-04-20");
-	int pris;
+	Calendar calHelper; 
 
-	public Seasoncard(int p, int d, String ag, Date newBought, boolean v)
+	public Seasoncard(int p, int d, String ag, Date b )
 	{
-		super(p, d, ag, v);
-		pris = Info.SEASONCARDPRICE;
-		bought = newBought;
+		super(p, d, ag, b); 
+		bought = new Date();  	
+		calHelper = Calendar.getInstance(); 		
 	}
 
-	public boolean isValid()
+	public void initialized()
 	{
+		expires = new Date( );
 
-		if(bought.before(seasonEnd))
-		{
-			return true;
-		} 
+
+		calHelper.setTime( expires );
+		calHelper.set(Calendar.MONTH, 6);
+		expires = calHelper.getTime(); 
+
+	}
+
+	public void unvalidate()
+	{
+		calHelper.setTime( new Date() );
+		expires = calHelper.getTime();
 	}
 }
-
-	/*<metode(r) for å sjekke gyldighet (evt datometoder for å holde styr på tider)>
-
-	<getmetode for heiskortnr>
-
-	<metode for å sette ugyldig>
-
-	<metode for å legge til mere tid>*/
