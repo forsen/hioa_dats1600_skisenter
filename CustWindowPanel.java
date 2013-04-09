@@ -214,6 +214,7 @@ public class CustWindowPanel extends JPanel
 				Salesclerk.customer = listmodel.get(list.getSelectedIndex());
 				SalesWindowPanel.salesWindowCustIDtf.setText( "" + Salesclerk.customer.getCustId() );
 				custWindowSearchInfoTxt.setText( Salesclerk.customer.getCustId() + "\n" + Salesclerk.customer.toString() );
+				SalesWindowPanel.cardIDList.setModel( Salesclerk.customer.listCards() );
 			}
 			catch( ArrayIndexOutOfBoundsException aioobe )
 			{

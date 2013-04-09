@@ -1,4 +1,4 @@
-
+import javax.swing.DefaultListModel;
 import java.io.*;
 import java.util.*;
 
@@ -76,6 +76,13 @@ public Person( String fn, String ln, int p, Date b )
 	// kort. 
 
 	// to be able to preserve next value when saving / loading data file
+
+	public DefaultListModel listCards()
+	{
+		return list.listCards();
+	}
+
+
 	public static int readNext()
 	{
 		return next;
