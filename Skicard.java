@@ -47,7 +47,7 @@ public abstract class Skicard implements Serializable
 
 	/* public abstract boolean isValid();*/
 
-
+  
 
 	public String toString()
 	{

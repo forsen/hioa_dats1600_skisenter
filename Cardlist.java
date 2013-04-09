@@ -93,5 +93,25 @@ public class Cardlist implements Serializable
 	}
 /*	<metode for å finne eier av kort>*/
 
+	public String tostring()
+	{
+		StringBuilder text = new StringBuilder();
+		
+		Iterator<Card> it = list.iterator();
+		
+		
+		while(it.hasNext())
+		{
+			Card runner = it.next();
+			text.append(runner.history());
+			text.append("\nHeiheiCardlist");
+		
+		} 
+		
+		String doneText = text.toString();
+		
+		return doneText;
+	}
+
 
 }//end of class Skicardlist

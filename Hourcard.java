@@ -31,4 +31,9 @@ public class Hourcard extends Timebasedcard
 		expires = calHelper.getTime();
 	}
 
+	public String toString()
+	{
+		return super.toString()+ "\nTimeskort";
+	}
+
 }// end of class Hourcard

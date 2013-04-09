@@ -166,7 +166,11 @@ public class Personlist implements Serializable
 		{
 			Person runner = it.next();
 			text.append(runner.toString());
+			text.append("\nHeiheiPersonlist");
+			text.append(runner.seeAllCard());
 			text.append("\n");
+
+
 		
 		} 
 		
