@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.event.*;
 import java.io.*;
+import java.util.Date;
 
 public class SalesWindowPanel extends JPanel
 {
@@ -28,10 +29,10 @@ public class SalesWindowPanel extends JPanel
 		cardTypeLbl = new JLabel( "Korttype" );
 		salesWindowCustIDtf = new JTextField( 3 );
 		cardTypeString = new String[4];
-		cardTypeString[0] = "Klippekort";
-		cardTypeString[1] = "1-timeskort";
-		cardTypeString[2] = "Dagskort";
-		cardTypeString[3] = "Sesongkort";
+		cardTypeString[Skicard.DAYCARD] = "Dagskort";
+		cardTypeString[Skicard.HOURCARD] = "1-timeskort";
+		cardTypeString[Skicard.SEASONCARD] = "Sesongkort";
+		cardTypeString[Skicard.PUNCHCARD] = "Klippekort";
 
 		btnListener = new BtnListener();
 
@@ -76,6 +77,23 @@ public class SalesWindowPanel extends JPanel
 
 	private void addProduct()
 	{
+		int cardType = cardTypeList.getSelectedIndex();
+		Skicard sc;
+
+		Date now = new Date();
+		switch( cardType )
+		{
+			case Skicard.DAYCARD: sc = new Daycard( 100, 0, "barn", now );
+									break;
+			case Skicard.HOURCARD: sc = new Hourcard( 100, 0, "barn", now );
+									break; 
+			case Skicard.SEASONCARD: sc = new Seasoncard( 100, 0, "barn", now );
+									break;
+		//	case Skicard.PUNCHCARD: sc = new Punchcard( 10, 10, 0, "barn" ); 
+		//							break;
+			default: 				sc = null;
+		}
+
 		if( Salesclerk.customer == null )
 		{
 			JOptionPane.showMessageDialog( null, "Legger til et kort uten bruker");
@@ -86,6 +104,9 @@ public class SalesWindowPanel extends JPanel
 				Salesclerk.customer +
 				"\n\nDette kortet er av typen:" +
 				cardTypeString[cardTypeList.getSelectedIndex()] );
+			Card c = (Card) cardIDList.getSelectedValue();
+			JOptionPane.showMessageDialog(null, c.input( sc ));
+
 		}
 	}
 

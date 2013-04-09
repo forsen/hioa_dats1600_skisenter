@@ -16,10 +16,11 @@ public class Card implements Serializable
 		current = null; 
 	}
 
-	public void input( Skicard obj )
+	public String input( Skicard obj )
 	{
 		skiCardList.add(obj);
 		current = obj; 
+		return obj.toString() + " ble lagg til " + cardNumber;
 	}
 
 	public Skicard getCurrent()
