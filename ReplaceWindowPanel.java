@@ -10,10 +10,11 @@ import java.text.ParseException;
 
 public class ReplaceWindowPanel extends JPanel 
 {
-	private JButton replaceWindowSearchBtn, replaceWindowRepBtn;
-	private JPanel replaceWindowSearchInfoPnl, replaceWindowFirstNamePnl, replaceWindowLastNamePnl, replaceWindowCardPnl, replaceWindowBtnPnl;
-	private JTextField replaceWindowFirstName, replaceWindowLastName, replaceWindowOldcard;
-	private JTextArea replaceWindowSearchInfoTxt;
+	private JButton  replaceWindowRepBtn;
+	//private JPanel replaceWindowSearchInfoPnl, replaceWindowFirstNamePnl, replaceWindowLastNamePnl, replaceWindowCardPnl, replaceWindowBtnPnl;
+	private JTextField replaceWindowOldcard;
+	public static JTextField replaceWindowCustIdtf;
+	//private JTextArea replaceWindowSearchInfoTxt;
 	private JTextArea repstatusTxt;
 
 	private JPanel cntrPnl,btnPnl; 
@@ -46,25 +47,21 @@ public class ReplaceWindowPanel extends JPanel
 		list.setCellRenderer( new SearchListCellRenderer());
 		list.setVisible( true );
 
+		cntrPnl = new JPanel(new GridLayout( 4,2 )); 
+		btnPnl = new JPanel(); 
+
+
 		
 
 		listListener = new ListListener(); 
 		list.addListSelectionListener( listListener );
 
-	
+		cntrPnl.add( new JLabel( "Kundenummer" ) );
+		replaceWindowCustIdtf = new JTextField(5);
+		replaceWindowCustIdtf.setEditable( false );
+		cntrPnl.add(replaceWindowCustIdtf);
 
-   		cntrPnl.add( new JLabel( "Fornavn" ) );
-		replaceWindowFirstName = new JTextField(10);
-		replaceWindowFirstName.setEditable( true );
-		cntrPnl.add(replaceWindowFirstName);
-		
 
-		
-		cntrPnl.add( new JLabel( "Etternavn" ) );
-		replaceWindowLastName = new JTextField(10);
-		replaceWindowLastName.setEditable( true );
-		cntrPnl.add(replaceWindowLastName);
-		
 
 
 		cntrPnl.add( new JLabel( "Kortnummer" ) );
@@ -76,15 +73,15 @@ public class ReplaceWindowPanel extends JPanel
 		repstatusTxt = new JTextArea(15,30);
 		repstatusTxt.setEditable( false );
 		btnPnl.add(repstatusTxt);
-		repstatusTxt.setText("Her kommer status");
+		repstatusTxt.setText("Her kommer info");
 		
 
-		replaceWindowSearchBtn = new JButton( "Søk ");
-		replaceWindowSearchBtn.addActionListener( listener );
+		
     	
 
 		replaceWindowRepBtn = new JButton(" Erstatt ");
 		replaceWindowRepBtn.addActionListener( listener );
+		cntrPnl.add(replaceWindowRepBtn);
     	
 		add(cntrPnl, BorderLayout.CENTER );
 		add(btnPnl, BorderLayout.PAGE_END );
@@ -92,22 +89,11 @@ public class ReplaceWindowPanel extends JPanel
 
 	}
 
-	public Person search()
-	{
-		String fn = replaceWindowFirstName.getText();
-		String ln =  replaceWindowLastName.getText();
-		int cn =  Integer.parseInt(replaceWindowOldcard.getText());
-
-		if (!fn.isEmpty() || !ln.isEmpty())
-			 custRegistry.findPerson(fn, ln);
-			return null;
-
-
-	}
+	
 
 	public String replace()
 	{
-		int old = Integer.parseInt(replaceWindowOldcard.getText());
+		//int old = Integer.parseInt(replaceWindowOldcard.getText());
 		//int newc = Integer.parseInt(replaceWindowNewcard.getText());
 		return null;
 
@@ -118,11 +104,9 @@ public class ReplaceWindowPanel extends JPanel
   	{
    		public void actionPerformed( ActionEvent e )
     	{ 
-     		if ( e.getSource() == replaceWindowSearchBtn )
-      		{
-       			search();
-      		}
-      		else if(e.getSource() == replaceWindowRepBtn)
+     		
+      		
+      		if(e.getSource() == replaceWindowRepBtn)
       		{
       			replace();
       		}
