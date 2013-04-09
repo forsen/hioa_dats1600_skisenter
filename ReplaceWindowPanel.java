@@ -11,12 +11,12 @@ import java.text.ParseException;
 public class ReplaceWindowPanel extends JPanel 
 {
 	private JButton replaceWindowSearchBtn, replaceWindowRepBtn;
-	//private JPanel replaceWindowSearchInfoPnl, replaceWindowFirstNamePnl, replaceWindowLastNamePnl, replaceWindowPhonePnl, replaceWindowCardPnl, replaceWindowBtnPnl;
-	private JTextField replaceWindowFirstName, replaceWindowLastName, replaceWindowOldcard, replaceWindowNewcard;
-	//private JTextArea replaceWindowSearchInfoTxt;
+	private JPanel replaceWindowSearchInfoPnl, replaceWindowFirstNamePnl, replaceWindowLastNamePnl, replaceWindowCardPnl, replaceWindowBtnPnl;
+	private JTextField replaceWindowFirstName, replaceWindowLastName, replaceWindowOldcard;
+	private JTextArea replaceWindowSearchInfoTxt;
 	private JTextArea repstatusTxt;
 
-	private JPanel topPnl,btnPnl; 
+	private JPanel cntrPnl,btnPnl; 
 
 	private Listener listener;
 	private Personlist custRegistry;
@@ -53,30 +53,29 @@ public class ReplaceWindowPanel extends JPanel
 
 	
 
-   		
+   		cntrPnl.add( new JLabel( "Fornavn" ) );
 		replaceWindowFirstName = new JTextField(10);
 		replaceWindowFirstName.setEditable( true );
+		cntrPnl.add(replaceWindowFirstName);
 		
 
 		
-		
+		cntrPnl.add( new JLabel( "Etternavn" ) );
 		replaceWindowLastName = new JTextField(10);
 		replaceWindowLastName.setEditable( true );
+		cntrPnl.add(replaceWindowLastName);
 		
 
 
-		
+		cntrPnl.add( new JLabel( "Kortnummer" ) );
 		replaceWindowOldcard = new JTextField(10);
 		replaceWindowOldcard.setEditable( true );
-		
-
-		
-		replaceWindowNewcard = new JTextField(10);
-		replaceWindowNewcard.setEditable( true );
-		
+		cntrPnl.add(replaceWindowOldcard);
+	
 
 		repstatusTxt = new JTextArea(15,30);
 		repstatusTxt.setEditable( false );
+		btnPnl.add(repstatusTxt);
 		repstatusTxt.setText("Her kommer status");
 		
 
@@ -87,7 +86,7 @@ public class ReplaceWindowPanel extends JPanel
 		replaceWindowRepBtn = new JButton(" Erstatt ");
 		replaceWindowRepBtn.addActionListener( listener );
     	
-		add(topPnl, BorderLayout.CENTER );
+		add(cntrPnl, BorderLayout.CENTER );
 		add(btnPnl, BorderLayout.PAGE_END );
 
 
@@ -109,7 +108,7 @@ public class ReplaceWindowPanel extends JPanel
 	public String replace()
 	{
 		int old = Integer.parseInt(replaceWindowOldcard.getText());
-		int newc = Integer.parseInt(replaceWindowNewcard.getText());
+		//int newc = Integer.parseInt(replaceWindowNewcard.getText());
 		return null;
 
 

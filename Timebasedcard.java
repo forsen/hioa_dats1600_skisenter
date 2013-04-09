@@ -4,7 +4,7 @@ public abstract class Timebasedcard extends Skicard
 {
 	//<datafelter>
 	private Date expires; 
-	private Date initialized; 
+	private Date initialized;
 
 	public Timebasedcard(int p, int d, String ag, Date b )
 	{
