@@ -41,7 +41,7 @@ public abstract class Skicard implements Serializable
 		return ageGroup;
 	}
 
-	public abstract boolean isValid();
+	/* public abstract boolean isValid();*/
 
 
 

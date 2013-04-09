@@ -1,24 +1,16 @@
-// Flott kommentar! 
+import java.io.*;
+
 public class Chairlift extends Lift implements Serializable
 {
-	
+	private final int CHAIRCLIP;
 	private int seats;
 
 
-	public Chairlift(int l, String n,int c, int m, int s)
+	public Chairlift(int l, String n,int c, int m, int s, int v)
 	{
-		super(l,n,c,m);
+		super(l,n,c,m,v);
 		seats = s;
+		CHAIRCLIP = 2;
 	}
-	/*<datafelt>
 
-	<konstruktør som gir startverdier>
-
-	<metoder for å hente ut relevante datafelter>
-
-	<metode for å undersøke om et tidsbasert skikort er gyldig>
-
-	<metode for å trekke X klipp>
-
-	<registrere passering>*/
 }
