@@ -18,7 +18,7 @@ public class Skisenter
 		{
 			public void run()
 			{
-				final Salesclerk s = new Salesclerk( registry, message); 
+				final Salesclerk s = new Salesclerk(registry, message); 
 				s.setVisible( true );
 				s.addWindowListener( new WindowAdapter() 
 				{
@@ -59,7 +59,7 @@ public class Skisenter
 		{
 			registry = (Personlist) input.readObject();
 			Person.setNext( input.readInt() );
-			Skicard.setNext( input.readInt() );
+			Card.setNext( input.readInt() );
 		}
 		
 		catch( ClassNotFoundException cnfe )
@@ -86,7 +86,7 @@ public class Skisenter
 		{
 			output.writeObject( registry );
 			output.writeInt( Person.readNext() );
-			output.writeInt( Skicard.readNext() );
+			output.writeInt( Card.readNext() );
 		}
 		catch( NotSerializableException nse )
 		{
