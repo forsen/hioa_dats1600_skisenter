@@ -54,7 +54,7 @@ public class Card implements Serializable
 		while(it.hasNext())
 		{
 			Skicard runner = it.next();
-			text.append("HeiheiCard");
+			text.append(runner.toString());
 			text.append("\n");
 		
 		} 

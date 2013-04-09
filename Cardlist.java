@@ -93,7 +93,7 @@ public class Cardlist implements Serializable
 	}
 /*	<metode for å finne eier av kort>*/
 
-	public String tostring()
+	public String toString()
 	{
 		StringBuilder text = new StringBuilder();
 		
