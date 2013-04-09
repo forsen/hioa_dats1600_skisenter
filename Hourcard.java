@@ -2,68 +2,33 @@ import java.util.*;
 
 public class Hourcard extends Timebasedcard
 {
-	Date bought;
+	Calendar calHelper; 
 
-	public Hourcard(int p, int d, String ag, Date newBought, boolean v)
+
+	public Hourcard(int p, int d, String ag, Date b )
 	{
-		super(p, d, ag, v); 
-		bought = newBought;
+		super(p, d, ag, b); 
+		bought = new Date();  	
+		calHelper = Calendar.getInstance(); 
 	}
 
-	public void firstTimeUsed()
+	public void initialized()
 	{
-		Date used = new Date();
+		expires = new Date( );
 
-		Calendar cal1 = Calendar.getInstance();
-		cal1.setTime(used);
 
-		int hour1 = cal1.get(Calendar.HOUR);
-
-		bought = used;
-	}
-
-	public boolean isValid()
-	{
-		Date checktoday = new Date();
-
-		Calendar cal2 = Calendar.getInstance();
-		cal2.setTime(checktoday);
-
-		
-    	int hour2 = cal2.get(Calendar.HOUR);
-
-		if(hour2 > hour1 + 1)
-		{
-			unvalidate();
-			return false;
-		}
-		return true;
+		calHelper.setTime( expires );
+		calHelper.set( Calendar.HOUR_OF_DAY, 1 );
+		calHelper.set( Calendar.MINUTE, 0 );
+		calHelper.set( Calendar.SECOND, 0 );
+		expires = calHelper.getTime(); 
 
 	}
 
 	public void unvalidate()
 	{
-		valid = false;
+		calHelper.setTime( new Date() );
+		expires = calHelper.getTime();
 	}
-
-	public void addTime()
-	{
-		if(isValid())
-		{
-			Date dateAfterFill = new Date(bought.getTime() + 1000 * 60 * 60 * 24);
-			bought = dateAfterFill;
-		}
-	}
-
-	/*<konstruktør som gir startverdier>
-
-	<metode(r) for å sjekke gyldighet (evt datometoder for å holde styr på tider)>
-
-	<getmetode for heiskortnr>*/
-
-	/*<metode for å sette ugyldig>*/
-
-	/*<metode for å legge til mer tid>*/
-
 
 }// end of class Hourcard
