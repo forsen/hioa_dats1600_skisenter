@@ -137,7 +137,7 @@ public class Personlist implements Serializable
 	}
 
 /*
-	public Person findCardOwner(Skicard card)
+	public Person findPerson(Card c)
 	{
 		Iterator<Person> it = registry.iterator();
 

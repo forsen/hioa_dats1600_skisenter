@@ -13,7 +13,7 @@ public abstract class Skicard implements Serializable
 	private int price;
 	private int discount;
 	private String ageGroup;
-	private Date bought; 
+	protected Date bought; 
 
 
 	public Skicard(int p, int d, String ag, Date b )

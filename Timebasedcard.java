@@ -3,8 +3,8 @@ import java.util.Date;
 public abstract class Timebasedcard extends Skicard
 {
 	//<datafelter>
-	private Date expires; 
-	private Date initialized;
+	protected Date expires; 
+	protected Date initialized;
 
 	public Timebasedcard(int p, int d, String ag, Date b )
 	{
@@ -12,11 +12,10 @@ public abstract class Timebasedcard extends Skicard
 
 	}
 
-	/*<abstrakt metode(r) for å sjekke gyldighet (evt datometoder for å holde styr på tider)>
+	/*<abstrakt metode(r) for å sjekke gyldighet (evt datometoder for å holde styr på tider)>*/
+    /*<abstrakt getmetode for heiskortnr>*/
 
-	<abstrakt getmetode for heiskortnr>*/
+	abstract public void initialized();		/*abstrakt metode for å initializere (gi kortet startttid og slutttid)*/
 
-	abstract public void unvalidate(); /*<abstrakt metode for å sette ugyldig>*/
-
-	abstract public void addTime(); /*<abstrakt metode for å legge til mer tid>*/
+	abstract public void unvalidate(); 		/*<abstrakt metode for å sette ugyldig>*/
 }
