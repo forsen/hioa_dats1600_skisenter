@@ -1,20 +1,12 @@
+import java.io.*;
+
 public class Tcuplift extends Lift implements Serializable
 {
-	
+	private final int TCUPCLIP;
 
-	public Tcupift(int l, String n,int c, int m)
+	public Tcuplift(int l, String n,int c, int m, int v)
 	{
-		super(l,n,c,m);
-
-	/*<datafelt>
-
-	<konstruktør som gir startverdier>
-
-	<metoder for å hente ut relevante datafelter>
-
-	<metode for å undersøke om et klippbasert skikort har ledige klipp>
-
-	<metode for å trekke Y klipp>
-
-	<registrere passering>*/
+		super(l,n,c,m,v);
+		TCUPCLIP = 1;
+	}
 }

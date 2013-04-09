@@ -1,18 +1,20 @@
 import java.io.*;
 
-public abstract class Lift implements Serializable
+public class Lift implements Serializable
 {
 	private int liftNr;
 	private String name;
 	private int clips;
 	private int length;
+	private int validations;
 
-	public Lift(int l, String n, int c, int m)
+	public Lift(int l, String n, int c, int m, int v)
 	{
 		liftNr = l;
 		name = n;
 		clips = c;
 		length = m;
+		validations = v;
 	}
 
 	public int getLiftNr()
@@ -25,7 +27,7 @@ public abstract class Lift implements Serializable
 		return name;
 	}
 
-	public int getclips()
+	public int getClips()
 	{
 		return clips;
 	}
@@ -33,6 +35,11 @@ public abstract class Lift implements Serializable
 	public int getLength()
 	{
 		return length;
+	}
+
+	public int getValidations()
+	{
+		return validations;
 	}
 
 	public String toString()
@@ -55,19 +62,6 @@ public abstract class Lift implements Serializable
   
 	}
 	
-
-
-
-
-	
-
-	/*<datafelt>
-
-	<konstruktør som gir startverdier>
-
-	<abstrakte metoder for å hente ut relevante datafelter>
-
-
-	<abstrakt metode for å registrere passering>--> DENNE TROR JEG BURDE GJØRES I KONTROLLVINDUET*/
+	/*<abstrakt metode for å registrere passering>--> DENNE TROR JEG BURDE GJØRES I KONTROLLVINDUET*/
 
 }

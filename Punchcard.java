@@ -9,6 +9,11 @@ public class Punchcard extends Skicard
 		price = Info.PUNCHCARDPRICE;
 	}
 
+	public int getClipCount()
+	{
+		return clipCount;
+	}
+
 	public boolean isValid()
 	{
 		if(clipCount > 0)
