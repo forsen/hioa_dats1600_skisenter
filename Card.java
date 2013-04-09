@@ -31,4 +31,14 @@ public class Card implements Serializable
 	{
 		return cardNumber; 
 	}
+
+	public int readNext()
+	{
+		return next;
+	}
+
+	public void setNext( int n )
+	{
+		next = n; 
+	}
 }
