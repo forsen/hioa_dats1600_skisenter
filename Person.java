@@ -77,6 +77,11 @@ public Person( String fn, String ln, int p, Date b )
 		return list.listCards();
 	}
 
+	public boolean isEmpty()
+	{
+		return list.isEmpty();
+	}
+
 	public int addCard( Card n )
 	{
 		return list.addCard( n );
