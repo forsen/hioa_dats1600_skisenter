@@ -1,12 +1,14 @@
+import java.util.*;
+
 public class Punchcard extends Skicard
 {
 	private int clipCount;
 
-	public Punchcard(int cc, int p, int d, String ag)
+	public Punchcard(int p, int d, String ag, Date b)
 	{
-		super(p, d, ag);
-		clipCount = cc;
-		price = Info.PUNCHCARDPRICE;
+		super(p, d, ag, b);
+		clipCount = 10;
+		price = Info.getPunchcardPrice();
 	}
 
 	public int getClipCount()
