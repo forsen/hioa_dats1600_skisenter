@@ -43,9 +43,17 @@ public class Skisenter
 				final Admin a = new Admin(registry);
 				a.setLocation(0,425);    
 
-				final Control control = new Control();
-				control.setVisible(true);
-				control.setLocation(700,425);    
+				Lift chLift = new Chairlift("Superheisen", 2000, 3 );
+
+				final Control lift1 = new Control( chLift );
+				lift1.setVisible(true);
+				lift1.setLocation(700,425);
+
+				Lift tLift = new Tcuplift( "Rævvaheisen", 1433 );
+
+				final Control lift2 = new Control( tLift );   
+				lift2.setVisible(true);
+				lift2.setLocation(700,425);
 
 			}			
 
