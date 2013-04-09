@@ -1,12 +1,13 @@
+import java.util.*;
+
 public class Punchcard extends Skicard
 {
 	private int clipCount;
 
-	public Punchcard(int cc, int p, int d, String ag)
+	public Punchcard(int p, int d, String ag, Date b)
 	{
-		super(p, d, ag);
-		clipCount = cc;
-		price = Info.PUNCHCARDPRICE;
+		super(p, d, ag, b);
+		clipCount = 0;
 	}
 
 	public int getClipCount()
@@ -14,25 +15,13 @@ public class Punchcard extends Skicard
 		return clipCount;
 	}
 
-	public boolean isValid()
+	public void initialized()
 	{
-		if(clipCount > 0)
-		{
-			return true;
-		}
-		return false;
+		clipCount =+ 10;
 	}
 
 	public void usePunchCard()
 	{
-		if(isValid());
-		{
-			clipCount = (clipCount-1);
-		}
-	}
-
-	public void addClip(int clip)
-	{
-		clipCount = clipCount + clip; 
+		clipCount =-1;
 	}
 }
