@@ -10,14 +10,14 @@ import java.text.ParseException;
 
 public class ReplaceWindowPanel extends JPanel 
 {
-	private JButton  replaceWindowRepBtn;
+	private JButton  replaceWindowRepBtn, replaceWindowSearchBtn;
 	private JTextField replaceWindowOldcard;
 	public static JTextField replaceWindowCustIdtf;
 	private JTextArea repstatusTxt;
 	private JPanel cntrPnl,btnPnl; 
 	private Listener listener;
 	private Personlist custRegistry;
-	private Cardlist cardlist;
+	private Cardlist cardlist = new Cardlist();
 	private JList list; 
 	public static JList cardIDList;
 	private DefaultListModel<Person> listmodel;
@@ -25,14 +25,13 @@ public class ReplaceWindowPanel extends JPanel
 	private ListListener listListener;
 	
 
-
-	public ReplaceWindowPanel(Personlist cr, Cardlist cl)
+//Cardlist cl
+	public ReplaceWindowPanel(Personlist cr)
 	{
 
 		setLayout( new BorderLayout( 5, 5) );
 
 		custRegistry = cr;
-		cardlist = cl;
 		listener = new Listener();
 		
 
@@ -69,6 +68,10 @@ public class ReplaceWindowPanel extends JPanel
 		repstatusTxt.setText("Her kommer info");
 		
 
+		replaceWindowSearchBtn = new JButton(" Søk ");
+		replaceWindowSearchBtn.addActionListener( listener );
+		cntrPnl.add(replaceWindowSearchBtn);
+
 		replaceWindowRepBtn = new JButton(" Erstatt ");
 		replaceWindowRepBtn.addActionListener( listener );
 		cntrPnl.add(replaceWindowRepBtn);
@@ -79,6 +82,10 @@ public class ReplaceWindowPanel extends JPanel
 
 	}
 
+	public String search()
+	{
+		
+	} 
 
 	public String replace()
 	{
