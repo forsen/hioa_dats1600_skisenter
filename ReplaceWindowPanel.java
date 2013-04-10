@@ -23,6 +23,7 @@ public class ReplaceWindowPanel extends JPanel
 	private DefaultListModel<Person> listmodel;
 	private DefaultListModel<Card> cardlistmodel;
 	private ListListener listListener;
+	private JScrollPane cardScrollList;
 	
 
 //Cardlist cl
@@ -43,6 +44,9 @@ public class ReplaceWindowPanel extends JPanel
 		cardIDList.setVisibleRowCount( 4 );
 		cardIDList.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
 		cardIDList.setCellRenderer( new CardListCellRenderer() );
+
+		cardScrollList = new JScrollPane( cardIDList);
+		add( cardScrollList );
 
 		cntrPnl = new JPanel(new GridLayout( 4,2 )); 
 		btnPnl = new JPanel(); 
@@ -82,9 +86,32 @@ public class ReplaceWindowPanel extends JPanel
 
 	}
 
-	public String search()
+	public void search()
 	{
 		
+		try	
+		{
+			int custid = Integer.parseInt(replaceWindowCustIdtf.getText());
+
+			String item = ""; 
+
+			
+	
+/*			list.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
+			list.setCellRenderer( new SearchListCellRenderer());
+			list.addListSelectionListener( listListener );
+
+*/
+			ReplaceWindowPanel.cardIDList.setModel( Salesclerk.customer.listCards() );
+			
+			
+		}
+		catch( NumberFormatException nfe )
+		{
+
+		}
+
+
 	} 
 
 	public String replace()

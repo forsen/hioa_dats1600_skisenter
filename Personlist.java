@@ -95,7 +95,7 @@ public class Personlist implements Serializable
 		return searchresult;
 	}
 
-
+	
 
 
 	public Person findPerson(int nr)
@@ -155,6 +155,8 @@ public class Personlist implements Serializable
 
 	}
 */	
+	
+
 	public String toString()
 	{
 		StringBuilder text = new StringBuilder();
