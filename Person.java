@@ -12,6 +12,7 @@ public class Person implements Serializable
 	private String lastname;
 	private int phoneNr;
 	private Date born;
+	private Date created; 
 	//BILDEDATAFELT??
 	
 	protected Cardlist list;
@@ -24,6 +25,7 @@ public class Person implements Serializable
 		phoneNr = p;
 		born = b;
 		list  = new Cardlist();
+		created = new Date();
 	}
 
 	public int getCustId()

@@ -18,9 +18,9 @@ public class Daycard extends Timebasedcard
 
 
 			calHelper.setTime( expires );
-			calHelper.set( Calendar.HOUR_OF_DAY, 23 );
+			calHelper.set( Calendar.HOUR_OF_DAY, 0 );
 			calHelper.set( Calendar.MINUTE, 0 );
-			calHelper.set( Calendar.SECOND, 0 );
+			calHelper.set( Calendar.SECOND, 10 );
 			setExpires(calHelper.getTime());
 		}
 

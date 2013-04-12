@@ -194,6 +194,7 @@ public class Personlist implements Serializable
 			text.append("\n");
 			text.append(runner.seeAllCard());
 			text.append("---------------------");
+			text.append("\n");
 
 
 		

@@ -94,23 +94,34 @@ public class Control extends JFrame
 			// Fjern denne når ting funker
 			if( validatingCard != null )
 			{
-
-				if(currentCard instanceof Timebasedcard)
+				if (((Timebasedcard) currentCard).getExpires() == null)
 				{
-					((Timebasedcard) currentCard).initialized();
+
+				
+					if(currentCard instanceof Timebasedcard)
+					{
+						((Timebasedcard) currentCard).initialized();
+					}
+					
+					else if(currentCard instanceof Punchcard)
+					{
+						((Punchcard) currentCard).initialized();
+					}
+
+					ctrlWindowPassThrough.setBackground(Color.GREEN);
+					JOptionPane.showMessageDialog( null, validatingCard.history() );
+					ctrlWindowPassThrough.setBackground(Color.RED);
 				}
 
-				if(currentCard instanceof Punchcard)
+				else
 				{
-					((Punchcard) currentCard).initialized();
+					ctrlWindowPassThrough.setBackground(Color.GREEN);
+					JOptionPane.showMessageDialog( null, "Gå gjennom. Du har igjen TID" );
+					ctrlWindowPassThrough.setBackground(Color.RED);
 				}
-
-				ctrlWindowPassThrough.setBackground(Color.GREEN);
-				JOptionPane.showMessageDialog( null, validatingCard.history() );
-				ctrlWindowPassThrough.setBackground(Color.RED);
-
 
 			}
+
 			else
 			{
 				ctrlWindowPassThrough.setBackground(Color.RED);

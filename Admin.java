@@ -7,7 +7,7 @@ import java.io.*;
 public class Admin extends JFrame
 {
 	private JButton beregnbn;
-	private JTextField from, to;
+	private JTextField fromfld, tofld;
 	private JTextArea display;
 	private Personlist list;
 	private Lytter listener;
@@ -31,15 +31,15 @@ public class Admin extends JFrame
 
    		
 		c.add(new JLabel("Fra: "));
-		from = new JTextField(4);
-		from.setEditable( true );
-		c.add(from);
+		fromfld = new JTextField(4);
+		fromfld.setEditable( true );
+		c.add(fromfld);
 
 		
 		c.add(new JLabel("Til: "));
-		to = new JTextField(4);
-		to.setEditable( true );
-		c.add(to);
+		tofld = new JTextField(4);
+		tofld.setEditable( true );
+		c.add(tofld);
 
 		sale = new JCheckBox("Salg");
 		sale.addItemListener(checkListner);
@@ -68,8 +68,23 @@ public class Admin extends JFrame
     	setVisible(true);
 	}
 
-	public void beregn()
+	public void saleReport()
 	{
+		/*int from = Integer.parseInt(fromfld.getText());
+		int to = Integer.parseInt(tofld.getText());
+
+		if(from == null && to == null)
+		{
+			
+		}
+		*/
+
+
+		 
+	}
+	public void beregn()
+	{	
+
 
 	}
 
@@ -97,7 +112,7 @@ public class Admin extends JFrame
 		public void itemStateChanged( ItemEvent e )
 		{
 			if(sale.isSelected())
-				beregn();
+				saleReport();
 
 			else if (passes.isSelected())
 				beregn();
