@@ -19,9 +19,7 @@ public class Hourcard extends Timebasedcard
 
 
 		calHelper.setTime( expires );
-		calHelper.set( Calendar.HOUR_OF_DAY, 1 );
-		calHelper.set( Calendar.MINUTE, 0 );
-		calHelper.set( Calendar.SECOND, 0 );
+		calHelper.add( Calendar.HOUR_OF_DAY, 1 );
 		setExpires(calHelper.getTime());
 
 	}
