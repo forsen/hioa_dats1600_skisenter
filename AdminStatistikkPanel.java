@@ -7,49 +7,48 @@ import java.io.*;
 
 public class AdminStatistikkPanel extends JPanel
 {	
-	private JButton showPersons,showPersWcards, showCards, showPassings;
+	private JTextField fromFld, toFld;
+	private JButton calculateBtn;
 	private JTextArea display;
-	private JPanel butnPnl, dispPnl;
+	private JPanel choicePnl, dispPnl;
 	private Listener listener;
 	private JScrollPane scroll;
 	private Personlist list;
 
 
 
-	public AdminInfoPanel(Personlist l )
+	public AdminStatistikkPanel(Personlist l )
 	{
 		list = l;
 	
-		butnPnl = new JPanel(new GridLayout( 4,2 ));
+		choicePnl = new JPanel(new GridLayout( 5,4 ));
 		dispPnl = new JPanel();
 		
 		setLayout( new BorderLayout( 5, 5) );
 
 		listener = new Listener();
 
+		choicePnl.add( new JLabel( "Fra: " ) );
+		fromFld = new JTextField(4);
+		fromFld.setEditable( false );
+		choicePnl.add(fromFld);
+
+		choicePnl.add( new JLabel( "Til: " ) );
+		toFld = new JTextField(4);
+		toFld.setEditable( false );
+		choicePnl.add(toFld);
+
 		display = new JTextArea(20,40);
 		scroll = new JScrollPane(display);
 
-		showPersons = new JButton(" Vis Person ");
-		showPersons.addActionListener( listener );
-		butnPnl.add(showPersons);
+		calculateBtn = new JButton(" Beregn ");
+		calculateBtn.addActionListener( listener );
+		choicePnl.add(calculateBtn);
 
-		showCards = new JButton(" Vis kort ");
-		showCards.addActionListener( listener );
-		butnPnl.add(showCards);
-
-		showPersWcards = new JButton(" Vis personer med kort ");
-		showPersWcards.addActionListener( listener );
-		butnPnl.add(showPersWcards);
-
-		showPassings = new JButton(" Vis heis passeringer ");
-		showPassings.addActionListener( listener );
-		butnPnl.add(showPassings);
-		
 
 		dispPnl.add(display);
 
-		add(butnPnl, BorderLayout.PAGE_START);
+		add(choicePnl, BorderLayout.PAGE_START);
 		add(dispPnl);
 
 
@@ -61,26 +60,12 @@ public class AdminStatistikkPanel extends JPanel
    		public void actionPerformed( ActionEvent e )
     	{ 	
       		
-      		if(e.getSource() == showPersons)
+      		if(e.getSource() == calculateBtn)
       		{
-      			display.setText(list.personListe());
+      			display.setText("Her Beregnes det noe daaa");
       		}
 
-      		if(e.getSource() == showPersWcards)
-      		{
-      			list.sort();
-				display.setText(list.toString());
-      		}
-
-      		if(e.getSource() == showCards)
-      		{
-      			display.setText("Her kommer det en skikortliste etterhvert");
-      		}
-
-      		if(e.getSource() == showPassings)
-      		{
-      			display.setText("Her kommer det en liste over heipasseringer etterhvert");
-      		}
+      		
       		
     	}
 	}	

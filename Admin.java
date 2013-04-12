@@ -23,7 +23,7 @@ public class Admin extends JFrame
 		topPnl = new JPanel( new FlowLayout() );
 		framePnl = new JPanel(new FlowLayout());
 		adminInfoPnl = new AdminInfoPanel(list);
-		statInfoPnl = new JPanel();
+		statInfoPnl = new AdminStatistikkPanel(list);
 		listner = new Listner();
 
 		layout = new BorderLayout( 5, 5 );
