@@ -16,7 +16,7 @@ public abstract class Skicard implements Serializable
 	private final int CHILDLIMIT = 16;
 
 	private int price;
-	private int discount;
+	private double discount;
 	private int ageGroup;
 	private String type;
 	protected Date bought; 
@@ -26,7 +26,7 @@ public abstract class Skicard implements Serializable
 	{
 
 		price = p;
-		discount = 50;
+		discount = 1;
 		bought = b; 
 		type = t; 
 
@@ -39,10 +39,12 @@ public abstract class Skicard implements Serializable
 		if( (cal2.get(Calendar.YEAR ) - cal.get(Calendar.YEAR )) <= CHILDLIMIT )
 		{
 			ageGroup = CHILD; 
-			price = price/2; 
+			discount = 0.5;
 		}
 		else
 			ageGroup = ADULT;
+
+		price = (int) (price * discount);
 	}
 /*
 	public int getCardNr()
@@ -55,7 +57,7 @@ public abstract class Skicard implements Serializable
 		return price;
 	}
 
-	public int getDiscount()
+	public double getDiscount()
 	{
 		return discount;
 	}

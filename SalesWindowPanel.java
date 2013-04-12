@@ -98,6 +98,18 @@ public class SalesWindowPanel extends JPanel
 		Skicard sc;
 
 		Date now = new Date();
+
+		Date bDate;
+
+		try
+		{
+			bDate = Salesclerk.customer.getBirth();
+		}
+		catch( NullPointerException npe )
+		{
+			bDate = null; 
+		}
+
 		switch( cardType )
 		{
 			case Skicard.DAYCARD: sc = new Daycard( bDate, now );
