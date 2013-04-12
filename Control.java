@@ -15,18 +15,25 @@ public class Control extends JFrame
 	private JLabel ctrlWindowTextShowTime, ctrlWindowTextCustNr;
 	private JTextArea ctrlWindowStatusTxt;
 	private Lift lift;
+	private Personlist registry;
+	private Card validatingCard;
+	private BtnListener btnListener;
 
 
 	private Toolkit toolbox;
 
-	public Control( Lift l )
+	public Control( Personlist cr, Lift l )
 	{
 		super("Kontrollvindu");
 
+		registry = cr; 
 		lift = l; 
 		toolbox = Toolkit.getDefaultToolkit();
 
 		String time = new SimpleDateFormat("hh:mm").format(new Date());
+		validatingCard = null;
+
+		btnListener = new BtnListener();
 
 		Dimension windowDimension = toolbox.getScreenSize();
 
@@ -38,6 +45,7 @@ public class Control extends JFrame
 
 
 		ctrlRegCustNr = new JButton("Validér");
+		ctrlRegCustNr.addActionListener(btnListener);
 
 		ctrlWindowTextCustNr = new JLabel("Customer ID:");
 		ctrlWindowTextShowTime = new JLabel("Current time:");
@@ -52,9 +60,8 @@ public class Control extends JFrame
 		ctrlWindowShowTime.setText(time);
 
 		ctrlWindowPassThrough = new JPanel();
-		Color color = new Color(255, 0, 0);
 		ctrlWindowPassThrough.setPreferredSize(new Dimension(600, 400));
-		ctrlWindowPassThrough.setBackground(color);
+		ctrlWindowPassThrough.setBackground(Color.RED);
 
 		ctrlWindowStatusTxt = new JTextArea(10,10);
 		ctrlWindowStatusTxt.setText("Statusfelt her");
@@ -70,14 +77,74 @@ public class Control extends JFrame
 		c.add(ctrlWindowPassThrough);
 		c.add(ctrlWindowStatusTxt);
 
+
+
 	}
 
-	public void validate()
+	public void findCard()
 	{
-		// do some magic here... 
+		try
+		{
+			int cardNumber = Integer.parseInt(ctrlWindowCustNr.getText());
+
+			validatingCard = registry.findCard( cardNumber );
+
+			// Fjern denne når ting funker
+			if( validatingCard != null )
+			{
+				ctrlWindowPassThrough.setBackground(Color.GREEN);
+				JOptionPane.showMessageDialog( null, validatingCard.history() );
+				ctrlWindowPassThrough.setBackground(Color.RED);
+
+
+			}
+			else
+			{
+				ctrlWindowPassThrough.setBackground(Color.RED);
+				JOptionPane.showMessageDialog(null, "Du dreit deg ut!" ); 
+			}
+		}
+		catch(NumberFormatException nfe)
+		{
+			 ctrlWindowPassThrough.setBackground(Color.RED);
+			 JOptionPane.showMessageDialog(null, "You need to enter a\nnumber", "Input Error", JOptionPane.ERROR_MESSAGE);
+
+		}
 	}
 
-	
+	public void validate(int cardNumber)
+	{
+		
+	}
+
+
+
+	public void initialized()
+	{
+		int cardNumber = Integer.parseInt(ctrlWindowCustNr.getText());
+
+/*		if( instanceof Timebasedcard)
+		{
+
+		}*/
+	}
+
+	private class BtnListener implements ActionListener
+	{
+		public void actionPerformed( ActionEvent ae )
+		{
+			if( ae.getSource() == ctrlRegCustNr )
+			{
+				findCard();
+			}
+		}
+
+	}
+
+
+	/* ta imoot kortID, validere, sjekke om det finnes, gyldig, hvis klippekort trekke et klipp*/
+	/* instanceOf Timebasedcard, sjekk om det er initializert;
+
 	/*<konstruktør for å opprette vinduet>
 
 	<metoder for å validere kort basert på kortnr>

@@ -116,6 +116,21 @@ public class Personlist implements Serializable
 		
 	}
 
+	public Card findCard( int nr )
+	{
+		Iterator<Person> it = registry.iterator();
+
+		while(it.hasNext())
+		{
+			Person p = it.next();
+
+			if( p.findCard( nr ) != null )
+				return p.findCard( nr );
+		}
+
+		return null; 
+	}
+
 
 	public Person deletePerson(Person obj)
 	{

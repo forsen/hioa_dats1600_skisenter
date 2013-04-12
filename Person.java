@@ -107,6 +107,11 @@ public class Person implements Serializable
 		return list.toString()+"HeiheiPerson" + "\n";
 	}
 
+	public Card findCard(int cardNumber)
+	{
+		return list.findCard(cardNumber);
+	}
+
 	public String toString()
 	{
 		StringBuilder text = new StringBuilder();
