@@ -19,7 +19,7 @@ public class CustWindowPanel extends JPanel
 
 	private CustListener custListener;
 
-	private JList list; 
+	private JList<Person> list; 
 	private DefaultListModel<Person> listmodel;
 	private ListListener listListener;
 
@@ -36,7 +36,7 @@ public class CustWindowPanel extends JPanel
 		setLayout( new BorderLayout( 5, 5) );
 
 
-		list = new JList<>( new DefaultListModel<>()); 
+		list = new JList<Person>( new DefaultListModel<Person>()); 
 
 		list.setVisibleRowCount(5);
 		list.setFixedCellHeight(15);
