@@ -13,16 +13,19 @@ public abstract class Skicard implements Serializable
 	private int price;
 	private int discount;
 	private String ageGroup;
+	private String type;
 	protected Date bought; 
 
 
-	public Skicard(int p, int d, String ag, Date b )
+	public Skicard(int p, int d, String ag, Date b, String t )
 	{
 
 		price = p;
 		discount = d;
 		ageGroup = ag;
 		bought = b; 
+		type = t; 
+
 	}
 /*
 	public int getCardNr()
@@ -43,6 +46,11 @@ public abstract class Skicard implements Serializable
 	public String getAgeGroup()
 	{
 		return ageGroup;
+	}
+
+	public String getType()
+	{
+		return type; 
 	}
 
   
