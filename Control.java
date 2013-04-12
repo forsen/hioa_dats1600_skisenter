@@ -35,7 +35,6 @@ public class Control extends JFrame
 		setLocationByPlatform( true );
 
 
-
 		ctrlRegCustNr = new JButton("Validér");
 
 		ctrlWindowTextCustNr = new JLabel("Customer ID:");
@@ -43,6 +42,9 @@ public class Control extends JFrame
 
 		ctrlWindowCustNr = new JTextField();
 		ctrlWindowCustNr.setPreferredSize(new Dimension(80,20));
+		
+
+		
 		ctrlWindowShowTime = new JTextField();
 		ctrlWindowShowTime.setPreferredSize(new Dimension(80,20));
 		ctrlWindowShowTime.setText(time);
