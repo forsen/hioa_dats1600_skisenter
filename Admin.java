@@ -4,6 +4,7 @@ import java.awt.event.*;
 import java.awt.*;
 import java.io.*;
 
+
 public class Admin extends JFrame
 {	
 	private JPanel framePnl,topPnl,adminInfoPnl, statInfoPnl;
@@ -12,6 +13,7 @@ public class Admin extends JFrame
 	private Personlist list;
 	private Container c;
 	private BorderLayout layout;
+
 	
 
 	public Admin(Personlist l)
