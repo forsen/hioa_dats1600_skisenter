@@ -70,6 +70,7 @@ public class ShoppingCart
 	{
 		items = new DefaultListModel<>();
 		cartList = new LinkedList<>();
+		sum = 0; 
 
 		return items;	
 	}
