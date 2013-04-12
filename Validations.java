@@ -1,11 +1,13 @@
 import java.util.Date;
+import java.io.Serializable;
 
-public class Validations
+public class Validations implements Serializable
 {
+	private int liftId;
 	private Card card;
 	private Date date; 
 
-	public Validations( Card c )
+	public Validations( int l, Card c )
 	{
 		card = c;
 		date = new Date(); 

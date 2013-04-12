@@ -4,10 +4,15 @@ import javax.swing.JOptionPane;
 import java.awt.*;
 import java.awt.event.*;
 
+import java.util.List;
+import java.util.LinkedList;
+
 public class Skisenter
 {
 	private static String message = null; 
 	private static Personlist registry; 
+	private static List<Validations> validations;
+
 	public static void main(String[] args)
 	{
 		
@@ -47,13 +52,13 @@ public class Skisenter
 				final Admin a = new Admin(registry);
 				a.setLocation(0,425);    
 
-				Lift chLift = new Chairlift(registry, "Superheisen", 2000, 3 );
+				Lift chLift = new Chairlift(validations, registry, "Superheisen", 2000, 3 );
 
 				final Control lift1 = new Control( registry,  chLift );
 				lift1.setVisible(true);
 				lift1.setLocation(700,425);
 
-				Lift tLift = new Tcuplift( registry, "Rævvaheisen", 1433 );
+				Lift tLift = new Tcuplift( validations, registry, "Rævvaheisen", 1433 );
 
 				final Control lift2 = new Control( registry, tLift );   
 				lift2.setVisible(true);
@@ -70,6 +75,7 @@ public class Skisenter
 			new FileInputStream( "data.dta" ) ) )
 		{
 			registry = (Personlist) input.readObject();
+			validations = (List<Validations>) input.readObject();
 			Person.setNext( input.readInt() );
 			Card.setNext( input.readInt() );
 		}
@@ -78,16 +84,19 @@ public class Skisenter
 		{
 			message = "Ingen personliste funnet, oppretter ny";
 			registry = new Personlist();
+			validations = new LinkedList<>();
 		}
 		catch( FileNotFoundException fnfe )
 		{
 			message = "Finner ikke datafilen, oppretter ny datafil";
 			registry = new Personlist();
+			validations = new LinkedList<>();
 		}
 		catch( IOException ioe )
 		{
 			message = "Feil med lesing fra fil, oppretter ny datafil";
 			registry = new Personlist();
+			validations = new LinkedList<>();
 		}
 	}
 
@@ -97,6 +106,7 @@ public class Skisenter
 			new FileOutputStream( "data.dta" ) ) )
 		{
 			output.writeObject( registry );
+			output.writeObject( validations );
 			output.writeInt( Person.readNext() );
 			output.writeInt( Card.readNext() );
 		}
