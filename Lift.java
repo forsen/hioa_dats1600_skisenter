@@ -1,4 +1,7 @@
 import java.io.*;
+import java.util.Date;
+import java.util.List;
+import java.util.LinkedList;
 
 public abstract class Lift implements Serializable
 {
@@ -6,15 +9,18 @@ public abstract class Lift implements Serializable
 	private String name;
 	private int clips;
 	private int length;
-	private int validations;
+	private List<Validations> validations;
+	private Personlist registry; 
 	private static int next = 1; 
 
-	public Lift( String n, int c, int m)
+	public Lift( Personlist cr, String n, int c, int m)
 	{
 		liftNr = next++;
 		name = n;
 		clips = c;
 		length = m;
+		registry = cr; 
+		validations = new LinkedList<>();
 		
 	}
 
@@ -38,11 +44,16 @@ public abstract class Lift implements Serializable
 		return length;
 	}
 
-	public int getValidations()
+	public List<Validations> getValidations()
 	{
 		return validations;
 	}
 
+	public void registrations( Card c )
+	{
+		Validations v = new Validations( c );
+		validations.add( v );
+	}
 	public String toString()
 	{
 

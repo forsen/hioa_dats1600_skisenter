@@ -6,11 +6,16 @@ public class Chairlift extends Lift implements Serializable
 	private int seats;
 
 
-	public Chairlift( String n, int m, int s)
+	public Chairlift( Personlist cr, String n, int m, int s)
 	{
-		super(n,2,m);
+		super(cr, n,2,m);
 		seats = s;
 	
+	}
+
+	public String toString()
+	{
+		return super.toString() + "\nAntall seter: " + seats; 
 	}
 
 }

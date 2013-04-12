@@ -108,6 +108,7 @@ public class Control extends JFrame
 					if( ((Timebasedcard) currentCard).getExpires() == null )
 					{
 						((Timebasedcard) currentCard).initialized();
+						lift.registrations( validatingCard );
 					}
 					
 					if( ((Timebasedcard) currentCard).getExpires().after(now) )
@@ -115,6 +116,7 @@ public class Control extends JFrame
 						ctrlWindowPassThrough.setBackground(Color.GREEN);
 						JOptionPane.showMessageDialog( null, "Gå gjennom. Ditt kort går ut: " + ((Timebasedcard) currentCard).getExpires() );
 						ctrlWindowPassThrough.setBackground(Color.RED);
+						lift.registrations( validatingCard );
 					}
 					else
 					{
@@ -127,6 +129,7 @@ public class Control extends JFrame
 					if( ((Punchcard) currentCard).getClipCount() == -1)
 					{
 						((Punchcard) currentCard).initialized();
+						lift.registrations( validatingCard );
 					}
 
 					if( ((Punchcard) currentCard).getClipCount() > 0)
@@ -135,6 +138,7 @@ public class Control extends JFrame
 						((Punchcard) currentCard).usePunchCard();
 						JOptionPane.showMessageDialog( null, "Gå gjennom. Antall klipp igjen på kortet: " + ((Punchcard) currentCard).getClipCount() );
 						ctrlWindowPassThrough.setBackground(Color.RED);
+						lift.registrations( validatingCard );
 					}
 
 					else
