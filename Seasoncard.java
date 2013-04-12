@@ -17,7 +17,10 @@ public class Seasoncard extends Timebasedcard
 
 
 		calHelper.setTime( expires );
-		calHelper.set(Calendar.MONTH, 6);
+		calHelper.set( Calendar.getInstance().get(Calendar.YEAR), 4, 1);
+		calHelper.set( Calendar.HOUR_OF_DAY, 0 );
+		calHelper.set( Calendar.MINUTE, 0 );
+		calHelper.set( Calendar.SECOND, 0 );
 		setExpires(calHelper.getTime());
 
 	}
