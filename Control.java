@@ -43,6 +43,9 @@ public class Control extends JFrame
 		int width = windowDimension.width; 
 
 		setSize( width/4, height/4 );
+		setMinimumSize( new Dimension( 360,225) );
+
+
 		setLocationByPlatform( true );
 
 
