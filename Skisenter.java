@@ -15,6 +15,9 @@ public class Skisenter
 		Skisenter test = new Skisenter(); 
 
 		test.readFile(); 
+		
+
+
 		EventQueue.invokeLater( new Runnable()
 		{
 			public void run()
@@ -44,13 +47,13 @@ public class Skisenter
 				final Admin a = new Admin(registry);
 				a.setLocation(0,425);    
 
-				Lift chLift = new Chairlift("Superheisen", 2000, 3 );
+				Lift chLift = new Chairlift(registry, "Superheisen", 2000, 3 );
 
 				final Control lift1 = new Control( registry,  chLift );
 				lift1.setVisible(true);
 				lift1.setLocation(700,425);
 
-				Lift tLift = new Tcuplift( "Rævvaheisen", 1433 );
+				Lift tLift = new Tcuplift( registry, "Rævvaheisen", 1433 );
 
 				final Control lift2 = new Control( registry, tLift );   
 				lift2.setVisible(true);
