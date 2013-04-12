@@ -104,7 +104,7 @@ public class Cardlist implements Serializable
 		{
 			Card runner = it.next();
 			text.append(runner.history());
-			text.append("\nHeiheiCardlist");
+			text.append("\n");
 		
 		} 
 		

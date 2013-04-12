@@ -104,7 +104,7 @@ public class Person implements Serializable
 
 	public String seeAllCard()
 	{
-		return list.toString()+"HeiheiPerson" + "\n";
+		return list.toString()+ "\n";
 	}
 
 	public Card findCard(int cardNumber)
