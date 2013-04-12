@@ -6,7 +6,7 @@ import java.io.*;
 
 public class Admin extends JFrame
 {
-	private JButton beregnbn;
+	private JButton beregnbn, persWcardbtn;
 	private JTextField fromfld, tofld;
 	private JTextArea display;
 	private Personlist list;
@@ -15,6 +15,7 @@ public class Admin extends JFrame
 	private CheckListner checkListner;
 	private String[] type = {"Barn", "Innmeldt", "alle"};
 	private JComboBox<String> box;
+	private JScrollPane scroll;
 
 	public Admin(Personlist l)
 	{
@@ -23,11 +24,13 @@ public class Admin extends JFrame
 		listener = new Lytter();
 		checkListner = new CheckListner();
 		box = new JComboBox<String>(type);
-		
-
-
+		int n = box.getSelectedIndex();
+      	String type = box.getItemAt(n);
+      	
 		Container c = getContentPane();
    		c.setLayout( new FlowLayout() );
+   		scroll = new JScrollPane(display);
+   		c.add(scroll);
 
    		
 		c.add(new JLabel("Fra: "));
@@ -63,6 +66,10 @@ public class Admin extends JFrame
 		beregnbn.addActionListener( listener );
     	c.add( beregnbn );
 
+    	persWcardbtn = new JButton("Vis Personer med kort");
+    	persWcardbtn.addActionListener(listener);
+    	c.add(persWcardbtn);
+
 
 		setSize( 400, 380 );
     	setVisible(true);
@@ -70,27 +77,10 @@ public class Admin extends JFrame
 
 	public void saleReport()
 	{
-		int from = 0;
-		int to = 0;
-		try
-		{
-			from = Integer.parseInt(fromfld.getText());
-			to = Integer.parseInt(tofld.getText());
-
-			display.setText("detta gikk ");		}
-		catch(NullPointerException npe)
-		{
-			display.setText("tullbaøø");
-		}
-		catch(NumberFormatException nfe)
-		{
-			display.setText("Det må være tall");
-		}
-
-		
-		
-
-		display.setText("Du må fylle inn begge felter ");
+		int from = Integer.parseInt(fromfld.getText());
+		int to = Integer.parseInt(tofld.getText());
+			
+		display.setText("Nå regner vi ut fra  "+ from + " til " + to);
 		
 
 
@@ -102,6 +92,11 @@ public class Admin extends JFrame
 
 	}
 
+	public void showPersWcards()
+	{
+		list.sort();
+		display.setText(list.toString());
+	}
 	
  	
 
@@ -113,11 +108,14 @@ public class Admin extends JFrame
       		{
        			beregn();
       		}
+
+      		if( e.getSource() == persWcardbtn)
+      		{
+      			showPersWcards();
+      		}
+
       		
-      		JComboBox<String> box1 = (JComboBox<String>) e.getSource();
-      		int n = box1.getSelectedIndex();
-      		String type = box1.getItemAt(n);
-      		beregn();
+      
     	}
 	}
 
