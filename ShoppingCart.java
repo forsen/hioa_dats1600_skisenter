@@ -47,6 +47,7 @@ public class ShoppingCart
 		}
 		catch( NullPointerException npe )
 		{
+			System.out.println("her skjedde det noe ball");
 			//JOptionPane.showMessageDialog( null, "Du må velge en person først!" );
 		}
 
@@ -129,6 +130,19 @@ public class ShoppingCart
 			text.append( ", " );
 			text.append( ci.getPrice() + "kr" );
 			text.append( "\n" );
+		}
+
+		if( !newCards.isEmpty() )
+		{
+			text.append( "Tomme kort: \n\n" );
+
+			Iterator<Card> cIt = newCards.iterator();
+
+			while( cIt.hasNext() )
+			{
+				text.append( cIt.toString() );
+				text.append( "\n" );
+			}
 		}
 
 		text.append( "\n" );
