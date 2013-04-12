@@ -28,6 +28,11 @@ public class Card implements Serializable
 		return current; 
 	}
 
+	public void setCurrent(Skicard c)
+	{
+		 current = c; 
+	}
+
 	public int getCardID()
 	{
 		return cardNumber; 
@@ -41,6 +46,16 @@ public class Card implements Serializable
 	public static void setNext( int n )
 	{
 		next = n; 
+	}
+
+	public void setSkicardlist(List<Skicard> c)
+	{
+		skiCardList = c; 
+	}
+
+	public List<Skicard> getSkicardlist()
+	{
+		return skiCardList; 
 	}
 
 	//metode for å se hva slags type kort dette kortet tidligere har vært

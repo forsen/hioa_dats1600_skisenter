@@ -87,6 +87,11 @@ public class Person implements Serializable
 		return list.addCard( n );
 	}
 
+	public void removeCard( Card n )
+	{
+		list.deleteCard(n);
+	}
+
 	public static int readNext()
 	{
 		return next;

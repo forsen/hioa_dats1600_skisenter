@@ -56,8 +56,7 @@ public class Drittvindu extends JFrame
 
 	public void showPersons()
 	{
-		list.sort();
-		persontxt.setText(list.toString());
+		//persontxt.setText(personListe());
 	}
 
 	public void showCards()
@@ -67,7 +66,8 @@ public class Drittvindu extends JFrame
 
 	public void showPersWithCards()
 	{
-		persWcardtxt.setText("Her kommer lista");
+		list.sort();
+		persWcardtxt.setText(list.toString());
 
 	}
  	
