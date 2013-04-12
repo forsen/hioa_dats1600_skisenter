@@ -217,6 +217,7 @@ public class CustWindowPanel extends JPanel
 				Salesclerk.salesClerkSearchInfoTxt.setText( Salesclerk.customer.getCustId() + "\n" + Salesclerk.customer.toString() );
 				SalesWindowPanel.cardIDList.setModel( Salesclerk.customer.listCards() );
 				ReplaceWindowPanel.replaceWindowCustIdtf.setText(Salesclerk.customer.getCustId() + "");
+				ReplaceWindowPanel.cardIDList.setModel( Salesclerk.customer.listCards() );
 			}
 			catch( ArrayIndexOutOfBoundsException aioobe )
 			{

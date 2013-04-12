@@ -13,7 +13,7 @@ public class ReplaceWindowPanel extends JPanel
 	private JButton  replaceWindowRepBtn, replaceWindowSearchBtn;
 	private JTextField replaceWindowOldcard;
 	public static JTextField replaceWindowCustIdtf;
-	private JTextArea repstatusTxt;
+//	private JTextArea repstatusTxt;
 	private JPanel cntrPnl,btnPnl; 
 	private Listener listener;
 	private Personlist custRegistry;
@@ -46,7 +46,7 @@ public class ReplaceWindowPanel extends JPanel
 		cardIDList.setCellRenderer( new CardListCellRenderer() );
 
 		cardScrollList = new JScrollPane( cardIDList);
-		add( cardScrollList );
+	//	add( cardScrollList );
 
 		cntrPnl = new JPanel(new GridLayout( 4,2 )); 
 		btnPnl = new JPanel(); 
@@ -66,10 +66,10 @@ public class ReplaceWindowPanel extends JPanel
 		cntrPnl.add(replaceWindowOldcard);
 	
 
-		repstatusTxt = new JTextArea(15,30);
-		repstatusTxt.setEditable( false );
-		btnPnl.add(repstatusTxt);
-		repstatusTxt.setText("Her kommer info");
+	//	repstatusTxt = new JTextArea(15,30);
+	//	repstatusTxt.setEditable( false );
+		btnPnl.add(cardScrollList);
+	//	repstatusTxt.setText("Her kommer info");
 		
 
 		replaceWindowSearchBtn = new JButton(" Søk ");
@@ -148,14 +148,14 @@ public class ReplaceWindowPanel extends JPanel
 			{
 				Salesclerk.customer = listmodel.get(list.getSelectedIndex());
 				SalesWindowPanel.salesWindowCustIDtf.setText( "" + Salesclerk.customer.getCustId() );
-				repstatusTxt.setText( Salesclerk.customer.getCustId() + "\n" + Salesclerk.customer.toString() );
+			//	repstatusTxt.setText( Salesclerk.customer.getCustId() + "\n" + Salesclerk.customer.toString() );
 			}
 			catch( ArrayIndexOutOfBoundsException aioobe )
 			{
 				// when making a new search, index will be out of bound. We use this exception 
 				// to clear the text field.
 
-				repstatusTxt.setText( "" );
+			//	repstatusTxt.setText( "" );
 			}
 
 		}
