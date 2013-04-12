@@ -47,8 +47,8 @@ public class Control extends JFrame
 		ctrlRegCustNr = new JButton("Validér");
 		ctrlRegCustNr.addActionListener(btnListener);
 
-		ctrlWindowTextCustNr = new JLabel("Customer ID:");
-		ctrlWindowTextShowTime = new JLabel("Current time:");
+		ctrlWindowTextCustNr = new JLabel("Kort ID:");
+		ctrlWindowTextShowTime = new JLabel("Klokke:");
 
 		ctrlWindowCustNr = new JTextField();
 		ctrlWindowCustNr.setPreferredSize(new Dimension(80,20));
@@ -91,6 +91,8 @@ public class Control extends JFrame
 
 			Skicard currentCard = validatingCard.getCurrent();
 
+			Date now = new Date();
+
 			// Fjern denne når ting funker
 			if( validatingCard != null )
 			{
@@ -113,7 +115,9 @@ public class Control extends JFrame
 					ctrlWindowPassThrough.setBackground(Color.RED);
 				}
 
-				else
+				
+
+				else if(((Timebasedcard) currentCard).getExpires().before(now))
 				{
 					ctrlWindowPassThrough.setBackground(Color.GREEN);
 					JOptionPane.showMessageDialog( null, "Gå gjennom. Du har igjen TID" );
@@ -138,7 +142,7 @@ public class Control extends JFrame
 
 	public void validate(int cardNumber)
 	{
-		
+		findCard();
 	}
 
 
@@ -148,7 +152,7 @@ public class Control extends JFrame
 		{
 			if( ae.getSource() == ctrlRegCustNr )
 			{
-				findCard();
+				validate();
 			}
 		}
 
