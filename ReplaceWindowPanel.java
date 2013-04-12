@@ -121,10 +121,4 @@ public class ReplaceWindowPanel extends JPanel
 
 		}
 	}
-
-	
-
-
-
-
 }
