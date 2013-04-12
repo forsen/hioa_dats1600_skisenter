@@ -9,6 +9,7 @@ public class Drittvindu extends JFrame
 	private JButton persListbn, cardListbn, personWithCardbn;
 	private JTextArea persontxt, cardtxt, persWcardtxt;
 	private Personlist list;
+	private JScrollPane scroll;
 
 
 	private Lytter listener;
@@ -45,8 +46,10 @@ public class Drittvindu extends JFrame
 
 		persWcardtxt = new JTextArea(40,15);
 		persWcardtxt.setEditable( false );
-		c.add(persWcardtxt);
+		scroll = new JScrollPane(persWcardtxt);
+		c.add(scroll);
 
+		
 
 
 		setSize( 600, 700 );
