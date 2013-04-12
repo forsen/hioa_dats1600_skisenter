@@ -8,9 +8,9 @@ public class ShoppingCartCellListRenderer extends DefaultListCellRenderer
 	{
 		JLabel label = (JLabel)super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 
-		Skicard c = (Skicard) value; 
+		CartItems ci = (CartItems) value; 
 
-		label.setText( " " +  c.getType() + ", " + c.getPrice() + "kr" );
+		label.setText( ci.getCardID() + " " +  ci.getType() + ", " + ci.getPrice() + "kr" );
 
 		return label;
 	}

@@ -4,24 +4,24 @@ import javax.swing.DefaultListModel;
 public class ShoppingCart
 {
 	private double sum; 
-	private DefaultListModel<Skicard> items;
-	private List<Card> cardList;
+	private DefaultListModel<CartItems> items;
+	private List<CartItems> cartList;
 
 	public ShoppingCart()
 	{
 		items = new DefaultListModel<>();
-		cardList = new LinkedList<>();
+		cartList = new LinkedList<>();
 	}
 
 	public boolean exists( Card c )
 	{
-		Iterator<Card> it = cardList.iterator();
+		Iterator<CartItems> it = cartList.iterator();
 
 		while( it.hasNext() )
 		{
-			Card card = it.next();
+			CartItems ci = it.next();
 
-			if( card.equals(c) )
+			if( ci.exists(c) )
 			{
 				return true;
 			}
@@ -32,11 +32,13 @@ public class ShoppingCart
 
 	public DefaultListModel addToCart( Card c, Skicard sc )
 	{
+
 		if( exists( c ))
 			return items;
 
-		cardList.add( c );
-		items.addElement( sc );
+		CartItems ci = new CartItems( c, sc );
+		cartList.add( ci );
+		items.addElement( ci );
 		sum += sc.getPrice();
 		return items;
 	}
@@ -56,6 +58,11 @@ public class ShoppingCart
 
 	public void checkOut() 
 	{
-		// do something more
+		Iterator<CartItems> it = cartList.iterator();
+		
+		while( it.hasNext() )
+		{
+			it.next().checkOut();
+		}
 	}
 }

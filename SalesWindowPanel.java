@@ -113,8 +113,11 @@ public class SalesWindowPanel extends JPanel
 		try
 		{
 			Card c = (Card) cardIDList.getSelectedValue();
-			shoppingCartList.setModel( shoppingCart.addToCart( c, sc ) );
-			cartPrice.setText(" Sum: " + shoppingCart.getSum() + "kr");
+			if( c != null )
+			{
+				shoppingCartList.setModel( shoppingCart.addToCart( c, sc ) );
+				cartPrice.setText(" Sum: " + shoppingCart.getSum() + "kr");
+			}
 		}
 		catch( NullPointerException npe )
 		{
@@ -128,12 +131,16 @@ public class SalesWindowPanel extends JPanel
 
 	}
 
+	private void payment()
+	{
+		// tar i mot betaling og slikt.
+		JOptionPane.showMessageDialog( null, shoppingCartList.toString() );
+		checkOut();
+
+	}
 	private void checkOut()
 	{
-		//shoppingCartList.checkOut();
-	
-
-
+		shoppingCart.checkOut();
 	}
 
 /*
@@ -233,7 +240,7 @@ public class SalesWindowPanel extends JPanel
 		{
 			if( ae.getSource() == salesCheckoutBtn )
 			{
-				checkOut();
+				payment();
 			}
 			if( ae.getSource() == salesNewCardBtn )
 			{
