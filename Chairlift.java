@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.List;
 
 public class Chairlift extends Lift implements Serializable
 {
@@ -6,9 +7,9 @@ public class Chairlift extends Lift implements Serializable
 	private int seats;
 
 
-	public Chairlift( Personlist cr, String n, int m, int s)
+	public Chairlift( List<Validations> lv, Personlist cr, String n, int m, int s)
 	{
-		super(cr, n,2,m);
+		super(lv, cr, n,2,m);
 		seats = s;
 	
 	}

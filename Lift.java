@@ -13,14 +13,14 @@ public abstract class Lift implements Serializable
 	private Personlist registry; 
 	private static int next = 1; 
 
-	public Lift( Personlist cr, String n, int c, int m)
+	public Lift( List<Validations> lv, Personlist cr, String n, int c, int m)
 	{
 		liftNr = next++;
 		name = n;
 		clips = c;
 		length = m;
 		registry = cr; 
-		validations = new LinkedList<>();
+		validations = lv;
 		
 	}
 
@@ -51,7 +51,7 @@ public abstract class Lift implements Serializable
 
 	public void registrations( Card c )
 	{
-		Validations v = new Validations( c );
+		Validations v = new Validations( liftNr, c );
 		validations.add( v );
 	}
 	public String toString()
