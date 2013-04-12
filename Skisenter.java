@@ -22,7 +22,6 @@ public class Skisenter
 		test.readFile(); 
 		
 
-
 		EventQueue.invokeLater( new Runnable()
 		{
 			public void run()
@@ -43,7 +42,6 @@ public class Skisenter
 
 /*
 				final Control control = new Control();
-    			control.setVisible(true);
     			control.setLocation(0, 500);
 */
 				vindu.setLocation(700,0);    			
@@ -53,10 +51,10 @@ public class Skisenter
 				a.setLocation(0,425);    
 
 				Lift chLift = new Chairlift(validations, registry, "Superheisen", 2000, 3 );
-
 				final Control lift1 = new Control( registry,  chLift );
 				lift1.setVisible(true);
 				lift1.setLocation(700,425);
+
 
 				Lift tLift = new Tcuplift( validations, registry, "Rævvaheisen", 1433 );
 

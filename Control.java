@@ -108,7 +108,6 @@ public class Control extends JFrame
 					if( ((Timebasedcard) currentCard).getExpires() == null )
 					{
 						((Timebasedcard) currentCard).initialized();
-						lift.registrations( validatingCard );
 					}
 					
 					if( ((Timebasedcard) currentCard).getExpires().after(now) )

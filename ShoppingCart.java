@@ -6,7 +6,7 @@ public class ShoppingCart
 	private double sum; 
 	private DefaultListModel<CartItems> items;
 	private List<CartItems> cartList;
-	private DefaultListModel<Card> cardList;
+	private static DefaultListModel<Card> cardList;
 	private List<Card> newCards; 
 
 	public ShoppingCart()
@@ -15,17 +15,16 @@ public class ShoppingCart
 		cartList = new LinkedList<>();
 		newCards = new LinkedList<>();
 
-		try
-		{
+//		try
+//		{
+//			cardList = Salesclerk.customer.listCards();
+//		}
+//		catch( NullPointerException npe )
+//		{
+		cardList = new DefaultListModel<Card>();
 
-			cardList = Salesclerk.customer.listCards();
-
-		}
-		catch( NullPointerException npe )
-		{
-			cardList = new DefaultListModel<Card>();
-			//JOptionPane.showMessageDialog( null, "Du må velge en person først!" );
-		}
+			System.out.println(" hva er detet for no tull ? " );	
+//		}
 
 
 	}
@@ -47,12 +46,25 @@ public class ShoppingCart
 		return false; 
 	}
 
+	public static void setCardList( DefaultListModel<Card> c)
+	{
+		cardList  = c; 
+	}
 
 	public DefaultListModel<Card> newCard()
 	{
 
 
 		Card nCard = new Card(); 
+
+//		try
+//		{
+//			cardList = Salesclerk.customer.listCards();
+//		}
+//		catch( NullPointerException npe )
+//		{
+			// do nothing
+//		}
 
 		cardList.addElement( nCard );
 		//System.out.println( "dette er balloks" );
