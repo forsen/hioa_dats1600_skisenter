@@ -74,6 +74,10 @@ public class Card implements Serializable
 			text.append("\n");
 			text.append(runner.toString());
 			text.append("\n");
+			
+
+
+
 		
 		} 
 		

@@ -53,6 +53,11 @@ public class Person implements Serializable
 		return born;
 	}
 
+	public Date getCreated()
+	{
+		return created;
+	}
+
 	public boolean hasCard()
 	{
 		return (list != null) && (!list.isEmpty());

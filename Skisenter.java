@@ -25,7 +25,7 @@ public class Skisenter
 					public void windowClosing( WindowEvent e )
 					{
 						saveFile();
-						System.exit( 0 ); 
+						System.exit( 0 );
 					}
 				});
 
