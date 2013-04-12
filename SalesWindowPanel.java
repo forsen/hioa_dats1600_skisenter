@@ -100,13 +100,13 @@ public class SalesWindowPanel extends JPanel
 		Date now = new Date();
 		switch( cardType )
 		{
-			case Skicard.DAYCARD: sc = new Daycard( Info.DAYCARDPRICE, 0, "barn", now );
+			case Skicard.DAYCARD: sc = new Daycard( bDate, now );
 									break;
-			case Skicard.HOURCARD: sc = new Hourcard( Info.HOURCARDPRICE, 0, "barn", now );
+			case Skicard.HOURCARD: sc = new Hourcard( bDate, now );
 									break; 
-			case Skicard.SEASONCARD: sc = new Seasoncard( Info.SEASONCARDPRICE, 0, "barn", now );
+			case Skicard.SEASONCARD: sc = new Seasoncard( bDate, now );
 									break;
-			case Skicard.PUNCHCARD: sc = new Punchcard( Info.PUNCHCARDPRICE, 0, "barn", now ); 
+			case Skicard.PUNCHCARD: sc = new Punchcard( bDate, now ); 
 									break;
 			default: 				sc = null;
 		}

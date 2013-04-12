@@ -4,9 +4,9 @@ public class Seasoncard extends Timebasedcard
 {
 	Calendar calHelper; 
 
-	public Seasoncard(int p, int d, String ag, Date b )
+	public Seasoncard( Date bd, Date b )
 	{
-		super(p, d, ag, b, "Sesongkort"); 
+		super(Info.SEASONCARDPRICE, bd, b, "Sesongkort"); 
 		bought = new Date();  	
 		calHelper = Calendar.getInstance(); 		
 	}

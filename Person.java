@@ -143,6 +143,7 @@ public class Person implements Serializable
 
 
 
+
 	/*<datafelter, inkludert heiskortliste>
 
 	<konstruktør som oppretter personobjektet>

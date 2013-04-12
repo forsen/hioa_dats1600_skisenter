@@ -5,9 +5,9 @@ public class Daycard extends Timebasedcard
 	Calendar calHelper; 
 	
 
-	public Daycard(int p, int d, String ag, Date b)
+	public Daycard( Date bd, Date b)
 	{
-		super(p, d, ag, b, "Dagskort"); 
+		super( Info.DAYCARDPRICE, bd, b, "Dagskort"); 
 		bought = new Date();  	
 		calHelper = Calendar.getInstance(); 		
 	}

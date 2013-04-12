@@ -6,9 +6,9 @@ public class Hourcard extends Timebasedcard
 	
 
 
-	public Hourcard(int p, int d, String ag, Date b )
+	public Hourcard( Date bd, Date b )
 	{
-		super(p, d, ag, b, "Timeskort"); 
+		super(Info.HOURCARDPRICE, bd, b, "Timeskort"); 
 		bought = new Date();  	
 		calHelper = Calendar.getInstance(); 
 	}

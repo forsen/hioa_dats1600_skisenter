@@ -4,9 +4,9 @@ public class Punchcard extends Skicard
 {
 	private int clipCount;
 
-	public Punchcard(int p, int d, String ag, Date b)
+	public Punchcard( Date bd, Date b)
 	{
-		super(p, d, ag, b, "Klippekort");
+		super(Info.PUNCHCARDPRICE, bd, b, "Klippekort");
 		clipCount = 0;
 	}
 

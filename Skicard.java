@@ -10,22 +10,39 @@ public abstract class Skicard implements Serializable
 	public final static int SEASONCARD = 2;
 	public final static int PUNCHCARD = 3; 
 
+	private final int CHILD = 1;
+	private final int ADULT = 2;
+
+	private final int CHILDLIMIT = 16;
+
 	private int price;
 	private int discount;
-	private String ageGroup;
+	private int ageGroup;
 	private String type;
 	protected Date bought; 
 
 
-	public Skicard(int p, int d, String ag, Date b, String t )
+	public Skicard(int p, Date bd, Date b, String t )
 	{
 
 		price = p;
-		discount = d;
-		ageGroup = ag;
+		discount = 50;
 		bought = b; 
 		type = t; 
 
+		Calendar cal = Calendar.getInstance();
+ 		Calendar cal2 = Calendar.getInstance();
+ 		cal2.setTime( new Date() );
+
+		cal.setTime( bd );
+
+		if( (cal2.get(Calendar.YEAR ) - cal.get(Calendar.YEAR )) <= CHILDLIMIT )
+		{
+			ageGroup = CHILD; 
+			price = price/2; 
+		}
+		else
+			ageGroup = ADULT;
 	}
 /*
 	public int getCardNr()
@@ -43,7 +60,7 @@ public abstract class Skicard implements Serializable
 		return discount;
 	}
 
-	public String getAgeGroup()
+	public int getAgeGroup()
 	{
 		return ageGroup;
 	}
