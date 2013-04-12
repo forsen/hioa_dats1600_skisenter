@@ -100,12 +100,20 @@ public class SalesWindowPanel extends JPanel
 		}
 		else
 		{
-			JOptionPane.showMessageDialog( null, "Legger til et kort til bruker:\n" + 
-				Salesclerk.customer +
-				"\n\nDette kortet er av typen:" +
-				cardTypeString[cardTypeList.getSelectedIndex()] );
-			Card c = (Card) cardIDList.getSelectedValue();
-			JOptionPane.showMessageDialog(null, c.input( sc ));
+
+			try
+			{
+				Card c = (Card) cardIDList.getSelectedValue();
+				JOptionPane.showMessageDialog(null, c.input( sc ));
+			}
+			catch( NullPointerException npe )
+			{
+				if( Salesclerk.customer.isEmpty() )
+					JOptionPane.showMessageDialog(null, "Du må opprette et kort først, trykk på nytt kort");
+				else
+					JOptionPane.showMessageDialog( null, "Du må velge hvilket kort fra kortlista som skal få det nye produktet" );
+
+			}
 
 		}
 	}

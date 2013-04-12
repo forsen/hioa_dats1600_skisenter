@@ -10,25 +10,23 @@ import java.text.ParseException;
 
 public class ReplaceWindowPanel extends JPanel 
 {
-	private JButton  replaceWindowRepBtn;
-	//private JPanel replaceWindowSearchInfoPnl, replaceWindowFirstNamePnl, replaceWindowLastNamePnl, replaceWindowCardPnl, replaceWindowBtnPnl;
+	private JButton  replaceWindowRepBtn, replaceWindowSearchBtn;
 	private JTextField replaceWindowOldcard;
 	public static JTextField replaceWindowCustIdtf;
-	//private JTextArea replaceWindowSearchInfoTxt;
 	private JTextArea repstatusTxt;
-
 	private JPanel cntrPnl,btnPnl; 
-
 	private Listener listener;
 	private Personlist custRegistry;
-
+	private Cardlist cardlist = new Cardlist();
 	private JList list; 
+	public static JList cardIDList;
 	private DefaultListModel<Person> listmodel;
+	private DefaultListModel<Card> cardlistmodel;
 	private ListListener listListener;
+	private JScrollPane cardScrollList;
+	
 
-
-
-
+//Cardlist cl
 	public ReplaceWindowPanel(Personlist cr)
 	{
 
@@ -36,22 +34,22 @@ public class ReplaceWindowPanel extends JPanel
 
 		custRegistry = cr;
 		listener = new Listener();
+		
 
-		list = new JList<>( new DefaultListModel<>()); 
+		list = new JList<>( new DefaultListModel<>());
 
-		list.setVisibleRowCount(5);
-		list.setFixedCellHeight(15);
-		list.setFixedCellWidth(100);
+		cardIDList = new JList<>( new DefaultListModel<>());
+		cardIDList.setFixedCellHeight(15);
+		cardIDList.setFixedCellWidth(100);
+		cardIDList.setVisibleRowCount( 4 );
+		cardIDList.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
+		cardIDList.setCellRenderer( new CardListCellRenderer() );
 
-		list.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
-		list.setCellRenderer( new SearchListCellRenderer());
-		list.setVisible( true );
+		cardScrollList = new JScrollPane( cardIDList);
+		add( cardScrollList );
 
 		cntrPnl = new JPanel(new GridLayout( 4,2 )); 
 		btnPnl = new JPanel(); 
-
-
-		
 
 		listListener = new ListListener(); 
 		list.addListSelectionListener( listListener );
@@ -60,8 +58,6 @@ public class ReplaceWindowPanel extends JPanel
 		replaceWindowCustIdtf = new JTextField(5);
 		replaceWindowCustIdtf.setEditable( false );
 		cntrPnl.add(replaceWindowCustIdtf);
-
-
 
 
 		cntrPnl.add( new JLabel( "Kortnummer" ) );
@@ -76,8 +72,9 @@ public class ReplaceWindowPanel extends JPanel
 		repstatusTxt.setText("Her kommer info");
 		
 
-		
-    	
+		replaceWindowSearchBtn = new JButton(" Søk ");
+		replaceWindowSearchBtn.addActionListener( listener );
+		cntrPnl.add(replaceWindowSearchBtn);
 
 		replaceWindowRepBtn = new JButton(" Erstatt ");
 		replaceWindowRepBtn.addActionListener( listener );
@@ -89,13 +86,41 @@ public class ReplaceWindowPanel extends JPanel
 
 	}
 
+	public void search()
+	{
+		
+		try	
+		{
+			int custid = Integer.parseInt(replaceWindowCustIdtf.getText());
+
+			String item = ""; 
+
+			
 	
+/*			list.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
+			list.setCellRenderer( new SearchListCellRenderer());
+			list.addListSelectionListener( listListener );
+
+*/
+			ReplaceWindowPanel.cardIDList.setModel( Salesclerk.customer.listCards() );
+			
+			
+		}
+		catch( NumberFormatException nfe )
+		{
+
+		}
+
+
+	} 
 
 	public String replace()
 	{
-		//int old = Integer.parseInt(replaceWindowOldcard.getText());
-		//int newc = Integer.parseInt(replaceWindowNewcard.getText());
+		
+		int custid = Integer.parseInt(replaceWindowCustIdtf.getText());
+		int cardnr = Integer.parseInt(replaceWindowOldcard.getText());
 		return null;
+
 
 
 	}
@@ -135,5 +160,10 @@ public class ReplaceWindowPanel extends JPanel
 
 		}
 	}
+
+	
+
+
+
 
 }

@@ -14,17 +14,17 @@ public class Person implements Serializable
 	private Date born;
 	//BILDEDATAFELT??
 	
-	private Cardlist list;
+	protected Cardlist list;
 
-public Person( String fn, String ln, int p, Date b )
-{
-	custId = ++next;
-	firstname = fn;
-	lastname = ln;
-	phoneNr = p;
-	born = b;
-	list  = new Cardlist();
-}
+	public Person( String fn, String ln, int p, Date b )
+	{
+		custId = ++next;
+		firstname = fn;
+		lastname = ln;
+		phoneNr = p;
+		born = b;
+		list  = new Cardlist();
+	}
 
 	public int getCustId()
 	{
@@ -77,6 +77,11 @@ public Person( String fn, String ln, int p, Date b )
 		return list.listCards();
 	}
 
+	public boolean isEmpty()
+	{
+		return list.isEmpty();
+	}
+
 	public int addCard( Card n )
 	{
 		return list.addCard( n );
@@ -90,6 +95,11 @@ public Person( String fn, String ln, int p, Date b )
 	public static void setNext( int n )
 	{
 		next = n;
+	}
+
+	public String seeAllCard()
+	{
+		return list.toString()+"HeiheiPerson";
 	}
 
 	public String toString()

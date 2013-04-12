@@ -24,4 +24,9 @@ public class Punchcard extends Skicard
 	{
 		clipCount =-1;
 	}
+
+	public String toString()
+	{
+		return super.toString()+ "\nKlippekort";
+	}
 }

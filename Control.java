@@ -14,14 +14,16 @@ public class Control extends JFrame
 	private JPanel ctrlWindowPassThrough;
 	private JLabel ctrlWindowTextShowTime, ctrlWindowTextCustNr;
 	private JTextArea ctrlWindowStatusTxt;
+	private Lift lift;
 
 
 	private Toolkit toolbox;
 
-	public Control()
+	public Control( Lift l )
 	{
 		super("Kontrollvindu");
 
+		lift = l; 
 		toolbox = Toolkit.getDefaultToolkit();
 
 		String time = new SimpleDateFormat("hh:mm").format(new Date());
@@ -68,6 +70,11 @@ public class Control extends JFrame
 		c.add(ctrlWindowPassThrough);
 		c.add(ctrlWindowStatusTxt);
 
+	}
+
+	public void validate()
+	{
+		// do some magic here... 
 	}
 
 	

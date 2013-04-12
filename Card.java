@@ -42,4 +42,30 @@ public class Card implements Serializable
 	{
 		next = n; 
 	}
+
+	//metode for å se hva slags type kort dette kortet tidligere har vært
+	public String history()
+	{
+		StringBuilder text = new StringBuilder();
+		
+		Iterator<Skicard> it = skiCardList.iterator();
+		
+		
+		while(it.hasNext())
+		{
+			Skicard runner = it.next();
+			text.append(runner.toString());
+			text.append("\n");
+		
+		} 
+		
+		String doneText = text.toString();
+		
+		return doneText;
+	}
+
+	public String toString()
+	{
+		return null;
+	}
 }

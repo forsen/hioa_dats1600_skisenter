@@ -9,12 +9,15 @@ public class Drittvindu extends JFrame
 	private JButton persListbn, cardListbn, personWithCardbn;
 	private JTextArea persontxt, cardtxt, persWcardtxt;
 	private Personlist list;
+
+
 	private Lytter listener;
 
 	public Drittvindu(Personlist l)
 	{
 		super("Testvindu");
 		list = l;
+		
 		listener = new Lytter();
 
 		Container c = getContentPane();

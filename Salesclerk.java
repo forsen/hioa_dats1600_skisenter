@@ -72,6 +72,7 @@ public class Salesclerk extends JFrame
 
 		replaceWindowPnl = new ReplaceWindowPanel( custRegistry);
 
+
 		//statusPnl = new JPanel( new FlowLayout() );
 
 

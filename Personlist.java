@@ -95,7 +95,7 @@ public class Personlist implements Serializable
 		return searchresult;
 	}
 
-
+	
 
 
 	public Person findPerson(int nr)
@@ -155,6 +155,8 @@ public class Personlist implements Serializable
 
 	}
 */	
+	
+
 	public String toString()
 	{
 		StringBuilder text = new StringBuilder();
@@ -166,7 +168,11 @@ public class Personlist implements Serializable
 		{
 			Person runner = it.next();
 			text.append(runner.toString());
+			text.append("\nHeiheiPersonlist");
+			text.append(runner.seeAllCard());
 			text.append("\n");
+
+
 		
 		} 
 		
