@@ -96,6 +96,26 @@ public class Control extends JFrame
 			// Fjern denne når ting funker
 			if( validatingCard != null )
 			{
+
+				if( currentCard instanceof Timebasedcard)
+				{
+					if( ((Timebasedcard) currentCard).getExpires() == null )
+					{
+						((Timebasedcard) currentCard).initialized();
+					}
+					
+					if( ((Timebasedcard) currentCard).getExpires().after(now) )
+					{
+						ctrlWindowPassThrough.setBackground(Color.GREEN);
+						JOptionPane.showMessageDialog( null, "Gå gjennom. Ditt kort går ut: " + ((Timebasedcard) currentCard).getExpires() );
+						ctrlWindowPassThrough.setBackground(Color.RED);
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(null, "Ditt kort gikk ut: " + ((Timebasedcard) currentCard).getExpires() );
+					}
+				}
+/*
 				if (((Timebasedcard) currentCard).getExpires() == null)
 				{
 
@@ -123,7 +143,7 @@ public class Control extends JFrame
 					JOptionPane.showMessageDialog( null, "Gå gjennom. Du har igjen TID" );
 					ctrlWindowPassThrough.setBackground(Color.RED);
 				}
-
+*/
 			}
 
 			else
