@@ -15,15 +15,17 @@ public class Control extends JFrame
 	private JLabel ctrlWindowTextShowTime, ctrlWindowTextCustNr;
 	private JTextArea ctrlWindowStatusTxt;
 	private Lift lift;
+	private Personlist registry;
 	private Card validatingCard;
 
 
 	private Toolkit toolbox;
 
-	public Control( Lift l )
+	public Control( Personlist cr, Lift l )
 	{
 		super("Kontrollvindu");
 
+		registry = cr; 
 		lift = l; 
 		toolbox = Toolkit.getDefaultToolkit();
 
@@ -79,6 +81,8 @@ public class Control extends JFrame
 		try
 		{
 			int cardNumber = Integer.parseInt(ctrlWindowCustNr.getText());
+
+			validatingCard = registry.findCard( cardNumber );
 		}
 		catch(NumberFormatException nfe)
 		{
@@ -98,10 +102,10 @@ public class Control extends JFrame
 	{
 		int cardNumber = Integer.parseInt(ctrlWindowCustNr.getText());
 
-		if( instanceof Timebasedcard)
+/*		if( instanceof Timebasedcard)
 		{
 
-		}
+		}*/
 	}
 
 
