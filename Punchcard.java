@@ -7,7 +7,7 @@ public class Punchcard extends Skicard
 	public Punchcard( Date bd, Date b)
 	{
 		super(Info.PUNCHCARDPRICE, bd, b, "Klippekort");
-		clipCount = 0;
+		clipCount = -1;
 	}
 
 	public int getClipCount()
@@ -17,12 +17,12 @@ public class Punchcard extends Skicard
 
 	public void initialized()
 	{
-		clipCount =+ 10;
+		clipCount += 11;
 	}
 
 	public void usePunchCard()
 	{
-		clipCount =-1;
+		clipCount -= 1;
 	}
 
 	public String toString()
