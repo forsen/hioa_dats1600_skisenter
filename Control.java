@@ -30,7 +30,7 @@ public class Control extends JFrame
 		lift = l; 
 		toolbox = Toolkit.getDefaultToolkit();
 
-		String time = new SimpleDateFormat("hh:mm").format(new Date());
+		String time = new SimpleDateFormat("HH:mm").format(new Date());
 		validatingCard = null;
 
 		btnListener = new BtnListener();
@@ -115,35 +115,30 @@ public class Control extends JFrame
 						JOptionPane.showMessageDialog(null, "Ditt kort gikk ut: " + ((Timebasedcard) currentCard).getExpires() );
 					}
 				}
-/*
-				if (((Timebasedcard) currentCard).getExpires() == null)
-				{
 
-				
-					if(currentCard instanceof Timebasedcard)
-					{
-						((Timebasedcard) currentCard).initialized();
-					}
-					
-					else if(currentCard instanceof Punchcard)
+				if(currentCard instanceof Punchcard)
+				{
+					if( ((Punchcard) currentCard).getClipCount() == -1)
 					{
 						((Punchcard) currentCard).initialized();
 					}
 
-					ctrlWindowPassThrough.setBackground(Color.GREEN);
-					JOptionPane.showMessageDialog( null, validatingCard.history() );
-					ctrlWindowPassThrough.setBackground(Color.RED);
+					if( ((Punchcard) currentCard).getClipCount() > 0)
+					{
+						ctrlWindowPassThrough.setBackground(Color.GREEN);
+						((Punchcard) currentCard).usePunchCard();
+						JOptionPane.showMessageDialog( null, "Gå gjennom. Antall klipp igjen på kortet: " + ((Punchcard) currentCard).getClipCount() );
+						ctrlWindowPassThrough.setBackground(Color.RED);
+					}
+
+					else
+					{
+						JOptionPane.showMessageDialog( null, "Beklager, ingen fler klipp");
+						ctrlWindowPassThrough.setBackground(Color.RED);
+					}
+
 				}
 
-				
-
-				else if(((Timebasedcard) currentCard).getExpires().before(now))
-				{
-					ctrlWindowPassThrough.setBackground(Color.GREEN);
-					JOptionPane.showMessageDialog( null, "Gå gjennom. Du har igjen TID" );
-					ctrlWindowPassThrough.setBackground(Color.RED);
-				}
-*/
 			}
 
 			else

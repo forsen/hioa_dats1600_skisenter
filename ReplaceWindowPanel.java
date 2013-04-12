@@ -13,7 +13,7 @@ public class ReplaceWindowPanel extends JPanel
 	private JTextArea statusTxt;
 	private JPanel cntrPnl; 
 	private Listener listener;
-	public static JList cardIDList;
+	public static JList<Card> cardIDList;
 	private ListListener listListener;
 	private JScrollPane cardScrollList;
 	private Card card;
@@ -27,7 +27,7 @@ public class ReplaceWindowPanel extends JPanel
 		listener = new Listener();
 		listListener = new ListListener(); 
 
-		cardIDList = new JList<>( new DefaultListModel<>());
+		cardIDList = new JList<Card>( new DefaultListModel<Card>());
 		cardIDList.setFixedCellHeight(15);
 		cardIDList.setFixedCellWidth(100);
 		cardIDList.setVisibleRowCount( 4 );

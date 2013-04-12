@@ -71,7 +71,7 @@ public class Personlist implements Serializable
 
 	// tester en ny måte å representere resultatet på. 
 
-	public DefaultListModel findPerson(String fn, String ln)
+	public DefaultListModel<Person> findPerson(String fn, String ln)
 	{
 		DefaultListModel<Person> searchresult = new DefaultListModel<>();  
 

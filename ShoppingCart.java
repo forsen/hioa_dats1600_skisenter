@@ -30,7 +30,7 @@ public class ShoppingCart
 		return false; 
 	}
 
-	public DefaultListModel addToCart( Card c, Skicard sc )
+	public DefaultListModel<CartItems> addToCart( Card c, Skicard sc )
 	{
 
 		if( exists( c ))
@@ -66,10 +66,11 @@ public class ShoppingCart
 		}
 	}
 
-	public DefaultListModel emptyCart()
+	public DefaultListModel<CartItems> emptyCart()
 	{
 		items = new DefaultListModel<>();
 		cartList = new LinkedList<>();
+		sum = 0; 
 
 		return items;	
 	}

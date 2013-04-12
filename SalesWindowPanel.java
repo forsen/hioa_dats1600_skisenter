@@ -10,8 +10,8 @@ public class SalesWindowPanel extends JPanel
 	private JLabel custIDLbl, cardTypeLbl;
 	public static JTextField salesWindowCustIDtf; 
 	private JList<String> cardTypeList;
-	private JList<Skicard> shoppingCartList;
-	public static JList cardIDList;
+	private JList<CartItems> shoppingCartList;
+	public static JList<Card> cardIDList;
 	private DefaultListModel<Card> listmodel;
 	private JButton salesAddCartBtn, salesCheckoutBtn, salesNewCardBtn; 
 	private String[] cardTypeString; 
@@ -32,6 +32,7 @@ public class SalesWindowPanel extends JPanel
 		custIDLbl = new JLabel( " Kundenr" );
 		cardTypeLbl = new JLabel( " Korttype" );
 		salesWindowCustIDtf = new JTextField( 3 );
+		salesWindowCustIDtf.setEditable(false);
 		cardTypeString = new String[4];
 		cardTypeString[Skicard.DAYCARD] = "Dagskort";
 		cardTypeString[Skicard.HOURCARD] = "1-timeskort";
@@ -60,14 +61,14 @@ public class SalesWindowPanel extends JPanel
 		cardTypeList.setSelectedIndex(0);
 		cardTypeList.addListSelectionListener( cardListener );
 
-		cardIDList = new JList<>( new DefaultListModel<>());
+		cardIDList = new JList<Card>( new DefaultListModel<Card>());
 		cardIDList.setFixedCellHeight(15);
 		cardIDList.setFixedCellWidth(100);
 		cardIDList.setVisibleRowCount( 4 );
 		cardIDList.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
 		cardIDList.setCellRenderer( new CardListCellRenderer() );
 
-		shoppingCartList = new JList<Skicard>( new DefaultListModel<Skicard>() );
+		shoppingCartList = new JList<CartItems>( new DefaultListModel<CartItems>() );
 		shoppingCartList.setFixedCellHeight(15);
 		shoppingCartList.setFixedCellWidth( 100 );
 		shoppingCartList.setVisibleRowCount( 4 );

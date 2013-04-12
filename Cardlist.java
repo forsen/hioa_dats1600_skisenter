@@ -61,7 +61,7 @@ public class Cardlist implements Serializable
 		return n.getCardID();
 	}
 
-	public DefaultListModel listCards()
+	public DefaultListModel<Card> listCards()
 	{
 		DefaultListModel<Card> searchresult = new DefaultListModel<>();  
 

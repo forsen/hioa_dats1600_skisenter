@@ -79,7 +79,7 @@ public class Person implements Serializable
 
 	// to be able to preserve next value when saving / loading data file
 
-	public DefaultListModel listCards()
+	public DefaultListModel<Card> listCards()
 	{
 		return list.listCards();
 	}
