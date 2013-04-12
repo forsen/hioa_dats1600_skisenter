@@ -10,7 +10,7 @@ public class ReplaceWindowPanel extends JPanel
 {
 	private JButton  replaceWindowRepBtn;
 	public static JTextField replaceWindowCustIdtf;
-	private JPanel cntrPnl,btnPnl; 
+	private JPanel cntrPnl; 
 	private Listener listener;
 	public static JList cardIDList;
 	private ListListener listListener;
@@ -36,7 +36,7 @@ public class ReplaceWindowPanel extends JPanel
 		cardScrollList = new JScrollPane( cardIDList);
 
 		cntrPnl = new JPanel(new GridLayout( 4,2 )); 
-		btnPnl = new JPanel(); 
+		
 
 		cntrPnl.add( new JLabel( "Kundenummer" ) );
 		replaceWindowCustIdtf = new JTextField(5);
@@ -51,7 +51,7 @@ public class ReplaceWindowPanel extends JPanel
 		cntrPnl.add(replaceWindowRepBtn);
     	
 		add(cntrPnl, BorderLayout.CENTER );
-		add(btnPnl, BorderLayout.PAGE_END );
+		
 
 	}
 
@@ -78,9 +78,26 @@ public class ReplaceWindowPanel extends JPanel
 	public String replace()
 	{
 		
-		int custid = Integer.parseInt(replaceWindowCustIdtf.getText());
+		/*Salesclerk.customer.removeCard(card);
+
+		List<SkiCard> oldList = card.getSkicardlist();
+		Skicard current  = card.getCurrent
+
+		Skicard nCard = new Skicard();
+
+
+		Salesclerk.customer.set
+
+		List<SkiCard> newList = card.setSkicardlist();
+
+		int kortnr = Salesclerk.customer.add(card);*/
+
+
+		return "Kortet med kortnr: " + card.getCardID() + " ble er erstattet med kortnr" /*+ kortnr*/;
 		
-		return null;
+
+
+
 
 	}
 

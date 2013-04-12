@@ -181,6 +181,29 @@ public class Personlist implements Serializable
 		return doneText;
 	}
 
+	public String personListe()
+	{
+		StringBuilder text = new StringBuilder();
+		
+		Iterator<Person> it = registry.iterator();
+		
+		
+		while(it.hasNext())
+		{
+			Person runner = it.next();
+			text.append(runner.toString());
+			text.append("\n");
+			
+
+
+		
+		} 
+		
+		String doneText = text.toString();
+		
+		return doneText;
+	}
+
 }
 
 
