@@ -24,6 +24,7 @@ public class ReplaceWindowPanel extends JPanel
 	private DefaultListModel<Card> cardlistmodel;
 	private ListListener listListener;
 	private JScrollPane cardScrollList;
+	private Card card;
 	
 
 //Cardlist cl
@@ -31,10 +32,11 @@ public class ReplaceWindowPanel extends JPanel
 	{
 
 		setLayout( new BorderLayout( 5, 5) );
-
+		 card = null;
 	
 		listener = new Listener();
 		
+		listListener = new ListListener(); 
 
 		//list = new JList<>( new DefaultListModel<>());
 
@@ -45,13 +47,15 @@ public class ReplaceWindowPanel extends JPanel
 		cardIDList.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
 		cardIDList.setCellRenderer( new CardListCellRenderer() );
 
+		cardIDList.addListSelectionListener( listListener );
+
+
 		cardScrollList = new JScrollPane( cardIDList);
 	//	add( cardScrollList );
 
 		cntrPnl = new JPanel(new GridLayout( 4,2 )); 
 		btnPnl = new JPanel(); 
 
-		listListener = new ListListener(); 
 		//list.addListSelectionListener( listListener );
 
 		cntrPnl.add( new JLabel( "Kundenummer" ) );
@@ -146,7 +150,7 @@ public class ReplaceWindowPanel extends JPanel
 		{
 			try
 			{
-				Card card = cardlistmodel.get(cardIDList.getSelectedIndex());
+				card = (Card) cardIDList.getSelectedValue();
 				Salesclerk.salesClerkSearchInfoTxt.setText(card.history());
 				System.out.println( "Dette er inni tryblokken" );
 			}
@@ -157,6 +161,10 @@ public class ReplaceWindowPanel extends JPanel
 				System.out.println( "Dette er en exception" ); 
 
 			//	repstatusTxt.setText( "" );
+			}
+			catch( NullPointerException npe)
+			{
+
 			}
 
 		}

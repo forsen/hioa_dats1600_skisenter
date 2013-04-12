@@ -99,7 +99,7 @@ public class Person implements Serializable
 
 	public String seeAllCard()
 	{
-		return list.toString()+"HeiheiPerson";
+		return list.toString()+"HeiheiPerson" + "\n";
 	}
 
 	public String toString()
