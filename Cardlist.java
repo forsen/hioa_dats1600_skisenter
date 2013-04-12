@@ -103,6 +103,7 @@ public class Cardlist implements Serializable
 		while(it.hasNext())
 		{
 			Card runner = it.next();
+			text.append(runner.toString());
 			text.append(runner.history());
 			text.append("\n");
 		

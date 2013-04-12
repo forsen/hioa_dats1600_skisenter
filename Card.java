@@ -70,8 +70,6 @@ public class Card implements Serializable
 		{
 			Skicard runner = it.next();
 			text.append("\n");
-			text.append(toString());
-			text.append("\n");
 			text.append(runner.toString());
 			text.append("\n");
 			
