@@ -18,6 +18,7 @@ public class SalesWindowPanel extends JPanel
 	private CardListener cardListener;
 	private BtnListener btnListener;
 	private JScrollPane cardScrolList, shoppingScrolList;
+	private ShoppingCart shoppingCart; 
 	//private Person customer;
 
 	//public SalesWindowPanel( Person p )
@@ -34,6 +35,8 @@ public class SalesWindowPanel extends JPanel
 		cardTypeString[Skicard.HOURCARD] = "1-timeskort";
 		cardTypeString[Skicard.SEASONCARD] = "Sesongkort";
 		cardTypeString[Skicard.PUNCHCARD] = "Klippekort";
+
+		shoppingCart = new ShoppingCart();
 
 		btnListener = new BtnListener();
 
@@ -85,6 +88,29 @@ public class SalesWindowPanel extends JPanel
 
 	} 
 
+	private void addToCart()
+	{
+		int cardType = cardTypeList.getSelectedIndex();
+		Skicard sc;
+
+		Date now = new Date();
+		switch( cardType )
+		{
+			case Skicard.DAYCARD: sc = new Daycard( Info.DAYCARDPRICE, 0, "barn", now );
+									break;
+			case Skicard.HOURCARD: sc = new Hourcard( Info.HOURCARDPRICE, 0, "barn", now );
+									break; 
+			case Skicard.SEASONCARD: sc = new Seasoncard( Info.SEASONCARDPRICE, 0, "barn", now );
+									break;
+		//	case Skicard.PUNCHCARD: sc = new Punchcard( 10, 10, 0, "barn" ); 
+		//							break;
+			default: 				sc = null;
+		}
+
+		shoppingCartList.setModel( shoppingCart.addToCart( sc ) );
+
+
+	}
 	private void addProduct()
 	{
 		int cardType = cardTypeList.getSelectedIndex();
@@ -186,6 +212,10 @@ public class SalesWindowPanel extends JPanel
 			if( ae.getSource() == salesNewCardBtn )
 			{
 				newCard();
+			}
+			if( ae.getSource() == salesAddCartBtn )
+			{
+				addToCart();
 			}
 		}
 

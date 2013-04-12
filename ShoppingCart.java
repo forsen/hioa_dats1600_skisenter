@@ -1,3 +1,5 @@
+import javax.swing.DefaultListModel;
+
 public class ShoppingCart
 {
 	private double sum; 
