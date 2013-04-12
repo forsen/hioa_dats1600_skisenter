@@ -25,6 +25,11 @@ public class ShoppingCart
 		return items; 
 	}
 
+	public double getSum()
+	{
+		return sum; 
+	}
+
 	public void checkOut() 
 	{
 		// do something more

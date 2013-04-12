@@ -19,16 +19,18 @@ public class SalesWindowPanel extends JPanel
 	private BtnListener btnListener;
 	private JScrollPane cardScrolList, shoppingScrolList;
 	private ShoppingCart shoppingCart; 
+	private JLabel cartPrice;
+
 	//private Person customer;
 
 	//public SalesWindowPanel( Person p )
 	public SalesWindowPanel()
 	{
 
-		setLayout( new GridLayout(3,3));
+		setLayout( new GridLayout(4,3));
 		
-		custIDLbl = new JLabel( "Kundenr" );
-		cardTypeLbl = new JLabel( "Korttype" );
+		custIDLbl = new JLabel( " Kundenr" );
+		cardTypeLbl = new JLabel( " Korttype" );
 		salesWindowCustIDtf = new JTextField( 3 );
 		cardTypeString = new String[4];
 		cardTypeString[Skicard.DAYCARD] = "Dagskort";
@@ -40,6 +42,7 @@ public class SalesWindowPanel extends JPanel
 
 		btnListener = new BtnListener();
 
+		cartPrice = new JLabel(" Sum: 0kr");
 		salesAddCartBtn = new JButton("Legg i handlevogn");
 		salesAddCartBtn.addActionListener( btnListener );
 
@@ -85,6 +88,7 @@ public class SalesWindowPanel extends JPanel
 		add( salesCheckoutBtn );
 		add( salesNewCardBtn );
 		add( shoppingScrolList );
+		add( cartPrice );
 
 	} 
 
@@ -108,7 +112,7 @@ public class SalesWindowPanel extends JPanel
 		}
 
 		shoppingCartList.setModel( shoppingCart.addToCart( sc ) );
-
+		cartPrice.setText(" Sum: " + shoppingCart.getSum() + "kr");
 
 	}
 	private void addProduct()
