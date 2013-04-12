@@ -4,7 +4,6 @@ import java.awt.event.*;
 import java.awt.*;
 import java.io.*;
 
-
 public class AdminInfoPanel extends JPanel
 {	
 	private JTextField crdNr;
@@ -14,8 +13,6 @@ public class AdminInfoPanel extends JPanel
 	private Listener listener;
 	private JScrollPane scroll;
 	private Personlist list;
-
-
 
 	public AdminInfoPanel(Personlist l )
 	{
@@ -62,8 +59,6 @@ public class AdminInfoPanel extends JPanel
 		add(butnPnl, BorderLayout.PAGE_START);
 		add(dispPnl);
 
-
-
 	}
 
 	public void findPerson()
@@ -76,7 +71,7 @@ public class AdminInfoPanel extends JPanel
 		}
 		catch(NullPointerException npe)
 		{
-			display.setText("Fant ikke personen daa");
+			display.setText("Fant ikke eieren til kortet");
 		}
 		
 	} 

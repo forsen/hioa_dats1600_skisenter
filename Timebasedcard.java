@@ -21,8 +21,6 @@ public abstract class Timebasedcard extends Skicard
 		return expires;
 	}
 
-
-
 	abstract public void initialized();		/*abstrakt metode for å initializere (gi kortet startttid og slutttid)*/
 
 	abstract public void unvalidate(); 		/*<abstrakt metode for å sette ugyldig>*/

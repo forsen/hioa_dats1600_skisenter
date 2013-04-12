@@ -4,7 +4,6 @@ import java.awt.event.*;
 import java.awt.*;
 import java.io.*;
 
-
 public class Admin extends JFrame
 {	
 	private JPanel framePnl,topPnl,adminInfoPnl, statInfoPnl;
@@ -13,8 +12,6 @@ public class Admin extends JFrame
 	private Personlist list;
 	private Container c;
 	private BorderLayout layout;
-
-	
 
 	public Admin(Personlist l)
 	{
@@ -36,7 +33,6 @@ public class Admin extends JFrame
 
 		topPnl.add(admInfoBtn);
 		topPnl.add(admStatBtn);
-
 		
 		framePnl.add(adminInfoPnl);
 		framePnl.add(statInfoPnl );
@@ -67,15 +63,12 @@ public class Admin extends JFrame
      		if ( e.getSource() == admInfoBtn )
       		{
        			adminInfoPnl.setVisible(true);
-       			System.out.println("du trykka på knappen");
       		}
 
       		if( e.getSource() == admStatBtn)
       		{
       			statInfoPnl.setVisible(true);
       		}
-      		
-      
     	}
 	}
 }

@@ -4,7 +4,6 @@ import java.awt.event.*;
 import java.awt.*;
 import java.io.*;
 
-
 public class AdminStatistikkPanel extends JPanel
 {	
 	private JTextField fromFld, toFld;
@@ -14,8 +13,6 @@ public class AdminStatistikkPanel extends JPanel
 	private Listener listener;
 	private JScrollPane scroll;
 	private Personlist list;
-
-
 
 	public AdminStatistikkPanel(Personlist l )
 	{
@@ -51,8 +48,6 @@ public class AdminStatistikkPanel extends JPanel
 		add(choicePnl, BorderLayout.PAGE_START);
 		add(dispPnl);
 
-
-
 	}
 
 	private class Listener implements ActionListener
@@ -62,11 +57,9 @@ public class AdminStatistikkPanel extends JPanel
       		
       		if(e.getSource() == calculateBtn)
       		{
-      			display.setText("Her Beregnes det noe daaa");
+      			display.setText("Her skal det beregnes det noe ");
       		}
-
-      		
-      		
+	
     	}
 	}	
 }
