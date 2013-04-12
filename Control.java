@@ -17,6 +17,7 @@ public class Control extends JFrame
 	private Lift lift;
 	private Personlist registry;
 	private Card validatingCard;
+	private BtnListener btnListener;
 
 
 	private Toolkit toolbox;
@@ -32,6 +33,8 @@ public class Control extends JFrame
 		String time = new SimpleDateFormat("hh:mm").format(new Date());
 		validatingCard = null;
 
+		btnListener = new BtnListener();
+
 		Dimension windowDimension = toolbox.getScreenSize();
 
 		int height = windowDimension.height;
@@ -42,6 +45,7 @@ public class Control extends JFrame
 
 
 		ctrlRegCustNr = new JButton("Validér");
+		ctrlRegCustNr.addActionListener(btnListener);
 
 		ctrlWindowTextCustNr = new JLabel("Customer ID:");
 		ctrlWindowTextShowTime = new JLabel("Current time:");
@@ -56,9 +60,8 @@ public class Control extends JFrame
 		ctrlWindowShowTime.setText(time);
 
 		ctrlWindowPassThrough = new JPanel();
-		Color color = new Color(255, 0, 0);
 		ctrlWindowPassThrough.setPreferredSize(new Dimension(600, 400));
-		ctrlWindowPassThrough.setBackground(color);
+		ctrlWindowPassThrough.setBackground(Color.RED);
 
 		ctrlWindowStatusTxt = new JTextArea(10,10);
 		ctrlWindowStatusTxt.setText("Statusfelt her");
@@ -74,6 +77,8 @@ public class Control extends JFrame
 		c.add(ctrlWindowPassThrough);
 		c.add(ctrlWindowStatusTxt);
 
+
+
 	}
 
 	public void findCard()
@@ -87,16 +92,22 @@ public class Control extends JFrame
 			// Fjern denne når ting funker
 			if( validatingCard != null )
 			{
+				ctrlWindowPassThrough.setBackground(Color.GREEN);
 				JOptionPane.showMessageDialog( null, validatingCard.history() );
+				ctrlWindowPassThrough.setBackground(Color.RED);
+
+
 			}
 			else
 			{
+				ctrlWindowPassThrough.setBackground(Color.RED);
 				JOptionPane.showMessageDialog(null, "Du dreit deg ut!" ); 
 			}
 		}
 		catch(NumberFormatException nfe)
 		{
-			//feilmelding
+			 ctrlWindowPassThrough.setBackground(Color.RED);
+			 JOptionPane.showMessageDialog(null, "You need to enter a\nnumber", "Input Error", JOptionPane.ERROR_MESSAGE);
 
 		}
 	}
@@ -116,6 +127,18 @@ public class Control extends JFrame
 		{
 
 		}*/
+	}
+
+	private class BtnListener implements ActionListener
+	{
+		public void actionPerformed( ActionEvent ae )
+		{
+			if( ae.getSource() == ctrlRegCustNr )
+			{
+				findCard();
+			}
+		}
+
 	}
 
 
