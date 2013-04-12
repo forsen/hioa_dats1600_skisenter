@@ -148,11 +148,13 @@ public class ReplaceWindowPanel extends JPanel
 			{
 				Card card = cardlistmodel.get(cardIDList.getSelectedIndex());
 				Salesclerk.salesClerkSearchInfoTxt.setText(card.history());
+				System.out.println( "Dette er inni tryblokken" );
 			}
 			catch( ArrayIndexOutOfBoundsException aioobe )
 			{
 				// when making a new search, index will be out of bound. We use this exception 
-				// to clear the text field.
+				// to clear the text field.	
+				System.out.println( "Dette er en exception" );
 
 			//	repstatusTxt.setText( "" );
 			}
