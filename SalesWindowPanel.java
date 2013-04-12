@@ -203,7 +203,10 @@ public class SalesWindowPanel extends JPanel
 */
 	private void newCard()
 	{
-		Card nCard = new Card(); 
+	
+		shoppingCart.newCard();
+
+	/*	Card nCard = new Card(); 
 		try
 		{
 			Salesclerk.customer.addCard( nCard );
@@ -212,7 +215,7 @@ public class SalesWindowPanel extends JPanel
 		catch( NullPointerException npe )
 		{
 			JOptionPane.showMessageDialog( null, "Du må velge en person først!" );
-		}
+		}*/
 	}
 /*
 	public void setCustId()

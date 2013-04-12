@@ -6,11 +6,13 @@ public class ShoppingCart
 	private double sum; 
 	private DefaultListModel<CartItems> items;
 	private List<CartItems> cartList;
+	private List<Card> newCards; 
 
 	public ShoppingCart()
 	{
 		items = new DefaultListModel<>();
 		cartList = new LinkedList<>();
+		newCards = new LinkedList<>();
 	}
 
 	public boolean exists( Card c )
@@ -28,6 +30,29 @@ public class ShoppingCart
 		}
 
 		return false; 
+	}
+
+
+	public DefaultListModel<Card> newCard()
+	{
+		DefaultListModel<Card> cardList = null;
+
+		Card nCard = new Card(); 
+		try
+		{
+			cardList = Salesclerk.customer.listCards();
+			cardList.addElement( nCard );
+			sum += 70;
+			newCards.add( nCard );
+		}
+		catch( NullPointerException npe )
+		{
+			//JOptionPane.showMessageDialog( null, "Du må velge en person først!" );
+		}
+
+
+
+		return cardList;
 	}
 
 	public DefaultListModel<CartItems> addToCart( Card c, Skicard sc )
@@ -63,6 +88,20 @@ public class ShoppingCart
 		while( it.hasNext() )
 		{
 			it.next().checkOut();
+		}
+
+		Iterator<Card> cIt = newCards.iterator();
+
+		while( cIt.hasNext() )
+		{
+			try
+			{
+				Salesclerk.customer.addCard( cIt.next() );
+			}
+			catch( NullPointerException npe )
+			{
+				System.out.println( "Du må velge en person" );
+			}
 		}
 	}
 
