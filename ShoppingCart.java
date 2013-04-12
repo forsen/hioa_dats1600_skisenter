@@ -6,6 +6,7 @@ public class ShoppingCart
 	private double sum; 
 	private DefaultListModel<CartItems> items;
 	private List<CartItems> cartList;
+	private DefaultListModel<Card> cardList;
 	private List<Card> newCards; 
 
 	public ShoppingCart()
@@ -13,6 +14,20 @@ public class ShoppingCart
 		items = new DefaultListModel<>();
 		cartList = new LinkedList<>();
 		newCards = new LinkedList<>();
+
+		try
+		{
+
+			cardList = Salesclerk.customer.listCards();
+
+		}
+		catch( NullPointerException npe )
+		{
+			cardList = new DefaultListModel<Card>();
+			//JOptionPane.showMessageDialog( null, "Du må velge en person først!" );
+		}
+
+
 	}
 
 	public boolean exists( Card c )
@@ -35,22 +50,14 @@ public class ShoppingCart
 
 	public DefaultListModel<Card> newCard()
 	{
-		DefaultListModel<Card> cardList = null;
+
 
 		Card nCard = new Card(); 
-		try
-		{
-			cardList = Salesclerk.customer.listCards();
-			cardList.addElement( nCard );
-			sum += 70;
-			newCards.add( nCard );
-		}
-		catch( NullPointerException npe )
-		{
-			System.out.println("her skjedde det noe ball");
-			//JOptionPane.showMessageDialog( null, "Du må velge en person først!" );
-		}
 
+		cardList.addElement( nCard );
+		//System.out.println( "dette er balloks" );
+		sum += 70;
+		newCards.add( nCard );
 
 
 		return cardList;
@@ -110,6 +117,7 @@ public class ShoppingCart
 	{
 		items = new DefaultListModel<>();
 		cartList = new LinkedList<>();
+		newCards = new LinkedList<>();
 		sum = 0; 
 
 		return items;	
@@ -140,7 +148,7 @@ public class ShoppingCart
 
 			while( cIt.hasNext() )
 			{
-				text.append( cIt.toString() );
+				text.append( cIt.next().toString() );
 				text.append( "\n" );
 			}
 		}

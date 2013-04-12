@@ -204,8 +204,9 @@ public class SalesWindowPanel extends JPanel
 	private void newCard()
 	{
 	
-		shoppingCart.newCard();
+		SalesWindowPanel.cardIDList.setModel( shoppingCart.newCard() );
 		cartPrice.setText(" Sum: " + shoppingCart.getSum() + "kr");
+		
 
 	/*	Card nCard = new Card(); 
 		try
