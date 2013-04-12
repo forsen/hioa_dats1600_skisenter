@@ -141,6 +141,7 @@ public class SalesWindowPanel extends JPanel
 	private void checkOut()
 	{
 		shoppingCart.checkOut();
+		shoppingCartList.setModel(shoppingCart.emptyCart());
 	}
 
 /*

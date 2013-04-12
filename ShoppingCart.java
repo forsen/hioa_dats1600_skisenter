@@ -66,6 +66,14 @@ public class ShoppingCart
 		}
 	}
 
+	public DefaultListModel emptyCart()
+	{
+		items = new DefaultListModel<>();
+		cartList = new LinkedList<>();
+
+		return items;	
+	}
+
 	public String toString()
 	{
 		StringBuilder text = new StringBuilder();
