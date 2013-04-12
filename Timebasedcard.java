@@ -11,8 +11,17 @@ public abstract class Timebasedcard extends Skicard
 
 	}
 
-	/*<abstrakt metode(r) for å sjekke gyldighet (evt datometoder for å holde styr på tider)>*/
-  
+	public void setExpires(Date expires)
+	{
+		this.expires = expires;
+	}
+
+	public Date getExpires()
+	{
+		return expires;
+	}
+
+
 
 	abstract public void initialized();		/*abstrakt metode for å initializere (gi kortet startttid og slutttid)*/
 

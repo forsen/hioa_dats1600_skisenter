@@ -13,12 +13,12 @@ public class Seasoncard extends Timebasedcard
 
 	public void initialized()
 	{
-		expires = new Date( );
+		setExpires(new Date());
 
 
 		calHelper.setTime( expires );
 		calHelper.set(Calendar.MONTH, 6);
-		expires = calHelper.getTime(); 
+		setExpires(calHelper.getTime());
 
 	}
 

@@ -14,14 +14,14 @@ public class Hourcard extends Timebasedcard
 
 	public void initialized()
 	{
-		expires = new Date( );
+		setExpires(new Date());
 
 
 		calHelper.setTime( expires );
 		calHelper.set( Calendar.HOUR_OF_DAY, 1 );
 		calHelper.set( Calendar.MINUTE, 0 );
 		calHelper.set( Calendar.SECOND, 0 );
-		expires = calHelper.getTime(); 
+		setExpires(calHelper.getTime());
 
 	}
 

@@ -11,18 +11,17 @@ public class Daycard extends Timebasedcard
 		calHelper = Calendar.getInstance(); 		
 	}
 
-	public void initialized()
-	{
-		expires = new Date( );
+		public void initialized()
+		{
+			setExpires(new Date());
 
 
-		calHelper.setTime( expires );
-		calHelper.set( Calendar.HOUR_OF_DAY, 23 );
-		calHelper.set( Calendar.MINUTE, 0 );
-		calHelper.set( Calendar.SECOND, 0 );
-		expires = calHelper.getTime(); 
-
-	}
+			calHelper.setTime( expires );
+			calHelper.set( Calendar.HOUR_OF_DAY, 23 );
+			calHelper.set( Calendar.MINUTE, 0 );
+			calHelper.set( Calendar.SECOND, 0 );
+			setExpires(calHelper.getTime());
+		}
 
 	public void unvalidate()
 	{

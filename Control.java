@@ -89,9 +89,22 @@ public class Control extends JFrame
 
 			validatingCard = registry.findCard( cardNumber );
 
+			Skicard currentCard = validatingCard.getCurrent();
+
 			// Fjern denne når ting funker
 			if( validatingCard != null )
 			{
+
+				if(currentCard instanceof Timebasedcard)
+				{
+					((Timebasedcard) currentCard).initialized();
+				}
+
+				if(currentCard instanceof Punchcard)
+				{
+					((Punchcard) currentCard).initialized();
+				}
+
 				ctrlWindowPassThrough.setBackground(Color.GREEN);
 				JOptionPane.showMessageDialog( null, validatingCard.history() );
 				ctrlWindowPassThrough.setBackground(Color.RED);
@@ -117,17 +130,6 @@ public class Control extends JFrame
 		
 	}
 
-
-
-	public void initialized()
-	{
-		int cardNumber = Integer.parseInt(ctrlWindowCustNr.getText());
-
-/*		if( instanceof Timebasedcard)
-		{
-
-		}*/
-	}
 
 	private class BtnListener implements ActionListener
 	{
