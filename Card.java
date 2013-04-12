@@ -70,7 +70,7 @@ public class Card implements Serializable
 		{
 			Skicard runner = it.next();
 			text.append("\n");
-			text.append(cardNumber);
+			text.append(toString());
 			text.append("\n");
 			text.append(runner.toString());
 			text.append("\n");
@@ -88,6 +88,6 @@ public class Card implements Serializable
 
 	public String toString()
 	{
-		return null;
+		return "Kortnr: " + cardNumber;
 	}
 }
