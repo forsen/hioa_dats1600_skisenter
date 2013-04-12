@@ -5,129 +5,75 @@ import java.awt.*;
 import java.io.*;
 
 public class Admin extends JFrame
-{
-	private JButton beregnbn, persWcardbtn;
-	private JTextField fromfld, tofld;
-	private JTextArea display;
+{	
+	private JPanel framePnl,topPnl,adminInfoPnl, statInfoPnl;
+	private JButton admInfoBtn, admStatBtn;
+	private Listner listner;
 	private Personlist list;
-	private Lytter listener;
-	private JCheckBox sale, passes;
-	private CheckListner checkListner;
-	private String[] type = {"Barn", "Innmeldt", "alle"};
-	private JComboBox<String> box;
-	private JScrollPane scroll;
+	private Container c;
+	private BorderLayout layout;
+	
 
 	public Admin(Personlist l)
 	{
-		super("Statistikk");
+		super("Administrator");
 		list = l;
-		listener = new Lytter();
-		checkListner = new CheckListner();
-		box = new JComboBox<String>(type);
-		int n = box.getSelectedIndex();
-      	String type = box.getItemAt(n);
-      	
-		Container c = getContentPane();
-   		c.setLayout( new FlowLayout() );
-   		scroll = new JScrollPane(display);
-   		c.add(scroll);
+		topPnl = new JPanel( new FlowLayout() );
+		framePnl = new JPanel(new FlowLayout());
+		adminInfoPnl = new AdminInfoPanel(list);
+		statInfoPnl = new JPanel();
+		listner = new Listner();
 
-   		
-		c.add(new JLabel("Fra: "));
-		fromfld = new JTextField(4);
-		fromfld.setEditable( true );
-		c.add(fromfld);
+		layout = new BorderLayout( 5, 5 );
+		c = getContentPane();
+
+		admInfoBtn = new JButton("Info");
+		admInfoBtn.addActionListener(listner);	
+		admStatBtn = new JButton("Statistikk");
+		admStatBtn.addActionListener(listner);	
+
+		topPnl.add(admInfoBtn);
+		topPnl.add(admStatBtn);
 
 		
-		c.add(new JLabel("Til: "));
-		tofld = new JTextField(4);
-		tofld.setEditable( true );
-		c.add(tofld);
+		framePnl.add(adminInfoPnl);
+		framePnl.add(statInfoPnl );
 
-		sale = new JCheckBox("Salg");
-		sale.addItemListener(checkListner);
-		c.add(sale);
+		c.setLayout( layout );
+		c.add(topPnl, BorderLayout.PAGE_START );
+		c.add(framePnl );
 
-		passes = new JCheckBox("Passeringer");
-		passes.addItemListener(checkListner);
-		c.add(passes);
+		framePnl.setVisible(true);
+		adminInfoPnl.setVisible(true);
+		statInfoPnl.setVisible(false);
 
-		box.setSelectedIndex(0);
-		c.add(box);
-		
-		
-		display = new JTextArea(15,30);
-		display.setEditable( false );
-		display.setText("Her kommer statestikk med piechart o.l");
-		c.add(display);
+		layout.layoutContainer( c );
 
-
-		beregnbn = new JButton("Beregn");
-		beregnbn.addActionListener( listener );
-    	c.add( beregnbn );
-
-    	persWcardbtn = new JButton("Vis Personer med kort");
-    	persWcardbtn.addActionListener(listener);
-    	c.add(persWcardbtn);
-
-
+		setVisible(true);
 		setSize( 400, 380 );
-    	setVisible(true);
-	}
-
-	public void saleReport()
-	{
-		int from = Integer.parseInt(fromfld.getText());
-		int to = Integer.parseInt(tofld.getText());
-			
-		display.setText("Nå regner vi ut fra  "+ from + " til " + to);
-		
-
-
-		 
-	}
-	public void beregn()
-	{	
-		saleReport();
 
 	}
 
-	public void showPersWcards()
-	{
-		list.sort();
-		display.setText(list.toString());
-	}
-	
- 	
-
-  	private class Lytter implements ActionListener
+	private class Listner implements ActionListener
   	{
    		public void actionPerformed( ActionEvent e )
     	{ 
-     		if ( e.getSource() == beregnbn )
+     		
+    		adminInfoPnl.setVisible(false);
+			statInfoPnl.setVisible(false);
+			
+     		if ( e.getSource() == admInfoBtn )
       		{
-       			beregn();
+       			adminInfoPnl.setVisible(true);
+       			System.out.println("du trykka på knappen");
       		}
 
-      		if( e.getSource() == persWcardbtn)
+      		if( e.getSource() == admStatBtn)
       		{
-      			showPersWcards();
+      			statInfoPnl.setVisible(true);
       		}
-
       		
       
     	}
-	}
-
-	private class CheckListner implements ItemListener
-	{
-		public void itemStateChanged( ItemEvent e )
-		{
-			if(sale.isSelected())
-				saleReport();
-
-			else if (passes.isSelected())
-				beregn();
-		}
 	}
 }
