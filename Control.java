@@ -42,7 +42,7 @@ public class Control extends JFrame
 		int height = windowDimension.height;
 		int width = windowDimension.width; 
 
-		setSize( width/2, height/2 );
+		setSize( width/4, height/4 );
 		setLocationByPlatform( true );
 
 
@@ -53,7 +53,7 @@ public class Control extends JFrame
 		ctrlWindowTextShowTime = new JLabel("Klokke:");
 
 		ctrlWindowCustNr = new JTextField();
-		ctrlWindowCustNr.setPreferredSize(new Dimension(80,20));
+		ctrlWindowCustNr.setPreferredSize(new Dimension(70,20));
 		
 
 		
