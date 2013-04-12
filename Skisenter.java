@@ -47,7 +47,7 @@ public class Skisenter
 				vindu.setLocation(700,0);    			
 
 
-				final Admin a = new Admin( registry);
+				final Admin a = new Admin( registry,validations);
 				a.setLocation(0,425);    
 
 				Lift chLift = new Chairlift(validations, registry, "Superheisen", 2000, 3 );

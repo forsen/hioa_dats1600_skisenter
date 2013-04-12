@@ -3,6 +3,8 @@ import javax.swing.event.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.io.*;
+import java.util.List;
+import java.util.Iterator;
 
 public class Admin extends JFrame
 {	
@@ -12,14 +14,16 @@ public class Admin extends JFrame
 	private Personlist list;
 	private Container c;
 	private BorderLayout layout;
+	private List<Validations> validations;
 
-	public Admin(Personlist l)
+	public Admin(Personlist l,List<Validations> v)
 	{
 		super("Administrator");
 		list = l;
+		validations = v;
 		topPnl = new JPanel( new FlowLayout() );
 		framePnl = new JPanel(new FlowLayout());
-		adminInfoPnl = new AdminInfoPanel(list);
+		adminInfoPnl = new AdminInfoPanel(list,validations);
 		statInfoPnl = new AdminStatistikkPanel(list);
 		listner = new Listner();
 

@@ -148,6 +148,8 @@ public class CustWindowPanel extends JPanel
 
 			findPerson();
 
+			blankOut();
+
 
 		}
 		catch( ParseException pe )
@@ -196,8 +198,16 @@ public class CustWindowPanel extends JPanel
 		}
 //		if(firstname != null)
 //			statusTxt.setText(custRegistry.findPerson(firstname, lastname));
+		blankOut();
 
+	}
 
+	public void blankOut()
+	{
+		custWindowFirstName.setText("");
+		custWindowLastName.setText("");
+		custWindowPhone.setText("");
+		custWindowBorn.setText("");
 	}
 
 

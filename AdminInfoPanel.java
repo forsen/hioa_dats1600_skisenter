@@ -3,6 +3,8 @@ import javax.swing.event.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.io.*;
+import java.util.List;
+import java.util.Iterator;
 
 public class AdminInfoPanel extends JPanel
 {	
@@ -13,11 +15,12 @@ public class AdminInfoPanel extends JPanel
 	private Listener listener;
 	private JScrollPane scroll;
 	private Personlist list;
+	private List<Validations> validations;
 
-	public AdminInfoPanel(Personlist l )
+	public AdminInfoPanel(Personlist l,List<Validations> v )
 	{
 		list = l;
-	
+		validations = v;
 		butnPnl = new JPanel(new GridLayout( 4,2 ));
 		dispPnl = new JPanel();
 		
@@ -94,8 +97,16 @@ public class AdminInfoPanel extends JPanel
 
 	public void showPassings()
 	{
-		display.setText("Her kommer det en liste over heipasseringer etterhvert");
-	}
+		
+		Iterator<Validations> it = validations.iterator();
+		StringBuilder text = new StringBuilder();
+
+		while( it.hasNext() )
+		{
+			text.append( it.next().toString() );
+		}
+		display.setText( text.toString() );
+	}	
 
 
 	private class Listener implements ActionListener
