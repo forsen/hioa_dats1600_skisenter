@@ -106,15 +106,37 @@ public class SalesWindowPanel extends JPanel
 									break; 
 			case Skicard.SEASONCARD: sc = new Seasoncard( Info.SEASONCARDPRICE, 0, "barn", now );
 									break;
-		//	case Skicard.PUNCHCARD: sc = new Punchcard( 10, 10, 0, "barn" ); 
-		//							break;
+			case Skicard.PUNCHCARD: sc = new Punchcard( Info.PUNCHCARDPRICE, 0, "barn", now ); 
+									break;
 			default: 				sc = null;
 		}
+		try
+		{
+			Card c = (Card) cardIDList.getSelectedValue();
+			shoppingCartList.setModel( shoppingCart.addToCart( c, sc ) );
+			cartPrice.setText(" Sum: " + shoppingCart.getSum() + "kr");
+		}
+		catch( NullPointerException npe )
+		{
+			if( Salesclerk.customer.isEmpty() )
+				JOptionPane.showMessageDialog(null, "Du må opprette et kort først, trykk på nytt kort");
+			else
+				JOptionPane.showMessageDialog( null, "Du må velge hvilket kort fra kortlista som skal få det nye produktet" );
+		}
 
-		shoppingCartList.setModel( shoppingCart.addToCart( sc ) );
-		cartPrice.setText(" Sum: " + shoppingCart.getSum() + "kr");
+
 
 	}
+
+	private void checkOut()
+	{
+		//shoppingCartList.checkOut();
+	
+
+
+	}
+
+/*
 	private void addProduct()
 	{
 		int cardType = cardTypeList.getSelectedIndex();
@@ -157,7 +179,7 @@ public class SalesWindowPanel extends JPanel
 
 		}
 	}
-
+*/
 	private void newCard()
 	{
 		Card nCard = new Card(); 
@@ -211,7 +233,7 @@ public class SalesWindowPanel extends JPanel
 		{
 			if( ae.getSource() == salesCheckoutBtn )
 			{
-				addProduct();
+				checkOut();
 			}
 			if( ae.getSource() == salesNewCardBtn )
 			{
