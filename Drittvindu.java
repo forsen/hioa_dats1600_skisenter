@@ -3,6 +3,8 @@ import javax.swing.event.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.io.*;
+import java.util.List;
+import java.util.Iterator;
 
 public class Drittvindu extends JFrame
 {
@@ -10,15 +12,16 @@ public class Drittvindu extends JFrame
 	private JTextArea persontxt, cardtxt, persWcardtxt;
 	private Personlist list;
 	private JScrollPane scroll;
+	private List<Validations> validations;
 
 
 	private Lytter listener;
 
-	public Drittvindu(Personlist l)
+	public Drittvindu(List<Validations> lv, Personlist l)
 	{
 		super("Testvindu");
 		list = l;
-		
+		validations = lv; 
 		listener = new Lytter();
 
 		Container c = getContentPane();
@@ -64,7 +67,14 @@ public class Drittvindu extends JFrame
 
 	public void showCards()
 	{
-		cardtxt.setText("Her kommer liste over skikort");
+		Iterator<Validations> it = validations.iterator();
+		StringBuilder text = new StringBuilder();
+
+		while( it.hasNext() )
+		{
+			text.append( it.next().toString() );
+		}
+		cardtxt.setText( text.toString() );
 	}
 
 	public void showPersWithCards()
