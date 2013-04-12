@@ -4,7 +4,6 @@ public abstract class Timebasedcard extends Skicard
 {
 	//<datafelter>
 	protected Date expires; 
-	protected Date initialized;
 
 	public Timebasedcard(int p, int d, String ag, Date b )
 	{
@@ -13,7 +12,7 @@ public abstract class Timebasedcard extends Skicard
 	}
 
 	/*<abstrakt metode(r) for å sjekke gyldighet (evt datometoder for å holde styr på tider)>*/
-    /*<abstrakt getmetode for heiskortnr>*/
+  
 
 	abstract public void initialized();		/*abstrakt metode for å initializere (gi kortet startttid og slutttid)*/
 

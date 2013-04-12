@@ -15,6 +15,7 @@ public class Control extends JFrame
 	private JLabel ctrlWindowTextShowTime, ctrlWindowTextCustNr;
 	private JTextArea ctrlWindowStatusTxt;
 	private Lift lift;
+	private Card validatingCard;
 
 
 	private Toolkit toolbox;
@@ -27,6 +28,7 @@ public class Control extends JFrame
 		toolbox = Toolkit.getDefaultToolkit();
 
 		String time = new SimpleDateFormat("hh:mm").format(new Date());
+		validatingCard = null;
 
 		Dimension windowDimension = toolbox.getScreenSize();
 
@@ -72,12 +74,40 @@ public class Control extends JFrame
 
 	}
 
-	public void validate()
+	public void findCard()
 	{
-		// do some magic here... 
+		try
+		{
+			int cardNumber = Integer.parseInt(ctrlWindowCustNr.getText());
+		}
+		catch(NumberFormatException nfe)
+		{
+			//feilmelding
+
+		}
 	}
 
-	
+	public void validate(int cardNumber)
+	{
+		
+	}
+
+
+
+	public void initialized()
+	{
+		int cardNumber = Integer.parseInt(ctrlWindowCustNr.getText());
+
+		if( instanceof Timebasedcard)
+		{
+
+		}
+	}
+
+
+	/* ta imoot kortID, validere, sjekke om det finnes, gyldig, hvis klippekort trekke et klipp*/
+	/* instanceOf Timebasedcard, sjekk om det er initializert;
+
 	/*<konstruktør for å opprette vinduet>
 
 	<metoder for å validere kort basert på kortnr>
