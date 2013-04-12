@@ -65,4 +65,27 @@ public class ShoppingCart
 			it.next().checkOut();
 		}
 	}
+
+	public String toString()
+	{
+		StringBuilder text = new StringBuilder();
+
+		Iterator<CartItems> it = cartList.iterator();
+
+		while( it.hasNext() )
+		{
+			CartItems ci = it.next();
+			text.append( ""+ci.getCardID() );
+			text.append( ", ");
+			text.append( ci.getType() );
+			text.append( ", " );
+			text.append( ci.getPrice() + "kr" );
+			text.append( "\n" );
+		}
+
+		text.append( "\n" );
+		text.append( "Sum: " + sum + "kr");
+		
+		return text.toString();
+	}
 }

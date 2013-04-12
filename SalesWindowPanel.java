@@ -134,7 +134,7 @@ public class SalesWindowPanel extends JPanel
 	private void payment()
 	{
 		// tar i mot betaling og slikt.
-		JOptionPane.showMessageDialog( null, shoppingCartList.toString() );
+		JOptionPane.showMessageDialog( null, shoppingCart.toString() );
 		checkOut();
 
 	}
