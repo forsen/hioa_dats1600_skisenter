@@ -56,7 +56,7 @@ public class Drittvindu extends JFrame
 
 	public void showPersons()
 	{
-		persontxt.setText(personListe());
+		//persontxt.setText(personListe());
 	}
 
 	public void showCards()

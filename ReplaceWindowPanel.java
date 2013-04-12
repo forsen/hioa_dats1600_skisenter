@@ -10,6 +10,7 @@ public class ReplaceWindowPanel extends JPanel
 {
 	private JButton  replaceWindowRepBtn;
 	public static JTextField replaceWindowCustIdtf;
+	private JTextArea statusTxt;
 	private JPanel cntrPnl; 
 	private Listener listener;
 	public static JList cardIDList;
@@ -17,7 +18,7 @@ public class ReplaceWindowPanel extends JPanel
 	private JScrollPane cardScrollList;
 	private Card card;
 	
-	public ReplaceWindowPanel()
+	public ReplaceWindowPanel(JTextArea s)
 	{
 
 		setLayout( new BorderLayout( 5, 5) );
@@ -49,10 +50,12 @@ public class ReplaceWindowPanel extends JPanel
 		replaceWindowRepBtn = new JButton(" Erstatt ");
 		replaceWindowRepBtn.addActionListener( listener );
 		cntrPnl.add(replaceWindowRepBtn);
+		statusTxt = s;
+
     	
 		add(cntrPnl, BorderLayout.CENTER );
 		
-
+		
 	}
 
 	public void search()
@@ -75,25 +78,26 @@ public class ReplaceWindowPanel extends JPanel
 
 	} 
 
-	public String replace()
+	public void replace()
 	{
 		
-		/*Salesclerk.customer.removeCard(card);
-
-		List<SkiCard> oldList = card.getSkicardlist();
-		Skicard current  = card.getCurrent
-
-		Skicard nCard = new Skicard();
+		Salesclerk.customer.removeCard(card);
 
 
-		Salesclerk.customer.set
+		
+		
 
-		List<SkiCard> newList = card.setSkicardlist();
-
-		int kortnr = Salesclerk.customer.add(card);*/
+		Card nCard = new Card(); 
 
 
-		return "Kortet med kortnr: " + card.getCardID() + " ble er erstattet med kortnr" /*+ kortnr*/;
+		nCard.setSkicardlist( card.getSkicardlist());
+		nCard.setCurrent(card.getCurrent());
+
+		
+		Salesclerk.customer.addCard(nCard);
+
+
+		statusTxt.setText( "Kortet med kortnr: " + card.getCardID() + " ble er erstattet med kortnr: " + nCard.getCardID());
 		
 
 
@@ -109,6 +113,7 @@ public class ReplaceWindowPanel extends JPanel
       		if(e.getSource() == replaceWindowRepBtn)
       		{
       			replace();
+      			System.out.println("Du har trykka på erstatt");
       		}
       		
     	}
