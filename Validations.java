@@ -32,6 +32,7 @@ public class Validations implements Serializable
 		text.append( "Korttype: " + card.getCurrent().getType() );
 		text.append( "\n" );
 		text.append( "Passert: " + date.toString() );
+		text.append( "\n\n\n");
 
 		return text.toString();
 	}

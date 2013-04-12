@@ -38,7 +38,7 @@ public class Skisenter
 					}
 				});
 
-				final Drittvindu  vindu = new Drittvindu(registry);
+				final Drittvindu  vindu = new Drittvindu( validations, registry);
 
 
 /*
@@ -49,7 +49,7 @@ public class Skisenter
 				vindu.setLocation(700,0);    			
 
 
-				final Admin a = new Admin(registry);
+				final Admin a = new Admin( registry);
 				a.setLocation(0,425);    
 
 				Lift chLift = new Chairlift(validations, registry, "Superheisen", 2000, 3 );
