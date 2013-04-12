@@ -70,21 +70,35 @@ public class Admin extends JFrame
 
 	public void saleReport()
 	{
-		/*int from = Integer.parseInt(fromfld.getText());
-		int to = Integer.parseInt(tofld.getText());
-
-		if(from == null && to == null)
+		int from = 0;
+		int to = 0;
+		try
 		{
-			
+			from = Integer.parseInt(fromfld.getText());
+			to = Integer.parseInt(tofld.getText());
+
+			display.setText("detta gikk ");		}
+		catch(NullPointerException npe)
+		{
+			display.setText("tullbaøø");
 		}
-		*/
+		catch(NumberFormatException nfe)
+		{
+			display.setText("Det må være tall");
+		}
+
+		
+		
+
+		display.setText("Du må fylle inn begge felter ");
+		
 
 
 		 
 	}
 	public void beregn()
 	{	
-
+		saleReport();
 
 	}
 
