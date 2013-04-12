@@ -56,12 +56,12 @@ public class Drittvindu extends JFrame
 
 	public void showPersons()
 	{
-		//persontxt.setText(personListe());
+		persontxt.setText(list.personListe());
 	}
 
 	public void showCards()
 	{
-		cardtxt.setText("Her kommer lista");
+		cardtxt.setText("Her kommer liste over skikort");
 	}
 
 	public void showPersWithCards()
