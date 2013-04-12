@@ -44,6 +44,7 @@ public class ReplaceWindowPanel extends JPanel
 		cardIDList.setVisibleRowCount( 4 );
 		cardIDList.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
 		cardIDList.setCellRenderer( new CardListCellRenderer() );
+		cardIDlist.addListSelectionListener( listListener );
 
 		cardScrollList = new JScrollPane( cardIDList);
 	//	add( cardScrollList );
