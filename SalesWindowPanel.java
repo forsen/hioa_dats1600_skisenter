@@ -10,13 +10,14 @@ public class SalesWindowPanel extends JPanel
 	private JLabel custIDLbl, cardTypeLbl;
 	public static JTextField salesWindowCustIDtf; 
 	private JList<String> cardTypeList;
+	private JList<Skicard> shoppingCartList;
 	public static JList cardIDList;
 	private DefaultListModel<Card> listmodel;
 	private JButton salesAddCartBtn, salesCheckoutBtn, salesNewCardBtn; 
 	private String[] cardTypeString; 
 	private CardListener cardListener;
 	private BtnListener btnListener;
-	private JScrollPane cardScrolList;
+	private JScrollPane cardScrolList, shoppingScrolList;
 	//private Person customer;
 
 	//public SalesWindowPanel( Person p )
@@ -60,6 +61,15 @@ public class SalesWindowPanel extends JPanel
 		cardIDList.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
 		cardIDList.setCellRenderer( new CardListCellRenderer() );
 
+		shoppingCartList = new JList<Skicard>( new DefaultListModel<Skicard>() );
+		shoppingCartList.setFixedCellHeight(15);
+		shoppingCartList.setFixedCellWidth( 100 );
+		shoppingCartList.setVisibleRowCount( 4 );
+		shoppingCartList.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
+		shoppingCartList.setCellRenderer( new ShoppingCartCellListRenderer() );
+		shoppingScrolList = new JScrollPane( shoppingCartList );
+
+
 		cardScrolList = new JScrollPane( cardIDList );
 
 
@@ -71,7 +81,7 @@ public class SalesWindowPanel extends JPanel
 		add( salesAddCartBtn );
 		add( salesCheckoutBtn );
 		add( salesNewCardBtn );
-
+		add( shoppingScrolList );
 
 	} 
 
