@@ -82,26 +82,12 @@ public class ReplaceWindowPanel extends JPanel
 	{
 		
 		Salesclerk.customer.removeCard(card);
-
-
-		
-		
-
 		Card nCard = new Card(); 
-
-
 		nCard.setSkicardlist( card.getSkicardlist());
 		nCard.setCurrent(card.getCurrent());
-
-		
 		Salesclerk.customer.addCard(nCard);
 
-
 		statusTxt.setText( "Kortet med kortnr: " + card.getCardID() + " ble er erstattet med kortnr: " + nCard.getCardID());
-		
-
-
-
 
 	}
 
@@ -127,7 +113,6 @@ public class ReplaceWindowPanel extends JPanel
 			{
 				card = (Card) cardIDList.getSelectedValue();
 				Salesclerk.salesClerkSearchInfoTxt.setText(card.history());
-				System.out.println( "Dette er inni tryblokken" );
 			}
 			catch( ArrayIndexOutOfBoundsException aioobe )
 			{
