@@ -44,7 +44,6 @@ public class ReplaceWindowPanel extends JPanel
 		cardIDList.setVisibleRowCount( 4 );
 		cardIDList.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
 		cardIDList.setCellRenderer( new CardListCellRenderer() );
-		cardIDlist.addListSelectionListener( listListener );
 
 		cardScrollList = new JScrollPane( cardIDList);
 	//	add( cardScrollList );
@@ -155,7 +154,7 @@ public class ReplaceWindowPanel extends JPanel
 			{
 				// when making a new search, index will be out of bound. We use this exception 
 				// to clear the text field.	
-				System.out.println( "Dette er en exception" );
+				System.out.println( "Dette er en exception" ); 
 
 			//	repstatusTxt.setText( "" );
 			}
