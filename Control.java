@@ -83,6 +83,16 @@ public class Control extends JFrame
 			int cardNumber = Integer.parseInt(ctrlWindowCustNr.getText());
 
 			validatingCard = registry.findCard( cardNumber );
+
+			// Fjern denne når ting funker
+			if( validatingCard != null )
+			{
+				JOptionPane.showMessageDialog( null, validatingCard.history() );
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "Du dreit deg ut!" ); 
+			}
 		}
 		catch(NumberFormatException nfe)
 		{
