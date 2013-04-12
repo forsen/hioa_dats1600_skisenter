@@ -2,23 +2,23 @@ import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Date;
-import java.text.SimpleDateFormat;
+//import java.util.Date;
+//import java.text.SimpleDateFormat;
 import java.io.*;
-import java.text.ParseException;
+//import java.text.ParseException;
 
 
 public class ReplaceWindowPanel extends JPanel 
 {
-	private JButton  replaceWindowRepBtn, replaceWindowSearchBtn;
+	private JButton  replaceWindowRepBtn;
 	private JTextField replaceWindowOldcard;
 	public static JTextField replaceWindowCustIdtf;
 //	private JTextArea repstatusTxt;
 	private JPanel cntrPnl,btnPnl; 
 	private Listener listener;
-	private Personlist custRegistry;
-	private Cardlist cardlist = new Cardlist();
-	private JList list; 
+	//private Personlist custRegistry;
+	//private Cardlist cardlist = new Cardlist();
+	//private JList list; 
 	public static JList cardIDList;
 	private DefaultListModel<Person> listmodel;
 	private DefaultListModel<Card> cardlistmodel;
@@ -27,16 +27,16 @@ public class ReplaceWindowPanel extends JPanel
 	
 
 //Cardlist cl
-	public ReplaceWindowPanel(Personlist cr)
+	public ReplaceWindowPanel()
 	{
 
 		setLayout( new BorderLayout( 5, 5) );
 
-		custRegistry = cr;
+	
 		listener = new Listener();
 		
 
-		list = new JList<>( new DefaultListModel<>());
+		//list = new JList<>( new DefaultListModel<>());
 
 		cardIDList = new JList<>( new DefaultListModel<>());
 		cardIDList.setFixedCellHeight(15);
@@ -52,7 +52,7 @@ public class ReplaceWindowPanel extends JPanel
 		btnPnl = new JPanel(); 
 
 		listListener = new ListListener(); 
-		list.addListSelectionListener( listListener );
+		//list.addListSelectionListener( listListener );
 
 		cntrPnl.add( new JLabel( "Kundenummer" ) );
 		replaceWindowCustIdtf = new JTextField(5);
@@ -72,9 +72,9 @@ public class ReplaceWindowPanel extends JPanel
 	//	repstatusTxt.setText("Her kommer info");
 		
 
-		replaceWindowSearchBtn = new JButton(" Søk ");
+	/*	replaceWindowSearchBtn = new JButton(" Søk ");
 		replaceWindowSearchBtn.addActionListener( listener );
-		cntrPnl.add(replaceWindowSearchBtn);
+		cntrPnl.add(replaceWindowSearchBtn);*/
 
 		replaceWindowRepBtn = new JButton(" Erstatt ");
 		replaceWindowRepBtn.addActionListener( listener );
@@ -146,9 +146,8 @@ public class ReplaceWindowPanel extends JPanel
 		{
 			try
 			{
-				Salesclerk.customer = listmodel.get(list.getSelectedIndex());
-				SalesWindowPanel.salesWindowCustIDtf.setText( "" + Salesclerk.customer.getCustId() );
-			//	repstatusTxt.setText( Salesclerk.customer.getCustId() + "\n" + Salesclerk.customer.toString() );
+				Card card = cardlistmodel.get(cardIDList.getSelectedIndex());
+				Salesclerk.salesClerkSearchInfoTxt.setText(card.history());
 			}
 			catch( ArrayIndexOutOfBoundsException aioobe )
 			{
