@@ -7,11 +7,6 @@ public class Cardlist implements Serializable
 {
 	private List<Card> list = new LinkedList<>();
 	
-	/*<datafelt>
-
-	<konstruktør som oppretter startverdier for datafeltene>
-	*/
-
 	public boolean isEmpty()
 	{
 		return list == null || list.size() == 0;
@@ -20,8 +15,7 @@ public class Cardlist implements Serializable
 	public String input(Card obj)
 	{
 		list.add(obj);
-		return obj.getCardID() + " Ble opprettet med kundenummer: ";
-		
+		return obj.getCardID() + " Ble opprettet med kundenummer: ";	
 	}
 
 	public Card deleteCard(Card obj)
@@ -113,6 +107,5 @@ public class Cardlist implements Serializable
 		
 		return doneText;
 	}
-
 
 }//end of class Skicardlist

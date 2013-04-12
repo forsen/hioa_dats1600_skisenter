@@ -4,17 +4,15 @@ import java.awt.event.*;
 import java.awt.*;
 import java.io.*;
 
-
 public class AdminInfoPanel extends JPanel
 {	
-	private JButton showPersons,showPersWcards, showCards, showPassings;
+	private JTextField crdNr;
+	private JButton findPerson, showPersons,showPersWcards, showCards, showPassings;
 	private JTextArea display;
 	private JPanel butnPnl, dispPnl;
 	private Listener listener;
 	private JScrollPane scroll;
 	private Personlist list;
-
-
 
 	public AdminInfoPanel(Personlist l )
 	{
@@ -30,7 +28,16 @@ public class AdminInfoPanel extends JPanel
 		display = new JTextArea(20,40);
 		scroll = new JScrollPane(display);
 
-		showPersons = new JButton(" Vis Person ");
+		butnPnl.add( new JLabel( "Kortnr" ) );
+		crdNr = new JTextField(5);
+		crdNr.setEditable( true );
+		butnPnl.add(crdNr);
+
+		findPerson = new JButton(" Finn Person ");
+		findPerson.addActionListener( listener );
+		butnPnl.add(findPerson);
+
+		showPersons = new JButton(" Vis Personliste ");
 		showPersons.addActionListener( listener );
 		butnPnl.add(showPersons);
 
@@ -52,34 +59,72 @@ public class AdminInfoPanel extends JPanel
 		add(butnPnl, BorderLayout.PAGE_START);
 		add(dispPnl);
 
-
-
 	}
+
+	public void findPerson()
+	{
+		try
+		{
+			int cardnr = Integer.parseInt(crdNr.getText());
+			Person p = list.findPersonByCard(cardnr);
+			display.setText(p.toString());
+		}
+		catch(NullPointerException npe)
+		{
+			display.setText("Fant ikke eieren til kortet");
+		}
+		
+	} 
+
+	public void showPersons()
+	{
+		display.setText(list.personListe());
+	}
+
+	public void showPersonsWithcards()
+	{
+		list.sort();
+		display.setText(list.toString());
+	}
+
+	public void showCards()
+	{
+		display.setText("Her kommer det en skikortliste etterhvert");
+	}
+
+	public void showPassings()
+	{
+		display.setText("Her kommer det en liste over heipasseringer etterhvert");
+	}
+
 
 	private class Listener implements ActionListener
   	{
    		public void actionPerformed( ActionEvent e )
     	{ 	
       		
+      		if(e.getSource() == findPerson)
+      		{
+      			findPerson();
+      		}
       		if(e.getSource() == showPersons)
       		{
-      			display.setText(list.personListe());
+      			showPersons();
       		}
 
       		if(e.getSource() == showPersWcards)
       		{
-      			list.sort();
-				display.setText(list.toString());
+      			showPersonsWithcards();
       		}
 
       		if(e.getSource() == showCards)
       		{
-      			display.setText("Her kommer det en skikortliste etterhvert");
+      			showCards();
       		}
 
       		if(e.getSource() == showPassings)
       		{
-      			display.setText("Her kommer det en liste over heipasseringer etterhvert");
+      			showPassings();
       		}
       		
     	}

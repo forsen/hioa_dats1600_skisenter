@@ -159,25 +159,23 @@ public class Personlist implements Serializable
 		return null;
 	}
 
-/*
-	public Person findPerson(Card c)
+
+	public Person findPersonByCard(int c)
 	{
 		Iterator<Person> it = registry.iterator();
 
 		while(it.hasNext())
 		{
-			Person owner = it.next();
+			Person p = it.next();
 
-			if(owner.ownsCard(card) != null)
+			if( p.findCard( c ) != null )
 			{
-				return owner;
-			}
-		    
+				return p;
+			} 
 		}
 		return null;
-
 	}
-*/	
+	
 	
 
 	public String toString()

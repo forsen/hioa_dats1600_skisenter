@@ -1,4 +1,3 @@
-
 import java.io.Serializable;
 import java.util.*;
 
@@ -65,17 +64,12 @@ public class Card implements Serializable
 		
 		Iterator<Skicard> it = skiCardList.iterator();
 		
-		
 		while(it.hasNext())
 		{
 			Skicard runner = it.next();
 			text.append("\n");
 			text.append(runner.toString());
 			text.append("\n");
-			
-
-
-
 		
 		} 
 		

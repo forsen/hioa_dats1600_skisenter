@@ -102,7 +102,6 @@ public class Control extends JFrame
 
 			Date now = new Date();
 
-			// Fjern denne når ting funker
 			if( validatingCard != null )
 			{
 
