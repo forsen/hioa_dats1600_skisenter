@@ -56,18 +56,18 @@ public class Drittvindu extends JFrame
 
 	public void showPersons()
 	{
-		list.sort();
-		persontxt.setText(list.toString());
+		persontxt.setText(list.personListe());
 	}
 
 	public void showCards()
 	{
-		cardtxt.setText("Her kommer lista");
+		cardtxt.setText("Her kommer liste over skikort");
 	}
 
 	public void showPersWithCards()
 	{
-		persWcardtxt.setText("Her kommer lista");
+		list.sort();
+		persWcardtxt.setText(list.toString());
 
 	}
  	

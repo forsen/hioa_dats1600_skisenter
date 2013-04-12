@@ -6,10 +6,10 @@ import java.io.*;
 
 public class Info extends JFrame
 {
-	private final static int PUNCHCARDPRICE = 200;
-	private final static int DAYCARDPRICE = 320;
-	private final static int HOURCARD = 120;
-	private final static int SEASONCARD = 3000;
+	public final static int PUNCHCARDPRICE = 200;
+	public final static int DAYCARDPRICE = 320;
+	public final static int HOURCARDPRICE = 120;
+	public final static int SEASONCARDPRICE = 3000;
 
 	/*<datafelt, inkludert statiske priskonstanter som brukes av de forskjellige heiskortklassene>
 

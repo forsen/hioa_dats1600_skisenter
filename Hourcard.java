@@ -3,11 +3,12 @@ import java.util.*;
 public class Hourcard extends Timebasedcard
 {
 	Calendar calHelper; 
+	
 
 
 	public Hourcard(int p, int d, String ag, Date b )
 	{
-		super(p, d, ag, b); 
+		super(p, d, ag, b, "Timeskort"); 
 		bought = new Date();  	
 		calHelper = Calendar.getInstance(); 
 	}

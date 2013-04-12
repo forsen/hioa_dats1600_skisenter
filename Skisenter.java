@@ -45,7 +45,7 @@ public class Skisenter
 
 				Lift chLift = new Chairlift("Superheisen", 2000, 3 );
 
-				final Control lift1 = new Control( registry, chLift );
+				final Control lift1 = new Control( registry,  chLift );
 				lift1.setVisible(true);
 				lift1.setLocation(700,425);
 

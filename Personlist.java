@@ -81,12 +81,20 @@ public class Personlist implements Serializable
 		{
 			Person owner = it.next();
 
-			if(!fn.isEmpty() && owner.getFirstName().toLowerCase().matches((".*" + fn + ".*" ).toLowerCase() ))
+			if(!fn.isEmpty() && !ln.isEmpty() )
+			{
+				if (owner.getFirstName().toLowerCase().matches((".*" + fn + ".*" ).toLowerCase() ) && 
+					owner.getLastName().toLowerCase().matches((".*" + ln + ".*" ).toLowerCase() ) )
+				{
+					searchresult.addElement( owner );
+				}
+			}
+			else if(!fn.isEmpty() && owner.getFirstName().toLowerCase().matches((".*" + fn + ".*" ).toLowerCase() ))
 			{
 				searchresult.addElement( owner );
 			}
 
-			if(!ln.isEmpty() && owner.getLastName().toLowerCase().matches((".*" + ln + ".*" ).toLowerCase() ))
+			else if(!ln.isEmpty() && owner.getLastName().toLowerCase().matches((".*" + ln + ".*" ).toLowerCase() ))
 			{
 				searchresult.addElement( owner );
 			}
@@ -183,9 +191,32 @@ public class Personlist implements Serializable
 		{
 			Person runner = it.next();
 			text.append(runner.toString());
-			text.append("\nHeiheiPersonlist");
-			text.append(runner.seeAllCard());
 			text.append("\n");
+			text.append(runner.seeAllCard());
+			text.append("---------------------");
+
+
+		
+		} 
+		
+		String doneText = text.toString();
+		
+		return doneText;
+	}
+
+	public String personListe()
+	{
+		StringBuilder text = new StringBuilder();
+		
+		Iterator<Person> it = registry.iterator();
+		
+		
+		while(it.hasNext())
+		{
+			Person runner = it.next();
+			text.append(runner.toString());
+			text.append("\n");
+			
 
 
 		

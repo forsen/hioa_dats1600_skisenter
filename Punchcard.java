@@ -6,7 +6,7 @@ public class Punchcard extends Skicard
 
 	public Punchcard(int p, int d, String ag, Date b)
 	{
-		super(p, d, ag, b);
+		super(p, d, ag, b, "Klippekort");
 		clipCount = 0;
 	}
 

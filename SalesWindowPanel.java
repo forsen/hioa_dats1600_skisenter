@@ -10,23 +10,27 @@ public class SalesWindowPanel extends JPanel
 	private JLabel custIDLbl, cardTypeLbl;
 	public static JTextField salesWindowCustIDtf; 
 	private JList<String> cardTypeList;
+	private JList<Skicard> shoppingCartList;
 	public static JList cardIDList;
 	private DefaultListModel<Card> listmodel;
 	private JButton salesAddCartBtn, salesCheckoutBtn, salesNewCardBtn; 
 	private String[] cardTypeString; 
 	private CardListener cardListener;
 	private BtnListener btnListener;
-	private JScrollPane cardScrolList;
+	private JScrollPane cardScrolList, shoppingScrolList;
+	private ShoppingCart shoppingCart; 
+	private JLabel cartPrice;
+
 	//private Person customer;
 
 	//public SalesWindowPanel( Person p )
 	public SalesWindowPanel()
 	{
 
-		setLayout( new GridLayout(3,3));
+		setLayout( new GridLayout(4,3));
 		
-		custIDLbl = new JLabel( "Kundenr" );
-		cardTypeLbl = new JLabel( "Korttype" );
+		custIDLbl = new JLabel( " Kundenr" );
+		cardTypeLbl = new JLabel( " Korttype" );
 		salesWindowCustIDtf = new JTextField( 3 );
 		cardTypeString = new String[4];
 		cardTypeString[Skicard.DAYCARD] = "Dagskort";
@@ -34,8 +38,11 @@ public class SalesWindowPanel extends JPanel
 		cardTypeString[Skicard.SEASONCARD] = "Sesongkort";
 		cardTypeString[Skicard.PUNCHCARD] = "Klippekort";
 
+		shoppingCart = new ShoppingCart();
+
 		btnListener = new BtnListener();
 
+		cartPrice = new JLabel(" Sum: 0kr");
 		salesAddCartBtn = new JButton("Legg i handlevogn");
 		salesAddCartBtn.addActionListener( btnListener );
 
@@ -60,6 +67,15 @@ public class SalesWindowPanel extends JPanel
 		cardIDList.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
 		cardIDList.setCellRenderer( new CardListCellRenderer() );
 
+		shoppingCartList = new JList<Skicard>( new DefaultListModel<Skicard>() );
+		shoppingCartList.setFixedCellHeight(15);
+		shoppingCartList.setFixedCellWidth( 100 );
+		shoppingCartList.setVisibleRowCount( 4 );
+		shoppingCartList.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
+		shoppingCartList.setCellRenderer( new ShoppingCartCellListRenderer() );
+		shoppingScrolList = new JScrollPane( shoppingCartList );
+
+
 		cardScrolList = new JScrollPane( cardIDList );
 
 
@@ -71,10 +87,63 @@ public class SalesWindowPanel extends JPanel
 		add( salesAddCartBtn );
 		add( salesCheckoutBtn );
 		add( salesNewCardBtn );
-
+		add( shoppingScrolList );
+		add( cartPrice );
 
 	} 
 
+	private void addToCart()
+	{
+		int cardType = cardTypeList.getSelectedIndex();
+		Skicard sc;
+
+		Date now = new Date();
+		switch( cardType )
+		{
+			case Skicard.DAYCARD: sc = new Daycard( Info.DAYCARDPRICE, 0, "barn", now );
+									break;
+			case Skicard.HOURCARD: sc = new Hourcard( Info.HOURCARDPRICE, 0, "barn", now );
+									break; 
+			case Skicard.SEASONCARD: sc = new Seasoncard( Info.SEASONCARDPRICE, 0, "barn", now );
+									break;
+			case Skicard.PUNCHCARD: sc = new Punchcard( Info.PUNCHCARDPRICE, 0, "barn", now ); 
+									break;
+			default: 				sc = null;
+		}
+		try
+		{
+			Card c = (Card) cardIDList.getSelectedValue();
+			if( c != null )
+			{
+				shoppingCartList.setModel( shoppingCart.addToCart( c, sc ) );
+				cartPrice.setText(" Sum: " + shoppingCart.getSum() + "kr");
+			}
+		}
+		catch( NullPointerException npe )
+		{
+			if( Salesclerk.customer.isEmpty() )
+				JOptionPane.showMessageDialog(null, "Du må opprette et kort først, trykk på nytt kort");
+			else
+				JOptionPane.showMessageDialog( null, "Du må velge hvilket kort fra kortlista som skal få det nye produktet" );
+		}
+
+
+
+	}
+
+	private void payment()
+	{
+		// tar i mot betaling og slikt.
+		JOptionPane.showMessageDialog( null, shoppingCart.toString() );
+		checkOut();
+
+	}
+	private void checkOut()
+	{
+		shoppingCart.checkOut();
+	}
+
+/*
 	private void addProduct()
 	{
 		int cardType = cardTypeList.getSelectedIndex();
@@ -117,7 +186,7 @@ public class SalesWindowPanel extends JPanel
 
 		}
 	}
-
+*/
 	private void newCard()
 	{
 		Card nCard = new Card(); 
@@ -171,11 +240,15 @@ public class SalesWindowPanel extends JPanel
 		{
 			if( ae.getSource() == salesCheckoutBtn )
 			{
-				addProduct();
+				payment();
 			}
 			if( ae.getSource() == salesNewCardBtn )
 			{
 				newCard();
+			}
+			if( ae.getSource() == salesAddCartBtn )
+			{
+				addToCart();
 			}
 		}
 

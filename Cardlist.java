@@ -1,4 +1,4 @@
-//a list over all of the skicards a person holds and all cards ever sold
+ //a list over all of the skicards a person holds and all cards ever sold
 import java.io.*;
 import java.util.*;
 import javax.swing.DefaultListModel;
@@ -104,7 +104,7 @@ public class Cardlist implements Serializable
 		{
 			Card runner = it.next();
 			text.append(runner.history());
-			text.append("\nHeiheiCardlist");
+			text.append("\n");
 		
 		} 
 		

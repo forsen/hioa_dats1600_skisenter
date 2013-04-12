@@ -5,9 +5,9 @@ public abstract class Timebasedcard extends Skicard
 	//<datafelter>
 	protected Date expires; 
 
-	public Timebasedcard(int p, int d, String ag, Date b )
+	public Timebasedcard(int p, int d, String ag, Date b, String t )
 	{
-		super(p, d, ag, b);
+		super(p, d, ag, b, t);
 
 	}
 

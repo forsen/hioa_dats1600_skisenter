@@ -3,10 +3,11 @@ import java.util.*;
 public class Daycard extends Timebasedcard
 {
 	Calendar calHelper; 
+	
 
 	public Daycard(int p, int d, String ag, Date b)
 	{
-		super(p, d, ag, b); 
+		super(p, d, ag, b, "Dagskort"); 
 		bought = new Date();  	
 		calHelper = Calendar.getInstance(); 		
 	}

@@ -87,6 +87,11 @@ public class Person implements Serializable
 		return list.addCard( n );
 	}
 
+	public void removeCard( Card n )
+	{
+		list.deleteCard(n);
+	}
+
 	public static int readNext()
 	{
 		return next;
@@ -99,7 +104,7 @@ public class Person implements Serializable
 
 	public String seeAllCard()
 	{
-		return list.toString()+"HeiheiPerson" + "\n";
+		return list.toString()+ "\n";
 	}
 
 	public Card findCard(int cardNumber)

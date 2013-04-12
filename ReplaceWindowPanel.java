@@ -10,14 +10,15 @@ public class ReplaceWindowPanel extends JPanel
 {
 	private JButton  replaceWindowRepBtn;
 	public static JTextField replaceWindowCustIdtf;
-	private JPanel cntrPnl,btnPnl; 
+	private JTextArea statusTxt;
+	private JPanel cntrPnl; 
 	private Listener listener;
 	public static JList cardIDList;
 	private ListListener listListener;
 	private JScrollPane cardScrollList;
 	private Card card;
 	
-	public ReplaceWindowPanel()
+	public ReplaceWindowPanel(JTextArea s)
 	{
 
 		setLayout( new BorderLayout( 5, 5) );
@@ -36,7 +37,7 @@ public class ReplaceWindowPanel extends JPanel
 		cardScrollList = new JScrollPane( cardIDList);
 
 		cntrPnl = new JPanel(new GridLayout( 4,2 )); 
-		btnPnl = new JPanel(); 
+		
 
 		cntrPnl.add( new JLabel( "Kundenummer" ) );
 		replaceWindowCustIdtf = new JTextField(5);
@@ -49,10 +50,12 @@ public class ReplaceWindowPanel extends JPanel
 		replaceWindowRepBtn = new JButton(" Erstatt ");
 		replaceWindowRepBtn.addActionListener( listener );
 		cntrPnl.add(replaceWindowRepBtn);
+		statusTxt = s;
+
     	
 		add(cntrPnl, BorderLayout.CENTER );
-		add(btnPnl, BorderLayout.PAGE_END );
-
+		
+		
 	}
 
 	public void search()
@@ -75,12 +78,16 @@ public class ReplaceWindowPanel extends JPanel
 
 	} 
 
-	public String replace()
+	public void replace()
 	{
 		
-		int custid = Integer.parseInt(replaceWindowCustIdtf.getText());
-		
-		return null;
+		Salesclerk.customer.removeCard(card);
+		Card nCard = new Card(); 
+		nCard.setSkicardlist( card.getSkicardlist());
+		nCard.setCurrent(card.getCurrent());
+		Salesclerk.customer.addCard(nCard);
+
+		statusTxt.setText( "Kortet med kortnr: " + card.getCardID() + " ble er erstattet med kortnr: " + nCard.getCardID());
 
 	}
 
@@ -92,6 +99,7 @@ public class ReplaceWindowPanel extends JPanel
       		if(e.getSource() == replaceWindowRepBtn)
       		{
       			replace();
+      			System.out.println("Du har trykka på erstatt");
       		}
       		
     	}
@@ -105,7 +113,6 @@ public class ReplaceWindowPanel extends JPanel
 			{
 				card = (Card) cardIDList.getSelectedValue();
 				Salesclerk.salesClerkSearchInfoTxt.setText(card.history());
-				System.out.println( "Dette er inni tryblokken" );
 			}
 			catch( ArrayIndexOutOfBoundsException aioobe )
 			{
