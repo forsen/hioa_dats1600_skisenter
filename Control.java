@@ -140,11 +140,6 @@ public class Control extends JFrame
 		}
 	}
 
-	public void validate(int cardNumber)
-	{
-		findCard();
-	}
-
 
 	private class BtnListener implements ActionListener
 	{
@@ -152,7 +147,7 @@ public class Control extends JFrame
 		{
 			if( ae.getSource() == ctrlRegCustNr )
 			{
-				validate();
+				findCard();
 			}
 		}
 
