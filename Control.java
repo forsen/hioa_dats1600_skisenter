@@ -2,7 +2,9 @@ import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Timer;
 import java.util.Date;
+import java.util.TimerTask;
 import java.text.SimpleDateFormat;
 import java.io.*;
 import java.text.ParseException;
@@ -30,7 +32,7 @@ public class Control extends JFrame
 		lift = l; 
 		toolbox = Toolkit.getDefaultToolkit();
 
-		String time = new SimpleDateFormat("HH:mm").format(new Date());
+		
 		validatingCard = null;
 
 		btnListener = new BtnListener();
@@ -57,7 +59,6 @@ public class Control extends JFrame
 		
 		ctrlWindowShowTime = new JTextField();
 		ctrlWindowShowTime.setPreferredSize(new Dimension(80,20));
-		ctrlWindowShowTime.setText(time);
 
 		ctrlWindowPassThrough = new JPanel();
 		ctrlWindowPassThrough.setPreferredSize(new Dimension(600, 400));
@@ -76,8 +77,13 @@ public class Control extends JFrame
 		c.add(ctrlWindowShowTime);
 		c.add(ctrlWindowPassThrough);
 		c.add(ctrlWindowStatusTxt);
+		updateTime();
+	}
 
-
+	public void updateTime()
+	{
+		Timer timer = new Timer();
+        timer.schedule(new UpdateTime(), 0, 1000);
 
 	}
 
@@ -166,6 +172,15 @@ public class Control extends JFrame
 			}
 		}
 
+	}
+
+	private class UpdateTime extends TimerTask
+	{
+    	public void run()
+    	{
+      	   String time = new SimpleDateFormat("HH:mm:ss").format(new Date());
+     	   ctrlWindowShowTime.setText(time);
+    	}
 	}
 
 
