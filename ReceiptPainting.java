@@ -2,11 +2,16 @@ import java.awt.*;
 import javax.swing.*;
 import java.util.Date;
 import java.util.regex.*;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import javax.imageio.ImageIO;
 
 public class ReceiptPainting extends JPanel
 {
 	private JTextArea printItems;
 	private double sum;
+	private BufferedImage img;
 	private int MARGIN = 10;
 	private int YSTART = 50;
 	private int LINESPACE = 20; 
@@ -17,6 +22,14 @@ public class ReceiptPainting extends JPanel
 		sum = s;
 		printItems = p;
 		setBackground( Color.WHITE );
+		try
+		{
+			img = ImageIO.read( new File("offpist_kvittering.png"));
+		}
+		catch( IOException ioe )
+		{
+			System.out.println( "Fikk ikke lastet bildet" );
+		}
 	}
 
 	public Dimension getPreferredSize()
