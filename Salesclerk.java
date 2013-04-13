@@ -60,6 +60,7 @@ public class Salesclerk extends JFrame
 		custWindowBtn.setFocusPainted(false);
 		custWindowBtn.setContentAreaFilled(false);
 		custWindowBtn.setBorderPainted(false);
+		custWindowBtn.setToolTipText("Registrering av kunde");
 
 		ImageIcon salg = new ImageIcon("salg.png");
 		salesWindowBtn = new JButton(salg);
@@ -68,6 +69,7 @@ public class Salesclerk extends JFrame
 		salesWindowBtn.setFocusPainted(false);
 		salesWindowBtn.setContentAreaFilled(false);
 		salesWindowBtn.setBorderPainted(false);
+		salesWindowBtn.setToolTipText("Registrering av nytt salg");
 
 		ImageIcon erstatt = new ImageIcon("erstatt.png");
 		replaceWindowBtn = new JButton(erstatt);
@@ -76,6 +78,7 @@ public class Salesclerk extends JFrame
 		replaceWindowBtn.setFocusPainted(false);
 		replaceWindowBtn.setContentAreaFilled(false);
 		replaceWindowBtn.setBorderPainted(false);
+		replaceWindowBtn.setToolTipText("Erstatt kort");
 
 		topMenuPnl = new JPanel( new FlowLayout() );
 		
