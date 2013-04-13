@@ -54,7 +54,7 @@ public class AdminStatistikkPanel extends JPanel
 		revenue.addItemListener( checklistner );
 		choicePnl.add(revenue);
 
-		display = new GraphPanel(list);
+		display = new GraphPanel();
 		scroll = new JScrollPane(display);
 
 		calculateBtn = new JButton(" Beregn ");
