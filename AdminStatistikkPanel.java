@@ -8,11 +8,13 @@ public class AdminStatistikkPanel extends JPanel
 {	
 	private JTextField fromFld, toFld;
 	private JButton calculateBtn;
-	private JTextArea display;
+	private JPanel display;
 	private JPanel choicePnl, dispPnl;
 	private Listener listener;
 	private JScrollPane scroll;
 	private Personlist list;
+	private JCheckBox sold, cutomers, passings, revenue;
+	private CheckListner checklistner;
 
 	public AdminStatistikkPanel(Personlist l )
 	{
@@ -24,6 +26,7 @@ public class AdminStatistikkPanel extends JPanel
 		setLayout( new BorderLayout( 5, 5) );
 
 		listener = new Listener();
+		checklistner = new CheckListner();
 
 		choicePnl.add( new JLabel( "Fra: " ) );
 		fromFld = new JTextField(4);
@@ -35,7 +38,23 @@ public class AdminStatistikkPanel extends JPanel
 		toFld.setEditable( false );
 		choicePnl.add(toFld);
 
-		display = new JTextArea(20,40);
+		sold = new JCheckBox( "Solgte kort" );
+		sold.addItemListener( checklistner );
+		choicePnl.add(sold);
+
+		cutomers = new JCheckBox( "Opprettede kunder" );
+		cutomers.addItemListener( checklistner );
+		choicePnl.add(cutomers);
+
+		passings = new JCheckBox( "Passeringer i heis" );
+		passings.addItemListener( checklistner );
+		choicePnl.add(passings);
+
+		revenue = new JCheckBox( "Omsetning" );
+		revenue.addItemListener( checklistner );
+		choicePnl.add(revenue);
+
+		display = new GraphPanel(list);
 		scroll = new JScrollPane(display);
 
 		calculateBtn = new JButton(" Beregn ");
@@ -57,10 +76,31 @@ public class AdminStatistikkPanel extends JPanel
       		
       		if(e.getSource() == calculateBtn)
       		{
-      			display.setText("Her skal det beregnes det noe ");
+      			//display.setText("Her skal det beregnes det noe ");
       		}
 	
     	}
-	}	
+	}
+
+	private class CheckListner implements ItemListener
+	{
+       public void itemStateChanged( ItemEvent e )
+       {
+       		if ( sold.isSelected() )
+       		{
+
+       		}	
+      		else if ( cutomers.isSelected() )
+      		{
+
+      		}
+     			
+   			else if ( passings.isSelected() )
+   			{
+
+   			}		
+     		
+   		}
+ 	}	
 }
 	
