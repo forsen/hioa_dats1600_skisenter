@@ -57,6 +57,19 @@ public class Card implements Serializable
 		return skiCardList; 
 	}
 
+	public int totalCost()
+	{
+		Iterator<Skicard> it = skiCardList.iterator();
+		int total = 0;
+
+		while(it.hasNext())
+		{
+			Skicard runner = it.next();
+			total += runner.getPrice();
+		}
+		return total;
+	}
+
 	//metode for å se hva slags type kort dette kortet tidligere har vært
 	public String history()
 	{

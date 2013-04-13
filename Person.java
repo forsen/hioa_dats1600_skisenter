@@ -119,6 +119,12 @@ public class Person implements Serializable
 		return list.findCard(cardNumber);
 	}
 
+	public int totalCost()
+	{ 
+		return list.totalCost();
+		
+	}
+
 	public String toString()
 	{
 		StringBuilder text = new StringBuilder();

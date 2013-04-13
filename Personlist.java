@@ -128,13 +128,28 @@ public class Personlist implements Serializable
 			Person p = it.next();
 			helper.setTime( p.getCreated());
 			
-			if(helper.get(Calendar.MINUTE ) == nr)
+			if(helper.get(Calendar.MONTH ) == nr)
 			{
 				antall++;
 			}
 			
 		}
 		return antall;
+	}
+
+	public int totalCost()
+	{
+		Iterator<Person> it = registry.iterator();
+
+		int total = 0;
+
+		while (it.hasNext())
+		{
+			Person runner = it.next();
+
+			total += runner.totalCost();
+		}
+		return total;
 	}
 
 	
@@ -209,6 +224,8 @@ public class Personlist implements Serializable
 		}
 		return null;
 	}
+
+	
 	
 	
 
