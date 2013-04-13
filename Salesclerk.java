@@ -53,10 +53,29 @@ public class Salesclerk extends JFrame
 		setLocationByPlatform( true );
 
 		custRegistry = cr; 
-		custWindowBtn = new JButton("Kunde");
-		salesWindowBtn = new JButton("NySalg");
+		ImageIcon kunde = new ImageIcon("kunde.png");
+		custWindowBtn = new JButton(kunde);
+		ImageIcon kunde2 = new ImageIcon("kunde2.png");
+		custWindowBtn.setRolloverIcon(kunde2);
+		custWindowBtn.setFocusPainted(false);
+		custWindowBtn.setContentAreaFilled(false);
+		custWindowBtn.setBorderPainted(false);
 
-		replaceWindowBtn = new JButton("Erstatt");
+		ImageIcon salg = new ImageIcon("salg.png");
+		salesWindowBtn = new JButton(salg);
+		ImageIcon salg2 = new ImageIcon("salg2.png");
+		salesWindowBtn.setRolloverIcon(salg2);
+		salesWindowBtn.setFocusPainted(false);
+		salesWindowBtn.setContentAreaFilled(false);
+		salesWindowBtn.setBorderPainted(false);
+
+		ImageIcon erstatt = new ImageIcon("erstatt.png");
+		replaceWindowBtn = new JButton(erstatt);
+		ImageIcon erstatt2 = new ImageIcon("erstatt2.png");
+		replaceWindowBtn.setRolloverIcon(erstatt2);
+		replaceWindowBtn.setFocusPainted(false);
+		replaceWindowBtn.setContentAreaFilled(false);
+		replaceWindowBtn.setBorderPainted(false);
 
 		topMenuPnl = new JPanel( new FlowLayout() );
 		
