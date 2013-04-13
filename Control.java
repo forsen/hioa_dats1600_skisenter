@@ -69,6 +69,7 @@ public class Control extends JFrame
 //		JLabel background = new JLabel(new ImageIcon("bakgrunn.jpg"));
 
 
+
 		setLocationByPlatform( true );
 
 		ImageIcon valider = new ImageIcon("valider.png");
@@ -104,6 +105,7 @@ public class Control extends JFrame
 		c.add(ctrlWindowTextShowTime);
 		c.add(ctrlWindowShowTime);
 		c.add(ctrlWindowPassThrough);
+
 		updateTime();
 
 		

@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class CashRegister extends JFrame
 {
-	private JTextArea orderList, total, overview, receipt; 
+	private JTextArea orderList, total, overview; 
 	private ShoppingCart shoppingCart; 
 	private JButton printReceipt, printCard, payByCash, payByCard;
 	private JTextField cashInput;
@@ -49,24 +49,6 @@ public class CashRegister extends JFrame
 		printCard.setEnabled(false );
 		printReceipt.setEnabled( false );
 
-
-
-//-----------------------------------------------------------
-		receipt = new JTextArea( 30, 30);
-		receipt.setText( "\t\tTidenes skisenter\t\t\n" );
-		receipt.append( "\t\tORG.NR. 123 456 789 MVA\n" );
-		receipt.append( "\t\tLangtvekkistan 1 \n" );
-		receipt.append( "\t\tTLF: 22 33 22 33 \n" );
-		receipt.append( "\n\n");
-		receipt.append( new Date().toString() + "\n"); 
-		receipt.append( "----------------------------------------------\n");
-		receipt.append( orderList.getText() );
-		receipt.append( "----------------------------------------------\n");
-		receipt.append( "SUBTOTAL\t\t\t" + sum + "\n");
-		receipt.append( "----------------------------------------------\n");
-		
-//-----------------------------------------------------------
-
 		setLayout( new GridBagLayout() );
 
 		GridBagConstraints c = new GridBagConstraints();
@@ -89,7 +71,6 @@ public class CashRegister extends JFrame
 		c.gridwidth = 2;
 		c.weighty = 0.5;
 		add( total, c );
-//		add( orderList );
 
 		c.gridheight = 1;
 		c.gridx = 2;
@@ -168,7 +149,6 @@ public class CashRegister extends JFrame
 		{
 			printReceipt.setEnabled( true );
 			printCard.setEnabled( true );
-			//receipt.append( overview.toString() );
 		}
 	}
 
@@ -185,7 +165,7 @@ public class CashRegister extends JFrame
 				paid("med");
 			if( ae.getSource() == printReceipt )
 			{
-				PrintWindow w = new PrintWindow( receipt );
+				PrintWindow w = new PrintWindow( orderList, sum );
 			}
 
 
