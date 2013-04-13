@@ -23,7 +23,7 @@ public class Info extends JFrame
         }
 
         JButton button;
-        JTextArea area;
+        JPanel panel1;
         
         JPanel panel;
 
@@ -44,6 +44,7 @@ public class Info extends JFrame
 	button = new JButton(nyheter);
 	button.setFocusPainted(false);
 	button.setContentAreaFilled(false);
+	button.setBorderPainted(false);
 	if (shouldWeightX) {
 	c.weightx = 0.5;
 	}
@@ -55,6 +56,9 @@ public class Info extends JFrame
 
 	ImageIcon info = new ImageIcon("info.png");
 	button = new JButton(info);
+	button.setFocusPainted(false);
+	button.setContentAreaFilled(false);
+	button.setBorderPainted(false);
 	c.fill = GridBagConstraints.BOTH;
 	c.weightx = 0.5;
 	c.gridx = 0;
@@ -64,6 +68,9 @@ public class Info extends JFrame
 
 	ImageIcon tilbud = new ImageIcon("tilbud.png");
 	button = new JButton(tilbud);
+	button.setFocusPainted(false);
+	button.setBorderPainted(false);
+	button.setContentAreaFilled(false);
 	c.fill = GridBagConstraints.BOTH;
 	c.weightx = 0.5;
 	c.gridx = 0;
@@ -73,6 +80,9 @@ public class Info extends JFrame
 
 	ImageIcon priser = new ImageIcon("priser.png");
 	button = new JButton(priser);
+	button.setFocusPainted(false);
+	button.setBorderPainted(false);
+	button.setContentAreaFilled(false);
 	c.fill = GridBagConstraints.BOTH;
 	c.weighty = 1;
 	c.weightx = 0.5;
@@ -85,6 +95,7 @@ public class Info extends JFrame
 	panel = new JPanel();
 	c.fill = GridBagConstraints.BOTH;
 	panel.setBackground(new Color(200, 230, 255));
+	panel.setToolTipText("Hei");
 	c.weightx = 0.5;
 	c.gridheight = 1;
 	c.gridwidth = 2;
@@ -92,15 +103,15 @@ public class Info extends JFrame
 	c.gridy = 0;
 	pane.add(panel, c);
 
-	area = new JTextArea();
+	panel1 = new JPanel();
 	c.fill = GridBagConstraints.BOTH;
-	area.setBackground(new Color(220, 240, 255));
+	panel1.setBackground(new Color(220, 240, 255));
 	c.weightx = 0.8;
 	c.gridheight = 4;
 	c.gridwidth = 4;
 	c.gridx = 1;
 	c.gridy = 1;
-	pane.add(area, c);
+	pane.add(panel1, c);
 
 	// tredje kolonne/////////////
 
@@ -117,6 +128,46 @@ public class Info extends JFrame
 	// fjerde kolonne/////////////
 
     }
+
+public void paint(Graphics panel1)  
+{  
+ super.paint(panel1);  
+  
+ //All triangle corner x coordinate  
+ int[]x={0,150,300};  
+  
+ //All triangle corner y coordinate  
+ int[]y={200,0,200};  
+  
+ //Set color base on RGB  
+ //You can get RGB value for your color at "Color picker" at above  
+ //R=255  
+ //G=192  
+ //B=0  
+ //So after this all you draw will use this color  
+ panel1.setColor(new Color(255,192,0));  
+  
+ //Draw triangle in JPanel  
+ panel1.fillPolygon(x,y,3);  
+  
+ //Set color base on RGB  
+ //You can get RGB value for your color at "Color picker" at above  
+ //R=1  
+ //G=1  
+ //B=1  
+ //So after this all you draw will use this color  
+ panel1.setColor(new Color(1,1,1));  
+  
+ //Set font that will use when draw String  
+ panel1.setFont(new Font("Arial",Font.BOLD,14));  
+  
+ //Draw String in JPanel  
+ panel1.drawString("(0,200)",10,200);  
+ panel1.drawString("(150,0)",150,20);  
+ panel1.drawString("(300,200)",290,200);  
+}  
+
+
 
     /**
      * Create the GUI and show it.  For thread safety,
