@@ -86,7 +86,7 @@ public class SalesWindowPanel extends JPanel
 
 		c.anchor = GridBagConstraints.LINE_START;
 		c.fill = GridBagConstraints.BOTH;
-		c.insets = new Insets(10,10,10,10);
+		c.insets = new Insets(5,5,5,5);
 
 
 
