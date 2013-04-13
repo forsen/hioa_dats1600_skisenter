@@ -44,12 +44,19 @@ public class Control extends JFrame
 
 		setSize( width/4, height/4 );
 		setMinimumSize( new Dimension( 360,225) );
+		setLayout(new BorderLayout());
+		JLabel background = new JLabel(new ImageIcon("bakgrunn.jpg"));
 
 
 		setLocationByPlatform( true );
 
-
-		ctrlRegCustNr = new JButton("Validér");
+		ImageIcon valider = new ImageIcon("valider.png");
+		ctrlRegCustNr = new JButton(valider);
+		ImageIcon valider2 = new ImageIcon("valider2.png");
+		ctrlRegCustNr.setRolloverIcon(valider2);
+		ctrlRegCustNr.setFocusPainted(false);
+		ctrlRegCustNr.setContentAreaFilled(false);
+		ctrlRegCustNr.setBorderPainted(false);
 		ctrlRegCustNr.addActionListener(btnListener);
 
 		ctrlWindowTextCustNr = new JLabel("Kort ID:");
@@ -73,6 +80,7 @@ public class Control extends JFrame
 
 		Container c = getContentPane();
 		c.setLayout( new FlowLayout() );
+		c.add(background);
 		c.add(ctrlRegCustNr);
 		c.add(ctrlWindowTextCustNr);
 		c.add(ctrlWindowCustNr);
