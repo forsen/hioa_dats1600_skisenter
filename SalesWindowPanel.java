@@ -27,8 +27,6 @@ public class SalesWindowPanel extends JPanel
 	public SalesWindowPanel()
 	{
 
-		setLayout( new GridLayout(4,3));
-		
 		custIDLbl = new JLabel( " Kundenr" );
 		cardTypeLbl = new JLabel( " Korttype" );
 		salesWindowCustIDtf = new JTextField( 3 );
@@ -82,8 +80,96 @@ public class SalesWindowPanel extends JPanel
 
 		cardScrolList = new JScrollPane( cardIDList );
 
+		setLayout( new GridBagLayout() );
 
-		add( custIDLbl );
+		GridBagConstraints c = new GridBagConstraints();
+
+
+		c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(10,10,10,10);
+		c.anchor = GridBagConstraints.LINE_START;
+
+
+		//Første kolonne////////////////////////////////////////////////////////////
+		c.gridheight = 1; 
+		c.weightx = 1;
+		c.gridx = 0; 
+		c.gridy = 0;
+		c.gridwidth = 1; 
+		c.weighty = 0.5;
+		add(salesWindowCustIDtf, c);
+
+		c.gridheight = 1;
+		c.weightx = 1;
+		c.gridx = 0; 
+		c.gridy = 1; 
+		c.gridwidth = 1;
+		c.weighty = 0.5;
+		add(cardTypeList, c);
+
+		c.gridheight = 1;
+		c.weightx = 0.5;
+		c.gridx = 0; 
+		c.gridy = 2; 
+		c.gridwidth = 1;
+		c.weighty = 1;
+		add(cardIDList, c);
+
+		c.gridheight = 1;
+		c.weightx = 1;
+		c.gridx = 0; 
+		c.gridy = 3; 
+		c.gridwidth = 1;
+		c.weighty = 0.5;
+		add(shoppingCartList, c);
+
+		//Andre kolonne////////////////////////////////////////////////////////////
+		c.gridheight = 1; 
+		c.weightx = 0.5;
+		c.gridx = 1; 
+		c.gridy = 0;
+		c.gridwidth = 1; 
+		c.weighty = 0.5;
+		add(custIDLbl, c);
+
+		c.gridheight = 1;
+		c.weightx = 0.5;
+		c.gridx = 1; 
+		c.gridy = 1; 
+		c.gridwidth = 1;
+		c.weighty = 0.5;
+		add(salesNewCardBtn, c);
+
+		c.gridheight = 1;
+		c.weightx = 0.5;
+		c.gridx = 1; 
+		c.gridy = 2; 
+		c.gridwidth = 2;
+		c.weighty = 0.5;
+		add(salesAddCartBtn, c);
+
+		c.gridheight = 1;
+		c.weightx = 0.5;
+		c.gridx = 1; 
+		c.gridy = 3; 
+		c.gridwidth = 1;
+		c.weighty = 0.5;
+		add(salesCheckoutBtn, c);
+
+		//Tredje kolonne////////////////////////////////////////////////////////////
+
+		c.gridheight = 1; 
+		c.weightx = 0.5;
+		c.gridx = 3; 
+		c.gridy = 0;
+		c.gridwidth = 1; 
+		c.weighty = 0.5;
+		add(custIDLbl, c);
+
+
+
+
+		/*add( custIDLbl );
 		add( salesWindowCustIDtf );
 		add( cardScrolList );
 		add( cardTypeLbl );
@@ -92,7 +178,7 @@ public class SalesWindowPanel extends JPanel
 		add( salesCheckoutBtn );
 		add( salesNewCardBtn );
 		add( shoppingScrolList );
-		add( cartPrice );
+		add( cartPrice );*/
 
 	} 
 

@@ -39,7 +39,8 @@ public class Salesclerk extends JFrame
 		toolbox = Toolkit.getDefaultToolkit();
 
 
-		framePnl = new JPanel(); 
+		framePnl = new JPanel();
+		framePnl.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY)); 
 
 		salesClerkSearchInfoTxt = new JTextArea( 5, 20 );
 
@@ -59,7 +60,7 @@ public class Salesclerk extends JFrame
 
 		topMenuPnl = new JPanel( new FlowLayout() );
 		
-		statusTxt = new JTextArea(5,40);
+		statusTxt = new JTextArea(5,50);
 
 		//custWindowPnl = new CustWindowPanel( custRegistry, statusTxt, customer );
 		custWindowPnl = new CustWindowPanel( custRegistry, statusTxt );

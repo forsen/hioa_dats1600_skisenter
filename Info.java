@@ -7,6 +7,7 @@ import javax.imageio.*;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 import java.awt.Graphics;
+import java.net.URL;
 
 public class Info extends JFrame
 {
@@ -30,6 +31,7 @@ public class Info extends JFrame
         JPanel panel;
         JPanel image;
         JLabel label;
+
 
 
 
@@ -137,6 +139,9 @@ public class Info extends JFrame
 	c.gridy = 0;
 	pane.add(panel, c);
 
+
+
+
 	// fjerde kolonne/////////////
 
     }
@@ -170,6 +175,11 @@ public class Info extends JFrame
         //Set up the content pane.
         addComponentsToPane(frame.getContentPane());
 
+
+        Toolkit verktoykasse = Toolkit.getDefaultToolkit();
+  		String bildefil = "offpist_logo.png";
+  		Image ikon = verktoykasse.getImage(bildefil);
+  		frame.setIconImage(ikon);
         //Display the window.
         frame.pack();
         frame.setSize(1000,1000);
