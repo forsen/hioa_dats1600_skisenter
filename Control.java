@@ -24,6 +24,26 @@ public class Control extends JFrame
 
 	private Toolkit toolbox;
 
+	public void paint( Graphics g ) 
+	{ 
+		super.paint(g);
+		g.setColor(new Color(230,245,255));
+		g.fillRect(0,0, getWidth(), getHeight());
+		
+
+		int[]x={0,0,getWidth()};
+
+		int[]y={0,1400,getHeight()}; 
+
+		g.setColor(new Color(235,250,255));
+		g.fillPolygon(x,y,3);	
+
+		g.setColor(new Color(238, 238, 238));
+		g.fillRect(0,0, getWidth(), 100);
+
+
+	}
+
 	public Control( Personlist cr, Lift l )
 	{
 		super("Kontrollvindu");
@@ -44,7 +64,7 @@ public class Control extends JFrame
 
 		setSize( width/4, height/4 );
 		setMinimumSize( new Dimension( 360,225) );
-		
+
 		setLayout(new BorderLayout());
 //		JLabel background = new JLabel(new ImageIcon("bakgrunn.jpg"));
 
@@ -74,26 +94,7 @@ public class Control extends JFrame
 		ctrlWindowPassThrough = new JPanel();
 		ctrlWindowPassThrough.setPreferredSize(new Dimension(300, 200));
 		ctrlWindowPassThrough.setBackground(Color.RED);
-
 		
-	}
-
-	public void paint( Graphics g ) 
-	{ 
-		super.paint(g);
-		g.setColor(new Color(230,245,255));
-		g.fillRect(0,0, getWidth(), getHeight());
-		
-
-		int[]x={0,0,getWidth()};
-
-		int[]y={0,1400,getHeight()}; 
-
-		g.setColor(new Color(235,250,255));
-		g.fillPolygon(x,y,3);	
-
-		g.setColor(new Color(238, 238, 238));
-		g.fillRect(0,0, getWidth(), 100);
 
 		Container c = getContentPane();
 		c.setLayout( new FlowLayout() );
@@ -104,7 +105,10 @@ public class Control extends JFrame
 		c.add(ctrlWindowShowTime);
 		c.add(ctrlWindowPassThrough);
 		updateTime();
+
+		
 	}
+
 	public void updateTime()
 	{
 		Timer timer = new Timer();
