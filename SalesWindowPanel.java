@@ -232,15 +232,16 @@ public class SalesWindowPanel extends JPanel
 
 		CashRegister cr = new CashRegister( shoppingCart );
 
-		checkOut();
+		shoppingCartList.setModel(shoppingCart.emptyCart());
 
 	}
+/*
 	private void checkOut()
 	{
 		shoppingCart.checkOut();
 		shoppingCartList.setModel(shoppingCart.emptyCart());
 	}
-
+*/
 /*
 	private void addProduct()
 	{
