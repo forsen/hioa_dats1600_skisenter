@@ -141,32 +141,34 @@ public class ShoppingCart
 
 		Iterator<CartItems> it = cartList.iterator();
 
+
+		if( !newCards.isEmpty() )
+		{
+			text.append( "Fysiske kort: \n\n" );
+
+			Iterator<Card> cIt = newCards.iterator();
+
+			while( cIt.hasNext() )
+			{
+				text.append( cIt.next().toString() + "\t\t70,-" );
+				text.append( "\n" );
+			}
+
+			text.append( "\n\n\n" );
+		}
+
+
 		while( it.hasNext() )
 		{
 			CartItems ci = it.next();
 			text.append( ""+ci.getCardID() );
 			text.append( ", ");
 			text.append( ci.getType() );
-			text.append( ", " );
-			text.append( ci.getPrice() + "kr" );
+			text.append( "\t" );
+			text.append( ci.getPrice() + ",-" );
 			text.append( "\n" );
 		}
 
-		if( !newCards.isEmpty() )
-		{
-			text.append( "Tomme kort: \n\n" );
-
-			Iterator<Card> cIt = newCards.iterator();
-
-			while( cIt.hasNext() )
-			{
-				text.append( cIt.next().toString() );
-				text.append( "\n" );
-			}
-		}
-
-		text.append( "\n" );
-		text.append( "Sum: " + sum + "kr");
 		
 		return text.toString();
 	}
