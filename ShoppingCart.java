@@ -22,8 +22,6 @@ public class ShoppingCart
 //		catch( NullPointerException npe )
 //		{
 		cardList = new DefaultListModel<Card>();
-
-			System.out.println(" hva er detet for no tull ? " );	
 //		}
 
 
