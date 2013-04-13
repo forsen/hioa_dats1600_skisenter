@@ -12,6 +12,7 @@ public class Info extends JFrame
 	public final static int PUNCHCARDPRICE = 200;
 	public final static int DAYCARDPRICE = 320;
 	public final static int HOURCARDPRICE = 120;
+	public final static int SEASONCARDPRICE = 3000;
 
 	final static boolean shouldFill = true;
     final static boolean shouldWeightX = true;
