@@ -17,6 +17,7 @@ public class Salesclerk extends JFrame
 	private JPanel topMenuPnl, custWindowPnl, salesWindowPnl, replaceWindowPnl, statusPnl; 
 	private JPanel framePnl;
 	private JTextArea statusTxt;
+
 	//replaceWindowTxt
 
 	public static Person customer = null; 
@@ -37,6 +38,7 @@ public class Salesclerk extends JFrame
 
 
 		toolbox = Toolkit.getDefaultToolkit();
+
 
 
 		framePnl = new JPanel();
@@ -116,8 +118,9 @@ public class Salesclerk extends JFrame
 		
 		c.setLayout( layout );
 		c.add(topMenuPnl, BorderLayout.PAGE_START );
-		c.add(framePnl, BorderLayout.CENTER );
-		c.add(salesClerkSearchInfoTxt, BorderLayout.LINE_END );
+		c.add(framePnl, BorderLayout.LINE_START );
+		c.add(salesClerkSearchInfoTxt, BorderLayout.CENTER );
+
 		c.add(statusTxt, BorderLayout.PAGE_END );
 
 		topMenuPnl.add(custWindowBtn);
