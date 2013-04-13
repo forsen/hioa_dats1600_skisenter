@@ -6,10 +6,11 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.io.*;
 import java.text.ParseException;
+//import java.awt.image.*;
 
 public class CustWindowPanel extends JPanel
-{
-	private JButton custWindowBtn, custWindowSearchBtn, custWindowRegBtn;
+{	//imageBtn,
+	private JButton  custWindowSearchBtn, custWindowRegBtn;
 	private JPanel custWindowSearchInfoPnl, custWindowFirstNamePnl, custWindowLastNamePnl, custWindowPhonePnl, custWindowBornPnl, custWindowBtnPnl;
 	private JTextField custWindowFirstName, custWindowLastName, custWindowPhone, custWindowBorn;
 	private JTextArea custWindowSearchInfoTxt;
@@ -68,7 +69,7 @@ public class CustWindowPanel extends JPanel
 
 		custRegistry = cr; 
 
-
+		//imageBtn = new JButton("Velg bilde");
 		custWindowSearchBtn = new JButton("Søk");
 		custWindowRegBtn = new JButton("Ny kunde");
 
@@ -140,7 +141,7 @@ public class CustWindowPanel extends JPanel
 		{
 			int number = Integer.parseInt(custWindowPhone.getText());
 			Date born = new SimpleDateFormat("ddMMyy").parse(custWindowBorn.getText());
-			Person p = new Person( firstname, lastname, number, born );
+			Person p = new Person( firstname, lastname, number, born, null );
 			
 		
 
