@@ -75,10 +75,10 @@ public class SalesWindowPanel extends JPanel
 		shoppingCartList.setVisibleRowCount( 4 );
 		shoppingCartList.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
 		shoppingCartList.setCellRenderer( new ShoppingCartCellListRenderer() );
-		shoppingScrolList = new JScrollPane( shoppingCartList );
+		shoppingScrolList = new JScrollPane( shoppingCartList, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER );
 
 
-		cardScrolList = new JScrollPane( cardIDList );
+		cardScrolList = new JScrollPane( cardIDList, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER );
 
 		setLayout( new GridBagLayout() );
 

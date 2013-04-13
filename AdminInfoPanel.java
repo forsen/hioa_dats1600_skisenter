@@ -57,7 +57,7 @@ public class AdminInfoPanel extends JPanel
 		butnPnl.add(showPassings);
 		
 
-		dispPnl.add(display);
+		dispPnl.add(scroll);
 
 		add(butnPnl, BorderLayout.PAGE_START);
 		add(dispPnl);
