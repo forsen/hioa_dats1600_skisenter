@@ -7,8 +7,8 @@ import java.io.*;
 public class AdminStatistikkPanel extends JPanel
 {	
 	private JTextField fromFld, toFld;
-	private JButton calculateBtn;
-	private JPanel display;
+	private JButton calculateBtn, graphBtn;
+	private JTextArea display;
 	private JPanel choicePnl, dispPnl;
 	private Listener listener;
 	private JScrollPane scroll;
@@ -54,8 +54,14 @@ public class AdminStatistikkPanel extends JPanel
 		revenue.addItemListener( checklistner );
 		choicePnl.add(revenue);
 
-		display = new GraphPanel();
+		display = new JTextArea(20,40);
+		display.setEditable( false );
+
 		scroll = new JScrollPane(display);
+
+		graphBtn = new JButton( "Graf" );
+		graphBtn.addActionListener( listener );
+		choicePnl.add(graphBtn);
 
 		calculateBtn = new JButton(" Beregn ");
 		calculateBtn.addActionListener( listener );
@@ -78,6 +84,13 @@ public class AdminStatistikkPanel extends JPanel
       		{
       			//display.setText("Her skal det beregnes det noe ");
       		}
+      		if ( e.getSource()== graphBtn )
+       		{
+       			dispPnl.add(new GraphPanel());
+       			display.setVisible( false );
+
+       			
+       		}
 	
     	}
 	}
@@ -86,6 +99,7 @@ public class AdminStatistikkPanel extends JPanel
 	{
        public void itemStateChanged( ItemEvent e )
        {
+       		
        		if ( sold.isSelected() )
        		{
 
@@ -98,8 +112,9 @@ public class AdminStatistikkPanel extends JPanel
    			else if ( passings.isSelected() )
    			{
 
-   			}		
-     		
+   			}	
+
+
    		}
  	}	
 }

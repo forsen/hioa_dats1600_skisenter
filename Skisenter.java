@@ -15,6 +15,9 @@ public class Skisenter
 
 	public static void main(String[] args)
 	{
+		Toolkit verktoykasse = Toolkit.getDefaultToolkit();
+  		String bildefil = "offpist_logo.png";
+  		final Image ikon = verktoykasse.getImage(bildefil);
 		
 
 		Skisenter test = new Skisenter(); 
@@ -28,6 +31,7 @@ public class Skisenter
 			{
 				final Salesclerk s = new Salesclerk(registry, message); 
 				s.setVisible( true );
+				s.setIconImage(ikon);
 				s.addWindowListener( new WindowAdapter() 
 				{
 					public void windowClosing( WindowEvent e )
@@ -40,20 +44,25 @@ public class Skisenter
 				final Drittvindu  vindu = new Drittvindu( validations, registry);
 
 
+  		
+
+
 /*
 				final Control control = new Control();
     			control.setLocation(0, 500);
-*/
+*/				vindu.setIconImage(ikon);
 				vindu.setLocation(700,0);    			
 
 
 				final Admin a = new Admin( registry,validations);
-				a.setLocation(0,425);    
+				a.setLocation(0,425);
+				a.setIconImage(ikon);    
 
 				Lift chLift = new Chairlift(validations, registry, "Superheisen", 2000, 3 );
 				final Control lift1 = new Control( registry,  chLift );
 				lift1.setVisible(true);
 				lift1.setLocation(700,425);
+				lift1.setIconImage(ikon);
 
 
 				Lift tLift = new Tcuplift( validations, registry, "Rævvaheisen", 1433 );
@@ -61,6 +70,7 @@ public class Skisenter
 				final Control lift2 = new Control( registry, tLift );   
 				lift2.setVisible(true);
 				lift2.setLocation(700,425);
+				lift2.setIconImage(ikon);
 
 			}			
 

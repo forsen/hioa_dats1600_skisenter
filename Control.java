@@ -16,12 +16,10 @@ public class Control extends JFrame
 	private JTextField ctrlWindowCustNr, ctrlWindowShowTime; 
 	private JPanel ctrlWindowPassThrough;
 	private JLabel ctrlWindowTextShowTime, ctrlWindowTextCustNr;
-	private JTextArea ctrlWindowStatusTxt;
 	private Lift lift;
 	private Personlist registry;
 	private Card validatingCard;
 	private BtnListener btnListener;
-	private Image backgroundImage;
 
 
 	private Toolkit toolbox;
@@ -46,18 +44,12 @@ public class Control extends JFrame
 
 		setSize( width/4, height/4 );
 		setMinimumSize( new Dimension( 360,225) );
+		
 		setLayout(new BorderLayout());
 //		JLabel background = new JLabel(new ImageIcon("bakgrunn.jpg"));
 
 
-		try
-		{
-			 backgroundImage = ImageIO.read(new File("bakgrunn.jpg"));
-		}
-		catch( IOException ioe )
-		{
 
-		}
 		setLocationByPlatform( true );
 
 		ImageIcon valider = new ImageIcon("valider.png");
@@ -81,31 +73,39 @@ public class Control extends JFrame
 		ctrlWindowShowTime.setPreferredSize(new Dimension(80,20));
 
 		ctrlWindowPassThrough = new JPanel();
-		ctrlWindowPassThrough.setPreferredSize(new Dimension(600, 400));
+		ctrlWindowPassThrough.setPreferredSize(new Dimension(300, 200));
 		ctrlWindowPassThrough.setBackground(Color.RED);
 
-		ctrlWindowStatusTxt = new JTextArea(10,10);
-		ctrlWindowStatusTxt.setText("Statusfelt her");
+		
+	}
 
+	public void paint( Graphics g ) 
+	{ 
+		super.paint(g);
+		g.setColor(new Color(230,245,255));
+		g.fillRect(0,0, getWidth(), getHeight());
+		
+
+		int[]x={0,0,getWidth()};
+
+		int[]y={0,1400,getHeight()}; 
+
+		g.setColor(new Color(235,250,255));
+		g.fillPolygon(x,y,3);	
+
+		g.setColor(new Color(238, 238, 238));
+		g.fillRect(0,0, getWidth(), 100);
 
 		Container c = getContentPane();
 		c.setLayout( new FlowLayout() );
-//		c.add(background);
 		c.add(ctrlRegCustNr);
 		c.add(ctrlWindowTextCustNr);
 		c.add(ctrlWindowCustNr);
 		c.add(ctrlWindowTextShowTime);
 		c.add(ctrlWindowShowTime);
 		c.add(ctrlWindowPassThrough);
-		c.add(ctrlWindowStatusTxt);
-		repaint();
-		updateTime();
-	}
 
-	public void paint( Graphics g ) 
-	{ 
-		super.paint(g);
-		g.drawImage(backgroundImage, 0, 0, null);	
+		updateTime();
 	}
 	public void updateTime()
 	{
