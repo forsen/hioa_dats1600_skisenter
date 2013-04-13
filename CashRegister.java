@@ -16,9 +16,9 @@ public class CashRegister extends JFrame
 	private double remains;
 	private double sum; 
 	private double paid; 
-	private int[] paymentMethod;
-	private static final int CARD = 0;
-	private static final int CASH = 1; 
+	private double[] paymentMethod;
+	public static final int CARD = 0;
+	public static final int CASH = 1; 
 
 
 
@@ -51,7 +51,7 @@ public class CashRegister extends JFrame
 
 
 
-		paymentMethod = new int[2]; 
+		paymentMethod = new double[2]; 
 
 		printCard.setEnabled(false );
 		printReceipt.setEnabled( false );
