@@ -103,6 +103,40 @@ public class Personlist implements Serializable
 		return searchresult;
 	}
 
+	public int totalRegPepole()
+	{
+		Iterator<Person> it = registry.iterator();
+		int antall=0;;
+		
+		while(it.hasNext())
+		{	
+			Person p = it.next();
+			antall++;
+
+		}
+		return antall;
+	}
+
+	public int regThatTime(int nr)
+	{
+		Calendar helper = Calendar.getInstance();
+		Iterator<Person> it = registry.iterator();
+		int antall=0;;
+		
+		while(it.hasNext())
+		{	
+			Person p = it.next();
+			helper.setTime( p.getCreated());
+			
+			if(helper.get(Calendar.MINUTE ) == nr)
+			{
+				antall++;
+			}
+			
+		}
+		return antall;
+	}
+
 	
 
 

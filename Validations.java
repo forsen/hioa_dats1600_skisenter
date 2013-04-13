@@ -15,6 +15,11 @@ public class Validations implements Serializable
 		date = new Date(); 
 	}
 
+	public int getLiftId()
+	{
+		return liftId;
+	}
+
 	public Card getCard()
 	{
 		return card;

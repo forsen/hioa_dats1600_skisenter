@@ -21,6 +21,7 @@ public class GraphPanel extends JPanel
 		//list = l;
 		setBackground( Color.WHITE );
 		setPreferredSize (new Dimension(600,500));
+		nyGrafFlate();
 
 	}
 

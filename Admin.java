@@ -16,16 +16,18 @@ public class Admin extends JFrame
 	private BorderLayout layout;
 	private List<Validations> validations;
 	
+	
 
 	public Admin(Personlist l,List<Validations> v) 
 	{
 		super("Administrator");
 		list = l;
 		validations = v;
+
 		topPnl = new JPanel( new FlowLayout() );
 		framePnl = new JPanel(new FlowLayout());
 		adminInfoPnl = new AdminInfoPanel(list, validations);
-		statInfoPnl = new AdminStatistikkPanel(list);
+		statInfoPnl = new AdminStatistikkPanel(list, validations );
 		listner = new Listner();
 
 		layout = new BorderLayout( 5, 5 );
