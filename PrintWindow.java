@@ -9,11 +9,11 @@ public class PrintWindow extends JFrame
 	private JButton print;
 	private Listener btnListener;
 
-	public PrintWindow( JTextArea j, double s )
+	public PrintWindow( JTextArea j, int[] o, double s )
 	{
 		super( "Printvindu" );
 
-		printArea = new ReceiptPainting( j, s ); 
+		printArea = new ReceiptPainting( j, o, s ); 
 		btnListener = new Listener();
 
 

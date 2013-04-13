@@ -16,6 +16,9 @@ public class CashRegister extends JFrame
 	private double remains;
 	private double sum; 
 	private double paid; 
+	private int[] paymentMethod;
+	private static final int CARD = 0;
+	private static final int CASH = 1; 
 
 
 
@@ -45,6 +48,10 @@ public class CashRegister extends JFrame
 		payByCash.addActionListener( btnListener );
 		cashInput = new JTextField( 7 );
 		cashInn = new JLabel( "Betalt: " );
+
+
+
+		paymentMethod = new int[2]; 
 
 		printCard.setEnabled(false );
 		printReceipt.setEnabled( false );
@@ -128,16 +135,27 @@ public class CashRegister extends JFrame
 
 
 
-	public void paid( String n )
+	public void paid( int n )
 	{
 		try 
 		{
 			paid = Double.parseDouble( cashInput.getText() );
 		
 			remains -= paid;
+			String s = "\nBetalt ";
+			if( n == CASH )
+			{
+				s += "kontant:";
+				paymentMethod[CASH] += paid; 
+			}
+			else if( n == CARD )
+			{
+				s += "med kort:";
+				paymentMethod[CARD] += paid; 
+			}
 
-			overview.append( "\nBetalt " + n + ": \t" + paid +
-				"\n\nRest: \t\t" + remains ); 
+			s += " \t" + paid + "\n\nRest: \t\t" + remains;
+			overview.append( s ); 
 
 		}
 		catch( NumberFormatException nfe )
@@ -159,13 +177,13 @@ public class CashRegister extends JFrame
 		public void actionPerformed( ActionEvent ae )
 		{
 			if( ae.getSource() == payByCash )
-				paid("kontant");
+				paid(CASH);
 			
 			if( ae.getSource() == payByCard )
-				paid("med");
+				paid(CARD);
 			if( ae.getSource() == printReceipt )
 			{
-				PrintWindow w = new PrintWindow( orderList, sum );
+				PrintWindow w = new PrintWindow( orderList, paymentMethod, sum );
 			}
 
 

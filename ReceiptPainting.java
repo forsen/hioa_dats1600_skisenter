@@ -2,32 +2,53 @@ import java.awt.*;
 import javax.swing.*;
 import java.util.Date;
 import java.util.regex.*;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import javax.imageio.ImageIO;
 
 public class ReceiptPainting extends JPanel
 {
 	private JTextArea printItems;
+	private int[] payments;
 	private double sum;
+	private BufferedImage img;
 	private int MARGIN = 10;
-	private int YSTART = 50;
+	private int YSTART = 120;
 	private int LINESPACE = 20; 
+	private int WIDTH = 350;
 	private int currentY = YSTART; 
 
-	public ReceiptPainting( JTextArea p, double s )
+	public ReceiptPainting( JTextArea p, int[] o, double s )
 	{
 		sum = s;
 		printItems = p;
+		payments = o; 
 		setBackground( Color.WHITE );
+		try
+		{
+			img = ImageIO.read( new File("offpist_kvittering.png"));
+		}
+		catch( IOException ioe )
+		{
+			System.out.println( "Fikk ikke lastet bildet" );
+		}
 	}
 
 	public Dimension getPreferredSize()
 	{
-		return new Dimension(350,600);
+		return new Dimension(WIDTH,600);
 	}
 	public void paintComponent( Graphics g )
 	{
 		super.paintComponent( g );
 
 		Graphics2D g2d = (Graphics2D) g;
+
+		int size = img.getWidth();
+
+
+		g2d.drawImage( img, (WIDTH/2 - size/2), 10, null );
 
 		printCenteredString( "Offpist skisenter", 350, 0, currentY, g2d );
 		currentY += LINESPACE; 
