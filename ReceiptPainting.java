@@ -1,6 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 import java.util.Date;
+import java.util.regex.*;
 
 public class ReceiptPainting extends JPanel
 {
@@ -43,11 +44,12 @@ public class ReceiptPainting extends JPanel
 		printDashedLine( MARGIN, 330, currentY, g2d );
 		currentY += LINESPACE;
 
-		String[] items = areaToString(); 
-
+		String[] items = getStrings(); 
+		String[] amounts = getAmounts();
 		for( int i = 1; i < items.length; i++ )
 		{
 			g2d.drawString( items[i], MARGIN, currentY);
+			printRightAlignedString( amounts[i], 350, 0, currentY, g2d);
 			currentY += LINESPACE;
 
 		}
@@ -79,7 +81,65 @@ public class ReceiptPainting extends JPanel
 		String allLines = printItems.getText();
 
 		strings = allLines.split( "\n" );
+
+
 		
+		return strings;
+	}
+
+	private String[] getAmounts()
+	{
+		String[] strings = areaToString();
+		String[] amounts = new String[ strings.length];
+		Pattern pattern = Pattern.compile("(\\d{2,},-)");
+		
+		Matcher matcher;
+
+		for(int i = 0; i < strings.length; i++)
+		{
+			String amount = "";
+			matcher = pattern.matcher(strings[i]);
+			while( matcher.find() )
+			{
+				amounts[i] = matcher.group(1);
+			}
+
+			if( amounts[i] == null )
+			{
+				amounts[i] = "";
+			}
+
+		}
+
+		return amounts;
+
+	}
+
+	private String[] getStrings()
+	{
+		String[] strings = areaToString();
+		Pattern pattern = Pattern.compile("(\\d{2,},-)");
+
+		Matcher matcher; 
+
+		for( int i = 0; i < strings.length; i++)
+		{
+			String amount = "";
+			matcher = pattern.matcher(strings[i]);
+			while( matcher.find() )
+			{
+				try
+				{
+					strings[i] = strings[i].substring(0, matcher.start());
+					System.out.println( strings[i] );
+				}
+				catch( NullPointerException npe )
+				{
+					// do nothing
+				}
+			}
+		}
+
 		return strings;
 	}
 
