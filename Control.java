@@ -8,6 +8,7 @@ import java.util.TimerTask;
 import java.text.SimpleDateFormat;
 import java.io.*;
 import java.text.ParseException;
+import javax.imageio.ImageIO;
 
 public class Control extends JFrame
 {
@@ -20,6 +21,7 @@ public class Control extends JFrame
 	private Personlist registry;
 	private Card validatingCard;
 	private BtnListener btnListener;
+	private Image backgroundImage;
 
 
 	private Toolkit toolbox;
@@ -45,9 +47,17 @@ public class Control extends JFrame
 		setSize( width/4, height/4 );
 		setMinimumSize( new Dimension( 360,225) );
 		setLayout(new BorderLayout());
-		JLabel background = new JLabel(new ImageIcon("bakgrunn.jpg"));
+//		JLabel background = new JLabel(new ImageIcon("bakgrunn.jpg"));
 
 
+		try
+		{
+			 backgroundImage = ImageIO.read(new File("bakgrunn.jpg"));
+		}
+		catch( IOException ioe )
+		{
+			
+		}
 		setLocationByPlatform( true );
 
 		ImageIcon valider = new ImageIcon("valider.png");
@@ -80,7 +90,7 @@ public class Control extends JFrame
 
 		Container c = getContentPane();
 		c.setLayout( new FlowLayout() );
-		c.add(background);
+//		c.add(background);
 		c.add(ctrlRegCustNr);
 		c.add(ctrlWindowTextCustNr);
 		c.add(ctrlWindowCustNr);
@@ -91,6 +101,11 @@ public class Control extends JFrame
 		updateTime();
 	}
 
+	public void paint( Graphics g ) 
+	{ 
+		super.paint(g);
+		g.drawImage(backgroundImage, 0, 0, null);	
+	}
 	public void updateTime()
 	{
 		Timer timer = new Timer();
