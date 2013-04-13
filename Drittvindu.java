@@ -27,15 +27,34 @@ public class Drittvindu extends JFrame
 		Container c = getContentPane();
    		c.setLayout( new FlowLayout() );
 
-		persListbn = new JButton("Vis personliste");
+
+   		ImageIcon visPersonliste1 = new ImageIcon("vispersliste.png");
+		persListbn = new JButton(visPersonliste1);
+		ImageIcon visPersonliste2 = new ImageIcon("vispersliste2.png");
+		persListbn.setRolloverIcon(visPersonliste2);
+		persListbn.setFocusPainted(false);
+		persListbn.setContentAreaFilled(false);
+		persListbn.setBorderPainted(false);
 		persListbn.addActionListener( listener );
     	c.add( persListbn );
 
-		cardListbn = new JButton("Vis Skikortliste");
+		ImageIcon visKortliste1 = new ImageIcon("viskortliste.png");
+		cardListbn = new JButton(visKortliste1);
+		ImageIcon visKortliste2 = new ImageIcon("viskortliste2.png");
+		cardListbn.setRolloverIcon(visKortliste2);
+		cardListbn.setFocusPainted(false);
+		cardListbn.setContentAreaFilled(false);
+		cardListbn.setBorderPainted(false);
 		cardListbn.addActionListener( listener );
     	c.add( cardListbn );
 
-		personWithCardbn = new JButton("Vis personer med kort");
+    	ImageIcon visPersKortliste1 = new ImageIcon("visperskortliste.png");
+		personWithCardbn = new JButton(visPersKortliste1);
+		ImageIcon visPersKortliste2 = new ImageIcon("visperskortliste2.png");
+		personWithCardbn.setRolloverIcon(visPersKortliste2);
+		personWithCardbn.setFocusPainted(false);
+		personWithCardbn.setContentAreaFilled(false);
+		personWithCardbn.setBorderPainted(false);
 		personWithCardbn.addActionListener( listener );
     	c.add( personWithCardbn );
 
