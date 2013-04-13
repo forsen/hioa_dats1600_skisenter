@@ -3,6 +3,7 @@ import javax.swing.event.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.io.*;
+import javax.imageio.*;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 import java.awt.Graphics;
@@ -27,6 +28,8 @@ public class Info extends JFrame
         JPanel panel1;
         
         JPanel panel;
+        JPanel image;
+        JLabel label;
 
 
 
@@ -114,6 +117,14 @@ public class Info extends JFrame
 	c.gridy = 1;
 	pane.add(panel1, c);
 
+	image = new JPanel(new BorderLayout());
+	label = new JLabel(new ImageIcon("offpist_liten.png"));
+	label.setHorizontalAlignment(JLabel.CENTER);
+	label.setSize(100,100);
+	c.gridx = 0;
+	c.gridy = 0;
+	pane.add(label);
+
 	// tredje kolonne/////////////
 
 	panel = new JPanel();
@@ -130,43 +141,18 @@ public class Info extends JFrame
 
     }
 
-public void paint(Graphics panel1)  
-{  
- super.paint(panel1);  
-  
- //All triangle corner x coordinate  
- int[]x={0,150,300};  
-  
- //All triangle corner y coordinate  
- int[]y={200,0,200};  
-  
- //Set color base on RGB  
- //You can get RGB value for your color at "Color picker" at above  
- //R=255  
- //G=192  
- //B=0  
- //So after this all you draw will use this color  
- panel1.setColor(new Color(255,192,0));  
-  
- //Draw triangle in JPanel  
- panel1.fillPolygon(x,y,3);  
-  
- //Set color base on RGB  
- //You can get RGB value for your color at "Color picker" at above  
- //R=1  
- //G=1  
- //B=1  
- //So after this all you draw will use this color  
- panel1.setColor(new Color(1,1,1));  
-  
- //Set font that will use when draw String  
- panel1.setFont(new Font("Arial",Font.BOLD,14));  
-  
- //Draw String in JPanel  
- panel1.drawString("(0,200)",10,200);  
- panel1.drawString("(150,0)",150,20);  
- panel1.drawString("(300,200)",290,200);  
-}  
+    public void paint(Graphics g)  
+	{  
+	 super.paint(g);  
+
+	 g.setColor(new Color(1,1,1));  
+	  
+	 //Set font that will use when draw String  
+	 g.setFont(new Font("Arial",Font.BOLD,14));  
+	  
+	 //Draw String in JPanel  
+	 g.drawString("(0,200)",50,200);  
+	}
 
 
 
@@ -177,7 +163,8 @@ public void paint(Graphics panel1)
      */
     private static void createAndShowGUI() {
         //Create and set up the window.
-        JFrame frame = new JFrame("GridBagLayoutDemo");
+        JFrame frame = new JFrame("Informasjon");
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Set up the content pane.
@@ -194,6 +181,7 @@ public void paint(Graphics panel1)
         //creating and showing this application's GUI.
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
+
                 createAndShowGUI();
 
             }
