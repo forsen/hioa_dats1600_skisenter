@@ -111,7 +111,7 @@ public class CashRegister extends JFrame
 		pack();
 
 		
-		setSize( 400,400 );
+		setSize( 600,400 );
 		setVisible( true ); 
 	}
 
