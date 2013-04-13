@@ -96,7 +96,7 @@ public class SalesWindowPanel extends JPanel
 		c.gridx = 0; 
 		c.gridy = 0;
 		c.gridwidth = 1; 
-		c.weighty = 0.5;
+		c.weighty = 0.2;
 		add(custIDLbl, c);
 
 		c.gridheight = 1;
@@ -104,7 +104,7 @@ public class SalesWindowPanel extends JPanel
 		c.gridx = 0; 
 		c.gridy = 1; 
 		c.gridwidth = 1;
-		c.weighty = 0.5;
+		c.weighty = 0.2;
 		add(cardTypeList, c);
 
 		c.gridheight = 1;
@@ -112,7 +112,7 @@ public class SalesWindowPanel extends JPanel
 		c.gridx = 0; 
 		c.gridy = 2; 
 		c.gridwidth = 1;
-		c.weighty = 1;
+		c.weighty = 0.2;
 		add(cardScrolList, c);
 
 		c.gridheight = 1;
@@ -120,7 +120,7 @@ public class SalesWindowPanel extends JPanel
 		c.gridx = 0; 
 		c.gridy = 3; 
 		c.gridwidth = 1;
-		c.weighty = 0.5;
+		c.weighty = 0.2;
 		add(shoppingScrolList, c);
 
 		//Andre kolonne////////////////////////////////////////////////////////////
@@ -129,7 +129,7 @@ public class SalesWindowPanel extends JPanel
 		c.gridx = 1; 
 		c.gridy = 0;
 		c.gridwidth = 1; 
-		c.weighty = 0.5;
+		c.weighty = 0.2;
 		add(salesWindowCustIDtf, c);
 
 		c.gridheight = 1;
@@ -137,7 +137,7 @@ public class SalesWindowPanel extends JPanel
 		c.gridx = 1; 
 		c.gridy = 1; 
 		c.gridwidth = 1;
-		c.weighty = 0.5;
+		c.weighty = 0.2;
 		add(salesNewCardBtn, c);
 
 		c.gridheight = 1;
@@ -145,7 +145,7 @@ public class SalesWindowPanel extends JPanel
 		c.gridx = 1; 
 		c.gridy = 2; 
 		c.gridwidth = 2;
-		c.weighty = 0.5;
+		c.weighty = 0.2;
 		add(salesAddCartBtn, c);
 
 		c.gridheight = 1;
@@ -153,7 +153,7 @@ public class SalesWindowPanel extends JPanel
 		c.gridx = 1; 
 		c.gridy = 3; 
 		c.gridwidth = 1;
-		c.weighty = 0.5;
+		c.weighty = 0.2;
 		add(salesCheckoutBtn, c);
 
 		//Tredje kolonne////////////////////////////////////////////////////////////
