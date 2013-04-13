@@ -45,12 +45,15 @@ public class SalesWindowPanel extends JPanel
 
 		cartPrice = new JLabel(" Sum: 0kr");
 		salesAddCartBtn = new JButton("Legg i handlevogn");
+		salesAddCartBtn.setMnemonic(KeyEvent.VK_L);
 		salesAddCartBtn.addActionListener( btnListener );
 
 		salesCheckoutBtn = new JButton("Til betaling");
+		salesCheckoutBtn.setMnemonic(KeyEvent.VK_B);
 		salesCheckoutBtn.addActionListener( btnListener );
 
 		salesNewCardBtn = new JButton("Nytt kort");
+		salesNewCardBtn.setMnemonic(KeyEvent.VK_N);
 		salesNewCardBtn.addActionListener( btnListener );
 		//customer = p; 
 
