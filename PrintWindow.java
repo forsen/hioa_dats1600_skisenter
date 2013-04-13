@@ -4,16 +4,18 @@ import java.awt.event.*;
 
 public class PrintWindow extends JFrame
 {
-	private JTextArea printArea;
+
+	private JPanel printArea;
 	private JButton print;
 	private Listener btnListener;
 
-	public PrintWindow( JTextArea j )
+	public PrintWindow( JTextArea j, double s )
 	{
 		super( "Printvindu" );
 
+		printArea = new ReceiptPainting( j, s ); 
 		btnListener = new Listener();
-		printArea = j;
+
 
 		print = new JButton("Print");
 		print.addActionListener( btnListener );

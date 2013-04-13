@@ -56,7 +56,7 @@ public class Control extends JFrame
 		}
 		catch( IOException ioe )
 		{
-			
+
 		}
 		setLocationByPlatform( true );
 
@@ -98,6 +98,7 @@ public class Control extends JFrame
 		c.add(ctrlWindowShowTime);
 		c.add(ctrlWindowPassThrough);
 		c.add(ctrlWindowStatusTxt);
+		repaint();
 		updateTime();
 	}
 

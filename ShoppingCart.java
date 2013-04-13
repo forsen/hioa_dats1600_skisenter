@@ -152,7 +152,7 @@ public class ShoppingCart
 				text.append( "\n" );
 			}
 
-			text.append( "\n\n\n" );
+			text.append( "\n" );
 		}
 
 
