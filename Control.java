@@ -48,8 +48,13 @@ public class Control extends JFrame
 
 		setLocationByPlatform( true );
 
-
-		ctrlRegCustNr = new JButton("Validér");
+		ImageIcon valider = new ImageIcon("valider.png");
+		ctrlRegCustNr = new JButton(valider);
+		ImageIcon valider2 = new ImageIcon("valider2.png");
+		ctrlRegCustNr.setRolloverIcon(valider2);
+		ctrlRegCustNr.setFocusPainted(false);
+		ctrlRegCustNr.setContentAreaFilled(false);
+		ctrlRegCustNr.setBorderPainted(false);
 		ctrlRegCustNr.addActionListener(btnListener);
 
 		ctrlWindowTextCustNr = new JLabel("Kort ID:");
