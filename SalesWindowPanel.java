@@ -84,23 +84,23 @@ public class SalesWindowPanel extends JPanel
 
 		GridBagConstraints c = new GridBagConstraints();
 
-
+		c.anchor = GridBagConstraints.LINE_START;
 		c.fill = GridBagConstraints.BOTH;
 		c.insets = new Insets(10,10,10,10);
-		c.anchor = GridBagConstraints.LINE_START;
+
 
 
 		//Første kolonne////////////////////////////////////////////////////////////
 		c.gridheight = 1; 
-		c.weightx = 1;
+		c.weightx = 0.5;
 		c.gridx = 0; 
 		c.gridy = 0;
 		c.gridwidth = 1; 
 		c.weighty = 0.5;
-		add(salesWindowCustIDtf, c);
+		add(custIDLbl, c);
 
 		c.gridheight = 1;
-		c.weightx = 1;
+		c.weightx = 0.5;
 		c.gridx = 0; 
 		c.gridy = 1; 
 		c.gridwidth = 1;
@@ -113,7 +113,7 @@ public class SalesWindowPanel extends JPanel
 		c.gridy = 2; 
 		c.gridwidth = 1;
 		c.weighty = 1;
-		add(cardIDList, c);
+		add(cardScrolList, c);
 
 		c.gridheight = 1;
 		c.weightx = 1;
@@ -121,7 +121,7 @@ public class SalesWindowPanel extends JPanel
 		c.gridy = 3; 
 		c.gridwidth = 1;
 		c.weighty = 0.5;
-		add(shoppingCartList, c);
+		add(shoppingScrolList, c);
 
 		//Andre kolonne////////////////////////////////////////////////////////////
 		c.gridheight = 1; 
@@ -130,7 +130,7 @@ public class SalesWindowPanel extends JPanel
 		c.gridy = 0;
 		c.gridwidth = 1; 
 		c.weighty = 0.5;
-		add(custIDLbl, c);
+		add(salesWindowCustIDtf, c);
 
 		c.gridheight = 1;
 		c.weightx = 0.5;
@@ -158,13 +158,6 @@ public class SalesWindowPanel extends JPanel
 
 		//Tredje kolonne////////////////////////////////////////////////////////////
 
-		c.gridheight = 1; 
-		c.weightx = 0.5;
-		c.gridx = 3; 
-		c.gridy = 0;
-		c.gridwidth = 1; 
-		c.weighty = 0.5;
-		add(custIDLbl, c);
 
 
 
