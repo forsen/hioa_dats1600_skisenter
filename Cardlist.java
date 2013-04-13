@@ -6,7 +6,8 @@ import javax.swing.DefaultListModel;
 public class Cardlist implements Serializable
 {
 	private List<Card> list = new LinkedList<>();
-	
+
+
 	public boolean isEmpty()
 	{
 		return list == null || list.size() == 0;
@@ -85,7 +86,23 @@ public class Cardlist implements Serializable
 		} 
 		return false; 
 	}
+
 /*	<metode for å finne eier av kort>*/
+
+	public int totalCost()
+	{
+		Iterator<Card> it = list.iterator();
+
+		int total = 0;
+
+		while (it.hasNext())
+		{
+			Card runner = it.next();
+
+			total += runner.totalCost();
+		}
+		return total;
+	}
 
 	public String toString()
 	{

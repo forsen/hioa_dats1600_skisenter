@@ -108,7 +108,7 @@ public class AdminStatistikkPanel extends JPanel
 
 	public void totalRegPepole()
 	{
-		display.setText("Totalt registrerte personer er: " + cal.totalRegPepole());
+		display.append("\nTotalt registrerte personer er: " + cal.totalRegPepole());
 	}
 
 	public void regThatTime()
@@ -116,7 +116,8 @@ public class AdminStatistikkPanel extends JPanel
 		try
 		{
 			int nr = Integer.parseInt(monthFld.getText());
-			display.setText("Antall personer som ble registrert i " + nr + " er " + cal.regThatTime(nr));
+
+			display.append("\nAntall personer som ble registrert i månede " + nr + " er " + cal.regThatTime(nr));
 		}
 		catch(NullPointerException npe)
 		{
@@ -128,6 +129,22 @@ public class AdminStatistikkPanel extends JPanel
 		}
 	}
 
+	public void passings()
+	{
+		String lift = liftFLd.getText();
+   		if(!(lift.isEmpty()))
+   		{
+   			int liftnr = Integer.parseInt(lift);
+   			display.append("\nAntall passeringer gjennom heis nummer " + lift + " er " +cal.passesbyTypeofCard( liftnr));
+   					
+   		}
+   		else display.append("\nAntall passeringer gjennom alle heiser er " + cal.showPassings());
+	}
+
+	public void revenue()
+	{
+		display.append("\nTotal omsetning er "+  cal.totalCost() + " KR");
+	}
 	private class Listener implements ActionListener
   	{
    		public void actionPerformed( ActionEvent e )
@@ -145,12 +162,11 @@ public class AdminStatistikkPanel extends JPanel
        			display.setVisible( false );
        			
        		}
-       		if(e.getSource() == calculateBtn)
+       		if(e.getSource() == searchBtn)
       		{
-      			display.setVisible( true );
-      			graphPnl.setVisible(false);
+      			regThatTime();
       		}
-	
+
     	}
 	}
 
@@ -170,9 +186,15 @@ public class AdminStatistikkPanel extends JPanel
       		}
      			
    			else if ( passings.isSelected() )
+   			{		
+				
+   				passings();
+   				
+   			}
+   			else if(revenue.isSelected())
    			{
-
-   			}	
+   				revenue();
+   			}
 
 
    		}

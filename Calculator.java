@@ -42,4 +42,23 @@ public class Calculator
 		return antall;
 	}
 
+	public int totalCost()
+	{
+		return custRegistry.totalCost();
+	}
+
+	public int showPassings()
+	{
+		
+		Iterator<Validations> it = validations.iterator();
+		int antall = 0;
+
+		while( it.hasNext() )
+		{
+			it.next();
+			antall++;
+		}
+		return antall;
+	}
+
 }
