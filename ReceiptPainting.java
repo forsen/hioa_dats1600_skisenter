@@ -10,16 +10,17 @@ import javax.imageio.ImageIO;
 public class ReceiptPainting extends JPanel
 {
 	private JTextArea printItems;
-	private int[] payments;
+	private double[] payments;
 	private double sum;
 	private BufferedImage img;
 	private int MARGIN = 10;
 	private int YSTART = 120;
 	private int LINESPACE = 20; 
 	private int WIDTH = 350;
+	private int HEIGHT = 700; 
 	private int currentY = YSTART; 
 
-	public ReceiptPainting( JTextArea p, int[] o, double s )
+	public ReceiptPainting( JTextArea p, double[] o, double s )
 	{
 		sum = s;
 		printItems = p;
@@ -37,7 +38,7 @@ public class ReceiptPainting extends JPanel
 
 	public Dimension getPreferredSize()
 	{
-		return new Dimension(WIDTH,600);
+		return new Dimension(WIDTH,HEIGHT);
 	}
 	public void paintComponent( Graphics g )
 	{
@@ -50,19 +51,19 @@ public class ReceiptPainting extends JPanel
 
 		g2d.drawImage( img, (WIDTH/2 - size/2), 10, null );
 
-		printCenteredString( "Offpist skisenter", 350, 0, currentY, g2d );
+		printCenteredString( "Offpist skisenter", WIDTH, 0, currentY, g2d );
 		currentY += LINESPACE; 
-		printCenteredString( "ORG.NR. 123 456 789 MVA", 350, 0, currentY, g2d );
+		printCenteredString( "ORG.NR. 123 456 789 MVA", WIDTH, 0, currentY, g2d );
 		currentY += LINESPACE; 
-		printCenteredString( "Granskogen 1", 350, 0, currentY, g2d );
+		printCenteredString( "Granskogen 1", WIDTH, 0, currentY, g2d );
 		currentY += LINESPACE;
-		printCenteredString( "TLF: 22 33 44 55", 350, 0, currentY, g2d );
+		printCenteredString( "TLF: 22 33 44 55", WIDTH, 0, currentY, g2d );
 		currentY += LINESPACE;
-		printDashedLine( MARGIN, 330, currentY, g2d );
+		printDashedLine( MARGIN, WIDTH - MARGIN, currentY, g2d );
 		currentY += LINESPACE;
 		g2d.drawString( new Date().toString(), MARGIN, currentY);
-		currentY += LINESPACE;
-		printDashedLine( MARGIN, 330, currentY, g2d );
+		currentY += 0.5*LINESPACE;
+		printDashedLine( MARGIN, WIDTH - MARGIN, currentY, g2d );
 		currentY += LINESPACE;
 
 		String[] items = getStrings(); 
@@ -70,20 +71,20 @@ public class ReceiptPainting extends JPanel
 		for( int i = 1; i < items.length; i++ )
 		{
 			g2d.drawString( items[i], MARGIN, currentY);
-			printRightAlignedString( amounts[i], 350, 0, currentY, g2d);
+			printRightAlignedString( amounts[i], WIDTH, 0, currentY, g2d);
 			currentY += LINESPACE;
 
 		}
-
-		printDashedLine( MARGIN, 330, currentY, g2d );
+		currentY -= 0.5*LINESPACE;
+		printDashedLine( MARGIN, WIDTH - MARGIN, currentY, g2d );
 		currentY += LINESPACE;
 		g2d.drawString( "Total eks. moms", MARGIN, currentY );
-		printRightAlignedString( "" + sum*0.8 , 350, 0, currentY, g2d );
+		printRightAlignedString( "" + sum*0.8 , WIDTH, 0, currentY, g2d );
 		currentY += LINESPACE; 
 		g2d.drawString( "Moms 25%", MARGIN, currentY );
-		printRightAlignedString( "" + (sum - (sum*0.8)), 350, 0, currentY, g2d );
-		currentY += LINESPACE;
-		printDashedLine( MARGIN, 330, currentY, g2d );
+		printRightAlignedString( "" + (sum - (sum*0.8)), WIDTH, 0, currentY, g2d );
+		currentY += 0.5*LINESPACE;
+		printDashedLine( MARGIN, WIDTH - MARGIN, currentY, g2d );
 		currentY += LINESPACE;
 
 		Font orig = g2d.getFont();
@@ -91,7 +92,38 @@ public class ReceiptPainting extends JPanel
 		g2d.setFont( f.deriveFont( Font.BOLD, 16F ) );
 
 		g2d.drawString( "Total", MARGIN, currentY );
-		printRightAlignedString( "" + sum, 350, 0, currentY, g2d );
+		printRightAlignedString( "" + sum, WIDTH, 0, currentY, g2d );
+		currentY += 2*LINESPACE;
+
+		g2d.setFont( orig );
+
+		if( payments[CashRegister.CASH] != 0 )
+		{
+			g2d.drawString("Mottat kontant: ", MARGIN, currentY);
+			printRightAlignedString( ""+ payments[CashRegister.CASH], WIDTH, 0, currentY, g2d );
+			currentY += LINESPACE; 
+		}
+		if( payments[CashRegister.CARD] != 0 )
+		{
+			g2d.drawString("Mottat med kort: ", MARGIN, currentY);
+			printRightAlignedString( ""+payments[CashRegister.CARD], WIDTH, 0, currentY, g2d );
+			currentY += LINESPACE; 
+		}
+		if( payments[CashRegister.CASH] + payments[CashRegister.CARD] > sum )
+		{
+			g2d.drawString("Tilbake: ", MARGIN, currentY );
+			printRightAlignedString( "" + (sum - (payments[CashRegister.CASH] + payments[CashRegister.CARD])), WIDTH, 0, currentY, g2d );
+			currentY += LINESPACE;
+		}
+
+		currentY += 3*LINESPACE;
+
+		printCenteredString( "Nyttige telefonnr (i prioritert rekkefølge)", WIDTH, 0, currentY, g2d );
+		currentY += LINESPACE;
+		printCenteredString( "AfterSki: 22 33 44 55", WIDTH, 0, currentY, g2d );
+		currentY += LINESPACE;
+		printCenteredString("Ambulansehelikopter: 113", WIDTH, 0, currentY, g2d );
+
 
 	}
 

@@ -3,6 +3,7 @@ import java.io.*;
 import java.util.*;
 
 
+
 public class Person implements Serializable 
 {
 	
@@ -13,11 +14,11 @@ public class Person implements Serializable
 	private int phoneNr;
 	private Date born;
 	private Date created; 
-	//BILDEDATAFELT??
+	private File img;
 	
 	protected Cardlist list;
 
-	public Person( String fn, String ln, int p, Date b )
+	public Person( String fn, String ln, int p, Date b, File i )
 	{
 		custId = ++next;
 		firstname = fn;
@@ -26,6 +27,7 @@ public class Person implements Serializable
 		born = b;
 		list  = new Cardlist();
 		created = new Date();
+		img = i;
 	}
 
 	public int getCustId()
@@ -51,6 +53,11 @@ public class Person implements Serializable
 	public Date getBirth()
 	{
 		return born;
+	}
+
+	public File getImage()
+	{
+		return img;
 	}
 
 	public Date getCreated()
