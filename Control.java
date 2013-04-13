@@ -44,6 +44,8 @@ public class Control extends JFrame
 
 		setSize( width/4, height/4 );
 		setMinimumSize( new Dimension( 360,225) );
+		setLayout(new BorderLayout());
+		JLabel background = new JLabel(new ImageIcon("bakgrunn.jpg"));
 
 
 		setLocationByPlatform( true );
@@ -78,6 +80,7 @@ public class Control extends JFrame
 
 		Container c = getContentPane();
 		c.setLayout( new FlowLayout() );
+		c.add(background);
 		c.add(ctrlRegCustNr);
 		c.add(ctrlWindowTextCustNr);
 		c.add(ctrlWindowCustNr);
