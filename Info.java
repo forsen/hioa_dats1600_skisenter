@@ -156,20 +156,18 @@ public class Info extends JFrame
 
 
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        //Set up the content pane.
-        getContentPane();
+	//Set up the content pane.
+	getContentPane();
 
 
-        Toolkit verktoykasse = Toolkit.getDefaultToolkit();
-  		String bildefil = "offpist_logo.png";
-  		Image ikon = verktoykasse.getImage(bildefil);
-  		setIconImage(ikon);
-        //Display the window.
-        pack();
-        setSize(1000,1000);
-        setVisible(true);
+	Toolkit verktoykasse = Toolkit.getDefaultToolkit();
+	String bildefil = "offpist_logo.png";
+	Image ikon = verktoykasse.getImage(bildefil);
+	setIconImage(ikon);
+	//Display the window.
+	pack();
+	setSize(1000,1000);
+	setVisible(true);
 
 
 
