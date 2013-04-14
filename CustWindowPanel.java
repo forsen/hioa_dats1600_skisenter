@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.io.*;
 import java.text.ParseException;
 import java.awt.image.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class CustWindowPanel extends JPanel
 {	
@@ -209,26 +210,43 @@ public class CustWindowPanel extends JPanel
 
 	public void imageUpload()
 	{
-		JFrame fr = new JFrame ("Skønner ikke !");
-		FileDialog fd = new FileDialog(fr,"Åpne", FileDialog.LOAD);
-		FileDialog fdsave = new FileDialog(fr,"Lagre", FileDialog.SAVE);
+		JFileChooser fc = new JFileChooser();
 
-		fd.setVisible(true);
+		FileNameExtensionFilter filter = new FileNameExtensionFilter(
+        	"JPG & GIF Images", "jpg", "gif", "png");
+    	fc.setFileFilter(filter);
+		int returnValue = fc.showOpenDialog(formPnl);
 
-		if(fd.getFile() == null)
+		File f = null;
+
+		if( returnValue == JFileChooser.APPROVE_OPTION )
 		{
-			statusTxt.setText("Du har ikke valgt noe bilde");
+			f = fc.getSelectedFile(); 
 		}
-		else
-		{
+
+		System.out.println("Du har valgt å åpne filen: " + f.getName() );
+
+
+//		JFrame fr = new JFrame ("Skønner ikke !");
+//		FileDialog fd = new FileDialog(fr,"Åpne", FileDialog.LOAD);
+//		FileDialog fdsave = new FileDialog(fr,"Lagre", FileDialog.SAVE);
+
+//		fd.setVisible(true);
+
+//		if(fd.getFile() == null)
+//		{
+//			statusTxt.setText("Du har ikke valgt noe bilde");
+//		}
+//		else
+//		{
 			
-			String d = (fd.getDirectory() + fd.getFile());
-			Toolkit toolkit = Toolkit.getDefaultToolkit();
-			img = toolkit.getImage(d);
-			statusTxt.setText("Bilde er lagret");
-			fdsave.setVisible(true);
+//			String d = (fd.getDirectory() + fd.getFile());
+//			Toolkit toolkit = Toolkit.getDefaultToolkit();
+//			img = toolkit.getImage(d);
+//			statusTxt.setText("Bilde er lagret");
+//			fdsave.setVisible(true);
 			
-		}
+//		}
 	}
 
 	/*public void paint (Graphics g)

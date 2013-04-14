@@ -214,7 +214,7 @@ public class ReceiptPainting extends JPanel
 		g2d.drawString(s, start + xPos, yPos );
 	}
 
-	private void printRightAlignedString( String s, int width, int xPos, int yPos, Graphics g2d )
+	private void printRightAlignedString( String s, int width, int xPos, int yPos, Graphics2D g2d )
 	{
 		int stringLength = (int) g2d.getFontMetrics().getStringBounds(s, g2d).getWidth();
 
