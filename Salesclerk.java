@@ -17,6 +17,7 @@ public class Salesclerk extends JFrame
 	private JPanel topMenuPnl, custWindowPnl, salesWindowPnl, replaceWindowPnl, statusPnl; 
 	private JPanel framePnl;
 	private JTextArea statusTxt;
+
 	//replaceWindowTxt
 
 	public static Person customer = null; 
@@ -37,6 +38,7 @@ public class Salesclerk extends JFrame
 
 
 		toolbox = Toolkit.getDefaultToolkit();
+
 
 
 		framePnl = new JPanel();
@@ -60,6 +62,7 @@ public class Salesclerk extends JFrame
 		custWindowBtn.setFocusPainted(false);
 		custWindowBtn.setContentAreaFilled(false);
 		custWindowBtn.setBorderPainted(false);
+		custWindowBtn.setToolTipText("Registrering av kunde");
 
 		ImageIcon salg = new ImageIcon("salg.png");
 		salesWindowBtn = new JButton(salg);
@@ -68,6 +71,7 @@ public class Salesclerk extends JFrame
 		salesWindowBtn.setFocusPainted(false);
 		salesWindowBtn.setContentAreaFilled(false);
 		salesWindowBtn.setBorderPainted(false);
+		salesWindowBtn.setToolTipText("Registrering av nytt salg");
 
 		ImageIcon erstatt = new ImageIcon("erstatt.png");
 		replaceWindowBtn = new JButton(erstatt);
@@ -76,6 +80,7 @@ public class Salesclerk extends JFrame
 		replaceWindowBtn.setFocusPainted(false);
 		replaceWindowBtn.setContentAreaFilled(false);
 		replaceWindowBtn.setBorderPainted(false);
+		replaceWindowBtn.setToolTipText("Erstatt kort");
 
 		topMenuPnl = new JPanel( new FlowLayout() );
 		
@@ -116,8 +121,9 @@ public class Salesclerk extends JFrame
 		
 		c.setLayout( layout );
 		c.add(topMenuPnl, BorderLayout.PAGE_START );
-		c.add(framePnl, BorderLayout.CENTER );
-		c.add(salesClerkSearchInfoTxt, BorderLayout.LINE_END );
+		c.add(framePnl, BorderLayout.LINE_START );
+		c.add(salesClerkSearchInfoTxt, BorderLayout.CENTER );
+
 		c.add(statusTxt, BorderLayout.PAGE_END );
 
 		topMenuPnl.add(custWindowBtn);

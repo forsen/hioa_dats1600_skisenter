@@ -124,7 +124,7 @@ public class ReceiptPainting extends JPanel
 		currentY += LINESPACE;
 		printCenteredString("Ambulansehelikopter: 113", WIDTH, 0, currentY, g2d );
 
-
+		currentY = YSTART; 
 	}
 
 	private String[] areaToString()
