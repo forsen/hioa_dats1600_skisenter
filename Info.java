@@ -45,7 +45,7 @@ public class Info extends JFrame
 	//natural height, maximum width
 	c.fill = GridBagConstraints.BOTH;
 	}
-	listener = new Listener(); 
+	
 
 
     // første kolonne /////////////////////////////
@@ -53,9 +53,7 @@ public class Info extends JFrame
 
 	ImageIcon nyheter = new ImageIcon("nyheter.png");
 	newsbutton = new JButton(nyheter);
-	newsbutton.setFocusPainted(false);
-	newsbutton.setContentAreaFilled(false);
-	newsbutton.setBorderPainted(false);
+
 	if (shouldWeightX) {
 	c.weightx = 0.5;
 	}
@@ -67,9 +65,7 @@ public class Info extends JFrame
 
 	ImageIcon info = new ImageIcon("info.png");
 	infobutton = new JButton(info);
-		infobutton.setFocusPainted(false);
-		infobutton.setContentAreaFilled(false);
-		infobutton.setBorderPainted(false);
+
 		c.fill = GridBagConstraints.BOTH;
 		c.weightx = 0.5;
 		c.gridx = 0;
@@ -153,7 +149,7 @@ public class Info extends JFrame
 	newsWindowPnl.setVisible(true);
 	infoWindowPnl.setVisible(false);
 
-
+	listener = new Listener(); 
 	newsbutton.addActionListener( listener );
 
 	infobutton.addActionListener( listener );
@@ -188,9 +184,15 @@ public class Info extends JFrame
 
 
 			if( e.getSource() == newsbutton )
+			{
 				newsWindowPnl.setVisible(true);
+			}
+				
 			else if( e.getSource() == infobutton)
+			{
+				newsWindowPnl.setVisible(false);
 				infoWindowPnl.setVisible(true);
+			}
 
 		}
 	}
