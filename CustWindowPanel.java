@@ -6,12 +6,12 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.io.*;
 import java.text.ParseException;
-//import java.awt.image.*;
+import java.awt.image.*;
 
 public class CustWindowPanel extends JPanel
-{	//imageBtn,
-	private JButton  custWindowSearchBtn, custWindowRegBtn;
-	private JPanel custWindowSearchInfoPnl, custWindowFirstNamePnl, custWindowLastNamePnl, custWindowPhonePnl, custWindowBornPnl, custWindowBtnPnl;
+{	
+	private JButton imageBtn,custWindowSearchBtn, custWindowRegBtn;
+	private JPanel imagePnl,custWindowSearchInfoPnl, custWindowFirstNamePnl, custWindowLastNamePnl, custWindowPhonePnl, custWindowBornPnl, custWindowBtnPnl;
 	private JTextField custWindowFirstName, custWindowLastName, custWindowPhone, custWindowBorn;
 	private JTextArea custWindowSearchInfoTxt;
 	private JTextArea statusTxt;
@@ -29,7 +29,8 @@ public class CustWindowPanel extends JPanel
 
 	private Toolkit toolbox;
 
-	private Personlist custRegistry; 
+	private Personlist custRegistry;
+	private Image img; 
 
 	//public CustWindowPanel( Personlist cr, JTextArea s, Person p )
 	public CustWindowPanel( Personlist cr, JTextArea s )
@@ -56,7 +57,7 @@ public class CustWindowPanel extends JPanel
 		
 		btnPnl = new JPanel(); 
 		rsltPnl = new JPanel(); 
-
+		imagePnl = new JPanel();
 
 
 		statusTxt = s;
@@ -69,7 +70,7 @@ public class CustWindowPanel extends JPanel
 
 		custRegistry = cr; 
 
-		//imageBtn = new JButton("Velg bilde");
+		imageBtn = new JButton("Velg bilde");
 		custWindowSearchBtn = new JButton("Søk");
 		custWindowRegBtn = new JButton("Ny kunde");
 
@@ -86,6 +87,7 @@ public class CustWindowPanel extends JPanel
 
 		custListener = new CustListener();
 
+		imageBtn.addActionListener( custListener );
 		custWindowRegBtn.addActionListener( custListener );
 		custWindowSearchBtn.addActionListener( custListener );
 /*
@@ -125,11 +127,13 @@ public class CustWindowPanel extends JPanel
 		formPnl.add( custWindowPhone );
 		formPnl.add( new JLabel( "Født" ) );
 		formPnl.add( custWindowBorn );
+		
 
 
-
+		btnPnl.add(imageBtn);
 		btnPnl.add( custWindowRegBtn );
 		btnPnl.add( custWindowSearchBtn );
+		btnPnl.add(imagePnl);
 	}
 
 	private void registerPerson()
@@ -203,6 +207,40 @@ public class CustWindowPanel extends JPanel
 
 	}
 
+	public void imageUpload()
+	{
+		JFrame fr = new JFrame ("Skønner ikke !");
+		FileDialog fd = new FileDialog(fr,"Åpne", FileDialog.LOAD);
+		FileDialog fdsave = new FileDialog(fr,"Lagre", FileDialog.SAVE);
+
+		fd.setVisible(true);
+
+		if(fd.getFile() == null)
+		{
+			statusTxt.setText("Du har ikke valgt noe bilde");
+		}
+		else
+		{
+			
+			String d = (fd.getDirectory() + fd.getFile());
+			Toolkit toolkit = Toolkit.getDefaultToolkit();
+			img = toolkit.getImage(d);
+			statusTxt.setText("Bilde er lagret");
+			fdsave.setVisible(true);
+			
+		}
+	}
+
+	/*public void paint (Graphics g)
+	{
+		if (img != null)
+		{
+			g.drawImage(img, 100, int, custListener);
+
+		}
+	}*/
+
+
 	public void blankOut()
 	{
 		custWindowFirstName.setText("");
@@ -250,6 +288,8 @@ public class CustWindowPanel extends JPanel
 				registerPerson();
 			if( e.getSource() == custWindowSearchBtn )
 				findPerson();
+			if( e.getSource() == imageBtn)
+				imageUpload();
 
 		}
 	}
