@@ -50,7 +50,7 @@ public class Skisenter
 				final Control control = new Control();
     			control.setLocation(0, 500);
 */				vindu.setIconImage(ikon);
-				vindu.setLocation(700,0);    			
+				vindu.setLocation(700,0); 		
 
 
 				final Admin a = new Admin( registry,validations);

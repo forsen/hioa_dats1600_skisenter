@@ -19,19 +19,24 @@ public class Info extends JFrame
 	final static boolean shouldFill = true;
     final static boolean shouldWeightX = true;
     final static boolean RIGHT_TO_LEFT = false;
+    private static JButton button, newsbutton, infobutton;
+    private static JPanel newsWindowPnl, infoWindowPnl;
+ 
+    public Info(Container pane)
+    {
 
- public static void addComponentsToPane(Container pane) {
-        if (RIGHT_TO_LEFT) {
-            pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-        }
-
-        JButton button;
+		JButton button, newsbutton;
         JPanel panel1;
+        Listener listener;
+
+
+
         
         JPanel panel;
         JPanel image;
         JLabel label;
         JLabel labelVinduText;
+        
 
 
 
@@ -42,16 +47,17 @@ public class Info extends JFrame
 	//natural height, maximum width
 	c.fill = GridBagConstraints.BOTH;
 	}
+	listener = new Listener(); 
 
 
     // første kolonne /////////////////////////////
 
 
 	ImageIcon nyheter = new ImageIcon("nyheter.png");
-	button = new JButton(nyheter);
-	button.setFocusPainted(false);
-	button.setContentAreaFilled(false);
-	button.setBorderPainted(false);
+	newsbutton = new JButton(nyheter);
+	newsbutton.setFocusPainted(false);
+	newsbutton.setContentAreaFilled(false);
+	newsbutton.setBorderPainted(false);
 	if (shouldWeightX) {
 	c.weightx = 0.5;
 	}
@@ -59,19 +65,19 @@ public class Info extends JFrame
 	c.gridx = 0;
 	c.gridy = 0;
 	c.weighty = 1;
-	pane.add(button, c);
+	pane.add(newsbutton, c);
 
 	ImageIcon info = new ImageIcon("info.png");
-	button = new JButton(info);
-	button.setFocusPainted(false);
-	button.setContentAreaFilled(false);
-	button.setBorderPainted(false);
+	infobutton = new JButton(info);
+	infobutton.setFocusPainted(false);
+	infobutton.setContentAreaFilled(false);
+	infobutton.setBorderPainted(false);
 	c.fill = GridBagConstraints.BOTH;
 	c.weightx = 0.5;
 	c.gridx = 0;
 	c.gridy = 1;
 	c.weighty = 1;
-	pane.add(button, c);
+	pane.add(infobutton, c);
 
 	ImageIcon tilbud = new ImageIcon("tilbud.png");
 	button = new JButton(tilbud);
@@ -125,22 +131,6 @@ public class Info extends JFrame
 	panel.add(label);
 
 
-
-	labelVinduText = new JLabel("<html><body><br><br><b> Sesongåpning 20. desember 2013!</b> <br>" +
-    "Vi åpner skianlegget 20. desember i år. Kom for gratis kaffe og vafler.<br>" +
-    "________________________________________________________________________________________________________ <br><br>" +
-    "<br><br><b> Sesongåpning 20. desember 2013!</b> <br>" +
-    "Vi åpner skianlegget 20. desember i år. Kom for gratis kaffe og vafler.<br>" +
-    "___________________________________________________________________________________________  <br><br>" +
-    " </body></head>");
-
-    labelVinduText.setFont(new Font("Calibri", Font.PLAIN, 14));
-
-	c.gridx = 1;
-	c.gridy = 2;
-	c.anchor = GridBagConstraints.PAGE_START;
-	panel1.add(labelVinduText);
-
 	// tredje kolonne/////////////
 
 	panel = new JPanel();
@@ -153,26 +143,64 @@ public class Info extends JFrame
 	c.gridy = 0;
 	pane.add(panel, c);
 
+ 
+
+	newsWindowPnl = new NewsWindowPanel();
+	infoWindowPnl = new NewsWindowPanel();
+
+
+	panel1.add(newsWindowPnl);
+	panel1.add(infoWindowPnl);
+
+	newsWindowPnl.setVisible(true);
+	infoWindowPnl.setVisible(false);
+
+
+	newsbutton.addActionListener( listener );
+
+	infobutton.addActionListener( listener );
+
+
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //Set up the content pane.
+        getContentPane();
+
+
+        Toolkit verktoykasse = Toolkit.getDefaultToolkit();
+  		String bildefil = "offpist_logo.png";
+  		Image ikon = verktoykasse.getImage(bildefil);
+  		setIconImage(ikon);
+        //Display the window.
+        pack();
+        setSize(1000,1000);
+        setVisible(true);
+
+
+
+	}
+
+	private class Listener implements ActionListener
+	{
+		public void actionPerformed( ActionEvent e )
+		{
+			newsWindowPnl.setVisible(false);
+			infoWindowPnl.setVisible(false);
+
+
+			if( e.getSource() == newsbutton )
+				newsWindowPnl.setVisible(true);
+			else if( e.getSource() == infobutton)
+				infoWindowPnl.setVisible(true);
+
+		}
+	}
+
 
 
 
 	// fjerde kolonne/////////////
-
-    }
-
-    public void paint(Graphics g)  
-	{  
-	 super.paint(g);  
-
-	 g.setColor(new Color(1,1,1));  
-	  
-	 //Set font that will use when draw String  
-	 g.setFont(new Font("Arial",Font.BOLD,14));  
-	  
-	 //Draw String in JPanel  
-	 g.drawString("(0,200)",50,200);  
-	}
-
 
 
     /**
@@ -180,37 +208,8 @@ public class Info extends JFrame
      * this method should be invoked from the
      * event-dispatching thread.
      */
-    private static void createAndShowGUI() {
-        //Create and set up the window.
-        JFrame frame = new JFrame("Informasjon");
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        //Set up the content pane.
-        addComponentsToPane(frame.getContentPane());
 
 
-        Toolkit verktoykasse = Toolkit.getDefaultToolkit();
-  		String bildefil = "offpist_logo.png";
-  		Image ikon = verktoykasse.getImage(bildefil);
-  		frame.setIconImage(ikon);
-        //Display the window.
-        frame.pack();
-        frame.setSize(1000,1000);
-        frame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        //Schedule a job for the event-dispatching thread:
-        //creating and showing this application's GUI.
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-
-                createAndShowGUI();
-
-            }
-        });
-    }
 
 
 }/*<datafelt, inkludert statiske priskonstanter som brukes av de forskjellige heiskortklassene>
