@@ -31,6 +31,7 @@ public class Info extends JFrame
         JPanel panel;
         JPanel image;
         JLabel label;
+        JLabel labelVinduText;
 
 
 
@@ -122,6 +123,23 @@ public class Info extends JFrame
 	image = new JPanel(new BorderLayout());
 	label = new JLabel(new ImageIcon("offpist_liten.png"));
 	panel.add(label);
+
+
+
+	labelVinduText = new JLabel("<html><body><br><br><b> Sesongåpning 20. desember 2013!</b> <br>" +
+    "Vi åpner skianlegget 20. desember i år. Kom for gratis kaffe og vafler.<br>" +
+    "________________________________________________________________________________________________________ <br><br>" +
+    "<br><br><b> Sesongåpning 20. desember 2013!</b> <br>" +
+    "Vi åpner skianlegget 20. desember i år. Kom for gratis kaffe og vafler.<br>" +
+    "___________________________________________________________________________________________  <br><br>" +
+    " </body></head>");
+
+    labelVinduText.setFont(new Font("Calibri", Font.PLAIN, 14));
+
+	c.gridx = 1;
+	c.gridy = 2;
+	c.anchor = GridBagConstraints.PAGE_START;
+	panel1.add(labelVinduText);
 
 	// tredje kolonne/////////////
 
