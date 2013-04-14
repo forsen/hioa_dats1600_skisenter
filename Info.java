@@ -121,11 +121,7 @@ public class Info extends JFrame
 
 	image = new JPanel(new BorderLayout());
 	label = new JLabel(new ImageIcon("offpist_liten.png"));
-	label.setHorizontalAlignment(JLabel.CENTER);
-	label.setSize(100,100);
-	c.gridx = 0;
-	c.gridy = 0;
-	pane.add(label);
+	panel.add(label);
 
 	// tredje kolonne/////////////
 
