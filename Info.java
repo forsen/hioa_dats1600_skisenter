@@ -22,10 +22,9 @@ public class Info extends JFrame
     private static JButton button, newsbutton, infobutton;
     private static JPanel newsWindowPnl, infoWindowPnl;
  
-    public Info(Container pane)
+    public Info()
     {
 
-		JButton button, newsbutton;
         JPanel panel1;
         Listener listener;
 
@@ -35,13 +34,12 @@ public class Info extends JFrame
         JPanel panel;
         JPanel image;
         JLabel label;
-        JLabel labelVinduText;
         
 
 
 
 
-	pane.setLayout(new GridBagLayout());
+	setLayout(new GridBagLayout());
 	GridBagConstraints c = new GridBagConstraints();
 	if (shouldFill) {
 	//natural height, maximum width
@@ -65,31 +63,31 @@ public class Info extends JFrame
 	c.gridx = 0;
 	c.gridy = 0;
 	c.weighty = 1;
-	pane.add(newsbutton, c);
+	add(newsbutton, c);
 
 	ImageIcon info = new ImageIcon("info.png");
 	infobutton = new JButton(info);
-	infobutton.setFocusPainted(false);
-	infobutton.setContentAreaFilled(false);
-	infobutton.setBorderPainted(false);
-	c.fill = GridBagConstraints.BOTH;
-	c.weightx = 0.5;
-	c.gridx = 0;
-	c.gridy = 1;
-	c.weighty = 1;
-	pane.add(infobutton, c);
+		infobutton.setFocusPainted(false);
+		infobutton.setContentAreaFilled(false);
+		infobutton.setBorderPainted(false);
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.5;
+		c.gridx = 0;
+		c.gridy = 1;
+		c.weighty = 1;
+		add(infobutton, c);
 
-	ImageIcon tilbud = new ImageIcon("tilbud.png");
-	button = new JButton(tilbud);
-	button.setFocusPainted(false);
-	button.setBorderPainted(false);
-	button.setContentAreaFilled(false);
-	c.fill = GridBagConstraints.BOTH;
-	c.weightx = 0.5;
-	c.gridx = 0;
-	c.gridy = 2;
+		ImageIcon tilbud = new ImageIcon("tilbud.png");
+		button = new JButton(tilbud);
+		button.setFocusPainted(false);
+		button.setBorderPainted(false);
+		button.setContentAreaFilled(false);
+		c.fill = GridBagConstraints.BOTH;
+		c.weightx = 0.5;
+		c.gridx = 0;
+		c.gridy = 2;
 	c.weighty = 1;
-	pane.add(button, c);
+	add(button, c);
 
 	ImageIcon priser = new ImageIcon("priser.png");
 	button = new JButton(priser);
@@ -101,7 +99,7 @@ public class Info extends JFrame
 	c.weightx = 0.5;
 	c.gridx = 0;
 	c.gridy = 3;
-	pane.add(button, c);
+	add(button, c);
 
 	// andre kolonne /////////////////////////////
 
@@ -114,7 +112,7 @@ public class Info extends JFrame
 	c.gridwidth = 2;
 	c.gridx = 1;
 	c.gridy = 0;
-	pane.add(panel, c);
+	add(panel, c);
 
 	panel1 = new JPanel();
 	c.fill = GridBagConstraints.BOTH;
@@ -124,7 +122,7 @@ public class Info extends JFrame
 	c.gridwidth = 4;
 	c.gridx = 1;
 	c.gridy = 1;
-	pane.add(panel1, c);
+	add(panel1, c);
 
 	image = new JPanel(new BorderLayout());
 	label = new JLabel(new ImageIcon("offpist_liten.png"));
@@ -141,7 +139,7 @@ public class Info extends JFrame
 	c.gridwidth = 1;
 	c.gridx = 2;
 	c.gridy = 0;
-	pane.add(panel, c);
+	add(panel, c);
 
  
 
