@@ -214,7 +214,7 @@ public class CustWindowPanel extends JPanel
 		JFileChooser fc = new JFileChooser();
 
 		FileNameExtensionFilter filter = new FileNameExtensionFilter(
-        	"JPG & GIF Images", "jpg", "gif", "png");
+        	"Image files", "jpg", "gif", "png");
     	fc.setFileFilter(filter);
 		int returnValue = fc.showOpenDialog(formPnl);
 
