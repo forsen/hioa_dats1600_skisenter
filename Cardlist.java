@@ -104,6 +104,22 @@ public class Cardlist implements Serializable
 		return total;
 	}
 
+	public int totalPunch()
+	{
+		Iterator<Card> it = list.iterator();
+
+		int totalpunch = 0;
+
+		while (it.hasNext())
+		{
+			Card runner = it.next();
+	
+			totalpunch += runner.totalCost();
+			
+		}
+		return totalpunch;
+	}
+
 	public String toString()
 	{
 		StringBuilder text = new StringBuilder();

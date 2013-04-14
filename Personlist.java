@@ -152,6 +152,21 @@ public class Personlist implements Serializable
 		return total;
 	}
 
+	public int totalPunch()
+	{
+		Iterator<Person> it = registry.iterator();
+
+		int totalpunch = 0;
+
+		while (it.hasNext())
+		{
+			Person runner = it.next();
+
+			totalpunch += runner.totalPunch();
+		}
+		return totalpunch;
+	}
+
 	
 
 

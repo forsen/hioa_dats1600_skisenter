@@ -132,6 +132,11 @@ public class Person implements Serializable
 		
 	}
 
+	public int totalPunch()
+	{
+		return list.totalPunch();
+	}
+
 	public String toString()
 	{
 		StringBuilder text = new StringBuilder();

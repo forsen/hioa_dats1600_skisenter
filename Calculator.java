@@ -47,6 +47,11 @@ public class Calculator
 		return custRegistry.totalCost();
 	}
 
+	public int totalPunch()
+	{
+		return custRegistry.totalPunch();
+	}
+
 	public int showPassings()
 	{
 		

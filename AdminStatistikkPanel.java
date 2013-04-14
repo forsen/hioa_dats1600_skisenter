@@ -145,6 +145,13 @@ public class AdminStatistikkPanel extends JPanel
 	{
 		display.append("\nTotal omsetning er "+  cal.totalCost() + " KR");
 	}
+
+	public void totalPunch()
+	{
+		display.append("\nTotal salg av Klippekort er " +cal.totalPunch() + "KR og antall klippekort som er solgt er: " + cal.totalPunch()/Info.PUNCHCARDPRICE + "KR");
+	}
+
+
 	private class Listener implements ActionListener
   	{
    		public void actionPerformed( ActionEvent e )
@@ -165,6 +172,8 @@ public class AdminStatistikkPanel extends JPanel
        		if(e.getSource() == searchBtn)
       		{
       			regThatTime();
+      			totalPunch();
+
       		}
 
     	}

@@ -108,6 +108,8 @@ public class AdminInfoPanel extends JPanel
 		display.setText( text.toString() );
 	}	
 
+	
+
 
 	private class Listener implements ActionListener
   	{

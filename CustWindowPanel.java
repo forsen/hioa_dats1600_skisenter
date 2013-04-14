@@ -146,7 +146,8 @@ public class CustWindowPanel extends JPanel
 		{
 			int number = Integer.parseInt(custWindowPhone.getText());
 			Date born = new SimpleDateFormat("ddMMyy").parse(custWindowBorn.getText());
-			Person p = new Person( firstname, lastname, number, born, null );
+			File img = imageUpload();
+			Person p = new Person( firstname, lastname, number, born, img );
 			
 		
 
@@ -208,7 +209,7 @@ public class CustWindowPanel extends JPanel
 
 	}
 
-	public void imageUpload()
+	public File imageUpload()
 	{
 		JFileChooser fc = new JFileChooser();
 
@@ -225,6 +226,11 @@ public class CustWindowPanel extends JPanel
 		}
 
 		System.out.println("Du har valgt å åpne filen: " + f.getName() );
+
+		
+
+
+		return f;
 
 
 //		JFrame fr = new JFrame ("Skønner ikke !");
