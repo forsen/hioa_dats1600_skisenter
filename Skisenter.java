@@ -42,7 +42,8 @@ public class Skisenter
 
 				final Drittvindu  vindu = new Drittvindu( validations, registry);
 
-
+				final Info i = new Info();
+				i.setVisible(true);
   		
 
 
