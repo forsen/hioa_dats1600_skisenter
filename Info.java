@@ -140,7 +140,7 @@ public class Info extends JFrame
  
 
 	newsWindowPnl = new NewsWindowPanel();
-	infoWindowPnl = new NewsWindowPanel();
+	infoWindowPnl = new InfoWindowPanel();
 
 
 	panel1.add(newsWindowPnl);
