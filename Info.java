@@ -19,18 +19,18 @@ public class Info extends JFrame
 	final static boolean shouldFill = true;
     final static boolean shouldWeightX = true;
     final static boolean RIGHT_TO_LEFT = false;
-    private static JButton button, newsbutton, infobutton;
-    private static JPanel newsWindowPnl, infoWindowPnl;
+    private static JButton button, newsButton, infoButton, offersButton, pricesButton;
+    private static JPanel newsWindowPnl, infoWindowPnl, spOffersWindowPnl, pricesWindowPnl;
  
     public Info()
     {
 
-        JPanel panel1;
+        JPanel contentPanel;
         Listener listener;
 
 
 
-        
+        JPanel sideMenu;
         JPanel panel;
         JPanel image;
         JLabel label;
@@ -51,8 +51,12 @@ public class Info extends JFrame
     // første kolonne /////////////////////////////
 
 
+	sideMenu = new JPanel();
 	ImageIcon nyheter = new ImageIcon("nyheter.png");
-	newsbutton = new JButton(nyheter);
+	newsButton = new JButton(nyheter);
+	newsButton.setFocusPainted(false);
+	newsButton.setBorderPainted(false);
+	newsButton.setContentAreaFilled(false);
 
 	if (shouldWeightX) {
 	c.weightx = 0.5;
@@ -61,41 +65,48 @@ public class Info extends JFrame
 	c.gridx = 0;
 	c.gridy = 0;
 	c.weighty = 1;
-	add(newsbutton, c);
+	sideMenu.add(newsButton, c);
 
 	ImageIcon info = new ImageIcon("info.png");
-	infobutton = new JButton(info);
+	infoButton = new JButton(info);
+	infoButton.setFocusPainted(false);
+	infoButton.setBorderPainted(false);
+	infoButton.setContentAreaFilled(false);
 
-		c.fill = GridBagConstraints.BOTH;
-		c.weightx = 0.5;
-		c.gridx = 0;
-		c.gridy = 1;
-		c.weighty = 1;
-		add(infobutton, c);
-
-		ImageIcon tilbud = new ImageIcon("tilbud.png");
-		button = new JButton(tilbud);
-		button.setFocusPainted(false);
-		button.setBorderPainted(false);
-		button.setContentAreaFilled(false);
-		c.fill = GridBagConstraints.BOTH;
-		c.weightx = 0.5;
-		c.gridx = 0;
-		c.gridy = 2;
+	c.fill = GridBagConstraints.BOTH;
+	c.weightx = 0.5;
+	c.gridx = 0;
+	c.gridy = 1;
 	c.weighty = 1;
-	add(button, c);
+	sideMenu.add(infoButton, c);
+
+	ImageIcon tilbud = new ImageIcon("tilbud.png");
+	offersButton = new JButton(tilbud);
+	offersButton.setFocusPainted(false);
+	offersButton.setBorderPainted(false);
+	offersButton.setContentAreaFilled(false);
+	c.fill = GridBagConstraints.BOTH;
+	c.weightx = 0.5;
+	c.gridx = 0;
+	c.gridy = 2;
+	c.weighty = 1;
+	sideMenu.add(offersButton, c);
 
 	ImageIcon priser = new ImageIcon("priser.png");
-	button = new JButton(priser);
-	button.setFocusPainted(false);
-	button.setBorderPainted(false);
-	button.setContentAreaFilled(false);
+	pricesButton = new JButton(priser);
+	pricesButton.setFocusPainted(false);
+	pricesButton.setBorderPainted(false);
+	pricesButton.setContentAreaFilled(false);
 	c.fill = GridBagConstraints.BOTH;
 	c.weighty = 1;
 	c.weightx = 0.5;
 	c.gridx = 0;
 	c.gridy = 3;
-	add(button, c);
+	sideMenu.add(pricesButton, c);
+	sideMenu.setPreferredSize(new Dimension(10,80));
+	add(sideMenu, c);
+
+
 
 	// andre kolonne /////////////////////////////
 
@@ -110,15 +121,15 @@ public class Info extends JFrame
 	c.gridy = 0;
 	add(panel, c);
 
-	panel1 = new JPanel();
+	contentPanel = new JPanel();
 	c.fill = GridBagConstraints.BOTH;
-	panel1.setBackground(new Color(220, 240, 255));
+	contentPanel.setBackground(new Color(220, 240, 255));
 	c.weightx = 0.8;
 	c.gridheight = 4;
 	c.gridwidth = 4;
 	c.gridx = 1;
 	c.gridy = 1;
-	add(panel1, c);
+	add(contentPanel, c);
 
 	image = new JPanel(new BorderLayout());
 	label = new JLabel(new ImageIcon("offpist_liten.png"));
@@ -137,22 +148,34 @@ public class Info extends JFrame
 	c.gridy = 0;
 	add(panel, c);
 
+
+	//// fredje kolonne///////////////////////
+
  
 
 	newsWindowPnl = new NewsWindowPanel();
 	infoWindowPnl = new InfoWindowPanel();
+	spOffersWindowPnl = new SpOfferWindowPanel();
+	pricesWindowPnl = new PricesWindowPanel();
 
 
-	panel1.add(newsWindowPnl);
-	panel1.add(infoWindowPnl);
+	contentPanel.add(newsWindowPnl);
+	contentPanel.add(infoWindowPnl);
+	contentPanel.add(spOffersWindowPnl);
+	contentPanel.add(pricesWindowPnl);
+	contentPanel.setPreferredSize(new Dimension(10, 20));
 
 	newsWindowPnl.setVisible(true);
 	infoWindowPnl.setVisible(false);
+	spOffersWindowPnl.setVisible(false);
+	pricesWindowPnl.setVisible(false);
 
 	listener = new Listener(); 
-	newsbutton.addActionListener( listener );
+	newsButton.addActionListener( listener );
+	infoButton.addActionListener( listener );
+	offersButton.addActionListener( listener );
+	pricesButton.addActionListener( listener );
 
-	infobutton.addActionListener( listener );
 
 
 
@@ -179,17 +202,28 @@ public class Info extends JFrame
 		{
 			newsWindowPnl.setVisible(false);
 			infoWindowPnl.setVisible(false);
+			spOffersWindowPnl.setVisible(false);
+			pricesWindowPnl.setVisible(false);
 
 
-			if( e.getSource() == newsbutton )
+			if( e.getSource() == newsButton )
 			{
 				newsWindowPnl.setVisible(true);
 			}
 				
-			else if( e.getSource() == infobutton)
+			else if( e.getSource() == infoButton)
 			{
-				newsWindowPnl.setVisible(false);
 				infoWindowPnl.setVisible(true);
+			}
+
+			else if( e.getSource() == offersButton)
+			{
+				spOffersWindowPnl.setVisible(true);
+			}
+
+			else if( e.getSource() == pricesButton)
+			{
+				pricesWindowPnl.setVisible(true);
 			}
 
 		}
