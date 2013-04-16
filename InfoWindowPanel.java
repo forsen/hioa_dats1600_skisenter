@@ -43,7 +43,7 @@ public class InfoWindowPanel extends JPanel
 							+"Lørdag: 9:00-18:00<br>"
 							+"Søndag: 9:00-18:00</html>");
 	    content.setFont(new Font("Calibri", Font.PLAIN, 14));
-	    content.setHorizontalAlignment(SwingConstants.CENTER);
+	    content.setHorizontalAlignment(JLabel.CENTER);
 
 		c.gridx = 0;
 		c.gridy = 2;
