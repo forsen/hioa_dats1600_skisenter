@@ -13,7 +13,7 @@ public abstract class Skicard implements Serializable
 	private final int CHILD = 1;
 	private final int ADULT = 2;
 
-	private final int CHILDLIMIT = 16;
+
 
 	private int price;
 	private double discount;
@@ -26,7 +26,7 @@ public abstract class Skicard implements Serializable
 	{
 
 		price = p;
-		discount = 1;
+		discount = Info.DISCOUNT;
 		bought = b; 
 		type = t; 
 
@@ -39,7 +39,7 @@ public abstract class Skicard implements Serializable
 			cal.setTime( bd );
 
 		
-			if( (cal2.get(Calendar.YEAR ) - cal.get(Calendar.YEAR )) <= CHILDLIMIT )
+			if( (cal2.get(Calendar.YEAR ) - cal.get(Calendar.YEAR )) <= Info.CHILDLIMIT )
 			{
 				ageGroup = CHILD; 
 				discount = 0.5;
@@ -50,6 +50,18 @@ public abstract class Skicard implements Serializable
 		else ageGroup = ADULT;
 
 			price = (int) (price * discount);
+
+		cal.setTime( bd );
+
+		if( (cal2.get(Calendar.YEAR ) - cal.get(Calendar.YEAR )) <= Info.CHILDLIMIT )
+		{
+			ageGroup = CHILD; 
+		}
+		else
+			ageGroup = ADULT;
+
+		price = (int) (price * Info.DISCOUNT);
+
 	}
 /*
 	public int getCardNr()
@@ -64,7 +76,7 @@ public abstract class Skicard implements Serializable
 
 	public double getDiscount()
 	{
-		return discount;
+		return Info.DISCOUNT;
 	}
 
 	public int getAgeGroup()
@@ -85,7 +97,7 @@ public abstract class Skicard implements Serializable
 
 		//text.append("Card ID: " + cardNumber + "\n");
 		text.append("Price: " + price + "\n");
-		text.append("Discount: " + discount + "\n");
+		text.append("Discount: " + Info.DISCOUNT + "\n");
 		text.append(ageGroup + "\n");
 
 		String doneText = text.toString();
