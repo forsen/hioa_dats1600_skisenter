@@ -7,17 +7,18 @@ import java.util.Date;
 
 public class PricesWindowPanel extends JPanel
 {
-	private JLabel price1;
+	private JLabel header;
+	private JLabel content;
 	private JTable priceTable;
 
 
 
 	public PricesWindowPanel()
 	{
-		Object rowData[][] = { { "Dagskort", Info.DAYCARDPRICE, (Info.DAYCARDPRICE*Info.DISCOUNT)},
-        { "Sesongkort", Info.SEASONCARDPRICE, (Info.SEASONCARDPRICE*Info.DISCOUNT)},
-        {"Timeskort:", Info.HOURCARDPRICE, (Info.HOURCARDPRICE*Info.DISCOUNT)},
-        {"Klippekort", Info.PUNCHCARDPRICE, (Info.PUNCHCARDPRICE*Info.DISCOUNT)} };
+		Object rowData[][] = { { "Dagskort", Info.DAYCARDPRICE + " kr.", (Info.DAYCARDPRICE*Info.DISCOUNT) + " kr."},
+        { "Sesongkort", Info.SEASONCARDPRICE + " kr.", (Info.SEASONCARDPRICE*Info.DISCOUNT) + " kr."},
+        {"Timeskort:", Info.HOURCARDPRICE + " kr.", (Info.HOURCARDPRICE*Info.DISCOUNT) + " kr."},
+        {"Klippekort", Info.PUNCHCARDPRICE + " kr.", (Info.PUNCHCARDPRICE*Info.DISCOUNT) + " kr."} };
     	Object columnNames[] = { "Korttype", "Voksen (over " +Info.CHILDLIMIT+" år)", "Barn (tom. " + Info.CHILDLIMIT + "år.)", };
     	priceTable = new JTable(rowData, columnNames);
     	priceTable.setEnabled(false);
@@ -29,18 +30,32 @@ public class PricesWindowPanel extends JPanel
 		setBackground(new Color(220, 240, 255));
 
 
-		price1 = new JLabel("Heiskort");
-
-	    price1.setFont(new Font("Calibri", Font.PLAIN, 20));
+		header = new JLabel("Heiskort");
+	    header.setFont(new Font("Calibri", Font.BOLD, 20));
 
 		c.gridx = 1;
 		c.gridy = 1;
 		c.anchor = GridBagConstraints.LINE_START;
-		add(price1, c);
+		add(header, c);
 
 		c.gridx = 1;
 		c.gridy = 2;
 		c.anchor = GridBagConstraints.LINE_START;
 		add(new JScrollPane(priceTable), c);
+
+		header = new JLabel("Rabatter");
+	    header.setFont(new Font("Calibri", Font.BOLD, 20));
+
+		c.gridx = 1;
+		c.gridy= 3;
+		add(header, c);
+
+		content = new JLabel("Hos oss vil alle småracere som er 16 år eller yngre få kjøre i bakken\n" +
+							 "til halv pris, uansett type heiskort.");
+		content.setFont(new Font("Calibri", Font.PLAIN, 14));
+		c.gridx = 1;
+		c.gridy= 4;
+		add(content, c);
+
 	}
 }

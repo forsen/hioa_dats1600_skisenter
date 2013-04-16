@@ -115,10 +115,15 @@ public class ShoppingCart
 		while( cIt.hasNext() )
 		{
 			if(Salesclerk.customer == null)
-			{
-				
-				cardlist.input(cIt.next());
-
+			{	
+				try
+				{
+					cardlist.input(cIt.next());
+				}
+				catch( NullPointerException npe )
+				{
+					System.out.println( "Noe gikk galt" );
+				}
 			}
 			else 
 			{
