@@ -166,10 +166,12 @@ public class Info extends JFrame
 		//	c.gridwidth = 4;
 		c.gridx = 1;
 		c.gridy = 1;
-		add(contentPanel, c);
+		JScrollPane contentScrollPanel = new JScrollPane(contentPanel);
+		add(contentScrollPanel, c);
 
 		image = new JPanel(new BorderLayout());
 		label = new JLabel(new ImageIcon("offpist_liten.png"));
+
 		panel.add(label);
 
 

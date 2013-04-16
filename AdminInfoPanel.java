@@ -16,11 +16,13 @@ public class AdminInfoPanel extends JPanel
 	private JScrollPane scroll;
 	private Personlist list;
 	private List<Validations> validations;
+	private Cardlist cardregistry;
 
-	public AdminInfoPanel(Personlist l,List<Validations> v )
+	public AdminInfoPanel(Personlist l,List<Validations> v, Cardlist cr )
 	{
 		list = l;
 		validations = v;
+		cardregistry = cr;
 		butnPnl = new JPanel(new GridLayout( 4,2 ));
 		dispPnl = new JPanel();
 		
@@ -29,6 +31,7 @@ public class AdminInfoPanel extends JPanel
 		listener = new Listener();
 
 		display = new JTextArea(20,40);
+		display.setEditable(false);
 		scroll = new JScrollPane(display);
 
 		butnPnl.add( new JLabel( "Kortnr" ) );
@@ -53,7 +56,7 @@ public class AdminInfoPanel extends JPanel
 		showPersons.addActionListener( listener );
 		butnPnl.add(showPersons);
 
-		showCards = new JButton(" Vis kort ");
+		showCards = new JButton(" Vis uregistrerte kort ");
 		showCards.addActionListener( listener );
 		butnPnl.add(showCards);
 
@@ -99,10 +102,12 @@ public class AdminInfoPanel extends JPanel
 		display.setText(list.toString());
 	}
 
+		
 	public void showCards()
 	{
-		display.setText("Her kommer det en skikortliste etterhvert");
+		display.setText(cardregistry.toString());
 	}
+	
 	
 	public void deletePerson()
 	{

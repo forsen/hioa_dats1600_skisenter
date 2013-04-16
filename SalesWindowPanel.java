@@ -55,14 +55,17 @@ public class SalesWindowPanel extends JPanel
 		salesAddCartBtn = new JButton("Legg i handlevogn");
 		salesAddCartBtn.setMnemonic(KeyEvent.VK_L);
 		salesAddCartBtn.addActionListener( btnListener );
+		salesAddCartBtn.setToolTipText("Legg til valgt kort i handlevognen");
 
 		salesCheckoutBtn = new JButton("Til betaling");
 		salesCheckoutBtn.setMnemonic(KeyEvent.VK_B);
 		salesCheckoutBtn.addActionListener( btnListener );
+		salesCheckoutBtn.setToolTipText("Ferdig? Gå til betaling");
 
 		salesNewCardBtn = new JButton("Nytt kort");
 		salesNewCardBtn.setMnemonic(KeyEvent.VK_N);
 		salesNewCardBtn.addActionListener( btnListener );
+		salesNewCardBtn.setToolTipText("Registrer nytt kort");
 		//customer = p; 
 
 		cardListener = new CardListener();

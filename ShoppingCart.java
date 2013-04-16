@@ -7,15 +7,18 @@ public class ShoppingCart
 	private static DefaultListModel<CartItems> items;
 	private static List<CartItems> cartList;
 	private static DefaultListModel<Card> cardList;
+
 	private static List<Card> newCards; 
-	private Cardlist cardlist;
+
+	private Cardlist unregCardList;
+
 
 	public ShoppingCart(Cardlist cl)
 	{
 		items = new DefaultListModel<>();
 		cartList = new LinkedList<>();
 		newCards = new LinkedList<>();
-		cardlist = cl;
+		unregCardList = cl;
 
 //		try
 //		{
@@ -118,7 +121,7 @@ public class ShoppingCart
 			{	
 				try
 				{
-					cardlist.input(cIt.next());
+					unregCardList.input(cIt.next());
 				}
 				catch( NullPointerException npe )
 				{
@@ -146,6 +149,7 @@ public class ShoppingCart
 		items = new DefaultListModel<>();
 		cartList = new LinkedList<>();
 		newCards = new LinkedList<>();
+		cardList = new DefaultListModel<>(); 
 		sum = 0; 
 
 		return items;	

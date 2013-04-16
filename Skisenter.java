@@ -55,7 +55,7 @@ public class Skisenter
 				vindu.setLocation(700,0); 		
 
 
-				final Admin a = new Admin( registry,validations);
+				final Admin a = new Admin( registry,validations, cardregistry);
 				a.setLocation(0,425);
 				a.setIconImage(ikon);    
 

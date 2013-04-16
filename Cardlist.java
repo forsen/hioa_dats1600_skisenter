@@ -120,6 +120,22 @@ public class Cardlist implements Serializable
 		return totalpunch;
 	}
 
+	public int allCards()
+	{
+		Iterator<Card> it = list.iterator();
+
+		int total = 0;
+
+		while (it.hasNext())
+		{
+			Card runner = it.next();
+	
+			total ++;
+			
+		}
+		return total;
+	}
+
 	public String toString()
 	{
 		StringBuilder text = new StringBuilder();

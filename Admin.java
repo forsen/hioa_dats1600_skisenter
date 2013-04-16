@@ -15,19 +15,21 @@ public class Admin extends JFrame
 	private Container c;
 	private BorderLayout layout;
 	private List<Validations> validations;
+	private Cardlist cardregistry;
 	
 	
 
-	public Admin(Personlist l,List<Validations> v) 
+	public Admin(Personlist l,List<Validations> v, Cardlist cl) 
 	{
 		super("Administrator");
 		list = l;
 		validations = v;
+		cardregistry = cl;
 
 		topPnl = new JPanel( new FlowLayout() );
 		framePnl = new JPanel(new FlowLayout());
-		adminInfoPnl = new AdminInfoPanel(list, validations);
-		statInfoPnl = new AdminStatistikkPanel(list, validations );
+		adminInfoPnl = new AdminInfoPanel(list, validations, cardregistry);
+		statInfoPnl = new AdminStatistikkPanel(list, validations, cardregistry );
 		listner = new Listner();
 
 		layout = new BorderLayout( 5, 5 );
