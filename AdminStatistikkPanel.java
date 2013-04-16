@@ -20,6 +20,9 @@ public class AdminStatistikkPanel extends JPanel
 	private Calculator cal;
 	private List<Validations> validations;
 
+	// fjern etterhvert
+	private int[] testData;
+
 	public AdminStatistikkPanel(Personlist l,List<Validations> v )
 	{
 		list = l;
@@ -28,7 +31,7 @@ public class AdminStatistikkPanel extends JPanel
 		fieldPnl = new JPanel();
 		choicePnl = new JPanel(new GridLayout( 5,10 ));
 		dispPnl = new JPanel();
-		graphPnl = new GraphPanel();
+		
 		setLayout( new BorderLayout( 5, 8) );
 
 		listener = new Listener();
@@ -104,6 +107,22 @@ public class AdminStatistikkPanel extends JPanel
 		add(choicePnl, BorderLayout.CENTER);
 		add(dispPnl, BorderLayout.PAGE_END);
 
+
+
+		// fjern etterhvert
+
+		testData = new int[10];
+		testData[0] = 43;
+		testData[1] = 55;
+		testData[2] = 42;
+		testData[3] = 60;
+		testData[4] = 49;
+		testData[5] = 55; 
+		testData[6] = 60;
+		testData[7] = 54;
+		testData[8] = 37;
+		testData[9] = 67;
+
 	}
 
 	public void totalRegPepole()
@@ -164,6 +183,7 @@ public class AdminStatistikkPanel extends JPanel
       		}
       		if ( e.getSource()== graphBtn )
        		{
+       			graphPnl = new GraphPanel( testData );
        			dispPnl.add(graphPnl);
        			graphPnl.setVisible(true);
        			display.setVisible( false );
