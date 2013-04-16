@@ -150,6 +150,8 @@ public class Info extends JFrame
 	panel.add(label);
 
 
+
+
 	// tredje kolonne/////////////
 
 	//// fredje kolonne///////////////////////
@@ -196,6 +198,25 @@ public class Info extends JFrame
 
 
 	}
+
+	// public void paint( Graphics g ) 
+	// { 
+	// 	super.paint(g);
+	// 	g.setColor(new Color(230,245,255));
+	// 	g.fillRect(0,0, getWidth(), getHeight());
+		
+
+	// 	int[]x={0,0,getWidth()};
+
+	// 	int[]y={0,1400,getHeight()}; 
+
+	// 	g.setColor(new Color(235,250,255));
+	// 	g.fillPolygon(x,y,3);	
+
+	// 	g.setColor(new Color(238, 238, 238));
+	// 	g.fillRect(0,0, getWidth(), 100);
+
+	// }
 
 	private class Listener implements ActionListener
 	{
