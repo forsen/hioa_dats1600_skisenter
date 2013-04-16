@@ -174,11 +174,11 @@ public class Salesclerk extends JFrame
 		salesClerkSearchInfoTxt.setText("");
 		try
 		{
-			SalesWindowPanel.cardIDList.removeAll();
+			SalesWindowPanel.cardIDList.setModel( new DefaultListModel<Card>());
 			ReplaceWindowPanel.replaceWindowCustIdtf.setText("");
-			ReplaceWindowPanel.cardIDList.removeAll();
+			ReplaceWindowPanel.cardIDList.setModel( new DefaultListModel<Card>());
 			salesClerkSearchInfoTxt.setBackground(Color.WHITE);
-			
+			CustWindowPanel.clearSearch(); 
 		}
 		catch(IllegalArgumentException iae)
 		{

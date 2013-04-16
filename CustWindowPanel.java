@@ -21,7 +21,7 @@ public class CustWindowPanel extends JPanel
 
 	private CustListener custListener;
 
-	private JList<Person> list; 
+	private static JList<Person> list; 
 	private DefaultListModel<Person> listmodel;
 	private ListListener listListener;
 
@@ -280,6 +280,11 @@ public class CustWindowPanel extends JPanel
 		custWindowBorn.setText("");
 	}
 
+
+	public static void clearSearch()
+	{
+		list.setModel(new DefaultListModel<Person>()); 
+	}
 
 
 
