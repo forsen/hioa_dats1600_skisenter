@@ -30,7 +30,7 @@ public class Calculator
 
 	public int unregCards()
 	{
-		cardlist.allCards();
+		return cardlist.allCards();
 	}
 
 	public int totalSoldCard()

@@ -3,12 +3,15 @@ import javax.swing.DefaultListModel;
 
 public class ShoppingCart
 {
-	private double sum; 
-	private DefaultListModel<CartItems> items;
-	private List<CartItems> cartList;
+	private static double sum; 
+	private static DefaultListModel<CartItems> items;
+	private static List<CartItems> cartList;
 	private static DefaultListModel<Card> cardList;
-	private List<Card> newCards; 
+
+	private static List<Card> newCards; 
+
 	private Cardlist unregCardList;
+
 
 	public ShoppingCart(Cardlist cl)
 	{
@@ -141,11 +144,12 @@ public class ShoppingCart
 		}
 	}
 
-	public DefaultListModel<CartItems> emptyCart()
+	public static DefaultListModel<CartItems> emptyCart()
 	{
 		items = new DefaultListModel<>();
 		cartList = new LinkedList<>();
 		newCards = new LinkedList<>();
+		cardList = new DefaultListModel<>(); 
 		sum = 0; 
 
 		return items;	

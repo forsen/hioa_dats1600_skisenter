@@ -182,6 +182,9 @@ public class Salesclerk extends JFrame
 			ReplaceWindowPanel.cardIDList.setModel( new DefaultListModel<Card>());
 			salesClerkSearchInfoTxt.setBackground(Color.WHITE);
 			CustWindowPanel.clearSearch(); 
+			ShoppingCart.emptyCart();
+
+
 		}
 		catch(IllegalArgumentException iae)
 		{
