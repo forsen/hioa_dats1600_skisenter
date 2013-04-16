@@ -7,8 +7,9 @@ import java.util.Date;
 
 public class SalesWindowPanel extends JPanel
 {
-	private JLabel custIDLbl, cardTypeLbl;
+	private JLabel custIDLbl,cardnrLbl;
 	public static JTextField salesWindowCustIDtf; 
+	private JTextField cardnrf;
 	private JList<String> cardTypeList;
 	private JList<CartItems> shoppingCartList;
 	public static JList<Card> cardIDList;
@@ -20,17 +21,26 @@ public class SalesWindowPanel extends JPanel
 	private JScrollPane cardScrolList, shoppingScrolList;
 	private ShoppingCart shoppingCart; 
 	private JLabel cartPrice;
+	private Cardlist cardregistry;
 
 	//private Person customer;
 
 	//public SalesWindowPanel( Person p )
-	public SalesWindowPanel()
+	public SalesWindowPanel(Cardlist cl)
 	{
 
+		cardregistry = cl;
+
 		custIDLbl = new JLabel( " Kundenr" );
-		cardTypeLbl = new JLabel( " Korttype" );
+		cardnrLbl = new JLabel(" Kortnr");
+		
+
 		salesWindowCustIDtf = new JTextField( 3 );
 		salesWindowCustIDtf.setEditable(false);
+
+		cardnrf = new JTextField( 3 );
+		cardnrf.setEditable(true);
+
 		cardTypeString = new String[4];
 		cardTypeString[Skicard.DAYCARD] = "Dagskort";
 		cardTypeString[Skicard.HOURCARD] = "1-timeskort";
@@ -98,14 +108,14 @@ public class SalesWindowPanel extends JPanel
 		c.gridwidth = 1; 
 		c.weighty = 0.2;
 		add(custIDLbl, c);
-
-		c.gridheight = 1;
+		
+		c.gridheight = 1; 
 		c.weightx = 0.5;
 		c.gridx = 0; 
-		c.gridy = 1; 
-		c.gridwidth = 1;
+		c.gridy = 1;
+		c.gridwidth = 1; 
 		c.weighty = 0.2;
-		add(cardTypeList, c);
+		add(cardnrLbl, c);
 
 		c.gridheight = 1;
 		c.weightx = 0.5;
@@ -113,12 +123,20 @@ public class SalesWindowPanel extends JPanel
 		c.gridy = 2; 
 		c.gridwidth = 1;
 		c.weighty = 0.2;
+		add(cardTypeList, c);
+
+		c.gridheight = 1;
+		c.weightx = 0.5;
+		c.gridx = 0; 
+		c.gridy = 3; 
+		c.gridwidth = 1;
+		c.weighty = 0.2;
 		add(cardScrolList, c);
 
 		c.gridheight = 1;
 		c.weightx = 1;
 		c.gridx = 0; 
-		c.gridy = 3; 
+		c.gridy = 4; 
 		c.gridwidth = 1;
 		c.weighty = 0.2;
 		add(shoppingScrolList, c);
@@ -132,10 +150,18 @@ public class SalesWindowPanel extends JPanel
 		c.weighty = 0.2;
 		add(salesWindowCustIDtf, c);
 
+		c.gridheight = 1; 
+		c.weightx = 0.5;
+		c.gridx = 1; 
+		c.gridy = 1;
+		c.gridwidth = 1; 
+		c.weighty = 0.2;
+		add(cardnrf,c);	
+
 		c.gridheight = 1;
 		c.weightx = 0.5;
 		c.gridx = 1; 
-		c.gridy = 1; 
+		c.gridy = 2; 
 		c.gridwidth = 1;
 		c.weighty = 0.2;
 		add(salesNewCardBtn, c);
@@ -143,7 +169,7 @@ public class SalesWindowPanel extends JPanel
 		c.gridheight = 1;
 		c.weightx = 0.5;
 		c.gridx = 1; 
-		c.gridy = 2; 
+		c.gridy = 3; 
 		c.gridwidth = 2;
 		c.weighty = 0.2;
 		add(salesAddCartBtn, c);
@@ -151,7 +177,7 @@ public class SalesWindowPanel extends JPanel
 		c.gridheight = 1;
 		c.weightx = 0.5;
 		c.gridx = 1; 
-		c.gridy = 3; 
+		c.gridy = 4; 
 		c.gridwidth = 1;
 		c.weighty = 0.2;
 		add(salesCheckoutBtn, c);
@@ -180,6 +206,7 @@ public class SalesWindowPanel extends JPanel
 		int cardType = cardTypeList.getSelectedIndex();
 		Skicard sc;
 
+		
 		Date now = new Date();
 
 		Date bDate;
@@ -192,6 +219,7 @@ public class SalesWindowPanel extends JPanel
 		{
 			bDate = null; 
 		}
+		
 
 		switch( cardType )
 		{
@@ -206,21 +234,30 @@ public class SalesWindowPanel extends JPanel
 			default: 				sc = null;
 		}
 		try
-		{
+		{	
 			Card c = (Card) cardIDList.getSelectedValue();
 			if( c != null )
 			{
 				shoppingCartList.setModel( shoppingCart.addToCart( c, sc ) );
 				cartPrice.setText(" Sum: " + shoppingCart.getSum() + "kr");
-			}
+			}			
 		}
 		catch( NullPointerException npe )
 		{
 			if( Salesclerk.customer.isEmpty() )
-				JOptionPane.showMessageDialog(null, "Du må opprette et kort først, trykk på nytt kort");
+			{
+				int cNr = Integer.parseInt(cardnrf.getText());
+				Card c = cardregistry.findCard(cNr);
+
+				shoppingCartList.setModel( shoppingCart.addToCart( c, sc ) );
+				cartPrice.setText(" Sum: " + shoppingCart.getSum() + "kr");
+			}
+
 			else
 				JOptionPane.showMessageDialog( null, "Du må velge hvilket kort fra kortlista som skal få det nye produktet" );
 		}
+		
+
 
 
 

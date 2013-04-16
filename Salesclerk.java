@@ -13,7 +13,7 @@ public class Salesclerk extends JFrame
 
 	private final int LEFT = 20;
 	private final int RIGHT = 40;
-	private JButton custWindowBtn, salesWindowBtn, replaceWindowBtn;
+	private JButton custWindowBtn, salesWindowBtn, replaceWindowBtn, nextCustBtn;
 	private JPanel topMenuPnl, custWindowPnl, salesWindowPnl, replaceWindowPnl, statusPnl; 
 	private JPanel framePnl;
 	private JTextArea statusTxt;
@@ -26,13 +26,14 @@ public class Salesclerk extends JFrame
 	private Listener listener;
 
 	private Personlist custRegistry; 
+	private Cardlist cardregistry;
 
 	private Toolkit toolbox;
 
 	private Container c;
 	private BorderLayout layout;
 
-	public Salesclerk( Personlist cr, String m )
+	public Salesclerk( Personlist cr, Cardlist cardr, String m )
 	{
 		super("Testvindu");
 
@@ -55,6 +56,7 @@ public class Salesclerk extends JFrame
 		setLocationByPlatform( true );
 
 		custRegistry = cr; 
+		cardregistry = cardr;
 		ImageIcon kunde = new ImageIcon("kunde.png");
 		custWindowBtn = new JButton(kunde);
 		ImageIcon kunde2 = new ImageIcon("kunde2.png");
@@ -82,6 +84,8 @@ public class Salesclerk extends JFrame
 		replaceWindowBtn.setBorderPainted(false);
 		replaceWindowBtn.setToolTipText("Erstatt kort");
 
+		nextCustBtn = new JButton("neste Kunde");
+
 		topMenuPnl = new JPanel( new FlowLayout() );
 		
 		statusTxt = new JTextArea(5,50);
@@ -93,7 +97,7 @@ public class Salesclerk extends JFrame
 
 
 		//salesWindowPnl = new SalesWindowPanel( customer );
-		salesWindowPnl = new SalesWindowPanel();
+		salesWindowPnl = new SalesWindowPanel(cardregistry);
 
 		replaceWindowPnl = new ReplaceWindowPanel( statusTxt);
 
@@ -129,6 +133,7 @@ public class Salesclerk extends JFrame
 		topMenuPnl.add(custWindowBtn);
 		topMenuPnl.add(salesWindowBtn);
 		topMenuPnl.add(replaceWindowBtn);
+		topMenuPnl.add(nextCustBtn);
 
 
 	 
@@ -138,6 +143,8 @@ public class Salesclerk extends JFrame
 		salesWindowBtn.addActionListener( listener );
 
 		replaceWindowBtn.addActionListener(listener);
+
+		nextCustBtn.addActionListener(listener);
 
 
 
@@ -160,6 +167,27 @@ public class Salesclerk extends JFrame
 
 	}
 
+	/*public void clearSearch()
+	{
+		/*customer = null;
+		SalesWindowPanel.salesWindowCustIDtf.setText( "");
+		salesClerkSearchInfoTxt.setText("");
+		try
+		{
+			SalesWindowPanel.cardIDList.removeAll();
+			ReplaceWindowPanel.replaceWindowCustIdtf.setText("");
+			ReplaceWindowPanel.cardIDList.removeAll();
+			salesClerkSearchInfoTxt.setBackground(Color.WHITE);
+		}
+		catch(IllegalArgumentException iae)
+		{
+
+		}
+
+		
+	}*/
+
+
 
 
 
@@ -181,6 +209,11 @@ public class Salesclerk extends JFrame
 
 			else if( e.getSource() == replaceWindowBtn )
 				replaceWindowPnl.setVisible(true);
+
+			/*else if( e.getSource() == nextCustBtn)
+				custWindowPnl.setVisible(true);
+				clearSearch();*/
+				
 
 		}
 	}

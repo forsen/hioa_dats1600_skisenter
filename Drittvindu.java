@@ -13,15 +13,17 @@ public class Drittvindu extends JFrame
 	private Personlist list;
 	private JScrollPane scroll;
 	private List<Validations> validations;
+	private Cardlist cardregistry;
 
 
 	private Lytter listener;
 
-	public Drittvindu(List<Validations> lv, Personlist l)
+	public Drittvindu(List<Validations> lv, Personlist l, Cardlist cl)
 	{
 		super("Testvindu");
 		list = l;
-		validations = lv; 
+		validations = lv;
+		cardregistry = cl;
 		listener = new Lytter();
 
 		Container c = getContentPane();
@@ -86,14 +88,7 @@ public class Drittvindu extends JFrame
 
 	public void showCards()
 	{
-		Iterator<Validations> it = validations.iterator();
-		StringBuilder text = new StringBuilder();
-
-		while( it.hasNext() )
-		{
-			text.append( it.next().toString() );
-		}
-		cardtxt.setText( text.toString() );
+		cardregistry.toString();
 	}
 
 	public void showPersWithCards()

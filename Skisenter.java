@@ -10,6 +10,7 @@ public class Skisenter
 {
 	private static String message = null; 
 	private static Personlist registry; 
+	private static Cardlist cardregistry;
 	private static List<Validations> validations;
 
 	public static void main(String[] args)
@@ -28,7 +29,7 @@ public class Skisenter
 		{
 			public void run()
 			{
-				final Salesclerk s = new Salesclerk(registry, message); 
+				final Salesclerk s = new Salesclerk(registry, cardregistry, message); 
 				s.setVisible( true );
 				s.setIconImage(ikon);
 				s.addWindowListener( new WindowAdapter() 
@@ -40,7 +41,7 @@ public class Skisenter
 					}
 				});
 
-				final Drittvindu  vindu = new Drittvindu( validations, registry);
+				final Drittvindu  vindu = new Drittvindu( validations, registry, cardregistry);
 
 				final Info i = new Info();
 				i.setVisible(true);

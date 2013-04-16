@@ -34,17 +34,22 @@ public abstract class Skicard implements Serializable
  		Calendar cal2 = Calendar.getInstance();
  		cal2.setTime( new Date() );
 
-		cal.setTime( bd );
+		if (bd != null)
+		{		
+			cal.setTime( bd );
 
-		if( (cal2.get(Calendar.YEAR ) - cal.get(Calendar.YEAR )) <= CHILDLIMIT )
-		{
-			ageGroup = CHILD; 
-			discount = 0.5;
-		}
-		else
-			ageGroup = ADULT;
+		
+			if( (cal2.get(Calendar.YEAR ) - cal.get(Calendar.YEAR )) <= CHILDLIMIT )
+			{
+				ageGroup = CHILD; 
+				discount = 0.5;
+			}
+			else
+				ageGroup = ADULT;
+		}	
+		else ageGroup = ADULT;
 
-		price = (int) (price * discount);
+			price = (int) (price * discount);
 	}
 /*
 	public int getCardNr()

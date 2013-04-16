@@ -118,7 +118,7 @@ public class ShoppingCart
 			}
 			catch( NullPointerException npe )
 			{
-				System.out.println( "Du må velge en person" );
+				//HER PUTTER VI INN I DEN ANDRE LISTA;
 			}
 		}
 	}

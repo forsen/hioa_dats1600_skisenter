@@ -299,6 +299,7 @@ public class CustWindowPanel extends JPanel
 				ShoppingCart.setCardList( Salesclerk.customer.listCards() );
 				ReplaceWindowPanel.replaceWindowCustIdtf.setText(Salesclerk.customer.getCustId() + "");
 				ReplaceWindowPanel.cardIDList.setModel( Salesclerk.customer.listCards() );
+				Salesclerk.salesClerkSearchInfoTxt.setBackground(Color.LIGHT_GRAY);
 			}
 			catch( ArrayIndexOutOfBoundsException aioobe )
 			{

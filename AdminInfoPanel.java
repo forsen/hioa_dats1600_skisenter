@@ -110,7 +110,7 @@ public class AdminInfoPanel extends JPanel
 		{
 			int tlfnr = Integer.parseInt(tlfNr.getText());
 			Person p = list.deletePerson((list.findPerson(tlfnr)));
-			display.setText(p.getFirstName() + p.getLastName()+ "er nå slettet fra systemet");
+			display.setText(p.getFirstName() +" "+ p.getLastName()+ " er nå slettet fra systemet");
 			tlfNr.setText("");
 
 		}
