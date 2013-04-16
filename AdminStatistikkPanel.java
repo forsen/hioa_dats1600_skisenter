@@ -111,8 +111,12 @@ public class AdminStatistikkPanel extends JPanel
 
 		// fjern etterhvert
 
-		testData = new int[10];
-		testData[0] = 43;
+		testData = new int[30];
+
+		for( int i = 0; i < testData.length; i++)
+			testData[i] = (int) Math.floor((Math.random()*100)+1);
+
+/*		testData[0] = 43;
 		testData[1] = 55;
 		testData[2] = 42;
 		testData[3] = 60;
@@ -122,7 +126,7 @@ public class AdminStatistikkPanel extends JPanel
 		testData[7] = 54;
 		testData[8] = 37;
 		testData[9] = 67;
-
+*/
 	}
 
 	public void totalRegPepole()

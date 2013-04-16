@@ -95,7 +95,7 @@ public class GraphPanel extends JPanel
 	public void drawXinterval(Graphics2D g2d)
 	{
 
-		for(int i = 1 ; i < xAxisInterval; i ++)
+		for(int i = 1 ; i < data.length; i ++)
 		{
 			g2d.drawLine((i*xAxisInterval) + ORIGOX, 447, (i*xAxisInterval) + ORIGOX, 454);
 			g2d.drawString( "" + i, (i*xAxisInterval) + ORIGOX, 480 );
