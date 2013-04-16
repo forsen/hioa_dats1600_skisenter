@@ -74,6 +74,11 @@ public abstract class Skicard implements Serializable
 		return type; 
 	}
 
+	public Date getBought()
+	{
+		return bought;
+	}
+
   
 
 	public String toString()

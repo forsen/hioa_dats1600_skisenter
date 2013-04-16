@@ -136,6 +136,23 @@ public class Cardlist implements Serializable
 		return total;
 	}
 
+	public int unregCardsSoldInMonthX(int x)
+	{
+		Iterator<Card> it = list.iterator();
+
+		int total = 0;
+
+		while (it.hasNext())
+		{
+			Card runner = it.next();
+			
+			if( runner.getDate()
+			total ++;
+			
+		}
+		return total;
+	}
+
 	public String toString()
 	{
 		StringBuilder text = new StringBuilder();

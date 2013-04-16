@@ -109,7 +109,7 @@ public class ShoppingCart
 		{
 			it.next().checkOut();
 		}
-
+∏
 		Iterator<Card> cIt = newCards.iterator();
 
 		while( cIt.hasNext() )

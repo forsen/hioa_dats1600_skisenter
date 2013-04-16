@@ -114,10 +114,10 @@ public class AdminStatistikkPanel extends JPanel
 
 		// fjern etterhvert
 
-		graph = new int[30];
+		/*graph = new int[30];
 
 		for( int i = 0; i < graph.length; i++)
-			graph[i] = (int) Math.floor((Math.random()*100)+1);
+			graph[i] = (int) Math.floor((Math.random()*100)+1);*/
 
 /*		graph[0] = 43;
 		graph[1] = 55;
@@ -131,7 +131,7 @@ public class AdminStatistikkPanel extends JPanel
 		graph[9] = 67;
 */
 	}
-
+//START-BEREGN
 	public void totalRegPepole()
 	{
 		display.append("\nTotalt registrerte personer er: " + cal.totalRegPepole());
@@ -182,6 +182,22 @@ public class AdminStatistikkPanel extends JPanel
 	public void totalPunch()
 	{
 		display.append("\nTotal salg av Klippekort er " +cal.totalPunch() + "KR og antall klippekort som er solgt er: " + cal.totalPunch()/Info.PUNCHCARDPRICE + "KR");
+	}
+//END-BEREGN
+
+//START-GRAF
+
+	public void monthlyCardSale()
+	{
+		graph = new int[12];
+
+
+		for( int i = 0; i < graph.length; i++)
+		{
+
+			cal.cardSolsInMonthX(i);
+			graph[i] = (int) Math.floor();
+		}	
 	}
 
 

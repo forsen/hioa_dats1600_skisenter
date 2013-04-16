@@ -25,7 +25,7 @@ public class Calculator
 
 	public int regCards()
 	{
-		return null;
+		return 0;
 	}
 
 	public int unregCards()
@@ -80,5 +80,31 @@ public class Calculator
 		}
 		return antall;
 	}
+
+	public int regCardsSoldInMonthX(int x)
+	{
+
+	}
+
+	public int unregCardsSoldInMonthX(int x)
+	{
+		return cardlist.unregCardsSoldInMonthX( x );
+	}
+
+
+	public int cardSolsInMonthX(int x)
+	{
+
+	}
+
+
+
+
+
+
+
+
+
+
 
 }
