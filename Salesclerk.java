@@ -167,9 +167,9 @@ public class Salesclerk extends JFrame
 
 	}
 
-	/*public void clearSearch()
+	public void clearSearch()
 	{
-		/*customer = null;
+		customer = null;
 		SalesWindowPanel.salesWindowCustIDtf.setText( "");
 		salesClerkSearchInfoTxt.setText("");
 		try
@@ -178,14 +178,15 @@ public class Salesclerk extends JFrame
 			ReplaceWindowPanel.replaceWindowCustIdtf.setText("");
 			ReplaceWindowPanel.cardIDList.removeAll();
 			salesClerkSearchInfoTxt.setBackground(Color.WHITE);
+			
 		}
 		catch(IllegalArgumentException iae)
 		{
 
 		}
-
 		
-	}*/
+		
+	}
 
 
 
@@ -210,9 +211,9 @@ public class Salesclerk extends JFrame
 			else if( e.getSource() == replaceWindowBtn )
 				replaceWindowPnl.setVisible(true);
 
-			/*else if( e.getSource() == nextCustBtn)
+			else if( e.getSource() == nextCustBtn)
 				custWindowPnl.setVisible(true);
-				clearSearch();*/
+				clearSearch();
 				
 
 		}

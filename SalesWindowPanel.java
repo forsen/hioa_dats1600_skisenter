@@ -240,18 +240,24 @@ public class SalesWindowPanel extends JPanel
 			{
 				shoppingCartList.setModel( shoppingCart.addToCart( c, sc ) );
 				cartPrice.setText(" Sum: " + shoppingCart.getSum() + "kr");
+			}
+			else
+			{
+				int cNr = Integer.parseInt(cardnrf.getText());
+				c = cardregistry.findCard(cNr);
+
+
+
+				shoppingCartList.setModel( shoppingCart.addToCart( c, sc ) );
+				cartPrice.setText(" Sum: " + shoppingCart.getSum() + "kr");
 			}			
 		}
 		catch( NullPointerException npe )
 		{
 			if( Salesclerk.customer.isEmpty() )
 			{
-				int cNr = Integer.parseInt(cardnrf.getText());
-				Card c = cardregistry.findCard(cNr);
-	
 
-				shoppingCartList.setModel( shoppingCart.addToCart( c, sc ) );
-				cartPrice.setText(" Sum: " + shoppingCart.getSum() + "kr");
+				JOptionPane.showMessageDialog( null, "Du må opprette et nytt" );
 			}
 
 			else

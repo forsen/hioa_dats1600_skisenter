@@ -85,6 +85,7 @@ public class Skisenter
 		{
 			registry = (Personlist) input.readObject();
 			validations = (List<Validations>) input.readObject();
+			cardregistry = (Cardlist) input.readObject();
 			Person.setNext( input.readInt() );
 			Card.setNext( input.readInt() );
 		}
@@ -94,18 +95,21 @@ public class Skisenter
 			message = "Ingen personliste funnet, oppretter ny";
 			registry = new Personlist();
 			validations = new LinkedList<>();
+			cardregistry = new Cardlist();
 		}
 		catch( FileNotFoundException fnfe )
 		{
 			message = "Finner ikke datafilen, oppretter ny datafil";
 			registry = new Personlist();
 			validations = new LinkedList<>();
+			cardregistry = new Cardlist();
 		}
 		catch( IOException ioe )
 		{
 			message = "Feil med lesing fra fil, oppretter ny datafil";
 			registry = new Personlist();
 			validations = new LinkedList<>();
+			cardregistry = new Cardlist();
 		}
 	}
 
@@ -116,6 +120,7 @@ public class Skisenter
 		{
 			output.writeObject( registry );
 			output.writeObject( validations );
+			output.writeObject(cardregistry);
 			output.writeInt( Person.readNext() );
 			output.writeInt( Card.readNext() );
 		}
