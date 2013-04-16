@@ -37,7 +37,7 @@ public class Info extends JFrame
 		GridBagLayout gbl = new GridBagLayout();
 
 		setLayout(gbl);
-
+/*
 		gbl.layoutContainer( this );
 		double[][] weights = gbl.getLayoutWeights();
 		for (int i = 0; i < 2; i++) 
@@ -51,7 +51,7 @@ public class Info extends JFrame
 		gbl.columnWeights = weights[0];
 		gbl.rowWeights = weights[1];
 
-
+*/
 		//GridBagConstraints sc = new GridBagConstraints();
 
 
@@ -64,7 +64,7 @@ public class Info extends JFrame
 
 
 		sideMenu = new JPanel();
-		sideMenu.setLayout( new GridLayout( 4,1));
+		sideMenu.setLayout( new GridLayout( 4,1 ) );
 
 
 		ImageIcon nyheter = new ImageIcon("nyheter.png");
@@ -79,7 +79,6 @@ public class Info extends JFrame
 		sc.fill = GridBagConstraints.BOTH;
 		sc.gridx = 0;
 		sc.gridy = 0;*/
-
 		sideMenu.add(newsButton);
 
 		ImageIcon info = new ImageIcon("info.png");
@@ -126,18 +125,19 @@ public class Info extends JFrame
 		//sideMenu.setBackground(Color.RED);		muligens legge på en gradient her seinere
 
 		GridBagConstraints c = new GridBagConstraints();
-		//sideMenu.setMaximumSize(new Dimension(100, ((int)verktoykasse.getScreenSize().getHeight()))); //finn en bedre måte å gjøre dette på. Skalering vil ødelegge
+		//sideMenu.setPreferredSize(new Dimension(100, 800)); //finn en bedre måte å gjøre dette på. Skalering vil ødelegge
 		//c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(0,0,0,0);
 		c.gridx=0;
-		c.weightx = 0.0;
-		c.weighty = 1.0;
-		c.gridheight = GridBagConstraints.REMAINDER;
+		c.weightx = 0.1;
+		c.gridheight = 3;
+		c.gridwidth = 1;
 		c.anchor = GridBagConstraints.PAGE_START;
 		c.gridy=0;
 
 		add(sideMenu, c);
 
-
+	
 
 
 
@@ -146,31 +146,30 @@ public class Info extends JFrame
 		panel = new JPanel();
 		c.fill = GridBagConstraints.BOTH;
 		panel.setBackground(new Color(200, 230, 255));
-		c.weightx = 0.0;
-		c.weight
+		c.weightx = 1.0;
+		c.weighty = 0.1;
 		c.gridheight = 1 ;
 		//	c.gridwidth = 2;
 		c.gridwidth = 1;
 		c.gridx = 1;
 		c.gridy = 0;
-
 		add(panel, c);
-
 
 
 
 		contentPanel = new JPanel();
 		c.fill = GridBagConstraints.BOTH;
 		contentPanel.setBackground(new Color(220, 240, 255));
-		c.weightx = 0.8;
-		c.gridheight = 1;
+	//	c.weightx = 1.0;
+		c.gridheight = 2;
+		c.weighty = 1.0;
 		//	c.gridwidth = 4;
 		c.gridx = 1;
 		c.gridy = 1;
 		add(contentPanel, c);
 
 		image = new JPanel(new BorderLayout());
-		label = new JLabel(new ImageIcon("offpist_liten.png"));;
+		label = new JLabel(new ImageIcon("offpist_liten.png"));
 		panel.add(label);
 
 
