@@ -8,14 +8,14 @@ public class ShoppingCart
 	private List<CartItems> cartList;
 	private static DefaultListModel<Card> cardList;
 	private List<Card> newCards; 
-	private Cardlist cardlist;
+	private Cardlist unregCardList;
 
 	public ShoppingCart(Cardlist cl)
 	{
 		items = new DefaultListModel<>();
 		cartList = new LinkedList<>();
 		newCards = new LinkedList<>();
-		cardlist = cl;
+		unregCardList = cl;
 
 //		try
 //		{
@@ -118,7 +118,7 @@ public class ShoppingCart
 			{	
 				try
 				{
-					cardlist.input(cIt.next());
+					unregCardList.input(cIt.next());
 				}
 				catch( NullPointerException npe )
 				{
