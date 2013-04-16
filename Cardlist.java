@@ -16,7 +16,7 @@ public class Cardlist implements Serializable
 	public String input(Card obj)
 	{
 		list.add(obj);
-		return obj.getCardID() + " Ble opprettet med kundenummer: ";	
+		return  " Ble opprettet med kundenummer: " + obj.getCardID();	
 	}
 
 	public Card deleteCard(Card obj)

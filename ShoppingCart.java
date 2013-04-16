@@ -8,12 +8,14 @@ public class ShoppingCart
 	private List<CartItems> cartList;
 	private static DefaultListModel<Card> cardList;
 	private List<Card> newCards; 
+	private Cardlist cardlist;
 
-	public ShoppingCart()
+	public ShoppingCart(Cardlist cl)
 	{
 		items = new DefaultListModel<>();
 		cartList = new LinkedList<>();
 		newCards = new LinkedList<>();
+		cardlist = cl;
 
 //		try
 //		{
@@ -112,14 +114,25 @@ public class ShoppingCart
 
 		while( cIt.hasNext() )
 		{
-			try
+			if(Salesclerk.customer == null)
 			{
-				Salesclerk.customer.addCard( cIt.next() );
+				
+				cardlist.input(cIt.next());
+
 			}
-			catch( NullPointerException npe )
+			else 
 			{
-				//HER PUTTER VI INN I DEN ANDRE LISTA;
+				try
+				{
+					Salesclerk.customer.addCard( cIt.next() );
+				}
+				catch( NullPointerException npe )
+				{
+
+				
+				}
 			}
+
 		}
 	}
 

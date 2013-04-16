@@ -88,7 +88,7 @@ public class Drittvindu extends JFrame
 
 	public void showCards()
 	{
-		cardregistry.toString();
+		cardtxt.setText(cardregistry.toString());
 	}
 
 	public void showPersWithCards()

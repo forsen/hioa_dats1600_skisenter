@@ -51,24 +51,9 @@ public abstract class Skicard implements Serializable
 
 			price = (int) (price * discount);
 
-		cal.setTime( bd );
-
-		if( (cal2.get(Calendar.YEAR ) - cal.get(Calendar.YEAR )) <= Info.CHILDLIMIT )
-		{
-			ageGroup = CHILD; 
-		}
-		else
-			ageGroup = ADULT;
-
-		price = (int) (price * Info.DISCOUNT);
-
 	}
-/*
-	public int getCardNr()
-	{
-		return cardNumber;
-	}
-*/
+
+
 	public int getPrice()
 	{
 		return price;

@@ -47,7 +47,7 @@ public class SalesWindowPanel extends JPanel
 		cardTypeString[Skicard.SEASONCARD] = "Sesongkort";
 		cardTypeString[Skicard.PUNCHCARD] = "Klippekort";
 
-		shoppingCart = new ShoppingCart();
+		shoppingCart = new ShoppingCart(cardregistry);
 
 		btnListener = new BtnListener();
 
@@ -248,6 +248,7 @@ public class SalesWindowPanel extends JPanel
 			{
 				int cNr = Integer.parseInt(cardnrf.getText());
 				Card c = cardregistry.findCard(cNr);
+	
 
 				shoppingCartList.setModel( shoppingCart.addToCart( c, sc ) );
 				cartPrice.setText(" Sum: " + shoppingCart.getSum() + "kr");
