@@ -28,7 +28,7 @@ public class ReceiptPainting extends JPanel
 		setBackground( Color.WHITE );
 		try
 		{
-			img = ImageIO.read( new File("offpist_kvittering.png"));
+			img = ImageIO.read( new File("img/offpist_kvittering.png"));
 		}
 		catch( IOException ioe )
 		{

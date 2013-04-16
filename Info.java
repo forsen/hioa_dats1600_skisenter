@@ -67,9 +67,9 @@ public class Info extends JFrame
 		sideMenu.setLayout( new GridLayout( 4,1 ) );
 
 
-		ImageIcon nyheter = new ImageIcon("nyheter.png");
+		ImageIcon nyheter = new ImageIcon("img/nyheter.png");
 		newsButton = new JButton(nyheter);
-		ImageIcon nyheter2 = new ImageIcon("nyheter2.png");
+		ImageIcon nyheter2 = new ImageIcon("img/nyheter2.png");
 		newsButton.setRolloverIcon(nyheter2);
 		newsButton.setFocusPainted(false);
 		newsButton.setBorderPainted(false);
@@ -81,9 +81,9 @@ public class Info extends JFrame
 		sc.gridy = 0;*/
 		sideMenu.add(newsButton);
 
-		ImageIcon info = new ImageIcon("info.png");
+		ImageIcon info = new ImageIcon("img/info.png");
 		infoButton = new JButton(info);
-		ImageIcon info2 = new ImageIcon("info2.png");
+		ImageIcon info2 = new ImageIcon("img/info2.png");
 		infoButton.setRolloverIcon(info2);
 		infoButton.setFocusPainted(false);
 		infoButton.setBorderPainted(false);
@@ -95,9 +95,9 @@ public class Info extends JFrame
 		sc.gridy = 1;*/
 		sideMenu.add(infoButton);
 
-		ImageIcon tilbud = new ImageIcon("tilbud.png");
+		ImageIcon tilbud = new ImageIcon("img/tilbud.png");
 		offersButton = new JButton(tilbud);
-		ImageIcon tilbud2 = new ImageIcon("tilbud2.png");
+		ImageIcon tilbud2 = new ImageIcon("img/tilbud2.png");
 		offersButton.setRolloverIcon(tilbud2);
 		offersButton.setFocusPainted(false);
 		offersButton.setBorderPainted(false);
@@ -110,9 +110,9 @@ public class Info extends JFrame
 
 	
 
-		ImageIcon priser = new ImageIcon("priser.png");
+		ImageIcon priser = new ImageIcon("img/priser.png");
 		pricesButton = new JButton(priser);
-		ImageIcon priser2 = new ImageIcon("priser2.png");
+		ImageIcon priser2 = new ImageIcon("img/priser2.png");
 		pricesButton.setRolloverIcon(priser2);
 		pricesButton.setFocusPainted(false);
 		pricesButton.setBorderPainted(false);
@@ -170,7 +170,7 @@ public class Info extends JFrame
 		add(contentScrollPanel, c);
 
 		image = new JPanel(new BorderLayout());
-		label = new JLabel(new ImageIcon("offpist_liten.png"));
+		label = new JLabel(new ImageIcon("img/offpist_liten.png"));
 
 		panel.add(label);
 
@@ -212,7 +212,7 @@ public class Info extends JFrame
 
 
 
-		String bildefil = "offpist_logo.png";
+		String bildefil = "img/offpist_logo.png";
 		Image ikon = verktoykasse.getImage(bildefil);
 		setIconImage(ikon);
 		//Display the window.

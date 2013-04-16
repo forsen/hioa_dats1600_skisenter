@@ -16,7 +16,7 @@ public class Skisenter
 	public static void main(String[] args)
 	{
 		Toolkit verktoykasse = Toolkit.getDefaultToolkit();
-  		String bildefil = "offpist_logo.png";
+  		String bildefil = "img/offpist_logo.png";
   		final Image ikon = verktoykasse.getImage(bildefil);
 		
 

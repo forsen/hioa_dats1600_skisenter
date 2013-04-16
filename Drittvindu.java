@@ -30,9 +30,9 @@ public class Drittvindu extends JFrame
    		c.setLayout( new FlowLayout() );
 
 
-   		ImageIcon visPersonliste1 = new ImageIcon("vispersliste.png");
+   		ImageIcon visPersonliste1 = new ImageIcon("img/vispersliste.png");
 		persListbn = new JButton(visPersonliste1);
-		ImageIcon visPersonliste2 = new ImageIcon("vispersliste2.png");
+		ImageIcon visPersonliste2 = new ImageIcon("img/vispersliste2.png");
 		persListbn.setRolloverIcon(visPersonliste2);
 		persListbn.setFocusPainted(false);
 		persListbn.setContentAreaFilled(false);
@@ -40,9 +40,9 @@ public class Drittvindu extends JFrame
 		persListbn.addActionListener( listener );
     	c.add( persListbn );
 
-		ImageIcon visKortliste1 = new ImageIcon("viskortliste.png");
+		ImageIcon visKortliste1 = new ImageIcon("img/viskortliste.png");
 		cardListbn = new JButton(visKortliste1);
-		ImageIcon visKortliste2 = new ImageIcon("viskortliste2.png");
+		ImageIcon visKortliste2 = new ImageIcon("img/viskortliste2.png");
 		cardListbn.setRolloverIcon(visKortliste2);
 		cardListbn.setFocusPainted(false);
 		cardListbn.setContentAreaFilled(false);
@@ -50,9 +50,9 @@ public class Drittvindu extends JFrame
 		cardListbn.addActionListener( listener );
     	c.add( cardListbn );
 
-    	ImageIcon visPersKortliste1 = new ImageIcon("visperskortliste.png");
+    	ImageIcon visPersKortliste1 = new ImageIcon("img/visperskortliste.png");
 		personWithCardbn = new JButton(visPersKortliste1);
-		ImageIcon visPersKortliste2 = new ImageIcon("visperskortliste2.png");
+		ImageIcon visPersKortliste2 = new ImageIcon("img/visperskortliste2.png");
 		personWithCardbn.setRolloverIcon(visPersKortliste2);
 		personWithCardbn.setFocusPainted(false);
 		personWithCardbn.setContentAreaFilled(false);
