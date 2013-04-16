@@ -36,7 +36,9 @@ public class CustWindowPanel extends JPanel
 	//public CustWindowPanel( Personlist cr, JTextArea s, Person p )
 	public CustWindowPanel( Personlist cr, JTextArea s )
 	{
+		setBackground(new Color(200, 230, 255));
 		setLayout( new BorderLayout( 5, 5) );
+
 
 		img = null;
 		list = new JList<Person>( new DefaultListModel<Person>()); 
@@ -59,6 +61,11 @@ public class CustWindowPanel extends JPanel
 		btnPnl = new JPanel(); 
 		rsltPnl = new JPanel(); 
 		imagePnl = new JPanel();
+
+		formPnl.setBackground(new Color(200, 230, 255));
+		btnPnl.setBackground(new Color(200, 230, 255));
+		rsltPnl.setBackground(new Color(200, 230, 255));
+		imagePnl.setBackground(new Color(200, 230, 255));
 
 
 		statusTxt = s;

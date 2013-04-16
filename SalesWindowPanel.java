@@ -28,7 +28,7 @@ public class SalesWindowPanel extends JPanel
 	//public SalesWindowPanel( Person p )
 	public SalesWindowPanel(Cardlist cl)
 	{
-
+		setBackground(new Color(200, 230, 255));
 		cardregistry = cl;
 
 		custIDLbl = new JLabel( " Kundenr" );
