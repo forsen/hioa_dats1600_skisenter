@@ -212,8 +212,10 @@ public class Salesclerk extends JFrame
 				replaceWindowPnl.setVisible(true);
 
 			else if( e.getSource() == nextCustBtn)
+			{
 				custWindowPnl.setVisible(true);
 				clearSearch();
+			}
 				
 
 		}
