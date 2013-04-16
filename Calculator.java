@@ -16,6 +16,7 @@ public class Calculator
 		custRegistry = cr;
 		cardlist = cl;
 		validations = v;
+	
 	}
 
 	public int totalRegPepole()
@@ -72,6 +73,7 @@ public class Calculator
 		
 		Iterator<Validations> it = validations.iterator();
 		int antall = 0;
+
 
 		while( it.hasNext() )
 		{

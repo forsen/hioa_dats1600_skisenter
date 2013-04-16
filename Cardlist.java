@@ -2,6 +2,8 @@
 import java.io.*;
 import java.util.*;
 import javax.swing.DefaultListModel;
+import java.util.Date;
+import java.util.Calendar;
 
 public class Cardlist implements Serializable
 {
@@ -138,15 +140,21 @@ public class Cardlist implements Serializable
 
 	public int unregCardsSoldInMonthX(int x)
 	{
+		Date date = null;
+
 		Iterator<Card> it = list.iterator();
 
 		int total = 0;
 
+		Calendar helper = Calendar.getInstance();
+
 		while (it.hasNext())
 		{
+
 			Card runner = it.next();
+			helper.setTime( date );
 			
-			if( runner.getDate()
+			if( helper.get(Calendar.MONTH)== x)
 			total ++;
 			
 		}
