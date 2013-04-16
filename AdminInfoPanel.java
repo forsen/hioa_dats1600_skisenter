@@ -8,8 +8,8 @@ import java.util.Iterator;
 
 public class AdminInfoPanel extends JPanel
 {	
-	private JTextField crdNr;
-	private JButton findPerson, showPersons,showPersWcards, showCards, showPassings;
+	private JTextField crdNr, tlfNr;
+	private JButton deletePersBtn,findPerson, showPersons,showPersWcards, showCards, showPassings;
 	private JTextArea display;
 	private JPanel butnPnl, dispPnl;
 	private Listener listener;
@@ -39,6 +39,15 @@ public class AdminInfoPanel extends JPanel
 		findPerson = new JButton(" Finn Person ");
 		findPerson.addActionListener( listener );
 		butnPnl.add(findPerson);
+
+		butnPnl.add( new JLabel( "Tlfnr" ) );
+		tlfNr = new JTextField(5);
+		tlfNr.setEditable( true );
+		butnPnl.add(tlfNr);
+
+		deletePersBtn = new JButton(" Slett Person ");
+		deletePersBtn.addActionListener( listener );
+		butnPnl.add(deletePersBtn);
 
 		showPersons = new JButton(" Vis Personliste ");
 		showPersons.addActionListener( listener );
@@ -94,6 +103,24 @@ public class AdminInfoPanel extends JPanel
 	{
 		display.setText("Her kommer det en skikortliste etterhvert");
 	}
+	
+	public void deletePerson()
+	{
+		try
+		{
+			int tlfnr = Integer.parseInt(tlfNr.getText());
+			Person p = list.deletePerson((list.findPerson(tlfnr)));
+			display.setText(p.getFirstName() + p.getLastName()+ "er nå slettet fra systemet");
+			tlfNr.setText("");
+
+		}
+		catch(NullPointerException npe)
+		{
+
+		}
+
+
+	}
 
 	public void showPassings()
 	{
@@ -139,6 +166,12 @@ public class AdminInfoPanel extends JPanel
       		{
       			showPassings();
       		}
+
+      		if(e.getSource() == deletePersBtn)
+      		{
+      			deletePerson();
+      		}
+
       		
     	}
 	}	

@@ -31,14 +31,14 @@ public class CustWindowPanel extends JPanel
 	private Toolkit toolbox;
 
 	private Personlist custRegistry;
-	private Image img; 
+	private File img; 
 
 	//public CustWindowPanel( Personlist cr, JTextArea s, Person p )
 	public CustWindowPanel( Personlist cr, JTextArea s )
 	{
 		setLayout( new BorderLayout( 5, 5) );
 
-
+		img = null;
 		list = new JList<Person>( new DefaultListModel<Person>()); 
 
 		list.setVisibleRowCount(5);
@@ -146,7 +146,7 @@ public class CustWindowPanel extends JPanel
 		{
 			int number = Integer.parseInt(custWindowPhone.getText());
 			Date born = new SimpleDateFormat("ddMMyy").parse(custWindowBorn.getText());
-			File img = imageUpload();
+			img = imageUpload();
 			Person p = new Person( firstname, lastname, number, born, img );
 			
 		
@@ -211,27 +211,34 @@ public class CustWindowPanel extends JPanel
 
 	public File imageUpload()
 	{
-		JFileChooser fc = new JFileChooser();
-
-		FileNameExtensionFilter filter = new FileNameExtensionFilter(
-        	"Image files", "jpg", "gif", "png");
-    	fc.setFileFilter(filter);
-		int returnValue = fc.showOpenDialog(formPnl);
-
-		File f = null;
-
-		if( returnValue == JFileChooser.APPROVE_OPTION )
+		/*try
 		{
-			f = fc.getSelectedFile(); 
-		}
+			JFileChooser fc = new JFileChooser();
 
-		System.out.println("Du har valgt å åpne filen: " + f.getName() );
+			FileNameExtensionFilter filter = new FileNameExtensionFilter(
+        	"Image files", "jpg", "gif", "png");
+    		fc.setFileFilter(filter);
+			int returnValue = fc.showOpenDialog(formPnl);
+
+			File f = null;
+
+			if( returnValue == JFileChooser.APPROVE_OPTION )
+			{
+				f = fc.getSelectedFile(); 
+			}
+
+			System.out.println("Du har valgt å åpne filen: " + f.getName() );
 
 		
 
 
 		return f;
+		}
+		catch(NumberFormatException nfe)
+		{
 
+		}*/
+		return null;
 
 //		JFrame fr = new JFrame ("Skønner ikke !");
 //		FileDialog fd = new FileDialog(fr,"Åpne", FileDialog.LOAD);
