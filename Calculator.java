@@ -8,19 +8,34 @@ import java.util.Iterator;
 public class Calculator
 {
 	private Personlist custRegistry;
-	//private List<Skicard> cardlist;
+	private Cardlist cardlist;
 	private List<Validations> validations;
 
-	public Calculator(Personlist cr, List<Validations> v )
+	public Calculator(Personlist cr, List<Validations> v, Cardlist cl )
 	{
 		custRegistry = cr;
-		//cardlist = cl;
+		cardlist = cl;
 		validations = v;
 	}
 
 	public int totalRegPepole()
 	{
 		return custRegistry.totalRegPepole();
+	}
+
+	public int regCards()
+	{
+		return null;
+	}
+
+	public int unregCards()
+	{
+		cardlist.allCards();
+	}
+
+	public int totalSoldCard()
+	{
+		return regCards()+unregCards();
 	}
 
 	public int regThatTime(int nr)

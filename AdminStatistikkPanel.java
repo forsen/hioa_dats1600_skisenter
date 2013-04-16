@@ -19,15 +19,18 @@ public class AdminStatistikkPanel extends JPanel
 	private CheckListner checklistner;
 	private Calculator cal;
 	private List<Validations> validations;
+	private Cardlist cardregistry;
 
 	// fjern etterhvert
-	private int[] testData;
+	private int[] graph;
 
-	public AdminStatistikkPanel(Personlist l,List<Validations> v )
+	public AdminStatistikkPanel(Personlist l,List<Validations> v, Cardlist cr )
 	{
 		list = l;
 		validations = v;
-		cal = new Calculator(list, validations);
+		cardregistry = cr;
+
+		cal = new Calculator(list, validations, cardregistry);
 		fieldPnl = new JPanel();
 		choicePnl = new JPanel(new GridLayout( 5,10 ));
 		dispPnl = new JPanel();
@@ -111,27 +114,32 @@ public class AdminStatistikkPanel extends JPanel
 
 		// fjern etterhvert
 
-		testData = new int[30];
+		graph = new int[30];
 
-		for( int i = 0; i < testData.length; i++)
-			testData[i] = (int) Math.floor((Math.random()*100)+1);
+		for( int i = 0; i < graph.length; i++)
+			graph[i] = (int) Math.floor((Math.random()*100)+1);
 
-/*		testData[0] = 43;
-		testData[1] = 55;
-		testData[2] = 42;
-		testData[3] = 60;
-		testData[4] = 49;
-		testData[5] = 55; 
-		testData[6] = 60;
-		testData[7] = 54;
-		testData[8] = 37;
-		testData[9] = 67;
+/*		graph[0] = 43;
+		graph[1] = 55;
+		graph[2] = 42;
+		graph[3] = 60;
+		graph[4] = 49;
+		graph[5] = 55; 
+		graph[6] = 60;
+		graph[7] = 54;
+		graph[8] = 37;
+		graph[9] = 67;
 */
 	}
 
 	public void totalRegPepole()
 	{
 		display.append("\nTotalt registrerte personer er: " + cal.totalRegPepole());
+	}
+
+	public void totalSoldCard()
+	{
+		display.append("\nTotalt solgte personer er: " + cal.totalSoldCard());
 	}
 
 	public void regThatTime()
@@ -151,6 +159,8 @@ public class AdminStatistikkPanel extends JPanel
 			display.setText("Må sette inn en tall");
 		}
 	}
+
+
 
 	public void passings()
 	{
@@ -187,7 +197,7 @@ public class AdminStatistikkPanel extends JPanel
       		}
       		if ( e.getSource()== graphBtn )
        		{
-       			graphPnl = new GraphPanel( testData );
+       			graphPnl = new GraphPanel( graph );
        			dispPnl.add(graphPnl);
        			graphPnl.setVisible(true);
        			display.setVisible( false );
@@ -210,7 +220,7 @@ public class AdminStatistikkPanel extends JPanel
        		
        		if ( sold.isSelected() )
        		{
-       			
+       			totalSoldCard();
        		}	
       		else if ( cutomers.isSelected() )
       		{	
