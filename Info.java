@@ -128,6 +128,8 @@ public class Info extends JFrame
 		//sideMenu.setPreferredSize(new Dimension(100, 800)); //finn en bedre måte å gjøre dette på. Skalering vil ødelegge
 		//c.fill = GridBagConstraints.BOTH;
 		c.gridx=0;
+		c.weightx = 0.0;
+		c.weighty = 1.0;
 		c.gridheight = GridBagConstraints.REMAINDER;
 		c.anchor = GridBagConstraints.PAGE_START;
 		c.gridy=0;
@@ -143,7 +145,8 @@ public class Info extends JFrame
 		panel = new JPanel();
 		c.fill = GridBagConstraints.BOTH;
 		panel.setBackground(new Color(200, 230, 255));
-		c.weightx = 0.5;
+		c.weightx = 0.0;
+		c.weight
 		c.gridheight = 1 ;
 		//	c.gridwidth = 2;
 		c.gridwidth = 1;
