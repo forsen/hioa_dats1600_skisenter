@@ -58,27 +58,27 @@ public class Salesclerk extends JFrame
 
 		custRegistry = cr; 
 		cardregistry = cardr;
-		ImageIcon kunde = new ImageIcon("kunde.png");
+		ImageIcon kunde = new ImageIcon("img/kunde.png");
 		custWindowBtn = new JButton(kunde);
-		ImageIcon kunde2 = new ImageIcon("kunde2.png");
+		ImageIcon kunde2 = new ImageIcon("img/kunde2.png");
 		custWindowBtn.setRolloverIcon(kunde2);
 		custWindowBtn.setFocusPainted(false);
 		custWindowBtn.setContentAreaFilled(false);
 		custWindowBtn.setBorderPainted(false);
 		custWindowBtn.setToolTipText("Registrering av kunde");
 
-		ImageIcon salg = new ImageIcon("salg.png");
+		ImageIcon salg = new ImageIcon("img/salg.png");
 		salesWindowBtn = new JButton(salg);
-		ImageIcon salg2 = new ImageIcon("salg2.png");
+		ImageIcon salg2 = new ImageIcon("img/salg2.png");
 		salesWindowBtn.setRolloverIcon(salg2);
 		salesWindowBtn.setFocusPainted(false);
 		salesWindowBtn.setContentAreaFilled(false);
 		salesWindowBtn.setBorderPainted(false);
 		salesWindowBtn.setToolTipText("Registrering av nytt salg");
 
-		ImageIcon erstatt = new ImageIcon("erstatt.png");
+		ImageIcon erstatt = new ImageIcon("img/erstatt.png");
 		replaceWindowBtn = new JButton(erstatt);
-		ImageIcon erstatt2 = new ImageIcon("erstatt2.png");
+		ImageIcon erstatt2 = new ImageIcon("img/erstatt2.png");
 		replaceWindowBtn.setRolloverIcon(erstatt2);
 		replaceWindowBtn.setFocusPainted(false);
 		replaceWindowBtn.setContentAreaFilled(false);

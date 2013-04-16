@@ -72,9 +72,9 @@ public class Control extends JFrame
 
 		setLocationByPlatform( true );
 
-		ImageIcon valider = new ImageIcon("valider.png");
+		ImageIcon valider = new ImageIcon("img/valider.png");
 		ctrlRegCustNr = new JButton(valider);
-		ImageIcon valider2 = new ImageIcon("valider2.png");
+		ImageIcon valider2 = new ImageIcon("img/valider2.png");
 		ctrlRegCustNr.setRolloverIcon(valider2);
 		ctrlRegCustNr.setFocusPainted(false);
 		ctrlRegCustNr.setContentAreaFilled(false);

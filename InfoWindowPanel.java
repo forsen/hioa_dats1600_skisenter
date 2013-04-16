@@ -22,7 +22,7 @@ public class InfoWindowPanel extends JPanel
 		GridBagConstraints c = new GridBagConstraints();
 		setBackground(new Color(220, 240, 255));
 
-		ImageIcon snowboarder = new ImageIcon("snowboarder.png");
+		ImageIcon snowboarder = new ImageIcon("img/snowboarder.png");
 
 
 		headerImg = new JLabel(snowboarder);
