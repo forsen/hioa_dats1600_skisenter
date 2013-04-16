@@ -232,7 +232,8 @@ public class SalesWindowPanel extends JPanel
 
 		CashRegister cr = new CashRegister( shoppingCart );
 
-		shoppingCartList.setModel(shoppingCart.emptyCart());
+		//shoppingCartList.setModel(shoppingCart.emptyCart());
+		shoppingCartList.setModel( new DefaultListModel<CartItems>() );
 
 	}
 /*

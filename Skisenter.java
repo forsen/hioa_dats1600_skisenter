@@ -42,7 +42,8 @@ public class Skisenter
 
 				final Drittvindu  vindu = new Drittvindu( validations, registry);
 
-
+				final Info i = new Info();
+				i.setVisible(true);
   		
 
 
@@ -50,7 +51,7 @@ public class Skisenter
 				final Control control = new Control();
     			control.setLocation(0, 500);
 */				vindu.setIconImage(ikon);
-				vindu.setLocation(700,0);    			
+				vindu.setLocation(700,0); 		
 
 
 				final Admin a = new Admin( registry,validations);
