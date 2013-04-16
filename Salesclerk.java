@@ -37,15 +37,16 @@ public class Salesclerk extends JFrame
 	{
 		super("Testvindu");
 
-
+		getContentPane().setBackground(new Color(199,214, 226));
 		toolbox = Toolkit.getDefaultToolkit();
 
 
-
+		setBackground(new Color(200, 230, 255));
 		framePnl = new JPanel();
-		framePnl.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY)); 
+		framePnl.setBackground(new Color(200, 230, 255));
 
 		salesClerkSearchInfoTxt = new JTextArea( 5, 20 );
+		salesClerkSearchInfoTxt.setEditable(false);
 
 		Dimension windowDimension = toolbox.getScreenSize();
 
@@ -87,8 +88,10 @@ public class Salesclerk extends JFrame
 		nextCustBtn = new JButton("neste Kunde");
 
 		topMenuPnl = new JPanel( new FlowLayout() );
+		topMenuPnl.setBackground(new Color(200, 230, 255));
 		
 		statusTxt = new JTextArea(5,50);
+		statusTxt.setBackground(new Color(238, 248, 255));
 
 		//custWindowPnl = new CustWindowPanel( custRegistry, statusTxt, customer );
 		custWindowPnl = new CustWindowPanel( custRegistry, statusTxt );
