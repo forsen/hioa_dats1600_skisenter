@@ -79,8 +79,11 @@ public class CustWindowPanel extends JPanel
 		custRegistry = cr; 
 
 		imageBtn = new JButton("Velg bilde");
+		imageBtn.setToolTipText("Last opp bilde til kortet");
 		custWindowSearchBtn = new JButton("Søk");
+		custWindowSearchBtn.setToolTipText("Søk på kunde");
 		custWindowRegBtn = new JButton("Ny kunde");
+		custWindowRegBtn.setToolTipText("Registrer ny kunde");
 
 		//custWindowFirstNamePnl = new JPanel( new FlowLayout() );
 		//custWindowLastNamePnl = new JPanel( new FlowLayout() );
