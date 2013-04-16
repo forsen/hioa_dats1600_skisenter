@@ -20,6 +20,7 @@ public class ReplaceWindowPanel extends JPanel
 	
 	public ReplaceWindowPanel(JTextArea s)
 	{
+		setBackground(new Color(200, 230, 255));
 
 		setLayout( new BorderLayout( 5, 5) );
 		card = null;
@@ -37,7 +38,7 @@ public class ReplaceWindowPanel extends JPanel
 		cardScrollList = new JScrollPane( cardIDList);
 
 		cntrPnl = new JPanel(new GridLayout( 4,2 )); 
-		
+		cntrPnl.setBackground(new Color(200, 230, 255));
 
 		cntrPnl.add( new JLabel( "Kundenummer" ) );
 		replaceWindowCustIdtf = new JTextField(5);
@@ -45,9 +46,11 @@ public class ReplaceWindowPanel extends JPanel
 		cntrPnl.add(replaceWindowCustIdtf);
 
 		cntrPnl.add( new JLabel( "Kortnummer" ) );
+		
 		cntrPnl.add(cardScrollList);
 
 		replaceWindowRepBtn = new JButton(" Erstatt ");
+		replaceWindowRepBtn.setToolTipText("Erstatt kort");
 		replaceWindowRepBtn.addActionListener( listener );
 		cntrPnl.add(replaceWindowRepBtn);
 		statusTxt = s;
