@@ -195,8 +195,9 @@ public class AdminStatistikkPanel extends JPanel
 		for( int i = 0; i < graph.length; i++)
 		{
 
-			cal.cardSolsInMonthX(i);
-			graph[i] = (int) Math.floor();
+			double y = cal.cardSoldInMonthX(i);
+			System.out.println(y);
+			/*graph[i] = (int) Math.floor(y)+1;*/
 		}	
 	}
 
@@ -213,10 +214,11 @@ public class AdminStatistikkPanel extends JPanel
       		}
       		if ( e.getSource()== graphBtn )
        		{
-       			graphPnl = new GraphPanel( graph );
-       			dispPnl.add(graphPnl);
-       			graphPnl.setVisible(true);
+       			//graphPnl = new GraphPanel( graph );
+       			//dispPnl.add(graphPnl);
+       			//graphPnl.setVisible(true);
        			display.setVisible( false );
+       			monthlyCardSale();
        			
        		}
        		if(e.getSource() == searchBtn)

@@ -140,7 +140,6 @@ public class Cardlist implements Serializable
 
 	public int unregCardsSoldInMonthX(int x)
 	{
-		Date date = null;
 
 		Iterator<Card> it = list.iterator();
 
@@ -152,9 +151,9 @@ public class Cardlist implements Serializable
 		{
 
 			Card runner = it.next();
-			helper.setTime( date );
+			helper.setTime( runner.getBought() );
 			
-			if( helper.get(Calendar.MONTH)== x)
+			if( helper.get(Calendar.MONTH )== x)
 			total ++;
 			
 		}

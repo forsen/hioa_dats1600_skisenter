@@ -57,6 +57,11 @@ public class Card implements Serializable
 		return skiCardList; 
 	}
 
+	public Date getBought()
+	{
+		return current.getBought();
+	}
+
 	public int totalCost()
 	{
 		Iterator<Skicard> it = skiCardList.iterator();

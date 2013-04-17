@@ -85,7 +85,7 @@ public class Calculator
 
 	public int regCardsSoldInMonthX(int x)
 	{
-
+		return 0;
 	}
 
 	public int unregCardsSoldInMonthX(int x)
@@ -94,9 +94,9 @@ public class Calculator
 	}
 
 
-	public int cardSolsInMonthX(int x)
+	public int cardSoldInMonthX(int x)
 	{
-
+		return unregCardsSoldInMonthX(x);
 	}
 
 

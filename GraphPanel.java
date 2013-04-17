@@ -68,7 +68,16 @@ public class GraphPanel extends JPanel
 
 	private int arrayMax( int[] data )
 	{
-		int max = data[0];
+		
+		 int max;
+		try
+		{
+			 max = data[0];
+		}
+		catch(NullPointerException npe)
+		{
+			 max = 1;
+		}
 
 		for( int i = 0; i < data.length; i++)
 			max = (max > data[i])?max:data[i]; 
