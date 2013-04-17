@@ -168,7 +168,7 @@ public class CashRegister extends JFrame
 			printReceipt.setEnabled( true );
 			printCard.setEnabled( true );
 			shoppingCart.checkOut();
-			shoppingCart.emptyCart();
+			ShoppingCart.emptyCart();
 		}
 	}
 

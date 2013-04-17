@@ -28,6 +28,8 @@ public class Salesclerk extends JFrame
 	private Personlist custRegistry; 
 	private Cardlist cardregistry;
 
+
+
 	private Toolkit toolbox;
 
 	private Container c;
@@ -36,6 +38,9 @@ public class Salesclerk extends JFrame
 	public Salesclerk( Personlist cr, Cardlist cardr, String m )
 	{
 		super("Testvindu");
+
+
+
 
 		getContentPane().setBackground(new Color(199,214, 226));
 		toolbox = Toolkit.getDefaultToolkit();

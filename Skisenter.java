@@ -1,5 +1,5 @@
 import java.io.*;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -15,6 +15,8 @@ public class Skisenter
 
 	public static void main(String[] args)
 	{
+		//System.setProperty("com.apple.mrj.application.apple.menu.about.name", "MyApplication");
+		System.setProperty("apple.laf.useScreenMenuBar", "true");
 		Toolkit verktoykasse = Toolkit.getDefaultToolkit();
   		String bildefil = "img/offpist_logo.png";
   		final Image ikon = verktoykasse.getImage(bildefil);
@@ -25,11 +27,15 @@ public class Skisenter
 		test.readFile(); 
 		
 
+
+
+
 		EventQueue.invokeLater( new Runnable()
 		{
 			public void run()
 			{
 				final Salesclerk s = new Salesclerk(registry, cardregistry, message); 
+				s.setJMenuBar( new MenuBar().createMenu() );
 				s.setVisible( true );
 				s.setIconImage(ikon);
 				s.addWindowListener( new WindowAdapter() 
@@ -44,6 +50,7 @@ public class Skisenter
 				final Drittvindu  vindu = new Drittvindu( validations, registry, cardregistry);
 
 				final Info i = new Info();
+				i.setJMenuBar( new MenuBar().createMenu() );
 				i.setVisible(true);
   		
 
@@ -52,15 +59,18 @@ public class Skisenter
 				final Control control = new Control();
     			control.setLocation(0, 500);
 */				vindu.setIconImage(ikon);
+    			vindu.setJMenuBar(new MenuBar().createMenu() );
 				vindu.setLocation(700,0); 		
 
 
 				final Admin a = new Admin( registry,validations, cardregistry);
 				a.setLocation(0,425);
+				a.setJMenuBar( new MenuBar().createMenu() );
 				a.setIconImage(ikon);    
 
 				Lift chLift = new Chairlift(validations, registry, "Superheisen", 2000, 3 );
 				final Control lift1 = new Control( registry,  chLift );
+				lift1.setJMenuBar( new MenuBar().createMenu() );
 				lift1.setVisible(true);
 				lift1.setLocation(700,425);
 				lift1.setIconImage(ikon);
@@ -69,6 +79,7 @@ public class Skisenter
 				Lift tLift = new Tcuplift( validations, registry, "Rævvaheisen", 1433 );
 
 				final Control lift2 = new Control( registry, tLift );   
+				lift2.setJMenuBar( new MenuBar().createMenu() );
 				lift2.setVisible(true);
 				lift2.setLocation(700,425);
 				lift2.setIconImage(ikon);
