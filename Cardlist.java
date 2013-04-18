@@ -17,18 +17,21 @@ public class Cardlist implements Serializable
 
 	public String input(Card obj)
 	{
+		Skisenter.unsaved = true; 
 		list.add(obj);
 		return  " Ble opprettet med kundenummer: " + obj.getCardID();	
 	}
 
 	public Card deleteCard(Card obj)
 	{
+
 		Iterator<Card> it = list.iterator();
 
 		while (it.hasNext())
 		{
 			if(it.next().equals(obj))
 			{
+				Skisenter.unsaved = true;
 				it.remove();
 				return obj;
 			}
@@ -54,6 +57,7 @@ public class Cardlist implements Serializable
 
 	public int addCard( Card n )
 	{
+		Skisenter.unsaved = true; 
 		list.add( n );
 		return n.getCardID();
 	}

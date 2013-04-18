@@ -15,6 +15,8 @@ public class Personlist implements Serializable
 
 	public String input(Person obj)
 	{
+		Skisenter.unsaved = true; 
+
 		if(isEmpty())
 		{
 			registry.add(obj);
@@ -208,6 +210,8 @@ public class Personlist implements Serializable
 	{
 		/*if(isEmpty())
 			return null;*/
+
+		Skisenter.unsaved = true; 
 
 		Iterator<Person> it = registry.iterator();
 

@@ -20,6 +20,7 @@ public class Person implements Serializable
 
 	public Person( String fn, String ln, int p, Date b, File i )
 	{
+		Skisenter.unsaved = true;
 		custId = ++next;
 		firstname = fn;
 		lastname = ln;

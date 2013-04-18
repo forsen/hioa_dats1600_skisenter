@@ -5,6 +5,7 @@ import java.awt.event.*;
 
 import java.util.List;
 import java.util.LinkedList;
+import java.util.Objects; 
 
 public class Skisenter
 {
@@ -12,6 +13,10 @@ public class Skisenter
 	private static Personlist registry; 
 	private static Cardlist cardregistry;
 	private static List<Validations> validations;
+
+	private static Salesclerk s;
+
+	public static boolean unsaved; 
 
 	public static void main(String[] args)
 	{
@@ -21,6 +26,7 @@ public class Skisenter
   		String bildefil = "img/offpist_logo.png";
   		final Image ikon = verktoykasse.getImage(bildefil);
 		
+		unsaved = false; 
 
 		Skisenter test = new Skisenter(); 
 
@@ -34,16 +40,17 @@ public class Skisenter
 		{
 			public void run()
 			{
-				final Salesclerk s = new Salesclerk(registry, cardregistry, message); 
+				s = new Salesclerk(registry, cardregistry, message); 
 				s.setJMenuBar( new MenuBar().createMenu() );
 				s.setVisible( true );
 				s.setIconImage(ikon);
+				s.setDefaultCloseOperation( WindowConstants.DO_NOTHING_ON_CLOSE );
 				s.addWindowListener( new WindowAdapter() 
 				{
 					public void windowClosing( WindowEvent e )
 					{
-						saveFile();
-						System.exit( 0 );
+						if( checkForUnsaved())  
+							System.exit( 0 );
 					}
 				});
 
@@ -124,7 +131,7 @@ public class Skisenter
 		}
 	}
 
-	private static void saveFile()
+	public static void saveFile()
 	{
 		try( ObjectOutputStream output = new ObjectOutputStream(
 			new FileOutputStream( "data.dta" ) ) )
@@ -134,6 +141,10 @@ public class Skisenter
 			output.writeObject(cardregistry);
 			output.writeInt( Person.readNext() );
 			output.writeInt( Card.readNext() );
+			
+			s.statusTxt.setText( "alt ble lagret" );
+			unsaved = false; 
+
 		}
 		catch( NotSerializableException nse )
 		{
@@ -143,6 +154,31 @@ public class Skisenter
 		{
 			JOptionPane.showMessageDialog(null, "Feil ved skriving til fil", "Feil!", JOptionPane.ERROR_MESSAGE );
 		}
+	}
+
+	public static boolean checkForUnsaved()
+	{
+		if( !unsaved )
+			return true;
+
+		String[] options = {"Lagre", "Ikke lagre", "Avbryt"};
+
+		int n = JOptionPane.showOptionDialog(null, "Du har ulagrete endringer.", "Lagringsdialog", JOptionPane.YES_NO_CANCEL_OPTION,
+		JOptionPane.QUESTION_MESSAGE, null, options, options[0] );
+
+
+		switch( n )
+		{
+			case JOptionPane.YES_OPTION:
+				saveFile();
+				return true;
+			case JOptionPane.NO_OPTION:
+				return true; 
+			case JOptionPane.CANCEL_OPTION:
+				return false; 
+		}
+
+		return false; 
 	}
 
 /*	<datafelter>

@@ -10,6 +10,7 @@ public class Card implements Serializable
 
 	public Card()
 	{
+		Skisenter.unsaved = true; 
 		skiCardList = new LinkedList<>(); 
 		cardNumber = ++next; 
 		current = null; 

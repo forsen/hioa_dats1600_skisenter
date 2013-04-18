@@ -1,13 +1,19 @@
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import java.awt.*;
+import java.awt.event.*;
 
 public class MenuBar
 {
 	private JMenuBar menuBar;
 	private JMenu file; 
 	private JMenu edit; 
-	private JMenu doSomethingFunny;
+	private JMenu doSomethingFunny;	
+	private MenuListener menuListener;
+
+	private JMenuItem save;
+	private JMenuItem exit;
 
 	public MenuBar()
 	{
@@ -15,6 +21,8 @@ public class MenuBar
 		file = new JMenu("File");
 		edit = new JMenu("Edit");
 		doSomethingFunny = new JMenu("doSomethingFunny");
+
+		menuListener = new MenuListener();
 
 	}
 
@@ -30,11 +38,27 @@ public class MenuBar
 
 	private void makeFile()
 	{
-		JMenuItem save = new JMenuItem("Lagre");
-		JMenuItem exit = new JMenuItem("Exit");
+		save = new JMenuItem("Lagre");
+		exit = new JMenuItem("Exit");
+
+		save.addActionListener( menuListener );
 
 		file.add( save );
 		file.addSeparator();
 		file.add( exit );
+	}
+
+	private class MenuListener implements ActionListener
+	{
+		public void actionPerformed( ActionEvent ae )
+		{
+			if( ae.getSource() == save )
+				Skisenter.saveFile(); 
+			if( ae.getSource() == exit )
+			{
+				if( Skisenter.checkForUnsaved() )
+					System.exit( 0 );
+			}
+		}
 	}
 }

@@ -13,6 +13,8 @@ public class Validations implements Serializable
 		liftId = l; 
 		card = c;
 		date = new Date(); 
+
+		Skisenter.unsaved = true; 
 	}
 
 	public int getLiftId()
