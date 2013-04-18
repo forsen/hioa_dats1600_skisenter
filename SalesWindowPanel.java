@@ -14,7 +14,7 @@ public class SalesWindowPanel extends JPanel
 	private JList<CartItems> shoppingCartList;
 	public static JList<Card> cardIDList;
 	private DefaultListModel<Card> listmodel;
-	private JButton salesAddCartBtn, salesCheckoutBtn, salesNewCardBtn; 
+	private JButton salesAddCartBtn, salesCheckoutBtn, salesNewCardBtn, salesRemoveLineCart; 
 	private String[] cardTypeString; 
 	private CardListener cardListener;
 	private BtnListener btnListener;
@@ -61,6 +61,10 @@ public class SalesWindowPanel extends JPanel
 		salesCheckoutBtn.setMnemonic(KeyEvent.VK_B);
 		salesCheckoutBtn.addActionListener( btnListener );
 		salesCheckoutBtn.setToolTipText("Ferdig? Gå til betaling");
+
+		salesRemoveLineCart = new JButton("Slett valgt linje");
+		salesRemoveLineCart.addActionListener( btnListener );
+		salesRemoveLineCart.setToolTipText("Fjerner valgt linje fra handlekurven");
 
 		salesNewCardBtn = new JButton("Nytt kort");
 		salesNewCardBtn.setMnemonic(KeyEvent.VK_N);
@@ -136,7 +140,7 @@ public class SalesWindowPanel extends JPanel
 		c.weighty = 0.2;
 		add(cardScrolList, c);
 
-		c.gridheight = 1;
+		c.gridheight = 2;
 		c.weightx = 1;
 		c.gridx = 0; 
 		c.gridy = 4; 
@@ -179,8 +183,16 @@ public class SalesWindowPanel extends JPanel
 
 		c.gridheight = 1;
 		c.weightx = 0.5;
+		c.gridx = 1;
+		c.gridy = 4;
+		c.gridwidth = 1;
+		c.weighty = 0.2;
+		add(salesRemoveLineCart, c);
+
+		c.gridheight = 1;
+		c.weightx = 0.5;
 		c.gridx = 1; 
-		c.gridy = 4; 
+		c.gridy = 5; 
 		c.gridwidth = 1;
 		c.weighty = 0.2;
 		add(salesCheckoutBtn, c);
@@ -208,8 +220,7 @@ public class SalesWindowPanel extends JPanel
 	{
 		int cardType = cardTypeList.getSelectedIndex();
 		Skicard sc;
-
-		
+	
 		Date now = new Date();
 
 		Date bDate;
@@ -223,7 +234,6 @@ public class SalesWindowPanel extends JPanel
 			bDate = null; 
 		}
 		
-
 		switch( cardType )
 		{
 			case Skicard.DAYCARD: sc = new Daycard( bDate, now );
@@ -236,6 +246,7 @@ public class SalesWindowPanel extends JPanel
 									break;
 			default: 				sc = null;
 		}
+		
 		try
 		{	
 			Card c = (Card) cardIDList.getSelectedValue();
@@ -248,28 +259,29 @@ public class SalesWindowPanel extends JPanel
 			{
 				int cNr = Integer.parseInt(cardnrf.getText());
 				c = cardregistry.findCard(cNr);
-
-
-
 				shoppingCartList.setModel( shoppingCart.addToCart( c, sc ) );
 				cartPrice.setText(" Sum: " + shoppingCart.getSum() + "kr");
 			}			
 		}
+		catch( NumberFormatException nfe )
+		{
+			Salesclerk.statusTxt.setText("Du må gjøre noe");
+		}
 		catch( NullPointerException npe )
 		{
 			if( Salesclerk.customer.isEmpty() )
-			{
-
 				JOptionPane.showMessageDialog( null, "Du må opprette et nytt" );
-			}
 
 			else
 				JOptionPane.showMessageDialog( null, "Du må velge hvilket kort fra kortlista som skal få det nye produktet" );
 		}
+	}
+
+	private void deleteFromCart()
+	{
+		int removeLine = shoppingCartList.getSelectedIndex(); 
 		
-
-
-
+		shoppingCartList.setModel( shoppingCart.deleteFromCart( removeLine ) );
 
 	}
 
@@ -277,10 +289,10 @@ public class SalesWindowPanel extends JPanel
 	{
 		// tar i mot betaling og slikt.
 
-		CashRegister cr = new CashRegister( shoppingCart );
+		CashRegister cr = new CashRegister( shoppingCart, shoppingCartList );
 
 		//shoppingCartList.setModel(shoppingCart.emptyCart());
-		shoppingCartList.setModel( new DefaultListModel<CartItems>() );
+		
 
 	}
 /*
@@ -402,6 +414,8 @@ public class SalesWindowPanel extends JPanel
 			{
 				addToCart();
 			}
+			if( ae.getSource() == salesRemoveLineCart )
+				deleteFromCart();
 		}
 
 	}

@@ -91,10 +91,11 @@ public class ShoppingCart
 		return items;
 	}
 
-	public DefaultListModel deleteFromCart(Card c, Skicard sc )
+	public DefaultListModel<CartItems> deleteFromCart(int index )
 	{
-		items.removeElement( sc );
-		sum -= sc.getPrice();
+		sum -= items.getElementAt( index ).getPrice();
+		items.removeElementAt( index );
+		cartList.remove( index );
 
 		return items; 
 	}

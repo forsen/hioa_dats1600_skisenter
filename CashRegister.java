@@ -9,6 +9,7 @@ public class CashRegister extends JFrame
 {
 	private JTextArea orderList, total, overview; 
 	private ShoppingCart shoppingCart; 
+	private JList<CartItems> shoppingCartList;
 	private JButton printReceipt, printCard, payByCash, payByCard;
 	private JTextField cashInput;
 	private BtnListener btnListener; 
@@ -25,11 +26,12 @@ public class CashRegister extends JFrame
 
 
 	
-	public CashRegister( ShoppingCart s )
+	public CashRegister( ShoppingCart s, JList<CartItems> sl )
 	{
 		super("Betaling");
 
 		shoppingCart = s;
+		shoppingCartList = sl; 
 		btnListener = new BtnListener();
 		orderList = new JTextArea(  );
 		orderList.setText( shoppingCart.toString() );
@@ -167,6 +169,7 @@ public class CashRegister extends JFrame
 		{
 			printReceipt.setEnabled( true );
 			printCard.setEnabled( true );
+			shoppingCartList.setModel( new DefaultListModel<CartItems>() );
 			shoppingCart.checkOut();
 			ShoppingCart.emptyCart();
 		}

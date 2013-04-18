@@ -16,7 +16,7 @@ public class Salesclerk extends JFrame
 	private JButton custWindowBtn, salesWindowBtn, replaceWindowBtn, nextCustBtn;
 	private JPanel topMenuPnl, custWindowPnl, salesWindowPnl, replaceWindowPnl, statusPnl; 
 	private JPanel framePnl;
-	private JTextArea statusTxt;
+	public static JTextArea statusTxt;
 
 	//replaceWindowTxt
 
