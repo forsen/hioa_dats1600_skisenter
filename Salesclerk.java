@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.*;
 import javax.swing.event.*;
 import java.awt.event.*;
 import java.awt.*;
@@ -63,23 +64,24 @@ public class Salesclerk extends JFrame
 
 		custRegistry = cr; 
 		cardregistry = cardr;
+	
 		ImageIcon kunde = new ImageIcon("img/kunde.png");
-		custWindowBtn = new JButton(kunde);
-		ImageIcon kunde2 = new ImageIcon("img/kunde2.png");
-		custWindowBtn.setRolloverIcon(kunde2);
-		custWindowBtn.setFocusPainted(false);
-		custWindowBtn.setContentAreaFilled(false);
-		custWindowBtn.setBorderPainted(false);
-		custWindowBtn.setToolTipText("Registrering av kunde");
+		// custWindowBtn = new JButton(kunde);
+		// ImageIcon kunde2 = new ImageIcon("img/kunde2.png");
+		// // custWindowBtn.setRolloverIcon(kunde2);
+		// // custWindowBtn.setFocusPainted(false);
+		// // custWindowBtn.setContentAreaFilled(false);
+		// // custWindowBtn.setBorderPainted(false);
+		// // custWindowBtn.setToolTipText("Registrering av kunde");
 
 		ImageIcon salg = new ImageIcon("img/salg.png");
-		salesWindowBtn = new JButton(salg);
-		ImageIcon salg2 = new ImageIcon("img/salg2.png");
-		salesWindowBtn.setRolloverIcon(salg2);
-		salesWindowBtn.setFocusPainted(false);
-		salesWindowBtn.setContentAreaFilled(false);
-		salesWindowBtn.setBorderPainted(false);
-		salesWindowBtn.setToolTipText("Registrering av nytt salg");
+		// salesWindowBtn = new JButton(salg);
+		// ImageIcon salg2 = new ImageIcon("img/salg2.png");
+		// salesWindowBtn.setRolloverIcon(salg2);
+		// salesWindowBtn.setFocusPainted(false);
+		// salesWindowBtn.setContentAreaFilled(false);
+		// salesWindowBtn.setBorderPainted(false);
+		// salesWindowBtn.setToolTipText("Registrering av nytt salg");
 
 		ImageIcon erstatt = new ImageIcon("img/erstatt.png");
 		replaceWindowBtn = new JButton(erstatt);
@@ -117,11 +119,6 @@ public class Salesclerk extends JFrame
 
 		//replaceWindowTxt = new JTextArea(LEFT, RIGHT);
 
-		framePnl.add(custWindowPnl);
-
-		framePnl.add(replaceWindowPnl );
-		framePnl.add(salesWindowPnl );
-
 
 
 
@@ -138,24 +135,24 @@ public class Salesclerk extends JFrame
 
 		c.add(statusTxt, BorderLayout.PAGE_END );
 
-		topMenuPnl.add(custWindowBtn);
-		topMenuPnl.add(salesWindowBtn);
-		topMenuPnl.add(replaceWindowBtn);
-		topMenuPnl.add(nextCustBtn);
-
 
 	 
 
-		custWindowBtn.addActionListener( listener );
+		// custWindowBtn.addActionListener( listener );
 
-		salesWindowBtn.addActionListener( listener );
+		// salesWindowBtn.addActionListener( listener );
 
-		replaceWindowBtn.addActionListener(listener);
+		// replaceWindowBtn.addActionListener(listener);
 
 		nextCustBtn.addActionListener(listener);
 
+	    Border loweredBevel = BorderFactory.createLoweredBevelBorder();
 
-
+		JTabbedPane fanekort = new JTabbedPane();
+		fanekort.addTab( "Kunde", kunde, custWindowPnl );
+		fanekort.addTab( "Nysalg", salg, salesWindowPnl);
+		fanekort.addTab( "Erstatt", erstatt, replaceWindowPnl );
+		framePnl.add(fanekort);
 
 		//replaceWindowPnl.add(replaceWindowTxt);
 		//statusPnl.add(statusTxt);
@@ -212,17 +209,17 @@ public class Salesclerk extends JFrame
 			replaceWindowPnl.setVisible(false);
 
 
-			if( e.getSource() == custWindowBtn )
-				custWindowPnl.setVisible(true);
-			else if( e.getSource() == salesWindowBtn )
-			{
-				salesWindowPnl.setVisible(true);
-			}
+			// if( e.getSource() == custWindowBtn )
+			// 	custWindowPnl.setVisible(true);
+			// else if( e.getSource() == salesWindowBtn )
+			// {
+			// 	salesWindowPnl.setVisible(true);
+			// }
 
-			else if( e.getSource() == replaceWindowBtn )
-				replaceWindowPnl.setVisible(true);
+			// else if( e.getSource() == replaceWindowBtn )
+			// 	replaceWindowPnl.setVisible(true);
 
-			else if( e.getSource() == nextCustBtn)
+			if( e.getSource() == nextCustBtn)
 			{
 				custWindowPnl.setVisible(true);
 				clearSearch();
