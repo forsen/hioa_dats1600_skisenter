@@ -15,7 +15,7 @@ public class Salesclerk extends JFrame
 	private final int LEFT = 20;
 	private final int RIGHT = 40;
 	private JButton custWindowBtn, salesWindowBtn, replaceWindowBtn, nextCustBtn;
-	private JPanel topMenuPnl, custWindowPnl, salesWindowPnl, replaceWindowPnl, statusPnl; 
+	private JPanel custWindowPnl, salesWindowPnl, replaceWindowPnl, statusPnl; 
 	private JPanel framePnl;
 	public static JTextArea statusTxt;
 
@@ -94,9 +94,7 @@ public class Salesclerk extends JFrame
 
 		nextCustBtn = new JButton("neste Kunde");
 
-		topMenuPnl = new JPanel( new FlowLayout() );
-		topMenuPnl.setBackground(new Color(200, 230, 255));
-		
+
 		statusTxt = new JTextArea(5,50);
 		statusTxt.setBackground(new Color(238, 248, 255));
 
@@ -129,7 +127,6 @@ public class Salesclerk extends JFrame
 		c = getContentPane();
 		
 		c.setLayout( layout );
-		c.add(topMenuPnl, BorderLayout.PAGE_START );
 		c.add(framePnl, BorderLayout.LINE_START );
 		c.add(salesClerkSearchInfoTxt, BorderLayout.CENTER );
 
@@ -163,10 +160,10 @@ public class Salesclerk extends JFrame
 
 
 
-		custWindowPnl.setVisible(true);
-		salesWindowPnl.setVisible(false);
-		replaceWindowPnl.setVisible(false);
-		//statusPnl.setVisible(true);
+		// custWindowPnl.setVisible(true);
+		// salesWindowPnl.setVisible(false);
+		// replaceWindowPnl.setVisible(false);
+		// //statusPnl.setVisible(true);
 
 		layout.layoutContainer( c );
 
