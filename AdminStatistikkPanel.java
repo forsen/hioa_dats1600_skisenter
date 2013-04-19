@@ -139,7 +139,7 @@ public class AdminStatistikkPanel extends JPanel
 
 	public void totalSoldCard()
 	{
-		display.append("\nTotalt solgte personer er: " + cal.totalSoldCard());
+		display.append("\nTotalt solgte skikort er: " + cal.totalSoldCard());
 	}
 
 	public void regThatTime()
@@ -195,9 +195,9 @@ public class AdminStatistikkPanel extends JPanel
 		for( int i = 0; i < graph.length; i++)
 		{
 
-			double y = cal.cardSoldInMonthX(i);
+			int y = cal.cardSoldInMonthX(i);
 			System.out.println(y);
-			/*graph[i] = (int) Math.floor(y)+1;*/
+			graph[i] = y;
 		}	
 	}
 
@@ -214,11 +214,12 @@ public class AdminStatistikkPanel extends JPanel
       		}
       		if ( e.getSource()== graphBtn )
        		{
-       			//graphPnl = new GraphPanel( graph );
-       			//dispPnl.add(graphPnl);
-       			//graphPnl.setVisible(true);
-       			display.setVisible( false );
        			monthlyCardSale();
+       			graphPnl = new GraphPanel( graph );
+       			dispPnl.add(graphPnl);
+       			graphPnl.setVisible(true);
+       			display.setVisible( false );
+       			
        			
        		}
        		if(e.getSource() == searchBtn)
@@ -240,19 +241,19 @@ public class AdminStatistikkPanel extends JPanel
        		{
        			totalSoldCard();
        		}	
-      		else if ( cutomers.isSelected() )
+      		if ( cutomers.isSelected() )
       		{	
       			totalRegPepole();
 
       		}
      			
-   			else if ( passings.isSelected() )
+   			if ( passings.isSelected() )
    			{		
 				
    				passings();
    				
    			}
-   			else if(revenue.isSelected())
+   			if(revenue.isSelected())
    			{
    				revenue();
    			}
