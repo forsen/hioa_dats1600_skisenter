@@ -76,7 +76,7 @@ public class Skisenter
 				a.setIconImage(ikon);    
 
 				Lift chLift = new Chairlift(validations, registry, "Superheisen", 2000, 3 );
-				final Control lift1 = new Control( registry,  chLift );
+				final Control lift1 = new Control( registry,  chLift, cardregistry );
 				lift1.setJMenuBar( new MenuBar().createMenu() );
 				lift1.setVisible(true);
 				lift1.setLocation(700,425);
@@ -85,7 +85,7 @@ public class Skisenter
 
 				Lift tLift = new Tcuplift( validations, registry, "Rævvaheisen", 1433 );
 
-				final Control lift2 = new Control( registry, tLift );   
+				final Control lift2 = new Control( registry, tLift, cardregistry );   
 				lift2.setJMenuBar( new MenuBar().createMenu() );
 				lift2.setVisible(true);
 				lift2.setLocation(700,425);

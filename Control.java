@@ -18,6 +18,7 @@ public class Control extends JFrame
 	private JLabel ctrlWindowTextShowTime, ctrlWindowTextCustNr;
 	private Lift lift;
 	private Personlist registry;
+	private Cardlist cardlist;
 	private Card validatingCard;
 	private BtnListener btnListener;
 
@@ -44,11 +45,12 @@ public class Control extends JFrame
 
 	}
 
-	public Control( Personlist cr, Lift l )
+	public Control( Personlist cr, Lift l, Cardlist cl )
 	{
 		super("Kontrollvindu");
 
 		registry = cr; 
+		cardlist = cl;
 		lift = l; 
 		toolbox = Toolkit.getDefaultToolkit();
 
@@ -124,7 +126,10 @@ public class Control extends JFrame
 		{
 			int cardNumber = Integer.parseInt(ctrlWindowCustNr.getText());
 
-			validatingCard = registry.findCard( cardNumber );
+			if (registry.findCard( cardNumber ) != null)
+				validatingCard = registry.findCard( cardNumber );
+			else if (cardlist.findCard(cardNumber)!= null)
+				validatingCard =cardlist.findCard( cardNumber );
 
 			Skicard currentCard = validatingCard.getCurrent();
 

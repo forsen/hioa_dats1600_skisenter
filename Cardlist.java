@@ -100,12 +100,15 @@ public class Cardlist implements Serializable
 		Iterator<Card> it = list.iterator();
 
 		int total = 0;
+		int cardNR = 0;
 
 		while (it.hasNext())
 		{
 			Card runner = it.next();
 
 			total += runner.totalCost();
+			
+			
 		}
 		return total;
 	}

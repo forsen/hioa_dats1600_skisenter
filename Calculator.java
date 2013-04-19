@@ -60,7 +60,7 @@ public class Calculator
 
 	public int totalCost()
 	{
-		return custRegistry.totalCost();
+		return custRegistry.totalCost() + cardlist.totalCost();
 	}
 
 	public int totalPunch()
