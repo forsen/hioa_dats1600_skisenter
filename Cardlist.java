@@ -129,6 +129,23 @@ public class Cardlist implements Serializable
 		return totalpunch;
 	}
 
+	public int antSoldCards()
+	{
+		Iterator<Card> it = list.iterator();
+
+		while (it.hasNext())
+		{
+			Card runner = it.next();
+	
+			if(it.next() == null)
+				return runner.getHowManySoldCards();
+			
+		}
+		return 0;
+	}
+
+
+
 	public int allCards()
 	{
 		Iterator<Card> it = list.iterator();
