@@ -11,7 +11,7 @@ public class AdminInfoPanel extends JPanel
 	private JTextField crdNr, tlfNr;
 	private JButton deletePersBtn,findPerson, showPersons,showPersWcards, showCards, showPassings;
 	private JTextArea display;
-	private JPanel butnPnl, dispPnl;
+	private JPanel fieldPnl, butnPnl, dispPnl;
 	private Listener listener;
 	private JScrollPane scroll;
 	private Personlist list;
@@ -23,7 +23,8 @@ public class AdminInfoPanel extends JPanel
 		list = l;
 		validations = v;
 		cardregistry = cr;
-		butnPnl = new JPanel(new GridLayout( 4,2 ));
+		fieldPnl = new JPanel(new GridLayout( 2,3 ));
+		butnPnl = new JPanel(new GridLayout(2,2));
 		dispPnl = new JPanel();
 		
 		setLayout( new BorderLayout( 5, 5) );
@@ -34,23 +35,23 @@ public class AdminInfoPanel extends JPanel
 		display.setEditable(false);
 		scroll = new JScrollPane(display);
 
-		butnPnl.add( new JLabel( "Kortnr" ) );
+		fieldPnl.add( new JLabel( "Kortnr" ) );
 		crdNr = new JTextField(5);
 		crdNr.setEditable( true );
-		butnPnl.add(crdNr);
+		fieldPnl.add(crdNr);
 
 		findPerson = new JButton(" Finn Person ");
 		findPerson.addActionListener( listener );
-		butnPnl.add(findPerson);
+		fieldPnl.add(findPerson);
 
-		butnPnl.add( new JLabel( "Tlfnr" ) );
+		fieldPnl.add( new JLabel( "Tlfnr" ) );
 		tlfNr = new JTextField(5);
 		tlfNr.setEditable( true );
-		butnPnl.add(tlfNr);
+		fieldPnl.add(tlfNr);
 
 		deletePersBtn = new JButton(" Slett Person ");
 		deletePersBtn.addActionListener( listener );
-		butnPnl.add(deletePersBtn);
+		fieldPnl.add(deletePersBtn);
 
 		showPersons = new JButton(" Vis Personliste ");
 		showPersons.addActionListener( listener );
@@ -71,8 +72,9 @@ public class AdminInfoPanel extends JPanel
 
 		dispPnl.add(scroll);
 
-		add(butnPnl, BorderLayout.PAGE_START);
-		add(dispPnl);
+		add(fieldPnl, BorderLayout.PAGE_START);
+		add(butnPnl, BorderLayout.CENTER);
+		add(dispPnl, BorderLayout.PAGE_END);
 
 	}
 

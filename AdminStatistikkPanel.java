@@ -8,15 +8,13 @@ import java.util.Iterator;
 
 public class AdminStatistikkPanel extends JPanel
 {	
-	private JTextField fromFld, toFld, dayLfd,monthFld, yearFld, liftFLd;
-	private JButton calculateBtn, graphBtn, searchBtn;
+	private JTextField fromFld, toFld,monthFld, liftFLd;
 	private JTextArea display;
-	private JPanel fieldPnl, choicePnl, dispPnl, graphPnl;
-	private Listener listener;
+	private JPanel btnPnl, selectedPnl,fromToPnl, monthPnl, displayPnl, graphPnl;
+	private JButton soldCardsBtn, regPersBtn, revenueBtn, liftPassBtn, graphBtn, calculateBtn;
 	private JScrollPane scroll;
+	private Listener listener;
 	private Personlist list;
-	private JCheckBox sold, cutomers, passings, revenue;
-	private CheckListner checklistner;
 	private Calculator cal;
 	private List<Validations> validations;
 	private Cardlist cardregistry;
@@ -31,86 +29,79 @@ public class AdminStatistikkPanel extends JPanel
 		cardregistry = cr;
 
 		cal = new Calculator(list, validations, cardregistry);
-		fieldPnl = new JPanel();
-		choicePnl = new JPanel(new GridLayout( 5,10 ));
-		dispPnl = new JPanel();
+
+		listener = new Listener();
 		
 		setLayout( new BorderLayout( 5, 8) );
 
-		listener = new Listener();
-		checklistner = new CheckListner();
+		btnPnl = new JPanel(new GridLayout( 9,1));
+		selectedPnl = new JPanel(new GridLayout( 1,6 ));
+		displayPnl = new JPanel();
+		fromToPnl = new JPanel(new GridLayout(2,1));
+		monthPnl = new JPanel(new GridLayout(2,1));
+			
+		soldCardsBtn = new JButton( "Solgte kort" );
+		soldCardsBtn.addActionListener( listener );
+		btnPnl.add(soldCardsBtn);
 
-		fieldPnl.add( new JLabel( "Fra: " ) );
+		regPersBtn = new JButton( "Registrerte personer" );
+		regPersBtn.addActionListener( listener );
+		btnPnl.add(regPersBtn);
+
+		revenueBtn = new JButton( "Omsetning" );
+		revenueBtn.addActionListener( listener );
+		btnPnl.add(revenueBtn);
+
+		liftPassBtn = new JButton( "Passeringer i heis" );
+		liftPassBtn.addActionListener( listener );
+		btnPnl.add(liftPassBtn);
+
+		graphBtn = new JButton( "Graf" );
+		graphBtn.addActionListener( listener );
+		btnPnl.add(graphBtn);
+
+		calculateBtn = new JButton( "Beregn" );
+		calculateBtn.addActionListener( listener );
+		btnPnl.add(calculateBtn);
+
+		fromToPnl.add( new JLabel( "Fra: " ) );
 		fromFld = new JTextField(4);
 		fromFld.setEditable( true );
-		fieldPnl.add(fromFld);
+		fromToPnl.add(fromFld);
 
-		fieldPnl.add( new JLabel( "Til: " ) );
+		fromToPnl.add( new JLabel( "Til: " ) );
 		toFld = new JTextField(4);
 		toFld.setEditable( true );
-		fieldPnl.add(toFld);
+		fromToPnl.add(toFld);
 
-		fieldPnl.add( new JLabel( "Dag " ) );
-		dayLfd = new JTextField(4);
-		dayLfd.setEditable( true );
-		fieldPnl.add(dayLfd);		
-
-		fieldPnl.add( new JLabel( "Måned " ) );
+		monthPnl.add( new JLabel( "Måned: " ) );
 		monthFld = new JTextField(4);
 		monthFld.setEditable( true );
-		fieldPnl.add(monthFld);
+		monthPnl.add(monthFld);
 
-		fieldPnl.add( new JLabel( "år " ) );
-		yearFld = new JTextField(4);
-		yearFld.setEditable( true );
-		fieldPnl.add(yearFld);
-
-		fieldPnl.add( new JLabel( "Heisnr: " ) );
+		monthPnl.add( new JLabel( "HeisNr: " ) );
 		liftFLd = new JTextField(4);
 		liftFLd.setEditable( true );
-		fieldPnl.add(liftFLd);
+		monthPnl.add(liftFLd);
 
-		searchBtn = new JButton( "Søk" );
-		searchBtn.addActionListener( listener );
-		choicePnl.add(searchBtn);
-
-		sold = new JCheckBox( "Solgte kort" );
-		sold.addItemListener( checklistner );
-		choicePnl.add(sold);
-
-		cutomers = new JCheckBox( "Opprettede kunder" );
-		cutomers.addItemListener( checklistner );
-		choicePnl.add(cutomers);
-
-		passings = new JCheckBox( "Passeringer i heis" );
-		passings.addItemListener( checklistner );
-		choicePnl.add(passings);
-
-		revenue = new JCheckBox( "Omsetning" );
-		revenue.addItemListener( checklistner );
-		choicePnl.add(revenue);
+		selectedPnl.add(fromToPnl, BorderLayout.PAGE_START);
+		selectedPnl.add(monthPnl, BorderLayout.PAGE_END);
 
 		display = new JTextArea(20,40);
 		display.setEditable( false );
 
 		scroll = new JScrollPane(display);
-
-		graphBtn = new JButton( "Graf" );
-		graphBtn.addActionListener( listener );
-		choicePnl.add(graphBtn);
-
-		calculateBtn = new JButton(" Beregn ");
-		calculateBtn.addActionListener( listener );
-		choicePnl.add(calculateBtn);
+		displayPnl.add(scroll);
+		displayPnl.add(display);
 
 
-		dispPnl.add(display);
-
-		add(fieldPnl, BorderLayout.PAGE_START);
-		add(choicePnl, BorderLayout.CENTER);
-		add(dispPnl, BorderLayout.PAGE_END);
+		add(btnPnl, BorderLayout.LINE_START);
+		add(selectedPnl, BorderLayout.CENTER);
+		add(displayPnl, BorderLayout.PAGE_END);
 
 
+
+		
 
 		// fjern etterhvert
 
@@ -132,6 +123,8 @@ public class AdminStatistikkPanel extends JPanel
 */
 	}
 //START-BEREGN
+
+
 	public void totalRegPepole()
 	{
 		display.append("\nTotalt registrerte personer er: " + cal.totalRegPepole());
@@ -181,7 +174,7 @@ public class AdminStatistikkPanel extends JPanel
 
 	public void totalPunch()
 	{
-		display.append("\nTotal salg av Klippekort er " +cal.totalPunch() + "KR og antall klippekort som er solgt er: " + cal.totalPunch()/Info.PUNCHCARDPRICE + "KR");
+		display.append("\nTotal salg av Klippekort er " +cal.totalPunch() + "KR og antall klippekort som er solgt er: " + cal.totalPunch()/Info.PUNCHCARDPRICE + "Stk");
 	}
 //END-BEREGN
 
@@ -209,57 +202,33 @@ public class AdminStatistikkPanel extends JPanel
       		
       		if(e.getSource() == calculateBtn)
       		{
-      			display.setVisible( true );
       			graphPnl.setVisible(false);
+      			display.setVisible( true );
       		}
-      		if ( e.getSource()== graphBtn )
+      		else if ( e.getSource()== graphBtn )
        		{
        			monthlyCardSale();
        			graphPnl = new GraphPanel( graph );
-       			dispPnl.add(graphPnl);
+       			//scroll = new JScrollPane(graphPnl);
+       			displayPnl.add(graphPnl);
        			graphPnl.setVisible(true);
        			display.setVisible( false );
-       			
-       			
+       				
        		}
-       		if(e.getSource() == searchBtn)
-      		{
-      			regThatTime();
-      			totalPunch();
-
-      		}
+       		else if (e.getSource() == soldCardsBtn )
+       		{
+       			totalSoldCard();
+       		}
+       		else if (e.getSource() == regPersBtn )
+       			totalRegPepole();
+       		else if (e.getSource() == liftPassBtn)
+       			 passings();
+       		else if (e.getSource() == revenueBtn)
+       			revenue();
+       		
 
     	}
 	}
 
-	private class CheckListner implements ItemListener
-	{
-       public void itemStateChanged( ItemEvent e )
-       {
-       		
-       		if ( sold.isSelected() )
-       		{
-       			totalSoldCard();
-       		}	
-      		if ( cutomers.isSelected() )
-      		{	
-      			totalRegPepole();
-
-      		}
-     			
-   			if ( passings.isSelected() )
-   			{		
-				
-   				passings();
-   				
-   			}
-   			if(revenue.isSelected())
-   			{
-   				revenue();
-   			}
-
-
-   		}
- 	}	
 }
 	
