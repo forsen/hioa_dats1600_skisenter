@@ -12,7 +12,8 @@ public class CashRegister extends JFrame
 	private JList<CartItems> shoppingCartList;
 	private JButton printReceipt, printCard, payByCash, payByCard;
 	private JTextField cashInput;
-	private BtnListener btnListener; 
+	private BtnListener btnListener;
+	private JScrollPane scroll;  
 	private JLabel cashInn;
 	private double remains;
 	private double sum; 
@@ -29,6 +30,7 @@ public class CashRegister extends JFrame
 	public CashRegister( ShoppingCart s, JList<CartItems> sl )
 	{
 		super("Betaling");
+
 
 		shoppingCart = s;
 		shoppingCartList = sl; 
@@ -51,6 +53,7 @@ public class CashRegister extends JFrame
 		cashInput = new JTextField( 7 );
 		cashInn = new JLabel( "Betalt: " );
 
+		scroll = new JScrollPane( orderList ); 
 
 
 		paymentMethod = new double[2]; 
@@ -70,7 +73,7 @@ public class CashRegister extends JFrame
 		c.gridy = 0;
 		c.gridwidth = 2; 
 		c.weighty = 0.5;
-		add( orderList , c);
+		add( scroll , c);
 
 
 		c.gridheight = 1;

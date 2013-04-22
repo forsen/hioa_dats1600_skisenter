@@ -15,7 +15,7 @@ public class PrintWindow extends JFrame
 		super( "Printvindu" );
 
 		printArea = new ReceiptPainting( j, o, s ); 
-	//	printArea.setPreferredSize( new Dimension(400, 700));
+		printArea.setPreferredSize( new Dimension(350, 450 + ( j.getLineCount() * 20 ) ) );
 		btnListener = new Listener();
 
 
