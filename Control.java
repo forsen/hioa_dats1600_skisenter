@@ -14,7 +14,7 @@ public class Control extends JFrame
 {
 	private JButton ctrlRegCustNr;
 	private JTextField ctrlWindowCustNr, ctrlWindowShowTime; 
-	private JPanel ctrlWindowPassThrough;
+	private JPanel ctrlWindowPassThrough, contentPanel;
 	private JLabel ctrlWindowTextShowTime, ctrlWindowTextCustNr;
 	private Lift lift;
 	private Personlist registry;
@@ -25,29 +25,36 @@ public class Control extends JFrame
 
 	private Toolkit toolbox;
 
-	public void paint( Graphics g ) 
-	{ 
-		super.paint(g);
-		g.setColor(new Color(230,245,255));
-		g.fillRect(0,0, getWidth(), getHeight());
-		
-
-		int[]x={0,0,getWidth()};
-
-		int[]y={0,1400,getHeight()}; 
-
-		g.setColor(new Color(235,250,255));
-		g.fillPolygon(x,y,3);	
-
-		g.setColor(new Color(238, 238, 238));
-		g.fillRect(0,0, getWidth(), 100);
 
 
-	}
 
 	public Control( Personlist cr, Lift l, Cardlist cl )
 	{
+
 		super("Kontrollvindu");
+
+		contentPanel = new JPanel()
+		{
+			@Override
+			protected void paintComponent(Graphics grphcs)
+			{		
+				Graphics2D g2d = (Graphics2D) grphcs;
+				g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+				Color color1 = new Color(245, 250, 255);
+				Color color2 = new Color(150, 195, 245);
+
+				GradientPaint gp = new GradientPaint(0,0, color1, 0, getHeight(), color2);
+				g2d.setPaint(gp);
+				g2d.fillRect(0, 0, getWidth(), getHeight());
+
+				super.paintComponents(grphcs);
+			}
+
+		};
+
+		contentPanel.setOpaque(false);
+		
 
 		registry = cr; 
 		cardlist = cl;
@@ -67,7 +74,7 @@ public class Control extends JFrame
 		setSize( width/4, height/4 );
 		setMinimumSize( new Dimension( 360,225) );
 
-		setLayout(new BorderLayout());
+
 //		JLabel background = new JLabel(new ImageIcon("bakgrunn.jpg"));
 
 
@@ -95,18 +102,51 @@ public class Control extends JFrame
 		ctrlWindowShowTime.setPreferredSize(new Dimension(80,20));
 
 		ctrlWindowPassThrough = new JPanel();
-		ctrlWindowPassThrough.setPreferredSize(new Dimension(300, 200));
 		ctrlWindowPassThrough.setBackground(Color.RED);
 		
 
-		Container c = getContentPane();
-		c.setLayout( new FlowLayout() );
-		c.add(ctrlRegCustNr);
-		c.add(ctrlWindowTextCustNr);
-		c.add(ctrlWindowCustNr);
-		c.add(ctrlWindowTextShowTime);
-		c.add(ctrlWindowShowTime);
-		c.add(ctrlWindowPassThrough);
+		setLayout(new BorderLayout());
+
+
+		contentPanel.setLayout( new GridBagLayout() );
+		
+
+		GridBagConstraints cc = new GridBagConstraints();
+		cc.fill = GridBagConstraints.BOTH;
+
+		cc.gridx = 0;
+		cc.gridy=0;
+		cc.gridwidth=1;
+		cc.weightx = 0.2;
+		contentPanel.add(ctrlRegCustNr, cc);
+
+		cc.gridx=1;
+		cc.gridwidth=1;
+		contentPanel.add(ctrlWindowTextCustNr, cc);
+
+		cc.gridx=2;
+		cc.gridwidth=1;
+		contentPanel.add(ctrlWindowCustNr, cc) ;
+
+		cc.gridx=3;
+		cc.gridwidth=1;
+		contentPanel.add(ctrlWindowTextShowTime, cc);
+		
+		cc.gridx=4;
+		cc.gridwidth=1;
+		contentPanel.add(ctrlWindowShowTime, cc);
+
+		cc.gridx=2;
+		cc.gridy=3;
+		cc.gridwidth=4;
+		cc.gridheight=3;
+		contentPanel.add(ctrlWindowPassThrough, cc);
+
+
+
+		add(contentPanel);
+		
+
 
 		updateTime();
 
