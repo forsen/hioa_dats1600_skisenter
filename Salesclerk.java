@@ -29,7 +29,7 @@ public class Salesclerk extends JFrame
 	private Personlist custRegistry; 
 	private Cardlist cardregistry;
 
-
+	private JTabbedPane salesClerkTabs;
 
 	private Toolkit toolbox;
 
@@ -152,11 +152,11 @@ public class Salesclerk extends JFrame
 
 	    Border loweredBevel = BorderFactory.createLoweredBevelBorder();
 
-		JTabbedPane fanekort = new JTabbedPane();
-		fanekort.addTab( "Kunde", kunde, custWindowPnl );
-		fanekort.addTab( "Nysalg", salg, salesWindowPnl);
-		fanekort.addTab( "Erstatt", erstatt, replaceWindowPnl );
-		framePnl.add(fanekort);
+		salesClerkTabs = new JTabbedPane();
+		salesClerkTabs.addTab( "Kunde", kunde, custWindowPnl );
+		salesClerkTabs.addTab( "Nysalg", salg, salesWindowPnl);
+		salesClerkTabs.addTab( "Erstatt", erstatt, replaceWindowPnl );
+		framePnl.add(salesClerkTabs);
 
 		//replaceWindowPnl.add(replaceWindowTxt);
 		//statusPnl.add(statusTxt);
@@ -225,7 +225,8 @@ public class Salesclerk extends JFrame
 
 			if( e.getSource() == nextCustBtn)
 			{
-				custWindowPnl.setVisible(true);
+				//custWindowPnl.setVisible(true);
+				salesClerkTabs.setSelectedIndex(0);
 				clearSearch();
 			}
 				

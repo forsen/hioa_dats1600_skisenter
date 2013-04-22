@@ -37,11 +37,11 @@ public class ReceiptPainting extends JPanel
 			System.out.println( "Fikk ikke lastet bildet" );
 		}
 	}
-
+/*
 	public Dimension getPreferredSize()
 	{
 		return new Dimension(WIDTH,HEIGHT);
-	}
+	}*/
 	public void paintComponent( Graphics g )
 	{
 		super.paintComponent( g );

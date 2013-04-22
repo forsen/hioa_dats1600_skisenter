@@ -8,26 +8,30 @@ public class PrintWindow extends JFrame
 	private JPanel printArea;
 	private JButton print;
 	private Listener btnListener;
+	private JScrollPane scroll;
 
 	public PrintWindow( JTextArea j, double[] o, double s )
 	{
 		super( "Printvindu" );
 
 		printArea = new ReceiptPainting( j, o, s ); 
+	//	printArea.setPreferredSize( new Dimension(400, 700));
 		btnListener = new Listener();
 
 
 		print = new JButton("Print");
 		print.addActionListener( btnListener );
 
-		setLayout(new FlowLayout() );
+		setLayout(new BorderLayout() );
 
-		add( printArea );
-		add( print );
+		scroll = new JScrollPane( printArea );
+
+		add( scroll, BorderLayout.CENTER );
+		add( print, BorderLayout.PAGE_END );
 
 
 
-		setSize( 500, 800 );
+		setSize( 400, 800 );
 		setVisible( true );
 	}
 
