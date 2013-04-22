@@ -18,7 +18,8 @@ public class ReceiptPainting extends JPanel
 	private int LINESPACE = 20; 
 	private int WIDTH = 350;
 	private int HEIGHT = 700; 
-	private int currentY = YSTART; 
+	private int currentY = YSTART;
+	private int size;  
 
 	public ReceiptPainting( JTextArea p, double[] o, double s )
 	{
@@ -29,6 +30,7 @@ public class ReceiptPainting extends JPanel
 		try
 		{
 			img = ImageIO.read( new File("img/offpist_kvittering.png"));
+			size = img.getWidth();
 		}
 		catch( IOException ioe )
 		{
@@ -46,7 +48,7 @@ public class ReceiptPainting extends JPanel
 
 		Graphics2D g2d = (Graphics2D) g;
 
-		int size = img.getWidth();
+		
 
 
 		g2d.drawImage( img, (WIDTH/2 - size/2), 10, null );
