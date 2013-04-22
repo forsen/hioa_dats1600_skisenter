@@ -107,6 +107,7 @@ public class Cardlist implements Serializable
 			Card runner = it.next();
 
 			total += runner.totalCost();
+			total+=70;
 			
 			
 		}
@@ -129,7 +130,7 @@ public class Cardlist implements Serializable
 		return totalpunch;
 	}
 
-	public int antSoldCards()
+	/*public int antSoldCards()
 	{
 		Iterator<Card> it = list.iterator();
 
@@ -142,7 +143,7 @@ public class Cardlist implements Serializable
 			
 		}
 		return 0;
-	}
+	}*/
 
 
 

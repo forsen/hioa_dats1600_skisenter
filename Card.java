@@ -7,8 +7,6 @@ public class Card implements Serializable
 	private int cardNumber;
 	private Skicard current; 
 	private static int next = 100000;
-	private int soldCards;
-	private static int manysold;
 
 	public Card()
 	{
@@ -16,7 +14,7 @@ public class Card implements Serializable
 		skiCardList = new LinkedList<>(); 
 		cardNumber = ++next; 
 		current = null; 
-		soldCards = ++manysold;
+		
 	}
 
 	public String input( Skicard obj )
@@ -44,10 +42,6 @@ public class Card implements Serializable
 	public static int readNext()
 	{
 		return next;
-	}
-	public int getHowManySoldCards()
-	{
-		return soldCards;
 	}
 
 	public static void setNext( int n )
@@ -79,11 +73,8 @@ public class Card implements Serializable
 		{
 			Skicard runner = it.next();
 			total += runner.getPrice();
+			
 		}
-
-		int sold = 70 * getHowManySoldCards();
-
-		total += sold;
 		return total;
 	}
 
