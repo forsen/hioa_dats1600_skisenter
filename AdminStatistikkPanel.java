@@ -8,9 +8,10 @@ import java.util.Iterator;
 
 public class AdminStatistikkPanel extends JPanel
 {	
+	private JLabel from, to, month, liftnr;
 	private JTextField fromFld, toFld,monthFld, liftFLd;
 	private JTextArea display;
-	private JPanel btnPnl, selectedPnl,fromToPnl, monthPnl, displayPnl, graphPnl;
+	private JPanel displayPnl, graphPnl;
 	private JButton soldCardsBtn, regPersBtn, revenueBtn, liftPassBtn, graphBtn, calculateBtn;
 	private JScrollPane scroll;
 	private Listener listener;
@@ -32,60 +33,57 @@ public class AdminStatistikkPanel extends JPanel
 
 		listener = new Listener();
 		
-		setLayout( new BorderLayout( 5, 8) );
+		setLayout( new GridBagLayout() );
 
-		btnPnl = new JPanel(new GridLayout( 9,1));
-		selectedPnl = new JPanel(new GridLayout( 1,6 ));
+	
 		displayPnl = new JPanel();
-		fromToPnl = new JPanel(new GridLayout(2,1));
-		monthPnl = new JPanel(new GridLayout(2,1));
+		
+		//checkPnl = new JPanel(new Gris)
+
 			
 		soldCardsBtn = new JButton( "Solgte kort" );
 		soldCardsBtn.addActionListener( listener );
-		btnPnl.add(soldCardsBtn);
+		
 
 		regPersBtn = new JButton( "Registrerte personer" );
 		regPersBtn.addActionListener( listener );
-		btnPnl.add(regPersBtn);
+		
 
 		revenueBtn = new JButton( "Omsetning" );
 		revenueBtn.addActionListener( listener );
-		btnPnl.add(revenueBtn);
+		
 
 		liftPassBtn = new JButton( "Passeringer i heis" );
 		liftPassBtn.addActionListener( listener );
-		btnPnl.add(liftPassBtn);
+		
 
 		graphBtn = new JButton( "Graf" );
 		graphBtn.addActionListener( listener );
-		btnPnl.add(graphBtn);
+	
 
 		calculateBtn = new JButton( "Beregn" );
 		calculateBtn.addActionListener( listener );
-		btnPnl.add(calculateBtn);
+	
 
-		fromToPnl.add( new JLabel( "Fra: " ) );
+		from = new JLabel( "Fra: " );
 		fromFld = new JTextField(4);
 		fromFld.setEditable( true );
-		fromToPnl.add(fromFld);
+	
 
-		fromToPnl.add( new JLabel( "Til: " ) );
+		to = new JLabel( "Til: " );
 		toFld = new JTextField(4);
 		toFld.setEditable( true );
-		fromToPnl.add(toFld);
+	
 
-		monthPnl.add( new JLabel( "Måned: " ) );
+		month = new JLabel( "Måned: " );
 		monthFld = new JTextField(4);
 		monthFld.setEditable( true );
-		monthPnl.add(monthFld);
+	
 
-		monthPnl.add( new JLabel( "HeisNr: " ) );
+		liftnr = new JLabel( "HeisNr: " );
 		liftFLd = new JTextField(4);
 		liftFLd.setEditable( true );
-		monthPnl.add(liftFLd);
-
-		selectedPnl.add(fromToPnl, BorderLayout.PAGE_START);
-		selectedPnl.add(monthPnl, BorderLayout.PAGE_END);
+	
 
 		display = new JTextArea(20,40);
 		display.setEditable( false );
@@ -94,14 +92,135 @@ public class AdminStatistikkPanel extends JPanel
 		displayPnl.add(scroll);
 		displayPnl.add(display);
 
+		GridBagConstraints c = new GridBagConstraints();
 
-		add(btnPnl, BorderLayout.LINE_START);
-		add(selectedPnl, BorderLayout.CENTER);
-		add(displayPnl, BorderLayout.PAGE_END);
-
-
-
+		c.anchor = GridBagConstraints.LINE_START;
+		c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(0,0,0,0);
+//FØRSTE - KOLONNE /////////////////////////////////////////
+		c.gridheight = 1; 
+		c.weightx = 0.5;
+		c.gridx = 0; 
+		c.gridy = 0;
+		c.gridwidth = 1; 
+		c.weighty = 0.2;
+		add(soldCardsBtn, c);
 		
+		c.gridheight = 1; 
+		c.weightx = 0.5;
+		c.gridx = 0; 
+		c.gridy = 1;
+		c.gridwidth = 1; 
+		c.weighty = 0.2;
+		add(regPersBtn, c);
+
+		c.gridheight = 1;
+		c.weightx = 0.5;
+		c.gridx = 0; 
+		c.gridy = 2; 
+		c.gridwidth = 1;
+		c.weighty = 0.2;
+		add(revenueBtn, c);
+
+		c.gridheight = 1;
+		c.weightx = 0.5;
+		c.gridx = 0; 
+		c.gridy = 3; 
+		c.gridwidth = 1;
+		c.weighty = 0.2;
+		add(liftPassBtn, c);
+
+		c.gridheight = 1;
+		c.weightx = 1;
+		c.gridx = 0; 
+		c.gridy = 4; 
+		c.gridwidth = 1;
+		c.weighty = 0.2;
+		add(graphBtn, c);
+
+		c.gridheight = 1;
+		c.weightx = 1;
+		c.gridx = 0; 
+		c.gridy = 5; 
+		c.gridwidth = 1;
+		c.weighty = 0.2;
+		add(calculateBtn, c);
+
+//ANDRE-KOLONNE //////////////////////////////////////////////
+		c.gridheight = 1; 
+		c.weightx = 0.5;
+		c.gridx = 1; 
+		c.gridy = 0;
+		c.gridwidth = 1; 
+		c.weighty = 0.2;
+		add(from, c);
+
+		c.gridheight = 1; 
+		c.weightx = 0.5;
+		c.gridx = 1; 
+		c.gridy = 1;
+		c.gridwidth = 1; 
+		c.weighty = 0.2;
+		add(to,c);	
+
+		c.gridheight = 1;
+		c.weightx = 0.5;
+		c.gridx = 1; 
+		c.gridy = 2; 
+		c.gridwidth = 1;
+		c.weighty = 0.2;
+		add(month, c);
+
+		c.gridheight = 1;
+		c.weightx = 0.5;
+		c.gridx = 1; 
+		c.gridy = 3; 
+		c.gridwidth = 2;
+		c.weighty = 0.2;
+		add(liftnr, c);
+
+//tredje kolonne /////////////////////////////
+
+		c.gridheight = 1; 
+		c.weightx = 0.5;
+		c.gridx = 2; 
+		c.gridy = 0;
+		c.gridwidth = 1; 
+		c.weighty = 0.2;
+		add(fromFld, c);
+
+		c.gridheight = 1; 
+		c.weightx = 0.5;
+		c.gridx = 2; 
+		c.gridy = 1;
+		c.gridwidth = 1; 
+		c.weighty = 0.2;
+		add(toFld,c);	
+
+		c.gridheight = 1;
+		c.weightx = 0.5;
+		c.gridx = 2; 
+		c.gridy = 2; 
+		c.gridwidth = 1;
+		c.weighty = 0.2;
+		add(monthFld, c);
+
+		c.gridheight = 1;
+		c.weightx = 0.5;
+		c.gridx = 2; 
+		c.gridy = 3; 
+		c.gridwidth = 2;
+		c.weighty = 0.2;
+		add(liftFLd, c);
+
+
+		c.gridheight = 1;
+		c.weightx = 0.5;
+		c.gridx = 0; 
+		c.gridy = 10; 
+		c.gridwidth = 3;
+		c.weighty = 0.2;
+		add(displayPnl, c);
 
 		// fjern etterhvert
 
@@ -172,10 +291,10 @@ public class AdminStatistikkPanel extends JPanel
 		display.append("\nTotal omsetning er "+  cal.totalCost() + " KR");
 	}
 
-	public void totalPunch()
+	/*public void totalPunch()
 	{
 		display.append("\nTotal salg av Klippekort er " +cal.totalPunch() + "KR og antall klippekort som er solgt er: " + cal.totalPunch()/Info.PUNCHCARDPRICE + "Stk");
-	}
+	}*/
 //END-BEREGN
 
 //START-GRAF

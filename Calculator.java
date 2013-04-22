@@ -26,7 +26,7 @@ public class Calculator
 
 	public int regCards()
 	{
-		return 0;
+		return custRegistry.soldCards();
 	}
 
 	public int unregCards()
@@ -36,7 +36,7 @@ public class Calculator
 
 	public int totalSoldCard()
 	{
-		return regCards()+unregCards();
+		return regCards() + unregCards();
 	}
 
 	public int regThatTime(int nr)
@@ -63,10 +63,10 @@ public class Calculator
 		return custRegistry.totalCost() + cardlist.totalCost();
 	}
 
-	public int totalPunch()
+	/*public int totalPunch()
 	{
 		return custRegistry.totalPunch();
-	}
+	}*/
 
 	public int showPassings()
 	{

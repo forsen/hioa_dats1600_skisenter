@@ -133,10 +133,15 @@ public class Person implements Serializable
 		
 	}
 
-	public int totalPunch()
+	public int soldCards()
+	{
+		return list.allCards();
+	}
+
+	/*public int totalPunch()
 	{
 		return list.totalPunch();
-	}
+	}*/
 
 	public String toString()
 	{

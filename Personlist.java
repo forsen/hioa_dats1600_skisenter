@@ -154,7 +154,7 @@ public class Personlist implements Serializable
 		return total;
 	}
 
-	public int totalPunch()
+	/*public int totalPunch()
 	{
 		Iterator<Person> it = registry.iterator();
 
@@ -167,6 +167,22 @@ public class Personlist implements Serializable
 			totalpunch += runner.totalPunch();
 		}
 		return totalpunch;
+	}*/
+
+	public int soldCards()
+	{
+		
+		Iterator<Person> it = registry.iterator();
+
+		int sold = 0;
+
+		while(it.hasNext())
+		{
+			Person owner = it.next();
+
+			sold += owner.soldCards();
+		}
+		return sold;
 	}
 
 	

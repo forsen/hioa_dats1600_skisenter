@@ -80,10 +80,14 @@ public class Card implements Serializable
 			Skicard runner = it.next();
 			total += runner.getPrice();
 		}
+
+		int sold = 70 * getHowManySoldCards();
+
+		total += sold;
 		return total;
 	}
 
-	public int totalPunch()
+	/*public int totalPunch()
 	{
 
 		Iterator<Skicard> it = skiCardList.iterator();
@@ -96,6 +100,26 @@ public class Card implements Serializable
 			totalpunch += runner.getPrice();
 		} 
 		return totalpunch;
+	}*/
+
+	public String showAll()
+	{
+		StringBuilder text = new StringBuilder();
+		
+		Iterator<Skicard> it = skiCardList.iterator();
+		
+		while(it.hasNext())
+		{
+			Skicard runner = it.next();
+			text.append("\n");
+			text.append(runner.toString());
+			text.append("\n");
+		
+		} 
+		
+		String doneText = text.toString();
+		
+		return doneText;
 	}
 
 	//metode for å se hva slags type kort dette kortet tidligere har vært
