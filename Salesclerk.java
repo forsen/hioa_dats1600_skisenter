@@ -16,7 +16,7 @@ public class Salesclerk extends JFrame
 	private final int RIGHT = 40;
 	private JButton custWindowBtn, salesWindowBtn, replaceWindowBtn, nextCustBtn;
 	private JPanel custWindowPnl, salesWindowPnl, replaceWindowPnl, statusPnl; 
-	private JPanel framePnl;
+	private JPanel framePnl, salesClerkCustInfoPnl;
 	public static JTextArea statusTxt;
 
 	//replaceWindowTxt
@@ -64,6 +64,10 @@ public class Salesclerk extends JFrame
 
 		custRegistry = cr; 
 		cardregistry = cardr;
+
+		salesClerkCustInfoPnl = new JPanel( new BorderLayout() );
+
+
 	
 		ImageIcon kunde = new ImageIcon("img/kunde.png");
 		// custWindowBtn = new JButton(kunde);
@@ -94,6 +98,8 @@ public class Salesclerk extends JFrame
 
 		nextCustBtn = new JButton("neste Kunde");
 
+		salesClerkCustInfoPnl.add( nextCustBtn, BorderLayout.PAGE_START );
+		salesClerkCustInfoPnl.add( salesClerkSearchInfoTxt, BorderLayout.CENTER );
 
 		statusTxt = new JTextArea(5,50);
 		statusTxt.setBackground(new Color(238, 248, 255));
@@ -128,7 +134,8 @@ public class Salesclerk extends JFrame
 		
 		c.setLayout( layout );
 		c.add(framePnl, BorderLayout.LINE_START );
-		c.add(salesClerkSearchInfoTxt, BorderLayout.CENTER );
+		c.add(salesClerkCustInfoPnl, BorderLayout.CENTER );
+//		c.add(salesClerkSearchInfoTxt, BorderLayout.CENTER );
 
 		c.add(statusTxt, BorderLayout.PAGE_END );
 
