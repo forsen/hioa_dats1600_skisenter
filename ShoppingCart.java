@@ -93,9 +93,20 @@ public class ShoppingCart
 
 	public DefaultListModel<CartItems> deleteFromCart(int index )
 	{
-		sum -= items.getElementAt( index ).getPrice();
-		items.removeElementAt( index );
-		cartList.remove( index );
+		try
+		{
+			Salesclerk.statusTxt.setText( "" );
+			sum -= items.getElementAt( index ).getPrice();
+			items.removeElementAt( index );
+			cartList.remove( index );
+		}
+		catch( ArrayIndexOutOfBoundsException aioobe )
+		{
+			if( items.isEmpty() )
+				Salesclerk.statusTxt.setText( "Listen er tom" );
+			else
+				Salesclerk.statusTxt.setText( "Du må velge en linje fra lista" );
+		}
 
 		return items; 
 	}

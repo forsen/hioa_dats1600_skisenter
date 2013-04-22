@@ -37,6 +37,7 @@ public class Info extends JFrame
 		GridBagLayout gbl = new GridBagLayout();
 
 		setLayout(gbl);
+
 /*
 		gbl.layoutContainer( this );
 		double[][] weights = gbl.getLayoutWeights();
@@ -60,10 +61,32 @@ public class Info extends JFrame
 
 		Toolkit verktoykasse = Toolkit.getDefaultToolkit();
 
-		// første kolonne /////////////////////////////
+		
+
+		sideMenu = new JPanel()
+		{
+
+			@Override
+			protected void paintComponent(Graphics grphcs)
+			{
+				Graphics2D g2d = (Graphics2D) grphcs;
+				g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+				Color color1 = new Color(245, 250, 255);
+				Color color2 = new Color(150, 195, 245);
+
+				GradientPaint gp = new GradientPaint(0,0, color1, 0, getHeight(), color2);
+				g2d.setPaint(gp);
+				g2d.fillRect(0, 0, getWidth(), getHeight());
+
+				super.paintComponents(grphcs);
+			}
+
+		};
 
 
-		sideMenu = new JPanel();
+		sideMenu.setOpaque(false);
+
 		sideMenu.setLayout( new GridLayout( 4,1 ) );
 
 
@@ -127,12 +150,15 @@ public class Info extends JFrame
 		GridBagConstraints c = new GridBagConstraints();
 		//sideMenu.setPreferredSize(new Dimension(100, 800)); //finn en bedre måte å gjøre dette på. Skalering vil ødelegge
 		//c.fill = GridBagConstraints.BOTH;
+
+
+		// første kolonne /////////////////////////////
 		c.insets = new Insets(0,0,0,0);
+		c.fill = GridBagConstraints.BOTH;
 		c.gridx=0;
 		c.weightx = 0.1;
 		c.gridheight = 3;
 		c.gridwidth = 1;
-		c.anchor = GridBagConstraints.PAGE_START;
 		c.gridy=0;
 
 		add(sideMenu, c);
@@ -163,6 +189,7 @@ public class Info extends JFrame
 	//	c.weightx = 1.0;
 		c.gridheight = 2;
 		c.weighty = 1.0;
+		c.anchor = GridBagConstraints.PAGE_START;
 		//	c.gridwidth = 4;
 		c.gridx = 1;
 		c.gridy = 1;
@@ -193,6 +220,10 @@ public class Info extends JFrame
 		contentPanel.add(infoWindowPnl);
 		contentPanel.add(spOffersWindowPnl);
 		contentPanel.add(pricesWindowPnl);
+
+
+		Border raisedBevel = BorderFactory.createRaisedBevelBorder();
+		panel.setBorder(raisedBevel);
 
 		newsWindowPnl.setVisible(true);
 		infoWindowPnl.setVisible(false);

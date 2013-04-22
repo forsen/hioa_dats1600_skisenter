@@ -17,8 +17,8 @@ public class ReceiptPainting extends JPanel
 	private int YSTART = 120;
 	private int LINESPACE = 20; 
 	private int WIDTH = 350;
-	private int HEIGHT = 700; 
-	private int currentY = YSTART; 
+	private int currentY = YSTART;
+	private int size;  
 
 	public ReceiptPainting( JTextArea p, double[] o, double s )
 	{
@@ -29,16 +29,25 @@ public class ReceiptPainting extends JPanel
 		try
 		{
 			img = ImageIO.read( new File("img/offpist_kvittering.png"));
+			size = img.getWidth();
 		}
 		catch( IOException ioe )
 		{
 			System.out.println( "Fikk ikke lastet bildet" );
 		}
+
+
 	}
 
-	public Dimension getPreferredSize()
+	public int calculateHeight()
 	{
-		return new Dimension(WIDTH,HEIGHT);
+		return 500 + (areaToString().length * LINESPACE);
+	}
+
+
+	public Dimension setPreferredSize()
+	{
+		return new Dimension(WIDTH,calculateHeight());
 	}
 	public void paintComponent( Graphics g )
 	{
@@ -46,7 +55,7 @@ public class ReceiptPainting extends JPanel
 
 		Graphics2D g2d = (Graphics2D) g;
 
-		int size = img.getWidth();
+		
 
 
 		g2d.drawImage( img, (WIDTH/2 - size/2), 10, null );
@@ -125,6 +134,8 @@ public class ReceiptPainting extends JPanel
 		printCenteredString("Ambulansehelikopter: 113", WIDTH, 0, currentY, g2d );
 
 		currentY = YSTART; 
+
+
 	}
 
 	private String[] areaToString()

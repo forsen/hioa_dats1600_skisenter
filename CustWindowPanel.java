@@ -37,7 +37,7 @@ public class CustWindowPanel extends JPanel
 	public CustWindowPanel( Personlist cr, JTextArea s )
 	{
 		setBackground(new Color(200, 230, 255));
-		setLayout( new BorderLayout( 5, 5) );
+		setLayout( new GridBagLayout() );
 
 
 		img = null;
@@ -114,9 +114,7 @@ public class CustWindowPanel extends JPanel
 		rsltPnl.add( scrolList );
 		//rsltPnl.add( custWindowSearchInfoTxt );
 
-		add(formPnl, BorderLayout.CENTER );
-		add(rsltPnl, BorderLayout.LINE_END );
-		add(btnPnl, BorderLayout.PAGE_END );
+
 /*
 		custWindowFirstNamePnl.add( new JLabel( "Fornavn" ) );
 		custWindowFirstNamePnl.add( custWindowFirstName );
@@ -142,9 +140,28 @@ public class CustWindowPanel extends JPanel
 
 
 		btnPnl.add(imageBtn);
-		btnPnl.add( custWindowRegBtn );
-		btnPnl.add( custWindowSearchBtn );
+		btnPnl.add(custWindowRegBtn );
+		btnPnl.add(custWindowSearchBtn );
 		btnPnl.add(imagePnl);
+
+
+		GridBagConstraints c = new GridBagConstraints();
+
+		c.anchor = GridBagConstraints.PAGE_START;
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx=0;
+		c.gridy=0;
+
+		add(formPnl, c);
+
+		c.gridx=2;
+		c.gridy=0;
+
+		add(rsltPnl, c);
+
+		c.gridx=0;
+		c.gridy=1;
+		add(btnPnl, c);
 	}
 
 	private void registerPerson()
