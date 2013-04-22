@@ -163,6 +163,7 @@ public class Info extends JFrame
 	//	c.weightx = 1.0;
 		c.gridheight = 2;
 		c.weighty = 1.0;
+		c.anchor = GridBagConstraints.PAGE_START;
 		//	c.gridwidth = 4;
 		c.gridx = 1;
 		c.gridy = 1;
@@ -193,6 +194,10 @@ public class Info extends JFrame
 		contentPanel.add(infoWindowPnl);
 		contentPanel.add(spOffersWindowPnl);
 		contentPanel.add(pricesWindowPnl);
+
+
+		Border raisedBevel = BorderFactory.createRaisedBevelBorder();
+		panel.setBorder(raisedBevel);
 
 		newsWindowPnl.setVisible(true);
 		infoWindowPnl.setVisible(false);
