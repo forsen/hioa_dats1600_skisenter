@@ -183,7 +183,26 @@ public class Info extends JFrame
 
 
 
-		contentPanel = new JPanel();
+		contentPanel = new JPanel()
+		{
+			@Override
+			protected void paintComponent(Graphics grphcs)
+			{		
+				Graphics2D g2d = (Graphics2D) grphcs;
+				g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+				Color color1 = new Color(245, 250, 255);
+				Color color2 = new Color(150, 195, 245);
+
+				GradientPaint gp = new GradientPaint(0,0, color1, 0, getHeight(), color2);
+				g2d.setPaint(gp);
+				g2d.fillRect(0, 0, getWidth(), getHeight());
+
+			}
+
+		};
+
+
 		c.fill = GridBagConstraints.BOTH;
 		contentPanel.setBackground(new Color(220, 240, 255));
 	//	c.weightx = 1.0;
@@ -220,6 +239,13 @@ public class Info extends JFrame
 		contentPanel.add(infoWindowPnl);
 		contentPanel.add(spOffersWindowPnl);
 		contentPanel.add(pricesWindowPnl);
+
+
+		Border border = BorderFactory.createLineBorder(Color.GRAY);
+		newsWindowPnl.setBorder(border);
+		infoWindowPnl.setBorder(border);
+		spOffersWindowPnl.setBorder(border);
+		pricesWindowPnl.setBorder(border);
 
 
 		Border raisedBevel = BorderFactory.createRaisedBevelBorder();
