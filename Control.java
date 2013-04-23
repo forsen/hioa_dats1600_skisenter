@@ -311,7 +311,7 @@ public class Control extends JFrame
 		catch(NumberFormatException nfe)
 		{
 			 ctrlWindowPassThrough.setBackground(Color.RED);
-			 ctrlWindowPassThroughLabelText.setText("Skrive et gyldig kortnummer: 'xxxxxx'");
+			 ctrlWindowPassThroughLabelText.setText("Skriv et gyldig kortnummer (6 siffer)");
 		}
 	}
 
