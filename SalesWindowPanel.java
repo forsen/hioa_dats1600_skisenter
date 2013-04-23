@@ -14,7 +14,8 @@ public class SalesWindowPanel extends JPanel
 	private JList<CartItems> shoppingCartList;
 	public static JList<Card> cardIDList;
 	private DefaultListModel<Card> listmodel;
-	private JButton salesAddCartBtn, salesCheckoutBtn, salesNewCardBtn, salesRemoveLineCart; 
+	private JButton salesAddCartBtn, salesCheckoutBtn, salesNewCardBtn, salesRemoveLineCart;
+	private JButton salesReturnCardBtn;  
 	private String[] cardTypeString; 
 	private CardListener cardListener;
 	private BtnListener btnListener;
@@ -52,6 +53,19 @@ public class SalesWindowPanel extends JPanel
 		btnListener = new BtnListener();
 
 		cartPrice = new JLabel(" Sum: 0kr");
+
+		salesNewCardBtn = new JButton("Nytt kort");
+		salesNewCardBtn.setMnemonic(KeyEvent.VK_N);
+		salesNewCardBtn.addActionListener( btnListener );
+		salesNewCardBtn.setToolTipText("Registrer nytt kort");
+
+		salesReturnCardBtn = new JButton("Pant kort");
+		salesReturnCardBtn.setMnemonic(KeyEvent.VK_P);
+		salesReturnCardBtn.addActionListener( btnListener );
+		salesReturnCardBtn.setToolTipText("<HTML>Pant et kort.<br>" +
+			"Du kan enten velge et kortnr fra listen,<br>" +
+			"eller skrive inn kortnr i kortnrfeltet.</HTML>");
+
 		salesAddCartBtn = new JButton("Legg i handlevogn");
 		salesAddCartBtn.setMnemonic(KeyEvent.VK_L);
 		salesAddCartBtn.addActionListener( btnListener );
@@ -66,10 +80,7 @@ public class SalesWindowPanel extends JPanel
 		salesRemoveLineCart.addActionListener( btnListener );
 		salesRemoveLineCart.setToolTipText("Fjerner valgt linje fra handlekurven");
 
-		salesNewCardBtn = new JButton("Nytt kort");
-		salesNewCardBtn.setMnemonic(KeyEvent.VK_N);
-		salesNewCardBtn.addActionListener( btnListener );
-		salesNewCardBtn.setToolTipText("Registrer nytt kort");
+
 		//customer = p; 
 
 		cardListener = new CardListener();
@@ -124,7 +135,7 @@ public class SalesWindowPanel extends JPanel
 		c.weighty = 0.2;
 		add(cardnrLbl, c);
 
-		c.gridheight = 1;
+		c.gridheight = 2;
 		c.weightx = 0.5;
 		c.gridx = 0; 
 		c.gridy = 2; 
@@ -135,7 +146,7 @@ public class SalesWindowPanel extends JPanel
 		c.gridheight = 1;
 		c.weightx = 0.5;
 		c.gridx = 0; 
-		c.gridy = 3; 
+		c.gridy = 4; 
 		c.gridwidth = 1;
 		c.weighty = 0.2;
 		add(cardScrolList, c);
@@ -143,7 +154,7 @@ public class SalesWindowPanel extends JPanel
 		c.gridheight = 2;
 		c.weightx = 1;
 		c.gridx = 0; 
-		c.gridy = 4; 
+		c.gridy = 5; 
 		c.gridwidth = 1;
 		c.weighty = 0.2;
 		add(shoppingScrolList, c);
@@ -175,8 +186,16 @@ public class SalesWindowPanel extends JPanel
 
 		c.gridheight = 1;
 		c.weightx = 0.5;
+		c.gridx = 1;
+		c.gridy = 3;
+		c.gridwidth = 1;
+		c.weighty = 0.2;
+		add(salesReturnCardBtn, c);
+
+		c.gridheight = 1;
+		c.weightx = 0.5;
 		c.gridx = 1; 
-		c.gridy = 3; 
+		c.gridy = 4; 
 		c.gridwidth = 2;
 		c.weighty = 0.2;
 		add(salesAddCartBtn, c);
@@ -184,7 +203,7 @@ public class SalesWindowPanel extends JPanel
 		c.gridheight = 1;
 		c.weightx = 0.5;
 		c.gridx = 1;
-		c.gridy = 4;
+		c.gridy = 5;
 		c.gridwidth = 1;
 		c.weighty = 0.2;
 		add(salesRemoveLineCart, c);
@@ -192,7 +211,7 @@ public class SalesWindowPanel extends JPanel
 		c.gridheight = 1;
 		c.weightx = 0.5;
 		c.gridx = 1; 
-		c.gridy = 5; 
+		c.gridy = 6; 
 		c.gridwidth = 1;
 		c.weighty = 0.2;
 		add(salesCheckoutBtn, c);

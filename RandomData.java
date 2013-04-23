@@ -12,7 +12,7 @@ public class RandomData
 
 
 
-	private final int ANTALLPERSONER = 100;
+	private final int ANTALLPERSONER = 10000;
 	private final int MINKORTPERPERSON = 2;
 	private final int MAXKORTPERPERSON = 5;
 	private final int MINSKIKORTPERKORT = 1; 
