@@ -313,7 +313,8 @@ public class CustWindowPanel extends JPanel
   			}
 
   			BufferedImage temp = iu.openImage(f);
-  			File nf = iu.drawImage(temp);
+  			File nf = iu.dra
+  			wImage(temp);
 
 
   			FileChannel fsource = new FileInputStream(nf).getChannel();
