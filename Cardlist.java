@@ -114,7 +114,7 @@ public class Cardlist implements Serializable
 		return total;
 	}
 
-	public int totalPunch()
+/*	public int totalPunch()
 	{
 		Iterator<Card> it = list.iterator();
 
@@ -128,7 +128,7 @@ public class Cardlist implements Serializable
 			
 		}
 		return totalpunch;
-	}
+	}*/
 
 	/*public int antSoldCards()
 	{
@@ -144,8 +144,23 @@ public class Cardlist implements Serializable
 		}
 		return 0;
 	}*/
+/// STATISTIKK///////////////////////////////////////////////////////////////////
+	public List<Card> getRelevantCards(Date start, Date end)
+	{
+		List<Card> tempList = new LinkedList<>();
+		Iterator<Card> it = list.iterator();
 
-
+		while(it.hasNext())
+		{
+			Card runner = it.next();
+			if( (runner.getBought().after(start) && runner.getBought().before(end)) 
+				|| (runner.getBought().equals(start) || runner.getBought().equals(end)) )
+			{
+				tempList.add(runner);
+			}
+		}
+		return tempList;
+	}
 
 	public int allCards()
 	{
@@ -184,7 +199,7 @@ public class Cardlist implements Serializable
 		}
 		return total;
 	}
-
+//END OF STATISTIKK//////////////////////////////////////////////////////////////////////
 	public String toString()
 	{
 		StringBuilder text = new StringBuilder();

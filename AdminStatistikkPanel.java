@@ -244,6 +244,24 @@ public class AdminStatistikkPanel extends JPanel
 
 	public void totalRegPepole()
 	{
+		/*Date start;
+		Date end;
+
+		try
+		{
+			start = new SimpleDateFormat("ddMMyy").parse(fromFld.getText());
+			end = new SimpleDateFormat("ddMMyy").parse(toFld.getText());  
+		}
+		catch (NullPointerException npe)
+		{
+			 start = new SimpleDateFormat("ddMMyy").parse("010170");
+			 end = new SimpleDateFormat("ddMMyy").parse("010170"); 
+		}
+*/
+
+
+
+
 		display.append("\nTotalt registrerte personer er: " + cal.totalRegPepole());
 	}
 
@@ -269,6 +287,11 @@ public class AdminStatistikkPanel extends JPanel
 			display.setText("Må sette inn en tall");
 		}
 	}
+
+	/*public LinkedList<Card> getCards()
+	{
+
+	} */
 
 
 
@@ -349,7 +372,7 @@ public class AdminStatistikkPanel extends JPanel
       		}
        		else if(tabDisp.getSelectedIndex() == 1)
        		{
-       			monthlyCardSale();
+       			//monthlyCardSale();
        			graphPnl = new GraphPanel( graph );
        			
        			//scroll = new JScrollPane(graphPnl);

@@ -77,6 +77,24 @@ public class Card implements Serializable
 		}
 		return total;
 	}
+//STATISTIKK//////////////////////////////////////////////////////////////////
+	public List<Skicard> getRelevantCards(Date start, Date end)
+	{
+		List<Skicard> tempList = new LinkedList<>();
+		Iterator<Skicard> it = skiCardList.iterator();
+
+		while(it.hasNext())
+		{
+			Skicard runner = it.next();
+			if( (runner.getBought().after(start) && runner.getBought().before(end)) 
+				|| (runner.getBought().equals(start) || runner.getBought().equals(end)) )
+			{
+				tempList.add(runner);
+			}
+		}
+		return tempList;
+
+	}
 
 	/*public int totalPunch()
 	{
@@ -93,25 +111,7 @@ public class Card implements Serializable
 		return totalpunch;
 	}*/
 
-	public String showAll()
-	{
-		StringBuilder text = new StringBuilder();
-		
-		Iterator<Skicard> it = skiCardList.iterator();
-		
-		while(it.hasNext())
-		{
-			Skicard runner = it.next();
-			text.append("\n");
-			text.append(runner.toString());
-			text.append("\n");
-		
-		} 
-		
-		String doneText = text.toString();
-		
-		return doneText;
-	}
+	
 
 	//metode for å se hva slags type kort dette kortet tidligere har vært
 	public String history()

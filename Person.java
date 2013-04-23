@@ -127,6 +127,7 @@ public class Person implements Serializable
 		return list.findCard(cardNumber);
 	}
 
+//STATISTIKK//////////////////////////////////////////////////////////////////////////
 	public int totalCost()
 	{ 
 		return list.totalCost();
@@ -142,6 +143,12 @@ public class Person implements Serializable
 	{
 		return list.totalPunch();
 	}*/
+
+	public List<Card> getRelevantCards(Date start, Date end)
+	{
+		return list.getRelevantCards(start,end);
+	}
+//END OF STATISTIKK//////////////////////////////////////////////////////////////
 
 	public String toString()
 	{

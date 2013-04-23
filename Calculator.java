@@ -10,6 +10,7 @@ public class Calculator
 	private Personlist custRegistry;
 	private Cardlist cardlist;
 	private List<Validations> validations;
+	private int[] graph;
 
 	public Calculator(Personlist cr, List<Validations> v, Cardlist cl )
 	{
@@ -17,6 +18,37 @@ public class Calculator
 		cardlist = cl;
 		validations = v;
 	
+	}
+
+	public List<Person> getRelevantCards(Date start, Date end)
+	{
+		return custRegistry.getRelevantCards(start,end);
+	}
+
+	public int[] totalRegPepole(Date start, Date end)
+	{
+		List<Person> plist = getRelevantCards(start, end);
+
+		Iterator<Person> it = plist.iterator();
+
+		int antDays = 0;
+
+		graph = new int[antDays];
+
+		for( int i = 0; i < graph.length; i++)
+		{
+			while(it.hasNext())
+			{
+			 	Person runner = it.next();
+				//graph[i] = 
+				runner.getCreated();
+			}
+
+
+
+		}
+
+		return graph;
 	}
 
 	public int totalRegPepole()

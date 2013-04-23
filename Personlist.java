@@ -104,6 +104,7 @@ public class Personlist implements Serializable
 		}
 		return searchresult;
 	}
+//STATISTIKK//////////////////////////////////////////////////////////////////////////////////////////
 
 	public int totalRegPepole()
 	{
@@ -154,6 +155,25 @@ public class Personlist implements Serializable
 		return total;
 	}
 
+	public List<Person> getRelevantCards(Date start, Date end)
+	{
+		List<Person> tempList = new LinkedList<>();
+		Iterator<Person> it = registry.iterator();
+
+		while (it.hasNext())
+		{
+			Person runner = it.next();
+
+			if( (runner.getCreated().after(start) && runner.getCreated().before(end)) 
+				|| (runner.getCreated().equals(start) || runner.getCreated().equals(end)) )
+			{
+				tempList.add(runner);
+			}
+		}
+		
+		return tempList;
+	}
+
 	/*public int totalPunch()
 	{
 		Iterator<Person> it = registry.iterator();
@@ -184,7 +204,7 @@ public class Personlist implements Serializable
 		}
 		return sold;
 	}
-
+//END OF STATISTIKK///////////////////////////////////////////////////////
 	
 
 
