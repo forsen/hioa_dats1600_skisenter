@@ -48,8 +48,24 @@ public class Salesclerk extends JFrame
 
 
 		setBackground(new Color(200, 230, 255));
-		framePnl = new JPanel();
-		framePnl.setBackground(new Color(200, 230, 255));
+		framePnl = new JPanel()
+		{
+			@Override
+			protected void paintComponent(Graphics grphcs)
+			{		
+				Graphics2D g2d = (Graphics2D) grphcs;
+				g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+				Color color1 = new Color(245, 250, 255);
+				Color color2 = new Color(150, 195, 245);
+
+				GradientPaint gp = new GradientPaint(0,0, color1, 0, getHeight(), color2);
+				g2d.setPaint(gp);
+				g2d.fillRect(0, 0, getWidth(), getHeight());
+
+			}
+
+		};
 
 		salesClerkSearchInfoTxt = new JTextArea( 5, 20 );
 		salesClerkSearchInfoTxt.setEditable(false);
