@@ -56,6 +56,11 @@ public class Person implements Serializable
 		return born;
 	}
 
+	public void setImage(File f)
+	{
+		img = f;
+	}
+
 	public File getImage()
 	{
 		return img;

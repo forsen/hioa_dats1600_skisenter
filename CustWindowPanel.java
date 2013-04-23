@@ -1,4 +1,4 @@
-import javax.swing.*;
+ import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -8,6 +8,7 @@ import java.io.*;
 import java.text.ParseException;
 import java.awt.image.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.nio.channels.FileChannel;
 
 public class CustWindowPanel extends JPanel
 {	
@@ -32,6 +33,8 @@ public class CustWindowPanel extends JPanel
 
 	private Personlist custRegistry;
 	private File img; 
+	private ImageUtility iu;
+	
 
 	//public CustWindowPanel( Personlist cr, JTextArea s, Person p )
 	public CustWindowPanel( Personlist cr, JTextArea s )
@@ -39,7 +42,7 @@ public class CustWindowPanel extends JPanel
 		setBackground(new Color(200, 230, 255));
 		setLayout( new GridBagLayout() );
 
-
+		iu = new ImageUtility();
 		img = null;
 		list = new JList<Person>( new DefaultListModel<Person>()); 
 
@@ -164,7 +167,7 @@ public class CustWindowPanel extends JPanel
 		add(btnPnl, c);
 	}
 
-	private void registerPerson()
+	private Person registerPerson()
 	{
 		String firstname = custWindowFirstName.getText();
 		String lastname = custWindowLastName.getText();
@@ -173,8 +176,7 @@ public class CustWindowPanel extends JPanel
 		{
 			int number = Integer.parseInt(custWindowPhone.getText());
 			Date born = new SimpleDateFormat("ddMMyy").parse(custWindowBorn.getText());
-			img = imageUpload();
-			Person p = new Person( firstname, lastname, number, born, img );
+			Person p = new Person( firstname, lastname, number, born, null );
 			
 		
 
@@ -184,6 +186,7 @@ public class CustWindowPanel extends JPanel
 
 			blankOut();
 
+			return p;
 
 		}
 		catch( ParseException pe )
@@ -196,7 +199,7 @@ public class CustWindowPanel extends JPanel
 		}
 
 
-		
+		return null;
 
 	}
 
@@ -238,7 +241,7 @@ public class CustWindowPanel extends JPanel
 
 	public File imageUpload()
 	{
-		/*try
+		try
 		{
 			JFileChooser fc = new JFileChooser();
 
@@ -247,24 +250,24 @@ public class CustWindowPanel extends JPanel
     		fc.setFileFilter(filter);
 			int returnValue = fc.showOpenDialog(formPnl);
 
-			File f = null;
 
 			if( returnValue == JFileChooser.APPROVE_OPTION )
 			{
-				f = fc.getSelectedFile(); 
+				img = fc.getSelectedFile(); 
 			}
 
-			System.out.println("Du har valgt å åpne filen: " + f.getName() );
-
-		
+			System.out.println("Du har valgt å åpne filen: " + img.getName() );
 
 
-		return f;
-		}
+       		return img;
+   		}
 		catch(NumberFormatException nfe)
 		{
 
-		}*/
+		}
+		
+
+
 		return null;
 
 //		JFrame fr = new JFrame ("Skønner ikke !");
@@ -297,7 +300,47 @@ public class CustWindowPanel extends JPanel
 
 		}
 	}*/
+	public void moveAndRenameImg(File f, Person p)
+	{
+		
 
+		try
+		{
+			File persPic = new File("persImg/" + p.getCustId()+".jpg");
+  			if (!persPic.exists()) 
+  			{
+       			persPic.createNewFile();
+  			}
+
+  			BufferedImage temp = iu.openImage(f);
+  			File nf = iu.drawImage(temp);
+
+
+  			FileChannel fsource = new FileInputStream(nf).getChannel();
+   			FileChannel target = new FileOutputStream(persPic).getChannel();
+   			target.transferFrom(fsource, 0, fsource.size());
+
+
+   			if (fsource != null) 
+   			{
+       			fsource.close();
+   			}
+  			if (target != null) 
+  			{
+       			target.close();
+       		}
+       		p.setImage(persPic);
+
+       	}
+       	catch(FileNotFoundException fne)
+		{
+			System.out.println("fant ikke mappa");
+		}
+		catch(IOException ie)
+		{
+
+		}
+	}
 
 	public void blankOut()
 	{
@@ -349,7 +392,10 @@ public class CustWindowPanel extends JPanel
 		public void actionPerformed( ActionEvent e )
 		{
 			if( e.getSource() == custWindowRegBtn )
-				registerPerson();
+			{
+				Person p = registerPerson();
+				moveAndRenameImg(img,  p);
+			}
 			if( e.getSource() == custWindowSearchBtn )
 				findPerson();
 			if( e.getSource() == imageBtn)
