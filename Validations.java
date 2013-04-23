@@ -8,12 +8,15 @@ public class Validations implements Serializable
 	private Card card;
 	private Date date; 
 
-	public Validations( int l, Card c )
+	public Validations( int l, Card c, Date d )
 	{
 		liftId = l; 
 		card = c;
-		date = new Date(); 
-
+		if( d == null )
+			date = new Date(); 
+		else
+			date = d; 
+		
 		Skisenter.unsaved = true; 
 	}
 

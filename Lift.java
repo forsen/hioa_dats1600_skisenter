@@ -51,7 +51,7 @@ public abstract class Lift implements Serializable
 
 	public void registrations( Card c )
 	{
-		Validations v = new Validations( liftNr, c );
+		Validations v = new Validations( liftNr, c, null );
 		validations.add( v );
 	}
 	public String toString()

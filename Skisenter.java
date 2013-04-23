@@ -1,3 +1,4 @@
+
 import java.io.*;
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +14,7 @@ public class Skisenter
 	private static Personlist registry; 
 	private static Cardlist cardregistry;
 	private static List<Validations> validations;
+	private static RandomData r;
 
 	private static Salesclerk s;
 
@@ -33,13 +35,20 @@ public class Skisenter
 		test.readFile(); 
 		
 
-
+		
 
 
 		EventQueue.invokeLater( new Runnable()
 		{
 			public void run()
 			{
+				// Fjern denne etterhvert
+				int yn = JOptionPane.showOptionDialog(null, "Vil du få litt tilfeldig data?", "Random stash", JOptionPane.YES_NO_OPTION,
+					JOptionPane.QUESTION_MESSAGE, null, null, null );
+
+				if( yn == JOptionPane.YES_OPTION )
+					r = new RandomData( registry, cardregistry, validations );
+
 				s = new Salesclerk(registry, cardregistry, message); 
 				s.setJMenuBar( new MenuBar().createMenu() );
 				s.setVisible( true );
