@@ -15,7 +15,7 @@ public class Control extends JFrame
 	private JButton ctrlRegCustNr;
 	private JTextField ctrlWindowCustNr, ctrlWindowShowTime; 
 	private JPanel ctrlWindowPassThrough, contentPanel;
-	private JLabel ctrlWindowTextShowTime, ctrlWindowTextCustNr;
+	private JLabel ctrlWindowTextShowTime, ctrlWindowTextCustNr, ctrlWindowPassThroughLabel;
 	private Lift lift;
 	private Personlist registry;
 	private Cardlist cardlist;
@@ -71,7 +71,7 @@ public class Control extends JFrame
 		int width = windowDimension.width; 
 
 		setSize( width/4, height/4 );
-		setMinimumSize( new Dimension( 360,225) );
+		setMinimumSize( new Dimension( 400,350) );
 
 
 //		JLabel background = new JLabel(new ImageIcon("bakgrunn.jpg"));
@@ -93,18 +93,25 @@ public class Control extends JFrame
 		ctrlWindowTextShowTime = new JLabel("Klokke:");
 
 		ctrlWindowCustNr = new JTextField();
-		ctrlWindowCustNr.setPreferredSize(new Dimension(70,20));
 		
 
 		
 		ctrlWindowShowTime = new JTextField();
-		ctrlWindowShowTime.setPreferredSize(new Dimension(80,20));
+
+
 
 		ctrlWindowPassThrough = new JPanel();
 		ctrlWindowPassThrough.setBackground(Color.RED);
+		ctrlWindowPassThrough.setPreferredSize(new Dimension(200,150));
+
+		ctrlWindowPassThroughLabel = new JLabel();
+		ctrlWindowPassThroughLabel.setFont(new Font("Calibri", Font.BOLD, 72));
+		ctrlWindowPassThrough.setLayout(new GridBagLayout());
+		ctrlWindowPassThrough.add(ctrlWindowPassThroughLabel);
 		
 
 		setLayout(new BorderLayout());
+
 
 
 		contentPanel.setLayout( new GridBagLayout() );
@@ -113,30 +120,39 @@ public class Control extends JFrame
 		GridBagConstraints cc = new GridBagConstraints();
 		cc.fill = GridBagConstraints.BOTH;
 
-		cc.gridx = 0;
-		cc.gridy=0;
-		cc.gridwidth=1;
-		cc.weightx = 0.2;
+
+		cc.gridx = 1;
+		cc.gridy=4;
+		cc.gridwidth=2;
+		cc.weightx = 0.5;
+		cc.anchor = GridBagConstraints.CENTER;
 		contentPanel.add(ctrlRegCustNr, cc);
 
-		cc.gridx=1;
+		cc.gridx=0;
 		cc.gridwidth=1;
+		cc.gridy=0;
+		cc.anchor= GridBagConstraints.EAST;
 		contentPanel.add(ctrlWindowTextCustNr, cc);
 
 		cc.gridx=2;
 		cc.gridwidth=1;
+		contentPanel.add(ctrlWindowTextShowTime, cc);
+
+		cc.gridx=1;
+		cc.gridwidth=1;
+		cc.anchor = GridBagConstraints.WEST;
 		contentPanel.add(ctrlWindowCustNr, cc) ;
 
-		cc.gridx=3;
-		cc.gridwidth=1;
-		contentPanel.add(ctrlWindowTextShowTime, cc);
+
 		
-		cc.gridx=4;
+		cc.gridx=3;
 		cc.gridwidth=1;
 		contentPanel.add(ctrlWindowShowTime, cc);
 
-		cc.gridx=2;
-		cc.gridy=3;
+		cc.gridx=0;
+		cc.gridy=1;
+		cc.gridwidth = 4;
+		cc.gridheight = 3;
 		contentPanel.add(ctrlWindowPassThrough, cc);
 		
 
@@ -186,13 +202,17 @@ public class Control extends JFrame
 					if( ((Timebasedcard) currentCard).getExpires().after(now) )
 					{
 						ctrlWindowPassThrough.setBackground(Color.GREEN);
+						ctrlWindowPassThroughLabel.setText("GYLDIG");
 						JOptionPane.showMessageDialog( null, "Gå gjennom. Ditt kort går ut: " + ((Timebasedcard) currentCard).getExpires() );
 						ctrlWindowPassThrough.setBackground(Color.RED);
+						ctrlWindowPassThroughLabel.setText("");
 						lift.registrations( validatingCard );
 					}
 					else
 					{
+						ctrlWindowPassThroughLabel.setText("UGYLDIG");						
 						JOptionPane.showMessageDialog(null, "Ditt kort gikk ut: " + ((Timebasedcard) currentCard).getExpires() );
+						ctrlWindowPassThroughLabel.setText("");
 					}
 				}
 
@@ -206,15 +226,19 @@ public class Control extends JFrame
 					if( ((Punchcard) currentCard).getClipCount() > 0)
 					{
 						ctrlWindowPassThrough.setBackground(Color.GREEN);
+						ctrlWindowPassThroughLabel.setText("GYLDIG");
 						((Punchcard) currentCard).usePunchCard();
 						JOptionPane.showMessageDialog( null, "Gå gjennom. Antall klipp igjen på kortet: " + ((Punchcard) currentCard).getClipCount() );
 						ctrlWindowPassThrough.setBackground(Color.RED);
+						ctrlWindowPassThroughLabel.setText("");
 						lift.registrations( validatingCard );
 					}
 
 					else
 					{
+						ctrlWindowPassThroughLabel.setText("UGYLDIG");						
 						JOptionPane.showMessageDialog( null, "Beklager, ingen fler klipp");
+						ctrlWindowPassThroughLabel.setText("");
 						ctrlWindowPassThrough.setBackground(Color.RED);
 					}
 
