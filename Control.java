@@ -263,9 +263,12 @@ public class Control extends JFrame
 						((Timebasedcard) currentCard).initialized();
 						usedRecentlyPrev = new Date();
 
+						ctrlWindowPassThrough.setBackground(Color.GREEN);
+						ctrlWindowPassThroughLabelText.setText("Velkommen: Kortet er gyldig til: " + ((Timebasedcard) currentCard).getExpires());
+
 					}
 					
-					if( ((Timebasedcard) currentCard).getExpires().after(now) )
+					else if( ((Timebasedcard) currentCard).getExpires().after(now) )
 					{
 						usedRecentlyNow = new Date();
 //Gjør så man ikke få gått inn hvis det ikke går 10 sekunder siden forrige passering. Dette må koples mot hvert enkelt kort.
