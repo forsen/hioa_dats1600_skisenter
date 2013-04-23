@@ -75,7 +75,7 @@ public class Control extends JFrame
 		int width = windowDimension.width; 
 
 		setSize( width/4, height/4 );
-		setMinimumSize( new Dimension( 400,350) );
+		setMinimumSize( new Dimension( 400,300) );
 
 
 //		JLabel background = new JLabel(new ImageIcon("bakgrunn.jpg"));
