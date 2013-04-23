@@ -1,12 +1,14 @@
 import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.*;
+import java.awt.Font;
 import java.awt.event.*;
 import java.util.Timer;
 import java.util.Date;
 import java.util.TimerTask;
 import java.text.SimpleDateFormat;
 import java.io.*;
+import javax.swing.border.*;
 import java.text.ParseException;
 import javax.imageio.ImageIO;
 
@@ -15,12 +17,15 @@ public class Control extends JFrame
 	private JButton ctrlRegCustNr;
 	private JTextField ctrlWindowCustNr, ctrlWindowShowTime; 
 	private JPanel ctrlWindowPassThrough, contentPanel;
-	private JLabel ctrlWindowTextShowTime, ctrlWindowTextCustNr, ctrlWindowPassThroughLabel;
+	private JLabel ctrlWindowTextShowTime, ctrlWindowTextCustNr, ctrlWindowPassThroughLabelText;
 	private Lift lift;
 	private Personlist registry;
 	private Cardlist cardlist;
 	private Card validatingCard;
 	private BtnListener btnListener;
+	private Color passThroughColor;
+	private Font font;
+	private Date usedRecentlyPrev, usedRecentlyNow;
 
 
 	private Toolkit toolbox;
@@ -71,7 +76,7 @@ public class Control extends JFrame
 		int width = windowDimension.width; 
 
 		setSize( width/4, height/4 );
-		setMinimumSize( new Dimension( 400,350) );
+		setMinimumSize( new Dimension( 400,300) );
 
 
 //		JLabel background = new JLabel(new ImageIcon("bakgrunn.jpg"));
@@ -93,21 +98,64 @@ public class Control extends JFrame
 		ctrlWindowTextShowTime = new JLabel("Klokke:");
 
 		ctrlWindowCustNr = new JTextField();
+		ctrlRegCustNr.addMouseListener(new MouseListener() 
+		{
+
+    		public void mouseClicked(MouseEvent e)
+    		{
+    			
+    		}
+
+    		public void mouseExited(MouseEvent event)
+    		{
+    			ctrlWindowPassThrough.setBackground(passThroughColor);
+
+    		}
+
+    		public void mouseEntered(MouseEvent event)
+    		{
+    			
+    		}
+
+    		public void mouseReleased(MouseEvent event)
+    		{
+    			
+    		}
+
+       		public void mousePressed(MouseEvent event)
+    		{
+    			
+    		}
+
+    	});
 		
 
 		
 		ctrlWindowShowTime = new JTextField();
+		ctrlWindowShowTime.setHorizontalAlignment(JTextField.CENTER);
 
 
 
 		ctrlWindowPassThrough = new JPanel();
-		ctrlWindowPassThrough.setBackground(Color.RED);
-		ctrlWindowPassThrough.setPreferredSize(new Dimension(200,150));
+		passThroughColor = new Color(150, 195, 245);
+		ctrlWindowPassThrough.setBackground(passThroughColor);
+		ctrlWindowPassThrough.setPreferredSize(new Dimension(100,80));
 
-		ctrlWindowPassThroughLabel = new JLabel();
-		ctrlWindowPassThroughLabel.setFont(new Font("Calibri", Font.BOLD, 72));
+
+		ctrlWindowPassThroughLabelText = new JLabel();
+		
+		
+
+		ctrlWindowPassThroughLabelText.setForeground(Color.WHITE);
+
 		ctrlWindowPassThrough.setLayout(new GridBagLayout());
-		ctrlWindowPassThrough.add(ctrlWindowPassThroughLabel);
+		GridBagConstraints cwc = new GridBagConstraints();
+		Border loweredBorder = BorderFactory.createLoweredBevelBorder();
+		ctrlWindowPassThrough.setBorder(loweredBorder);
+		
+
+		cwc.gridy=1;
+		ctrlWindowPassThrough.add(ctrlWindowPassThroughLabelText);
 		
 
 		setLayout(new BorderLayout());
@@ -121,8 +169,8 @@ public class Control extends JFrame
 		cc.fill = GridBagConstraints.BOTH;
 
 
-		cc.gridx = 1;
-		cc.gridy=4;
+		cc.gridx = 0;
+		cc.gridy=5;
 		cc.gridwidth=2;
 		cc.weightx = 0.5;
 		cc.anchor = GridBagConstraints.CENTER;
@@ -130,28 +178,26 @@ public class Control extends JFrame
 
 		cc.gridx=0;
 		cc.gridwidth=1;
-		cc.gridy=0;
-		cc.anchor= GridBagConstraints.EAST;
+		cc.gridy=1;
 		contentPanel.add(ctrlWindowTextCustNr, cc);
 
-		cc.gridx=2;
-		cc.gridwidth=1;
-		contentPanel.add(ctrlWindowTextShowTime, cc);
+		cc.gridx=0;
+		cc.gridy=0;
+		cc.gridwidth=4;
+		cc.anchor=GridBagConstraints.PAGE_START;
+		contentPanel.add(ctrlWindowShowTime,cc);
 
 		cc.gridx=1;
+		cc.gridy=1;
 		cc.gridwidth=1;
 		cc.anchor = GridBagConstraints.WEST;
 		contentPanel.add(ctrlWindowCustNr, cc) ;
 
 
-		
-		cc.gridx=3;
-		cc.gridwidth=1;
-		contentPanel.add(ctrlWindowShowTime, cc);
 
 		cc.gridx=0;
-		cc.gridy=1;
-		cc.gridwidth = 4;
+		cc.gridy=2;
+		cc.gridwidth = 2;
 		cc.gridheight = 3;
 		contentPanel.add(ctrlWindowPassThrough, cc);
 		
@@ -161,7 +207,7 @@ public class Control extends JFrame
 		add(contentPanel);
 		
 
-
+		setFonts("digital.ttf");
 		updateTime();
 
 		
@@ -173,6 +219,24 @@ public class Control extends JFrame
         timer.schedule(new UpdateTime(), 0, 1000);
 
 	}
+
+	public boolean setFonts(String s)
+	{
+		try{
+			font = Font.createFont(Font.TRUETYPE_FONT, new File(s));
+			font = font.deriveFont(Font.BOLD, 20.0f);
+			ctrlWindowPassThroughLabelText.setFont(font);
+			font = font.deriveFont(Font.PLAIN, 16.0f);
+			ctrlWindowShowTime.setForeground(Color.BLACK);
+			ctrlWindowShowTime.setFont(font);
+			return true;
+		}
+		catch(Exception ex){
+			JOptionPane.showMessageDialog(null,"Finner ikke fonten. Bruker standard font.");
+			return false;
+		}
+	}
+
 
 	public void findCard()
 	{
@@ -197,22 +261,33 @@ public class Control extends JFrame
 					if( ((Timebasedcard) currentCard).getExpires() == null )
 					{
 						((Timebasedcard) currentCard).initialized();
+						usedRecentlyPrev = new Date();
+
 					}
 					
 					if( ((Timebasedcard) currentCard).getExpires().after(now) )
 					{
-						ctrlWindowPassThrough.setBackground(Color.GREEN);
-						ctrlWindowPassThroughLabel.setText("GYLDIG");
-						JOptionPane.showMessageDialog( null, "Gå gjennom. Ditt kort går ut: " + ((Timebasedcard) currentCard).getExpires() );
-						ctrlWindowPassThrough.setBackground(Color.RED);
-						ctrlWindowPassThroughLabel.setText("");
-						lift.registrations( validatingCard );
+						usedRecentlyNow = new Date();
+//Gjør så man ikke få gått inn hvis det ikke går 10 sekunder siden forrige passering. Dette må koples mot hvert enkelt kort.
+						if(usedRecentlyNow.getTime() - usedRecentlyPrev.getTime() >= 10*1000)
+						{
+							ctrlWindowPassThrough.setBackground(Color.GREEN);
+							ctrlWindowPassThroughLabelText.setText("Gyldig: Kortet er gyldig til: " + ((Timebasedcard) currentCard).getExpires());
+
+							lift.registrations( validatingCard );
+							usedRecentlyPrev = new Date();
+						}
+
+						else
+						{
+						ctrlWindowPassThrough.setBackground(Color.RED);			
+						ctrlWindowPassThroughLabelText.setText("Ugyldig: Under 5 min. siden forrige passering.");
+						}
 					}
 					else
 					{
-						ctrlWindowPassThroughLabel.setText("UGYLDIG");						
-						JOptionPane.showMessageDialog(null, "Ditt kort gikk ut: " + ((Timebasedcard) currentCard).getExpires() );
-						ctrlWindowPassThroughLabel.setText("");
+						ctrlWindowPassThrough.setBackground(Color.RED);							
+						ctrlWindowPassThroughLabelText.setText("Ugyldig: Ditt kort gikk ut: " + ((Timebasedcard) currentCard).getExpires());
 					}
 				}
 
@@ -226,20 +301,17 @@ public class Control extends JFrame
 					if( ((Punchcard) currentCard).getClipCount() > 0)
 					{
 						ctrlWindowPassThrough.setBackground(Color.GREEN);
-						ctrlWindowPassThroughLabel.setText("GYLDIG");
 						((Punchcard) currentCard).usePunchCard();
-						JOptionPane.showMessageDialog( null, "Gå gjennom. Antall klipp igjen på kortet: " + ((Punchcard) currentCard).getClipCount() );
-						ctrlWindowPassThrough.setBackground(Color.RED);
-						ctrlWindowPassThroughLabel.setText("");
+						ctrlWindowPassThroughLabelText.setText("Gyldig: Antall klipp igjen: " + ((Punchcard) currentCard).getClipCount());
+
 						lift.registrations( validatingCard );
 					}
 
 					else
 					{
-						ctrlWindowPassThroughLabel.setText("UGYLDIG");						
-						JOptionPane.showMessageDialog( null, "Beklager, ingen fler klipp");
-						ctrlWindowPassThroughLabel.setText("");
-						ctrlWindowPassThrough.setBackground(Color.RED);
+						ctrlWindowPassThrough.setBackground(Color.RED);			
+						ctrlWindowPassThroughLabelText.setText("Ugyldig: Ingen fler klipp.");
+
 					}
 
 				}
@@ -255,8 +327,7 @@ public class Control extends JFrame
 		catch(NumberFormatException nfe)
 		{
 			 ctrlWindowPassThrough.setBackground(Color.RED);
-			 JOptionPane.showMessageDialog(null, "You need to enter a\nnumber", "Input Error", JOptionPane.ERROR_MESSAGE);
-
+			 ctrlWindowPassThroughLabelText.setText("Skriv et gyldig kortnummer (6 siffer)");
 		}
 	}
 
@@ -279,6 +350,7 @@ public class Control extends JFrame
     	{
       	   String time = new SimpleDateFormat("HH:mm:ss").format(new Date());
      	   ctrlWindowShowTime.setText(time);
+     	   ctrlWindowShowTime.setEditable(false);
     	}
 	}
 
