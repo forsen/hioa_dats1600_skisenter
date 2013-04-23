@@ -41,6 +41,7 @@ public class GraphPanel extends JPanel
 		lasty = ORIGOY - data[0]; 
 
 	}
+
 /*
 	public void nyGrafFlate()
   	{

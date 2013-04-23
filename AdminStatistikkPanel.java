@@ -12,7 +12,8 @@ public class AdminStatistikkPanel extends JPanel
 	private JTextField fromFld, toFld,monthFld, liftFLd;
 	private JTextArea display;
 	private JPanel displayPnl, graphPnl;
-	private JButton soldCardsBtn, regPersBtn, revenueBtn, liftPassBtn, graphBtn, calculateBtn;
+	private JButton soldCardsBtn, regPersBtn, revenueBtn, liftPassBtn;
+	private JTabbedPane tabDisp; 
 	private JScrollPane scroll;
 	private Listener listener;
 	private Personlist list;
@@ -34,10 +35,15 @@ public class AdminStatistikkPanel extends JPanel
 		listener = new Listener();
 		
 		setLayout( new GridBagLayout() );
-
 	
 		displayPnl = new JPanel();
 		
+		tabDisp = new JTabbedPane();
+
+		tabDisp.addTab("Rapport", displayPnl);
+		tabDisp.addTab("Grafisk visning", null);
+
+		tabDisp.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		//checkPnl = new JPanel(new Gris)
 
 			
@@ -55,14 +61,6 @@ public class AdminStatistikkPanel extends JPanel
 
 		liftPassBtn = new JButton( "Passeringer i heis" );
 		liftPassBtn.addActionListener( listener );
-		
-
-		graphBtn = new JButton( "Graf" );
-		graphBtn.addActionListener( listener );
-	
-
-		calculateBtn = new JButton( "Beregn" );
-		calculateBtn.addActionListener( listener );
 	
 
 		from = new JLabel( "Fra: " );
@@ -130,7 +128,7 @@ public class AdminStatistikkPanel extends JPanel
 		c.weighty = 0.2;
 		add(liftPassBtn, c);
 
-		c.gridheight = 1;
+/*		c.gridheight = 1;
 		c.weightx = 1;
 		c.gridx = 0; 
 		c.gridy = 4; 
@@ -144,7 +142,7 @@ public class AdminStatistikkPanel extends JPanel
 		c.gridy = 5; 
 		c.gridwidth = 1;
 		c.weighty = 0.2;
-		add(calculateBtn, c);
+		add(calculateBtn, c);*/
 
 //ANDRE-KOLONNE //////////////////////////////////////////////
 		c.gridheight = 1; 
@@ -220,7 +218,7 @@ public class AdminStatistikkPanel extends JPanel
 		c.gridy = 10; 
 		c.gridwidth = 3;
 		c.weighty = 0.2;
-		add(displayPnl, c);
+		add(tabDisp, c);
 
 		// fjern etterhvert
 
@@ -319,12 +317,12 @@ public class AdminStatistikkPanel extends JPanel
    		public void actionPerformed( ActionEvent e )
     	{ 	
       		
-      		if(e.getSource() == calculateBtn)
+      /*		if(e.getSource() == calculateBtn)
       		{
       			graphPnl.setVisible(false);
       			display.setVisible( true );
-      		}
-      		else if ( e.getSource()== graphBtn )
+      		}*/
+   /*   		else if ( e.getSource()== graphBtn )
        		{
        			monthlyCardSale();
        			graphPnl = new GraphPanel( graph );
@@ -333,8 +331,9 @@ public class AdminStatistikkPanel extends JPanel
        			graphPnl.setVisible(true);
        			display.setVisible( false );
        				
-       		}
-       		else if (e.getSource() == soldCardsBtn )
+       		}*/
+
+       		if (e.getSource() == soldCardsBtn )
        		{
        			totalSoldCard();
        		}
@@ -344,6 +343,19 @@ public class AdminStatistikkPanel extends JPanel
        			 passings();
        		else if (e.getSource() == revenueBtn)
        			revenue();
+       		else if(tabDisp.getSelectedIndex() == 0)
+       		{
+       			
+      		}
+       		else if(tabDisp.getSelectedIndex() == 1)
+       		{
+       			monthlyCardSale();
+       			graphPnl = new GraphPanel( graph );
+       			
+       			//scroll = new JScrollPane(graphPnl);
+       			tabDisp.setComponentAt(1, graphPnl);
+       			
+       		}
        		
 
     	}
