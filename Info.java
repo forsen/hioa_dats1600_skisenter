@@ -169,9 +169,29 @@ public class Info extends JFrame
 
 		// andre kolonne /////////////////////////////
 
-		panel = new JPanel();
+		panel = new JPanel()
+		{
+
+			@Override
+			protected void paintComponent(Graphics grphcs)
+			{
+				Graphics2D g2d = (Graphics2D) grphcs;
+				g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+				Color color1 = new Color(245, 250, 255);
+				Color color2 = new Color(150, 195, 245);
+
+				GradientPaint gp = new GradientPaint(0,0, color1, 0, getHeight(), color2);
+				g2d.setPaint(gp);
+				g2d.fillRect(0, 0, getWidth(), getHeight());
+
+				super.paintComponents(grphcs);
+			}
+
+		};
+
+
 		c.fill = GridBagConstraints.BOTH;
-		panel.setBackground(new Color(200, 230, 255));
 		c.weightx = 1.0;
 		c.weighty = 0.1;
 		c.gridheight = 1 ;
@@ -229,10 +249,54 @@ public class Info extends JFrame
 
 
 
-		newsWindowPnl = new NewsWindowPanel();
-		infoWindowPnl = new InfoWindowPanel();
-		spOffersWindowPnl = new SpOfferWindowPanel();
-		pricesWindowPnl = new PricesWindowPanel();
+		newsWindowPnl = new NewsWindowPanel()
+		{
+   			protected void paintComponent(Graphics g)
+   		 	{
+        		g.setColor( getBackground() );
+        		g.fillRect(0, 0, getWidth(), getHeight());
+        		super.paintComponent(g);
+    		}
+		};
+		newsWindowPnl.setOpaque(false);
+		newsWindowPnl.setBackground( new Color(0, 0, 0, 0) );
+
+
+		infoWindowPnl = new InfoWindowPanel()
+		{
+   			protected void paintComponent(Graphics g)
+   		 	{
+        		g.setColor( getBackground() );
+        		g.fillRect(0, 0, getWidth(), getHeight());
+        		super.paintComponent(g);
+    		}
+		};
+		infoWindowPnl.setOpaque(false);
+		infoWindowPnl.setBackground( new Color(0, 0, 0, 0) );
+
+		spOffersWindowPnl = new SpOfferWindowPanel()
+		{
+   			protected void paintComponent(Graphics g)
+   		 	{
+        		g.setColor( getBackground() );
+        		g.fillRect(0, 0, getWidth(), getHeight());
+        		super.paintComponent(g);
+    		}
+		};
+		spOffersWindowPnl.setOpaque(false);
+		spOffersWindowPnl.setBackground( new Color(0, 0, 0, 0) );
+
+		pricesWindowPnl = new PricesWindowPanel()
+		{
+   			protected void paintComponent(Graphics g)
+   		 	{
+        		g.setColor( getBackground() );
+        		g.fillRect(0, 0, getWidth(), getHeight());
+        		super.paintComponent(g);
+    		}
+		};
+		pricesWindowPnl.setOpaque(false);
+		pricesWindowPnl.setBackground( new Color(0, 0, 0, 0) );
 
 
 		contentPanel.add(newsWindowPnl);
@@ -241,11 +305,6 @@ public class Info extends JFrame
 		contentPanel.add(pricesWindowPnl);
 
 
-		Border border = BorderFactory.createLineBorder(Color.GRAY);
-		newsWindowPnl.setBorder(border);
-		infoWindowPnl.setBorder(border);
-		spOffersWindowPnl.setBorder(border);
-		pricesWindowPnl.setBorder(border);
 
 
 		Border raisedBevel = BorderFactory.createRaisedBevelBorder();
