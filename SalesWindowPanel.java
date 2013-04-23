@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.event.*;
@@ -31,6 +32,11 @@ public class SalesWindowPanel extends JPanel
 	{
 		setBackground(new Color(200, 230, 255));
 		cardregistry = cl;
+
+		Border etched = BorderFactory.createEtchedBorder();
+		Border resultBdr = BorderFactory.createTitledBorder(etched, "Kortsalg");
+
+		setBorder(resultBdr);
 
 		custIDLbl = new JLabel( " Kundenr" );
 		cardnrLbl = new JLabel(" Kortnr");

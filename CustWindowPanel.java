@@ -5,6 +5,7 @@ import java.awt.event.*;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.io.*;
+import javax.swing.border.*;
 import java.text.ParseException;
 import java.awt.image.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -55,6 +56,7 @@ public class CustWindowPanel extends JPanel
 		list.setVisible( true );
 
 		scrolList = new JScrollPane( list );
+		scrolList.setPreferredSize(new Dimension(120,140));
 
 //		list.setModel( listmodel );
 		//customer = p; 
@@ -64,6 +66,14 @@ public class CustWindowPanel extends JPanel
 		btnPnl = new JPanel(); 
 		rsltPnl = new JPanel(); 
 		imagePnl = new JPanel();
+
+		Border etched = BorderFactory.createEtchedBorder();
+		Border resultBdr = BorderFactory.createTitledBorder(etched, "Resultater");
+		rsltPnl.setBorder(resultBdr);
+
+		Border custBdr = BorderFactory.createTitledBorder(etched, "Kunde");
+		formPnl.setBorder(custBdr);
+
 
 		formPnl.setBackground(new Color(200, 230, 255));
 		btnPnl.setBackground(new Color(200, 230, 255));
@@ -150,8 +160,8 @@ public class CustWindowPanel extends JPanel
 
 		GridBagConstraints c = new GridBagConstraints();
 
-		c.anchor = GridBagConstraints.PAGE_START;
-		c.fill = GridBagConstraints.BOTH;
+		c.anchor = GridBagConstraints.NORTH;
+		c.fill = GridBagConstraints.HORIZONTAL;
 		c.gridx=0;
 		c.gridy=0;
 
@@ -159,10 +169,12 @@ public class CustWindowPanel extends JPanel
 
 		c.gridx=2;
 		c.gridy=0;
+		c.gridheight=2;
 
 		add(rsltPnl, c);
 
 		c.gridx=0;
+		c.gridheight=1;
 		c.gridy=1;
 		add(btnPnl, c);
 	}

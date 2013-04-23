@@ -166,7 +166,6 @@ public class Salesclerk extends JFrame
 
 		nextCustBtn.addActionListener(listener);
 
-	    Border loweredBevel = BorderFactory.createLoweredBevelBorder();
 
 		salesClerkTabs = new JTabbedPane();
 		salesClerkTabs.addTab( "Kunde", kunde, custWindowPnl );
