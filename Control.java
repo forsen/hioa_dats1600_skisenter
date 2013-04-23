@@ -48,7 +48,6 @@ public class Control extends JFrame
 				g2d.setPaint(gp);
 				g2d.fillRect(0, 0, getWidth(), getHeight());
 
-				super.paintComponents(grphcs);
 			}
 
 		};
