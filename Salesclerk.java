@@ -112,7 +112,14 @@ public class Salesclerk extends JFrame
 		replaceWindowBtn.setBorderPainted(false);
 		replaceWindowBtn.setToolTipText("Erstatt kort");
 
-		nextCustBtn = new JButton("neste Kunde");
+		ImageIcon next = new ImageIcon("img/neste.png");
+		nextCustBtn = new JButton(next);
+		ImageIcon next2 = new ImageIcon("img/neste2.png");
+		nextCustBtn.setRolloverIcon(next2);
+
+		nextCustBtn.setFocusPainted(false);
+		nextCustBtn.setContentAreaFilled(false);
+		nextCustBtn.setBorderPainted(false);
 
 		salesClerkCustInfoPnl.add( nextCustBtn, BorderLayout.PAGE_START );
 		salesClerkCustInfoPnl.add( salesClerkSearchInfoTxt, BorderLayout.CENTER );

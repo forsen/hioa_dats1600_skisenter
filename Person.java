@@ -4,7 +4,7 @@ import java.util.*;
 
 
 
-public class Person implements Serializable 
+public class Person implements Serializable, Comparable<Person>
 {
 	
 	private int custId;
@@ -71,6 +71,11 @@ public class Person implements Serializable
 		return created;
 	}
 
+	// fjern etterhvert
+	public void setCreated( Date c )
+	{
+		created = c; 
+	}
 	public boolean hasCard()
 	{
 		return (list != null) && (!list.isEmpty());
@@ -173,13 +178,27 @@ public class Person implements Serializable
 		text.append( "." + (cal.get(Calendar.MONTH ) + 1) );
 		text.append( "." + cal.get(Calendar.YEAR ) );
 		text.append("\n"); 
-
+		text.append("Opprettet: ");
+		text.append( created.toString() );
 		String doneTekst = text.toString();
 
 		return doneTekst;
 	}
 
-
+	@Override
+	public int compareTo( Person p)
+	{
+		if( this.created.getTime() > p.created.getTime())
+		{
+			System.out.println( " -1 " );
+			return -1;
+		}
+		else 
+		{
+			System.out.println( "1" );
+			return 1; 
+		}
+	}
 
 
 

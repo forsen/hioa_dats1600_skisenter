@@ -25,6 +25,7 @@ public class Control extends JFrame
 	private BtnListener btnListener;
 	private Color passThroughColor;
 	private Font font;
+	private Date usedRecentlyPrev, usedRecentlyNow;
 
 
 	private Toolkit toolbox;
@@ -260,17 +261,35 @@ public class Control extends JFrame
 					if( ((Timebasedcard) currentCard).getExpires() == null )
 					{
 						((Timebasedcard) currentCard).initialized();
+						usedRecentlyPrev = new Date();
+
+						ctrlWindowPassThrough.setBackground(Color.GREEN);
+						ctrlWindowPassThroughLabelText.setText("Velkommen: Kortet er gyldig til: " + ((Timebasedcard) currentCard).getExpires());
+
 					}
 					
-					if( ((Timebasedcard) currentCard).getExpires().after(now) )
+					else if( ((Timebasedcard) currentCard).getExpires().after(now) )
 					{
-						ctrlWindowPassThrough.setBackground(Color.GREEN);
-						ctrlWindowPassThroughLabelText.setText("Gyldig: Kortet er gyldig til: " + ((Timebasedcard) currentCard).getExpires());
+						usedRecentlyNow = new Date();
+//Gjør så man ikke få gått inn hvis det ikke går 10 sekunder siden forrige passering. Dette må koples mot hvert enkelt kort.
+						if(usedRecentlyNow.getTime() - usedRecentlyPrev.getTime() >= 10*1000)
+						{
+							ctrlWindowPassThrough.setBackground(Color.GREEN);
+							ctrlWindowPassThroughLabelText.setText("Gyldig: Kortet er gyldig til: " + ((Timebasedcard) currentCard).getExpires());
 
-						lift.registrations( validatingCard );
+							lift.registrations( validatingCard );
+							usedRecentlyPrev = new Date();
+						}
+
+						else
+						{
+						ctrlWindowPassThrough.setBackground(Color.RED);			
+						ctrlWindowPassThroughLabelText.setText("Ugyldig: Under 5 min. siden forrige passering.");
+						}
 					}
 					else
-					{				
+					{
+						ctrlWindowPassThrough.setBackground(Color.RED);							
 						ctrlWindowPassThroughLabelText.setText("Ugyldig: Ditt kort gikk ut: " + ((Timebasedcard) currentCard).getExpires());
 					}
 				}
@@ -311,7 +330,7 @@ public class Control extends JFrame
 		catch(NumberFormatException nfe)
 		{
 			 ctrlWindowPassThrough.setBackground(Color.RED);
-			 ctrlWindowPassThroughLabelText.setText("Skrive et gyldig kortnummer: 'xxxxxx'");
+			 ctrlWindowPassThroughLabelText.setText("Skriv et gyldig kortnummer (6 siffer)");
 		}
 	}
 
