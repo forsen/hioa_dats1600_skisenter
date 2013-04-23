@@ -138,9 +138,8 @@ public class Control extends JFrame
 
 		cc.gridx=2;
 		cc.gridy=3;
-		cc.gridwidth=4;
-		cc.gridheight=3;
 		contentPanel.add(ctrlWindowPassThrough, cc);
+		
 
 
 
@@ -203,7 +202,6 @@ public class Control extends JFrame
 					if( ((Punchcard) currentCard).getClipCount() == -1)
 					{
 						((Punchcard) currentCard).initialized();
-						lift.registrations( validatingCard );
 					}
 
 					if( ((Punchcard) currentCard).getClipCount() > 0)
