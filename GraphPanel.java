@@ -27,18 +27,33 @@ public class GraphPanel extends JPanel
 
 	public GraphPanel( int[] d )
 	{
+	
 		data = d; 
 		//list = l;
 		setBackground( Color.WHITE );
 		setPreferredSize (new Dimension(600,500));
 //		nyGrafFlate();
-		yAxisMax = arrayMax( data );
-		yAxisMin = arrayMin( data );
-		xAxisInterval = XAXISLENGTH / data.length;
-		yAxisInterval = YAXISLENGTH / (yAxisMax - yAxisMin);
-
-		lastx = xAxisInterval + ORIGOX; 
-		lasty = ORIGOY - data[0]; 
+		try
+		{
+			yAxisMax = arrayMax( data );
+			yAxisMin = arrayMin( data );
+			xAxisInterval = XAXISLENGTH / data.length;
+			yAxisInterval = YAXISLENGTH / (yAxisMax - yAxisMin);
+			lastx = xAxisInterval + ORIGOX; 
+			lasty = ORIGOY - data[0]; 
+			System.out.println( "inni try blokken " );
+			repaint(); 
+		}
+		catch( ArithmeticException ae )
+		{
+			yAxisMax = 10;
+			yAxisMin = 0;
+			xAxisInterval = 1;
+			yAxisInterval = 1;
+			lastx = ORIGOX;
+			lasty = ORIGOY;
+			System.out.println( "ArithmeticException" );
+		}
 
 	}
 

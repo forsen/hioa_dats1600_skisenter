@@ -106,18 +106,33 @@ public class Personlist implements Serializable
 	}
 //STATISTIKK//////////////////////////////////////////////////////////////////////////////////////////
 
-	public int totalRegPepole()
+	public List<Person> totalRegPeople( Date s, Date e )
 	{
-		Iterator<Person> it = registry.iterator();
-		int antall=0;;
+
+		List<Person> sortit = registry; 
+
+		List<Person> returnList = new LinkedList<>(); 
+
+		Collections.sort(sortit);
+		Collections.reverse(sortit);
+		Iterator<Person> it = sortit.iterator();
+
 		
 		while(it.hasNext())
 		{	
+
 			Person p = it.next();
-			antall++;
+
+
+
+			if( p.getCreated().getTime() > s.getTime() && p.getCreated().getTime() < e.getTime() )
+				returnList.add( p );
+
+			if( p.getCreated().getTime() > e.getTime() )
+				return returnList;
 
 		}
-		return antall;
+		return returnList;
 	}
 
 	public int regThatTime(int nr)
@@ -154,7 +169,7 @@ public class Personlist implements Serializable
 		}
 		return total;
 	}
-
+/*
 	public List<Person> getRelevantCards(Date start, Date end)
 	{
 		List<Person> tempList = new LinkedList<>();
@@ -173,7 +188,7 @@ public class Personlist implements Serializable
 		
 		return tempList;
 	}
-
+*/
 	/*public int totalPunch()
 	{
 		Iterator<Person> it = registry.iterator();

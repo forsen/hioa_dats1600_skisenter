@@ -1,3 +1,4 @@
+
 import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.event.*;
@@ -5,6 +6,9 @@ import java.awt.*;
 import java.io.*;
 import java.util.List;
 import java.util.Iterator;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class AdminStatistikkPanel extends JPanel
 {	
@@ -40,8 +44,12 @@ public class AdminStatistikkPanel extends JPanel
 		
 		tabDisp = new JTabbedPane();
 
+		graph = new int[10];
+
+		graphPnl = new GraphPanel( graph ); 
+
 		tabDisp.addTab("Rapport", displayPnl);
-		tabDisp.addTab("Grafisk visning", null);
+		tabDisp.addTab("Grafisk visning", graphPnl);
 
 		tabDisp.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		//checkPnl = new JPanel(new Gris)
@@ -227,17 +235,8 @@ public class AdminStatistikkPanel extends JPanel
 		for( int i = 0; i < graph.length; i++)
 			graph[i] = (int) Math.floor((Math.random()*100)+1);*/
 
-/*		graph[0] = 43;
-		graph[1] = 55;
-		graph[2] = 42;
-		graph[3] = 60;
-		graph[4] = 49;
-		graph[5] = 55; 
-		graph[6] = 60;
-		graph[7] = 54;
-		graph[8] = 37;
-		graph[9] = 67;
-*/
+
+
 	}
 //START-BEREGN
 
@@ -259,10 +258,27 @@ public class AdminStatistikkPanel extends JPanel
 		}
 */
 
+		Date start;
+		Date end; 
+
+		try
+		{
+			start = new SimpleDateFormat("ddMMyy").parse(fromFld.getText());
+			end = new SimpleDateFormat("ddMMyy").parse(toFld.getText());
+
+			
+			graphPnl = new GraphPanel( cal.totalRegPeople(start, end) );
+			tabDisp.remove( 1 );
+			tabDisp.add("Grafisk visning", graphPnl);
+			tabDisp.setSelectedIndex(1);
+		}
+		catch( ParseException pe )
+		{
+			JOptionPane.showMessageDialog(null, "Fødselsdato må være på formen ddmmyy!");
+		}
 
 
-
-		display.append("\nTotalt registrerte personer er: " + cal.totalRegPepole());
+//		display.append("\nTotalt registrerte personer er: " + cal.totalRegPepole());
 	}
 
 	public void totalSoldCard()
@@ -359,6 +375,11 @@ public class AdminStatistikkPanel extends JPanel
        		if (e.getSource() == soldCardsBtn )
        		{
        			totalSoldCard();
+
+
+
+/* 			Dirty hack to have the panel refresh when you draw new data on it */
+
        		}
        		else if (e.getSource() == regPersBtn )
        			totalRegPepole();
@@ -366,6 +387,8 @@ public class AdminStatistikkPanel extends JPanel
        			 passings();
        		else if (e.getSource() == revenueBtn)
        			revenue();
+
+/*
        		else if(tabDisp.getSelectedIndex() == 0)
        		{
        			
@@ -379,7 +402,7 @@ public class AdminStatistikkPanel extends JPanel
        			tabDisp.setComponentAt(1, graphPnl);
        			
        		}
-       		
+*/     		
 
     	}
 	}

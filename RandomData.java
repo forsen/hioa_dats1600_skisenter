@@ -12,7 +12,7 @@ public class RandomData
 
 
 
-	private final int ANTALLPERSONER = 10000;
+	private final int ANTALLPERSONER = 1000;
 	private final int MINKORTPERPERSON = 2;
 	private final int MAXKORTPERPERSON = 5;
 	private final int MINSKIKORTPERKORT = 1; 
@@ -60,6 +60,8 @@ public class RandomData
 			int number = rand.nextInt( 88888888 + 1) + 1000000; 
 
 			Person p = new Person( firstname, lastname, number, dob, null);
+
+			p.setCreated( randomDate( 2012, 2013 ) );
 
 			int numberofcards = randBetween( MINKORTPERPERSON, MAXKORTPERPERSON );
 
