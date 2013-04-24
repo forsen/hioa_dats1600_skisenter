@@ -41,19 +41,43 @@ public class Person implements Serializable, Comparable<Person>
 		return firstname;
 	}
 
+	public void setFirstName(String f)
+	{
+		firstname = f;
+	}
+
 	public String getLastName()
 	{
 		return lastname;
 	}
 
+	public void setLastName(String l)
+	{
+		lastname = l;
+	}
 	public int getphoneNr()
 	{
 		return phoneNr;
 	}
 
+	public void setphoneNr(int n)
+	{
+		phoneNr = n;
+	}
+
 	public Date getBirth()
 	{
 		return born;
+	}
+
+	public void setBirth(Date b)
+	{
+		born = b;
+	}
+
+	public void setImage(File f)
+	{
+		img = f;
 	}
 
 	public File getImage()

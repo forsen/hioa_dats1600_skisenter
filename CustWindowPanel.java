@@ -1,4 +1,4 @@
-import javax.swing.*;
+ import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -7,8 +7,9 @@ import java.text.SimpleDateFormat;
 import java.io.*;
 import javax.swing.border.*;
 import java.text.ParseException;
-import java.awt.image.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import java.util.Calendar;
+
 
 public class CustWindowPanel extends JPanel
 {	
@@ -33,6 +34,8 @@ public class CustWindowPanel extends JPanel
 
 	private Personlist custRegistry;
 	private File img; 
+	private ImageUtility iu;
+	
 
 	//public CustWindowPanel( Personlist cr, JTextArea s, Person p )
 	public CustWindowPanel( Personlist cr, JTextArea s )
@@ -40,7 +43,7 @@ public class CustWindowPanel extends JPanel
 		setBackground(new Color(200, 230, 255));
 		setLayout( new GridBagLayout() );
 
-
+		iu = new ImageUtility();
 		img = null;
 		list = new JList<Person>( new DefaultListModel<Person>()); 
 
@@ -92,7 +95,7 @@ public class CustWindowPanel extends JPanel
 		imageBtn.setToolTipText("Last opp bilde til kortet");
 		custWindowSearchBtn = new JButton("Søk");
 		custWindowSearchBtn.setToolTipText("Søk på kunde");
-		custWindowRegBtn = new JButton("Ny kunde");
+		custWindowRegBtn = new JButton("Endre/Ny kunde");
 		custWindowRegBtn.setToolTipText("Registrer ny kunde");
 
 		//custWindowFirstNamePnl = new JPanel( new FlowLayout() );
@@ -176,7 +179,7 @@ public class CustWindowPanel extends JPanel
 		add(btnPnl, c);
 	}
 
-	private void registerPerson()
+	private Person registerPerson()
 	{
 		String firstname = custWindowFirstName.getText();
 		String lastname = custWindowLastName.getText();
@@ -185,7 +188,6 @@ public class CustWindowPanel extends JPanel
 		{
 			int number = Integer.parseInt(custWindowPhone.getText());
 			Date born = new SimpleDateFormat("ddMMyy").parse(custWindowBorn.getText());
-			img = imageUpload();
 			Person p = new Person( firstname, lastname, number, born, img );
 			
 		
@@ -196,6 +198,7 @@ public class CustWindowPanel extends JPanel
 
 			blankOut();
 
+			return p;
 
 		}
 		catch( ParseException pe )
@@ -208,7 +211,7 @@ public class CustWindowPanel extends JPanel
 		}
 
 
-		
+		return null;
 
 	}
 
@@ -248,9 +251,39 @@ public class CustWindowPanel extends JPanel
 
 	}
 
+	public void updateCust()
+	{
+		String fName = custWindowFirstName.getText();
+		String lName = custWindowLastName.getText();
+		try
+		{
+			int tlfNr = Integer.parseInt(custWindowPhone.getText());
+			Date born = new SimpleDateFormat("ddMMyy").parse(custWindowBorn.getText());
+			moveAndRenameImg(img, Salesclerk.customer);
+
+			Salesclerk.customer.setFirstName(fName);
+			Salesclerk.customer.setLastName(lName);
+			Salesclerk.customer.setphoneNr(tlfNr);
+			Salesclerk.customer.setBirth(born);
+
+			Salesclerk.salesClerkSearchInfoTxt.setText( "Har oppdatert:\n"+ Salesclerk.customer.getCustId() + "\n" + Salesclerk.customer.toString() );
+
+		}
+		catch(NullPointerException npe)
+		{
+
+		}
+		catch(ParseException pe)
+		{
+
+		}
+
+		
+	}
+
 	public File imageUpload()
 	{
-		/*try
+		try
 		{
 			JFileChooser fc = new JFileChooser();
 
@@ -259,24 +292,24 @@ public class CustWindowPanel extends JPanel
     		fc.setFileFilter(filter);
 			int returnValue = fc.showOpenDialog(formPnl);
 
-			File f = null;
 
 			if( returnValue == JFileChooser.APPROVE_OPTION )
 			{
-				f = fc.getSelectedFile(); 
+				img = fc.getSelectedFile(); 
 			}
 
-			System.out.println("Du har valgt å åpne filen: " + f.getName() );
-
-		
+			System.out.println("Du har valgt å åpne filen: " + img.getName() );
 
 
-		return f;
-		}
+       		return img;
+   		}
 		catch(NumberFormatException nfe)
 		{
 
-		}*/
+		}
+		
+
+
 		return null;
 
 //		JFrame fr = new JFrame ("Skønner ikke !");
@@ -309,7 +342,11 @@ public class CustWindowPanel extends JPanel
 
 		}
 	}*/
-
+	public void moveAndRenameImg(File f, Person p)
+	{
+		
+		iu.saveImage(f,p);
+	}
 
 	public void blankOut()
 	{
@@ -344,6 +381,20 @@ public class CustWindowPanel extends JPanel
 				ReplaceWindowPanel.replaceWindowCustIdtf.setText(Salesclerk.customer.getCustId() + "");
 				ReplaceWindowPanel.cardIDList.setModel( Salesclerk.customer.listCards() );
 				Salesclerk.salesClerkSearchInfoTxt.setBackground(Color.LIGHT_GRAY);
+
+
+				custWindowFirstName.setText(Salesclerk.customer.getFirstName());
+				custWindowLastName.setText(Salesclerk.customer.getLastName());
+				custWindowPhone.setText(""+Salesclerk.customer.getphoneNr());
+				//Calendar cal = Calendar.getInstance(); 
+				//cal.setTime(Salesclerk.customer.getBirth());
+				//String bdate = (cal.get(Calendar.DAY_OF_MONTH) + "" + (cal.get(Calendar.MONTH) + 1) + "" + cal.get(Calendar.YEAR));
+				//custWindowBorn.setText(bdate);
+
+				Date bDate = Salesclerk.customer.getBirth();
+ 				String born = new SimpleDateFormat("ddMMyy").format(bDate);
+ 				custWindowBorn.setText(born);
+				
 			}
 			catch( ArrayIndexOutOfBoundsException aioobe )
 			{
@@ -352,6 +403,7 @@ public class CustWindowPanel extends JPanel
 
 				Salesclerk.salesClerkSearchInfoTxt.setText( "" );
 			}
+			
 
 		}
 	}
@@ -361,7 +413,14 @@ public class CustWindowPanel extends JPanel
 		public void actionPerformed( ActionEvent e )
 		{
 			if( e.getSource() == custWindowRegBtn )
-				registerPerson();
+			{
+				if(Salesclerk.customer != null)
+				{
+					updateCust();		
+				}
+				Person p = registerPerson();
+				moveAndRenameImg(img,  p);
+			}
 			if( e.getSource() == custWindowSearchBtn )
 				findPerson();
 			if( e.getSource() == imageBtn)
