@@ -26,6 +26,7 @@ public class Control extends JFrame
 	private Color passThroughColor;
 	private Font font;
 	private Date usedRecentlyPrev, usedRecentlyNow;
+	private Skicard usedCard = null;
 
 
 	private Toolkit toolbox;
@@ -246,10 +247,13 @@ public class Control extends JFrame
 
 			if (registry.findCard( cardNumber ) != null)
 				validatingCard = registry.findCard( cardNumber );
+
 			else if (cardlist.findCard(cardNumber)!= null)
 				validatingCard =cardlist.findCard( cardNumber );
 
 			Skicard currentCard = validatingCard.getCurrent();
+
+
 
 			Date now = new Date();
 
@@ -270,22 +274,39 @@ public class Control extends JFrame
 					
 					else if( ((Timebasedcard) currentCard).getExpires().after(now) )
 					{
-						usedRecentlyNow = new Date();
+
+
 //Gjør så man ikke få gått inn hvis det ikke går 10 sekunder siden forrige passering. Dette må koples mot hvert enkelt kort.
-						if(usedRecentlyNow.getTime() - usedRecentlyPrev.getTime() >= 10*1000)
-						{
+
+							usedRecentlyNow = new Date();
+
+							if(usedRecentlyNow.getTime() - usedRecentlyPrev.getTime() >= 10*1000 && usedCard == currentCard)
+							{
 							ctrlWindowPassThrough.setBackground(Color.GREEN);
 							ctrlWindowPassThroughLabelText.setText("Gyldig: Kortet er gyldig til: " + ((Timebasedcard) currentCard).getExpires());
 
 							lift.registrations( validatingCard );
 							usedRecentlyPrev = new Date();
-						}
+							usedCard = currentCard;
+							}
 
-						else
-						{
-						ctrlWindowPassThrough.setBackground(Color.RED);			
-						ctrlWindowPassThroughLabelText.setText("Ugyldig: Under 5 min. siden forrige passering.");
-						}
+							else if(usedRecentlyNow.getTime() - usedRecentlyPrev.getTime() <= 10*1000 && usedCard == currentCard)
+							{
+							ctrlWindowPassThrough.setBackground(Color.RED);			
+							ctrlWindowPassThroughLabelText.setText("Ugyldig: Under 5 min. siden forrige passering.");
+							}
+
+							else if(usedCard != currentCard)
+							{
+							ctrlWindowPassThrough.setBackground(Color.GREEN);
+							ctrlWindowPassThroughLabelText.setText("Gyldig::: Kortet er gyldig til: " + ((Timebasedcard) currentCard).getExpires());
+
+							lift.registrations( validatingCard );
+							usedRecentlyPrev = new Date();
+							usedCard = currentCard;
+							}		
+
+				
 					}
 					else
 					{
