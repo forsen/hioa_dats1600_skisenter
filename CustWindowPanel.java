@@ -362,7 +362,7 @@ public class CustWindowPanel extends JPanel
 	public static void clearSearch()
 	{
 		list.setModel(new DefaultListModel<Person>()); 
-		blankOut();
+
 	}
 
 
@@ -419,7 +419,8 @@ public class CustWindowPanel extends JPanel
 			{
 				if(Salesclerk.customer != null)
 				{
-					updateCust();		
+					updateCust();	
+					blankOut();	
 				}
 				Person p = registerPerson();
 				if(img!= null)
