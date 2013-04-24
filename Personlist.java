@@ -345,6 +345,26 @@ public class Personlist implements Serializable
 		String doneText = text.toString();
 		
 		return doneText;
+
+		/*String[] columnName = {"Fornavn", "Etternavn", "Født", "Tlf Nummer", "Opprettet"};
+		Object[][] people = new Object[registry.size()]; 
+
+		
+		Iterator<Person> it = registry.iterator();
+		
+		for(int i = 1; i < people.length; i++)
+		{	
+			Person runner = it.next();
+			people[i] = runner.getFirstName(), runner.getLastName(), 
+				runner.getBorn(),runner.getphoneNr(), runner.getCreated();
+
+
+		
+		} 
+		
+		String doneText = text.toString();
+		
+		return doneText;*/
 	}
 
 }
