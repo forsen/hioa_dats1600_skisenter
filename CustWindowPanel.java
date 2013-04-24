@@ -362,7 +362,7 @@ public class CustWindowPanel extends JPanel
 	public static void clearSearch()
 	{
 		list.setModel(new DefaultListModel<Person>()); 
-		blankOut()
+		blankOut();
 	}
 
 
