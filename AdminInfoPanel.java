@@ -38,6 +38,7 @@ public class AdminInfoPanel extends JPanel
 		display.setEditable(false);
 		scroll = new JScrollPane(display);
 
+		
 		fieldPnl.add( new JLabel( "Kortnr" ) );
 		crdNr = new JTextField(5);
 		crdNr.setEditable( true );
@@ -99,9 +100,6 @@ public class AdminInfoPanel extends JPanel
 	public void showPersons()
 	{
 		
-		String[] columnName = {"Navn", "Født", "Tlf Nummer", "Opprettet"};
-		Object[] people = new Object[0] ;
-
 		display.setText(list.personListe());
 	}
 

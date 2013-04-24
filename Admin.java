@@ -37,8 +37,10 @@ public class Admin extends JFrame
 		c = getContentPane();
 
 		admInfoBtn = new JButton("Info");
+		admInfoBtn.setToolTipText("Her er det generell info (personliste,kortliste etc");
 		admInfoBtn.addActionListener(listner);	
 		admStatBtn = new JButton("Statistikk");
+		admStatBtn.setToolTipText("Her er det statistikk over salg, registreringer etc");
 		admStatBtn.addActionListener(listner);	
 
 		topPnl.add(admInfoBtn);
