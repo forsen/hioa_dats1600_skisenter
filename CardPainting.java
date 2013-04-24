@@ -25,6 +25,7 @@ public class CardPainting extends JPanel
 	private String ageGroup;
 	private String price; 
 	private String cardNr; 
+	private String customerID; 
 	private Date purchaseDate; 
 
 	public CardPainting( Card c )
@@ -59,9 +60,19 @@ public class CardPainting extends JPanel
 			purchaseDate = new Date(); 
 		}
 
+		try 
+		{
+			customerID = "Kundenr: " + Salesclerk.customer.getCustId(); 
+		}
+		catch( NullPointerException npe )
+		{
+			customerID = ""; 
+		}
 		try
 		{
+			
 			persImg = ImageIO.read( Salesclerk.customer.getImage() );
+
 		}
 		catch( NullPointerException npe )
 		{
@@ -139,6 +150,7 @@ public class CardPainting extends JPanel
 		g2d.setFont( new Font( "Arial", Font.PLAIN, 10 ) );
 
 		g2d.drawString( cardNr, 20, 645 );
+		printRightAlignedString( customerID, 485, 0, 645, g2d );
 
 
 
@@ -175,7 +187,7 @@ public class CardPainting extends JPanel
 	{
 		int stringLength = (int) g2d.getFontMetrics().getStringBounds(s, g2d).getWidth();
 
-		int start = width - stringLength - MARGIN; 
+		int start = width - stringLength; 
 
 		g2d.drawString(s, start + xPos, yPos );
 	}

@@ -25,8 +25,8 @@ public class ImageUtility
 
 		
 		
-			int width = 100;
-			int height = 100;
+			int width = 74;
+			int height = 120;
 
 			BufferedImage resizedPic = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 			Graphics2D gr = resizedPic.createGraphics();
