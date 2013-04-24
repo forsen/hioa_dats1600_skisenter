@@ -200,7 +200,9 @@ public class Salesclerk extends JFrame
 
 	public void clearSearch()
 	{
+		
 		customer = null;
+		CustWindowPanel.blankOut();
 		SalesWindowPanel.salesWindowCustIDtf.setText( "");
 		salesClerkSearchInfoTxt.setText("");
 		try
@@ -216,7 +218,7 @@ public class Salesclerk extends JFrame
 		}
 		catch(IllegalArgumentException iae)
 		{
-
+			System.out.println("någikk noe galt");
 		}
 		
 		
@@ -249,6 +251,7 @@ public class Salesclerk extends JFrame
 			{
 				//custWindowPnl.setVisible(true);
 				salesClerkTabs.setSelectedIndex(0);
+
 				clearSearch();
 			}
 				

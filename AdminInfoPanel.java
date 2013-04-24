@@ -18,7 +18,7 @@ public class AdminInfoPanel extends JPanel
 	private Personlist list;
 	private List<Validations> validations;
 	private Cardlist cardregistry;
-
+	
 
 	public AdminInfoPanel(Personlist l,List<Validations> v, Cardlist cr )
 	{
@@ -29,6 +29,8 @@ public class AdminInfoPanel extends JPanel
 		fieldPnl = new JPanel(new GridLayout( 2,3 ));
 		butnPnl = new JPanel(new GridLayout(2,2));
 		dispPnl = new JPanel();
+	
+		
 		
 		setLayout( new BorderLayout( 5, 5) );
 
