@@ -124,6 +124,7 @@ public class CashRegister extends JFrame
 		total.setText("Total: \t\t" + sum + ",-");
 		overview = new JTextArea();
 		overview.setBackground(new Color(211,244,212));
+		overview.setEditable(false);
 		overview.setText("Betalt: \n\n");
 
 
@@ -181,6 +182,7 @@ public class CashRegister extends JFrame
 
 		scroll = new JScrollPane( orderList );
 		orderList.setBackground(new Color(211,244,212)); 
+		orderList.setEditable(false);
 
 
 		paymentMethod = new double[2]; 
@@ -357,82 +359,6 @@ public class CashRegister extends JFrame
 
 
 
-
-
-/*		setLayout( new GridBagLayout() );
-
-		GridBagConstraints c = new GridBagConstraints();
-
-		c.fill = GridBagConstraints.BOTH;
-		c.insets = new Insets(10,10,10,10);
-		c.gridheight = 4; 
-		c.weightx = 0.5;
-		c.gridx = 0; 
-		c.gridy = 0;
-		c.gridwidth = 2; 
-		c.weighty = 0.5;
-		add( scroll , c);
-
-
-		c.gridheight = 1;
-		c.weightx = 0.5;
-		c.gridx = 0; 
-		c.gridy = 4; 
-		c.gridwidth = 2;
-		c.weighty = 0.5;
-		add( total, c );
-
-		c.gridheight = 1;
-		c.gridx = 2;
-		c.gridy = 0;
-		c.gridwidth = 1;
-
-		add( cashInn, c );
-
-		c.fill = GridBagConstraints.NONE;
-		c.gridheight = 1;
-		c.gridx = 2;
-		c.gridy = 1;
-		c.gridwidth = 1;
-		add( payByCard, c );
-
-		c.fill = GridBagConstraints.BOTH;
-		c.gridheight = 2;
-		c.gridx = 2;
-		c.gridy = 2;
-		c.gridwidth = 2;
-		add( overview, c );
-
-		c.fill = GridBagConstraints.NONE;
-		c.gridheight = 1;
-		c.gridx = 2;
-		c.gridy = 4; 
-		c.gridwidth = 1;
-		add( printCard, c );
-
-		c.gridheight = 1;
-		c.gridx = 3;
-		c.gridy = 0;
-		c.gridwidth = 1;
-		c.fill = GridBagConstraints.HORIZONTAL;
-		add( cashInput, c );
-		c.fill = GridBagConstraints.NONE;
-		c.gridheight = 1;
-		c.gridx = 3;
-		c.gridy = 1;
-		c.gridwidth = 1;
-		add( payByCash, c );
-
-		c.gridheight = 1;
-		c.gridx = 3;
-		c.gridy = 4;
-		c.gridwidth = 1;
-		add( printReceipt, c );
-
-
-	}
-
-*/
 			// knappemodifikasjoner
 
 						oneBtn.setFocusPainted(false);
@@ -523,10 +449,6 @@ public class CashRegister extends JFrame
 		contentPanel.add(bigButtonPanel);
 		contentPanel.add(smallButtonPanel);
 		add(contentPanel);
-
-		setSize(500,500);
-		setMaximumSize(new Dimension(500,500));
-		setMinimumSize(new Dimension(500,500));
 
 		pack();
 		setVisible( true ); 
