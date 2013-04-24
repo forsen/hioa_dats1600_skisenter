@@ -4,8 +4,10 @@ import java.awt.event.*;
 import java.awt.print.*;
 import java.util.Date;
 import java.util.List;
+import java.awt.Font;
 import java.util.Iterator;
 import javax.swing.border.*;
+import java.io.*;
 
 
 public class CashRegister extends JFrame
@@ -25,6 +27,7 @@ public class CashRegister extends JFrame
 	private double paid; 
 	private double[] paymentMethod;
 	private Action keyLstnr; 
+	private Font font;
 	public static final int CARD = 0;
 	public static final int CASH = 1; 
 
@@ -124,6 +127,9 @@ public class CashRegister extends JFrame
 		sum = shoppingCart.getSum(); 
 		remains = sum; 
 		total = new JTextArea();
+		total.setMaximumSize(new Dimension(300,30));
+		total.setBackground(new Color(187,229,171));
+		total.setEditable(false);
 		total.setText("Total: \t\t" + sum + ",-");
 		overview = new JTextArea();
 		overview.setBackground(new Color(211,244,212));
@@ -209,6 +215,7 @@ public class CashRegister extends JFrame
 		cashInput = new JTextField( 7 );
 		cashInput.setBackground(new Color(187,229,171));
 		cashInput.setEditable( false );
+
 		cashInn = new JLabel( "Betalt: " );
 
 		scroll = new JScrollPane( orderList );
@@ -241,6 +248,7 @@ public class CashRegister extends JFrame
 		orderPanel.setLayout(new BoxLayout(orderPanel, BoxLayout.Y_AXIS));
 		scroll.setMaximumSize(new Dimension(300,300));
 		orderPanel.add(scroll);
+		orderPanel.add(total);
 
 
 		// Panel 2/4
@@ -481,6 +489,7 @@ public class CashRegister extends JFrame
 		contentPanel.add(smallButtonPanel);
 		add(contentPanel);
 
+		setFonts("digital.ttf");
 		pack();
 		setVisible( true ); 
 
@@ -619,6 +628,25 @@ public class CashRegister extends JFrame
 		}
 
 
+	}
+
+
+
+	public boolean setFonts(String s)
+	{
+		try{
+			font = Font.createFont(Font.TRUETYPE_FONT, new File(s));
+			font = font.deriveFont(Font.PLAIN, 20.0f);
+			overview.setFont(font);
+			orderList.setFont(font);
+			total.setFont(font);
+			cashInput.setFont(font);
+			return true;
+		}
+		catch(Exception ex){
+			JOptionPane.showMessageDialog(null,"Finner ikke fonten. Bruker standard font.");
+			return false;
+		}
 	}
 
 
