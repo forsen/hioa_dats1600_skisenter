@@ -527,6 +527,7 @@ public class CashRegister extends JFrame
 
 			s += " \t" + paid + "\n\nRest: \t\t" + remains;
 			overview.append( s ); 
+			cashInput.setText("");
 
 		}
 		catch( NumberFormatException nfe )
