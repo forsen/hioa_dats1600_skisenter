@@ -44,8 +44,8 @@ public class CashRegister extends JFrame
 				Graphics2D g2d = (Graphics2D) grphcs;
 				g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-				Color color1 = new Color(44, 44, 44);
-				Color color2 = new Color(70, 70, 70);
+				Color color1 = new Color(100, 100, 100);
+				Color color2 = new Color(44, 44, 44);
 
 				GradientPaint gp = new GradientPaint(0,0, color1, 0, getHeight(), color2);
 				g2d.setPaint(gp);
@@ -122,26 +122,9 @@ public class CashRegister extends JFrame
 		remains = sum; 
 		total = new JTextArea();
 		total.setText("Total: \t\t" + sum + ",-");
-		overview = new JTextArea()
-		{
-			@Override
-			protected void paintComponent(Graphics grphcs)
-			{		
-				Graphics2D g2d = (Graphics2D) grphcs;
-				g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-				Color color1 = new Color(218, 246, 178, 220);
-				Color color2 = new Color(155, 233, 124, 220);
-
-				GradientPaint gp = new GradientPaint(0,0, color1, 0, getHeight(), color2);
-				g2d.setPaint(gp);
-				g2d.fillRect(0, 0, getWidth(), getHeight());
-
-			}
-
-		};
-			overview.setOpaque(true);
-			overview.setText("Betalt: \n\n");
+		overview = new JTextArea();
+		overview.setBackground(new Color(211,244,212));
+		overview.setText("Betalt: \n\n");
 
 
 			printReceipt = new JButton(printreceipt);
@@ -193,9 +176,11 @@ public class CashRegister extends JFrame
 
 
 		cashInput = new JTextField( 7 );
+		cashInput.setBackground(new Color(187,229,171));
 		cashInn = new JLabel( "Betalt: " );
 
-		scroll = new JScrollPane( orderList ); 
+		scroll = new JScrollPane( orderList );
+		orderList.setBackground(new Color(211,244,212)); 
 
 
 		paymentMethod = new double[2]; 
@@ -539,9 +524,13 @@ public class CashRegister extends JFrame
 		contentPanel.add(smallButtonPanel);
 		add(contentPanel);
 
+		setSize(500,500);
+		setMaximumSize(new Dimension(500,500));
+		setMinimumSize(new Dimension(500,500));
 
 		pack();
 		setVisible( true ); 
+
 
 		this.addWindowListener( new WindowAdapter() 
 		{
