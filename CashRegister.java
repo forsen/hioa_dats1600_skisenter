@@ -533,15 +533,26 @@ public class CashRegister extends JFrame
 
 
 
-	contentPanel.add(orderPanel);
-	contentPanel.add(overviewPanel);
-	contentPanel.add(bigButtonPanel);
-	contentPanel.add(smallButtonPanel);
-	add(contentPanel);
+		contentPanel.add(orderPanel);
+		contentPanel.add(overviewPanel);
+		contentPanel.add(bigButtonPanel);
+		contentPanel.add(smallButtonPanel);
+		add(contentPanel);
 
 
-	pack();
-	setVisible( true ); 
+		pack();
+		setVisible( true ); 
+
+		this.addWindowListener( new WindowAdapter() 
+		{
+			public void windowClosing( WindowEvent e )
+			{
+				System.out.println("Sletter all dataaaaaa....");
+				shoppingCartList.setModel( new DefaultListModel<CartItems>() );
+				ShoppingCart.emptyCart();
+			}
+		});
+	
 	}
 
 	public void paid( int n )
@@ -576,10 +587,8 @@ public class CashRegister extends JFrame
 		{
 			printReceipt.setEnabled( true );
 			printCard.setEnabled( true );
-			shoppingCartList.setModel( new DefaultListModel<CartItems>() );
 			shoppingCart.checkOut();
 			printableCards = shoppingCart.getNewCards();
-			ShoppingCart.emptyCart();
 		}
 	}
 
@@ -589,8 +598,14 @@ public class CashRegister extends JFrame
 
 		while( it.hasNext() )
 		{
-			System.out.println( "skjer det noe her??");
 			PrintWindow w = new PrintWindow( it.next() );
+		}
+
+		System.out.println( "lengde: " + shoppingCartList.getModel().getSize() );
+		for( int i = 0; i < shoppingCartList.getModel().getSize(); i++ )
+		{
+			System.out.println("Skjer det noe her?");
+			PrintWindow w = new PrintWindow( shoppingCartList.getModel().getElementAt(i).getCard());
 		}
 
 	}
