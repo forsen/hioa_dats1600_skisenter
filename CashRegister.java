@@ -4,8 +4,10 @@ import java.awt.event.*;
 import java.awt.print.*;
 import java.util.Date;
 import java.util.List;
+import java.awt.Font;
 import java.util.Iterator;
 import javax.swing.border.*;
+import java.io.*;
 
 
 public class CashRegister extends JFrame
@@ -25,6 +27,7 @@ public class CashRegister extends JFrame
 	private double paid; 
 	private double[] paymentMethod;
 	private Action keyLstnr; 
+	private Font font;
 	public static final int CARD = 0;
 	public static final int CASH = 1; 
 
@@ -479,6 +482,7 @@ public class CashRegister extends JFrame
 		contentPanel.add(smallButtonPanel);
 		add(contentPanel);
 
+		setFonts("digital.ttf");
 		pack();
 		setVisible( true ); 
 
@@ -607,6 +611,25 @@ public class CashRegister extends JFrame
 		}
 
 
+	}
+
+
+
+	public boolean setFonts(String s)
+	{
+		try{
+			font = Font.createFont(Font.TRUETYPE_FONT, new File(s));
+			font = font.deriveFont(Font.PLAIN, 20.0f);
+			overview.setFont(font);
+			orderList.setFont(font);
+			total.setFont(font);
+			cashInput.setFont(font);
+			return true;
+		}
+		catch(Exception ex){
+			JOptionPane.showMessageDialog(null,"Finner ikke fonten. Bruker standard font.");
+			return false;
+		}
 	}
 
 }
