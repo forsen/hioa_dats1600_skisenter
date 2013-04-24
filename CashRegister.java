@@ -16,7 +16,7 @@ public class CashRegister extends JDialog
 	private ShoppingCart shoppingCart; 
 	private JList<CartItems> shoppingCartList;
 	private List<Card> printableCards; 
-	private JButton printReceipt, printCard, payByCash, payByCard, oneBtn, twoBtn, threeBtn, fourBtn, fiveBtn, sixBtn, sevenBtn, eightBtn, nineBtn, zeroBtn, cancelBtn, clearBtn, dotBtn, okBtn, corrBtn;
+	private JButton printReceipt, printCard, payByCash, payByCard, oneBtn, twoBtn, threeBtn, fourBtn, fiveBtn, sixBtn, sevenBtn, eightBtn, nineBtn, zeroBtn, cancelBtn, clearBtn, dotBtn, corrBtn;
 	private JTextField cashInput;
 	private BtnListener btnListener;
 	private JScrollPane scroll;  
@@ -94,9 +94,8 @@ public class CashRegister extends JDialog
 				ImageIcon clear = new ImageIcon("img/cash/clear.png");
 				ImageIcon corr = new ImageIcon("img/cash/corr.png");
 				ImageIcon dot = new ImageIcon("img/cash/dot.png");
-				ImageIcon ok = new ImageIcon("img/cash/ok.png");
-				ImageIcon cancel = new ImageIcon("img/cash/cancel.png");
 
+				ImageIcon cancel = new ImageIcon("img/cash/cancel.png");
 				ImageIcon onep= new ImageIcon("img/cash/1p.png");
 				ImageIcon twop = new ImageIcon("img/cash/2p.png");
 				ImageIcon threep = new ImageIcon("img/cash/3p.png");
@@ -110,7 +109,6 @@ public class CashRegister extends JDialog
 				ImageIcon clearp = new ImageIcon("img/cash/clearp.png");
 				ImageIcon corrp = new ImageIcon("img/cash/corrp.png");
 				ImageIcon dotp = new ImageIcon("img/cash/dotp.png");
-				ImageIcon okp = new ImageIcon("img/cash/okp.png");
 				ImageIcon cancelp = new ImageIcon("img/cash/cancelp.png");
 
 
@@ -198,8 +196,6 @@ public class CashRegister extends JDialog
 			dotBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_PERIOD,0), "dot");
 			dotBtn.getActionMap().put("dot", keyLstnr );
 			dotBtn.addActionListener( btnListener );
-			okBtn = new JButton(ok);
-			okBtn.addActionListener( btnListener );
 			corrBtn = new JButton(corr);
 			corrBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_BACK_SPACE,0), "bckspc");
 			corrBtn.getActionMap().put("bckspc", keyLstnr );
@@ -355,9 +351,11 @@ public class CashRegister extends JDialog
 		smallButtonPanel.add(nineBtn, sc);
 
 		sc.gridx=3;
+		sc.gridheight=2;
 		smallButtonPanel.add(corrBtn, sc);
 
 		sc.gridx=0;
+		sc.gridheight=1;
 		sc.gridy=1;
 		smallButtonPanel.add(fourBtn, sc);
 
@@ -367,8 +365,6 @@ public class CashRegister extends JDialog
 		sc.gridx=2;
 		smallButtonPanel.add(sixBtn, sc);
 
-		sc.gridx=3;
-		smallButtonPanel.add(cancelBtn, sc);
 
 		sc.gridx=0;
 		sc.gridy=2;
@@ -382,7 +378,7 @@ public class CashRegister extends JDialog
 
 		sc.gridx=3;
 		sc.gridheight=2;
-		smallButtonPanel.add(okBtn, sc);
+		smallButtonPanel.add(cancelBtn, sc);
 
 		sc.gridx=0;
 		sc.gridheight=1;
@@ -440,9 +436,6 @@ public class CashRegister extends JDialog
 						cancelBtn.setFocusPainted(false);
 						cancelBtn.setContentAreaFilled(false);
 						cancelBtn.setBorderPainted(false);
-						okBtn.setFocusPainted(false);
-						okBtn.setContentAreaFilled(false);
-						okBtn.setBorderPainted(false);
 						corrBtn.setFocusPainted(false);
 						corrBtn.setContentAreaFilled(false);
 						corrBtn.setBorderPainted(false);
@@ -472,7 +465,6 @@ public class CashRegister extends JDialog
 						dotBtn.setPressedIcon(dotp);
 						clearBtn.setPressedIcon(clearp);
 						cancelBtn.setPressedIcon(cancelp);
-						okBtn.setPressedIcon(okp);
 						corrBtn.setPressedIcon(corrp);
 						
 						payByCash.setPressedIcon(paycashp);
