@@ -24,6 +24,7 @@ public class CashRegister extends JFrame
 	private double sum; 
 	private double paid; 
 	private double[] paymentMethod;
+	private Action keyLstnr; 
 	public static final int CARD = 0;
 	public static final int CASH = 1; 
 
@@ -116,8 +117,10 @@ public class CashRegister extends JFrame
 		shoppingCart = s;
 		shoppingCartList = sl; 
 		btnListener = new BtnListener();
+		keyLstnr = new KeyLstnr(); 
 		orderList = new JTextArea(  );
 		orderList.setText( shoppingCart.toString() );
+		orderList.setEditable(false);
 		sum = shoppingCart.getSum(); 
 		remains = sum; 
 		total = new JTextArea();
@@ -136,23 +139,44 @@ public class CashRegister extends JFrame
 			payByCash = new JButton(paycash);
 			payByCash.addActionListener( btnListener );
 
+
 			oneBtn = new JButton(one);
+			oneBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke(KeyEvent.VK_1,0), "1");
+			oneBtn.getActionMap().put("1", keyLstnr );
 			oneBtn.addActionListener( btnListener );
+
 			twoBtn = new JButton(two);
+			twoBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_2,0), "2");
+			twoBtn.getActionMap().put("2", keyLstnr );
 			twoBtn.addActionListener( btnListener );
+
 			threeBtn = new JButton(three);
+			threeBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_3,0), "3");
+			threeBtn.getActionMap().put("3", keyLstnr );
 			threeBtn.addActionListener( btnListener );
 			fourBtn = new JButton(four);
+			fourBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_4,0), "4");
+			fourBtn.getActionMap().put("4", keyLstnr );
 			fourBtn.addActionListener( btnListener );
 			fiveBtn = new JButton(five);
+			fiveBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_5,0), "5");
+			fiveBtn.getActionMap().put("5", keyLstnr );
 			fiveBtn.addActionListener( btnListener );
 			sixBtn = new JButton(six);
+			sixBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_6,0), "6");
+			sixBtn.getActionMap().put("6", keyLstnr );
 			sixBtn.addActionListener( btnListener );
 			sevenBtn = new JButton(seven);
+			sevenBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_7,0), "7");
+			sevenBtn.getActionMap().put("7", keyLstnr );
 			sevenBtn.addActionListener( btnListener );
 			eightBtn = new JButton(eight);
+			eightBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_8,0), "8");
+			eightBtn.getActionMap().put("8", keyLstnr );
 			eightBtn.addActionListener( btnListener );
 			nineBtn = new JButton(nine);
+			nineBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_9,0), "9");
+			nineBtn.getActionMap().put("9", keyLstnr );			
 			nineBtn.addActionListener( btnListener );
 			zeroBtn = new JButton(zero);
 			zeroBtn.addActionListener( btnListener );
@@ -600,6 +624,15 @@ public class CashRegister extends JFrame
 	}
 
 
+	private class KeyLstnr extends AbstractAction
+	{
+		public void actionPerformed( ActionEvent e )
+		{
+			JButton button = (JButton)e.getSource();
+			button.doClick(); 
+		}
+	}
+
 
 	private class BtnListener implements ActionListener
 	{
@@ -616,6 +649,32 @@ public class CashRegister extends JFrame
 			}
 			if( ae.getSource() == printCard )
 				printCard(); 
+
+			if( ae.getSource() == oneBtn )
+				cashInput.setText(cashInput.getText() + "1");
+			if( ae.getSource() == twoBtn )
+				cashInput.setText(cashInput.getText() + "2");
+
+			if( ae.getSource() == threeBtn )
+				cashInput.setText(cashInput.getText() + "3");
+
+			if( ae.getSource() == fourBtn )
+				cashInput.setText(cashInput.getText() + "4");
+
+			if( ae.getSource() == fiveBtn )
+				cashInput.setText(cashInput.getText() + "5");
+
+			if( ae.getSource() == sixBtn )
+				cashInput.setText(cashInput.getText() + "6");
+
+			if( ae.getSource() == sevenBtn )
+				cashInput.setText(cashInput.getText() + "7");
+
+			if( ae.getSource() == eightBtn )
+				cashInput.setText(cashInput.getText() + "8");
+
+			if( ae.getSource() == nineBtn )
+				cashInput.setText(cashInput.getText() + "9");
 
 
 		}
