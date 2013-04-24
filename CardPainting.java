@@ -33,14 +33,22 @@ public class CardPainting extends JPanel
 
 		printedCard = c;
 
-		cardNr = "" + printedCard.getCardID();
+		cardNr = "Kortnr: " + printedCard.getCardID();
 
 		try
 		{
 			printedSkicard = printedCard.getCurrent(); 
 			type = printedSkicard.getType();
-			ageGroup = "" + printedSkicard.getAgeGroup();
-			price = "" + printedSkicard.getPrice(); 
+			switch (printedSkicard.getAgeGroup())
+			{
+				case 1: 
+					ageGroup = "BARN";
+					break;
+				case 2:
+					ageGroup = "VOKSEN";
+					break;
+			}
+			price = "Pris: " + printedSkicard.getPrice() + "Kr" ; 
 			purchaseDate = printedSkicard.getBought(); 
 		}
 		catch( NullPointerException npe )
@@ -99,29 +107,44 @@ public class CardPainting extends JPanel
 		Graphics2D g2d = (Graphics2D) g;
 
 		
-
+		
 //		g2d.drawRect(9, 9, 476, 640);
 
+		g2d.setFont( new Font( "Arial", Font.PLAIN, 30 ));
 
+		
 
 		g2d.setColor( new Color( 89, 137, 235 ) );
 		g2d.fillRoundRect(10, 10, 475, 50, 15, 15);
 		g2d.fillRect(10,30,475,440);
 
 		g2d.setColor( new Color(233,233,233) );
-		g2d.fillRect(10,470,475,150);
-		g2d.fillRoundRect( 10,610, 475, 40, 15, 15);
+		g2d.fillRect(10,470,475,160);
 
-		g2d.setColor( Color.BLACK );
-		g2d.drawRoundRect(10,10,475,640, 15,15); 
 
 		g2d.drawImage( img, (WIDTH/2 - size/2), 20, null );
 
-		g2d.drawString( type, 50, 475 );
-		g2d.drawString( ageGroup, 50, 495 );
-		g2d.drawString( price, 50, 515 );
+		g2d.setColor( Color.BLACK );		
 
-		g2d.drawImage( img, 350, 495, null );
+		g2d.drawString( type, 50, 505 );
+		g2d.drawString( ageGroup, 50, 550 );
+		g2d.drawString( price, 50, 595 );
+
+		g2d.drawLine( 10, 630, 485, 630);
+
+
+
+		g2d.drawImage( persImg, 350, 480, null );
+
+		g2d.setFont( new Font( "Arial", Font.PLAIN, 10 ) );
+
+		g2d.drawString( cardNr, 20, 645 );
+
+
+
+
+
+		g2d.drawRoundRect(10,10,475,640, 15,15); 
 
 
 

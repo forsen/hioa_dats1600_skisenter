@@ -50,7 +50,7 @@ public class PrintWindow extends JFrame
 	public PrintWindow( Card c )
 	{
 		this(); 
-		printArea = new CardPainting();
+		printArea = new CardPainting( c );
 
 		scroll = new JScrollPane( printArea );
 
