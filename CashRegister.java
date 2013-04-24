@@ -618,7 +618,18 @@ public class CashRegister extends JFrame
 			if( ae.getSource() == dotBtn )
 				cashInput.setText(cashInput.getText() + ".");
 			if( ae.getSource() == corrBtn )
-				cashInput.setText(cashInput.getText().substring(0, cashInput.getText().length() - 1) );
+			{
+				try
+				{
+					cashInput.setText(cashInput.getText().substring(0, cashInput.getText().length() - 1) );
+				}
+				catch( StringIndexOutOfBoundsException sioobe )
+				{
+					// no more characters to remove.. Doing nothing.
+				}
+			}
+			if( ae.getSource() == clearBtn )
+				cashInput.setText("");
 			if (ae.getSource() == cancelBtn )
 			{
 				// find a way to close this window
