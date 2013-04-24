@@ -90,6 +90,11 @@ public class CashRegister extends JFrame
 				ImageIcon ok = new ImageIcon("img/cash/ok.png");
 				ImageIcon cancel = new ImageIcon("img/cash/cancel.png");
 
+
+
+
+
+
 		shoppingCart = s;
 		shoppingCartList = sl; 
 		btnListener = new BtnListener();
@@ -168,7 +173,8 @@ public class CashRegister extends JFrame
 
 		orderPanel = new JPanel();
 		orderPanel.setBorder(etched);
-		orderPanel.setLayout(new BorderLayout());
+		orderPanel.setLayout(new BoxLayout(orderPanel, BoxLayout.Y_AXIS));
+		scroll.setMaximumSize(new Dimension(300,300));
 		orderPanel.add(scroll);
 
 
@@ -177,10 +183,10 @@ public class CashRegister extends JFrame
 
 		overviewPanel = new JPanel();
 		overviewPanel.setBorder(etched);
-		overviewPanel.setLayout(new BorderLayout());
+		overviewPanel.setLayout(new BoxLayout(overviewPanel, BoxLayout.Y_AXIS));
+		overview.setMaximumSize(new Dimension(460,300));
 		overviewPanel.add(overview);
-		cashInput.setBackground(Color.GRAY);
-		cashInput.setSize(300,20);
+		cashInput.setMaximumSize(new Dimension(460, 30));
 		overviewPanel.add(cashInput);
 
 
@@ -356,7 +362,65 @@ public class CashRegister extends JFrame
 	}
 
 */
+			// knappemodifikasjoner
 
+						oneBtn.setFocusPainted(false);
+						oneBtn.setContentAreaFilled(false);
+						oneBtn.setBorderPainted(false);
+						twoBtn.setFocusPainted(false);
+						twoBtn.setContentAreaFilled(false);
+						twoBtn.setBorderPainted(false);
+						threeBtn.setFocusPainted(false);
+						threeBtn.setContentAreaFilled(false);
+						threeBtn.setBorderPainted(false);
+						fourBtn.setFocusPainted(false);
+						fourBtn.setContentAreaFilled(false);
+						fourBtn.setBorderPainted(false);
+						fiveBtn.setFocusPainted(false);
+						fiveBtn.setContentAreaFilled(false);
+						fiveBtn.setBorderPainted(false);
+						sixBtn.setFocusPainted(false);
+						sixBtn.setContentAreaFilled(false);
+						sixBtn.setBorderPainted(false);
+						sevenBtn.setFocusPainted(false);
+						sevenBtn.setContentAreaFilled(false);
+						sevenBtn.setBorderPainted(false);
+						eightBtn.setFocusPainted(false);
+						eightBtn.setContentAreaFilled(false);
+						eightBtn.setBorderPainted(false);
+						nineBtn.setFocusPainted(false);
+						nineBtn.setContentAreaFilled(false);
+						nineBtn.setBorderPainted(false);
+						zeroBtn.setFocusPainted(false);
+						zeroBtn.setContentAreaFilled(false);
+						zeroBtn.setBorderPainted(false);
+						clearBtn.setFocusPainted(false);
+						clearBtn.setContentAreaFilled(false);
+						clearBtn.setBorderPainted(false);
+						dotBtn.setFocusPainted(false);
+						dotBtn.setContentAreaFilled(false);
+						dotBtn.setBorderPainted(false);
+						cancelBtn.setFocusPainted(false);
+						cancelBtn.setContentAreaFilled(false);
+						cancelBtn.setBorderPainted(false);
+						okBtn.setFocusPainted(false);
+						okBtn.setContentAreaFilled(false);
+						okBtn.setBorderPainted(false);
+						corrBtn.setFocusPainted(false);
+						corrBtn.setContentAreaFilled(false);
+						corrBtn.setBorderPainted(false);
+						payByCard.setFocusPainted(false);
+						payByCard.setContentAreaFilled(false);
+						payByCard.setBorderPainted(false);
+						payByCash.setFocusPainted(false);
+						payByCash.setContentAreaFilled(false);
+						payByCash.setBorderPainted(false);
+						printReceipt.setFocusPainted(false);
+						printReceipt.setContentAreaFilled(false);
+						printReceipt.setBorderPainted(false);
+						printCard.setFocusPainted(false);
+						printCard.setContentAreaFilled(false);
+						printCard.setBorderPainted(false);
 
 
 	contentPanel.add(orderPanel);
