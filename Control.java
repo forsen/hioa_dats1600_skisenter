@@ -59,6 +59,10 @@ public class Control extends JFrame
 		};
 
 		contentPanel.setOpaque(false);
+
+
+		Border etched = BorderFactory.createEtchedBorder();
+		contentPanel.setBorder(etched);
 		
 
 		registry = cr; 

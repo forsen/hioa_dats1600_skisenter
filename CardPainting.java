@@ -19,6 +19,7 @@ public class CardPainting extends JPanel
 	private int currentY = YSTART;
 	private int size;  
 
+
 	public CardPainting( )
 	{
 		setBackground( Color.WHITE );
@@ -43,10 +44,21 @@ public class CardPainting extends JPanel
 
 		
 
-		g2d.drawRect(9, 9, 476, 640);
+//		g2d.drawRect(9, 9, 476, 640);
+
+
 
 		g2d.setColor( new Color( 89, 137, 235 ) );
-		g2d.fillRect(10, 10, 475, 470);
+		g2d.fillRoundRect(10, 10, 475, 50, 15, 15);
+		g2d.fillRect(10,30,475,440);
+
+		g2d.setColor( new Color(233,233,233) );
+		g2d.fillRect(10,470,475,150);
+		g2d.fillRoundRect( 10,610, 475, 40, 15, 15);
+
+		g2d.setColor( Color.BLACK );
+		g2d.drawRoundRect(10,10,475,640, 15,15); 
+		
 		g2d.drawImage( img, (WIDTH/2 - size/2), 20, null );
 
 		
