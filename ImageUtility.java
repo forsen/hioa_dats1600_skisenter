@@ -47,6 +47,10 @@ public class ImageUtility
 		{
 			System.out.println("Feil med åpning eller tegning av bildet");
 		}
+		catch(IllegalArgumentException iae)
+		{
+			return null;
+		}
 		return null;
 	}
 
@@ -92,6 +96,10 @@ public class ImageUtility
 		catch(IOException ie)
 		{
 
+		}
+		catch(NullPointerException npe)
+		{
+			
 		}
 	}
 

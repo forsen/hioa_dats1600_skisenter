@@ -188,7 +188,7 @@ public class CustWindowPanel extends JPanel
 		{
 			int number = Integer.parseInt(custWindowPhone.getText());
 			Date born = new SimpleDateFormat("ddMMyy").parse(custWindowBorn.getText());
-			Person p = new Person( firstname, lastname, number, born, null );
+			Person p = new Person( firstname, lastname, number, born, img );
 			
 		
 
@@ -266,7 +266,7 @@ public class CustWindowPanel extends JPanel
 			Salesclerk.customer.setphoneNr(tlfNr);
 			Salesclerk.customer.setBirth(born);
 
-			Salesclerk.salesClerkSearchInfoTxt.setText( Salesclerk.customer.getCustId() + "\n" + Salesclerk.customer.toString() );
+			Salesclerk.salesClerkSearchInfoTxt.setText( "Har oppdatert:\n"+ Salesclerk.customer.getCustId() + "\n" + Salesclerk.customer.toString() );
 
 		}
 		catch(NullPointerException npe)
