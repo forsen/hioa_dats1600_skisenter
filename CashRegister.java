@@ -70,6 +70,8 @@ public class CashRegister extends JFrame
 				ImageIcon printreceiptp = new ImageIcon("img/cash/printreceiptp.png");
 				ImageIcon printcard = new ImageIcon("img/cash/printcard.png");
 				ImageIcon printcardp = new ImageIcon("img/cash/printcardp.png");
+				ImageIcon printcardua = new ImageIcon("img/cash/printcardua.png");
+				ImageIcon printreceiptua = new ImageIcon("img/cash/printreceiptua.png");
 
 		// bilder i smallButtonPanel
 
@@ -90,6 +92,22 @@ public class CashRegister extends JFrame
 				ImageIcon ok = new ImageIcon("img/cash/ok.png");
 				ImageIcon cancel = new ImageIcon("img/cash/cancel.png");
 
+				ImageIcon onep= new ImageIcon("img/cash/1p.png");
+				ImageIcon twop = new ImageIcon("img/cash/2p.png");
+				ImageIcon threep = new ImageIcon("img/cash/3p.png");
+				ImageIcon fourp = new ImageIcon("img/cash/4p.png");
+				ImageIcon fivep = new ImageIcon("img/cash/5p.png");
+				ImageIcon sixp = new ImageIcon("img/cash/6p.png");
+				ImageIcon sevenp = new ImageIcon("img/cash/7p.png");
+				ImageIcon eightp = new ImageIcon("img/cash/8p.png");
+				ImageIcon ninep = new ImageIcon("img/cash/9p.png");
+				ImageIcon zerop = new ImageIcon("img/cash/0p.png");
+				ImageIcon clearp = new ImageIcon("img/cash/clearp.png");
+				ImageIcon corrp = new ImageIcon("img/cash/corrp.png");
+				ImageIcon dotp = new ImageIcon("img/cash/dotp.png");
+				ImageIcon okp = new ImageIcon("img/cash/okp.png");
+				ImageIcon cancelp = new ImageIcon("img/cash/cancelp.png");
+
 
 
 
@@ -104,8 +122,27 @@ public class CashRegister extends JFrame
 		remains = sum; 
 		total = new JTextArea();
 		total.setText("Total: \t\t" + sum + ",-");
-		overview = new JTextArea();
-		overview.setText("Betalt: \n\n");
+		overview = new JTextArea()
+		{
+			@Override
+			protected void paintComponent(Graphics grphcs)
+			{		
+				Graphics2D g2d = (Graphics2D) grphcs;
+				g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+				Color color1 = new Color(218, 246, 178, 220);
+				Color color2 = new Color(155, 233, 124, 220);
+
+				GradientPaint gp = new GradientPaint(0,0, color1, 0, getHeight(), color2);
+				g2d.setPaint(gp);
+				g2d.fillRect(0, 0, getWidth(), getHeight());
+
+			}
+
+		};
+			overview.setOpaque(true);
+			overview.setText("Betalt: \n\n");
+
 
 			printReceipt = new JButton(printreceipt);
 			printReceipt.addActionListener( btnListener );
@@ -171,7 +208,17 @@ public class CashRegister extends JFrame
 		// Panel 1/4
 
 
-		orderPanel = new JPanel();
+		orderPanel = new JPanel()
+		{
+   			protected void paintComponent(Graphics g)
+   		 	{
+        		g.setColor( getBackground() );
+        		g.fillRect(0, 0, getWidth(), getHeight());
+        		super.paintComponent(g);
+    		}
+		};
+		orderPanel.setOpaque(false);
+		orderPanel.setBackground( new Color(0, 0, 0, 0) );
 		orderPanel.setBorder(etched);
 		orderPanel.setLayout(new BoxLayout(orderPanel, BoxLayout.Y_AXIS));
 		scroll.setMaximumSize(new Dimension(300,300));
@@ -181,7 +228,21 @@ public class CashRegister extends JFrame
 		// Panel 2/4
 
 
-		overviewPanel = new JPanel();
+		overviewPanel = new JPanel()
+		{
+   			protected void paintComponent(Graphics g)
+   		 	{
+        		g.setColor( getBackground() );
+        		g.fillRect(0, 0, getWidth(), getHeight());
+        		super.paintComponent(g);
+    		}
+		};
+		overviewPanel.setOpaque(false);
+		overviewPanel.setBackground( new Color(0, 0, 0, 0) );
+
+
+
+
 		overviewPanel.setBorder(etched);
 		overviewPanel.setLayout(new BoxLayout(overviewPanel, BoxLayout.Y_AXIS));
 		overview.setMaximumSize(new Dimension(460,300));
@@ -193,7 +254,19 @@ public class CashRegister extends JFrame
 		// Panel 3/4
 
 
-		bigButtonPanel = new JPanel();
+		bigButtonPanel = new JPanel()
+		{
+   			protected void paintComponent(Graphics g)
+   		 	{
+        		g.setColor( getBackground() );
+        		g.fillRect(0, 0, getWidth(), getHeight());
+        		super.paintComponent(g);
+    		}
+		};
+
+		bigButtonPanel.setOpaque(false);
+		bigButtonPanel.setBackground( new Color(0, 0, 0, 0) );
+
 		bigButtonPanel.setBorder(etched);
 
 
@@ -225,7 +298,20 @@ public class CashRegister extends JFrame
 		// Panel 4/4
 
 
-		smallButtonPanel = new JPanel();
+		smallButtonPanel = new JPanel()
+		{
+   			protected void paintComponent(Graphics g)
+   		 	{
+        		g.setColor( getBackground() );
+        		g.fillRect(0, 0, getWidth(), getHeight());
+        		super.paintComponent(g);
+    		}
+		};
+		smallButtonPanel.setOpaque(false);
+		smallButtonPanel.setBackground( new Color(0, 0, 0, 0) );
+
+
+
 		smallButtonPanel.setBorder(etched);
 		smallButtonPanel.setLayout(new GridBagLayout());
 
@@ -422,16 +508,51 @@ public class CashRegister extends JFrame
 						printCard.setContentAreaFilled(false);
 						printCard.setBorderPainted(false);
 
+						oneBtn.setPressedIcon(onep);
+						twoBtn.setPressedIcon(twop);
+						threeBtn.setPressedIcon(threep);
+						fourBtn.setPressedIcon(fourp);
+						fiveBtn.setPressedIcon(fivep);
+						sixBtn.setPressedIcon(sixp);
+						sevenBtn.setPressedIcon(sevenp);
+						eightBtn.setPressedIcon(eightp);
+						nineBtn.setPressedIcon(ninep);
+						zeroBtn.setPressedIcon(zerop);
+						dotBtn.setPressedIcon(dotp);
+						clearBtn.setPressedIcon(clearp);
+						cancelBtn.setPressedIcon(cancelp);
+						okBtn.setPressedIcon(okp);
+						corrBtn.setPressedIcon(corrp);
+						
+						payByCash.setPressedIcon(paycashp);
+						payByCard.setPressedIcon(paycardp);
+						printReceipt.setPressedIcon(printreceiptp);
+						printReceipt.setDisabledIcon(printreceiptua);
+						printCard.setPressedIcon(printcardp);
+						printCard.setDisabledIcon(printcardua);
 
-	contentPanel.add(orderPanel);
-	contentPanel.add(overviewPanel);
-	contentPanel.add(bigButtonPanel);
-	contentPanel.add(smallButtonPanel);
-	add(contentPanel);
 
 
-	pack();
-	setVisible( true ); 
+		contentPanel.add(orderPanel);
+		contentPanel.add(overviewPanel);
+		contentPanel.add(bigButtonPanel);
+		contentPanel.add(smallButtonPanel);
+		add(contentPanel);
+
+
+		pack();
+		setVisible( true ); 
+
+		this.addWindowListener( new WindowAdapter() 
+		{
+			public void windowClosing( WindowEvent e )
+			{
+				System.out.println("Sletter all dataaaaaa....");
+				shoppingCartList.setModel( new DefaultListModel<CartItems>() );
+				ShoppingCart.emptyCart();
+			}
+		});
+	
 	}
 
 	public void paid( int n )
@@ -466,10 +587,8 @@ public class CashRegister extends JFrame
 		{
 			printReceipt.setEnabled( true );
 			printCard.setEnabled( true );
-			shoppingCartList.setModel( new DefaultListModel<CartItems>() );
 			shoppingCart.checkOut();
 			printableCards = shoppingCart.getNewCards();
-			ShoppingCart.emptyCart();
 		}
 	}
 
@@ -479,8 +598,14 @@ public class CashRegister extends JFrame
 
 		while( it.hasNext() )
 		{
-			System.out.println( "skjer det noe her??");
 			PrintWindow w = new PrintWindow( it.next() );
+		}
+
+		System.out.println( "lengde: " + shoppingCartList.getModel().getSize() );
+		for( int i = 0; i < shoppingCartList.getModel().getSize(); i++ )
+		{
+			System.out.println("Skjer det noe her?");
+			PrintWindow w = new PrintWindow( shoppingCartList.getModel().getElementAt(i).getCard());
 		}
 
 	}

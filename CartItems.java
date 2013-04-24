@@ -29,6 +29,11 @@ public class CartItems
 		return card.getCardID();
 	}
 
+	public Card getCard()
+	{
+		return card; 
+	}
+
 	public void checkOut()
 	{
 		card.input( skicard );
