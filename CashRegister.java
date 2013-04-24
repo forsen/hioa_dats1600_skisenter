@@ -17,6 +17,7 @@ public class CashRegister extends JFrame
 	private JTextField cashInput;
 	private BtnListener btnListener;
 	private JScrollPane scroll;  
+	private JPanel contentPanel, orderPanel, overviewPanel, bigButtonPanel, smallButtonPanel;
 	private JLabel cashInn;
 	private double remains;
 	private double sum; 
@@ -33,6 +34,28 @@ public class CashRegister extends JFrame
 	public CashRegister( ShoppingCart s, JList<CartItems> sl )
 	{
 		super("Betaling");
+
+		contentPanel = new JPanel()
+		{
+			@Override
+			protected void paintComponent(Graphics grphcs)
+			{		
+				Graphics2D g2d = (Graphics2D) grphcs;
+				g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+				Color color1 = new Color(44, 44, 44);
+				Color color2 = new Color(70, 70, 70);
+
+				GradientPaint gp = new GradientPaint(0,0, color1, 0, getHeight(), color2);
+				g2d.setPaint(gp);
+				g2d.fillRect(0, 0, getWidth(), getHeight());
+
+			}
+
+		};
+
+		contentPanel.setOpaque(false);
+		contentPanel.setLayout(new GridLayout(2, 2));
 
 
 		shoppingCart = s;
@@ -65,7 +88,9 @@ public class CashRegister extends JFrame
 		printCard.setEnabled(false );
 		printReceipt.setEnabled( false );
 
-		setLayout( new GridBagLayout() );
+
+
+/*		setLayout( new GridBagLayout() );
 
 		GridBagConstraints c = new GridBagConstraints();
 
@@ -142,7 +167,16 @@ public class CashRegister extends JFrame
 		setVisible( true ); 
 	}
 
+*/
 
+
+
+	contentPanel.add(orderPanel);
+	contentPanel.add(overviewPanel);
+	contentPanel.add(bigButtonPanel);
+	contentPanel.add(smallButtonPanel);
+	add(contentPanel);
+	}
 
 	public void paid( int n )
 	{
