@@ -3,6 +3,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.print.*;
 import java.util.Date;
+import java.util.List;
+import java.util.Iterator;
 
 
 public class CashRegister extends JFrame
@@ -10,6 +12,7 @@ public class CashRegister extends JFrame
 	private JTextArea orderList, total, overview; 
 	private ShoppingCart shoppingCart; 
 	private JList<CartItems> shoppingCartList;
+	private List<Card> printableCards; 
 	private JButton printReceipt, printCard, payByCash, payByCard;
 	private JTextField cashInput;
 	private BtnListener btnListener;
@@ -46,6 +49,7 @@ public class CashRegister extends JFrame
 		printReceipt = new JButton( "Print kvittering" );
 		printReceipt.addActionListener( btnListener );
 		printCard = new JButton( "Print skikort" );
+		printCard.addActionListener( btnListener );
 		payByCard = new JButton( "Betal med kort" );
 		payByCard.addActionListener( btnListener );
 		payByCash = new JButton( "Betal med kontanter" );
@@ -174,8 +178,21 @@ public class CashRegister extends JFrame
 			printCard.setEnabled( true );
 			shoppingCartList.setModel( new DefaultListModel<CartItems>() );
 			shoppingCart.checkOut();
+			printableCards = shoppingCart.getNewCards();
 			ShoppingCart.emptyCart();
 		}
+	}
+
+	private void printCard()
+	{
+		Iterator<Card> it = printableCards.iterator(); 
+
+		while( it.hasNext() )
+		{
+			System.out.println( "skjer det noe her??");
+			PrintWindow w = new PrintWindow( it.next() );
+		}
+
 	}
 
 
@@ -193,6 +210,8 @@ public class CashRegister extends JFrame
 			{
 				PrintWindow w = new PrintWindow( orderList, paymentMethod, sum );
 			}
+			if( ae.getSource() == printCard )
+				printCard(); 
 
 
 		}

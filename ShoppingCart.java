@@ -78,6 +78,11 @@ public class ShoppingCart
 		return cardList;
 	}
 
+	public List<Card> getNewCards()
+	{
+		return newCards;
+	}
+
 	public DefaultListModel<CartItems> addToCart( Card c, Skicard sc )
 	{
 
