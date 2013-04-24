@@ -62,7 +62,11 @@ public class Skisenter
 					}
 				});
 
-				final Drittvindu  vindu = new Drittvindu( validations, registry, cardregistry);
+				/*final Drittvindu  vindu = new Drittvindu( validations, registry, cardregistry);
+				vindu.setIconImage(ikon);
+    			vindu.setJMenuBar(new MenuBar().createMenu() );
+				vindu.setLocation(700,0); 		
+*/
 
 				final Info i = new Info();
 				i.setJMenuBar( new MenuBar().createMenu() );
@@ -73,10 +77,7 @@ public class Skisenter
 /*
 				final Control control = new Control();
     			control.setLocation(0, 500);
-*/				vindu.setIconImage(ikon);
-    			vindu.setJMenuBar(new MenuBar().createMenu() );
-				vindu.setLocation(700,0); 		
-
+*/				
 
 				final Admin a = new Admin( registry,validations, cardregistry);
 				a.setLocation(0,425);

@@ -259,8 +259,10 @@ public class CustWindowPanel extends JPanel
 		{
 			int tlfNr = Integer.parseInt(custWindowPhone.getText());
 			Date born = new SimpleDateFormat("ddMMyy").parse(custWindowBorn.getText());
-			moveAndRenameImg(img, Salesclerk.customer);
-
+			if(img!= null)
+			{
+				moveAndRenameImg(img, Salesclerk.customer);
+			}
 			Salesclerk.customer.setFirstName(fName);
 			Salesclerk.customer.setLastName(lName);
 			Salesclerk.customer.setphoneNr(tlfNr);
@@ -419,7 +421,10 @@ public class CustWindowPanel extends JPanel
 					updateCust();		
 				}
 				Person p = registerPerson();
-				moveAndRenameImg(img,  p);
+				if(img!= null)
+				{
+					moveAndRenameImg(img,  p);
+				}
 			}
 			if( e.getSource() == custWindowSearchBtn )
 				findPerson();

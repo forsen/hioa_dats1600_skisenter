@@ -274,7 +274,7 @@ public class AdminStatistikkPanel extends JPanel
 		}
 		catch( ParseException pe )
 		{
-			JOptionPane.showMessageDialog(null, "Fødselsdato må være på formen ddmmyy!");
+			JOptionPane.showMessageDialog(null, "Datoen må være på formen ddmmyy!");
 		}
 
 

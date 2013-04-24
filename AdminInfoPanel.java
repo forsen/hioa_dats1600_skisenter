@@ -19,11 +19,13 @@ public class AdminInfoPanel extends JPanel
 	private List<Validations> validations;
 	private Cardlist cardregistry;
 
+
 	public AdminInfoPanel(Personlist l,List<Validations> v, Cardlist cr )
 	{
 		list = l;
 		validations = v;
 		cardregistry = cr;
+
 		fieldPnl = new JPanel(new GridLayout( 2,3 ));
 		butnPnl = new JPanel(new GridLayout(2,2));
 		dispPnl = new JPanel();
@@ -96,6 +98,10 @@ public class AdminInfoPanel extends JPanel
 
 	public void showPersons()
 	{
+		
+		String[] columnName = {"Navn", "Født", "Tlf Nummer", "Opprettet"};
+		Object[] people = new Object[0] ;
+
 		display.setText(list.personListe());
 	}
 
