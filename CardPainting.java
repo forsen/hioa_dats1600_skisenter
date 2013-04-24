@@ -12,17 +12,72 @@ import java.awt.geom.RoundRectangle2D;
 public class CardPainting extends JPanel
 {
 	private BufferedImage img;
+	private BufferedImage persImg; 
 	private int MARGIN = 10;
 	private int YSTART = 120;
 	private int LINESPACE = 20; 
 	private int WIDTH = 495;
 	private int currentY = YSTART;
-	private int size;  
+	private int size;
+	private Card printedCard;
+	private Skicard printedSkicard; 
+	private String type;
+	private String ageGroup;
+	private String price; 
+	private String cardNr; 
+	private Date purchaseDate; 
 
-
-	public CardPainting( )
+	public CardPainting( Card c )
 	{
 		setBackground( Color.WHITE );
+
+		printedCard = c;
+
+		cardNr = "" + printedCard.getCardID();
+
+		try
+		{
+			printedSkicard = printedCard.getCurrent(); 
+			type = printedSkicard.getType();
+			ageGroup = "" + printedSkicard.getAgeGroup();
+			price = "" + printedSkicard.getPrice(); 
+			purchaseDate = printedSkicard.getBought(); 
+		}
+		catch( NullPointerException npe )
+		{
+			type = "";
+			ageGroup = "";
+			price = "";
+			purchaseDate = new Date(); 
+		}
+
+		try
+		{
+			persImg = ImageIO.read( Salesclerk.customer.getImage() );
+		}
+		catch( NullPointerException npe )
+		{
+			try
+			{
+				persImg = ImageIO.read( new File("persImg/default.png"));
+			}
+			catch( IOException ioe2)
+			{
+				// this is bad!
+			}			
+		}
+		catch( IOException ioe )
+		{
+			try
+			{
+				persImg = ImageIO.read( new File("persImg/default.png"));
+			}
+			catch( IOException ioe2)
+			{
+				// this is bad!
+			}
+		}
+
 		try
 		{
 			img = ImageIO.read( new File("img/skicard.png"));
@@ -32,6 +87,7 @@ public class CardPainting extends JPanel
 		{
 			System.out.println( "Fikk ikke lastet bildet" );
 		}
+
 
 
 	}
@@ -58,8 +114,16 @@ public class CardPainting extends JPanel
 
 		g2d.setColor( Color.BLACK );
 		g2d.drawRoundRect(10,10,475,640, 15,15); 
-		
+
 		g2d.drawImage( img, (WIDTH/2 - size/2), 20, null );
+
+		g2d.drawString( type, 50, 475 );
+		g2d.drawString( ageGroup, 50, 495 );
+		g2d.drawString( price, 50, 515 );
+
+		g2d.drawImage( img, 350, 495, null );
+
+
 
 		
 
