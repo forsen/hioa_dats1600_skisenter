@@ -145,12 +145,10 @@ public class CashRegister extends JFrame
 			oneBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke(KeyEvent.VK_1,0), "1");
 			oneBtn.getActionMap().put("1", keyLstnr );
 			oneBtn.addActionListener( btnListener );
-
 			twoBtn = new JButton(two);
 			twoBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_2,0), "2");
 			twoBtn.getActionMap().put("2", keyLstnr );
 			twoBtn.addActionListener( btnListener );
-
 			threeBtn = new JButton(three);
 			threeBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_3,0), "3");
 			threeBtn.getActionMap().put("3", keyLstnr );
@@ -180,16 +178,24 @@ public class CashRegister extends JFrame
 			nineBtn.getActionMap().put("9", keyLstnr );			
 			nineBtn.addActionListener( btnListener );
 			zeroBtn = new JButton(zero);
+			zeroBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_0,0), "0");
+			zeroBtn.getActionMap().put("0", keyLstnr );
 			zeroBtn.addActionListener( btnListener );
 			clearBtn = new JButton(clear);
 			clearBtn.addActionListener( btnListener );
 			cancelBtn = new JButton(cancel);
+			cancelBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_ESCAPE,0), "esc");
+			cancelBtn.getActionMap().put("esc", keyLstnr );
 			cancelBtn.addActionListener( btnListener );
 			dotBtn = new JButton(dot);
+			dotBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_PERIOD,0), "dot");
+			dotBtn.getActionMap().put("dot", keyLstnr );
 			dotBtn.addActionListener( btnListener );
 			okBtn = new JButton(ok);
 			okBtn.addActionListener( btnListener );
 			corrBtn = new JButton(corr);
+			corrBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_BACK_SPACE,0), "bckspc");
+			corrBtn.getActionMap().put("bckspc", keyLstnr );
 			corrBtn.addActionListener( btnListener );
 
 
@@ -202,6 +208,7 @@ public class CashRegister extends JFrame
 
 		cashInput = new JTextField( 7 );
 		cashInput.setBackground(new Color(187,229,171));
+		cashInput.setEditable( false );
 		cashInn = new JLabel( "Betalt: " );
 
 		scroll = new JScrollPane( orderList );
@@ -597,12 +604,23 @@ public class CashRegister extends JFrame
 
 			if( ae.getSource() == nineBtn )
 				cashInput.setText(cashInput.getText() + "9");
+			if( ae.getSource() == zeroBtn )
+				cashInput.setText(cashInput.getText() + "0");
+			if( ae.getSource() == dotBtn )
+				cashInput.setText(cashInput.getText() + ".");
+			if( ae.getSource() == corrBtn )
+				cashInput.setText(cashInput.getText().substring(0, cashInput.getText().length() - 1) );
+			if (ae.getSource() == cancelBtn )
+			{
+				// find a way to close this window
+			}
 
 
 		}
 
 
 	}
+
 
 }
 
