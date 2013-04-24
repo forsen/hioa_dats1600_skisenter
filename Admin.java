@@ -17,6 +17,7 @@ public class Admin extends JFrame
 	private BorderLayout layout;
 	private List<Validations> validations;
 	private Cardlist cardregistry;
+
 	
 	
 
@@ -34,7 +35,9 @@ public class Admin extends JFrame
 		listner = new Listner();
 
 		layout = new BorderLayout( 5, 5 );
+		
 		c = getContentPane();
+		
 
 		admInfoBtn = new JButton("Info");
 		admInfoBtn.setToolTipText("Her er det generell info (personliste,kortliste etc");

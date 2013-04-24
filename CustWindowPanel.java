@@ -15,7 +15,7 @@ public class CustWindowPanel extends JPanel
 {	
 	private JButton imageBtn,custWindowSearchBtn, custWindowRegBtn;
 	private JPanel imagePnl,custWindowSearchInfoPnl, custWindowFirstNamePnl, custWindowLastNamePnl, custWindowPhonePnl, custWindowBornPnl, custWindowBtnPnl;
-	private JTextField custWindowFirstName, custWindowLastName, custWindowPhone, custWindowBorn;
+	private static JTextField custWindowFirstName, custWindowLastName, custWindowPhone, custWindowBorn;
 	private JTextArea custWindowSearchInfoTxt;
 	private JTextArea statusTxt;
 
@@ -350,7 +350,7 @@ public class CustWindowPanel extends JPanel
 		iu.saveImage(f,p);
 	}
 
-	public void blankOut()
+	public static void blankOut()
 	{
 		custWindowFirstName.setText("");
 		custWindowLastName.setText("");
@@ -420,7 +420,7 @@ public class CustWindowPanel extends JPanel
 				if(Salesclerk.customer != null)
 				{
 					updateCust();	
-					blankOut();	
+					
 				}
 				Person p = registerPerson();
 				if(img!= null)
