@@ -187,7 +187,7 @@ public class CardPainting extends JPanel
 	{
 		int stringLength = (int) g2d.getFontMetrics().getStringBounds(s, g2d).getWidth();
 
-		int start = width - stringLength; 
+		int start = width - stringLength - 5; 
 
 		g2d.drawString(s, start + xPos, yPos );
 	}
