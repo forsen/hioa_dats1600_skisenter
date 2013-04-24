@@ -10,7 +10,7 @@ import javax.swing.border.*;
 import java.io.*;
 
 
-public class CashRegister extends JFrame
+public class CashRegister extends JDialog
 {
 	private JTextArea orderList, total, overview; 
 	private ShoppingCart shoppingCart; 
@@ -38,8 +38,9 @@ public class CashRegister extends JFrame
 	
 	public CashRegister( ShoppingCart s, JList<CartItems> sl )
 	{
-		super("Betaling");
+			//super("Betaling");
 
+		setModalityType( Dialog.ModalityType.TOOLKIT_MODAL );
 		contentPanel = new JPanel()
 		{
 			@Override
