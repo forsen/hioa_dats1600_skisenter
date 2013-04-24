@@ -7,9 +7,9 @@ import java.text.SimpleDateFormat;
 import java.io.*;
 import javax.swing.border.*;
 import java.text.ParseException;
-import java.awt.image.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import java.nio.channels.FileChannel;
+import java.util.Calendar;
+
 
 public class CustWindowPanel extends JPanel
 {	
@@ -95,7 +95,7 @@ public class CustWindowPanel extends JPanel
 		imageBtn.setToolTipText("Last opp bilde til kortet");
 		custWindowSearchBtn = new JButton("Søk");
 		custWindowSearchBtn.setToolTipText("Søk på kunde");
-		custWindowRegBtn = new JButton("Ny kunde");
+		custWindowRegBtn = new JButton("Endre/Ny kunde");
 		custWindowRegBtn.setToolTipText("Registrer ny kunde");
 
 		//custWindowFirstNamePnl = new JPanel( new FlowLayout() );
@@ -251,6 +251,36 @@ public class CustWindowPanel extends JPanel
 
 	}
 
+	public void updateCust()
+	{
+		String fName = custWindowFirstName.getText();
+		String lName = custWindowLastName.getText();
+		try
+		{
+			int tlfNr = Integer.parseInt(custWindowPhone.getText());
+			Date born = new SimpleDateFormat("ddMMyy").parse(custWindowBorn.getText());
+			moveAndRenameImg(img, Salesclerk.customer);
+
+			Salesclerk.customer.setFirstName(fName);
+			Salesclerk.customer.setLastName(lName);
+			Salesclerk.customer.setphoneNr(tlfNr);
+			Salesclerk.customer.setBirth(born);
+
+			Salesclerk.salesClerkSearchInfoTxt.setText( Salesclerk.customer.getCustId() + "\n" + Salesclerk.customer.toString() );
+
+		}
+		catch(NullPointerException npe)
+		{
+
+		}
+		catch(ParseException pe)
+		{
+
+		}
+
+		
+	}
+
 	public File imageUpload()
 	{
 		try
@@ -315,44 +345,7 @@ public class CustWindowPanel extends JPanel
 	public void moveAndRenameImg(File f, Person p)
 	{
 		
-
-		try
-		{
-			File persPic = new File("persImg/" + p.getCustId()+".jpg");
-  			if (!persPic.exists()) 
-  			{
-       			persPic.createNewFile();
-  			}
-
-  			BufferedImage temp = iu.openImage(f);
-  			File nf = iu.dra
-  			wImage(temp);
-
-
-  			FileChannel fsource = new FileInputStream(nf).getChannel();
-   			FileChannel target = new FileOutputStream(persPic).getChannel();
-   			target.transferFrom(fsource, 0, fsource.size());
-
-
-   			if (fsource != null) 
-   			{
-       			fsource.close();
-   			}
-  			if (target != null) 
-  			{
-       			target.close();
-       		}
-       		p.setImage(persPic);
-
-       	}
-       	catch(FileNotFoundException fne)
-		{
-			System.out.println("fant ikke mappa");
-		}
-		catch(IOException ie)
-		{
-
-		}
+		iu.saveImage(f,p);
 	}
 
 	public void blankOut()
@@ -388,6 +381,20 @@ public class CustWindowPanel extends JPanel
 				ReplaceWindowPanel.replaceWindowCustIdtf.setText(Salesclerk.customer.getCustId() + "");
 				ReplaceWindowPanel.cardIDList.setModel( Salesclerk.customer.listCards() );
 				Salesclerk.salesClerkSearchInfoTxt.setBackground(Color.LIGHT_GRAY);
+
+
+				custWindowFirstName.setText(Salesclerk.customer.getFirstName());
+				custWindowLastName.setText(Salesclerk.customer.getLastName());
+				custWindowPhone.setText(""+Salesclerk.customer.getphoneNr());
+				//Calendar cal = Calendar.getInstance(); 
+				//cal.setTime(Salesclerk.customer.getBirth());
+				//String bdate = (cal.get(Calendar.DAY_OF_MONTH) + "" + (cal.get(Calendar.MONTH) + 1) + "" + cal.get(Calendar.YEAR));
+				//custWindowBorn.setText(bdate);
+
+				Date bDate = Salesclerk.customer.getBirth();
+ 				String born = new SimpleDateFormat("ddMMyy").format(bDate);
+ 				custWindowBorn.setText(born);
+				
 			}
 			catch( ArrayIndexOutOfBoundsException aioobe )
 			{
@@ -396,6 +403,7 @@ public class CustWindowPanel extends JPanel
 
 				Salesclerk.salesClerkSearchInfoTxt.setText( "" );
 			}
+			
 
 		}
 	}
@@ -406,6 +414,10 @@ public class CustWindowPanel extends JPanel
 		{
 			if( e.getSource() == custWindowRegBtn )
 			{
+				if(Salesclerk.customer != null)
+				{
+					updateCust();		
+				}
 				Person p = registerPerson();
 				moveAndRenameImg(img,  p);
 			}
