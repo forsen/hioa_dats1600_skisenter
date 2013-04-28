@@ -15,9 +15,11 @@ public class AdminInfoPanel extends JPanel
 	private JPanel fieldPnl, butnPnl, dispPnl;
 	private Listener listener;
 	private JScrollPane scroll;
+	private JScrollPane scrolltab;
 	private Personlist list;
 	private List<Validations> validations;
 	private Cardlist cardregistry;
+	private JTable table;
 	
 
 	public AdminInfoPanel(Personlist l,List<Validations> v, Cardlist cr )
@@ -28,7 +30,7 @@ public class AdminInfoPanel extends JPanel
 
 		fieldPnl = new JPanel(new GridLayout( 2,3 ));
 		butnPnl = new JPanel(new GridLayout(2,2));
-		dispPnl = new JPanel();
+		dispPnl = new JPanel(new BorderLayout());
 	
 		
 		
@@ -36,9 +38,20 @@ public class AdminInfoPanel extends JPanel
 
 		listener = new Listener();
 
+		
+		table = list.personTable();
+		scrolltab = new JScrollPane(table);
+		scrolltab.setBackground(new Color(220, 240, 255));
+		dispPnl.add(scrolltab,BorderLayout.CENTER);
+		dispPnl.setSize(400,500);
+		
+	
+		
+
 		display = new JTextArea(20,40);
 		display.setEditable(false);
 		scroll = new JScrollPane(display);
+
 
 		
 		fieldPnl.add( new JLabel( "Kortnr" ) );
@@ -76,11 +89,14 @@ public class AdminInfoPanel extends JPanel
 		butnPnl.add(showPassings);
 		
 
-		dispPnl.add(scroll);
+		//dispPnl.add(scroll);
+		
 
 		add(fieldPnl, BorderLayout.PAGE_START);
 		add(butnPnl, BorderLayout.CENTER);
 		add(dispPnl, BorderLayout.PAGE_END);
+		
+
 
 	}
 
@@ -103,6 +119,14 @@ public class AdminInfoPanel extends JPanel
 	{
 		
 		display.setText(list.personListe());
+	}
+
+
+	public void personList()
+	{
+		
+
+		
 	}
 
 	public void showPersonsWithcards()
@@ -163,7 +187,7 @@ public class AdminInfoPanel extends JPanel
       		}
       		if(e.getSource() == showPersons)
       		{
-      			showPersons();
+      			personList();
       		}
 
       		if(e.getSource() == showPersWcards)
