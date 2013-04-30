@@ -546,7 +546,11 @@ public class CashRegister extends JDialog
 
 		while( it.hasNext() )
 		{
-			PrintWindow w = new PrintWindow( it.next() );
+			Card c = it.next();		
+			if( c.getCurrent() == null )
+			{
+				PrintWindow w = new PrintWindow( c );
+			}
 		}
 
 		System.out.println( "lengde: " + shoppingCartList.getModel().getSize() );

@@ -392,7 +392,7 @@ public class SalesWindowPanel extends JPanel
 
 	private void returnCard()
 	{
-
+	
 	}
 /*
 	public void setCustId()
