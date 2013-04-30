@@ -19,13 +19,14 @@ public class ReplaceWindowPanel extends JPanel
 	private ListListener listListener;
 	private JScrollPane cardScrollList;
 	private Card card;
-	
+	private Toolkit toolbox;
 	public ReplaceWindowPanel(JTextArea s)
 	{
 		Border etched = BorderFactory.createEtchedBorder();
 		Border header = BorderFactory.createTitledBorder(etched, "Erstatt kort");
 		Border repBorder = BorderFactory.createTitledBorder(etched, "Kundenummer");
 		card = null;
+		toolbox = Toolkit.getDefaultToolkit();
 
 
 		setBackground(new Color(200, 230, 255));
@@ -64,15 +65,16 @@ public class ReplaceWindowPanel extends JPanel
 
 		custIdLb = new JLabel( "Kundenummer" ) ;
 		replaceWindowCustIdtf = new JTextField(10);
+		replaceWindowCustIdtf.setToolTipText("Har du søkt på en kunde og trykket på denne vil kundenr automatisk komme opp her");
 		replaceWindowCustIdtf.setEditable( false );
 	//	fielPnl.add(replaceWindowCustIdtf);
 
 		cardNrLb = new JLabel( "Kortnummer" ) ;
-		
+		cardNrLb.setToolTipText("Har du søkt på en kunde og trykket på denne vil kortene automatisk komme opp her");
 	//	fielPnl.add(cardScrollList);
 
 		replaceWindowRepBtn = new JButton(" Erstatt ");
-		replaceWindowRepBtn.setToolTipText("Erstatt kort");
+		replaceWindowRepBtn.setToolTipText("Erstatt kortet du har valgt");
 		replaceWindowRepBtn.addActionListener( listener );
 	//	butnFld.add(replaceWindowRepBtn);
 		statusTxt = s;

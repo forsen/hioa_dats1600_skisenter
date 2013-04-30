@@ -24,6 +24,7 @@ public class AdminStatistikkPanel extends JPanel
 	private Calculator cal;
 	private List<Validations> validations;
 	private Cardlist cardregistry;
+	private Toolkit toolbox;
 
 	// fjern etterhvert
 	private int[] graph;
@@ -38,6 +39,8 @@ public class AdminStatistikkPanel extends JPanel
 		list = l;
 		validations = v;
 		cardregistry = cr;
+		toolbox = Toolkit.getDefaultToolkit();
+
 
 		cal = new Calculator(list, validations, cardregistry);
 
@@ -59,40 +62,48 @@ public class AdminStatistikkPanel extends JPanel
 		tabDisp.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
 		//checkPnl = new JPanel(new Gris)
 
-			
+
 		soldCardsBtn = new JButton( "Solgte kort" );
+		soldCardsBtn.setToolTipText("Se hvor mange kort som ble solg over en periode");
 		soldCardsBtn.addActionListener( listener );
 		
 
 		regPersBtn = new JButton( "Registrerte personer" );
+		regPersBtn.setToolTipText("Se hvor mange personer som ble registrert over en periode");
 		regPersBtn.addActionListener( listener );
 		
 
 		revenueBtn = new JButton( "Omsetning" );
+		revenueBtn.setToolTipText("Se hvor stor omsetning sentret hadde over en periode");
 		revenueBtn.addActionListener( listener );
 		
 
 		liftPassBtn = new JButton( "Passeringer i heis" );
+		liftPassBtn.setToolTipText("Se hvor mange heis passeringer det var over en periode (skriv inn heisnr for å bare trekke ut fra en heis)");
 		liftPassBtn.addActionListener( listener );
 	
 
 		from = new JLabel( "Fra: " );
 		fromFld = new JTextField(4);
+		fromFld.setToolTipText("Sett inn en startdato du ønsker og beregne info fra");
 		fromFld.setEditable( true );
 	
 
 		to = new JLabel( "Til: " );
 		toFld = new JTextField(4);
+		toFld.setToolTipText("Sett inn en sluttdato du ønsker og beregne info til");
 		toFld.setEditable( true );
 	
 
 		month = new JLabel( "Måned: " );
 		monthFld = new JTextField(4);
+		monthFld.setToolTipText("Sett inn et tall som representerer mn du har lyst å se beregninger på");
 		monthFld.setEditable( true );
 	
 
 		liftnr = new JLabel( "HeisNr: " );
 		liftFLd = new JTextField(4);
+		liftFLd.setToolTipText("om du ønsker å se heis passringer i en spessiell heis taster du inn heisens nr");
 		liftFLd.setEditable( true );
 	
 

@@ -69,6 +69,7 @@ public class Salesclerk extends JFrame
 
 		salesClerkSearchInfoTxt = new JTextArea( 5, 20 );
 		salesClerkSearchInfoTxt.setEditable(false);
+		salesClerkSearchInfoTxt.setToolTipText("Info om kunden du hjelper");
 
 		Dimension windowDimension = toolbox.getScreenSize();
 
@@ -114,6 +115,7 @@ public class Salesclerk extends JFrame
 
 		ImageIcon next = new ImageIcon("img/neste.png");
 		nextCustBtn = new JButton(next);
+		nextCustBtn.setToolTipText("For å ekspidere neste kunde");
 		ImageIcon next2 = new ImageIcon("img/neste2.png");
 		nextCustBtn.setRolloverIcon(next2);
 
