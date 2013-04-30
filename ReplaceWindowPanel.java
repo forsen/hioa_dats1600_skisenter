@@ -13,7 +13,7 @@ public class ReplaceWindowPanel extends JPanel
 	private JButton  replaceWindowRepBtn;
 	public static JTextField replaceWindowCustIdtf;
 	private JTextArea statusTxt;
-	private JPanel formPnl, resultPnl;
+	private JPanel formPnl, resultPnl, contentPnl;
 	private Listener listener;
 	public static JList<Card> cardIDList;
 	private ListListener listListener;
@@ -22,12 +22,20 @@ public class ReplaceWindowPanel extends JPanel
 	
 	public ReplaceWindowPanel(JTextArea s)
 	{
-		setBackground(new Color(200, 230, 255));
-
-
 		Border etched = BorderFactory.createEtchedBorder();
+		Border header = BorderFactory.createTitledBorder(etched, "Erstatt kort");
 		Border repBorder = BorderFactory.createTitledBorder(etched, "Kundenummer");
 		card = null;
+
+
+		setBackground(new Color(200, 230, 255));
+
+		contentPnl = new JPanel();
+		contentPnl.setBackground(new Color(200, 230, 255));
+		contentPnl.setBorder(header);
+
+
+
 	
 		listener = new Listener();
 		listListener = new ListListener(); 
@@ -47,6 +55,7 @@ public class ReplaceWindowPanel extends JPanel
 
 		resultPnl= new JPanel();
 		resultPnl.add(cardScrollList);
+		resultPnl.setBackground(new Color(200, 230, 255));
 
 		Border resultBrd = BorderFactory.createTitledBorder(etched, "Kortnummer");
 		resultPnl.setBorder(resultBrd);
@@ -76,6 +85,7 @@ public class ReplaceWindowPanel extends JPanel
 		formPnl = new JPanel();
 		formPnl.setLayout(new GridBagLayout());
 		formPnl.setBorder(repBorder);
+		formPnl.setBackground(new Color(200, 230, 255));
 
 		GridBagConstraints fc = new GridBagConstraints();
 
@@ -83,7 +93,7 @@ public class ReplaceWindowPanel extends JPanel
 
 		formPnl.add(replaceWindowCustIdtf, fc);
 
-		setLayout(new GridBagLayout());
+		contentPnl.setLayout(new GridBagLayout());
 
 		GridBagConstraints c = new GridBagConstraints();
 
@@ -91,16 +101,18 @@ public class ReplaceWindowPanel extends JPanel
 		c.fill = GridBagConstraints.HORIZONTAL;
 
 		c.gridx = 0;
-		add(formPnl,c);
+		contentPnl.add(formPnl,c);
 
-		c.gridy=1;
-		c.gridx=0;
-		add(replaceWindowRepBtn, c);
+		c.gridy=3;
+		c.gridx=1;
+		contentPnl.add(replaceWindowRepBtn, c);
 
 		c.gridx=1;
 		c.gridy=0;
 		c.gridheight=2;
-		add(resultPnl,c);
+		contentPnl.add(resultPnl,c);
+
+		add(contentPnl);
 
 		
 
