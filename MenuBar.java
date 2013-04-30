@@ -4,6 +4,8 @@ import javax.swing.JMenuItem;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.KeyStroke;
+import javax.swing.JComponent;
+import javax.swing.*;
 
 public class MenuBar
 {
@@ -18,6 +20,7 @@ public class MenuBar
 	private JMenuItem lifts;
 	private JMenuItem admin; 
 	private JMenuItem info;
+	private Container c; 
 
 	public MenuBar()
 	{
@@ -27,6 +30,8 @@ public class MenuBar
 		windows = new JMenu("Windows");
 
 		menuListener = new MenuListener();
+
+		c = (Container) menuBar.getTopLevelAncestor();
 
 	}
 
@@ -45,9 +50,9 @@ public class MenuBar
 	{
 		save = new JMenuItem("Lagre");
 		save.setAccelerator( KeyStroke.getKeyStroke( KeyEvent.VK_S, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask() ) );
-		exit = new JMenuItem("Exit");
-		exit.setAccelerator( KeyStroke.getKeyStroke( KeyEvent.VK_Q, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask() ) );
-
+		exit = new JMenuItem("Lukk vindu");
+		exit.setAccelerator( KeyStroke.getKeyStroke( KeyEvent.VK_W, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask() ) );
+		exit.addActionListener( menuListener );
 		save.addActionListener( menuListener );
 
 		file.add( save );
@@ -58,11 +63,11 @@ public class MenuBar
 	private void makeWindows()
 	{
 		lifts = new JMenuItem("Heiskontroll");
-		lifts.setAccelerator( KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK ) );
+		lifts.setAccelerator( KeyStroke.getKeyStroke(KeyEvent.VK_L, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask() ) );
 		info = new JMenuItem("Info");
 		info.setAccelerator( KeyStroke.getKeyStroke( KeyEvent.VK_I, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask() ) );
 		admin = new JMenuItem("Admin");
-		admin.setAccelerator( KeyStroke.getKeyStroke( KeyEvent.VK_A, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask() ) );
+		admin.setAccelerator( KeyStroke.getKeyStroke( KeyEvent.VK_M, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask() ) );
 
 		lifts.addActionListener( menuListener );
 		info.addActionListener( menuListener );
@@ -82,8 +87,19 @@ public class MenuBar
 				Skisenter.saveFile(); 
 			if( ae.getSource() == exit )
 			{
-				if( Skisenter.checkForUnsaved() )
-					System.exit( 0 );
+				JMenuItem menuItem = (JMenuItem) ae.getSource();
+				JPopupMenu popupMenu = (JPopupMenu) menuItem.getParent();
+				Component invoker = popupMenu.getInvoker();
+				JComponent invokerAsJComponent = (JComponent) invoker;
+				Container topLevel = invokerAsJComponent.getTopLevelAncestor();
+				if( topLevel instanceof Salesclerk )
+				{
+					if( Skisenter.checkForUnsaved() )
+						System.exit( 0 );
+				}
+
+				topLevel.setVisible(false );
+
 			}
 			if( ae.getSource() == lifts )
 			{
