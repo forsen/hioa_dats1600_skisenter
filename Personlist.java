@@ -10,7 +10,6 @@ public class Personlist implements Serializable
 	
 	private List<Person> registry = new LinkedList<>();
 
-	
 
 
 	public boolean isEmpty()

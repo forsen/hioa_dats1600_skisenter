@@ -161,6 +161,7 @@ public class Skisenter
 		catch( NotSerializableException nse )
 		{
 			JOptionPane.showMessageDialog(null, "Objektet er ikke serialisert", "Feil!", JOptionPane.ERROR_MESSAGE );
+			nse.printStackTrace( System.out );
 		}
 		catch( IOException ioe )
 		{
