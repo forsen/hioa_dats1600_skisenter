@@ -25,8 +25,7 @@ public class Control extends JFrame
 	private BtnListener btnListener;
 	private Color passThroughColor;
 	private Font font;
-	private Date usedRecentlyPrev, usedRecentlyNow;
-	private Skicard usedCard = null;
+	private static final int TIMELIMIT = 10*1000; // 10 seconds.
 
 
 	private Toolkit toolbox;
@@ -243,7 +242,7 @@ public class Control extends JFrame
 	}
 
 
-	public void findCard()
+	public Skicard findCard()
 	{
 		try
 		{
@@ -255,107 +254,98 @@ public class Control extends JFrame
 			else if (cardlist.findCard(cardNumber)!= null)
 				validatingCard =cardlist.findCard( cardNumber );
 
-			Skicard currentCard = validatingCard.getCurrent();
+			validatingCard.getBought(); // just to trigger a null pointer exception in case there is no skicard.
 
+			return validatingCard.getCurrent();
 
-
-			Date now = new Date();
-
-			if( validatingCard != null )
-			{
-
-				if( currentCard instanceof Timebasedcard)
-				{
-					if( ((Timebasedcard) currentCard).getExpires() == null )
-					{
-						((Timebasedcard) currentCard).initialized();
-						usedRecentlyPrev = new Date();
-
-						ctrlWindowPassThrough.setBackground(Color.GREEN);
-						ctrlWindowPassThroughLabelText.setText("Velkommen: Kortet er gyldig til: " + ((Timebasedcard) currentCard).getExpires());
-
-					}
-					
-					else if( ((Timebasedcard) currentCard).getExpires().after(now) )
-					{
-
-
-//Gjør så man ikke få gått inn hvis det ikke går 10 sekunder siden forrige passering. Dette må koples mot hvert enkelt kort.
-
-							usedRecentlyNow = new Date();
-
-							if(usedRecentlyNow.getTime() - usedRecentlyPrev.getTime() >= 10*1000 && usedCard == currentCard)
-							{
-							ctrlWindowPassThrough.setBackground(Color.GREEN);
-							ctrlWindowPassThroughLabelText.setText("Gyldig: Kortet er gyldig til: " + ((Timebasedcard) currentCard).getExpires());
-
-							lift.registrations( validatingCard );
-							usedRecentlyPrev = new Date();
-							usedCard = currentCard;
-							}
-
-							else if(usedRecentlyNow.getTime() - usedRecentlyPrev.getTime() <= 10*1000 && usedCard == currentCard)
-							{
-							ctrlWindowPassThrough.setBackground(Color.RED);			
-							ctrlWindowPassThroughLabelText.setText("Ugyldig: Under 5 min. siden forrige passering.");
-							}
-
-							else if(usedCard != currentCard)
-							{
-							ctrlWindowPassThrough.setBackground(Color.GREEN);
-							ctrlWindowPassThroughLabelText.setText("Gyldig::: Kortet er gyldig til: " + ((Timebasedcard) currentCard).getExpires());
-
-							lift.registrations( validatingCard );
-							usedRecentlyPrev = new Date();
-							usedCard = currentCard;
-							}		
-
-				
-					}
-					else
-					{
-						ctrlWindowPassThrough.setBackground(Color.RED);							
-						ctrlWindowPassThroughLabelText.setText("Ugyldig: Ditt kort gikk ut: " + ((Timebasedcard) currentCard).getExpires());
-					}
-				}
-
-				if(currentCard instanceof Punchcard)
-				{
-					if( ((Punchcard) currentCard).getClipCount() == -1)
-					{
-						((Punchcard) currentCard).initialized();
-					}
-
-					if( ((Punchcard) currentCard).getClipCount() > 0)
-					{
-						ctrlWindowPassThrough.setBackground(Color.GREEN);
-						((Punchcard) currentCard).usePunchCard();
-						ctrlWindowPassThroughLabelText.setText("Gyldig: Antall klipp igjen: " + ((Punchcard) currentCard).getClipCount());
-
-						lift.registrations( validatingCard );
-					}
-
-					else
-					{
-						ctrlWindowPassThrough.setBackground(Color.RED);			
-						ctrlWindowPassThroughLabelText.setText("Ugyldig: Ingen fler klipp.");
-
-					}
-
-				}
-
-			}
-
-			else
-			{
-				ctrlWindowPassThrough.setBackground(Color.RED);
-				JOptionPane.showMessageDialog(null, "Du dreit deg ut!" ); 
-			}
 		}
-		catch(NumberFormatException nfe)
+		catch( NumberFormatException nfe )
 		{
 			 ctrlWindowPassThrough.setBackground(Color.RED);
 			 ctrlWindowPassThroughLabelText.setText("Skriv et gyldig kortnummer (6 siffer)");
+		}
+		catch( NullPointerException npe )
+		{
+			ctrlWindowPassThrough.setBackground( Color.RED );
+			ctrlWindowPassThroughLabelText.setText( "Finner ikke skikortet" );
+		}
+
+		return null;
+	}
+
+	private void tryValidate()
+	{
+		Date now = new Date();
+
+		Skicard currentCard = findCard();
+		try
+		{
+			if( currentCard instanceof Timebasedcard)
+			{
+				if( ((Timebasedcard) currentCard).getExpires() == null )
+				{
+					((Timebasedcard) currentCard).initialized();
+					((Timebasedcard) currentCard).setLastValidated( new Date() );
+					lift.registrations( validatingCard );
+					ctrlWindowPassThrough.setBackground(Color.GREEN);
+					ctrlWindowPassThroughLabelText.setText("Velkommen: Kortet er gyldig til: " + ((Timebasedcard) currentCard).getExpires());
+
+				}
+				else if( ((Timebasedcard) currentCard).getExpires().after(now) )
+				{
+
+					if( now.getTime() - ((Timebasedcard) currentCard).getLastValidated().getTime() >= TIMELIMIT )
+					{
+					ctrlWindowPassThrough.setBackground(Color.GREEN);
+					ctrlWindowPassThroughLabelText.setText("Gyldig: Kortet er gyldig til: " + ((Timebasedcard) currentCard).getExpires());
+					((Timebasedcard) currentCard).setLastValidated( now ); 
+					lift.registrations( validatingCard );
+
+					}
+
+					else 
+					{
+					ctrlWindowPassThrough.setBackground(Color.RED);			
+					ctrlWindowPassThroughLabelText.setText("Ugyldig: Under 5 min. siden forrige passering.");
+					}
+			
+				}
+				else
+				{
+					ctrlWindowPassThrough.setBackground(Color.RED);							
+					ctrlWindowPassThroughLabelText.setText("Ugyldig: Ditt kort gikk ut: " + ((Timebasedcard) currentCard).getExpires());
+				}
+			}
+
+			if(currentCard instanceof Punchcard)
+			{
+				if( ((Punchcard) currentCard).getClipCount() == -1)
+				{
+					((Punchcard) currentCard).initialized();
+				}
+
+				if( ((Punchcard) currentCard).getClipCount() > 0)
+				{
+					ctrlWindowPassThrough.setBackground(Color.GREEN);
+					((Punchcard) currentCard).usePunchCard();
+					ctrlWindowPassThroughLabelText.setText("Gyldig: Antall klipp igjen: " + ((Punchcard) currentCard).getClipCount());
+
+					lift.registrations( validatingCard );
+				}
+
+				else
+				{
+					ctrlWindowPassThrough.setBackground(Color.RED);			
+					ctrlWindowPassThroughLabelText.setText("Ugyldig: Ingen fler klipp.");
+
+				}
+
+			}
+
+		}
+		catch( NullPointerException npe )
+		{
+			return; //
 		}
 	}
 
@@ -366,7 +356,7 @@ public class Control extends JFrame
 		{
 			if( ae.getSource() == ctrlRegCustNr )
 			{
-				findCard();
+				tryValidate();
 			}
 		}
 
