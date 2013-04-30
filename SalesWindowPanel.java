@@ -396,6 +396,11 @@ public class SalesWindowPanel extends JPanel
 		{
 			Card c = cardIDList.getSelectedValue(); 
 			shoppingCartList.setModel( shoppingCart.addToCart( c, null ) );
+			//cardIDList.getModel().removeElementAt(cardIDList.getSelectedIndex() );
+			DefaultListModel<Card> lmc = (DefaultListModel<Card>) cardIDList.getModel();
+			lmc.removeElementAt( cardIDList.getSelectedIndex() );
+			cardIDList.setModel( lmc );
+
 		}
 		catch( NullPointerException npe )
 		{

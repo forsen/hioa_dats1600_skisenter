@@ -528,7 +528,8 @@ public class CashRegister extends JDialog
 		}
 		catch( NumberFormatException nfe )
 		{
-			JOptionPane.showMessageDialog(this, "Feltet kan kun bestå av tall, og \".\" er kommaseparator" );
+			if( sum <= 0.0 );
+				JOptionPane.showMessageDialog(this, "Feltet kan kun bestå av tall, og \".\" er kommaseparator" );
 		}
 
 		if( remains <= 0.0 )
@@ -557,7 +558,11 @@ public class CashRegister extends JDialog
 		for( int i = 0; i < shoppingCartList.getModel().getSize(); i++ )
 		{
 			System.out.println("Skjer det noe her?");
-			PrintWindow w = new PrintWindow( shoppingCartList.getModel().getElementAt(i).getCard());
+			Card pc = shoppingCartList.getModel().getElementAt(i).getCard();
+			if( !pc.getReturned() )
+			{
+				PrintWindow w = new PrintWindow( pc );
+			}
 		}
 
 	}
