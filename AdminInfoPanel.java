@@ -18,7 +18,7 @@ public class AdminInfoPanel extends JPanel
 	private Personlist list;
 	private List<Validations> validations;
 	private Cardlist cardregistry;
-	private JTable table;
+	private JTable perstable, passTable;
 	
 
 	public AdminInfoPanel(Personlist l,List<Validations> v, Cardlist cr )
@@ -41,8 +41,10 @@ public class AdminInfoPanel extends JPanel
 
 		listener = new Listener();
 
-		table = list.personTable();
-		scroll = new JScrollPane(table);
+		perstable = list.personTable();
+		passTable = showPassings();
+
+		scroll = new JScrollPane(perstable);
 		dispPnl.add(scroll);
 		dispPnl.setSize(400,500);
 		
@@ -120,13 +122,6 @@ public class AdminInfoPanel extends JPanel
 	}
 
 
-	public void personList()
-	{
-		
-
-		
-	}
-
 	public void showPersonsWithcards()
 	{
 		list.sort();
@@ -160,17 +155,28 @@ public class AdminInfoPanel extends JPanel
 
 	}
 
-	public void showPassings()
+	public JTable showPassings()
 	{
 		
+		String[] columnName = {"HeisNr", "KortNr", "KortType", "Passerings tid"};
+		Object[][] passings = new Object[validations.size() ][4]; 
 		Iterator<Validations> it = validations.iterator();
-		StringBuilder text = new StringBuilder();
 
-		while( it.hasNext() )
+		for (int i = 1; i < validations.size(); i++ )
 		{
-			text.append( it.next().toString() );
+			Validations runner = it.next();
+
+			passings[i][0] = runner.getLiftId();
+			passings[i][1] = runner.getCard();
+			passings[i][2] = runner.getCard().getCurrent().getType();
+			passings[i][3] = runner.getDate();
+
 		}
-		display.setText( text.toString() );
+		passTable = new JTable(passings,columnName);
+		passTable.setEnabled(false);
+		System.out.println("Du har opprettet tabellen");
+		return passTable;
+		
 	}	
 
 	
@@ -188,8 +194,8 @@ public class AdminInfoPanel extends JPanel
       		}
       		if(e.getSource() == showPersons)
       		{
-      			personList();
-      			scroll.setViewportView(table);
+      			
+      			scroll.setViewportView(perstable);
       		}
 
       		if(e.getSource() == showPersWcards)
@@ -206,8 +212,8 @@ public class AdminInfoPanel extends JPanel
 
       		if(e.getSource() == showPassings)
       		{
-      			showPassings();
-      			scroll.setViewportView(display);
+      			
+      			scroll.setViewportView(passTable);
       		}
 
       		if(e.getSource() == deletePersBtn)
