@@ -32,7 +32,10 @@ public class AdminInfoPanel extends JPanel
 		butnPnl = new JPanel(new GridLayout(2,2));
 		dispPnl = new JPanel();
 	
-		
+		setBackground(new Color(200, 230, 255));
+		fieldPnl.setBackground(new Color(200, 230, 255));
+		butnPnl.setBackground(new Color(200, 230, 255));
+		dispPnl.setBackground(new Color(200, 230, 255));
 		
 		setLayout( new BorderLayout( 5, 5) );
 
