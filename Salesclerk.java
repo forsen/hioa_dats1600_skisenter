@@ -38,7 +38,7 @@ public class Salesclerk extends JFrame
 
 	public Salesclerk( Personlist cr, Cardlist cardr, String m )
 	{
-		super("Testvindu");
+		super("Salgsvindu");
 
 
 
