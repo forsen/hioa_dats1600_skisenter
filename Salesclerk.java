@@ -196,6 +196,7 @@ public class Salesclerk extends JFrame
 		// //statusPnl.setVisible(true);
 
 		layout.layoutContainer( c );
+		
 
 	}
 

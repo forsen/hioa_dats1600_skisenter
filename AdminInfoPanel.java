@@ -18,7 +18,8 @@ public class AdminInfoPanel extends JPanel
 	private Personlist list;
 	private List<Validations> validations;
 	private Cardlist cardregistry;
-	private JTable perstable, passTable, unregCardsTable;
+	private JTable perstable, passTable;
+	
 
 
 	public AdminInfoPanel(Personlist l,List<Validations> v, Cardlist cr )
@@ -29,7 +30,7 @@ public class AdminInfoPanel extends JPanel
 		cardregistry = cr;
 
 		fieldPnl = new JPanel(new GridLayout( 2,3 ));
-		butnPnl = new JPanel(new GridLayout(2,2));
+		butnPnl = new JPanel(new GridLayout( 2,3 ));
 		dispPnl = new JPanel();
 	
 		setBackground(new Color(200, 230, 255));
@@ -37,14 +38,13 @@ public class AdminInfoPanel extends JPanel
 		butnPnl.setBackground(new Color(200, 230, 255));
 		dispPnl.setBackground(new Color(200, 230, 255));
 		
-		setLayout( new BorderLayout( 5, 5) );
+		setLayout( new BorderLayout( 5, 3) );
 
 		listener = new Listener();
 
 
 		perstable = list.personTable();
 		passTable = showPassings();
-		unregCardsTable = showCards();
 
 
 		display = new JTextArea(20,40);
@@ -91,10 +91,12 @@ public class AdminInfoPanel extends JPanel
 		
 
 		dispPnl.add(scroll);
+		
 
 		add(fieldPnl, BorderLayout.PAGE_START);
 		add(butnPnl, BorderLayout.CENTER);
 		add(dispPnl, BorderLayout.PAGE_END);
+
 
 	}
 
@@ -121,26 +123,10 @@ public class AdminInfoPanel extends JPanel
 	}
 
 		
-	public JTable showCards()
+	public void showCards()
 	{
-		String[] columnName = {"KortNr", "Pris", "Rabatt", "KortType", "Går ut"};
-		Object[][] passings = new Object[validations.size() ][4]; 
-		Iterator<Validations> it = validations.iterator();
 
-		for (int i = 1; i < validations.size(); i++ )
-		{
-			Validations runner = it.next();
-
-			passings[i][0] = runner.getLiftId();
-			passings[i][1] = runner.getCard();
-			passings[i][2] = runner.getCard().getCurrent().getType();
-			passings[i][3] = runner.getDate();
-
-		}
-		passTable = new JTable(passings,columnName);
-		passTable.setEnabled(false);
-		System.out.println("Du har opprettet tabellen");
-		return passTable;
+		display.setText(cardregistry.toString());
 		
 	}
 	
@@ -159,7 +145,6 @@ public class AdminInfoPanel extends JPanel
 		{
 
 		}
-
 
 	}
 
