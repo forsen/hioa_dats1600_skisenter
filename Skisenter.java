@@ -15,7 +15,11 @@ public class Skisenter
 	private static List<Validations> validations;
 	private static RandomData r;
 
-	private static Salesclerk s;
+	public static Salesclerk s;
+	public static Info i;
+	public static Admin a;
+	public static Control lift1;
+	public static Control lift2; 
 
 	public static boolean unsaved; 
 
@@ -68,9 +72,9 @@ public class Skisenter
 				vindu.setLocation(700,0); 		
 */
 
-				final Info i = new Info();
+				i = new Info();
 				i.setJMenuBar( new MenuBar().createMenu() );
-				i.setVisible(true);
+				i.setVisible(false);
   		
 
 
@@ -79,27 +83,26 @@ public class Skisenter
     			control.setLocation(0, 500);
 */				
 
-				final Admin a = new Admin( registry,validations, cardregistry);
+				a = new Admin( registry,validations, cardregistry);
 				a.setLocation(0,425);
 				a.setJMenuBar( new MenuBar().createMenu() );
 				a.setIconImage(ikon);    
+				a.setVisible( false );
 
 				Lift chLift = new Chairlift(validations, registry, "Superheisen", 2000, 3 );
-				final Control lift1 = new Control( registry,  chLift, cardregistry );
+				lift1 = new Control( registry,  chLift, cardregistry );
 				lift1.setJMenuBar( new MenuBar().createMenu() );
-				lift1.setVisible(true);
 				lift1.setLocation(700,425);
 				lift1.setIconImage(ikon);
-
+				lift1.setVisible(false);
 
 				Lift tLift = new Tcuplift( validations, registry, "Rævvaheisen", 1433 );
 
-				final Control lift2 = new Control( registry, tLift, cardregistry );   
+				lift2 = new Control( registry, tLift, cardregistry );   
 				lift2.setJMenuBar( new MenuBar().createMenu() );
-				lift2.setVisible(true);
 				lift2.setLocation(700,425);
 				lift2.setIconImage(ikon);
-
+				lift2.setVisible(false);
 			}			
 
 		} );

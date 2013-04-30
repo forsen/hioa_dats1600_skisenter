@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.*;
 import javax.swing.event.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -8,10 +9,11 @@ import java.io.*;
 
 public class ReplaceWindowPanel extends JPanel 
 {
+	private JLabel custIdLb, cardNrLb;
 	private JButton  replaceWindowRepBtn;
 	public static JTextField replaceWindowCustIdtf;
 	private JTextArea statusTxt;
-	private JPanel cntrPnl; 
+	private JPanel fielPnl, butnFld, labelPnl; 
 	private Listener listener;
 	public static JList<Card> cardIDList;
 	private ListListener listListener;
@@ -22,7 +24,11 @@ public class ReplaceWindowPanel extends JPanel
 	{
 		setBackground(new Color(200, 230, 255));
 
-		setLayout( new BorderLayout( 5, 5) );
+		setLayout( new GridBagLayout( ) );
+		//setBackground(new Color(200, 230, 255));
+		Border etched = BorderFactory.createEtchedBorder();
+		Border repBorder = BorderFactory.createTitledBorder(etched, "Erstatt kort");
+		setBorder(repBorder);
 		card = null;
 	
 		listener = new Listener();
@@ -37,26 +43,94 @@ public class ReplaceWindowPanel extends JPanel
 		cardIDList.addListSelectionListener( listListener );
 		cardScrollList = new JScrollPane( cardIDList);
 
-		cntrPnl = new JPanel(new GridLayout( 4,2 )); 
-		cntrPnl.setBackground(new Color(200, 230, 255));
+		labelPnl= new JPanel(new  GridLayout( 2,2 )); 
+		labelPnl.setBackground(new Color(200, 230, 255));
+		fielPnl = new JPanel(new BorderLayout( 2,1 )); 
+		fielPnl.setBackground(new Color(200, 230, 255));
 
-		cntrPnl.add( new JLabel( "Kundenummer" ) );
+		butnFld = new JPanel(new BorderLayout( 5,5)); 
+		butnFld.setBackground(new Color(200, 230, 255));
+
+		custIdLb = new JLabel( "Kundenummer" ) ;
 		replaceWindowCustIdtf = new JTextField(5);
 		replaceWindowCustIdtf.setEditable( false );
-		cntrPnl.add(replaceWindowCustIdtf);
+	//	fielPnl.add(replaceWindowCustIdtf);
 
-		cntrPnl.add( new JLabel( "Kortnummer" ) );
+		cardNrLb = new JLabel( "Kortnummer" ) ;
 		
-		cntrPnl.add(cardScrollList);
+	//	fielPnl.add(cardScrollList);
 
 		replaceWindowRepBtn = new JButton(" Erstatt ");
 		replaceWindowRepBtn.setToolTipText("Erstatt kort");
 		replaceWindowRepBtn.addActionListener( listener );
-		cntrPnl.add(replaceWindowRepBtn);
+	//	butnFld.add(replaceWindowRepBtn);
 		statusTxt = s;
 
+	/*	add(labelPnl, BorderLayout.LINE_START);
+		add(fielPnl, BorderLayout.LINE_END);
+		add(butnFld, BorderLayout.PAGE_END);*/
+		labelPnl.add(custIdLb);
+		labelPnl.add(replaceWindowCustIdtf);
+		labelPnl.add(cardNrLb);
+		labelPnl.add(cardScrollList);
+
+
+		butnFld.add(replaceWindowRepBtn);
+
+		
+
+		GridBagConstraints c = new GridBagConstraints();
+
+		c.anchor = GridBagConstraints.PAGE_START;
+		c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(5,0,5,0);
+
+
+
+		//Første kolonne////////////////////////////////////////////////////////////
+		c.gridheight = 1; 
+		c.weightx = 0.5;
+		c.gridx = 0; 
+		c.gridy = 0;
+		c.gridwidth = 9; 
+		c.weighty = 0.2;
+		add(labelPnl, c);
+		
+	/*	c.gridheight = 19 
+		c.weightx = 0.5;
+		c.gridx = 0; 
+		c.gridy = 1;
+		c.gridwidth = 1; 
+		c.weighty = 0.2;
+		add(cardNrLb, c);*/
+
+//ANDRE-KOLONNE ////////////////////
+		c.gridheight = 1; 
+		c.weightx = 0.5;
+		c.gridx = 0; 
+		c.gridy = 2;
+		c.gridwidth = 1; 
+		c.weighty = 0.2;
+		add(butnFld, c);
+
+	/*	c.gridheight = 1; 
+	//	c.weightx = 0.5;
+		c.gridx = 1; 
+		c.gridy = 1;
+		c.gridwidth = 1; 
+		c.weighty = 0;
+		add(cardScrollList,c);	*/
+	
+		c.gridheight = 1;
+//		c.weightx = 0.5;
+		c.gridx = 3; 
+		c.gridy = 3; 
+		c.gridwidth = 1;
+	//	c.weighty = 0.2;
+		add(fielPnl, c);
+
     	
-		add(cntrPnl, BorderLayout.CENTER );
+
 		
 		
 	}

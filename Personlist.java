@@ -1,11 +1,16 @@
 import java.io.*;
 import java.util.*;
 import javax.swing.DefaultListModel;
+import javax.swing.*;
+
+
 
 public class Personlist implements Serializable
 {
 	
 	private List<Person> registry = new LinkedList<>();
+
+	private JTable perstable;
 
 
 	public boolean isEmpty()
@@ -346,26 +351,39 @@ public class Personlist implements Serializable
 		
 		return doneText;
 
-		/*String[] columnName = {"Fornavn", "Etternavn", "Født", "Tlf Nummer", "Opprettet"};
-		Object[][] people = new Object[registry.size()]; 
+
+		
+	}
+
+	public JTable personTable()
+	{
+		sort();
+		String[] columnName = {"Fornavn", "Etternavn", "Født", "Tlf Nummer", "Opprettet"};
+		Object[][] people = new Object[registry.size() ][5]; 
 
 		
 		Iterator<Person> it = registry.iterator();
 		
-		for(int i = 1; i < people.length; i++)
+		for(int i = 1; i < registry.size(); i++)
 		{	
 			Person runner = it.next();
-			people[i] = runner.getFirstName(), runner.getLastName(), 
-				runner.getBorn(),runner.getphoneNr(), runner.getCreated();
+			
+			people[i][0] = runner.getLastName();
+			people[i][1] = runner.getFirstName();
+			people[i][2] = runner.getBirth();
+			people[i][3] = runner.getphoneNr();
+			people[i][4] = runner.getCreated();
 
 
 		
 		} 
+		 perstable = new JTable(people,columnName);
+		perstable.setEnabled(false);
+		System.out.println("Du har opprettet tabellen");
+		return perstable;
 		
-		String doneText = text.toString();
-		
-		return doneText;*/
 	}
+
 
 }
 
