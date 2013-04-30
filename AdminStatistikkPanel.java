@@ -241,6 +241,8 @@ public class AdminStatistikkPanel extends JPanel
 //START-BEREGN
 
 
+
+
 	public void totalRegPepole()
 	{
 		/*Date start;
