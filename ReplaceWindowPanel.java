@@ -13,7 +13,7 @@ public class ReplaceWindowPanel extends JPanel
 	private JButton  replaceWindowRepBtn;
 	public static JTextField replaceWindowCustIdtf;
 	private JTextArea statusTxt;
-	private JPanel fielPnl, butnFld, labelPnl; 
+	private JPanel formPnl, resultPnl;
 	private Listener listener;
 	public static JList<Card> cardIDList;
 	private ListListener listListener;
@@ -24,9 +24,9 @@ public class ReplaceWindowPanel extends JPanel
 	{
 		setBackground(new Color(200, 230, 255));
 
+
 		Border etched = BorderFactory.createEtchedBorder();
-		Border repBorder = BorderFactory.createTitledBorder(etched, "Erstatt kort");
-		setBorder(repBorder);
+		Border repBorder = BorderFactory.createTitledBorder(etched, "Kundenummer");
 		card = null;
 	
 		listener = new Listener();
@@ -39,18 +39,22 @@ public class ReplaceWindowPanel extends JPanel
 		cardIDList.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
 		cardIDList.setCellRenderer( new CardListCellRenderer() );
 		cardIDList.addListSelectionListener( listListener );
-		cardScrollList = new JScrollPane( cardIDList);
+		cardScrollList = new JScrollPane( cardIDList, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		cardScrollList.setPreferredSize(new Dimension(120, 140));
 
-		labelPnl= new JPanel(); 
-		labelPnl.setBackground(new Color(200, 230, 255));
-		fielPnl = new JPanel(); 
-		fielPnl.setBackground(new Color(200, 230, 255));
 
-		butnFld = new JPanel(); 
-		butnFld.setBackground(new Color(200, 230, 255));
+
+
+		resultPnl= new JPanel();
+		resultPnl.add(cardScrollList);
+
+		Border resultBrd = BorderFactory.createTitledBorder(etched, "Kortnummer");
+		resultPnl.setBorder(resultBrd);
+
+
 
 		custIdLb = new JLabel( "Kundenummer" ) ;
-		replaceWindowCustIdtf = new JTextField(5);
+		replaceWindowCustIdtf = new JTextField(10);
 		replaceWindowCustIdtf.setEditable( false );
 	//	fielPnl.add(replaceWindowCustIdtf);
 
@@ -67,66 +71,40 @@ public class ReplaceWindowPanel extends JPanel
 	/*	add(labelPnl, BorderLayout.LINE_START);
 		add(fielPnl, BorderLayout.LINE_END);
 		add(butnFld, BorderLayout.PAGE_END);*/
-		labelPnl.add(custIdLb);
-		labelPnl.add(replaceWindowCustIdtf);
-		labelPnl.add(cardNrLb);
-		labelPnl.add(cardScrollList);
 
 
-		butnFld.add(replaceWindowRepBtn);
-		add(labelPnl);
-		add(fielPnl);
-		add(butnFld);
+		formPnl = new JPanel();
+		formPnl.setLayout(new GridBagLayout());
+		formPnl.setBorder(repBorder);
 
-		
+		GridBagConstraints fc = new GridBagConstraints();
+
+		fc.fill = GridBagConstraints.BOTH;
+
+		formPnl.add(replaceWindowCustIdtf, fc);
+
+		setLayout(new GridBagLayout());
 
 		GridBagConstraints c = new GridBagConstraints();
 
-		c.anchor = GridBagConstraints.PAGE_START;
-		c.fill = GridBagConstraints.BOTH;
-		c.insets = new Insets(5,0,5,0);
+		c.anchor = GridBagConstraints.LINE_START;
+		c.fill = GridBagConstraints.HORIZONTAL;
 
+		c.gridx = 0;
+		add(formPnl,c);
 
+		c.gridy=1;
+		c.gridx=0;
+		add(replaceWindowRepBtn, c);
 
-		//Første kolonne////////////////////////////////////////////////////////////
-		c.gridheight = 1; 
-		c.gridx = 0; 
-		c.gridy = 0;
-		c.weighty = 0.2;
-		add(labelPnl, c);
+		c.gridx=1;
+		c.gridy=0;
+		c.gridheight=2;
+		add(resultPnl,c);
+
 		
-	/*	c.gridheight = 19 
-		c.weightx = 0.5;
-		c.gridx = 0; 
-		c.gridy = 1;
-		c.gridwidth = 1; 
-		c.weighty = 0.2;
-		add(cardNrLb, c);*/
 
-//ANDRE-KOLONNE ////////////////////
-		c.gridheight = 1; 
-		c.gridx = 1; 
-		c.gridy = 0;
-		c.weighty = 0.2;
-		add(butnFld, c);
 
-	/*	c.gridheight = 1; 
-	//	c.weightx = 0.5;
-		c.gridx = 1; 
-		c.gridy = 1;
-		c.gridwidth = 1; 
-		c.weighty = 0;
-		add(cardScrollList,c);	*/
-	
-		c.gridheight = 1;
-//		c.weightx = 0.5;
-		c.gridx = 1; 
-		c.gridy = 1; 
-		c.gridwidth = 1;
-	//	c.weighty = 0.2;
-		add(fielPnl, c);
-
-    	
 
 		
 		
