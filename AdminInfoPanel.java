@@ -18,7 +18,7 @@ public class AdminInfoPanel extends JPanel
 	private Personlist list;
 	private List<Validations> validations;
 	private Cardlist cardregistry;
-	private JTable perstable, passTable;
+	private JTable perstable, passTable, unregCardsTable;
 
 
 	public AdminInfoPanel(Personlist l,List<Validations> v, Cardlist cr )
@@ -44,6 +44,7 @@ public class AdminInfoPanel extends JPanel
 
 		perstable = list.personTable();
 		passTable = showPassings();
+		unregCardsTable = showCards();
 
 
 		display = new JTextArea(20,40);
@@ -120,9 +121,27 @@ public class AdminInfoPanel extends JPanel
 	}
 
 		
-	public void showCards()
+	public JTable showCards()
 	{
-		display.setText(cardregistry.toString());
+		String[] columnName = {"KortNr", "Pris", "Rabatt", "KortType", "Går ut"};
+		Object[][] passings = new Object[validations.size() ][4]; 
+		Iterator<Validations> it = validations.iterator();
+
+		for (int i = 1; i < validations.size(); i++ )
+		{
+			Validations runner = it.next();
+
+			passings[i][0] = runner.getLiftId();
+			passings[i][1] = runner.getCard();
+			passings[i][2] = runner.getCard().getCurrent().getType();
+			passings[i][3] = runner.getDate();
+
+		}
+		passTable = new JTable(passings,columnName);
+		passTable.setEnabled(false);
+		System.out.println("Du har opprettet tabellen");
+		return passTable;
+		
 	}
 	
 	

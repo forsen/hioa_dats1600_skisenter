@@ -24,8 +24,6 @@ public class ReplaceWindowPanel extends JPanel
 	{
 		setBackground(new Color(200, 230, 255));
 
-		setLayout( new GridBagLayout( ) );
-		//setBackground(new Color(200, 230, 255));
 		Border etched = BorderFactory.createEtchedBorder();
 		Border repBorder = BorderFactory.createTitledBorder(etched, "Erstatt kort");
 		setBorder(repBorder);
@@ -43,12 +41,12 @@ public class ReplaceWindowPanel extends JPanel
 		cardIDList.addListSelectionListener( listListener );
 		cardScrollList = new JScrollPane( cardIDList);
 
-		labelPnl= new JPanel(new  GridLayout( 2,2 )); 
+		labelPnl= new JPanel(); 
 		labelPnl.setBackground(new Color(200, 230, 255));
-		fielPnl = new JPanel(new BorderLayout( 2,1 )); 
+		fielPnl = new JPanel(); 
 		fielPnl.setBackground(new Color(200, 230, 255));
 
-		butnFld = new JPanel(new BorderLayout( 5,5)); 
+		butnFld = new JPanel(); 
 		butnFld.setBackground(new Color(200, 230, 255));
 
 		custIdLb = new JLabel( "Kundenummer" ) ;
@@ -76,62 +74,12 @@ public class ReplaceWindowPanel extends JPanel
 
 
 		butnFld.add(replaceWindowRepBtn);
+		add(labelPnl);
+		add(fielPnl);
+		add(butnFld);
 
 		
 
-		GridBagConstraints c = new GridBagConstraints();
-
-		c.anchor = GridBagConstraints.PAGE_START;
-		c.fill = GridBagConstraints.BOTH;
-		c.insets = new Insets(5,0,5,0);
-
-
-
-		//Første kolonne////////////////////////////////////////////////////////////
-		c.gridheight = 1; 
-		c.weightx = 0.5;
-		c.gridx = 0; 
-		c.gridy = 0;
-		c.gridwidth = 9; 
-		c.weighty = 0.2;
-		add(labelPnl, c);
-		
-	/*	c.gridheight = 19 
-		c.weightx = 0.5;
-		c.gridx = 0; 
-		c.gridy = 1;
-		c.gridwidth = 1; 
-		c.weighty = 0.2;
-		add(cardNrLb, c);*/
-
-//ANDRE-KOLONNE ////////////////////
-		c.gridheight = 1; 
-		c.weightx = 0.5;
-		c.gridx = 0; 
-		c.gridy = 2;
-		c.gridwidth = 1; 
-		c.weighty = 0.2;
-		add(butnFld, c);
-
-	/*	c.gridheight = 1; 
-	//	c.weightx = 0.5;
-		c.gridx = 1; 
-		c.gridy = 1;
-		c.gridwidth = 1; 
-		c.weighty = 0;
-		add(cardScrollList,c);	*/
-	
-		c.gridheight = 1;
-//		c.weightx = 0.5;
-		c.gridx = 3; 
-		c.gridy = 3; 
-		c.gridwidth = 1;
-	//	c.weighty = 0.2;
-		add(fielPnl, c);
-
-    	
-
-		
 		
 	}
 
