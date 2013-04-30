@@ -92,7 +92,10 @@ public class ShoppingCart
 		CartItems ci = new CartItems( c, sc );
 		cartList.add( ci );
 		items.addElement( ci );
-		sum += sc.getPrice();
+		if( sc == null )
+			sum += Info.RETURNPRICE;
+		else
+			sum += sc.getPrice();
 		return items;
 	}
 
@@ -200,10 +203,19 @@ public class ShoppingCart
 			CartItems ci = it.next();
 			text.append( ""+ci.getCardID() );
 			text.append( ", ");
-			text.append( ci.getType() );
-			text.append( "\t" );
-			text.append( ci.getPrice() + ",-" );
-			text.append( "\n" );
+			try
+			{
+				text.append( ci.getType() );
+				text.append( "\t" );
+				text.append( ci.getPrice() + ",-" );
+				text.append( "\n" );
+			}
+			catch( NullPointerException npe )
+			{
+				text.append( "\t\t" );
+				text.append( Info.RETURNPRICE + ",-");
+				text.append( "\n" );
+			}
 		}
 
 		

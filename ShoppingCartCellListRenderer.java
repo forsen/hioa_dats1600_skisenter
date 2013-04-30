@@ -10,8 +10,14 @@ public class ShoppingCartCellListRenderer extends DefaultListCellRenderer
 
 		CartItems ci = (CartItems) value; 
 
-		label.setText( ci.getCardID() + " " +  ci.getType() + ", " + ci.getPrice() + "kr" );
-
+		try
+		{
+			label.setText( ci.getCardID() + " " +  ci.getType() + ", " + ci.getPrice() + "kr" );
+		}
+		catch( NullPointerException npe )
+		{
+			label.setText( "-" + ci.getCardID() + ", " + Info.RETURNPRICE + "kr" ); 
+		}
 		return label;
 	}
 }

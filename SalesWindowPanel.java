@@ -392,7 +392,16 @@ public class SalesWindowPanel extends JPanel
 
 	private void returnCard()
 	{
-	
+		try
+		{
+			Card c = cardIDList.getSelectedValue(); 
+			shoppingCartList.setModel( shoppingCart.addToCart( c, null ) );
+		}
+		catch( NullPointerException npe )
+		{
+
+		}
+
 	}
 /*
 	public void setCustId()
@@ -446,6 +455,8 @@ public class SalesWindowPanel extends JPanel
 			}
 			if( ae.getSource() == salesRemoveLineCart )
 				deleteFromCart();
+			if( ae.getSource() == salesReturnCardBtn )
+				returnCard();
 		}
 
 	}
