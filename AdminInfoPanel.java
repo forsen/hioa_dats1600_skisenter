@@ -89,17 +89,15 @@ public class AdminInfoPanel extends JPanel
 		showPassings = new JButton(" Vis heis passeringer ");
 		showPassings.addActionListener( listener );
 		butnPnl.add(showPassings);
-		butnPnl.setBorder(etched);
 		
 
 		dispPnl.add(scroll);
 		
 		setLayout( new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
-		c.fill = GridBagConstraints.NONE;
-		c.anchor = GridBagConstraints.PAGE_START;
-		c.weighty=0;
-		c.weightx=0;
+		c.fill = GridBagConstraints.VERTICAL;
+		c.anchor = GridBagConstraints.PAGE_END;
+		
 
 		add(fieldPnl, c);
 
@@ -110,6 +108,10 @@ public class AdminInfoPanel extends JPanel
 		c.gridy=2;
 
 		add(dispPnl, c);
+
+		c.weighty=1;
+		add(new JLabel(""), c);
+		
 
 
 	}
