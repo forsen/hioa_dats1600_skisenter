@@ -53,7 +53,6 @@ public class AdminStatistikkPanel extends JPanel
 
 		graphPnl = new GraphPanel( graph ); 
 		displayPnl.setBackground(new Color(200, 230, 255));
-		graphPnl.setBackground(new Color(200, 230, 255));
 		tabDisp.addTab("Rapport", displayPnl);
 		tabDisp.addTab("Grafisk visning", graphPnl);
 
