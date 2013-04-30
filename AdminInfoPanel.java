@@ -22,6 +22,7 @@ public class AdminInfoPanel extends JPanel
 
 	public AdminInfoPanel(Personlist l,List<Validations> v, Cardlist cr )
 	{
+		
 		list = l;
 		validations = v;
 		cardregistry = cr;
