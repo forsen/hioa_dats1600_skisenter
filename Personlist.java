@@ -377,7 +377,7 @@ public class Personlist implements Serializable
 
 		
 		} 
-		 perstable = new JTable(people,columnName);
+		perstable = new JTable(people,columnName);
 		perstable.setEnabled(false);
 		System.out.println("Du har opprettet tabellen");
 		return perstable;
