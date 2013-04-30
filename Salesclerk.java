@@ -206,6 +206,8 @@ public class Salesclerk extends JFrame
 		customer = null;
 		CustWindowPanel.blankOut();
 		SalesWindowPanel.salesWindowCustIDtf.setText( "");
+		SalesWindowPanel.cardnrf.setText("");
+		SalesWindowPanel.cardnrf.setEditable( true );
 		salesClerkSearchInfoTxt.setText("");
 		try
 		{

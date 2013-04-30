@@ -384,6 +384,7 @@ public class CustWindowPanel extends JPanel
 				ReplaceWindowPanel.replaceWindowCustIdtf.setText(Salesclerk.customer.getCustId() + "");
 				ReplaceWindowPanel.cardIDList.setModel( Salesclerk.customer.listCards() );
 				Salesclerk.salesClerkSearchInfoTxt.setBackground(Color.LIGHT_GRAY);
+				SalesWindowPanel.cardnrf.setEditable( false );
 
 
 				custWindowFirstName.setText(Salesclerk.customer.getFirstName());

@@ -35,6 +35,16 @@ public class Card implements Serializable
 		 current = c; 
 	}
 
+	public void setReturned()
+	{
+		returned = true; 
+	}
+
+	public boolean getReturned()
+	{
+		return returned;
+	}
+
 	public int getCardID()
 	{
 		return cardNumber; 
