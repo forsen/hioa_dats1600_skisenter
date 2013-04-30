@@ -108,7 +108,10 @@ public class Cardlist implements Serializable
 			Card runner = it.next();
 
 			total += runner.totalCost();
-			total+=Info.CARDPRICE;
+			total += Info.CARDPRICE;
+
+			if( runner.getReturned() )
+				total += Info.RETURNPRICE; 
 			
 			
 		}

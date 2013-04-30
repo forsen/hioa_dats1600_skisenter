@@ -282,10 +282,15 @@ public class SalesWindowPanel extends JPanel
 			}
 			else
 			{
-				int cNr = Integer.parseInt(cardnrf.getText());
-				c = cardregistry.findCard(cNr);
-				shoppingCartList.setModel( shoppingCart.addToCart( c, sc ) );
-				cartPrice.setText(" Sum: " + shoppingCart.getSum() + "kr");
+				String pattern = "\\d{6}";
+				String  stringcNr = cardnrf.getText();
+				if(stringcNr.matches(pattern))
+				{
+					int cNr = Integer.parseInt(stringcNr);
+					c = cardregistry.findCard(cNr);
+					shoppingCartList.setModel( shoppingCart.addToCart( c, sc ) );
+					cartPrice.setText(" Sum: " + shoppingCart.getSum() + "kr");
+				}JOptionPane.showMessageDialog(null, "Du må sette inn 6 siffre");
 			}			
 		}
 		catch( NumberFormatException nfe )
@@ -396,6 +401,11 @@ public class SalesWindowPanel extends JPanel
 		{
 			Card c = cardIDList.getSelectedValue(); 
 			shoppingCartList.setModel( shoppingCart.addToCart( c, null ) );
+			//cardIDList.getModel().removeElementAt(cardIDList.getSelectedIndex() );
+			DefaultListModel<Card> lmc = (DefaultListModel<Card>) cardIDList.getModel();
+			lmc.removeElementAt( cardIDList.getSelectedIndex() );
+			cardIDList.setModel( lmc );
+
 		}
 		catch( NullPointerException npe )
 		{

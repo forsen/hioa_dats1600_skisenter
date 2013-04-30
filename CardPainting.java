@@ -96,6 +96,17 @@ public class CardPainting extends JPanel
 				// this is bad!
 			}
 		}
+		catch( IllegalArgumentException iae )
+		{
+			try
+			{
+				persImg = ImageIO.read( new File("persImg/default.png"));
+			}
+			catch( IOException ioe )
+			{
+				// blah
+			}
+		}
 
 		try
 		{

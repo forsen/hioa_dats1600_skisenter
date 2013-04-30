@@ -18,6 +18,7 @@ public class Admin extends JFrame
 	private List<Validations> validations;
 	private Cardlist cardregistry;
 	private JTabbedPane adminTabs;
+	
 
 	
 	
@@ -28,6 +29,7 @@ public class Admin extends JFrame
 		list = l;
 		validations = v;
 		cardregistry = cl;
+
 
 		framePnl = new JPanel()
 		{
@@ -50,6 +52,8 @@ public class Admin extends JFrame
 
 		adminInfoPnl = new AdminInfoPanel(list, validations, cardregistry);
 		statInfoPnl = new AdminStatistikkPanel(list, validations, cardregistry );
+		
+		
 		listner = new Listner();
 
 		layout = new BorderLayout( 5, 5 );
@@ -61,6 +65,7 @@ public class Admin extends JFrame
 		framePnl.add(adminTabs);
 
 		ImageIcon info = new ImageIcon("img/infoadmin.png");
+		
 		ImageIcon statistikk = new ImageIcon("img/statistikkadmin.png");
 		
 		adminTabs.addTab("Info", info, adminInfoPnl);
