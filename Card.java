@@ -6,6 +6,7 @@ public class Card implements Serializable
 	private List<Skicard> skiCardList; 
 	private int cardNumber;
 	private Skicard current; 
+	private boolean returned; 
 	private static int next = 100000;
 
 	public Card()
