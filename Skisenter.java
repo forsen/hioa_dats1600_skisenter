@@ -90,21 +90,19 @@ public class Skisenter
 				a.setVisible( false );
 
 				Lift chLift = new Chairlift(validations, registry, "Superheisen", 2000, 3 );
-				final Control lift1 = new Control( registry,  chLift, cardregistry );
+				lift1 = new Control( registry,  chLift, cardregistry );
 				lift1.setJMenuBar( new MenuBar().createMenu() );
-				lift1.setVisible(false);
 				lift1.setLocation(700,425);
 				lift1.setIconImage(ikon);
-
+				lift1.setVisible(false);
 
 				Lift tLift = new Tcuplift( validations, registry, "Rævvaheisen", 1433 );
 
-				final Control lift2 = new Control( registry, tLift, cardregistry );   
+				lift2 = new Control( registry, tLift, cardregistry );   
 				lift2.setJMenuBar( new MenuBar().createMenu() );
-				lift2.setVisible(false);
 				lift2.setLocation(700,425);
 				lift2.setIconImage(ikon);
-
+				lift2.setVisible(false);
 			}			
 
 		} );

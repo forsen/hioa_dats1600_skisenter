@@ -30,6 +30,7 @@ public class AdminStatistikkPanel extends JPanel
 
 	public AdminStatistikkPanel(Personlist l,List<Validations> v, Cardlist cr )
 	{
+		setBackground(new Color(200, 230, 255));
 		list = l;
 		validations = v;
 		cardregistry = cr;

@@ -9,7 +9,7 @@ public class MenuBar
 	private JMenuBar menuBar;
 	private JMenu file; 
 	private JMenu edit; 
-	private JMenu doSomethingFunny;	
+	private JMenu windows;	
 	private MenuListener menuListener;
 
 	private JMenuItem save;
@@ -23,7 +23,7 @@ public class MenuBar
 		menuBar = new JMenuBar();
 		file = new JMenu("File");
 		edit = new JMenu("Edit");
-		doSomethingFunny = new JMenu("doSomethingFunny");
+		windows = new JMenu("Windows");
 
 		menuListener = new MenuListener();
 
@@ -32,10 +32,10 @@ public class MenuBar
 	public JMenuBar createMenu()
 	{
 		makeFile();
-		makeSomethingFunny();
+		makeWindows();
 		menuBar.add( file );
 		menuBar.add( edit );
-		menuBar.add( doSomethingFunny );
+		menuBar.add( windows );
 
 		return menuBar;
 	}
@@ -52,7 +52,7 @@ public class MenuBar
 		file.add( exit );
 	}
 
-	private void makeSomethingFunny()
+	private void makeWindows()
 	{
 		lifts = new JMenuItem("Heiskontroll");
 		info = new JMenuItem("Info");
@@ -62,9 +62,9 @@ public class MenuBar
 		info.addActionListener( menuListener );
 		admin.addActionListener( menuListener );
 
-		doSomethingFunny.add( lifts );
-		doSomethingFunny.add( info );
-		doSomethingFunny.add( admin );
+		windows.add( lifts );
+		windows.add( info );
+		windows.add( admin );
 
 	}
 

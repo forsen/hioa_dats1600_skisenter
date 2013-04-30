@@ -19,27 +19,25 @@ public class AdminInfoPanel extends JPanel
 	private List<Validations> validations;
 	private Cardlist cardregistry;
 	private JTable perstable, passTable;
-	
+
 
 	public AdminInfoPanel(Personlist l,List<Validations> v, Cardlist cr )
 	{
 		
-		setBackground(new Color(220, 240, 255));
 		list = l;
 		validations = v;
 		cardregistry = cr;
 
 		fieldPnl = new JPanel(new GridLayout( 2,3 ));
-		fieldPnl.setBackground(new Color(220, 240, 255));
 		butnPnl = new JPanel(new GridLayout(2,2));
-		butnPnl.setBackground(new Color(220, 240, 255));
-		dispPnl = new JPanel(new BorderLayout());
-		dispPnl.setBackground(new Color(220, 240, 255));
+		dispPnl = new JPanel();
 	
+		
 		
 		setLayout( new BorderLayout( 5, 5) );
 
 		listener = new Listener();
+
 
 		perstable = list.personTable();
 		passTable = showPassings();
@@ -49,8 +47,11 @@ public class AdminInfoPanel extends JPanel
 		dispPnl.setSize(400,500);
 		
 
+
 		display = new JTextArea(20,40);
 		display.setEditable(false);
+
+
 		
 		fieldPnl.add( new JLabel( "Kortnr" ) );
 		crdNr = new JTextField(5);
@@ -87,14 +88,11 @@ public class AdminInfoPanel extends JPanel
 		butnPnl.add(showPassings);
 		
 
-		//dispPnl.add(scroll);
-		
+		dispPnl.add(scroll);
 
 		add(fieldPnl, BorderLayout.PAGE_START);
 		add(butnPnl, BorderLayout.CENTER);
 		add(dispPnl, BorderLayout.PAGE_END);
-		
-
 
 	}
 
@@ -109,25 +107,15 @@ public class AdminInfoPanel extends JPanel
 		catch(NullPointerException npe)
 		{
 			display.setText("Fant ikke eieren til kortet");
-
-
 		}
 		
 	} 
-
-	public void showPersons()
-	{
-		
-		display.setText(list.personListe());
-	}
 
 
 	public void showPersonsWithcards()
 	{
 		list.sort();
 		display.setText(list.toString());
-		dispPnl.add(scroll);
-	
 	}
 
 		
@@ -190,42 +178,42 @@ public class AdminInfoPanel extends JPanel
       		if(e.getSource() == findPerson)
       		{
       			findPerson();
-      			scroll.setViewportView(display);
       		}
       		if(e.getSource() == showPersons)
       		{
+
       			
       			scroll.setViewportView(perstable);
+
+
       		}
 
       		if(e.getSource() == showPersWcards)
       		{
       			showPersonsWithcards();
-      			scroll.setViewportView(display);
       		}
 
       		if(e.getSource() == showCards)
       		{
       			showCards();
-      			scroll.setViewportView(display);
       		}
 
       		if(e.getSource() == showPassings)
       		{
+
       			
       			scroll.setViewportView(passTable);
+      		
+
       		}
 
       		if(e.getSource() == deletePersBtn)
       		{
       			deletePerson();
-      			scroll.setViewportView(display);
       		}
 
       		
     	}
-	}
-
-
+	}	
 }
 	
