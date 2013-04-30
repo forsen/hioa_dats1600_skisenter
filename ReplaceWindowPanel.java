@@ -64,8 +64,11 @@ public class ReplaceWindowPanel extends JPanel
 
 
 		custIdLb = new JLabel( "Kundenummer" ) ;
-		replaceWindowCustIdtf = new JTextField(10);
+
+		replaceWindowCustIdtf = new JTextField(12);
 		replaceWindowCustIdtf.setToolTipText("Har du søkt på en kunde og trykket på denne vil kundenr automatisk komme opp her");
+
+
 		replaceWindowCustIdtf.setEditable( false );
 	//	fielPnl.add(replaceWindowCustIdtf);
 
@@ -75,6 +78,9 @@ public class ReplaceWindowPanel extends JPanel
 
 		replaceWindowRepBtn = new JButton(" Erstatt ");
 		replaceWindowRepBtn.setToolTipText("Erstatt kortet du har valgt");
+
+		replaceWindowRepBtn = new JButton(" Erstatt kort");
+
 		replaceWindowRepBtn.addActionListener( listener );
 	//	butnFld.add(replaceWindowRepBtn);
 		statusTxt = s;
@@ -99,22 +105,34 @@ public class ReplaceWindowPanel extends JPanel
 
 		GridBagConstraints c = new GridBagConstraints();
 
-		c.anchor = GridBagConstraints.LINE_START;
-		c.fill = GridBagConstraints.HORIZONTAL;
+		c.anchor = GridBagConstraints.FIRST_LINE_START;
+		c.fill = GridBagConstraints.VERTICAL;
+
+		c.weightx = 1;
+		c.weighty= 1;
 
 		c.gridx = 0;
+		c.gridy = 0;
 		contentPnl.add(formPnl,c);
 
 		c.gridy=3;
-		c.gridx=1;
+		c.gridx=0;
 		contentPnl.add(replaceWindowRepBtn, c);
 
-		c.gridx=1;
-		c.gridy=0;
+		c.gridx=0;
+		c.gridy=1;
 		c.gridheight=2;
 		contentPnl.add(resultPnl,c);
 
-		add(contentPnl);
+		setLayout(new GridBagLayout());
+		GridBagConstraints cc = new GridBagConstraints();
+
+		cc.fill=GridBagConstraints.BOTH;
+		cc.anchor= GridBagConstraints.FIRST_LINE_START;
+		cc.weightx = 1;
+		cc.weighty = 1;
+
+		add(contentPnl, cc);
 
 		
 

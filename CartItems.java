@@ -36,6 +36,9 @@ public class CartItems
 
 	public void checkOut()
 	{
-		card.input( skicard );
+		if( skicard == null )
+			card.setReturned();
+		else
+			card.input( skicard );
 	}
 }

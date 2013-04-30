@@ -71,7 +71,8 @@ public class Cardlist implements Serializable
 		while(it.hasNext())
 		{
 			Card card = it.next();
-			searchresult.addElement( card );
+			if( !card.getReturned() )
+				searchresult.addElement( card );
 		}
 
 		return searchresult;
@@ -107,7 +108,7 @@ public class Cardlist implements Serializable
 			Card runner = it.next();
 
 			total += runner.totalCost();
-			total+=70;
+			total+=Info.CARDPRICE;
 			
 			
 		}
@@ -210,9 +211,12 @@ public class Cardlist implements Serializable
 		while(it.hasNext())
 		{
 			Card runner = it.next();
-			text.append(runner.toString());
-			text.append(runner.history());
-			text.append("\n");
+			if( !runner.getReturned() )
+			{
+				text.append(runner.toString());
+				text.append(runner.history());
+				text.append("\n");
+			}
 		
 		} 
 		
