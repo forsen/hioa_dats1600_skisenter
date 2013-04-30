@@ -102,6 +102,7 @@ public class Control extends JFrame
 		ctrlWindowTextShowTime = new JLabel("Klokke:");
 
 		ctrlWindowCustNr = new JTextField();
+		ctrlWindowCustNr.addActionListener( btnListener );
 		ctrlRegCustNr.addMouseListener(new MouseListener() 
 		{
 
@@ -137,6 +138,7 @@ public class Control extends JFrame
 		
 		ctrlWindowShowTime = new JTextField();
 		ctrlWindowShowTime.setHorizontalAlignment(JTextField.CENTER);
+
 
 
 
@@ -355,6 +357,10 @@ public class Control extends JFrame
 		public void actionPerformed( ActionEvent ae )
 		{
 			if( ae.getSource() == ctrlRegCustNr )
+			{
+				tryValidate();
+			}
+			if( ae.getSource() == ctrlWindowCustNr )
 			{
 				tryValidate();
 			}
