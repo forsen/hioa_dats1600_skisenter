@@ -368,8 +368,8 @@ public class Personlist implements Serializable
 		{	
 			Person runner = it.next();
 			
-			people[i][0] = runner.getFirstName();
-			people[i][1] = runner.getLastName();
+			people[i][0] = runner.getLastName();
+			people[i][1] = runner.getFirstName();
 			people[i][2] = runner.getBirth();
 			people[i][3] = runner.getphoneNr();
 			people[i][4] = runner.getCreated();
@@ -378,7 +378,7 @@ public class Personlist implements Serializable
 		
 		} 
 		 perstable = new JTable(people,columnName);
-			perstable.setEnabled(false);
+		perstable.setEnabled(false);
 		System.out.println("Du har opprettet tabellen");
 		return perstable;
 		

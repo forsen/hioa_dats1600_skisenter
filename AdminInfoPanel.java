@@ -15,7 +15,6 @@ public class AdminInfoPanel extends JPanel
 	private JPanel fieldPnl, butnPnl, dispPnl;
 	private Listener listener;
 	private JScrollPane scroll;
-	private JScrollPane scrolltab;
 	private Personlist list;
 	private List<Validations> validations;
 	private Cardlist cardregistry;
@@ -43,17 +42,13 @@ public class AdminInfoPanel extends JPanel
 		listener = new Listener();
 
 		table = list.personTable();
-		scrolltab = new JScrollPane(table);
-		scrolltab.setBackground(new Color(220, 240, 255));
-		persPnl.add(scrolltab,BorderLayout.CENTER);
-		persPnl.setSize(400,500);
+		scroll = new JScrollPane(table);
+		dispPnl.add(scroll);
+		dispPnl.setSize(400,500);
 		
 
 		display = new JTextArea(20,40);
 		display.setEditable(false);
-		scroll = new JScrollPane(display);
-
-
 		
 		fieldPnl.add( new JLabel( "Kortnr" ) );
 		crdNr = new JTextField(5);
@@ -189,30 +184,36 @@ public class AdminInfoPanel extends JPanel
       		if(e.getSource() == findPerson)
       		{
       			findPerson();
+      			scroll.setViewportView(display);
       		}
       		if(e.getSource() == showPersons)
       		{
       			personList();
+      			scroll.setViewportView(table);
       		}
 
       		if(e.getSource() == showPersWcards)
       		{
       			showPersonsWithcards();
+      			scroll.setViewportView(display);
       		}
 
       		if(e.getSource() == showCards)
       		{
       			showCards();
+      			scroll.setViewportView(display);
       		}
 
       		if(e.getSource() == showPassings)
       		{
       			showPassings();
+      			scroll.setViewportView(display);
       		}
 
       		if(e.getSource() == deletePersBtn)
       		{
       			deletePerson();
+      			scroll.setViewportView(display);
       		}
 
       		
