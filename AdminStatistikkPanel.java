@@ -33,7 +33,7 @@ public class AdminStatistikkPanel extends JPanel
 		setBackground(new Color(200, 230, 255));
 
 
-
+		
 
 		list = l;
 		validations = v;
