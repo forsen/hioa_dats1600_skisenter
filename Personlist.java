@@ -363,7 +363,7 @@ public class Personlist implements Serializable
 		
 		Iterator<Person> it = registry.iterator();
 		
-		for(int i = 1; i < registry.size(); i++)
+		for(int i = 0; i < registry.size(); i++)
 		{	
 			Person runner = it.next();
 			
