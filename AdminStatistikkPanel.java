@@ -31,6 +31,10 @@ public class AdminStatistikkPanel extends JPanel
 	public AdminStatistikkPanel(Personlist l,List<Validations> v, Cardlist cr )
 	{
 		setBackground(new Color(200, 230, 255));
+
+
+
+
 		list = l;
 		validations = v;
 		cardregistry = cr;
@@ -48,7 +52,8 @@ public class AdminStatistikkPanel extends JPanel
 		graph = new int[10];
 
 		graphPnl = new GraphPanel( graph ); 
-
+		displayPnl.setBackground(new Color(200, 230, 255));
+		graphPnl.setBackground(new Color(200, 230, 255));
 		tabDisp.addTab("Rapport", displayPnl);
 		tabDisp.addTab("Grafisk visning", graphPnl);
 

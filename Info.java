@@ -92,6 +92,7 @@ public class Info extends JFrame
 
 		ImageIcon nyheter = new ImageIcon("img/nyheter.png");
 		newsButton = new JButton(nyheter);
+		newsButton.setToolTipText("OFFPIST: Nyheter");
 		ImageIcon nyheter2 = new ImageIcon("img/nyheter2.png");
 		newsButton.setRolloverIcon(nyheter2);
 		newsButton.setFocusPainted(false);
@@ -106,6 +107,7 @@ public class Info extends JFrame
 
 		ImageIcon info = new ImageIcon("img/info.png");
 		infoButton = new JButton(info);
+		infoButton.setToolTipText("OFFPIST: Informasjon");
 		ImageIcon info2 = new ImageIcon("img/info2.png");
 		infoButton.setRolloverIcon(info2);
 		infoButton.setFocusPainted(false);
@@ -120,6 +122,7 @@ public class Info extends JFrame
 
 		ImageIcon tilbud = new ImageIcon("img/tilbud.png");
 		offersButton = new JButton(tilbud);
+		offersButton.setToolTipText("OFFPIST: Tilbud");
 		ImageIcon tilbud2 = new ImageIcon("img/tilbud2.png");
 		offersButton.setRolloverIcon(tilbud2);
 		offersButton.setFocusPainted(false);
@@ -135,6 +138,7 @@ public class Info extends JFrame
 
 		ImageIcon priser = new ImageIcon("img/priser.png");
 		pricesButton = new JButton(priser);
+		pricesButton.setToolTipText("OFFPIST: Priser");
 		ImageIcon priser2 = new ImageIcon("img/priser2.png");
 		pricesButton.setRolloverIcon(priser2);
 		pricesButton.setFocusPainted(false);
