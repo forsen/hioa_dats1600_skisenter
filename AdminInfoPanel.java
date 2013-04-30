@@ -20,12 +20,14 @@ public class AdminInfoPanel extends JPanel
 	private List<Validations> validations;
 	private Cardlist cardregistry;
 	private JTable perstable, passTable;
+	private Toolkit toolbox;
 	
 
 
 	public AdminInfoPanel(Personlist l,List<Validations> v, Cardlist cr )
 	{
 		Border etched = BorderFactory.createEtchedBorder();
+		toolbox = Toolkit.getDefaultToolkit();
 
 		list = l;
 		validations = v;
@@ -76,18 +78,22 @@ public class AdminInfoPanel extends JPanel
 
 		showPersons = new JButton(" Vis Personliste ");
 		showPersons.addActionListener( listener );
+		showPersons.setToolTipText("Vis en liste over alle registrerte personer ");
 		butnPnl.add(showPersons);
 
 		showCards = new JButton(" Vis uregistrerte kort ");
 		showCards.addActionListener( listener );
+		showCards.setToolTipText("Vis en liste over alle uregistrerte kort");
 		butnPnl.add(showCards);
 
 		showPersWcards = new JButton(" Vis personer med kort ");
 		showPersWcards.addActionListener( listener );
+		showPersWcards.setToolTipText("Vis en liste over alle registrerte personer og alle deres kort");
 		butnPnl.add(showPersWcards);
 
 		showPassings = new JButton(" Vis heis passeringer ");
 		showPassings.addActionListener( listener );
+		showPersons.setToolTipText("Vis en liste over alle passeringer som er gjort i alle heiser ");
 		butnPnl.add(showPassings);
 		butnPnl.setBorder(etched);
 		
@@ -118,9 +124,14 @@ public class AdminInfoPanel extends JPanel
 	{
 		try
 		{
-			int cardnr = Integer.parseInt(crdNr.getText());
-			Person p = list.findPersonByCard(cardnr);
-			display.setText(p.toString());
+			String pattern = "\\d{6}";
+			String stingcardNr = crdNr.getText();
+			if(stingcardNr.matches(pattern))
+			{
+				int cardnr = Integer.parseInt(crdNr.getText());
+				Person p = list.findPersonByCard(cardnr);
+				display.setText(p.toString());
+			}JOptionPane.showMessageDialog(null,"Du må ha 6 siffre");
 		}
 		catch(NullPointerException npe)
 		{
@@ -149,10 +160,16 @@ public class AdminInfoPanel extends JPanel
 	{
 		try
 		{
-			int tlfnr = Integer.parseInt(tlfNr.getText());
-			Person p = list.deletePerson((list.findPerson(tlfnr)));
-			display.setText(p.getFirstName() +" "+ p.getLastName()+ " er nå slettet fra systemet");
-			tlfNr.setText("");
+			String pattern = "\\d{8}";
+			String stingtlf = tlfNr.getText();
+			
+			if(stingtlf.matches(pattern))
+			{
+				int tlfnr = Integer.parseInt(stingtlf);
+				Person p = list.deletePerson((list.findPerson(tlfnr)));
+				display.setText(p.getFirstName() +" "+ p.getLastName()+ " er nå slettet fra systemet");
+				tlfNr.setText("");
+			}JOptionPane.showMessageDialog(null,"Du må ha 8 siffre");
 
 		}
 		catch(NullPointerException npe)

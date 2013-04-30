@@ -332,11 +332,16 @@ public class AdminStatistikkPanel extends JPanel
 	public void passings()
 	{
 		String lift = liftFLd.getText();
+		String pattern = "\\d{1}";
    		if(!(lift.isEmpty()))
    		{
-   			int liftnr = Integer.parseInt(lift);
-   			display.append("\nAntall passeringer gjennom heis nummer " + lift + " er " +cal.passesbyTypeofCard( liftnr));
-   					
+   			
+   			if(lift.matches(pattern))
+			{
+   				int liftnr = Integer.parseInt(lift);
+   				display.append("\nAntall passeringer gjennom heis nummer " + lift + " er " +cal.passesbyTypeofCard( liftnr));
+   			}else 
+   			JOptionPane.showMessageDialog(null,"Du må sette inn siffer");		
    		}
    		else display.append("\nAntall passeringer gjennom alle heiser er " + cal.showPassings());
 	}

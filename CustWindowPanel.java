@@ -186,19 +186,23 @@ public class CustWindowPanel extends JPanel
 		
 		try
 		{
-			int number = Integer.parseInt(custWindowPhone.getText());
-			Date born = new SimpleDateFormat("ddMMyy").parse(custWindowBorn.getText());
-			Person p = new Person( firstname, lastname, number, born, img );
+			String pattern = "\\d{8}";
+			String snumber = custWindowPhone.getText();
+			if(snumber.matches(pattern))
+			{
+				int number = Integer.parseInt(snumber);
+				Date born = new SimpleDateFormat("ddMMyy").parse(custWindowBorn.getText());
+				Person p = new Person( firstname, lastname, number, born, img );
 			
-		
+				statusTxt.setText(custRegistry.input( p ));
 
-			statusTxt.setText(custRegistry.input( p ));
+				findPerson();
 
-			findPerson();
+				blankOut();
 
-			blankOut();
-
-			return p;
+				return p;
+			}
+			JOptionPane.showMessageDialog(null, "Du må ha 8 siffere");
 
 		}
 		catch( ParseException pe )

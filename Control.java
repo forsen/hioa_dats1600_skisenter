@@ -243,18 +243,25 @@ public class Control extends JFrame
 	{
 		try
 		{
-			int cardNumber = Integer.parseInt(ctrlWindowCustNr.getText());
+			
+			String pattern = "\\d{6}";
+			String stringcardNumber = ctrlWindowCustNr.getText();
+			
+			if(stringcardNumber.matches(pattern))
+			{	
+				int cardNumber = Integer.parseInt(stringcardNumber);
 
-			if (registry.findCard( cardNumber ) != null)
-				validatingCard = registry.findCard( cardNumber );
+				if (registry.findCard( cardNumber ) != null)
+					validatingCard = registry.findCard( cardNumber );
 
-			else if (cardlist.findCard(cardNumber)!= null)
-				validatingCard =cardlist.findCard( cardNumber );
+				else if (cardlist.findCard(cardNumber)!= null)
+					validatingCard =cardlist.findCard( cardNumber );
 
-			validatingCard.getBought(); // just to trigger a null pointer exception in case there is no skicard.
+				validatingCard.getBought(); // just to trigger a null pointer exception in case there is no skicard.
 
-			return validatingCard.getCurrent();
-
+				return validatingCard.getCurrent();
+			} ctrlWindowPassThrough.setBackground(Color.RED);
+			 ctrlWindowPassThroughLabelText.setText("Skriv et gyldig kortnummer (6 siffer)");
 		}
 		catch( NumberFormatException nfe )
 		{
