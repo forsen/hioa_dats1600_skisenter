@@ -18,37 +18,42 @@ public class AdminInfoPanel extends JPanel
 	private Personlist list;
 	private List<Validations> validations;
 	private Cardlist cardregistry;
-	private JTable table;
-	
+	private JTable perstable, passTable, unregCardsTable;
+
 
 	public AdminInfoPanel(Personlist l,List<Validations> v, Cardlist cr )
 	{
 		
-		setBackground(new Color(220, 240, 255));
 		list = l;
 		validations = v;
 		cardregistry = cr;
 
 		fieldPnl = new JPanel(new GridLayout( 2,3 ));
-		fieldPnl.setBackground(new Color(220, 240, 255));
 		butnPnl = new JPanel(new GridLayout(2,2));
-		butnPnl.setBackground(new Color(220, 240, 255));
-		dispPnl = new JPanel(new BorderLayout());
-		dispPnl.setBackground(new Color(220, 240, 255));
+		dispPnl = new JPanel();
 	
+		setBackground(new Color(200, 230, 255));
+		fieldPnl.setBackground(new Color(200, 230, 255));
+		butnPnl.setBackground(new Color(200, 230, 255));
+		dispPnl.setBackground(new Color(200, 230, 255));
 		
 		setLayout( new BorderLayout( 5, 5) );
 
 		listener = new Listener();
 
-		table = list.personTable();
-		scroll = new JScrollPane(table);
-		dispPnl.add(scroll);
-		dispPnl.setSize(400,500);
-		
+
+		perstable = list.personTable();
+		passTable = showPassings();
+		unregCardsTable = showCards();
+
 
 		display = new JTextArea(20,40);
 		display.setEditable(false);
+
+		scroll = new JScrollPane(display);
+		dispPnl.add(scroll);
+		dispPnl.setSize(400,500);
+		
 		
 		fieldPnl.add( new JLabel( "Kortnr" ) );
 		crdNr = new JTextField(5);
@@ -85,14 +90,11 @@ public class AdminInfoPanel extends JPanel
 		butnPnl.add(showPassings);
 		
 
-		//dispPnl.add(scroll);
-		
+		dispPnl.add(scroll);
 
 		add(fieldPnl, BorderLayout.PAGE_START);
 		add(butnPnl, BorderLayout.CENTER);
 		add(dispPnl, BorderLayout.PAGE_END);
-		
-
 
 	}
 
@@ -107,38 +109,39 @@ public class AdminInfoPanel extends JPanel
 		catch(NullPointerException npe)
 		{
 			display.setText("Fant ikke eieren til kortet");
-
-
 		}
 		
 	} 
 
-	public void showPersons()
-	{
-		
-		display.setText(list.personListe());
-	}
-
-
-	public void personList()
-	{
-		
-
-		
-	}
 
 	public void showPersonsWithcards()
 	{
 		list.sort();
 		display.setText(list.toString());
-		dispPnl.add(scroll);
-	
 	}
 
 		
-	public void showCards()
+	public JTable showCards()
 	{
-		display.setText(cardregistry.toString());
+		String[] columnName = {"KortNr", "Pris", "Rabatt", "KortType", "Går ut"};
+		Object[][] passings = new Object[validations.size() ][4]; 
+		Iterator<Validations> it = validations.iterator();
+
+		for (int i = 1; i < validations.size(); i++ )
+		{
+			Validations runner = it.next();
+
+			passings[i][0] = runner.getLiftId();
+			passings[i][1] = runner.getCard();
+			passings[i][2] = runner.getCard().getCurrent().getType();
+			passings[i][3] = runner.getDate();
+
+		}
+		passTable = new JTable(passings,columnName);
+		passTable.setEnabled(false);
+		System.out.println("Du har opprettet tabellen");
+		return passTable;
+		
 	}
 	
 	
@@ -160,17 +163,28 @@ public class AdminInfoPanel extends JPanel
 
 	}
 
-	public void showPassings()
+	public JTable showPassings()
 	{
 		
+		String[] columnName = {"HeisNr", "KortNr", "KortType", "Passerings tid"};
+		Object[][] passings = new Object[validations.size() ][4]; 
 		Iterator<Validations> it = validations.iterator();
-		StringBuilder text = new StringBuilder();
 
-		while( it.hasNext() )
+		for (int i = 1; i < validations.size(); i++ )
 		{
-			text.append( it.next().toString() );
+			Validations runner = it.next();
+
+			passings[i][0] = runner.getLiftId();
+			passings[i][1] = runner.getCard();
+			passings[i][2] = runner.getCard().getCurrent().getType();
+			passings[i][3] = runner.getDate();
+
 		}
-		display.setText( text.toString() );
+		passTable = new JTable(passings,columnName);
+		passTable.setEnabled(false);
+		System.out.println("Du har opprettet tabellen");
+		return passTable;
+		
 	}	
 
 	
@@ -188,8 +202,11 @@ public class AdminInfoPanel extends JPanel
       		}
       		if(e.getSource() == showPersons)
       		{
-      			personList();
-      			scroll.setViewportView(table);
+
+      			
+      			scroll.setViewportView(perstable);
+
+
       		}
 
       		if(e.getSource() == showPersWcards)
@@ -206,8 +223,9 @@ public class AdminInfoPanel extends JPanel
 
       		if(e.getSource() == showPassings)
       		{
-      			showPassings();
-      			scroll.setViewportView(display);
+
+      			scroll.setViewportView(passTable);
+      		
       		}
 
       		if(e.getSource() == deletePersBtn)
@@ -218,8 +236,6 @@ public class AdminInfoPanel extends JPanel
 
       		
     	}
-	}
-
-
+	}	
 }
 	
