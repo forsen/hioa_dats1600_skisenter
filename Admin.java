@@ -17,6 +17,7 @@ public class Admin extends JFrame
 	private BorderLayout layout;
 	private List<Validations> validations;
 	private Cardlist cardregistry;
+	private JTabbedPane adminTabs;
 
 	
 	
@@ -28,8 +29,25 @@ public class Admin extends JFrame
 		validations = v;
 		cardregistry = cl;
 
-		topPnl = new JPanel( new FlowLayout() );
-		framePnl = new JPanel(new FlowLayout());
+		framePnl = new JPanel()
+		{
+			@Override
+			protected void paintComponent(Graphics grphcs)
+			{		
+				Graphics2D g2d = (Graphics2D) grphcs;
+				g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+				Color color1 = new Color(245, 250, 255);
+				Color color2 = new Color(150, 195, 245);
+
+				GradientPaint gp = new GradientPaint(0,0, color1, 0, getHeight(), color2);
+				g2d.setPaint(gp);
+				g2d.fillRect(0, 0, getWidth(), getHeight());
+
+			}
+
+		};
+
 		adminInfoPnl = new AdminInfoPanel(list, validations, cardregistry);
 		statInfoPnl = new AdminStatistikkPanel(list, validations, cardregistry );
 		listner = new Listner();
@@ -39,26 +57,19 @@ public class Admin extends JFrame
 		c = getContentPane();
 		
 
-		admInfoBtn = new JButton("Info");
-		admInfoBtn.setToolTipText("Her er det generell info (personliste,kortliste etc");
-		admInfoBtn.addActionListener(listner);	
-		admStatBtn = new JButton("Statistikk");
-		admStatBtn.setToolTipText("Her er det statistikk over salg, registreringer etc");
-		admStatBtn.addActionListener(listner);	
+		adminTabs = new JTabbedPane();
+		framePnl.add(adminTabs);
 
-		topPnl.add(admInfoBtn);
-		topPnl.add(admStatBtn);
+		ImageIcon info = new ImageIcon("img/infoadmin.png");
+		ImageIcon statistikk = new ImageIcon("img/statistikkadmin.png");
 		
-		framePnl.add(adminInfoPnl);
-		framePnl.add(statInfoPnl );
+		adminTabs.addTab("Info", info, adminInfoPnl);
+		adminTabs.addTab("Statistikk", statistikk, statInfoPnl );
 
 		c.setLayout( layout );
-		c.add(topPnl, BorderLayout.PAGE_START );
 		c.add(framePnl );
 
 		framePnl.setVisible(true);
-		adminInfoPnl.setVisible(true);
-		statInfoPnl.setVisible(false);
 
 		layout.layoutContainer( c );
 
@@ -74,16 +85,7 @@ public class Admin extends JFrame
      		
     		adminInfoPnl.setVisible(false);
 			statInfoPnl.setVisible(false);
-			
-     		if ( e.getSource() == admInfoBtn )
-      		{
-       			adminInfoPnl.setVisible(true);
-      		}
 
-      		if( e.getSource() == admStatBtn)
-      		{
-      			statInfoPnl.setVisible(true);
-      		}
     	}
 	}
 }
