@@ -25,8 +25,6 @@ public class Control extends JFrame
 	private BtnListener btnListener;
 	private Color passThroughColor;
 	private Font font;
-	private Date usedRecentlyPrev, usedRecentlyNow;
-	private Skicard usedCard = null;
 	private static final int TIMELIMIT = 10*1000; // 10 seconds.
 
 
@@ -302,8 +300,7 @@ public class Control extends JFrame
 					ctrlWindowPassThroughLabelText.setText("Gyldig: Kortet er gyldig til: " + ((Timebasedcard) currentCard).getExpires());
 					((Timebasedcard) currentCard).setLastValidated( now ); 
 					lift.registrations( validatingCard );
-					usedRecentlyPrev = new Date();
-					usedCard = currentCard;
+
 					}
 
 					else 
