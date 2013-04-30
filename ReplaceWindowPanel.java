@@ -89,10 +89,8 @@ public class ReplaceWindowPanel extends JPanel
 
 		//Første kolonne////////////////////////////////////////////////////////////
 		c.gridheight = 1; 
-		c.weightx = 0.5;
 		c.gridx = 0; 
 		c.gridy = 0;
-		c.gridwidth = 9; 
 		c.weighty = 0.2;
 		add(labelPnl, c);
 		
@@ -106,10 +104,8 @@ public class ReplaceWindowPanel extends JPanel
 
 //ANDRE-KOLONNE ////////////////////
 		c.gridheight = 1; 
-		c.weightx = 0.5;
-		c.gridx = 0; 
-		c.gridy = 2;
-		c.gridwidth = 1; 
+		c.gridx = 1; 
+		c.gridy = 0;
 		c.weighty = 0.2;
 		add(butnFld, c);
 
@@ -123,8 +119,8 @@ public class ReplaceWindowPanel extends JPanel
 	
 		c.gridheight = 1;
 //		c.weightx = 0.5;
-		c.gridx = 3; 
-		c.gridy = 3; 
+		c.gridx = 1; 
+		c.gridy = 1; 
 		c.gridwidth = 1;
 	//	c.weighty = 0.2;
 		add(fielPnl, c);
