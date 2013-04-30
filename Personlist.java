@@ -10,7 +10,6 @@ public class Personlist implements Serializable
 	
 	private List<Person> registry = new LinkedList<>();
 
-	private JTable perstable;
 
 
 	public boolean isEmpty()
@@ -364,7 +363,7 @@ public class Personlist implements Serializable
 		
 		Iterator<Person> it = registry.iterator();
 		
-		for(int i = 1; i < registry.size(); i++)
+		for(int i = 0; i < registry.size(); i++)
 		{	
 			Person runner = it.next();
 			
@@ -377,7 +376,7 @@ public class Personlist implements Serializable
 
 		
 		} 
-		perstable = new JTable(people,columnName);
+		JTable perstable = new JTable(people,columnName);
 		perstable.setEnabled(false);
 		System.out.println("Du har opprettet tabellen");
 		return perstable;
