@@ -71,7 +71,7 @@ public class ReplaceWindowPanel extends JPanel
 		
 	//	fielPnl.add(cardScrollList);
 
-		replaceWindowRepBtn = new JButton(" Erstatt ");
+		replaceWindowRepBtn = new JButton(" Erstatt kort");
 		replaceWindowRepBtn.setToolTipText("Erstatt kort");
 		replaceWindowRepBtn.addActionListener( listener );
 	//	butnFld.add(replaceWindowRepBtn);
