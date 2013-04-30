@@ -528,7 +528,7 @@ public class CashRegister extends JDialog
 		}
 		catch( NumberFormatException nfe )
 		{
-			if( sum > 0.0 );
+			if( sum > 0.0 )
 				JOptionPane.showMessageDialog(this, "Feltet kan kun bestå av tall, og \".\" er kommaseparator" );
 		}
 
