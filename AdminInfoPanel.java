@@ -45,16 +45,14 @@ public class AdminInfoPanel extends JPanel
 		perstable = list.personTable();
 		passTable = showPassings();
 
-		scroll = new JScrollPane(perstable);
-		dispPnl.add(scroll);
-		dispPnl.setSize(400,500);
-		
-
 
 		display = new JTextArea(20,40);
 		display.setEditable(false);
 
-
+		scroll = new JScrollPane(display);
+		dispPnl.add(scroll);
+		dispPnl.setSize(400,500);
+		
 		
 		fieldPnl.add( new JLabel( "Kortnr" ) );
 		crdNr = new JTextField(5);
@@ -181,6 +179,7 @@ public class AdminInfoPanel extends JPanel
       		if(e.getSource() == findPerson)
       		{
       			findPerson();
+      			scroll.setViewportView(display);
       		}
       		if(e.getSource() == showPersons)
       		{
@@ -194,25 +193,26 @@ public class AdminInfoPanel extends JPanel
       		if(e.getSource() == showPersWcards)
       		{
       			showPersonsWithcards();
+      			scroll.setViewportView(display);
       		}
 
       		if(e.getSource() == showCards)
       		{
       			showCards();
+      			scroll.setViewportView(display);
       		}
 
       		if(e.getSource() == showPassings)
       		{
 
-      			
       			scroll.setViewportView(passTable);
       		
-
       		}
 
       		if(e.getSource() == deletePersBtn)
       		{
       			deletePerson();
+      			scroll.setViewportView(display);
       		}
 
       		
