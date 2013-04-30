@@ -7,6 +7,8 @@ import java.awt.*;
 import java.io.*;
 import java.util.List;
 import java.util.Iterator;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class AdminInfoPanel extends JPanel
 {	
@@ -21,7 +23,8 @@ public class AdminInfoPanel extends JPanel
 	private Cardlist cardregistry;
 	private JTable perstable, passTable;
 	private Toolkit toolbox;
-	
+	private DefaultTableModeL tablemodel;
+ 	
 
 
 	public AdminInfoPanel(Personlist l,List<Validations> v, Cardlist cr )
@@ -44,7 +47,7 @@ public class AdminInfoPanel extends JPanel
 		
 
 		listener = new Listener();
-
+		tablemodel = new DefaultTableModel();
 
 		perstable = list.personTable();
 		passTable = showPassings();
@@ -188,7 +191,7 @@ public class AdminInfoPanel extends JPanel
 		Object[][] passings = new Object[validations.size() ][4]; 
 		Iterator<Validations> it = validations.iterator();
 
-		for (int i = 1; i < validations.size(); i++ )
+		for (int i = 0; i < validations.size(); i++ )
 		{
 			Validations runner = it.next();
 
