@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class NewsWindowPanel extends JPanel
 {
-	private JLabel news1, news2, news3, news4;
+	private JLabel header, news1, news2, news3, news4;
 
 
 
@@ -19,21 +19,22 @@ public class NewsWindowPanel extends JPanel
 		GridBagConstraints c = new GridBagConstraints();
 		setBackground(new Color(220, 240, 255));
 
+		header = new JLabel("Sesongåpning 20. desember 2013!");
+		header.setFont(new Font("Calibri", Font.BOLD, 20));
 
-		news1 = new JLabel("<html><body><br><br><b> Sesongåpning 20. desember 2013!</b> <br>" +
+		news1 = new JLabel("<html>" +
 	    "Vi åpner skianlegget 20. desember i år. Kom for gratis kaffe og vafler.<br>" +
-	    "________________________________________________________________________________________________________ <br><br>" +
-	    "<br><br><b> Sesongåpning 20. desember 2013!</b> <br>" +
-	    "Vi åpner skianlegget 20. desember i år. Kom for gratis kaffe og vafler.<br>" +
-	    "___________________________________________________________________________________________  <br><br>" +
-	    " </body></head>");
+	    "________________________________________________________________________________________________________ <br><br></head>");
 
 	    news1.setFont(new Font("Calibri", Font.PLAIN, 14));
 
-		c.gridx = 1;
-		c.gridy = 2;
+		c.gridx = 0;
+		c.gridy = 0;
 		c.anchor = GridBagConstraints.PAGE_START;
-		add(news1, c);
+		add(header, c);
+
+		c.gridy= 1;
+		add(news1,c);
 	}
 
 

@@ -97,7 +97,7 @@ public class AdminInfoPanel extends JPanel
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.VERTICAL;
 		c.anchor = GridBagConstraints.PAGE_END;
-		
+	
 
 		add(fieldPnl, c);
 
