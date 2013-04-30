@@ -357,7 +357,7 @@ public class Personlist implements Serializable
 
 	public JTable personTable()
 	{
-		System.out.println("Du kom inn i denne metoden");
+		sort();
 		String[] columnName = {"Fornavn", "Etternavn", "Født", "Tlf Nummer", "Opprettet"};
 		Object[][] people = new Object[registry.size() ][5]; 
 

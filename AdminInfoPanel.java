@@ -24,28 +24,29 @@ public class AdminInfoPanel extends JPanel
 
 	public AdminInfoPanel(Personlist l,List<Validations> v, Cardlist cr )
 	{
+		
+		setBackground(new Color(220, 240, 255));
 		list = l;
 		validations = v;
 		cardregistry = cr;
 
 		fieldPnl = new JPanel(new GridLayout( 2,3 ));
+		fieldPnl.setBackground(new Color(220, 240, 255));
 		butnPnl = new JPanel(new GridLayout(2,2));
+		butnPnl.setBackground(new Color(220, 240, 255));
 		dispPnl = new JPanel(new BorderLayout());
+		dispPnl.setBackground(new Color(220, 240, 255));
 	
-		
 		
 		setLayout( new BorderLayout( 5, 5) );
 
 		listener = new Listener();
 
-		
 		table = list.personTable();
 		scrolltab = new JScrollPane(table);
 		scrolltab.setBackground(new Color(220, 240, 255));
-		dispPnl.add(scrolltab,BorderLayout.CENTER);
-		dispPnl.setSize(400,500);
-		
-	
+		persPnl.add(scrolltab,BorderLayout.CENTER);
+		persPnl.setSize(400,500);
 		
 
 		display = new JTextArea(20,40);
@@ -111,6 +112,8 @@ public class AdminInfoPanel extends JPanel
 		catch(NullPointerException npe)
 		{
 			display.setText("Fant ikke eieren til kortet");
+
+
 		}
 		
 	} 
@@ -133,6 +136,8 @@ public class AdminInfoPanel extends JPanel
 	{
 		list.sort();
 		display.setText(list.toString());
+		dispPnl.add(scroll);
+	
 	}
 
 		
@@ -212,6 +217,8 @@ public class AdminInfoPanel extends JPanel
 
       		
     	}
-	}	
+	}
+
+
 }
 	
