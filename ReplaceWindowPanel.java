@@ -24,8 +24,6 @@ public class ReplaceWindowPanel extends JPanel
 	{
 		setBackground(new Color(200, 230, 255));
 
-		setLayout( new GridBagLayout( ) );
-		//setBackground(new Color(200, 230, 255));
 		Border etched = BorderFactory.createEtchedBorder();
 		Border repBorder = BorderFactory.createTitledBorder(etched, "Erstatt kort");
 		setBorder(repBorder);
@@ -43,12 +41,12 @@ public class ReplaceWindowPanel extends JPanel
 		cardIDList.addListSelectionListener( listListener );
 		cardScrollList = new JScrollPane( cardIDList);
 
-		labelPnl= new JPanel(new  GridLayout( 2,2 )); 
+		labelPnl= new JPanel(); 
 		labelPnl.setBackground(new Color(200, 230, 255));
-		fielPnl = new JPanel(new BorderLayout( 2,1 )); 
+		fielPnl = new JPanel(); 
 		fielPnl.setBackground(new Color(200, 230, 255));
 
-		butnFld = new JPanel(new BorderLayout( 5,5)); 
+		butnFld = new JPanel(); 
 		butnFld.setBackground(new Color(200, 230, 255));
 
 		custIdLb = new JLabel( "Kundenummer" ) ;
@@ -76,6 +74,9 @@ public class ReplaceWindowPanel extends JPanel
 
 
 		butnFld.add(replaceWindowRepBtn);
+		add(labelPnl);
+		add(fielPnl);
+		add(butnFld);
 
 		
 
