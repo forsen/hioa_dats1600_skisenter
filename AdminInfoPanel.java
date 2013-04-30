@@ -1,6 +1,7 @@
 
 import javax.swing.*;
 import javax.swing.event.*;
+import javax.swing.border.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.io.*;
@@ -24,13 +25,14 @@ public class AdminInfoPanel extends JPanel
 
 	public AdminInfoPanel(Personlist l,List<Validations> v, Cardlist cr )
 	{
-		
+		Border etched = BorderFactory.createEtchedBorder();
+
 		list = l;
 		validations = v;
 		cardregistry = cr;
 
 		fieldPnl = new JPanel(new GridLayout( 2,3 ));
-		butnPnl = new JPanel(new GridLayout( 2,3 ));
+		butnPnl = new JPanel(new GridLayout( 2,2 ));
 		dispPnl = new JPanel();
 	
 		setBackground(new Color(200, 230, 255));
@@ -38,7 +40,6 @@ public class AdminInfoPanel extends JPanel
 		butnPnl.setBackground(new Color(200, 230, 255));
 		dispPnl.setBackground(new Color(200, 230, 255));
 		
-		setLayout( new BorderLayout( 5, 3) );
 
 		listener = new Listener();
 
@@ -88,14 +89,27 @@ public class AdminInfoPanel extends JPanel
 		showPassings = new JButton(" Vis heis passeringer ");
 		showPassings.addActionListener( listener );
 		butnPnl.add(showPassings);
+		butnPnl.setBorder(etched);
 		
 
 		dispPnl.add(scroll);
 		
+		setLayout( new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.NONE;
+		c.anchor = GridBagConstraints.PAGE_START;
+		c.weighty=0;
+		c.weightx=0;
 
-		add(fieldPnl, BorderLayout.PAGE_START);
-		add(butnPnl, BorderLayout.CENTER);
-		add(dispPnl, BorderLayout.PAGE_END);
+		add(fieldPnl, c);
+
+		c.gridy=1;
+
+		add(butnPnl, c);
+
+		c.gridy=2;
+
+		add(dispPnl, c);
 
 
 	}

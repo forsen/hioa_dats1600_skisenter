@@ -41,6 +41,20 @@ public class CashRegister extends JDialog
 			//super("Betaling");
 
 		setModalityType( Dialog.ModalityType.TOOLKIT_MODAL );
+
+
+		addWindowListener( new WindowAdapter() 
+		{
+
+			public void windowClosing( WindowEvent e )
+			{
+				System.out.println("Sletter all dataaaaaa....");
+				shoppingCartList.setModel( ShoppingCart.emptyCart() );
+				SalesWindowPanel.cardIDList.setModel( new DefaultListModel<Card>() );
+				
+			}
+		});
+
 		contentPanel = new JPanel()
 		{
 			@Override
@@ -485,17 +499,6 @@ public class CashRegister extends JDialog
 		setFonts("digital.ttf");
 		pack();
 		setVisible( true ); 
-
-
-		this.addWindowListener( new WindowAdapter() 
-		{
-			public void windowClosing( WindowEvent e )
-			{
-				System.out.println("Sletter all dataaaaaa....");
-				shoppingCartList.setModel( new DefaultListModel<CartItems>() );
-				ShoppingCart.emptyCart();
-			}
-		});
 	
 	}
 
@@ -543,7 +546,11 @@ public class CashRegister extends JDialog
 
 		while( it.hasNext() )
 		{
-			PrintWindow w = new PrintWindow( it.next() );
+			Card c = it.next();		
+			if( c.getCurrent() == null )
+			{
+				PrintWindow w = new PrintWindow( c );
+			}
 		}
 
 		System.out.println( "lengde: " + shoppingCartList.getModel().getSize() );

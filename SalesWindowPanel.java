@@ -10,7 +10,7 @@ public class SalesWindowPanel extends JPanel
 {
 	private JLabel custIDLbl,cardnrLbl;
 	public static JTextField salesWindowCustIDtf; 
-	private JTextField cardnrf;
+	public static JTextField cardnrf;
 	private JList<String> cardTypeList;
 	private JList<CartItems> shoppingCartList;
 	public static JList<Card> cardIDList;
@@ -388,6 +388,11 @@ public class SalesWindowPanel extends JPanel
 		{
 			JOptionPane.showMessageDialog( null, "Du må velge en person først!" );
 		}*/
+	}
+
+	private void returnCard()
+	{
+	
 	}
 /*
 	public void setCustId()
