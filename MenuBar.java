@@ -3,6 +3,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import java.awt.*;
 import java.awt.event.*;
+import javax.swing.KeyStroke;
 
 public class MenuBar
 {
@@ -43,7 +44,9 @@ public class MenuBar
 	private void makeFile()
 	{
 		save = new JMenuItem("Lagre");
+		save.setAccelerator( KeyStroke.getKeyStroke( KeyEvent.VK_S, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask() ) );
 		exit = new JMenuItem("Exit");
+		exit.setAccelerator( KeyStroke.getKeyStroke( KeyEvent.VK_Q, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask() ) );
 
 		save.addActionListener( menuListener );
 
@@ -55,8 +58,11 @@ public class MenuBar
 	private void makeWindows()
 	{
 		lifts = new JMenuItem("Heiskontroll");
+		lifts.setAccelerator( KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK ) );
 		info = new JMenuItem("Info");
+		info.setAccelerator( KeyStroke.getKeyStroke( KeyEvent.VK_I, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask() ) );
 		admin = new JMenuItem("Admin");
+		admin.setAccelerator( KeyStroke.getKeyStroke( KeyEvent.VK_A, Toolkit.getDefaultToolkit().getMenuShortcutKeyMask() ) );
 
 		lifts.addActionListener( menuListener );
 		info.addActionListener( menuListener );
