@@ -7,11 +7,14 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.io.*;
 import java.text.ParseException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class Salesclerk extends JFrame
 {
 
+	private final int DELAY = 5; // hvor mange sekunder en melding til statustxt skal vises
 	private final int LEFT = 20;
 	private final int RIGHT = 40;
 	private JButton custWindowBtn, salesWindowBtn, replaceWindowBtn, nextCustBtn;
@@ -126,7 +129,19 @@ public class Salesclerk extends JFrame
 		salesClerkCustInfoPnl.add( nextCustBtn, BorderLayout.PAGE_START );
 		salesClerkCustInfoPnl.add( salesClerkSearchInfoTxt, BorderLayout.CENTER );
 
-		statusTxt = new JTextArea(5,50);
+		statusTxt = new JTextArea(5,50){
+			@Override
+			public void setText( String t )
+			{
+				super.setText( t );
+				if( t != null )
+				{
+					Timer timer = new Timer(); 
+					timer.schedule( new ClearStatusTxt(), DELAY*1000 );
+				}
+			}
+		};
+
 		statusTxt.setBackground(new Color(238, 248, 255));
 		statusTxt.setEditable( false );
 
@@ -262,6 +277,14 @@ public class Salesclerk extends JFrame
 			}
 				
 
+		}
+	}
+
+	private class ClearStatusTxt extends TimerTask
+	{
+		public void run()
+		{
+			statusTxt.setText( null );
 		}
 	}
 

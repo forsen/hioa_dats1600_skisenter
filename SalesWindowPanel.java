@@ -319,7 +319,7 @@ public class SalesWindowPanel extends JPanel
 	{
 		// tar i mot betaling og slikt.
 
-		CashRegister cr = new CashRegister( shoppingCart, shoppingCartList );
+		CashRegister cr = new CashRegister((Window) this.getRootPane().getParent(), shoppingCart, shoppingCartList );
 
 		//shoppingCartList.setModel(shoppingCart.emptyCart());
 		
@@ -424,7 +424,14 @@ public class SalesWindowPanel extends JPanel
 	{
 		public void valueChanged( ListSelectionEvent lse )
 		{
-			System.out.println( cardTypeList.getSelectedIndex() );
+			if( cardTypeList.getSelectedIndex() == Skicard.SEASONCARD )
+			{
+				if( Salesclerk.customer == null )
+				{
+					Salesclerk.statusTxt.setText("Sesongkort kan kun selges til registrerte kunder");
+					cardTypeList.clearSelection();
+				}
+			}
 		}
 	}
 
@@ -446,6 +453,7 @@ public class SalesWindowPanel extends JPanel
 		}
 	}
 */
+
 
 	private class BtnListener implements ActionListener
 	{

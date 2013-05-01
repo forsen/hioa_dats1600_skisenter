@@ -39,7 +39,7 @@ Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
   
 double xScale = dw / screenSize.width;  
 double yScale = dh / screenSize.height;  
-double scale = Math.min(xScale,yScale);  
+double scale = Math.max(xScale,yScale);  
    
 // center the chart on the page  
 double tx = 0.0;  
