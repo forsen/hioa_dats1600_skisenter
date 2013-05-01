@@ -424,7 +424,14 @@ public class SalesWindowPanel extends JPanel
 	{
 		public void valueChanged( ListSelectionEvent lse )
 		{
-			System.out.println( cardTypeList.getSelectedIndex() );
+			if( cardTypeList.getSelectedIndex() == Skicard.SEASONCARD )
+			{
+				if( Salesclerk.customer == null )
+				{
+					Salesclerk.statusTxt.setText("Sesongkort kan kun selges til registrerte kunder");
+					cardTypeList.clearSelection();
+				}
+			}
 		}
 	}
 
@@ -446,6 +453,7 @@ public class SalesWindowPanel extends JPanel
 		}
 	}
 */
+
 
 	private class BtnListener implements ActionListener
 	{
