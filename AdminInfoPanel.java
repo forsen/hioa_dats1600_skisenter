@@ -23,7 +23,7 @@ public class AdminInfoPanel extends JPanel
 	private Cardlist cardregistry;
 	private JTable perstable, passTable;
 	private Toolkit toolbox;
-	private DefaultTableModeL tablemodel;
+
  	
 
 
@@ -47,10 +47,10 @@ public class AdminInfoPanel extends JPanel
 		
 
 		listener = new Listener();
-		tablemodel = new DefaultTableModel();
+		
 
-		perstable = list.personTable();
-		passTable = showPassings();
+		showpersons();
+		showpassings();
 
 
 		display = new JTextArea(20,40);
@@ -159,6 +159,17 @@ public class AdminInfoPanel extends JPanel
 		display.setText(cardregistry.toString());
 		
 	}
+
+	public void showpersons()
+	{
+		perstable = list.personTable();
+		
+	}
+
+	public void showpassings()
+	{
+		passTable = showPassings();
+	}
 	
 	
 	public void deletePerson()
@@ -224,7 +235,7 @@ public class AdminInfoPanel extends JPanel
       		if(e.getSource() == showPersons)
       		{
 
-      			
+      			showpersons();
       			scroll.setViewportView(perstable);
 
 
@@ -244,7 +255,7 @@ public class AdminInfoPanel extends JPanel
 
       		if(e.getSource() == showPassings)
       		{
-
+      			showpassings();
       			scroll.setViewportView(passTable);
       		
       		}
