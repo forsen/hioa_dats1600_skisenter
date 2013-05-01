@@ -319,7 +319,7 @@ public class SalesWindowPanel extends JPanel
 	{
 		// tar i mot betaling og slikt.
 
-		CashRegister cr = new CashRegister( shoppingCart, shoppingCartList );
+		CashRegister cr = new CashRegister((Window) this.getRootPane().getParent(), shoppingCart, shoppingCartList );
 
 		//shoppingCartList.setModel(shoppingCart.emptyCart());
 		

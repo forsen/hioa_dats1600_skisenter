@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class PrintWindow extends JFrame
+public class PrintWindow extends JDialog
 {
 
 	private JPanel printArea;
@@ -14,9 +14,10 @@ public class PrintWindow extends JFrame
 //	public static final CARD = 2; 
 
 
-	public PrintWindow()
+	public PrintWindow( Window parent )
 	{
-		super( "Printvindu" );
+		super( parent, "Printvindu" );
+
 
 		btnListener = new Listener();
 
@@ -29,9 +30,9 @@ public class PrintWindow extends JFrame
 		setVisible( true ); 
 	}
 
-	public PrintWindow( JTextArea j, double[] o, double s )
+	public PrintWindow( Window parent, JTextArea j, double[] o, double s )
 	{
-		this(); 
+		this( parent ); 
 		printArea = new ReceiptPainting( j, o, s ); 
 		printArea.setPreferredSize( new Dimension(350, 450 + ( j.getLineCount() * 20 ) ) );
 
@@ -47,9 +48,9 @@ public class PrintWindow extends JFrame
 //		setVisible( true );
 	}
 
-	public PrintWindow( Card c )
+	public PrintWindow( Window parent, Card c )
 	{
-		this(); 
+		this( parent ); 
 		printArea = new CardPainting( c );
 
 		scroll = new JScrollPane( printArea );

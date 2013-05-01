@@ -36,11 +36,9 @@ public class CashRegister extends JDialog
 
 
 	
-	public CashRegister( ShoppingCart s, JList<CartItems> sl )
+	public CashRegister(Window parent, ShoppingCart s, JList<CartItems> sl )
 	{
-			//super("Betaling");
-
-		setModalityType( Dialog.ModalityType.TOOLKIT_MODAL );
+		super(parent, "Betaling", Dialog.ModalityType.DOCUMENT_MODAL );
 
 
 		addWindowListener( new WindowAdapter() 
@@ -550,7 +548,7 @@ public class CashRegister extends JDialog
 			Card c = it.next();		
 			if( c.getCurrent() == null )
 			{
-				PrintWindow w = new PrintWindow( c );
+				PrintWindow w = new PrintWindow( this, c );
 			}
 		}
 
@@ -561,10 +559,15 @@ public class CashRegister extends JDialog
 			Card pc = shoppingCartList.getModel().getElementAt(i).getCard();
 			if( !pc.getReturned() )
 			{
-				PrintWindow w = new PrintWindow( pc );
+				PrintWindow w = new PrintWindow( this, pc );
 			}
 		}
 
+	}
+
+	private void printReceipt()
+	{
+		PrintWindow w = new PrintWindow( this, orderList, paymentMethod, sum );
 	}
 
 
@@ -588,9 +591,8 @@ public class CashRegister extends JDialog
 			if( ae.getSource() == payByCard )
 				paid(CARD);
 			if( ae.getSource() == printReceipt )
-			{
-				PrintWindow w = new PrintWindow( orderList, paymentMethod, sum );
-			}
+				printReceipt();
+			
 			if( ae.getSource() == printCard )
 				printCard(); 
 
@@ -638,7 +640,10 @@ public class CashRegister extends JDialog
 				cashInput.setText("");
 			if (ae.getSource() == cancelBtn )
 			{
-				// find a way to close this window
+				System.out.println("Sletter all dataaaaaa....   (tror jeg..?)");
+				shoppingCartList.setModel( ShoppingCart.emptyCart() );
+				SalesWindowPanel.cardIDList.setModel( new DefaultListModel<Card>() );
+				dispose();
 			}
 
 
