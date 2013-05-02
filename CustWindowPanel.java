@@ -287,7 +287,7 @@ public class CustWindowPanel extends JPanel
 		
 	}
 
-	public File imageUpload()
+	private File imageUpload()
 	{
 		try
 		{
@@ -348,7 +348,7 @@ public class CustWindowPanel extends JPanel
 
 		}
 	}*/
-	public void moveAndRenameImg(File f, Person p)
+	private void moveAndRenameImg(File f, Person p)
 	{
 		
 		iu.saveImage(f,p);

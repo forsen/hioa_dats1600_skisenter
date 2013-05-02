@@ -25,6 +25,7 @@ public class ReplaceWindowPanel extends JPanel
 		Border etched = BorderFactory.createEtchedBorder();
 		Border header = BorderFactory.createTitledBorder(etched, "Erstatt kort");
 		Border repBorder = BorderFactory.createTitledBorder(etched, "Kundenummer");
+		
 		card = null;
 		toolbox = Toolkit.getDefaultToolkit();
 
@@ -34,9 +35,6 @@ public class ReplaceWindowPanel extends JPanel
 		contentPnl = new JPanel();
 		contentPnl.setBackground(new Color(200, 230, 255));
 		contentPnl.setBorder(header);
-
-
-
 	
 		listener = new Listener();
 		listListener = new ListListener(); 
@@ -52,15 +50,12 @@ public class ReplaceWindowPanel extends JPanel
 		cardScrollList.setPreferredSize(new Dimension(120, 140));
 
 
-
-
 		resultPnl= new JPanel();
 		resultPnl.add(cardScrollList);
 		resultPnl.setBackground(new Color(200, 230, 255));
 
 		Border resultBrd = BorderFactory.createTitledBorder(etched, "Kortnummer");
 		resultPnl.setBorder(resultBrd);
-
 
 
 		custIdLb = new JLabel( "Kundenummer" ) ;
@@ -76,11 +71,8 @@ public class ReplaceWindowPanel extends JPanel
 		cardNrLb.setToolTipText("Har du søkt på en kunde og trykket på denne vil kortene automatisk komme opp her");
 	//	fielPnl.add(cardScrollList);
 
-		replaceWindowRepBtn = new JButton(" Erstatt ");
+		replaceWindowRepBtn = new JButton(" Erstatt kort ");
 		replaceWindowRepBtn.setToolTipText("Erstatt kortet du har valgt");
-
-		replaceWindowRepBtn = new JButton(" Erstatt kort");
-
 		replaceWindowRepBtn.addActionListener( listener );
 	//	butnFld.add(replaceWindowRepBtn);
 		statusTxt = s;
@@ -88,7 +80,6 @@ public class ReplaceWindowPanel extends JPanel
 	/*	add(labelPnl, BorderLayout.LINE_START);
 		add(fielPnl, BorderLayout.LINE_END);
 		add(butnFld, BorderLayout.PAGE_END);*/
-
 
 		formPnl = new JPanel();
 		formPnl.setLayout(new GridBagLayout());
@@ -132,17 +123,11 @@ public class ReplaceWindowPanel extends JPanel
 		cc.weightx = 1;
 		cc.weighty = 1;
 
-		add(contentPnl, cc);
-
-		
-
-
-
-		
+		add(contentPnl, cc);	
 		
 	}
 
-	public void search()
+	private void search()
 	{
 		
 		try	
@@ -162,7 +147,7 @@ public class ReplaceWindowPanel extends JPanel
 
 	} 
 
-	public void replace()
+	private void replace()
 	{
 		
 		Salesclerk.customer.removeCard(card);
