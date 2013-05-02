@@ -11,7 +11,7 @@ public class Calculator
 	private Personlist custRegistry;
 	private Cardlist cardlist;
 	private List<Validations> validations;
-	private int[] graph;
+	private int[][] graph;
 
 	public Calculator(Personlist cr, List<Validations> v, Cardlist cl )
 	{
@@ -21,18 +21,18 @@ public class Calculator
 	
 	}
 
-	public int[] totalSoldCard(Date s, Date e)
+	public int[][] totalSoldCard(Date s, Date e)
 	{
 		List<Card> clist = custRegistry.getRelevantCards( s, e );
 		clist.addAll( cardlist.getRelevantCards( s, e ) );
 
 		Iterator<Card> cIt = clist.iterator();
 
-		graph = new int[calculateRange( s, e )];
+		graph = new int[4][calculateRange( s, e )];
 
-		for( int i = 0; i < graph.length; i++ )
+		for( int i = 0; i < graph[0].length; i++ )
 		{
-			graph[i] = 0;
+			graph[0][i] = 0;
 		}
 
 		while( cIt.hasNext() )
@@ -55,17 +55,21 @@ public class Calculator
 
 				c.setTime( sc.getBought() );
 
-				graph[c.get(Calendar.DAY_OF_YEAR) - start.get( Calendar.DAY_OF_YEAR ) - 1]++; 
+
+				graph[sc.getType()][c.get(Calendar.DAY_OF_YEAR) - start.get( Calendar.DAY_OF_YEAR ) - 1]++; 
 			} 
 		}
 
-		if( graph.length > 20 )
-			graph = normalize( graph );
+		if( graph[0].length > 20 )
+		{
+			for( int i = 0; i < graph.length; i++ )
+				graph[i] = normalize( graph[i] );
 
+		}
 		return graph;
 	}
 
-	public int[] totalRegPeople(Date s, Date e)
+	public int[][] totalRegPeople(Date s, Date e)
 	{
 		List<Person> plist = custRegistry.totalRegPeople(s, e);
 
@@ -73,11 +77,11 @@ public class Calculator
 
 
 
-		graph = new int[calculateRange( s , e )];
+		graph = new int[1][calculateRange( s , e )];
 
-		for( int i = 0; i < graph.length; i++)
+		for( int i = 0; i < graph[0].length; i++)
 		{
-			graph[i] = 0;
+			graph[0][i] = 0;
 		}
 
 		while(it.hasNext())
@@ -92,11 +96,11 @@ public class Calculator
 		 	System.out.println( p );
 
 
-			graph[c.get(Calendar.DAY_OF_YEAR) - start.get( Calendar.DAY_OF_YEAR ) - 1] ++;  
+			graph[0][c.get(Calendar.DAY_OF_YEAR) - start.get( Calendar.DAY_OF_YEAR ) - 1] ++;  
 		}		
 
-		if( graph.length > 20 )
-			graph = normalize( graph );
+		if( graph[0].length > 20 )
+			graph[0] = normalize( graph[0] );
 
 		return graph;
 	}

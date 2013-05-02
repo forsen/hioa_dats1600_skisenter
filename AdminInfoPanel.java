@@ -208,7 +208,7 @@ public class AdminInfoPanel extends JPanel
 
 			passings[i][0] = runner.getLiftId();
 			passings[i][1] = runner.getCard();
-			passings[i][2] = runner.getCard().getCurrent().getType();
+			passings[i][2] = runner.getCard().getCurrent().getType("");
 			passings[i][3] = runner.getDate();
 
 		}

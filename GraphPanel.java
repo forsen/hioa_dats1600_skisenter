@@ -20,7 +20,7 @@ public class GraphPanel extends JPanel
 
 	private int yAxisMin;
 	private int yAxisMax;
-	private int[] data;  
+	private int[][] data;  
 
 	private int lastx;
 	private int lasty; 
@@ -30,7 +30,7 @@ public class GraphPanel extends JPanel
 
 	private String label; 
 
-	public GraphPanel( int[] d, String x, String y, String interval )
+	public GraphPanel( int[][] d, String x, String y, String interval )
 	{
 	
 		labelX = x;
@@ -47,10 +47,10 @@ public class GraphPanel extends JPanel
 		{
 			yAxisMax = arrayMax( data );
 			yAxisMin = arrayMin( data );
-			xAxisInterval = XAXISLENGTH / data.length;
+			xAxisInterval = XAXISLENGTH / data[0].length;
 			yAxisInterval = YAXISLENGTH / (yAxisMax - yAxisMin);
 			lastx = xAxisInterval + ORIGOX; 
-			lasty = ORIGOY - data[0]; 
+			lasty = ORIGOY - data[0][0]; 
 			System.out.println( "inni try blokken " );
 			repaint(); 
 		}
@@ -80,28 +80,30 @@ public class GraphPanel extends JPanel
 
 	}
 */
-	private int arrayMin( int[] data )
+	private int arrayMin( int[][] data )
 	{
-		int  min = data[0];
+		int  min = data[0][0];
 		
 
 		for(int i = 0; i < data.length; i++)
 		{
-			min = (min < data[i])?min:data[i];
+			for(int j = 0; j < data[i].length; j++ )
+				min = (min < data[i][j])?min:data[i][j];
 		}
 		System.out.println( "arrayMin: " + min );
 		return min; 
 	}
 
-	private int arrayMax( int[] data )
+	private int arrayMax( int[][] data )
 	{
 		
 		
-			int max = data[0];
+			int max = data[0][0];
 		
 
 		for( int i = 0; i < data.length; i++)
-			max = (max > data[i])?max:data[i]; 
+			for( int j = 0; j < data[i].length; j++)
+				max = (max > data[i][j])?max:data[i][j]; 
 
 		System.out.println( "arrayMax: " + max );
 		return max; 
@@ -125,7 +127,7 @@ public class GraphPanel extends JPanel
 	public void drawXinterval(Graphics2D g2d)
 	{
 
-		for(int i = 1 ; i < data.length; i ++)
+		for(int i = 1 ; i < data[0].length; i ++)
 		{
 			g2d.drawLine((i*xAxisInterval) + ORIGOX, 447, (i*xAxisInterval) + ORIGOX, 454);
 			g2d.drawString( "" + i, (i*xAxisInterval) + ORIGOX, 480 );
@@ -186,15 +188,17 @@ public class GraphPanel extends JPanel
 
 		// set first coordinate: 
 
-		lasty = YAXISLENGTH - ((data[0] - yAxisMin) * yAxisInterval);
-
-		for( int i = 1; i<data.length; i++ )
+		for( int i = 0; i<data.length; i++)
 		{
-			drawGraphCoordinates( data[i], g2d );
-		}
+			lasty = YAXISLENGTH - ((data[0][0] - yAxisMin) * yAxisInterval);
 
+			for( int j = 0; j<data[i].length; j++ )
+			{
+				drawGraphCoordinates( data[i][j], g2d );
+			}
+		}
 		lastx = xAxisInterval + ORIGOX;
-		lasty = YAXISLENGTH - ((data[0] - yAxisMin) * yAxisInterval); 
+		lasty = YAXISLENGTH - ((data[0][0] - yAxisMin) * yAxisInterval); 
 
 
 	}

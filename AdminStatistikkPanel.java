@@ -31,7 +31,7 @@ public class AdminStatistikkPanel extends JPanel
 
 
 	// fjern etterhvert
-	private int[] graph;
+	private int[][] graph;
 
 	public AdminStatistikkPanel(Personlist l,List<Validations> v, Cardlist cr )
 	{
@@ -69,7 +69,7 @@ public class AdminStatistikkPanel extends JPanel
 		
 		tabDisp = new JTabbedPane();
 
-		graph = new int[10];
+		graph = new int[1][10];
 
 		graphPnl = new GraphPanel( graph, "x", "y", "" ); 
 		displayPnl.setBackground(new Color(200, 230, 255));
@@ -288,7 +288,7 @@ public class AdminStatistikkPanel extends JPanel
 		if( start == null || end == null )
 			return;
 
-		int[] regPeopleIntrvl = cal.totalRegPeople(start, end);
+		int[][] regPeopleIntrvl = cal.totalRegPeople(start, end);
 		
 		graphPnl = new GraphPanel( regPeopleIntrvl, "Uker", "Ant", formatter.format(start) + " - " + formatter.format(end) );
 		tabDisp.remove( 1 );
@@ -298,7 +298,8 @@ public class AdminStatistikkPanel extends JPanel
 		int total = 0; 
 		for( int i = 0; i < regPeopleIntrvl.length; i++ )
 		{
-			total += regPeopleIntrvl[i];
+			for( int j = 0; j < regPeopleIntrvl[i].length; j++ )
+				total += regPeopleIntrvl[i][j];
 		}
 		display.append( "" + total );
 		
@@ -315,16 +316,18 @@ public class AdminStatistikkPanel extends JPanel
 		if( start == null || end == null )
 			return;
 
-		int[] soldCardIntrvl = cal.totalSoldCard(start, end);
+		int[][] soldCardIntrvl = cal.totalSoldCard(start, end);
 
 		graphPnl = new GraphPanel( soldCardIntrvl, "Uker", "Ant", formatter.format(start) + " - " + formatter.format( end ) );
 		tabDisp.remove( 1 );
 		tabDisp.add( "Grafisk visning", graphPnl );
 		
 		int total = 0;
+		
 		for( int i = 0; i < soldCardIntrvl.length; i++ )
 		{
-			total += soldCardIntrvl[i];
+			for( int j = 0; j < soldCardIntrvl[i].length; j++ )
+				total += soldCardIntrvl[i][j];
 		}
 		display.setText("Solgte skikort i intervallet " + formatter.format(start) + " til " + formatter.format(end) + ":\n");
 		display.append( "" + total );
@@ -387,7 +390,7 @@ public class AdminStatistikkPanel extends JPanel
 
 	private void monthlyCardSale()
 	{
-		graph = new int[12];
+/*		graph = new int[12];
 
 
 		for( int i = 0; i < graph.length; i++)
@@ -396,7 +399,7 @@ public class AdminStatistikkPanel extends JPanel
 			int y = cal.cardSoldInMonthX(i);
 			System.out.println(y);
 			graph[i] = y;
-		}	
+		}	*/
 	}
 
 

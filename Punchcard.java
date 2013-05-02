@@ -6,7 +6,7 @@ public class Punchcard extends Skicard
 
 	public Punchcard( Date bd, Date b)
 	{
-		super(Info.PUNCHCARDPRICE, bd, b, "Klippekort");
+		super(Info.PUNCHCARDPRICE, bd, b, Skicard.PUNCHCARD);
 		clipCount = -1;
 	}
 
