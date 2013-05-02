@@ -41,7 +41,7 @@ public class GraphPanel extends JPanel
 		data = d; 
 		//list = l;
 		setBackground( Color.WHITE );
-		setPreferredSize (new Dimension(600,500));
+		setPreferredSize (new Dimension(700,500));
 //		nyGrafFlate();
 		try
 		{
@@ -117,11 +117,11 @@ public class GraphPanel extends JPanel
 		{
 
 			g2d.drawLine(25, ORIGOY - (i * YAXISLENGTH / 10 ), 35,  ORIGOY - (i * YAXISLENGTH / 10 ));
-			g2d.drawString("" + ((((yAxisMax - yAxisMin)/10) * i) + yAxisMin), 0 , ORIGOY - (i * YAXISLENGTH/10));
+			g2d.drawString("" + ( (int) (((yAxisMax - yAxisMin)/ (double) 10.0 ) * i) + yAxisMin), 0 , ORIGOY - (i * YAXISLENGTH/10));
 			printDashedLine( 35, ORIGOY - (i * YAXISLENGTH / 10 ), 550, ORIGOY - (i * YAXISLENGTH / 10 ), g2d );
 
 			System.out.println( "ymin:" + yAxisMin + ", ymax: " + yAxisMax + ", i: " + i);
-			System.out.println( "" + (((yAxisMax - yAxisMin)/10) * i));	
+			System.out.println( "" + (int) (((yAxisMax - yAxisMin)/(double) 10.0) * i));	
 		}
 	}
 	
@@ -181,12 +181,14 @@ public class GraphPanel extends JPanel
 		Graphics2D g2d = (Graphics2D) g; 
 
 		g2d.drawLine(ORIGOX, 10, ORIGOX, ORIGOY);
-		g2d.drawString(labelY, 10,15);
+		g2d.drawString(labelY, 5,15);
 		g2d.drawLine(ORIGOX,ORIGOY , 550, ORIGOY);
 		g2d.drawString(labelX, 560,450);
 
 		drawXinterval(g2d);
 		drawYinterval(g2d);
+
+		drawInfo(g2d);
 
 		// set first coordinate: 
 
@@ -207,6 +209,40 @@ public class GraphPanel extends JPanel
 		lasty = YAXISLENGTH - data[0][0];
 
 
+	}
+
+	private void drawInfo( Graphics2D g2d )
+	{
+		int startX = 580;
+		int startY = 20; 
+		int linespace = 20; 
+
+		g2d.drawString( "Intervall:", startX, startY );
+		startY += linespace;
+		g2d.drawString( label, startX, startY );
+		startY += 3*linespace; 
+
+		if( data.length == 4 )
+		{
+			g2d.setColor(nextColor()[Skicard.DAYCARD]);
+			g2d.drawString( "Dagskort", startX, startY );
+			startY += linespace;
+
+			g2d.setColor(nextColor()[Skicard.HOURCARD]);
+			g2d.drawString( "Timeskort", startX, startY );
+			startY += linespace; 
+
+			g2d.setColor(nextColor()[Skicard.SEASONCARD]);
+			g2d.drawString( "Sesongkort", startX, startY );
+			startY += linespace; 
+
+			g2d.setColor(nextColor()[Skicard.PUNCHCARD]);
+			g2d.drawString( "Klippekort", startX, startY );
+			startY += linespace;
+
+			g2d.setColor( Color.BLACK );
+	
+		}
 	}
 
 	private Color[] nextColor()

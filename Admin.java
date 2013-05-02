@@ -78,7 +78,7 @@ public class Admin extends JFrame
 
 		layout.layoutContainer( c );
 
-		setSize( 680, 640 );
+		setSize( 760, 740 );
 
 	}
 

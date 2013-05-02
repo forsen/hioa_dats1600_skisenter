@@ -291,8 +291,10 @@ public class AdminStatistikkPanel extends JPanel
 		int[][] regPeopleIntrvl = cal.totalRegPeople(start, end);
 		
 		graphPnl = new GraphPanel( regPeopleIntrvl, "Uker", "Ant", formatter.format(start) + " - " + formatter.format(end) );
+		int idx = tabDisp.getSelectedIndex();
 		tabDisp.remove( 1 );
 		tabDisp.add("Grafisk visning", graphPnl);
+		tabDisp.setSelectedIndex( idx );
 
 		display.setText("Registrerte personer i intervallet " + formatter.format(start) + " til " + formatter.format(end) +":\n");
 		int total = 0; 
@@ -319,18 +321,23 @@ public class AdminStatistikkPanel extends JPanel
 		int[][] soldCardIntrvl = cal.totalSoldCard(start, end);
 
 		graphPnl = new GraphPanel( soldCardIntrvl, "Uker", "Ant", formatter.format(start) + " - " + formatter.format( end ) );
+		int idx = tabDisp.getSelectedIndex();
 		tabDisp.remove( 1 );
 		tabDisp.add( "Grafisk visning", graphPnl );
+		tabDisp.setSelectedIndex( idx );
 		
-		int total = 0;
+		int[] total = new int[4];
 		
 		for( int i = 0; i < soldCardIntrvl.length; i++ )
 		{
 			for( int j = 0; j < soldCardIntrvl[i].length; j++ )
-				total += soldCardIntrvl[i][j];
+				total[i] += soldCardIntrvl[i][j];
 		}
-		display.setText("Solgte skikort i intervallet " + formatter.format(start) + " til " + formatter.format(end) + ":\n");
-		display.append( "" + total );
+		display.setText("Solgte skikort i intervallet " + formatter.format(start) + " til " + formatter.format(end) + ":");
+		display.append( "\nDagskort: \t" + total[Skicard.DAYCARD] );
+		display.append( "\nTimeskort: \t" + total[Skicard.HOURCARD] );
+		display.append( "\nSesongkort: \t" + total[Skicard.SEASONCARD] );
+		display.append( "\nKlippekort: \t" + total[Skicard.PUNCHCARD] );
 	}
 
 	private void regThatTime()
