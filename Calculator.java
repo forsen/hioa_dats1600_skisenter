@@ -31,7 +31,10 @@ public class Calculator
 
 		Iterator<Card> cIt = clist.iterator();
 
-		graph = new int[4][calculateRange( s, e )];
+		int start = daysSinceOpening( s );
+		int end = daysSinceOpening( e ); 
+
+		graph = new int[4][ end - start + 1];
 
 		for( int i = 0; i < graph[0].length; i++ )
 		{
@@ -48,29 +51,40 @@ public class Calculator
 			Iterator<Skicard> sIt = skl.iterator(); 
 
 			while( sIt.hasNext() )
-			{
-				Calendar c = Calendar.getInstance();
-				Calendar start = Calendar.getInstance();
-
-				start.setTime( s );
+			{		
 
 				Skicard sc = sIt.next(); 
 
-				c.setTime( sc.getBought() );
+				
 
 
-				graph[sc.getType()][c.get(Calendar.DAY_OF_YEAR) - start.get( Calendar.DAY_OF_YEAR )]++; 
-				System.out.println( "Skikorttype" + sc.getType() + " Dag: " + (c.get(Calendar.DAY_OF_YEAR)  - start.get( Calendar.DAY_OF_YEAR ) ));
-				System.out.println( "Kjøpt: " + new SimpleDateFormat("ddMMyy").format(c.getTime()) );
+				graph[sc.getType()][(daysSinceOpening( sc.getBought() ) - start )]++; 
+				System.out.println( "Skikorttype" + sc.getType() + " Dag: " + ( daysSinceOpening(sc.getBought()) - start ));
+				System.out.println( "Kjøpt: " + new SimpleDateFormat("ddMMyy").format(sc.getBought() ));
 			} 
+		}
+
+
+
+		if( graph[0].length > 20 )
+		{
+			for( int i = 0; i < graph.length; i++ )
+				graph[i] = normalize( graph[i], 7 );
 		}
 
 		if( graph[0].length > 20 )
 		{
 			for( int i = 0; i < graph.length; i++ )
-				graph[i] = normalize( graph[i] );
-
+				graph[i] = normalize( graph[i], 4 );
 		}
+
+		if( graph[0].length > 20 )
+		{
+			for( int i = 0; i < graph.length; i++ )
+				graph[i] = normalize( graph[i], 12 );
+		}
+
+		
 		return graph;
 	}
 
@@ -81,8 +95,10 @@ public class Calculator
 		Iterator<Person> it = plist.iterator();
 
 
+		int start = daysSinceOpening( s );
+		int end = daysSinceOpening( e );
 
-		graph = new int[1][calculateRange( s , e )];
+		graph = new int[1][end - start + 1 ];
 
 		for( int i = 0; i < graph[0].length; i++)
 		{
@@ -91,22 +107,24 @@ public class Calculator
 
 		while(it.hasNext())
 		{
-		 	Calendar c = Calendar.getInstance();
-		 	Calendar start = Calendar.getInstance(); 
-		 	start.setTime( s );
+
 		 	Person p = it.next(); 
 
-		 	c.setTime( p.getCreated() );
 
 		 	System.out.println( p );
 
 
-			graph[0][c.get(Calendar.DAY_OF_YEAR) - start.get( Calendar.DAY_OF_YEAR ) - 1] ++;  
+			graph[0][ daysSinceOpening( p.getCreated() ) - start ] ++;  
 		}		
 
 		if( graph[0].length > 20 )
-			graph[0] = normalize( graph[0] );
-
+			graph[0] = normalize( graph[0], 7 );
+		if( graph[0].length > 20 )
+			graph[0] = normalize( graph[0], 4 );
+		if( graph[0].length > 20 )
+			graph[0] = normalize( graph[0], 12 );
+		
+ 
 		return graph;
 	}
 /*
@@ -116,18 +134,18 @@ public class Calculator
 	}
 */
 
-	private int[] normalize( int[] d )
+	private int[] normalize( int[] d , int s)
 	{
 		int[] data = d; 
 
-		int[] newData = new int[ (int) Math.ceil((data.length / (double) 7.0)) ];
+		int[] newData = new int[ (int) Math.ceil((data.length / (double) s )) ];
 
 		//int split = (int) Math.ceil((data.length / ((double) newData.length - 1 ))) ; 
 
 		System.out.println( "Lengden: " + data.length );
 		System.out.println( "Delt på 7:" + (int) Math.ceil((data.length / (double) 7.0)) );
 
-		int split = 7;
+		int split = s;
 
 		int j = 0;
 
@@ -220,7 +238,7 @@ public class Calculator
 		return unregCardsSoldInMonthX(x);
 	}
 
-
+/*
 	private int calculateRange( Date s, Date e )
 	{
 		Calendar start = Calendar.getInstance();
@@ -231,7 +249,34 @@ public class Calculator
 
 		return end.get(Calendar.DAY_OF_YEAR) - start.get( Calendar.DAY_OF_YEAR ) + 1;
 	}
+*/
+	private int daysSinceOpening( Date d )
+	{
+		Calendar dateToCompare = Calendar.getInstance();
+		dateToCompare.setTime( d );
 
+		Calendar opening = Calendar.getInstance();
+
+		opening.setTime( Info.firstLight );
+
+		int days = 0; 
+
+		if( opening.get( Calendar.YEAR ) == dateToCompare.get( Calendar.YEAR ))
+			return dateToCompare.get( Calendar.DAY_OF_YEAR );
+
+
+		for( int i = opening.get( Calendar.YEAR ); i < dateToCompare.get( Calendar.YEAR ); i++ )
+			days += daysPerYear( i );
+	
+		days += dateToCompare.get( Calendar.DAY_OF_YEAR );
+
+		return days; 
+	}
+
+	private int daysPerYear( int y )
+	{
+		return (( y % 4 == 0 && y % 100 != 0 )  || (y % 400 == 0 )? 366:365 );
+	}
 
 
 

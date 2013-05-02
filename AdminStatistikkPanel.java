@@ -26,7 +26,6 @@ public class AdminStatistikkPanel extends JPanel
 	private Cardlist cardregistry;
 	private Toolkit toolbox;
 
-	private Date firstLight;
 	private SimpleDateFormat formatter;
 
 
@@ -42,7 +41,7 @@ public class AdminStatistikkPanel extends JPanel
 
 		formatter = new SimpleDateFormat("ddMMyy"); 
 
-		try
+		/*try
 		{
 			firstLight = formatter.parse("010113");
 		}
@@ -50,7 +49,7 @@ public class AdminStatistikkPanel extends JPanel
 		{
 			pe.printStackTrace( System.out );
 		}
-
+*/
 
 
 		list = l;
@@ -425,7 +424,7 @@ public class AdminStatistikkPanel extends JPanel
 				return null;
 			}
 
-			start = firstLight;
+			start = Info.firstLight;
 		}
 
 		return start;

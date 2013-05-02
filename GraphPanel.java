@@ -16,7 +16,7 @@ public class GraphPanel extends JPanel
 	private static final int ORIGOY = 450; 
 
 	private int xAxisInterval;
-	private int yAxisInterval; 
+	private double yAxisInterval; 
 
 	private int yAxisMin;
 	private int yAxisMax;
@@ -48,7 +48,7 @@ public class GraphPanel extends JPanel
 			yAxisMax = arrayMax( data );
 			yAxisMin = arrayMin( data );
 			xAxisInterval = XAXISLENGTH / data[0].length;
-			yAxisInterval = YAXISLENGTH / (yAxisMax - yAxisMin);
+			yAxisInterval = YAXISLENGTH / (double) (yAxisMax - yAxisMin);
 			//lastx = xAxisInterval + ORIGOX; 
 			lastx = ORIGOX; 
 			lasty = ORIGOY - data[0][0]; 
@@ -148,12 +148,12 @@ public class GraphPanel extends JPanel
 
 	private void drawGraphCoordinates( int y, Graphics2D g2d )
 	{
-		g2d.drawLine( lastx, lasty, lastx + xAxisInterval, YAXISLENGTH - ((y - yAxisMin) * yAxisInterval) );
+		g2d.drawLine( lastx, lasty, lastx + xAxisInterval, (int) (YAXISLENGTH - ((y - yAxisMin) * yAxisInterval) ) );
 
 		System.out.println("x1: " + lastx +", y1: " + lasty + ", x2: " + (lastx + xAxisInterval) + ", y2: " + (YAXISLENGTH - ((y - yAxisMin) * yAxisInterval)) ); 
 		System.out.println("y: " + y);
 
-		lasty = YAXISLENGTH - ((y - yAxisMin) * yAxisInterval) ;
+		lasty = (int) (YAXISLENGTH - ((y - yAxisMin) * yAxisInterval) );
 		lastx += xAxisInterval;
 
 	}
@@ -202,7 +202,7 @@ public class GraphPanel extends JPanel
 				drawGraphCoordinates( data[i][j], g2d );
 			}
 			lastx = ORIGOX;
-			lasty = YAXISLENGTH - ((data[i][0] - yAxisMin) * yAxisInterval); 
+			lasty =(int) (YAXISLENGTH - ((data[i][0] - yAxisMin) * yAxisInterval)); 
 		}
 		lastx = ORIGOX;
 		//lasty = YAXISLENGTH - ((data[0][0] - yAxisMin) * yAxisInterval); 

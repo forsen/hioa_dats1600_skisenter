@@ -12,7 +12,7 @@ public class RandomData
 
 
 
-	private final int ANTALLPERSONER = 1000;
+	private final int ANTALLPERSONER = 10000;
 	private final int MINKORTPERPERSON = 2;
 	private final int MAXKORTPERPERSON = 5;
 	private final int MINSKIKORTPERKORT = 1; 
@@ -61,7 +61,7 @@ public class RandomData
 
 			Person p = new Person( firstname, lastname, number, dob, null);
 
-			p.setCreated( randomDate( 2012, 2013 ) );
+			p.setCreated( randomDate( 2005, 2013 ) );
 
 			int numberofcards = randBetween( MINKORTPERPERSON, MAXKORTPERPERSON );
 
@@ -84,16 +84,16 @@ public class RandomData
 			switch( random ) 
 			{
 				case 1: 
-					s = new Daycard( b, randomDate(2012, 2013) );
+					s = new Daycard( b, randomDate(2005, 2013) );
 					break;
 				case 2: 
-					s = new Seasoncard( b, randomDate(2012,2013) );
+					s = new Seasoncard( b, randomDate(2005,2013) );
 					break;
 				case 3: 
-					s = new Hourcard( b, randomDate( 2012, 2013) );
+					s = new Hourcard( b, randomDate( 2005, 2013) );
 					break; 
 				case 4:
-					s = new Punchcard( b, randomDate( 2012, 2013 ) );
+					s = new Punchcard( b, randomDate( 2005, 2013 ) );
 					break; 
 			}
 

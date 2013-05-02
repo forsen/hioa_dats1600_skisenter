@@ -8,8 +8,11 @@ import javax.swing.BorderFactory;
 import javax.swing.border.Border;
 import java.awt.Graphics;
 import java.net.URL;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 
-public class Info extends JFrame
+public class Info extends JFrame 
 {
 	public final static int PUNCHCARDPRICE = 200;
 	public final static int DAYCARDPRICE = 320;
@@ -19,6 +22,7 @@ public class Info extends JFrame
 	public final static double DISCOUNT = 0.5;
 	public final static int CARDPRICE = 70; 
 	public final static int RETURNPRICE = -50; 
+	public static Date firstLight;
 
 	final static boolean shouldFill = true;
     final static boolean shouldWeightX = true;
@@ -28,6 +32,16 @@ public class Info extends JFrame
  
     public Info()
     {
+
+    	try
+		{
+			firstLight = new SimpleDateFormat("ddMMyy").parse("010105");
+		}
+		catch( ParseException pe )
+		{
+			pe.printStackTrace( System.out );
+		}
+
 
 		JPanel contentPanel;
 		Listener listener;
