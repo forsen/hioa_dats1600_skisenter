@@ -20,30 +20,60 @@ public class Calculator
 		validations = v;
 	
 	}
-/*
-	public List<Person> getRelevantCards(Date start, Date end)
+
+	public int[] totalSoldCard(Date s, Date e)
 	{
-		return custRegistry.getRelevantCards(start,end);
+		List<Card> clist = custRegistry.getRelevantCards( s, e );
+		clist.addAll( cardlist.getRelevantCards( s, e ) );
+
+		Iterator<Card> cIt = clist.iterator();
+
+		graph = new int[calculateRange( s, e )];
+
+		for( int i = 0; i < graph.length; i++ )
+		{
+			graph[i] = 0;
+		}
+
+		while( cIt.hasNext() )
+		{
+
+			Card crd = cIt.next();
+
+			List<Skicard> skl = crd.getRelevantCards(s,e);
+
+			Iterator<Skicard> sIt = skl.iterator(); 
+
+			while( sIt.hasNext() )
+			{
+				Calendar c = Calendar.getInstance();
+				Calendar start = Calendar.getInstance();
+
+				start.setTime( s );
+
+				Skicard sc = sIt.next(); 
+
+				c.setTime( sc.getBought() );
+
+				graph[c.get(Calendar.DAY_OF_YEAR) - start.get( Calendar.DAY_OF_YEAR ) - 1]++; 
+			} 
+		}
+
+		if( graph.length > 20 )
+			graph = normalize( graph );
+
+		return graph;
 	}
-*/
+
 	public int[] totalRegPeople(Date s, Date e)
 	{
 		List<Person> plist = custRegistry.totalRegPeople(s, e);
 
 		Iterator<Person> it = plist.iterator();
 
-		Calendar start = Calendar.getInstance();
-		Calendar end = Calendar.getInstance();
-
-		start.setTime( s );
-		end.setTime( e );
-
-		int range = end.get(Calendar.DAY_OF_YEAR) - start.get( Calendar.DAY_OF_YEAR );
-
-		System.out.println( "range " + range);
 
 
-		graph = new int[range];
+		graph = new int[calculateRange( s , e )];
 
 		for( int i = 0; i < graph.length; i++)
 		{
@@ -53,6 +83,8 @@ public class Calculator
 		while(it.hasNext())
 		{
 		 	Calendar c = Calendar.getInstance();
+		 	Calendar start = Calendar.getInstance(); 
+		 	start.setTime( s );
 		 	Person p = it.next(); 
 
 		 	c.setTime( p.getCreated() );
@@ -60,10 +92,10 @@ public class Calculator
 		 	System.out.println( p );
 
 
-			graph[c.get(Calendar.DAY_OF_YEAR) - start.get( Calendar.DAY_OF_YEAR ) ] ++;  
+			graph[c.get(Calendar.DAY_OF_YEAR) - start.get( Calendar.DAY_OF_YEAR ) - 1] ++;  
 		}		
 
-		if( graph.length > 15 )
+		if( graph.length > 20 )
 			graph = normalize( graph );
 
 		return graph;
@@ -79,9 +111,14 @@ public class Calculator
 	{
 		int[] data = d; 
 
-		int[] newData = new int[ 15 ];
+		int[] newData = new int[ (int) Math.ceil((data.length / (double) 7.0)) ];
 
-		int split = (int) Math.ceil((data.length / ((double) newData.length - 1 ))) ; 
+		//int split = (int) Math.ceil((data.length / ((double) newData.length - 1 ))) ; 
+
+		System.out.println( "Lengden: " + data.length );
+		System.out.println( "Delt på 7:" + (int) Math.ceil((data.length / (double) 7.0)) );
+
+		int split = 7;
 
 		int j = 0;
 
@@ -92,7 +129,7 @@ public class Calculator
 			if( (i+1) % split == 0 )
 			{
 				j++;
-				System.out.println( "i: " + i + ", j: " + j );
+				//System.out.println( "i: " + i + ", j: " + j );
 			}
 		}
 
@@ -108,12 +145,12 @@ public class Calculator
 	{
 		return cardlist.allCards();
 	}
-
+/*
 	public int totalSoldCard()
 	{
 		return regCards() + unregCards();
 	}
-
+*/
 	public int regThatTime(int nr)
 	{
 		return custRegistry.regThatTime(nr);
@@ -175,7 +212,16 @@ public class Calculator
 	}
 
 
+	private int calculateRange( Date s, Date e )
+	{
+		Calendar start = Calendar.getInstance();
+		Calendar end = Calendar.getInstance();
 
+		start.setTime( s );
+		end.setTime( e );
+
+		return end.get(Calendar.DAY_OF_YEAR) - start.get( Calendar.DAY_OF_YEAR );
+	}
 
 
 

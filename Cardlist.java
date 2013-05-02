@@ -156,12 +156,7 @@ public class Cardlist implements Serializable
 
 		while(it.hasNext())
 		{
-			Card runner = it.next();
-			if( (runner.getBought().after(start) && runner.getBought().before(end)) 
-				|| (runner.getBought().equals(start) || runner.getBought().equals(end)) )
-			{
-				tempList.add(runner);
-			}
+			tempList.add(it.next());
 		}
 		return tempList;
 	}

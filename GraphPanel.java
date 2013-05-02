@@ -25,9 +25,19 @@ public class GraphPanel extends JPanel
 	private int lastx;
 	private int lasty; 
 
-	public GraphPanel( int[] d )
+	private String labelX;
+	private String labelY;
+
+	private String label; 
+
+	public GraphPanel( int[] d, String x, String y, String interval )
 	{
 	
+		labelX = x;
+		labelY = y;
+
+		label = interval; 
+
 		data = d; 
 		//list = l;
 		setBackground( Color.WHITE );
@@ -48,8 +58,8 @@ public class GraphPanel extends JPanel
 		{
 			yAxisMax = 10;
 			yAxisMin = 0;
-			xAxisInterval = 1;
-			yAxisInterval = 1;
+			xAxisInterval = XAXISLENGTH / 10;
+			yAxisInterval = YAXISLENGTH / 10;
 			lastx = ORIGOX;
 			lasty = ORIGOY;
 			System.out.println( "ArithmeticException" );
@@ -167,9 +177,9 @@ public class GraphPanel extends JPanel
 		Graphics2D g2d = (Graphics2D) g; 
 
 		g2d.drawLine(ORIGOX, 10, ORIGOX, ORIGOY);
-		g2d.drawString("Y", 10,15);
+		g2d.drawString(labelY, 10,15);
 		g2d.drawLine(ORIGOX,ORIGOY , 550, ORIGOY);
-		g2d.drawString("X", 560,450);
+		g2d.drawString(labelX, 560,450);
 
 		drawXinterval(g2d);
 		drawYinterval(g2d);

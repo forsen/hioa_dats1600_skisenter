@@ -26,6 +26,10 @@ public class AdminStatistikkPanel extends JPanel
 	private Cardlist cardregistry;
 	private Toolkit toolbox;
 
+	private Date firstLight;
+	private SimpleDateFormat formatter;
+
+
 	// fjern etterhvert
 	private int[] graph;
 
@@ -34,7 +38,20 @@ public class AdminStatistikkPanel extends JPanel
 		setBackground(new Color(200, 230, 255));
 
 
-		
+		// setting "firstLight" to the day when our skisenter first saw the day of light, currently 010113.
+
+		formatter = new SimpleDateFormat("ddMMyy"); 
+
+		try
+		{
+			firstLight = formatter.parse("010113");
+		}
+		catch( ParseException pe )
+		{
+			pe.printStackTrace( System.out );
+		}
+
+
 
 		list = l;
 		validations = v;
@@ -54,7 +71,7 @@ public class AdminStatistikkPanel extends JPanel
 
 		graph = new int[10];
 
-		graphPnl = new GraphPanel( graph ); 
+		graphPnl = new GraphPanel( graph, "x", "y", "" ); 
 		displayPnl.setBackground(new Color(200, 230, 255));
 		tabDisp.addTab("Rapport", displayPnl);
 		tabDisp.addTab("Grafisk visning", graphPnl);
@@ -261,47 +278,56 @@ public class AdminStatistikkPanel extends JPanel
 
 	public void totalRegPepole()
 	{
-		/*Date start;
-		Date end;
-
-		try
-		{
-			start = new SimpleDateFormat("ddMMyy").parse(fromFld.getText());
-			end = new SimpleDateFormat("ddMMyy").parse(toFld.getText());  
-		}
-		catch (NullPointerException npe)
-		{
-			 start = new SimpleDateFormat("ddMMyy").parse("010170");
-			 end = new SimpleDateFormat("ddMMyy").parse("010170"); 
-		}
-*/
 
 		Date start;
 		Date end; 
+		
+		start = getStartDate();
+		end = getEndDate();	
 
-		try
+		if( start == null || end == null )
+			return;
+
+		int[] regPeopleIntrvl = cal.totalRegPeople(start, end);
+		
+		graphPnl = new GraphPanel( regPeopleIntrvl, "Uker", "Ant", formatter.format(start) + " - " + formatter.format(end) );
+		tabDisp.remove( 1 );
+		tabDisp.add("Grafisk visning", graphPnl);
+
+		display.setText("Registrerte personer i intervallet " + formatter.format(start) + " til " + formatter.format(end) +":\n");
+		int total = 0; 
+		for( int i = 0; i < regPeopleIntrvl.length; i++ )
 		{
-			start = new SimpleDateFormat("ddMMyy").parse(fromFld.getText());
-			end = new SimpleDateFormat("ddMMyy").parse(toFld.getText());
-
-			
-			graphPnl = new GraphPanel( cal.totalRegPeople(start, end) );
-			tabDisp.remove( 1 );
-			tabDisp.add("Grafisk visning", graphPnl);
-			tabDisp.setSelectedIndex(1);
+			total += regPeopleIntrvl[i];
 		}
-		catch( ParseException pe )
-		{
-			JOptionPane.showMessageDialog(null, "Datoen må være på formen ddmmyy!");
-		}
-
-
-//		display.append("\nTotalt registrerte personer er: " + cal.totalRegPepole());
+		display.append( "" + total );
+		
 	}
 
 	public void totalSoldCard()
 	{
-		display.append("\nTotalt solgte skikort er: " + cal.totalSoldCard());
+		Date start;
+		Date end; 
+		
+		start = getStartDate();
+		end = getEndDate(); 
+
+		if( start == null || end == null )
+			return;
+
+		int[] soldCardIntrvl = cal.totalSoldCard(start, end);
+
+		graphPnl = new GraphPanel( soldCardIntrvl, "Uker", "Ant", formatter.format(start) + " - " + formatter.format( end ) );
+		tabDisp.remove( 1 );
+		tabDisp.add( "Grafisk visning", graphPnl );
+		
+		int total = 0;
+		for( int i = 0; i < soldCardIntrvl.length; i++ )
+		{
+			total += soldCardIntrvl[i];
+		}
+		display.setText("Solgte skikort i intervallet " + formatter.format(start) + " til " + formatter.format(end) + ":\n");
+		display.append( "" + total );
 	}
 
 	public void regThatTime()
@@ -374,6 +400,49 @@ public class AdminStatistikkPanel extends JPanel
 	}
 
 
+	private Date getStartDate()
+	{
+		Date start; 
+		try
+		{
+			start = formatter.parse(fromFld.getText());
+		}
+		catch( ParseException pe )
+		{
+			if( !fromFld.getText().isEmpty() )
+			{
+				JOptionPane.showMessageDialog(null, "Datoen må være på formen ddmmyy!");
+				return null;
+			}
+
+			start = firstLight;
+		}
+
+		return start;
+
+	}
+
+	private Date getEndDate()
+	{
+		Date end; 
+		try
+		{
+			end = formatter.parse(toFld.getText());
+		}
+		catch( ParseException pe )
+		{
+			if( !toFld.getText().isEmpty() )
+			{
+				JOptionPane.showMessageDialog(null, "Datoen må være på formen ddmmyy!");
+				return null;
+			}
+			end = new Date(); 
+		}
+
+		return end;
+	}
+
+
 	private class Listener implements ActionListener
   	{
    		public void actionPerformed( ActionEvent e )
@@ -429,6 +498,8 @@ public class AdminStatistikkPanel extends JPanel
 
     	}
 	}
+
+
 
 }
 	
