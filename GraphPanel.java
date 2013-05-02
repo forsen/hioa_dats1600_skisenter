@@ -49,7 +49,8 @@ public class GraphPanel extends JPanel
 			yAxisMin = arrayMin( data );
 			xAxisInterval = XAXISLENGTH / data[0].length;
 			yAxisInterval = YAXISLENGTH / (yAxisMax - yAxisMin);
-			lastx = xAxisInterval + ORIGOX; 
+			//lastx = xAxisInterval + ORIGOX; 
+			lastx = ORIGOX; 
 			lasty = ORIGOY - data[0][0]; 
 			System.out.println( "inni try blokken " );
 			repaint(); 
@@ -150,6 +151,7 @@ public class GraphPanel extends JPanel
 		g2d.drawLine( lastx, lasty, lastx + xAxisInterval, YAXISLENGTH - ((y - yAxisMin) * yAxisInterval) );
 
 		System.out.println("x1: " + lastx +", y1: " + lasty + ", x2: " + (lastx + xAxisInterval) + ", y2: " + (YAXISLENGTH - ((y - yAxisMin) * yAxisInterval)) ); 
+		System.out.println("y: " + y);
 
 		lasty = YAXISLENGTH - ((y - yAxisMin) * yAxisInterval) ;
 		lastx += xAxisInterval;
@@ -190,16 +192,33 @@ public class GraphPanel extends JPanel
 
 		for( int i = 0; i<data.length; i++)
 		{
-			lasty = YAXISLENGTH - ((data[0][0] - yAxisMin) * yAxisInterval);
+			//lasty = YAXISLENGTH - ((data[0][0] - yAxisMin) * yAxisInterval);
 
 			for( int j = 0; j<data[i].length; j++ )
 			{
+				g2d.setColor( nextColor()[i] );
 				drawGraphCoordinates( data[i][j], g2d );
 			}
+			lastx = ORIGOX;
+			lasty = YAXISLENGTH - ((data[i][0] - yAxisMin) * yAxisInterval); 
 		}
-		lastx = xAxisInterval + ORIGOX;
-		lasty = YAXISLENGTH - ((data[0][0] - yAxisMin) * yAxisInterval); 
+		lastx = ORIGOX;
+		//lasty = YAXISLENGTH - ((data[0][0] - yAxisMin) * yAxisInterval); 
+		lasty = YAXISLENGTH - data[0][0];
 
 
 	}
+
+	private Color[] nextColor()
+	{
+		Color[] nxtCol = new Color[5]; 
+
+		nxtCol[0] = Color.GREEN;
+		nxtCol[1] = Color.BLUE; 
+		nxtCol[2] = Color.RED; 
+		nxtCol[3] = Color.CYAN;
+		nxtCol[4] = Color.YELLOW;
+
+		return nxtCol; 
+ 	}
 }

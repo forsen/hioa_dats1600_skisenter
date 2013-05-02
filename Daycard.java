@@ -7,8 +7,7 @@ public class Daycard extends Timebasedcard
 
 	public Daycard( Date bd, Date b)
 	{
-		super( Info.DAYCARDPRICE, bd, b, Skicard.DAYCARD); 
-		bought = new Date();  	
+		super( Info.DAYCARDPRICE, bd, b, Skicard.DAYCARD); 	
 		calHelper = Calendar.getInstance(); 		
 	}
 

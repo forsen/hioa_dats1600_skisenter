@@ -77,22 +77,24 @@ public class RandomData
 	{
 		Card n = new Card(); 
 		Skicard s = new Daycard( b, b );
-		int random = randBetween( MINSKIKORTPERKORT, MAXSKIKORTPERKORT );
+		int random = randBetween( 1, 4 );
 		int i = 0; 
 		do
 		{
 			switch( random ) 
 			{
 				case 1: 
-					s = new Daycard( b, randomDate(2005, 2012) );
+					s = new Daycard( b, randomDate(2012, 2013) );
 					break;
 				case 2: 
-					s = new Seasoncard( b, randomDate(2005,2012) );
+					s = new Seasoncard( b, randomDate(2012,2013) );
 					break;
 				case 3: 
-					s = new Hourcard( b, randomDate( 2005, 2012) );
+					s = new Hourcard( b, randomDate( 2012, 2013) );
+					break; 
 				case 4:
-					s = new Punchcard( b, randomDate( 2005, 2012 ) );
+					s = new Punchcard( b, randomDate( 2012, 2013 ) );
+					break; 
 			}
 
 			n.input( s );

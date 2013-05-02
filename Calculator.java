@@ -6,6 +6,9 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Iterator;
 
+// kan fjernes
+import java.text.SimpleDateFormat;
+
 public class Calculator
 {
 	private Personlist custRegistry;
@@ -56,7 +59,9 @@ public class Calculator
 				c.setTime( sc.getBought() );
 
 
-				graph[sc.getType()][c.get(Calendar.DAY_OF_YEAR) - start.get( Calendar.DAY_OF_YEAR ) - 1]++; 
+				graph[sc.getType()][c.get(Calendar.DAY_OF_YEAR) - start.get( Calendar.DAY_OF_YEAR )]++; 
+				System.out.println( "Skikorttype" + sc.getType() + " Dag: " + (c.get(Calendar.DAY_OF_YEAR)  - start.get( Calendar.DAY_OF_YEAR ) ));
+				System.out.println( "Kjøpt: " + new SimpleDateFormat("ddMMyy").format(c.getTime()) );
 			} 
 		}
 
@@ -224,7 +229,7 @@ public class Calculator
 		start.setTime( s );
 		end.setTime( e );
 
-		return end.get(Calendar.DAY_OF_YEAR) - start.get( Calendar.DAY_OF_YEAR );
+		return end.get(Calendar.DAY_OF_YEAR) - start.get( Calendar.DAY_OF_YEAR ) + 1;
 	}
 
 
