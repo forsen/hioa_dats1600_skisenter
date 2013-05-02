@@ -15,7 +15,7 @@ public class ImageUtility
 	
 	File orgfile;
 
-	public File drawImage( File f)
+	private File drawImage( File f)
 	{	
 		
 		orgfile = f;

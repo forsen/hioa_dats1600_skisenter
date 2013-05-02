@@ -328,7 +328,7 @@ public class Personlist implements Serializable
 		return doneText;
 	}
 
-	public String personListe()
+	/*public String personListe()
 	{
 		StringBuilder text = new StringBuilder();
 		
@@ -352,7 +352,7 @@ public class Personlist implements Serializable
 
 
 		
-	}
+	}*/
 
 	public JTable personTable()
 	{

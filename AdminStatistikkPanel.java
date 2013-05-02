@@ -259,7 +259,7 @@ public class AdminStatistikkPanel extends JPanel
 
 
 
-	public void totalRegPepole()
+	private void totalRegPepole()
 	{
 		/*Date start;
 		Date end;
@@ -299,12 +299,12 @@ public class AdminStatistikkPanel extends JPanel
 //		display.append("\nTotalt registrerte personer er: " + cal.totalRegPepole());
 	}
 
-	public void totalSoldCard()
+	private void totalSoldCard()
 	{
 		display.append("\nTotalt solgte skikort er: " + cal.totalSoldCard());
 	}
 
-	public void regThatTime()
+	private void regThatTime()
 	{
 		try
 		{
@@ -329,7 +329,7 @@ public class AdminStatistikkPanel extends JPanel
 
 
 
-	public void passings()
+	private void passings()
 	{
 		String lift = liftFLd.getText();
 		String pattern = "\\d{1}";
@@ -346,7 +346,7 @@ public class AdminStatistikkPanel extends JPanel
    		else display.append("\nAntall passeringer gjennom alle heiser er " + cal.showPassings());
 	}
 
-	public void revenue()
+	private void revenue()
 	{
 		display.append("\nTotal omsetning er "+  cal.totalCost() + " KR");
 	}
@@ -359,7 +359,7 @@ public class AdminStatistikkPanel extends JPanel
 
 //START-GRAF
 
-	public void monthlyCardSale()
+	private void monthlyCardSale()
 	{
 		graph = new int[12];
 

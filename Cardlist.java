@@ -21,7 +21,7 @@ public class Cardlist implements Serializable
 		list.add(obj);
 		return  " Ble opprettet med kundenummer: " + obj.getCardID();	
 	}
-
+/// BRUKER VI DENNE METODEN ??? FOR VI PANTER JO IKKE SLETTER)
 	public Card deleteCard(Card obj)
 	{
 
