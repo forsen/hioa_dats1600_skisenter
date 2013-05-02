@@ -325,7 +325,7 @@ public class AdminStatistikkPanel extends JPanel
 		tabDisp.add( "Grafisk visning", graphPnl );
 		tabDisp.setSelectedIndex( idx );
 		
-		int[] total = new int[4];
+		int[] total = new int[5];
 		
 		for( int i = 0; i < soldCardIntrvl.length; i++ )
 		{
@@ -337,6 +337,7 @@ public class AdminStatistikkPanel extends JPanel
 		display.append( "\nTimeskort: \t" + total[Skicard.HOURCARD] );
 		display.append( "\nSesongkort: \t" + total[Skicard.SEASONCARD] );
 		display.append( "\nKlippekort: \t" + total[Skicard.PUNCHCARD] );
+		display.append( "\nFysiske kort: \t" + total[4] );
 	}
 
 	private void regThatTime()
@@ -381,9 +382,48 @@ public class AdminStatistikkPanel extends JPanel
    		else display.append("\nAntall passeringer gjennom alle heiser er " + cal.showPassings());
 	}
 
+
 	private void revenue()
 	{
-		display.append("\nTotal omsetning er "+  cal.totalCost() + " KR");
+
+		Date start;
+		Date end; 
+		
+		start = getStartDate();
+		end = getEndDate();	
+
+		if( start == null || end == null )
+			return;
+
+		int[][] totalRevenue = cal.totalRevenue(start, end);
+		
+		graphPnl = new GraphPanel( totalRevenue, "Uker", "KR", formatter.format(start) + " - " + formatter.format(end) );
+		int idx = tabDisp.getSelectedIndex();
+		tabDisp.remove( 1 );
+		tabDisp.add("Grafisk visning", graphPnl);
+		tabDisp.setSelectedIndex( idx );
+
+		display.setText("Omsetning i intervallet " + formatter.format(start) + " til " + formatter.format(end) +":\n");
+	
+		int[] total = new int[5];
+		
+		int sum = 0;
+
+		for( int i = 0; i < totalRevenue.length; i++ )
+		{
+			for( int j = 0; j < totalRevenue[i].length; j++ )
+			{
+				total[i] += totalRevenue[i][j];
+				sum += totalRevenue[i][j];
+			}
+		}
+		display.append( "\nDagskort: \t" + total[Skicard.DAYCARD] );
+		display.append( "\nTimeskort: \t" + total[Skicard.HOURCARD] );
+		display.append( "\nSesongkort: \t" + total[Skicard.SEASONCARD] );
+		display.append( "\nKlippekort: \t" + total[Skicard.PUNCHCARD] );
+		display.append( "\nFysiske kort: \t" + total[4] );
+		display.append( "\n\nTotalt: \t" + sum );
+		
 	}
 
 	/*public void totalPunch()

@@ -222,7 +222,7 @@ public class GraphPanel extends JPanel
 		g2d.drawString( label, startX, startY );
 		startY += 3*linespace; 
 
-		if( data.length == 4 )
+		if( data.length == 5 )
 		{
 			g2d.setColor(nextColor()[Skicard.DAYCARD]);
 			g2d.drawString( "Dagskort", startX, startY );
@@ -240,6 +240,9 @@ public class GraphPanel extends JPanel
 			g2d.drawString( "Klippekort", startX, startY );
 			startY += linespace;
 
+			g2d.setColor(nextColor()[4]);
+			g2d.drawString( "Fysiske kort", startX, startY );
+
 			g2d.setColor( Color.BLACK );
 	
 		}
@@ -247,13 +250,13 @@ public class GraphPanel extends JPanel
 
 	private Color[] nextColor()
 	{
-		Color[] nxtCol = new Color[5]; 
-
-		nxtCol[0] = Color.GREEN;
-		nxtCol[1] = Color.BLUE; 
-		nxtCol[2] = Color.RED; 
-		nxtCol[3] = Color.CYAN;
-		nxtCol[4] = Color.YELLOW;
+		Color[] nxtCol = new Color[6]; 
+		nxtCol[0] = Color.BLACK;
+		nxtCol[1] = Color.GREEN;
+		nxtCol[2] = Color.BLUE; 
+		nxtCol[3] = Color.RED; 
+		nxtCol[4] = Color.CYAN;
+		nxtCol[5] = Color.YELLOW;
 
 		return nxtCol; 
  	}

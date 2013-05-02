@@ -61,21 +61,31 @@ public class RandomData
 
 			Person p = new Person( firstname, lastname, number, dob, null);
 
-			p.setCreated( randomDate( 2005, 2013 ) );
+			Date rDate = randomDate( 2005, 2013 );
+
+			p.setCreated( rDate );
 
 			int numberofcards = randBetween( MINKORTPERPERSON, MAXKORTPERPERSON );
 
 			for( int j = 0; j < numberofcards; j++)
-				p.addCard( addCards( dob ) );
+				p.addCard( addCards( dob, rDate ) );
 
 			registry.input( p );
 			 
 		}
 	}
 
-	private Card addCards( Date b )
+	private Card addCards( Date b, Date r )
 	{
-		Card n = new Card(); 
+		Calendar helper = Calendar.getInstance();
+		helper.setTime( r );
+		Date rDate;
+		do
+		{
+			rDate = randomDate( helper.get(Calendar.YEAR), 2013 );
+		} while (rDate.before( r ));
+
+		Card n = new Card( rDate ); 
 		Skicard s = new Daycard( b, b );
 		int random = randBetween( 1, 4 );
 		int i = 0; 

@@ -34,7 +34,7 @@ public class Calculator
 		int start = daysSinceOpening( s );
 		int end = daysSinceOpening( e ); 
 
-		graph = new int[4][ end - start + 1];
+		graph = new int[5][ end - start + 1];
 
 		for( int i = 0; i < graph[0].length; i++ )
 		{
@@ -49,14 +49,13 @@ public class Calculator
 			List<Skicard> skl = crd.getRelevantCards(s,e);
 
 			Iterator<Skicard> sIt = skl.iterator(); 
+			if(crd.getCardBought().after(s) && crd.getCardBought().before(e))
+				graph[4][(daysSinceOpening(crd.getCardBought()) - start)]++; 
 
 			while( sIt.hasNext() )
 			{		
 
 				Skicard sc = sIt.next(); 
-
-				
-
 
 				graph[sc.getType()][(daysSinceOpening( sc.getBought() ) - start )]++; 
 				System.out.println( "Skikorttype" + sc.getType() + " Dag: " + ( daysSinceOpening(sc.getBought()) - start ));
@@ -197,9 +196,73 @@ public class Calculator
 		return antall;
 	}
 
-	public int totalCost()
+	public int[][] totalRevenue(Date s, Date e)
 	{
-		return custRegistry.totalCost() + cardlist.totalCost();
+		List<Card> clist = custRegistry.getRelevantCards( s, e );
+		clist.addAll( cardlist.getRelevantCards( s, e ) );
+
+		Iterator<Card> cIt = clist.iterator();
+
+		int start = daysSinceOpening( s );
+		int end = daysSinceOpening( e ); 
+
+
+		graph = new int[5][ end - start + 1];
+
+		for( int i = 0; i < graph[0].length; i++ )
+		{
+			graph[0][i] = 0;
+		}
+
+		while( cIt.hasNext() )
+		{
+
+			Card crd = cIt.next();
+
+			List<Skicard> skl = crd.getRelevantCards(s,e);
+
+			Iterator<Skicard> sIt = skl.iterator(); 
+			if(crd.getCardBought().after(s) && crd.getCardBought().before(e))
+			{
+				graph[4][(daysSinceOpening( crd.getCardBought() ) - start )] += Info.CARDPRICE;
+				if( crd.getReturned() )
+					graph[4][(daysSinceOpening( crd.getCardBought() ) - start )] += Info.RETURNPRICE;
+			}
+			while( sIt.hasNext() )
+			{		
+
+				Skicard sc = sIt.next(); 
+
+				
+
+
+				graph[sc.getType()][(daysSinceOpening( sc.getBought() ) - start )] += sc.getPrice(); 
+
+			} 
+		}
+
+
+
+		if( graph[0].length > 20 )
+		{
+			for( int i = 0; i < graph.length; i++ )
+				graph[i] = normalize( graph[i], 7 );
+		}
+
+		if( graph[0].length > 20 )
+		{
+			for( int i = 0; i < graph.length; i++ )
+				graph[i] = normalize( graph[i], 4 );
+		}
+
+		if( graph[0].length > 20 )
+		{
+			for( int i = 0; i < graph.length; i++ )
+				graph[i] = normalize( graph[i], 12 );
+		}
+
+		
+		return graph;
 	}
 
 	/*public int totalPunch()

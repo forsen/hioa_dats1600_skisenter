@@ -6,15 +6,17 @@ public class Card implements Serializable
 	private List<Skicard> skiCardList; 
 	private int cardNumber;
 	private Skicard current; 
-	private boolean returned; 
+	private boolean returned;
+	private Date bought;  
 	private static int next = 100000;
 
-	public Card()
+	public Card( Date b )
 	{
 		Skisenter.unsaved = true; 
 		skiCardList = new LinkedList<>(); 
 		cardNumber = ++next; 
 		current = null; 
+		bought = b;
 		
 	}
 
@@ -43,6 +45,11 @@ public class Card implements Serializable
 	public boolean getReturned()
 	{
 		return returned;
+	}
+
+	public Date getCardBought()
+	{
+		return bought;
 	}
 
 	public int getCardID()

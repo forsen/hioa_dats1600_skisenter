@@ -4,7 +4,7 @@ import javax.swing.event.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
-
+import java.util.Date;
 
 
 public class ReplaceWindowPanel extends JPanel 
@@ -151,7 +151,7 @@ public class ReplaceWindowPanel extends JPanel
 	{
 		
 		Salesclerk.customer.removeCard(card);
-		Card nCard = new Card(); 
+		Card nCard = new Card( new Date() ); 
 		nCard.setSkicardlist( card.getSkicardlist());
 		nCard.setCurrent(card.getCurrent());
 		Salesclerk.customer.addCard(nCard);

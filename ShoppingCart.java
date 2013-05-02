@@ -58,7 +58,7 @@ public class ShoppingCart
 	{
 
 
-		Card nCard = new Card(); 
+		Card nCard = new Card( new Date() ); 
 
 //		try
 //		{

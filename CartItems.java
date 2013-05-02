@@ -16,7 +16,7 @@ public class CartItems
 
 	public String getType()
 	{
-		return skicard.getType();
+		return skicard.getType("");
 	}
 
 	public int getPrice()
