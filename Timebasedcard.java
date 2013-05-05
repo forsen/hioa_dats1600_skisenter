@@ -6,7 +6,7 @@ public abstract class Timebasedcard extends Skicard
 	protected Date expires; 
 	private Date lastValidated;
 
-	public Timebasedcard( int p, Date bd, Date b, String t )
+	public Timebasedcard( int p, Date bd, Date b, int t )
 	{
 		super(p, bd, b, t);
 

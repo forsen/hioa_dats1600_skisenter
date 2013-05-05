@@ -18,11 +18,11 @@ public abstract class Skicard implements Serializable
 	private int price;
 	private double discount;
 	private int ageGroup;
-	private String type;
+	private int type;
 	protected Date bought; 
 
 
-	public Skicard(int p, Date bd, Date b, String t )
+	public Skicard(int p, Date bd, Date b, int t )
 	{
 
 		price = p;
@@ -70,9 +70,27 @@ public abstract class Skicard implements Serializable
 		return ageGroup;
 	}
 
-	public String getType()
+	public int getType()
 	{
 		return type; 
+	}
+
+	public String getType( String t )
+	{
+		// parameter just so we're able to overload this method
+
+		switch( type )
+		{
+			case Skicard.DAYCARD: 
+				return "Dagskort";
+			case Skicard.HOURCARD: 
+				return "Timeskort";
+			case Skicard.SEASONCARD:
+				return "Sesongkort";
+			case Skicard.PUNCHCARD:
+				return "Klippekort";
+		}
+		return ""; 
 	}
 
 	public Date getBought()

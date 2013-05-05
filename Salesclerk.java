@@ -217,7 +217,7 @@ public class Salesclerk extends JFrame
 
 	}
 
-	private void clearSearch()
+	public void clearSearch()
 	{
 		
 		customer = null;

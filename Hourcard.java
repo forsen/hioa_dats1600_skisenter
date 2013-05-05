@@ -8,8 +8,7 @@ public class Hourcard extends Timebasedcard
 
 	public Hourcard( Date bd, Date b )
 	{
-		super(Info.HOURCARDPRICE, bd, b, "Timeskort"); 
-		bought = new Date();  	
+		super(Info.HOURCARDPRICE, bd, b, Skicard.HOURCARD); 	
 		calHelper = Calendar.getInstance(); 
 	}
 

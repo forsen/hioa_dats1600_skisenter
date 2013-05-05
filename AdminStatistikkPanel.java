@@ -26,15 +26,31 @@ public class AdminStatistikkPanel extends JPanel
 	private Cardlist cardregistry;
 	private Toolkit toolbox;
 
+	private SimpleDateFormat formatter;
+
+
 	// fjern etterhvert
-	private int[] graph;
+	private int[][] graph;
 
 	public AdminStatistikkPanel(Personlist l,List<Validations> v, Cardlist cr )
 	{
 		setBackground(new Color(200, 230, 255));
 
 
-		
+		// setting "firstLight" to the day when our skisenter first saw the day of light, currently 010113.
+
+		formatter = new SimpleDateFormat("ddMMyy"); 
+
+		/*try
+		{
+			firstLight = formatter.parse("010113");
+		}
+		catch( ParseException pe )
+		{
+			pe.printStackTrace( System.out );
+		}
+*/
+
 
 		list = l;
 		validations = v;
@@ -52,9 +68,9 @@ public class AdminStatistikkPanel extends JPanel
 		
 		tabDisp = new JTabbedPane();
 
-		graph = new int[10];
+		graph = new int[1][10];
 
-		graphPnl = new GraphPanel( graph ); 
+		graphPnl = new GraphPanel( graph, "x", "y", "" ); 
 		displayPnl.setBackground(new Color(200, 230, 255));
 		tabDisp.addTab("Rapport", displayPnl);
 		tabDisp.addTab("Grafisk visning", graphPnl);
@@ -259,52 +275,72 @@ public class AdminStatistikkPanel extends JPanel
 
 
 
-	private void totalRegPepole()
+	public void totalRegPepole()
 	{
-		/*Date start;
-		Date end;
-
-		try
-		{
-			start = new SimpleDateFormat("ddMMyy").parse(fromFld.getText());
-			end = new SimpleDateFormat("ddMMyy").parse(toFld.getText());  
-		}
-		catch (NullPointerException npe)
-		{
-			 start = new SimpleDateFormat("ddMMyy").parse("010170");
-			 end = new SimpleDateFormat("ddMMyy").parse("010170"); 
-		}
-*/
 
 		Date start;
 		Date end; 
+		
+		start = getStartDate();
+		end = getEndDate();	
 
-		try
+		if( start == null || end == null )
+			return;
+
+		int[][] regPeopleIntrvl = cal.totalRegPeople(start, end);
+		
+		graphPnl = new GraphPanel( regPeopleIntrvl, "Uker", "Ant", formatter.format(start) + " - " + formatter.format(end) );
+		int idx = tabDisp.getSelectedIndex();
+		tabDisp.remove( 1 );
+		tabDisp.add("Grafisk visning", graphPnl);
+		tabDisp.setSelectedIndex( idx );
+
+		display.setText("Registrerte personer i intervallet " + formatter.format(start) + " til " + formatter.format(end) +":\n");
+		int total = 0; 
+		for( int i = 0; i < regPeopleIntrvl.length; i++ )
 		{
-			start = new SimpleDateFormat("ddMMyy").parse(fromFld.getText());
-			end = new SimpleDateFormat("ddMMyy").parse(toFld.getText());
-
-			
-			graphPnl = new GraphPanel( cal.totalRegPeople(start, end) );
-			tabDisp.remove( 1 );
-			tabDisp.add("Grafisk visning", graphPnl);
-			tabDisp.setSelectedIndex(1);
+			for( int j = 0; j < regPeopleIntrvl[i].length; j++ )
+				total += regPeopleIntrvl[i][j];
 		}
-		catch( ParseException pe )
-		{
-			JOptionPane.showMessageDialog(null, "Datoen må være på formen ddmmyy!");
-		}
-
-
-//		display.append("\nTotalt registrerte personer er: " + cal.totalRegPepole());
+		display.append( "" + total );
+		
 	}
 
-	private void totalSoldCard()
+	public void totalSoldCard()
 	{
-		display.append("\nTotalt solgte skikort er: " + cal.totalSoldCard());
+		Date start;
+		Date end; 
+		
+		start = getStartDate();
+		end = getEndDate(); 
+
+		if( start == null || end == null )
+			return;
+
+		int[][] soldCardIntrvl = cal.totalSoldCard(start, end);
+
+		graphPnl = new GraphPanel( soldCardIntrvl, "Uker", "Ant", formatter.format(start) + " - " + formatter.format( end ) );
+		int idx = tabDisp.getSelectedIndex();
+		tabDisp.remove( 1 );
+		tabDisp.add( "Grafisk visning", graphPnl );
+		tabDisp.setSelectedIndex( idx );
+		
+		int[] total = new int[5];
+		
+		for( int i = 0; i < soldCardIntrvl.length; i++ )
+		{
+			for( int j = 0; j < soldCardIntrvl[i].length; j++ )
+				total[i] += soldCardIntrvl[i][j];
+		}
+		display.setText("Solgte skikort i intervallet " + formatter.format(start) + " til " + formatter.format(end) + ":");
+		display.append( "\nDagskort: \t" + total[Skicard.DAYCARD] );
+		display.append( "\nTimeskort: \t" + total[Skicard.HOURCARD] );
+		display.append( "\nSesongkort: \t" + total[Skicard.SEASONCARD] );
+		display.append( "\nKlippekort: \t" + total[Skicard.PUNCHCARD] );
+		display.append( "\nFysiske kort: \t" + total[4] );
 	}
 
-	private void regThatTime()
+	public void regThatTime()
 	{
 		try
 		{
@@ -329,7 +365,7 @@ public class AdminStatistikkPanel extends JPanel
 
 
 
-	private void passings()
+	public void passings()
 	{
 		String lift = liftFLd.getText();
 		String pattern = "\\d{1}";
@@ -346,9 +382,48 @@ public class AdminStatistikkPanel extends JPanel
    		else display.append("\nAntall passeringer gjennom alle heiser er " + cal.showPassings());
 	}
 
-	private void revenue()
+
+	public void revenue()
 	{
-		display.append("\nTotal omsetning er "+  cal.totalCost() + " KR");
+
+		Date start;
+		Date end; 
+		
+		start = getStartDate();
+		end = getEndDate();	
+
+		if( start == null || end == null )
+			return;
+
+		int[][] totalRevenue = cal.totalRevenue(start, end);
+		
+		graphPnl = new GraphPanel( totalRevenue, "Uker", "KR", formatter.format(start) + " - " + formatter.format(end) );
+		int idx = tabDisp.getSelectedIndex();
+		tabDisp.remove( 1 );
+		tabDisp.add("Grafisk visning", graphPnl);
+		tabDisp.setSelectedIndex( idx );
+
+		display.setText("Omsetning i intervallet " + formatter.format(start) + " til " + formatter.format(end) +":\n");
+	
+		int[] total = new int[5];
+		
+		int sum = 0;
+
+		for( int i = 0; i < totalRevenue.length; i++ )
+		{
+			for( int j = 0; j < totalRevenue[i].length; j++ )
+			{
+				total[i] += totalRevenue[i][j];
+				sum += totalRevenue[i][j];
+			}
+		}
+		display.append( "\nDagskort: \t" + total[Skicard.DAYCARD] );
+		display.append( "\nTimeskort: \t" + total[Skicard.HOURCARD] );
+		display.append( "\nSesongkort: \t" + total[Skicard.SEASONCARD] );
+		display.append( "\nKlippekort: \t" + total[Skicard.PUNCHCARD] );
+		display.append( "\nFysiske kort: \t" + total[4] );
+		display.append( "\n\nTotalt: \t" + sum );
+		
 	}
 
 	/*public void totalPunch()
@@ -359,9 +434,9 @@ public class AdminStatistikkPanel extends JPanel
 
 //START-GRAF
 
-	private void monthlyCardSale()
+	public void monthlyCardSale()
 	{
-		graph = new int[12];
+/*		graph = new int[12];
 
 
 		for( int i = 0; i < graph.length; i++)
@@ -370,7 +445,50 @@ public class AdminStatistikkPanel extends JPanel
 			int y = cal.cardSoldInMonthX(i);
 			System.out.println(y);
 			graph[i] = y;
-		}	
+		}	*/
+	}
+
+
+	private Date getStartDate()
+	{
+		Date start; 
+		try
+		{
+			start = formatter.parse(fromFld.getText());
+		}
+		catch( ParseException pe )
+		{
+			if( !fromFld.getText().isEmpty() )
+			{
+				JOptionPane.showMessageDialog(null, "Datoen må være på formen ddmmyy!");
+				return null;
+			}
+
+			start = Info.firstLight;
+		}
+
+		return start;
+
+	}
+
+	private Date getEndDate()
+	{
+		Date end; 
+		try
+		{
+			end = formatter.parse(toFld.getText());
+		}
+		catch( ParseException pe )
+		{
+			if( !toFld.getText().isEmpty() )
+			{
+				JOptionPane.showMessageDialog(null, "Datoen må være på formen ddmmyy!");
+				return null;
+			}
+			end = new Date(); 
+		}
+
+		return end;
 	}
 
 
@@ -429,6 +547,8 @@ public class AdminStatistikkPanel extends JPanel
 
     	}
 	}
+
+
 
 }
 	

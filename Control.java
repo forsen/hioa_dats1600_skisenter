@@ -214,14 +214,14 @@ public class Control extends JFrame
 		
 	}
 
-	private void updateTime()
+	public void updateTime()
 	{
 		Timer timer = new Timer();
         timer.schedule(new UpdateTime(), 0, 1000);
 
 	}
 
-	private boolean setFonts(String s)
+	public boolean setFonts(String s)
 	{
 		try{
 			font = Font.createFont(Font.TRUETYPE_FONT, new File(s));
@@ -239,7 +239,7 @@ public class Control extends JFrame
 	}
 
 
-	private Skicard findCard()
+	public Skicard findCard()
 	{
 		try
 		{

@@ -125,7 +125,7 @@ public class AdminInfoPanel extends JPanel
 
 	}
 
-	private void findPerson()
+	public void findPerson()
 	{
 		try
 		{
@@ -146,33 +146,33 @@ public class AdminInfoPanel extends JPanel
 	} 
 
 
-	private void showPersonsWithcards()
+	public void showPersonsWithcards()
 	{
 		list.sort();
 		display.setText(list.toString());
 	}
 
 		
-	private void showCards()
+	public void showCards()
 	{
 
 		display.setText(cardregistry.toString());
 		
 	}
 
-	private void showpersons()
+	public void showpersons()
 	{
 		perstable = list.personTable();
 		
 	}
 
-	private void showpassings()
+	public void showpassings()
 	{
 		passTable = showPassings();
 	}
 	
 	
-	private void deletePerson()
+	public void deletePerson()
 	{
 		try
 		{
@@ -195,7 +195,7 @@ public class AdminInfoPanel extends JPanel
 
 	}
 
-	private JTable showPassings()
+	public JTable showPassings()
 	{
 		
 		String[] columnName = {"HeisNr", "KortNr", "KortType", "Passerings tid"};
@@ -208,7 +208,7 @@ public class AdminInfoPanel extends JPanel
 
 			passings[i][0] = runner.getLiftId();
 			passings[i][1] = runner.getCard();
-			passings[i][2] = runner.getCard().getCurrent().getType();
+			passings[i][2] = runner.getCard().getCurrent().getType("");
 			passings[i][3] = runner.getDate();
 
 		}

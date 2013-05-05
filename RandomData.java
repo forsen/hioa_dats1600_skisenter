@@ -12,7 +12,7 @@ public class RandomData
 
 
 
-	private final int ANTALLPERSONER = 1000;
+	private final int ANTALLPERSONER = 10000;
 	private final int MINKORTPERPERSON = 2;
 	private final int MAXKORTPERPERSON = 5;
 	private final int MINSKIKORTPERKORT = 1; 
@@ -61,38 +61,50 @@ public class RandomData
 
 			Person p = new Person( firstname, lastname, number, dob, null);
 
-			p.setCreated( randomDate( 2012, 2013 ) );
+			Date rDate = randomDate( 2005, 2013 );
+
+			p.setCreated( rDate );
 
 			int numberofcards = randBetween( MINKORTPERPERSON, MAXKORTPERPERSON );
 
 			for( int j = 0; j < numberofcards; j++)
-				p.addCard( addCards( dob ) );
+				p.addCard( addCards( dob, rDate ) );
 
 			registry.input( p );
 			 
 		}
 	}
 
-	private Card addCards( Date b )
+	private Card addCards( Date b, Date r )
 	{
-		Card n = new Card(); 
+		Calendar helper = Calendar.getInstance();
+		helper.setTime( r );
+		Date rDate;
+		do
+		{
+			rDate = randomDate( helper.get(Calendar.YEAR), 2013 );
+		} while (rDate.before( r ));
+
+		Card n = new Card( rDate ); 
 		Skicard s = new Daycard( b, b );
-		int random = randBetween( MINSKIKORTPERKORT, MAXSKIKORTPERKORT );
+		int random = randBetween( 1, 4 );
 		int i = 0; 
 		do
 		{
 			switch( random ) 
 			{
 				case 1: 
-					s = new Daycard( b, randomDate(2005, 2012) );
+					s = new Daycard( b, randomDate(2005, 2013) );
 					break;
 				case 2: 
-					s = new Seasoncard( b, randomDate(2005,2012) );
+					s = new Seasoncard( b, randomDate(2005,2013) );
 					break;
 				case 3: 
-					s = new Hourcard( b, randomDate( 2005, 2012) );
+					s = new Hourcard( b, randomDate( 2005, 2013) );
+					break; 
 				case 4:
-					s = new Punchcard( b, randomDate( 2005, 2012 ) );
+					s = new Punchcard( b, randomDate( 2005, 2013 ) );
+					break; 
 			}
 
 			n.input( s );

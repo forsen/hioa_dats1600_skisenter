@@ -6,8 +6,7 @@ public class Seasoncard extends Timebasedcard
 
 	public Seasoncard( Date bd, Date b )
 	{
-		super(Info.SEASONCARDPRICE, bd, b, "Sesongkort"); 
-		bought = new Date();  	
+		super(Info.SEASONCARDPRICE, bd, b, Skicard.SEASONCARD);  	
 		calHelper = Calendar.getInstance(); 		
 	}
 
