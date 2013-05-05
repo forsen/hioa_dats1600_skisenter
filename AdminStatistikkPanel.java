@@ -383,7 +383,7 @@ public class AdminStatistikkPanel extends JPanel
 	}
 
 
-	public void revenue()
+	private void revenue()
 	{
 
 		Date start;
