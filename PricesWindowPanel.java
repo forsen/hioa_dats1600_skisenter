@@ -10,6 +10,7 @@ public class PricesWindowPanel extends JPanel
 	private JLabel header;
 	private JLabel content;
 	private JTable priceTable;
+	private JScrollPane priceScrollPane;
 
 
 
@@ -23,6 +24,8 @@ public class PricesWindowPanel extends JPanel
     	priceTable = new JTable(rowData, columnNames);
     	priceTable.setEnabled(false);
     	priceTable.setBackground(new Color(220, 240, 255));
+    	priceScrollPane = new JScrollPane(priceTable);
+    	priceScrollPane.setPreferredSize(new Dimension(550,88));
 	
 
 		setLayout(new GridBagLayout() );
@@ -41,7 +44,7 @@ public class PricesWindowPanel extends JPanel
 		c.gridx = 1;
 		c.gridy = 2;
 		c.anchor = GridBagConstraints.LINE_START;
-		add(new JScrollPane(priceTable), c);
+		add(priceScrollPane, c);
 
 		header = new JLabel("Rabatter");
 	    header.setFont(new Font("Calibri", Font.BOLD, 20));

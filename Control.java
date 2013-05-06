@@ -26,7 +26,7 @@ public class Control extends JFrame
 	private Color passThroughColor;
 	private Font font;
 	private static final int TIMELIMIT = 10*1000; // 10 seconds.
-
+ 
 
 	private Toolkit toolbox;
 
