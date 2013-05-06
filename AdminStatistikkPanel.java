@@ -41,15 +41,7 @@ public class AdminStatistikkPanel extends JPanel
 
 		formatter = new SimpleDateFormat("ddMMyy"); 
 
-		/*try
-		{
-			firstLight = formatter.parse("010113");
-		}
-		catch( ParseException pe )
-		{
-			pe.printStackTrace( System.out );
-		}
-*/
+		
 
 
 		list = l;
@@ -350,11 +342,11 @@ public class AdminStatistikkPanel extends JPanel
 		}
 		catch(NullPointerException npe)
 		{
-			display.setText("Må sette inn en Måned");
+			display.setText("Need to put in a date");
 		}
 		catch(NumberFormatException nfe)
 		{
-			display.setText("Må sette inn en tall");
+			display.setText("Has to be a number");
 		}
 	}
 

@@ -633,7 +633,7 @@ public class CashRegister extends JDialog
 				}
 				catch( StringIndexOutOfBoundsException sioobe )
 				{
-					// no more characters to remove.. Doing nothing.
+					System.out.println("No more caracters to remove");
 				}
 			}
 			if( ae.getSource() == clearBtn )

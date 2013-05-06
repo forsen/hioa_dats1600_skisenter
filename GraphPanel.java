@@ -52,7 +52,6 @@ public class GraphPanel extends JPanel
 			//lastx = xAxisInterval + ORIGOX; 
 			lastx = ORIGOX; 
 			lasty = ORIGOY - data[0][0]; 
-			System.out.println( "inni try blokken " );
 			repaint(); 
 		}
 		catch( ArithmeticException ae )

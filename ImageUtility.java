@@ -91,15 +91,15 @@ public class ImageUtility
        	}
        	catch(FileNotFoundException fne)
 		{
-			System.out.println("fant ikke mappa");
+			System.out.println("Couldn't find the directory");
 		}
 		catch(IOException ie)
 		{
-
+			System.out.println("Something went wrong..");
 		}
 		catch(NullPointerException npe)
 		{
-			
+			System.out.println("Didn't get a image");
 		}
 	}
 

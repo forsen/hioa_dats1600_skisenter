@@ -39,7 +39,7 @@ public class CardPainting extends JPanel
 		try
 		{
 			printedSkicard = printedCard.getCurrent(); 
-			type = printedSkicard.getType();
+			type = "" +printedSkicard.getType();
 			switch (printedSkicard.getAgeGroup())
 			{
 				case 1: 
@@ -82,7 +82,7 @@ public class CardPainting extends JPanel
 			}
 			catch( IOException ioe2)
 			{
-				// this is bad!
+				System.out.println("Couldn't find default.png");
 			}			
 		}
 		catch( IOException ioe )
@@ -93,7 +93,7 @@ public class CardPainting extends JPanel
 			}
 			catch( IOException ioe2)
 			{
-				// this is bad!
+				System.out.println("Couldn't find default.png");
 			}
 		}
 		catch( IllegalArgumentException iae )
@@ -104,7 +104,7 @@ public class CardPainting extends JPanel
 			}
 			catch( IOException ioe )
 			{
-				// blah
+				System.out.println("Couldn't find default.png");
 			}
 		}
 
@@ -115,7 +115,7 @@ public class CardPainting extends JPanel
 		}
 		catch( IOException ioe )
 		{
-			System.out.println( "Fikk ikke lastet bildet" );
+			System.out.println( "Couln't load the image" );
 		}
 
 

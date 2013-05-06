@@ -33,7 +33,7 @@ public class ReceiptPainting extends JPanel
 		}
 		catch( IOException ioe )
 		{
-			System.out.println( "Fikk ikke lastet bildet" );
+			System.out.println( "couldn't load the image" );
 		}
 
 
@@ -199,7 +199,7 @@ public class ReceiptPainting extends JPanel
 				}
 				catch( NullPointerException npe )
 				{
-					// do nothing
+					System.out.println("Didn't get in atring");
 				}
 			}
 		}

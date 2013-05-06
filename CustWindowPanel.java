@@ -231,7 +231,7 @@ public class CustWindowPanel extends JPanel
 		}
 		catch( NumberFormatException nfe )
 		{
-
+			System.out.println("The phonenr has to be digits");
 		}
 
 
@@ -255,7 +255,7 @@ public class CustWindowPanel extends JPanel
 
 	}
 
-	public void updateCust()
+	private void updateCust()
 	{
 		String fName = custWindowFirstName.getText();
 		String lName = custWindowLastName.getText();
@@ -277,11 +277,11 @@ public class CustWindowPanel extends JPanel
 		}
 		catch(NullPointerException npe)
 		{
-
+			System.out.println("custWindowPhone, and custWindowBorn needs to be filled");
 		}
 		catch(ParseException pe)
 		{
-
+			System.out.println("Couldn't convert the number into date format");
 		}
 
 		
@@ -311,7 +311,11 @@ public class CustWindowPanel extends JPanel
    		}
 		catch(NumberFormatException nfe)
 		{
-
+			System.out.println("Wrong format");
+		}
+		catch(NullPointerException nfe)
+		{
+			System.out.println("No image chosen");
 		}
 		
 

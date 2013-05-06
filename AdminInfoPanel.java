@@ -140,7 +140,7 @@ public class AdminInfoPanel extends JPanel
 		}
 		catch(NullPointerException npe)
 		{
-			display.setText("Fant ikke eieren til kortet");
+			display.setText("Colun't find the card");
 		}
 		
 	} 
@@ -190,7 +190,7 @@ public class AdminInfoPanel extends JPanel
 		}
 		catch(NullPointerException npe)
 		{
-
+			System.out.println("Every field has to be filled");
 		}
 
 	}
@@ -214,7 +214,6 @@ public class AdminInfoPanel extends JPanel
 		}
 		passTable = new JTable(passings,columnName);
 		passTable.setEnabled(false);
-		System.out.println("Du har opprettet tabellen");
 		return passTable;
 		
 	}	

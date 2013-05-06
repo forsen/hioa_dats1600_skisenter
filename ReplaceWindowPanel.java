@@ -141,7 +141,7 @@ public class ReplaceWindowPanel extends JPanel
 		}
 		catch( NumberFormatException nfe )
 		{
-
+			JOptionPane.showMessageDialog(null, "Må putte inn siffer");
 		}
 
 
@@ -187,12 +187,12 @@ public class ReplaceWindowPanel extends JPanel
 			{
 				// when making a new search, index will be out of bound. We use this exception 
 				// to clear the text field.	
-				System.out.println( "Dette er en exception" );
+				System.out.println( "This is an exception" );
 
 			}
 			catch( NullPointerException npe)
 			{
-
+				System.out.println( "No Value is selected" );
 			}
 
 		}
