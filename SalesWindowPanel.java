@@ -409,8 +409,13 @@ public class SalesWindowPanel extends JPanel
 		}
 		catch( NullPointerException npe )
 		{
-
+			System.out.println("No card was selected..");
 		}
+		catch(ArrayIndexOutOfBoundsException aiobe)
+		{
+			System.out.println("Array index out of range: -1");
+		}
+
 
 	}
 /*

@@ -145,7 +145,7 @@ public class ShoppingCart
 				}
 				catch( NullPointerException npe )
 				{
-					System.out.println( "Noe gikk galt" );
+					System.out.println( "Something went wrong here" );
 				}
 			}
 			else 
@@ -157,7 +157,7 @@ public class ShoppingCart
 				catch( NullPointerException npe )
 				{
 
-				
+					System.out.println( "Something went wrong here" );
 				}
 			}
 

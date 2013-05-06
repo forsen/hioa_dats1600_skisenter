@@ -41,15 +41,7 @@ public class AdminStatistikkPanel extends JPanel
 
 		formatter = new SimpleDateFormat("ddMMyy"); 
 
-		/*try
-		{
-			firstLight = formatter.parse("010113");
-		}
-		catch( ParseException pe )
-		{
-			pe.printStackTrace( System.out );
-		}
-*/
+		
 
 
 		list = l;
@@ -275,7 +267,7 @@ public class AdminStatistikkPanel extends JPanel
 
 
 
-	public void totalRegPepole()
+	private void totalRegPepole()
 	{
 
 		Date start;
@@ -306,7 +298,7 @@ public class AdminStatistikkPanel extends JPanel
 		
 	}
 
-	public void totalSoldCard()
+	private void totalSoldCard()
 	{
 		Date start;
 		Date end; 
@@ -340,7 +332,7 @@ public class AdminStatistikkPanel extends JPanel
 		display.append( "\nFysiske kort: \t" + total[4] );
 	}
 
-	public void regThatTime()
+	private void regThatTime()
 	{
 		try
 		{
@@ -350,11 +342,11 @@ public class AdminStatistikkPanel extends JPanel
 		}
 		catch(NullPointerException npe)
 		{
-			display.setText("Må sette inn en Måned");
+			display.setText("Need to put in a date");
 		}
 		catch(NumberFormatException nfe)
 		{
-			display.setText("Må sette inn en tall");
+			display.setText("Has to be a number");
 		}
 	}
 
@@ -365,7 +357,7 @@ public class AdminStatistikkPanel extends JPanel
 
 
 
-	public void passings()
+	private void passings()
 	{
 		String lift = liftFLd.getText();
 		String pattern = "\\d{1}";
@@ -434,7 +426,7 @@ public class AdminStatistikkPanel extends JPanel
 
 //START-GRAF
 
-	public void monthlyCardSale()
+	private void monthlyCardSale()
 	{
 /*		graph = new int[12];
 

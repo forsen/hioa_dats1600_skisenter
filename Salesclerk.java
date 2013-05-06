@@ -217,7 +217,7 @@ public class Salesclerk extends JFrame
 
 	}
 
-	public void clearSearch()
+	private void clearSearch()
 	{
 		
 		customer = null;
@@ -239,7 +239,7 @@ public class Salesclerk extends JFrame
 		}
 		catch(IllegalArgumentException iae)
 		{
-			System.out.println("någikk noe galt");
+			System.out.println("Something went wrong");
 		}
 		
 		

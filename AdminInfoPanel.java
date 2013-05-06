@@ -125,7 +125,7 @@ public class AdminInfoPanel extends JPanel
 
 	}
 
-	public void findPerson()
+	private void findPerson()
 	{
 		try
 		{
@@ -140,39 +140,39 @@ public class AdminInfoPanel extends JPanel
 		}
 		catch(NullPointerException npe)
 		{
-			display.setText("Fant ikke eieren til kortet");
+			display.setText("Colun't find the card");
 		}
 		
 	} 
 
 
-	public void showPersonsWithcards()
+	private void showPersonsWithcards()
 	{
 		list.sort();
 		display.setText(list.toString());
 	}
 
 		
-	public void showCards()
+	private void showCards()
 	{
 
 		display.setText(cardregistry.toString());
 		
 	}
 
-	public void showpersons()
+	private void showpersons()
 	{
 		perstable = list.personTable();
 		
 	}
 
-	public void showpassings()
+	private void showpassings()
 	{
 		passTable = showPassings();
 	}
 	
 	
-	public void deletePerson()
+	private void deletePerson()
 	{
 		try
 		{
@@ -190,12 +190,12 @@ public class AdminInfoPanel extends JPanel
 		}
 		catch(NullPointerException npe)
 		{
-
+			System.out.println("Every field has to be filled");
 		}
 
 	}
 
-	public JTable showPassings()
+	private JTable showPassings()
 	{
 		
 		String[] columnName = {"HeisNr", "KortNr", "KortType", "Passerings tid"};
@@ -214,7 +214,6 @@ public class AdminInfoPanel extends JPanel
 		}
 		passTable = new JTable(passings,columnName);
 		passTable.setEnabled(false);
-		System.out.println("Du har opprettet tabellen");
 		return passTable;
 		
 	}	
