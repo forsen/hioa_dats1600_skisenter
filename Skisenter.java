@@ -172,7 +172,7 @@ public class Skisenter
 	public static boolean checkForUnsaved()
 	{
 		if( !unsaved )
-			return true;
+			return true;	
 
 		String[] options = {"Lagre", "Ikke lagre", "Avbryt"};
 
