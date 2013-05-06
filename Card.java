@@ -114,21 +114,6 @@ public class Card implements Serializable
 
 	}
 
-	/*public int totalPunch()
-	{
-
-		Iterator<Skicard> it = skiCardList.iterator();
-		int totalpunch = 0;
-
-		while(it.hasNext())
-		{
-			Skicard runner = it.next();
-			if (runner instanceof Punchcard)
-			totalpunch += runner.getPrice();
-		} 
-		return totalpunch;
-	}*/
-
 	
 
 	//metode for å se hva slags type kort dette kortet tidligere har vært

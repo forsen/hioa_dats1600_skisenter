@@ -68,7 +68,7 @@ public class AdminStatistikkPanel extends JPanel
 		tabDisp.addTab("Grafisk visning", graphPnl);
 
 		tabDisp.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
-		//checkPnl = new JPanel(new Gris)
+		
 
 
 		soldCardsBtn = new JButton( "Solgte kort" );

@@ -118,36 +118,6 @@ public class Cardlist implements Serializable
 		return total;
 	}
 
-/*	public int totalPunch()
-	{
-		Iterator<Card> it = list.iterator();
-
-		int totalpunch = 0;
-
-		while (it.hasNext())
-		{
-			Card runner = it.next();
-	
-			totalpunch += runner.totalCost();
-			
-		}
-		return totalpunch;
-	}*/
-
-	/*public int antSoldCards()
-	{
-		Iterator<Card> it = list.iterator();
-
-		while (it.hasNext())
-		{
-			Card runner = it.next();
-	
-			if(it.next() == null)
-				return runner.getHowManySoldCards();
-			
-		}
-		return 0;
-	}*/
 /// STATISTIKK///////////////////////////////////////////////////////////////////
 	public List<Card> getRelevantCards(Date start, Date end)
 	{
