@@ -234,11 +234,21 @@ public class CustWindowPanel extends JPanel
 		{
 			int number = Integer.parseInt(custWindowPhone.getText());
 
-			statusTxt.setText( custRegistry.findPerson(number).toString());
+			String item = ""; 
+			listmodel = custRegistry.findPerson( number );
+			list.setModel( listmodel );
+
+			return;
+
+			
 		}
 		catch( NumberFormatException nfe )
 		{
 			System.out.println("The phonenr has to be digits");
+		}
+		catch(NullPointerException npe)
+		{
+			statusTxt.setText("Må være 8 siffer i tlfnr");
 		}
 
 

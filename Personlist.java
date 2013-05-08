@@ -108,6 +108,28 @@ public class Personlist implements Serializable
 		}
 		return searchresult;
 	}
+
+
+	public DefaultListModel<Person> findPerson(int nr)
+	{
+		DefaultListModel<Person> searchresult = new DefaultListModel<>();  
+
+		Iterator<Person> it = registry.iterator();
+
+		while(it.hasNext())
+		{
+			Person owner = it.next();
+
+			if(owner.getphoneNr()==nr)
+			{
+				searchresult.addElement( owner );
+
+			}
+		    
+		}
+		return searchresult;
+		
+	}
 //STATISTIKK//////////////////////////////////////////////////////////////////////////////////////////
 
 	public List<Person> totalRegPeople( Date s, Date e )
@@ -229,23 +251,6 @@ public class Personlist implements Serializable
 	
 
 
-	public Person findPerson(int nr)
-	{
-		Iterator<Person> it = registry.iterator();
-
-		while(it.hasNext())
-		{
-			Person owner = it.next();
-
-			if(owner.getphoneNr()==nr)
-			{
-				return owner;
-			}
-		    
-		}
-		return null;
-		
-	}
 
 	public Card findCard( int nr )
 	{
