@@ -202,7 +202,6 @@ public class SalesWindowPanel extends JPanel
 		c.gridy = 2; 
 		c.gridwidth = 1;
 		c.weighty=0;
-		c.ipady=5;
 		add(salesNewCardBtn, c);
 
 		c.gridheight = 1;
