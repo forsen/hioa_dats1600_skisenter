@@ -176,6 +176,8 @@ public class CustWindowPanel extends JPanel
 		c.gridx=0;
 		c.gridheight=1;
 		c.gridy=1;
+		c.weightx=1;
+		c.weighty=1;
 		add(btnPnl, c);
 	}
 
@@ -304,7 +306,7 @@ public class CustWindowPanel extends JPanel
 				img = fc.getSelectedFile(); 
 			}
 
-			System.out.println("Du har valgt å åpne filen: " + img.getName() );
+			statusTxt.setText("Du har valgt å åpne bildet: " + img.getName() );
 
 
        		return img;
@@ -315,7 +317,7 @@ public class CustWindowPanel extends JPanel
 		}
 		catch(NullPointerException nfe)
 		{
-			System.out.println("No image chosen");
+			statusTxt.setText("Ble ikke valgt et bilde");
 		}
 		
 

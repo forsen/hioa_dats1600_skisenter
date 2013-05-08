@@ -20,7 +20,7 @@ public class SalesWindowPanel extends JPanel
 	private String[] cardTypeString; 
 	private CardListener cardListener;
 	private BtnListener btnListener;
-	private JScrollPane cardScrolList, shoppingScrolList;
+	private JScrollPane cardScrolList, shoppingScrolList, cardTypeScrolList;
 	private ShoppingCart shoppingCart; 
 	private JLabel cartPrice;
 	private Cardlist cardregistry;
@@ -94,7 +94,13 @@ public class SalesWindowPanel extends JPanel
 		cardTypeList = new JList<>(cardTypeString);
 		cardTypeList.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
 		cardTypeList.setSelectedIndex(0);
+		cardTypeList.setVisibleRowCount( 4 );
 		cardTypeList.addListSelectionListener( cardListener );
+
+
+		cardTypeScrolList = new JScrollPane( cardTypeList, JScrollPane.VERTICAL_SCROLLBAR_NEVER, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER );
+		cardTypeScrolList.setBorder(BorderFactory.createTitledBorder(etched, "Korttype"));
+		cardTypeScrolList.setBackground(new Color(200,230,255));
 
 		cardIDList = new JList<Card>( new DefaultListModel<Card>());
 		cardIDList.setFixedCellHeight(15);
@@ -102,6 +108,7 @@ public class SalesWindowPanel extends JPanel
 		cardIDList.setVisibleRowCount( 4 );
 		cardIDList.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
 		cardIDList.setCellRenderer( new CardListCellRenderer() );
+		
 
 		shoppingCartList = new JList<CartItems>( new DefaultListModel<CartItems>() );
 		shoppingCartList.setFixedCellHeight(15);
@@ -110,9 +117,13 @@ public class SalesWindowPanel extends JPanel
 		shoppingCartList.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
 		shoppingCartList.setCellRenderer( new ShoppingCartCellListRenderer() );
 		shoppingScrolList = new JScrollPane( shoppingCartList, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER );
-
+		shoppingScrolList.setBorder(BorderFactory.createTitledBorder(etched, "Handlekurv"));
+		shoppingScrolList.setBackground(new Color(200, 230, 255));
 
 		cardScrolList = new JScrollPane( cardIDList, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER );
+		cardScrolList.setBorder(BorderFactory.createTitledBorder(etched, "Valgte kort"));
+		cardScrolList.setBackground(new Color(200, 230, 255));
+
 
 		setLayout( new GridBagLayout() );
 
@@ -147,7 +158,7 @@ public class SalesWindowPanel extends JPanel
 		c.gridy = 2; 
 		c.gridwidth = 1;
 		c.weighty = 0.2;
-		add(cardTypeList, c);
+		add(cardTypeScrolList, c);
 
 		c.gridheight = 1;
 		c.weightx = 0.5;
@@ -182,44 +193,39 @@ public class SalesWindowPanel extends JPanel
 		c.weighty = 0.2;
 		add(cardnrf,c);	
 
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.anchor = GridBagConstraints.PAGE_START;
+		c.insets = new Insets(12,0,0,0);
+
 		c.gridheight = 1;
-		c.weightx = 0.5;
 		c.gridx = 1; 
 		c.gridy = 2; 
 		c.gridwidth = 1;
-		c.weighty = 0.2;
+		c.weighty=0;
 		add(salesNewCardBtn, c);
 
 		c.gridheight = 1;
-		c.weightx = 0.5;
 		c.gridx = 1;
 		c.gridy = 3;
 		c.gridwidth = 1;
-		c.weighty = 0.2;
 		add(salesReturnCardBtn, c);
 
 		c.gridheight = 1;
-		c.weightx = 0.5;
 		c.gridx = 1; 
 		c.gridy = 4; 
 		c.gridwidth = 2;
-		c.weighty = 0.2;
 		add(salesAddCartBtn, c);
 
 		c.gridheight = 1;
-		c.weightx = 0.5;
 		c.gridx = 1;
 		c.gridy = 5;
 		c.gridwidth = 1;
-		c.weighty = 0.2;
 		add(salesRemoveLineCart, c);
 
 		c.gridheight = 1;
-		c.weightx = 0.5;
 		c.gridx = 1; 
 		c.gridy = 6; 
 		c.gridwidth = 1;
-		c.weighty = 0.2;
 		add(salesCheckoutBtn, c);
 
 		//Tredje kolonne////////////////////////////////////////////////////////////
