@@ -180,7 +180,7 @@ public class Personlist implements Serializable
 		}
 		return antall;
 	}
-
+/*
 	public int totalCost()
 	{
 		Iterator<Person> it = registry.iterator();
@@ -195,7 +195,7 @@ public class Personlist implements Serializable
 		}
 		return total;
 	}
-
+*/
 	public List<Card> getRelevantCards(Date start, Date end)
 	{
 		List<Card> tempList = new LinkedList<>();

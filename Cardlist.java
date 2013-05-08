@@ -95,7 +95,7 @@ public class Cardlist implements Serializable
 	}
 
 /*	<metode for å finne eier av kort>*/
-
+/*
 	public int totalCost()
 	{
 		Iterator<Card> it = list.iterator();
@@ -117,7 +117,7 @@ public class Cardlist implements Serializable
 		}
 		return total;
 	}
-
+*/
 /// STATISTIKK///////////////////////////////////////////////////////////////////
 	public List<Card> getRelevantCards(Date start, Date end)
 	{

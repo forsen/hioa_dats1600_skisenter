@@ -157,12 +157,12 @@ public class Person implements Serializable, Comparable<Person>
 	}
 
 //STATISTIKK//////////////////////////////////////////////////////////////////////////
-	public int totalCost()
+/*	public int totalCost()
 	{ 
 		return list.totalCost();
 		
 	}
-
+*/
 	public int soldCards()
 	{
 		return list.allCards();

@@ -175,7 +175,7 @@ public class AdminInfoPanel extends JPanel
 	
 	private void deletePerson()
 	{
-		try
+		/*try
 		{
 			String pattern = "\\d{8}";
 			String stingtlf = tlfNr.getText();
@@ -193,7 +193,7 @@ public class AdminInfoPanel extends JPanel
 		{
 			System.out.println("Every field has to be filled");
 		}
-
+*/
 	}
 
 	private JTable showPassings()
