@@ -39,6 +39,7 @@ public class AdminInfoPanel extends JPanel
 		fieldPnl = new JPanel(new GridLayout( 2,3 ));
 		butnPnl = new JPanel(new GridLayout( 2,2 ));
 		dispPnl = new JPanel();
+		dispPnl.setLayout(new BorderLayout());
 	
 		setBackground(new Color(200, 230, 255));
 		fieldPnl.setBackground(new Color(200, 230, 255));
@@ -53,12 +54,11 @@ public class AdminInfoPanel extends JPanel
 		showpassings();
 
 
-		display = new JTextArea(20,40);
+		display = new JTextArea(1,65);
 		display.setEditable(false);
 
 		scroll = new JScrollPane(display);
-		dispPnl.add(scroll);
-		dispPnl.setSize(400,500);
+		dispPnl.add(scroll, BorderLayout.CENTER);
 		
 		
 		fieldPnl.add( new JLabel( "Kortnr" ) );
@@ -100,7 +100,6 @@ public class AdminInfoPanel extends JPanel
 		butnPnl.add(showPassings);
 		
 
-		dispPnl.add(scroll);
 		
 		setLayout( new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
@@ -116,10 +115,12 @@ public class AdminInfoPanel extends JPanel
 
 		c.gridy=2;
 
+		c.weighty=1;
+		c.weightx=1;
 		add(dispPnl, c);
 
-		c.weighty=1;
-		add(new JLabel(""), c);
+		c.gridy=3;
+
 		
 
 

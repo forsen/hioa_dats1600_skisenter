@@ -79,7 +79,7 @@ public class Salesclerk extends JFrame
 		int height = windowDimension.height;
 		int width = windowDimension.width; 
 
-		setSize( width/2, height/2 );
+		setSize(750, 700);
 		setLocationByPlatform( true );
 
 		custRegistry = cr; 
