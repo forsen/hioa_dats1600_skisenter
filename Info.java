@@ -22,6 +22,8 @@ public class Info extends JFrame
 	public final static double DISCOUNT = 0.5;
 	public final static int CARDPRICE = 70; 
 	public final static int RETURNPRICE = -50; 
+	public final static int LIFTS = 2; 
+	
 	public static Date firstLight;
 
 	final static boolean shouldFill = true;

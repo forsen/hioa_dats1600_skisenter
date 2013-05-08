@@ -145,35 +145,7 @@ public class Calculator
 */
 
 	// This method needs to be polished. Currently the incoming split assumes every month is exactly 4 weeks, which is not very accurate. 
-	private int[] normalize( int[] d , int s)
-	{
-		int[] data = d; 
 
-		int[] newData = new int[ (int) Math.ceil((data.length / (double) s )) ];
-
-		//int split = (int) Math.ceil((data.length / ((double) newData.length - 1 ))) ; 
-
-		System.out.println( "Lengden: " + data.length );
-		System.out.println( "Delt på 7:" + (int) Math.ceil((data.length / (double) 7.0)) );
-
-		int split = s;
-
-		int j = 0;
-
-		for( int i = 0; i < data.length; i++ )
-		{
-			newData[j] += data[i];
-
-			if( (i+1) % split == 0 )
-			{
-				j++;
-				//System.out.println( "i: " + i + ", j: " + j );
-			}
-		}
-
-		return newData;
-
-	}
 	public int regCards()
 	{
 		return custRegistry.soldCards();
@@ -285,19 +257,51 @@ public class Calculator
 		return custRegistry.totalPunch();
 	}*/
 
-	public int showPassings()
+	public int[][] showPassings( Date s, Date e )
 	{
 		
+		int start = daysSinceOpening( s );
+		int end = daysSinceOpening( e ); 
+	
+		graph = new int[Info.LIFTS][ end - start + 1 ]; 
+
+
 		Iterator<Validations> it = validations.iterator();
-		int antall = 0;
+		
 
 
 		while( it.hasNext() )
 		{
-			it.next();
-			antall++;
+			Validations v = it.next();
+			if( v.getDate().after(s) && v.getDate().before(e))
+			{
+				graph[v.getLiftId() - 1][daysSinceOpening(v.getDate()) - start] ++;
+			}
 		}
-		return antall;
+
+
+		if( graph[0].length > 20 )
+		{
+			for( int i = 0; i < graph.length; i++ )
+				graph[i] = normalize( graph[i], 7 );
+			AdminStatistikkPanel.scale = "Uker";
+		}
+
+		if( graph[0].length > 20 )
+		{
+			for( int i = 0; i < graph.length; i++ )
+				graph[i] = normalize( graph[i], 4 );
+			AdminStatistikkPanel.scale = "Mnd";
+		}
+
+		if( graph[0].length > 20 )
+		{
+			for( int i = 0; i < graph.length; i++ )
+				graph[i] = normalize( graph[i], 12 );
+			AdminStatistikkPanel.scale = "År"; 
+		}
+
+		return graph;
 	}
 
 	public int regCardsSoldInMonthX(int x)
@@ -328,6 +332,37 @@ public class Calculator
 		return end.get(Calendar.DAY_OF_YEAR) - start.get( Calendar.DAY_OF_YEAR ) + 1;
 	}
 */
+	private int[] normalize( int[] d , int s)
+	{
+		int[] data = d; 
+
+		int[] newData = new int[ (int) Math.ceil((data.length / (double) s )) ];
+
+		//int split = (int) Math.ceil((data.length / ((double) newData.length - 1 ))) ; 
+
+		System.out.println( "Lengden: " + data.length );
+		System.out.println( "Delt på 7:" + (int) Math.ceil((data.length / (double) 7.0)) );
+
+		int split = s;
+
+		int j = 0;
+
+		for( int i = 0; i < data.length; i++ )
+		{
+			newData[j] += data[i];
+
+			if( (i+1) % split == 0 )
+			{
+				j++;
+				//System.out.println( "i: " + i + ", j: " + j );
+			}
+		}
+
+		return newData;
+
+	}
+
+
 	private int daysSinceOpening( Date d )
 	{
 		Calendar dateToCompare = Calendar.getInstance();
@@ -355,11 +390,5 @@ public class Calculator
 	{
 		return (( y % 4 == 0 && y % 100 != 0 )  || (y % 400 == 0 )? 366:365 );
 	}
-
-
-
-
-
-
 
 }

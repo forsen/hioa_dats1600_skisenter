@@ -30,11 +30,15 @@ public class GraphPanel extends JPanel
 
 	private String label; 
 
-	public GraphPanel( int[][] d, String x, String y, String interval )
+	private int type;
+
+	public GraphPanel( int[][] d, String x, String y, String interval, int t )
 	{
 	
 		labelX = x;
 		labelY = y;
+
+		type = t;
 
 		label = interval; 
 
@@ -225,7 +229,7 @@ public class GraphPanel extends JPanel
 		g2d.drawString( label, startX, startY );
 		startY += 3*linespace; 
 
-		if( data.length == 5 )
+		if( type == AdminStatistikkPanel.CARDS )
 		{
 			g2d.setColor(nextColor()[Skicard.DAYCARD]);
 			g2d.drawString( "Dagskort", startX, startY );
@@ -248,6 +252,16 @@ public class GraphPanel extends JPanel
 
 			g2d.setColor( Color.BLACK );
 	
+		}
+
+		else if ( type == AdminStatistikkPanel.VALIDS )
+		{
+			for( int i = 0; i < data.length; i++ )
+			{
+				g2d.setColor(nextColor()[i]);
+				g2d.drawString("Heis nr: " + (i+1), startX, startY );
+				startY += linespace; 
+			}
 		}
 	}
 

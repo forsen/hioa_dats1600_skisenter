@@ -29,6 +29,10 @@ public class AdminStatistikkPanel extends JPanel
 	private SimpleDateFormat formatter;
 
 	public static String scale; 
+	public final static int CARDS = 1;
+	public final static int VALIDS = 2;
+	public final static int PERSON = 3; 
+	public final static int REVENUE = 4; 
 
 
 	// fjern etterhvert
@@ -65,7 +69,7 @@ public class AdminStatistikkPanel extends JPanel
 
 		graph = new int[1][10];
 
-		graphPnl = new GraphPanel( graph, "x", "y", "" ); 
+		graphPnl = new GraphPanel( graph, "x", "y", "", 0 ); 
 		displayPnl.setBackground(new Color(200, 230, 255));
 		tabDisp.addTab("Rapport", displayPnl);
 		tabDisp.addTab("Grafisk visning", graphPnl);
@@ -284,7 +288,7 @@ public class AdminStatistikkPanel extends JPanel
 
 		int[][] regPeopleIntrvl = cal.totalRegPeople(start, end);
 		
-		graphPnl = new GraphPanel( regPeopleIntrvl, scale, "Ant", formatter.format(start) + " - " + formatter.format(end) );
+		graphPnl = new GraphPanel( regPeopleIntrvl, scale, "Ant", formatter.format(start) + " - " + formatter.format(end), PERSON );
 		int idx = tabDisp.getSelectedIndex();
 		tabDisp.remove( 1 );
 		tabDisp.add("Grafisk visning", graphPnl);
@@ -314,7 +318,7 @@ public class AdminStatistikkPanel extends JPanel
 
 		int[][] soldCardIntrvl = cal.totalSoldCard(start, end);
 
-		graphPnl = new GraphPanel( soldCardIntrvl, scale, "Ant", formatter.format(start) + " - " + formatter.format( end ) );
+		graphPnl = new GraphPanel( soldCardIntrvl, scale, "Ant", formatter.format(start) + " - " + formatter.format( end ), CARDS );
 		int idx = tabDisp.getSelectedIndex();
 		tabDisp.remove( 1 );
 		tabDisp.add( "Grafisk visning", graphPnl );
@@ -362,19 +366,39 @@ public class AdminStatistikkPanel extends JPanel
 
 	private void passings()
 	{
-		String lift = liftFLd.getText();
-		String pattern = "\\d{1}";
-   		if(!(lift.isEmpty()))
-   		{
-   			
-   			if(lift.matches(pattern))
+		Date start; 
+		Date end; 
+
+		start = getStartDate(); 
+		end = getEndDate(); 
+
+		if( start == null || end == null )
+			return; 
+
+		int[][] passingsIntrvl = cal.showPassings( start, end );
+
+		graphPnl = new GraphPanel( passingsIntrvl, scale, "Ant", formatter.format( start ) + " - " + formatter.format( end ), VALIDS ); 
+		int idx = tabDisp.getSelectedIndex();
+		tabDisp.remove( 1 );
+		tabDisp.add( "Grafisk visning", graphPnl );
+		tabDisp.setSelectedIndex( idx );
+
+		int[] passings = new int[Info.LIFTS];
+		int total = 0; 
+		display.setText("Heispasseringer i intervallet " + formatter.format(start) + " til " + formatter.format(end) + ":\n\n");
+		
+		for( int i = 0; i < passingsIntrvl.length; i++ )
+		{
+			display.append("Heis nr: " + (i+1) + "\t\t" );
+			for( int j = 0; j < passingsIntrvl[i].length; j++ )
 			{
-   				int liftnr = Integer.parseInt(lift);
-   				display.append("\nAntall passeringer gjennom heis nummer " + lift + " er " +cal.passesbyTypeofCard( liftnr));
-   			}else 
-   			JOptionPane.showMessageDialog(null,"Du må sette inn siffer");		
-   		}
-   		else display.append("\nAntall passeringer gjennom alle heiser er " + cal.showPassings());
+				passings[i] += passingsIntrvl[i][j];
+				total += passingsIntrvl[i][j];
+			}
+			display.append( passings[i] + "\n" );
+		}
+
+		display.append("\nTotalt: " + "\t\t" + total ); 
 	}
 
 
@@ -392,7 +416,7 @@ public class AdminStatistikkPanel extends JPanel
 
 		int[][] totalRevenue = cal.totalRevenue(start, end);
 		
-		graphPnl = new GraphPanel( totalRevenue, scale, "KR", formatter.format(start) + " - " + formatter.format(end) );
+		graphPnl = new GraphPanel( totalRevenue, scale, "KR", formatter.format(start) + " - " + formatter.format(end), REVENUE );
 		int idx = tabDisp.getSelectedIndex();
 		tabDisp.remove( 1 );
 		tabDisp.add("Grafisk visning", graphPnl);
