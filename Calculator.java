@@ -69,18 +69,21 @@ public class Calculator
 		{
 			for( int i = 0; i < graph.length; i++ )
 				graph[i] = normalize( graph[i], 7 );
+			AdminStatistikkPanel.scale = "Uker";
 		}
 
 		if( graph[0].length > 20 )
 		{
 			for( int i = 0; i < graph.length; i++ )
 				graph[i] = normalize( graph[i], 4 );
+			AdminStatistikkPanel.scale = "Mnd";
 		}
 
 		if( graph[0].length > 20 )
 		{
 			for( int i = 0; i < graph.length; i++ )
 				graph[i] = normalize( graph[i], 12 );
+			AdminStatistikkPanel.scale = "År"; 
 		}
 
 		
@@ -117,12 +120,20 @@ public class Calculator
 		}		
 
 		if( graph[0].length > 20 )
+		{
 			graph[0] = normalize( graph[0], 7 );
+			AdminStatistikkPanel.scale = "Uker";
+		}
 		if( graph[0].length > 20 )
+		{
 			graph[0] = normalize( graph[0], 4 );
+			AdminStatistikkPanel.scale = "Mnd";
+		}
 		if( graph[0].length > 20 )
+		{
 			graph[0] = normalize( graph[0], 12 );
-		
+			AdminStatistikkPanel.scale = "År";
+		}
  
 		return graph;
 	}
@@ -133,6 +144,7 @@ public class Calculator
 	}
 */
 
+	// This method needs to be polished. Currently the incoming split assumes every month is exactly 4 weeks, which is not very accurate. 
 	private int[] normalize( int[] d , int s)
 	{
 		int[] data = d; 
@@ -247,18 +259,21 @@ public class Calculator
 		{
 			for( int i = 0; i < graph.length; i++ )
 				graph[i] = normalize( graph[i], 7 );
+			AdminStatistikkPanel.scale = "Uker";
 		}
 
 		if( graph[0].length > 20 )
 		{
 			for( int i = 0; i < graph.length; i++ )
 				graph[i] = normalize( graph[i], 4 );
+			AdminStatistikkPanel.scale = "Mnd";
 		}
 
 		if( graph[0].length > 20 )
 		{
 			for( int i = 0; i < graph.length; i++ )
 				graph[i] = normalize( graph[i], 12 );
+			AdminStatistikkPanel.scale = "År";
 		}
 
 		

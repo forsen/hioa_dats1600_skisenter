@@ -28,6 +28,8 @@ public class AdminStatistikkPanel extends JPanel
 
 	private SimpleDateFormat formatter;
 
+	public static String scale; 
+
 
 	// fjern etterhvert
 	private int[][] graph;
@@ -43,7 +45,7 @@ public class AdminStatistikkPanel extends JPanel
 
 		
 
-
+		scale = "Dager";
 		list = l;
 		validations = v;
 		cardregistry = cr;
@@ -281,7 +283,7 @@ public class AdminStatistikkPanel extends JPanel
 
 		int[][] regPeopleIntrvl = cal.totalRegPeople(start, end);
 		
-		graphPnl = new GraphPanel( regPeopleIntrvl, "Uker", "Ant", formatter.format(start) + " - " + formatter.format(end) );
+		graphPnl = new GraphPanel( regPeopleIntrvl, scale, "Ant", formatter.format(start) + " - " + formatter.format(end) );
 		int idx = tabDisp.getSelectedIndex();
 		tabDisp.remove( 1 );
 		tabDisp.add("Grafisk visning", graphPnl);
@@ -311,7 +313,7 @@ public class AdminStatistikkPanel extends JPanel
 
 		int[][] soldCardIntrvl = cal.totalSoldCard(start, end);
 
-		graphPnl = new GraphPanel( soldCardIntrvl, "Uker", "Ant", formatter.format(start) + " - " + formatter.format( end ) );
+		graphPnl = new GraphPanel( soldCardIntrvl, scale, "Ant", formatter.format(start) + " - " + formatter.format( end ) );
 		int idx = tabDisp.getSelectedIndex();
 		tabDisp.remove( 1 );
 		tabDisp.add( "Grafisk visning", graphPnl );
@@ -389,7 +391,7 @@ public class AdminStatistikkPanel extends JPanel
 
 		int[][] totalRevenue = cal.totalRevenue(start, end);
 		
-		graphPnl = new GraphPanel( totalRevenue, "Uker", "KR", formatter.format(start) + " - " + formatter.format(end) );
+		graphPnl = new GraphPanel( totalRevenue, scale, "KR", formatter.format(start) + " - " + formatter.format(end) );
 		int idx = tabDisp.getSelectedIndex();
 		tabDisp.remove( 1 );
 		tabDisp.add("Grafisk visning", graphPnl);
@@ -457,6 +459,7 @@ public class AdminStatistikkPanel extends JPanel
 			}
 
 			start = Info.firstLight;
+			fromFld.setText( formatter.format( start ) );
 		}
 
 		return start;
@@ -478,6 +481,7 @@ public class AdminStatistikkPanel extends JPanel
 				return null;
 			}
 			end = new Date(); 
+			toFld.setText( formatter.format( end ) );
 		}
 
 		return end;

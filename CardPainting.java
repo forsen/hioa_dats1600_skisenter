@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 import java.awt.geom.RoundRectangle2D; 
 
 
+
 public class CardPainting extends JPanel
 {
 	private BufferedImage img;
@@ -39,7 +40,7 @@ public class CardPainting extends JPanel
 		try
 		{
 			printedSkicard = printedCard.getCurrent(); 
-			type = "" +printedSkicard.getType();
+			type = printedSkicard.getType("");
 			switch (printedSkicard.getAgeGroup())
 			{
 				case 1: 
