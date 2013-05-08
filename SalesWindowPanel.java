@@ -72,12 +72,16 @@ public class SalesWindowPanel extends JPanel
 			"Du kan enten velge et kortnr fra listen,<br>" +
 			"eller skrive inn kortnr i kortnrfeltet.</HTML>");
 
-		salesAddCartBtn = new JButton("Legg i handlevogn");
+		ImageIcon cart = new ImageIcon("img/cart.png");
+		ImageIcon payment = new ImageIcon("img/payment.png");
+
+
+		salesAddCartBtn = new JButton("Legg i handlevogn", cart);
 		salesAddCartBtn.setMnemonic(KeyEvent.VK_L);
 		salesAddCartBtn.addActionListener( btnListener );
 		salesAddCartBtn.setToolTipText("Legg til valgt kort i handlevognen");
 
-		salesCheckoutBtn = new JButton("Til betaling");
+		salesCheckoutBtn = new JButton("Til betaling", payment);
 		salesCheckoutBtn.setMnemonic(KeyEvent.VK_B);
 		salesCheckoutBtn.addActionListener( btnListener );
 		salesCheckoutBtn.setToolTipText("Ferdig? Gå til betaling");

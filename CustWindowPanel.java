@@ -91,11 +91,16 @@ public class CustWindowPanel extends JPanel
 
 		custRegistry = cr; 
 
-		imageBtn = new JButton("Velg bilde");
+
+		ImageIcon camera = new ImageIcon("img/camera.png");
+		ImageIcon search = new ImageIcon("img/search.png");
+		ImageIcon customer = new ImageIcon("img/customer.png");
+
+		imageBtn = new JButton("Velg bilde", camera);
 		imageBtn.setToolTipText("Last opp bilde til kortet");
-		custWindowSearchBtn = new JButton("Søk");
+		custWindowSearchBtn = new JButton("Søk", search);
 		custWindowSearchBtn.setToolTipText("Søk på kunde");
-		custWindowRegBtn = new JButton("Endre/Ny kunde");
+		custWindowRegBtn = new JButton("Endre/Ny kunde", customer);
 		custWindowRegBtn.setToolTipText("Registrer ny kunde");
 
 		//custWindowFirstNamePnl = new JPanel( new FlowLayout() );
@@ -204,7 +209,7 @@ public class CustWindowPanel extends JPanel
 
 				return p;
 			}
-			JOptionPane.showMessageDialog(null, "Du må ha 8 siffere");
+			JOptionPane.showMessageDialog(null, "Du må ha 8 siffer i telefonnummer.");
 
 		}
 		catch( ParseException pe )
@@ -229,11 +234,21 @@ public class CustWindowPanel extends JPanel
 		{
 			int number = Integer.parseInt(custWindowPhone.getText());
 
-			statusTxt.setText( custRegistry.findPerson(number).toString());
+			String item = ""; 
+			listmodel = custRegistry.findPerson( number );
+			list.setModel( listmodel );
+
+			return;
+
+			
 		}
 		catch( NumberFormatException nfe )
 		{
 			System.out.println("The phonenr has to be digits");
+		}
+		catch(NullPointerException npe)
+		{
+			statusTxt.setText("Må være 8 siffer i tlfnr");
 		}
 
 

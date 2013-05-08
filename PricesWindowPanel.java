@@ -25,7 +25,7 @@ public class PricesWindowPanel extends JPanel
     	priceTable.setEnabled(false);
     	priceTable.setBackground(new Color(220, 240, 255));
     	priceScrollPane = new JScrollPane(priceTable);
-    	priceScrollPane.setPreferredSize(new Dimension(550,88));
+    	priceScrollPane.setPreferredSize(new Dimension(550,87));
 	
 
 		setLayout(new GridBagLayout() );

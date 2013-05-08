@@ -78,7 +78,8 @@ public class Admin extends JFrame
 
 		layout.layoutContainer( c );
 
-		setSize( 830, 740 );
+		setSize( 830, 780 );
+
 
 	}
 
@@ -89,6 +90,7 @@ public class Admin extends JFrame
      		
     		adminInfoPnl.setVisible(false);
 			statInfoPnl.setVisible(false);
+			
 
     	}
 	}
