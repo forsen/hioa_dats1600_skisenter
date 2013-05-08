@@ -176,6 +176,8 @@ public class CustWindowPanel extends JPanel
 		c.gridx=0;
 		c.gridheight=1;
 		c.gridy=1;
+		c.weightx=1;
+		c.weighty=1;
 		add(btnPnl, c);
 	}
 

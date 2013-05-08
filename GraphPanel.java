@@ -49,6 +49,8 @@ public class GraphPanel extends JPanel
 			yAxisMin = arrayMin( data );
 			xAxisInterval = XAXISLENGTH / data[0].length;
 			yAxisInterval = YAXISLENGTH / (double) (yAxisMax - yAxisMin);
+			if( yAxisInterval == Double.POSITIVE_INFINITY || yAxisInterval == Double.NEGATIVE_INFINITY )
+				throw new ArithmeticException(); 
 			//lastx = xAxisInterval + ORIGOX; 
 			lastx = ORIGOX; 
 			lasty = ORIGOY - data[0][0]; 
@@ -190,6 +192,8 @@ public class GraphPanel extends JPanel
 		drawInfo(g2d);
 
 		// set first coordinate: 
+		if( arrayIsEmpty() )
+			return;
 
 		for( int i = 0; i<data.length; i++)
 		{
@@ -245,6 +249,20 @@ public class GraphPanel extends JPanel
 			g2d.setColor( Color.BLACK );
 	
 		}
+	}
+
+	private boolean arrayIsEmpty()
+	{
+		for( int i = 0; i < data.length; i++ )
+		{
+			for(int j = 0; j < data[i].length; j++ )
+			{
+				if( data[i][j] != 0 )
+					return false;
+			}
+		}
+
+		return true; 
 	}
 
 	private Color[] nextColor()
