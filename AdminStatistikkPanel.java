@@ -57,6 +57,7 @@ public class AdminStatistikkPanel extends JPanel
 		setLayout( new GridBagLayout() );
 	
 		displayPnl = new JPanel();
+		displayPnl.setLayout(new BorderLayout());
 		
 		tabDisp = new JTabbedPane();
 
@@ -115,12 +116,12 @@ public class AdminStatistikkPanel extends JPanel
 		liftFLd.setEditable( true );
 	
 
-		display = new JTextArea(20,40);
+		display = new JTextArea(1,65);
 		display.setEditable( false );
 
 		scroll = new JScrollPane(display);
 		displayPnl.add(scroll);
-		displayPnl.add(display);
+		displayPnl.add(display, BorderLayout.CENTER);
 
 		GridBagConstraints c = new GridBagConstraints();
 
