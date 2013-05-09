@@ -7,7 +7,7 @@ public class Tcuplift extends Lift implements Serializable
 
 	public Tcuplift( List<Validations> lv, Personlist cr, String n, int m)
 	{
-		super(lv, cr, n,2,m);
+		super(lv, cr, n,1,m);
 		TCUPCLIP = 1;
 	}
 }
