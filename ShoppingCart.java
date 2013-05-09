@@ -26,6 +26,7 @@ public class ShoppingCart
 		newCards = new LinkedList<>();
 		unregCardList = cl;
 
+
 //		try
 //		{
 //			cardList = Salesclerk.customer.listCards();
@@ -214,6 +215,7 @@ public class ShoppingCart
 
 		Iterator<CartItems> it = cartList.iterator();
 
+		double discount = 1.0;
 
 		if( !newCards.isEmpty() )
 		{
@@ -239,24 +241,33 @@ public class ShoppingCart
 			try
 			{	
 				if( freakyFriday() )
+				{
 					ci.setPrice( ci.getPrice() * Info.FREAKYFRIDAY );
+					discount = Info.FREAKYFRIDAY;
+				}
 				else if( cartList.size() > 9 )
+				{
 					ci.setPrice( ci.getPrice() * Info.GROUPDISCOUNT );
-				
+					discount = Info.GROUPDISCOUNT;
+				}
+
 				text.append( ci.getType() );
-				text.append( "\t" );
+				// tried with \t, but it wouldn't align properly (since the cardtype length differs)
+				text.append( "          " );
 				text.append( paymentFormat.format( ci.getPrice() ) );
 				text.append( "\n" );
 			}
 			catch( NullPointerException npe )
 			{
-				text.append( "\t" );
+				// tried with \t, but it wouldn't align properly (since the cardtype length differs)
+				text.append( "    " );
 				text.append( paymentFormat.format( Info.RETURNPRICE ) );
 				text.append( "\n" );
 			}
+			sum = sum*discount;
 		}
 
-		sum = sum*Info.GROUPDISCOUNT;
+		
 		
 		return text.toString();
 	}
