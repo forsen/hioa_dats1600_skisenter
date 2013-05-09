@@ -9,6 +9,8 @@ import java.util.Iterator;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
+import java.text.NumberFormat;
 
 public class AdminStatistikkPanel extends JPanel
 {	
@@ -25,6 +27,7 @@ public class AdminStatistikkPanel extends JPanel
 	private List<Validations> validations;
 	private Cardlist cardregistry;
 	private Toolkit toolbox;
+	private NumberFormat paymentFormat; 
 
 	private SimpleDateFormat formatter;
 
@@ -46,7 +49,7 @@ public class AdminStatistikkPanel extends JPanel
 		// setting "firstLight" to the day when our skisenter first saw the day of light, currently 010113.
 
 		formatter = new SimpleDateFormat("ddMMyy"); 
-
+		paymentFormat = NumberFormat.getCurrencyInstance( new Locale( "no","NO" ) );
 		
 
 		scale = "Dager";
@@ -436,12 +439,12 @@ public class AdminStatistikkPanel extends JPanel
 				sum += totalRevenue[i][j];
 			}
 		}
-		display.append( "\nDagskort: \t" + total[Skicard.DAYCARD] );
-		display.append( "\nTimeskort: \t" + total[Skicard.HOURCARD] );
-		display.append( "\nSesongkort: \t" + total[Skicard.SEASONCARD] );
-		display.append( "\nKlippekort: \t" + total[Skicard.PUNCHCARD] );
-		display.append( "\nFysiske kort: \t" + total[4] );
-		display.append( "\n\nTotalt: \t" + sum );
+		display.append( "\nDagskort: \t" + paymentFormat.format( total[Skicard.DAYCARD] ) );
+		display.append( "\nTimeskort: \t" + paymentFormat.format( total[Skicard.HOURCARD] ) );
+		display.append( "\nSesongkort: \t" + paymentFormat.format( total[Skicard.SEASONCARD] ) );
+		display.append( "\nKlippekort: \t" + paymentFormat.format( total[Skicard.PUNCHCARD] ) );
+		display.append( "\nFysiske kort: \t" + paymentFormat.format( total[4] ) );
+		display.append( "\n\nTotalt: \t" + paymentFormat.format( sum ) );
 		
 	}
 

@@ -8,6 +8,8 @@ import java.awt.Font;
 import java.util.Iterator;
 import javax.swing.border.*;
 import java.io.*;
+import java.text.NumberFormat; 
+import java.util.Locale; 
 
 
 public class CashRegister extends JDialog
@@ -28,6 +30,8 @@ public class CashRegister extends JDialog
 	private double[] paymentMethod;
 	private Action keyLstnr; 
 	private Font font;
+	private NumberFormat paymentFormat; 
+
 	public static final int CARD = 0;
 	public static final int CASH = 1; 
 
@@ -52,6 +56,9 @@ public class CashRegister extends JDialog
 				
 			}
 		});
+
+		paymentFormat = NumberFormat.getCurrencyInstance( new Locale( "no", "NO") );
+
 
 		contentPanel = new JPanel()
 		{
@@ -141,7 +148,8 @@ public class CashRegister extends JDialog
 		total.setMaximumSize(new Dimension(300,30));
 		total.setBackground(new Color(187,229,171));
 		total.setEditable(false);
-		total.setText("Total: \t\t" + sum + ",-");
+		//total.setText("Total: \t\t" + sum + ",-");
+		total.setText("Total: \t\t" + paymentFormat.format( sum ) );
 		overview = new JTextArea();
 		overview.setBackground(new Color(211,244,212));
 		overview.setEditable(false);
