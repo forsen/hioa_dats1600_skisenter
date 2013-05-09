@@ -33,8 +33,9 @@ public class NewsWindowPanel extends JPanel
 		add(icon4,c);
 
 		news4 = new JLabel(
-		"<html>Vi åpner for mer kjøring i påsken. Mer kjøring, mer moro. Heisene vil være åpne for kveldskjøring hele påsken<br>" +
-		" mellom klokka 17 og 21. <br><br><br><br></html>");
+		"<html><i>Skrevet: 01. mai 2013</i><br><br>" +
+		"Takk for en knakendes fin sesong. Titt innom nærmere sesongstart for nyheter ang. sesongåpning 2013/2014!" +
+		"Send oss gjerne ris <br> og ros. Vi håper å se deg her på Offpist Skisenter, neste sesong. <br><br><br><br></html>");
 
 
 	    news4.setFont(new Font("Calibri", Font.PLAIN, 14));
@@ -54,7 +55,8 @@ public class NewsWindowPanel extends JPanel
 		add(icon3,c);
 
 		news3 = new JLabel(
-		"<html>Vi åpner for mer kjøring i påsken. Mer kjøring, mer moro. Heisene vil være åpne for kveldskjøring hele påsken<br>" +
+		"<html><i>Skrevet: 20. mars 2013</i><br><br>" +
+		"Vi åpner for mer kjøring i påsken. Mer kjøring, mer moro. Heisene vil være åpne for kveldskjøring hele påsken<br>" +
 		" mellom klokka 17 og 21. <br><br><br><br></html>");
 
 
@@ -76,7 +78,8 @@ public class NewsWindowPanel extends JPanel
 		add(icon1,c);
 
 		news1 = new JLabel(
-		"<html>Husk å melde på dine små troll og nisser til neste skiskole! Skiskolen starter 22. februar " +
+		"<html><i>Skrevet: 23. januar 2013</i><br><br>" +
+		"Husk å melde på dine små troll og nisser til neste skiskole! Skiskolen starter 22. februar " +
 	    "og varer til 26. februar. <br> Ring oss for påmelding og mer informasjon!<br><br><br><br></html>");    
 
 	    news1.setFont(new Font("Calibri", Font.PLAIN, 14));
@@ -95,7 +98,9 @@ public class NewsWindowPanel extends JPanel
 		add(icon2,c);
 
 		news2 = new JLabel(
-		"<html>Vi åpner skianlegget 20. desember i år. Kom for gratis kaffe og vafler.<br><br><br><br></html>");
+		"<html><i>Skrevet: 02. november 2012</i><br><br>" +
+		"Vi åpner skianlegget 20. desember i år. Etter fjorårets supersesong, ser vi veldig frem til en ny sesong, <br>" +
+		" og håper selvfølgelig å se deg i bakken. Følg med for mer informasjon!<br><br><br><br></html>");
 
 
 	    news2.setFont(new Font("Calibri", Font.PLAIN, 14));
