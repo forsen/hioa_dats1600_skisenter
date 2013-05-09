@@ -209,16 +209,19 @@ public class CustWindowPanel extends JPanel
 
 				return p;
 			}
-			JOptionPane.showMessageDialog(null, "Du må ha 8 siffer i telefonnummer.");
+			//JOptionPane.showMessageDialog(null, "Du må ha 8 siffer i telefonnummer.");
+			statusTxt.setText( "Du må ha 8 siffer i telefonnummer." );
 
 		}
 		catch( ParseException pe )
 		{
-			JOptionPane.showMessageDialog(null, "Fødselsdato må være på formen ddmmyy!");
+			//JOptionPane.showMessageDialog(null, "Fødselsdato må være på formen ddmmyy!");
+			statusTxt.setText( "Fødselsdato må være på formen ddmmyy" );
 		}
 		catch( NumberFormatException nfe )
 		{
-			JOptionPane.showMessageDialog(null, "Telefonnummeret må kun bestå av siffer!");
+			//JOptionPane.showMessageDialog(null, "Telefonnummeret må kun bestå av siffer!");
+			statusTxt.setText( "Telefonnummeret må kun bestå av siffer" );
 		}
 
 
