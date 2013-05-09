@@ -53,7 +53,7 @@ public class InfoWindowPanel extends JPanel
 
 
 		liftInfo = new JLabel();
-		liftInfo.setText(Skisenter.lift1.toString());
+		liftInfo.setText(Skisenter.chLift.toString());
 		//liftInfo.setText(Skisenter.tLift.toString() ); 
 
 
