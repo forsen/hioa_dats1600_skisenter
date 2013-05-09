@@ -4,6 +4,8 @@ import java.awt.event.*;
 import javax.swing.event.*;
 import java.io.*;
 import java.util.Date;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 
 public class PricesWindowPanel extends JPanel
@@ -12,15 +14,18 @@ public class PricesWindowPanel extends JPanel
 	private JLabel content;
 	private JTable priceTable;
 	private JScrollPane priceScrollPane;
+	private NumberFormat paymentFormat; 
 
 
 
 	public PricesWindowPanel()
 	{
-		Object rowData[][] = { { "Dagskort", Info.DAYCARDPRICE + " kr.", (Info.DAYCARDPRICE*Info.DISCOUNT) + " kr."},
-        { "Sesongkort", Info.SEASONCARDPRICE + " kr.", (Info.SEASONCARDPRICE*Info.DISCOUNT) + " kr."},
-        {"Timeskort:", Info.HOURCARDPRICE + " kr.", (Info.HOURCARDPRICE*Info.DISCOUNT) + " kr."},
-        {"Klippekort", Info.PUNCHCARDPRICE + " kr.", (Info.PUNCHCARDPRICE*Info.DISCOUNT) + " kr."} };
+		paymentFormat = NumberFormat.getCurrencyInstance( new Locale( "no", "NO" ) );
+
+		Object rowData[][] = { { "Dagskort", paymentFormat.format( Info.DAYCARDPRICE ), paymentFormat.format( Info.DAYCARDPRICE*Info.DISCOUNT ) },
+        { "Sesongkort", paymentFormat.format( Info.SEASONCARDPRICE ), paymentFormat.format(Info.SEASONCARDPRICE*Info.DISCOUNT) },
+        {"Timeskort:", paymentFormat.format( Info.HOURCARDPRICE ), paymentFormat.format(Info.HOURCARDPRICE*Info.DISCOUNT) },
+        {"Klippekort", paymentFormat.format( Info.PUNCHCARDPRICE ), paymentFormat.format(Info.PUNCHCARDPRICE*Info.DISCOUNT) } };
     	Object columnNames[] = { "Korttype", "Voksen (over " +Info.CHILDLIMIT+" år)", "Barn (tom. " + Info.CHILDLIMIT + "år.)", };
     	priceTable = new JTable(rowData, columnNames);
     	priceTable.setEnabled(false);
