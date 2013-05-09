@@ -33,6 +33,6 @@ public class Seasoncard extends Timebasedcard
 
 	public String toString()
 	{
-		return super.toString()+ "\nSesongkort\nGår ut: " + super.getExpires();
+		return super.toString()+ "\tSesongkort\tGår ut: " + super.getExpires();
 	}
 }

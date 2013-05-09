@@ -61,6 +61,7 @@ public class AdminInfoPanel extends JPanel
 		display.setEditable(false);
 
 		scroll = new JScrollPane(display);
+		scroll.setPreferredSize(new Dimension(780, 50));
 		dispPnl.add(scroll, BorderLayout.CENTER);
 		
 		
@@ -209,7 +210,7 @@ public class AdminInfoPanel extends JPanel
 				else
 				{
 					reg  = new JList<Person>();
-					String item = ""; 
+				
 					model = (list.findPerson(tlfnr));
 					reg.setModel( model );
 					System.out.println("Satt opp lista");
@@ -226,6 +227,7 @@ public class AdminInfoPanel extends JPanel
 					else if(model.getSize() >= 2)
 					{ 
 						listscroll = new JScrollPane(reg );
+						scroll.setViewportView(listscroll);
 						JOptionPane.showMessageDialog(null, "Det er fler enn 1 med samme nr. Velg 1 og trykk på slett Person knappen igjen\n");
 						System.out.println("den var >= 2");
 						return;
@@ -328,7 +330,7 @@ public class AdminInfoPanel extends JPanel
       		if(e.getSource() == deletePersBtn)
       		{
       			deletePerson();
-      			scroll.setViewportView(listscroll);
+      			
       		}
 
       		

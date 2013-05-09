@@ -27,6 +27,6 @@ public class Punchcard extends Skicard
 
 	public String toString()
 	{
-		return super.toString()+ "\nKlippekort\nAntall klipp igjen: " + getClipCount();
+		return super.toString()+ "\tKlippekort\tAntall klipp igjen: " + getClipCount();
 	}
 }
