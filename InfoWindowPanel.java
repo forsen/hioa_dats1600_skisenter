@@ -51,7 +51,8 @@ public class InfoWindowPanel extends JPanel
 		content.setHorizontalAlignment(JLabel.CENTER);
 
 		liftInfo = new JLabel();
-		liftInfo.setText(Skisenter.lift1.getLift().toString());
+		liftInfo.setText(Skisenter.chLift.toString());
+		//liftInfo.setText(Skisenter.tLift.toString() ); 
 
 		c.gridy=2;
 		add(content, c);

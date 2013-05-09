@@ -21,6 +21,9 @@ public class Skisenter
 	public static Control lift1;
 	public static Control lift2; 
 
+	public static Lift chLift;
+	public static Lift tLift;
+
 	public static boolean unsaved; 
 
 	public static void main(String[] args)
@@ -38,7 +41,8 @@ public class Skisenter
 		test.readFile(); 
 		
 
-		
+		chLift = new Chairlift(validations, registry, "Superheisen", 2000, 3 );
+		tLift = new Tcuplift( validations, registry, "Rævvaheisen", 1433 );
 
 
 		EventQueue.invokeLater( new Runnable()
@@ -89,14 +93,14 @@ public class Skisenter
 				a.setIconImage(ikon);    
 				a.setVisible( false );
 
-				Lift chLift = new Chairlift(validations, registry, "Superheisen", 2000, 3 );
+				
 				lift1 = new Control( registry,  chLift, cardregistry );
 				lift1.setJMenuBar( new MenuBar().createMenu() );
 				lift1.setLocation(700,425);
 				lift1.setIconImage(ikon);
 				lift1.setVisible(false);
 
-				Lift tLift = new Tcuplift( validations, registry, "Rævvaheisen", 1433 );
+				
 
 				lift2 = new Control( registry, tLift, cardregistry );   
 				lift2.setJMenuBar( new MenuBar().createMenu() );
