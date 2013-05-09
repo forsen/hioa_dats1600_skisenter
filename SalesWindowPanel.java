@@ -498,6 +498,11 @@ public class SalesWindowPanel extends JPanel
 					Salesclerk.statusTxt.setText("Sesongkort kan kun selges til registrerte kunder");
 					cardTypeList.clearSelection();
 				}
+				else if( Salesclerk.customer.getImage().getName().equals("default.png") )
+				{
+					Salesclerk.statusTxt.setText("For å kjøpe Sesongkort må kunden ha et bilde");
+					cardTypeList.clearSelection();
+				}
 			}
 		}
 	}
