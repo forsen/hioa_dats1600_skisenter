@@ -13,7 +13,7 @@ import java.util.Date;
 public class AdminStatistikkPanel extends JPanel
 {	
 	private JLabel from, to, month, liftnr;
-	private JTextField fromFld, toFld,monthFld, liftFLd;
+	private JTextField fromFld, toFld, liftFLd;
 	private JTextArea display;
 	private JPanel displayPnl, graphPnl;
 	private JButton soldCardsBtn, regPersBtn, revenueBtn, liftPassBtn;
@@ -110,10 +110,10 @@ public class AdminStatistikkPanel extends JPanel
 		toFld.setEditable( true );
 	
 
-		month = new JLabel( "Måned: " );
+	/*	month = new JLabel( "Måned: " );
 		monthFld = new JTextField(4);
 		monthFld.setToolTipText("Sett inn et tall som representerer mn du har lyst å se beregninger på");
-		monthFld.setEditable( true );
+		monthFld.setEditable( true );*/
 	
 
 		liftnr = new JLabel( "HeisNr: " );
@@ -200,13 +200,13 @@ public class AdminStatistikkPanel extends JPanel
 		c.weighty = 0.2;
 		add(to,c);	
 
-		c.gridheight = 1;
+	/*	c.gridheight = 1;
 		c.weightx = 0.5;
 		c.gridx = 1; 
 		c.gridy = 2; 
 		c.gridwidth = 1;
 		c.weighty = 0.2;
-		add(month, c);
+		add(month, c);*/
 
 		c.gridheight = 1;
 		c.weightx = 0.5;
@@ -234,13 +234,13 @@ public class AdminStatistikkPanel extends JPanel
 		c.weighty = 0.2;
 		add(toFld,c);	
 
-		c.gridheight = 1;
+	/*	c.gridheight = 1;
 		c.weightx = 0.5;
 		c.gridx = 2; 
 		c.gridy = 2; 
 		c.gridwidth = 1;
 		c.weighty = 0.2;
-		add(monthFld, c);
+		add(monthFld, c);*/
 
 		c.gridheight = 1;
 		c.weightx = 0.5;
@@ -339,7 +339,7 @@ public class AdminStatistikkPanel extends JPanel
 		display.append( "\nFysiske kort: \t" + total[4] );
 	}
 
-	private void regThatTime()
+/*	private void regThatTime()
 	{
 		try
 		{
@@ -356,7 +356,7 @@ public class AdminStatistikkPanel extends JPanel
 			display.setText("Has to be a number");
 		}
 	}
-
+*/
 	/*public LinkedList<Card> getCards()
 	{
 
