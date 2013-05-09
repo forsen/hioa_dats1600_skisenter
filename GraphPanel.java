@@ -43,10 +43,10 @@ public class GraphPanel extends JPanel
 		label = interval; 
 
 		data = d; 
-		//list = l;
+		
 		setBackground( Color.WHITE );
 		setPreferredSize (new Dimension(700,500));
-//		nyGrafFlate();
+
 		try
 		{
 			yAxisMax = arrayMax( data );
@@ -55,7 +55,7 @@ public class GraphPanel extends JPanel
 			yAxisInterval = YAXISLENGTH / (double) (yAxisMax - yAxisMin);
 			if( yAxisInterval == Double.POSITIVE_INFINITY || yAxisInterval == Double.NEGATIVE_INFINITY )
 				throw new ArithmeticException(); 
-			//lastx = xAxisInterval + ORIGOX; 
+			
 			lastx = ORIGOX; 
 			lasty = ORIGOY - data[0][0]; 
 			repaint(); 
@@ -73,19 +73,7 @@ public class GraphPanel extends JPanel
 
 	}
 
-/*
-	public void nyGrafFlate()
-  	{
-	   repaint();
-	}
-*/
-/*
-	private int createYValues( int y )
-	{
-		y * yAxisInterval - yAxisMin
 
-	}
-*/
 	private int arrayMin( int[][] data )
 	{
 		int  min = data[0][0];
@@ -140,15 +128,6 @@ public class GraphPanel extends JPanel
 			printDashedLine( (i*xAxisInterval) + ORIGOX, 447, (i*xAxisInterval) + ORIGOX, 10, g2d); 
 		}
 
-/*		int intertval = 1;
-
-		for(int i = (20+42); i < INTERVALY; i+=((INTERVALY-30)/10))
-		{
-			g.drawLine(i,447,i,454);
-			g.drawString(intertval+"", i, 480);
-
-			intertval+=1;
-		}*/
 	}
 
 	private void drawGraphCoordinates( int y, Graphics2D g2d )
@@ -201,7 +180,6 @@ public class GraphPanel extends JPanel
 
 		for( int i = 0; i<data.length; i++)
 		{
-			//lasty = YAXISLENGTH - ((data[0][0] - yAxisMin) * yAxisInterval);
 
 			for( int j = 0; j<data[i].length; j++ )
 			{
@@ -211,8 +189,7 @@ public class GraphPanel extends JPanel
 			lastx = ORIGOX;
 			lasty =(int) (YAXISLENGTH - ((data[i][0] - yAxisMin) * yAxisInterval)); 
 		}
-		lastx = ORIGOX;
-		//lasty = YAXISLENGTH - ((data[0][0] - yAxisMin) * yAxisInterval); 
+		lastx = ORIGOX; 
 		lasty = YAXISLENGTH - data[0][0];
 
 

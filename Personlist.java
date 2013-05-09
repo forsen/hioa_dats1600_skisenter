@@ -48,34 +48,7 @@ public class Personlist implements Serializable
 		Collections.sort(registry, new Sortorder());
 	}
 
-	
-/*
-	public String findPerson(String fn, String ln)
-	{
-		Iterator<Person> it = registry.iterator();
 
-		String result = ""; 
-
-		while(it.hasNext())
-		{
-			Person owner = it.next();
-
-			if(fn != null && owner.getFirstName().toLowerCase().matches(".*"+fn.toLowerCase()+".*"))
-			{
-				result += owner.toString();
-			}
-
-			if(ln != null && owner.getLastName().toLowerCase().matches(".*"+ln.toLowerCase()+".*"))
-			{
-				result += owner.toString();
-			}
-		    
-		}
-		return result;
-	}
-*/
-
-	// tester en ny måte å representere resultatet på. 
 
 	public DefaultListModel<Person> findPerson(String fn, String ln)
 	{
@@ -196,22 +169,7 @@ public class Personlist implements Serializable
 		}
 		return antall;
 	}
-/*
-	public int totalCost()
-	{
-		Iterator<Person> it = registry.iterator();
 
-		int total = 0;
-
-		while (it.hasNext())
-		{
-			Person runner = it.next();
-
-			total += runner.totalCost();
-		}
-		return total;
-	}
-*/
 	public List<Card> getRelevantCards(Date start, Date end)
 	{
 		List<Card> tempList = new LinkedList<>();
@@ -221,32 +179,12 @@ public class Personlist implements Serializable
 		{
 			Person runner = it.next();
 
-/*			if( (runner.getCreated().after(start) && runner.getCreated().before(end)) 
-				|| (runner.getCreated().equals(start) || runner.getCreated().equals(end)) )
-			{
-				tempList.add(runner);
-			}*/
-
 			tempList.addAll(runner.getRelevantCards(start,end));
 		}
 		
 		return tempList;
 	}
 
-	/*public int totalPunch()
-	{
-		Iterator<Person> it = registry.iterator();
-
-		int totalpunch = 0;
-
-		while (it.hasNext())
-		{
-			Person runner = it.next();
-
-			totalpunch += runner.totalPunch();
-		}
-		return totalpunch;
-	}*/
 
 	public int soldCards()
 	{
@@ -286,9 +224,8 @@ public class Personlist implements Serializable
 
 	public Person deletePerson(Person obj)
 	{
-		/*if(isEmpty())
-			return null;*/
-			System.out.println("inne i deletemetoden");
+		
+		System.out.println("inne i deletemetoden");
 		Skisenter.unsaved = true; 
 
 		Iterator<Person> it = registry.iterator();
@@ -322,9 +259,6 @@ public class Personlist implements Serializable
 		return null;
 	}
 
-	
-	
-	
 
 	public String toString()
 	{
@@ -351,32 +285,6 @@ public class Personlist implements Serializable
 		return doneText;
 	}
 
-	/*public String personListe()
-	{
-		StringBuilder text = new StringBuilder();
-		
-		Iterator<Person> it = registry.iterator();
-		
-		
-		while(it.hasNext())
-		{
-			Person runner = it.next();
-			text.append(runner.toString());
-			text.append("\n");
-			
-
-
-		
-		} 
-		
-		String doneText = text.toString();
-		
-		return doneText;
-
-
-		
-	}*/
-
 	public JTable personTable()
 	{
 		sort();
@@ -395,8 +303,6 @@ public class Personlist implements Serializable
 			people[i][2] = runner.getBirth();
 			people[i][3] = runner.getphoneNr();
 			people[i][4] = runner.getCreated();
-
-
 		
 		} 
 		JTable perstable = new JTable(people,columnName);
@@ -407,20 +313,6 @@ public class Personlist implements Serializable
 
 
 }
-
-
-	
-
-
-
-
-	
-	
-
-
-
-
-
 
 
 

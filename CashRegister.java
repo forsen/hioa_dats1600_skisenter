@@ -50,7 +50,6 @@ public class CashRegister extends JDialog
 
 			public void windowClosing( WindowEvent e )
 			{
-				System.out.println("Sletter all dataaaaaa....");
 				shoppingCartList.setModel( ShoppingCart.emptyCart() );
 				SalesWindowPanel.updateCartPrice();
 				SalesWindowPanel.cardIDList.setModel( new DefaultListModel<Card>() );
@@ -134,8 +133,6 @@ public class CashRegister extends JDialog
 
 
 
-
-
 		shoppingCart = s;
 		shoppingCartList = sl; 
 		btnListener = new BtnListener();
@@ -149,7 +146,6 @@ public class CashRegister extends JDialog
 		total.setMaximumSize(new Dimension(300,30));
 		total.setBackground(new Color(187,229,171));
 		total.setEditable(false);
-		//total.setText("Total: \t\t" + sum + ",-");
 		total.setText("Total: \t\t" + paymentFormat.format( sum ) );
 		overview = new JTextArea();
 		overview.setBackground(new Color(211,244,212));
@@ -245,8 +241,6 @@ public class CashRegister extends JDialog
 
 		printCard.setEnabled(false );
 		printReceipt.setEnabled( false );
-
-
 
 		// Panel 1/4
 
@@ -651,7 +645,6 @@ public class CashRegister extends JDialog
 				cashInput.setText("");
 			if (ae.getSource() == cancelBtn )
 			{
-				System.out.println("Sletter all dataaaaaa....   (tror jeg..?)");
 				shoppingCartList.setModel( ShoppingCart.emptyCart() );
 				SalesWindowPanel.cardIDList.setModel( new DefaultListModel<Card>() );
 				dispose();

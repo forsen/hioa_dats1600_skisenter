@@ -31,6 +31,6 @@ public class Daycard extends Timebasedcard
 
 	public String toString()
 	{
-		return super.toString()+ "\tDagskort\tGår ut: " + super.getExpires();
+		return "Dagskort\tGår ut: " + super.getExpires() + "\t" +super.toString();
 	}
 }

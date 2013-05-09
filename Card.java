@@ -44,7 +44,7 @@ public class Card implements Serializable
 	{
 		skiCardList.add(obj);
 		current = obj; 
-		return obj.toString() + " ble lagg til " + cardNumber;
+		return obj.toString() + " ble lagt til " + cardNumber;
 	}
 
 /**
@@ -150,21 +150,6 @@ public class Card implements Serializable
 		return current.getBought();
 	}
 
-/*
-	public int totalCost()
-	{
-		Iterator<Skicard> it = skiCardList.iterator();
-		int total = 0;
-
-		while(it.hasNext())
-		{
-			Skicard runner = it.next();
-			total += runner.getPrice();
-			
-		}
-		return total;
-	}
-*/
 
 //STATISTIKK//////////////////////////////////////////////////////////////////
 /**
@@ -208,7 +193,6 @@ public class Card implements Serializable
 		while(it.hasNext())
 		{
 			Skicard runner = it.next();
-			//text.append("\n");
 			text.append(runner.toString());
 			text.append("\n");
 

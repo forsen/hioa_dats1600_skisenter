@@ -21,7 +21,7 @@ public class Cardlist implements Serializable
 		list.add(obj);
 		return  " Ble opprettet med kundenummer: " + obj.getCardID();	
 	}
-/// BRUKER VI DENNE METODEN ??? FOR VI PANTER JO IKKE SLETTER)
+
 	public Card deleteCard(Card obj)
 	{
 
@@ -94,30 +94,6 @@ public class Cardlist implements Serializable
 		return false; 
 	}
 
-/*	<metode for å finne eier av kort>*/
-/*
-	public int totalCost()
-	{
-		Iterator<Card> it = list.iterator();
-
-		int total = 0;
-		int cardNR = 0;
-
-		while (it.hasNext())
-		{
-			Card runner = it.next();
-
-			total += runner.totalCost();
-			total += Info.CARDPRICE;
-
-			if( runner.getReturned() )
-				total += Info.RETURNPRICE; 
-			
-			
-		}
-		return total;
-	}
-*/
 /// STATISTIKK///////////////////////////////////////////////////////////////////
 	public List<Card> getRelevantCards(Date start, Date end)
 	{
@@ -185,7 +161,6 @@ public class Cardlist implements Serializable
 				text.append(runner.toString());
 				text.append("\n");
 				text.append(runner.history());
-				//text.append("\n");
 			}
 		
 		} 

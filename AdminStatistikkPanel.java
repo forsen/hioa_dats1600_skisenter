@@ -14,7 +14,7 @@ import java.text.NumberFormat;
 
 public class AdminStatistikkPanel extends JPanel
 {	
-	private JLabel from, to, month, liftnr;
+	private JLabel from, to, liftnr;
 	private JTextField fromFld, toFld, liftFLd;
 	private JTextArea display;
 	private JPanel displayPnl, graphPnl;
@@ -111,13 +111,6 @@ public class AdminStatistikkPanel extends JPanel
 		toFld = new JTextField(4);
 		toFld.setToolTipText("Sett inn en sluttdato du ønsker og beregne info til");
 		toFld.setEditable( true );
-	
-
-	/*	month = new JLabel( "Måned: " );
-		monthFld = new JTextField(4);
-		monthFld.setToolTipText("Sett inn et tall som representerer mn du har lyst å se beregninger på");
-		monthFld.setEditable( true );*/
-	
 
 		liftnr = new JLabel( "HeisNr: " );
 		liftFLd = new JTextField(4);
@@ -170,21 +163,6 @@ public class AdminStatistikkPanel extends JPanel
 		c.weighty = 0.2;
 		add(liftPassBtn, c);
 
-/*		c.gridheight = 1;
-		c.weightx = 1;
-		c.gridx = 0; 
-		c.gridy = 4; 
-		c.gridwidth = 1;
-		c.weighty = 0.2;
-		add(graphBtn, c);
-
-		c.gridheight = 1;
-		c.weightx = 1;
-		c.gridx = 0; 
-		c.gridy = 5; 
-		c.gridwidth = 1;
-		c.weighty = 0.2;
-		add(calculateBtn, c);*/
 
 //ANDRE-KOLONNE //////////////////////////////////////////////
 		c.gridheight = 1; 
@@ -202,14 +180,6 @@ public class AdminStatistikkPanel extends JPanel
 		c.gridwidth = 1; 
 		c.weighty = 0.2;
 		add(to,c);	
-
-	/*	c.gridheight = 1;
-		c.weightx = 0.5;
-		c.gridx = 1; 
-		c.gridy = 2; 
-		c.gridwidth = 1;
-		c.weighty = 0.2;
-		add(month, c);*/
 
 		c.gridheight = 1;
 		c.weightx = 0.5;
@@ -237,14 +207,6 @@ public class AdminStatistikkPanel extends JPanel
 		c.weighty = 0.2;
 		add(toFld,c);	
 
-	/*	c.gridheight = 1;
-		c.weightx = 0.5;
-		c.gridx = 2; 
-		c.gridy = 2; 
-		c.gridwidth = 1;
-		c.weighty = 0.2;
-		add(monthFld, c);*/
-
 		c.gridheight = 1;
 		c.weightx = 0.5;
 		c.gridx = 2; 
@@ -261,13 +223,6 @@ public class AdminStatistikkPanel extends JPanel
 		c.gridwidth = 3;
 		c.weighty = 0.2;
 		add(tabDisp, c);
-
-		// fjern etterhvert
-
-		/*graph = new int[30];
-
-		for( int i = 0; i < graph.length; i++)
-			graph[i] = (int) Math.floor((Math.random()*100)+1);*/
 
 
 
@@ -341,30 +296,6 @@ public class AdminStatistikkPanel extends JPanel
 		display.append( "\nKlippekort: \t" + total[Skicard.PUNCHCARD] );
 		display.append( "\nFysiske kort: \t" + total[4] );
 	}
-
-/*	private void regThatTime()
-	{
-		try
-		{
-			int nr = Integer.parseInt(monthFld.getText());
-
-			display.append("\nAntall personer som ble registrert i månede " + nr + " er " + cal.regThatTime(nr));
-		}
-		catch(NullPointerException npe)
-		{
-			display.setText("Need to put in a date");
-		}
-		catch(NumberFormatException nfe)
-		{
-			display.setText("Has to be a number");
-		}
-	}
-*/
-	/*public LinkedList<Card> getCards()
-	{
-
-	} */
-
 
 
 	private void passings()
@@ -448,28 +379,9 @@ public class AdminStatistikkPanel extends JPanel
 		
 	}
 
-	/*public void totalPunch()
-	{
-		display.append("\nTotal salg av Klippekort er " +cal.totalPunch() + "KR og antall klippekort som er solgt er: " + cal.totalPunch()/Info.PUNCHCARDPRICE + "Stk");
-	}*/
 //END-BEREGN
 
 //START-GRAF
-
-	private void monthlyCardSale()
-	{
-/*		graph = new int[12];
-
-
-		for( int i = 0; i < graph.length; i++)
-		{
-
-			int y = cal.cardSoldInMonthX(i);
-			System.out.println(y);
-			graph[i] = y;
-		}	*/
-	}
-
 
 	private Date getStartDate()
 	{
@@ -520,22 +432,7 @@ public class AdminStatistikkPanel extends JPanel
   	{
    		public void actionPerformed( ActionEvent e )
     	{ 	
-      		
-      /*		if(e.getSource() == calculateBtn)
-      		{
-      			graphPnl.setVisible(false);
-      			display.setVisible( true );
-      		}*/
-   /*   		else if ( e.getSource()== graphBtn )
-       		{
-       			monthlyCardSale();
-       			graphPnl = new GraphPanel( graph );
-       			//scroll = new JScrollPane(graphPnl);
-       			displayPnl.add(graphPnl);
-       			graphPnl.setVisible(true);
-       			display.setVisible( false );
-       				
-       		}*/
+
 
        		if (e.getSource() == soldCardsBtn )
        		{
@@ -552,22 +449,7 @@ public class AdminStatistikkPanel extends JPanel
        			 passings();
        		else if (e.getSource() == revenueBtn)
        			revenue();
-
-/*
-       		else if(tabDisp.getSelectedIndex() == 0)
-       		{
-       			
-      		}
-       		else if(tabDisp.getSelectedIndex() == 1)
-       		{
-       			//monthlyCardSale();
-       			graphPnl = new GraphPanel( graph );
-       			
-       			//scroll = new JScrollPane(graphPnl);
-       			tabDisp.setComponentAt(1, graphPnl);
-       			
-       		}
-*/     		
+    		
 
     	}
 	}

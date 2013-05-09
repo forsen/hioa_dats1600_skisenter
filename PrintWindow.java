@@ -10,10 +10,6 @@ public class PrintWindow extends JDialog
 	private Listener btnListener;
 	private JScrollPane scroll;
 
-//	public static final RECEIPT = 1;
-//	public static final CARD = 2; 
-
-
 	public PrintWindow( Window parent )
 	{
 		super( parent, "Printvindu" );
@@ -26,7 +22,6 @@ public class PrintWindow extends JDialog
 		setLayout( new BorderLayout() );
 		add( print, BorderLayout.PAGE_END );
 
-		//setSize( 400,800 );
 		setVisible( true ); 
 	}
 
@@ -40,12 +35,7 @@ public class PrintWindow extends JDialog
 
 		add( scroll, BorderLayout.CENTER );
 		setSize( 400,800 );
-//		add( print, BorderLayout.PAGE_END );
 
-
-
-//		setSize( 400, 800 );
-//		setVisible( true );
 	}
 
 	public PrintWindow( Window parent, Card c )

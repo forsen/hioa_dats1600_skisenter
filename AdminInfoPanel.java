@@ -147,7 +147,7 @@ public class AdminInfoPanel extends JPanel
 		}
 		catch(NullPointerException npe)
 		{
-			display.setText("Colun't find the card");
+			display.setText("Colund't find the card");
 		}
 		
 	} 
@@ -190,75 +190,45 @@ public class AdminInfoPanel extends JPanel
 			
 			if(stingtlf.matches(pattern))
 			{
-				int tlfnr = Integer.parseInt(stingtlf); 
-				System.out.println("du har gjort om til int");	
+				int tlfnr = Integer.parseInt(stingtlf); 	
 				if(reg != null)
 				{
-					System.out.println("nå skal jeg ha valgt en person");
 					p = (Person) model.get(reg.getSelectedIndex());
 					System.out.println(p.toString());
 					p = list.deletePerson(p);
-					
-
-					if(p==null)
-					System.out.println("ut igjen av delete men uten person");
-					if (p != null)
-						System.out.println("ut igjen av delete med person");
+				
 					reg = null;
 				}		
-
 				else
 				{
 					reg  = new JList<Person>();
 				
 					model = (list.findPerson(tlfnr));
 					reg.setModel( model );
-					System.out.println("Satt opp lista");
 					
 					if(model.getSize() == 1)
 					{	
 						p = (Person)model.firstElement();
 						p = list.deletePerson(p);
-					
-						System.out.println("den var == 1");
-						//reg = null;
-
 					}
 					else if(model.getSize() >= 2)
 					{ 
 						listscroll = new JScrollPane(reg );
 						scroll.setViewportView(listscroll);
 						JOptionPane.showMessageDialog(null, "Det er fler enn 1 med samme nr. Velg 1 og trykk på slett Person knappen igjen\n");
-						System.out.println("den var >= 2");
 						return;
 					}
-
-				//Person del = getSelectedValue();
 				}	
-				
-				
-				System.out.println("burde vises noe nå som vi har kommi så langt");
-				if(p == null)
-				{
-					System.out.println("p == null");
-				}
-				if(display == null)
-				{	
-					System.out.println("display == null");
-				}
 				
 				scroll.setViewportView(display);
 				display.setText(p.getFirstName() +" "+ p.getLastName()+ " er nå slettet fra systemet");	
-				System.out.println("enda lenre");
 				tlfNr.setText("");
-				System.out.println("lengst");
 			}
 
 		}
 		catch(NullPointerException npe)
 		{
 			JOptionPane.showMessageDialog(null,"Du må ha 8 siffre");
-			npe.printStackTrace();
 		}
 
 	}
@@ -305,35 +275,26 @@ public class AdminInfoPanel extends JPanel
       			showpersons();
       			scroll.setViewportView(perstable);
 
-
       		}
-
       		if(e.getSource() == showPersWcards)
       		{
       			showPersonsWithcards();
       			scroll.setViewportView(display);
       		}
-
       		if(e.getSource() == showCards)
       		{
       			showCards();
       			scroll.setViewportView(display);
       		}
-
       		if(e.getSource() == showPassings)
       		{
       			showpassings();
       			scroll.setViewportView(passTable);
-      		
       		}
-
       		if(e.getSource() == deletePersBtn)
       		{
-      			deletePerson();
-      			
+      			deletePerson();	
       		}
-
-      		
     	}
 	}	
 }

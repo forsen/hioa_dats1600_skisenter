@@ -30,7 +30,6 @@ public class ImageUtility
 
 			BufferedImage resizedPic = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
 			Graphics2D gr = resizedPic.createGraphics();
-			//gr.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
 			gr.addRenderingHints(new RenderingHints(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY));
 			gr.setColor(Color.WHITE);
 			gr.fillRect(0, 0, width, height);
@@ -45,7 +44,7 @@ public class ImageUtility
 		}
 		catch(IOException ie)
 		{
-			System.out.println("Feil med åpning eller tegning av bildet");
+			System.out.println("error : opening or loading image");
 		}
 		catch(IllegalArgumentException iae)
 		{

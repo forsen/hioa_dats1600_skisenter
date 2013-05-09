@@ -66,10 +66,10 @@ public class Admin extends JFrame
 
 		ImageIcon info = new ImageIcon("img/infoadmin.png");
 		
-		ImageIcon statistikk = new ImageIcon("img/statistikkadmin.png");
+		ImageIcon statistics = new ImageIcon("img/statistikkadmin.png");
 		
 		adminTabs.addTab("Info", info, adminInfoPnl);
-		adminTabs.addTab("Statistikk", statistikk, statInfoPnl );
+		adminTabs.addTab("Statistikk", statistics, statInfoPnl );
 
 		c.setLayout( layout );
 		c.add(framePnl );

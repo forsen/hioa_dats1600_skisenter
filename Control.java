@@ -82,11 +82,6 @@ public class Control extends JFrame
 		setSize( width/4, height/4 );
 		setMinimumSize( new Dimension( 500,250) );
 
-
-//		JLabel background = new JLabel(new ImageIcon("bakgrunn.jpg"));
-
-
-
 		setLocationByPlatform( true );
 
 		ctrlRegCustNr = new JButton("Validér");
@@ -136,8 +131,6 @@ public class Control extends JFrame
 		
 		ctrlWindowShowTime = new JTextField();
 		ctrlWindowShowTime.setHorizontalAlignment(JTextField.CENTER);
-
-
 
 
 		ctrlWindowPassThrough = new JPanel();
@@ -204,16 +197,11 @@ public class Control extends JFrame
 		cc.anchor = GridBagConstraints.WEST;
 		contentPanel.add(ctrlWindowCustNr, cc) ;
 
-
-
 		cc.gridx=0;
 		cc.gridy=3;
 		cc.gridwidth = 2;
 		cc.gridheight = 3;
 		contentPanel.add(ctrlWindowPassThrough, cc);
-		
-
-
 
 		add(contentPanel);
 		

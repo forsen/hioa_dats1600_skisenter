@@ -137,12 +137,7 @@ public class Calculator
  
 		return graph;
 	}
-/*
-	public int totalRegPepole()
-	{
-		return custRegistry.totalRegPepole();
-	}
-*/
+
 
 	// This method needs to be polished. Currently the incoming split assumes every month is exactly 4 weeks, which is not very accurate. 
 
@@ -155,12 +150,7 @@ public class Calculator
 	{
 		return cardlist.allCards();
 	}
-/*
-	public int totalSoldCard()
-	{
-		return regCards() + unregCards();
-	}
-*/
+
 	public int regThatTime(int nr)
 	{
 		return custRegistry.regThatTime(nr);
@@ -217,9 +207,6 @@ public class Calculator
 
 				Skicard sc = sIt.next(); 
 
-				
-
-
 				graph[sc.getType()][(daysSinceOpening( sc.getBought() ) - start )] += sc.getPrice(); 
 
 			} 
@@ -252,10 +239,6 @@ public class Calculator
 		return graph;
 	}
 
-	/*public int totalPunch()
-	{
-		return custRegistry.totalPunch();
-	}*/
 
 	public int[][] showPassings( Date s, Date e )
 	{
@@ -320,25 +303,12 @@ public class Calculator
 		return unregCardsSoldInMonthX(x);
 	}
 
-/*
-	private int calculateRange( Date s, Date e )
-	{
-		Calendar start = Calendar.getInstance();
-		Calendar end = Calendar.getInstance();
-
-		start.setTime( s );
-		end.setTime( e );
-
-		return end.get(Calendar.DAY_OF_YEAR) - start.get( Calendar.DAY_OF_YEAR ) + 1;
-	}
-*/
 	private int[] normalize( int[] d , int s)
 	{
 		int[] data = d; 
 
 		int[] newData = new int[ (int) Math.ceil((data.length / (double) s )) ];
 
-		//int split = (int) Math.ceil((data.length / ((double) newData.length - 1 ))) ; 
 
 		System.out.println( "Lengden: " + data.length );
 		System.out.println( "Delt på 7:" + (int) Math.ceil((data.length / (double) 7.0)) );
@@ -354,7 +324,7 @@ public class Calculator
 			if( (i+1) % split == 0 )
 			{
 				j++;
-				//System.out.println( "i: " + i + ", j: " + j );
+				
 			}
 		}
 

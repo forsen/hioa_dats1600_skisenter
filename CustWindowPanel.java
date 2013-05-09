@@ -18,26 +18,18 @@ public class CustWindowPanel extends JPanel
 	private static JTextField custWindowFirstName, custWindowLastName, custWindowPhone, custWindowBorn;
 	private JTextArea custWindowSearchInfoTxt;
 	private JTextArea statusTxt;
-
 	private JPanel formPnl, btnPnl, rsltPnl; 
-
 	private CustListener custListener;
-
 	private static JList<Person> list; 
 	private DefaultListModel<Person> listmodel;
 	private ListListener listListener;
-
 	private JScrollPane scrolList;
-	//private Person customer;
-
 	private Toolkit toolbox;
-
 	private Personlist custRegistry;
 	private File img; 
 	private ImageUtility iu;
 	
 
-	//public CustWindowPanel( Personlist cr, JTextArea s, Person p )
 	public CustWindowPanel( Personlist cr, JTextArea s )
 	{
 		setBackground(new Color(200, 230, 255));
@@ -57,9 +49,6 @@ public class CustWindowPanel extends JPanel
 
 		scrolList = new JScrollPane( list );
 		scrolList.setPreferredSize(new Dimension(120,140));
-
-//		list.setModel( listmodel );
-		//customer = p; 
 
 		formPnl = new JPanel( new GridLayout( 4,2 ));
 		
@@ -103,12 +92,6 @@ public class CustWindowPanel extends JPanel
 		custWindowRegBtn = new JButton("Endre/Ny kunde", customer);
 		custWindowRegBtn.setToolTipText("Registrer ny kunde");
 
-		//custWindowFirstNamePnl = new JPanel( new FlowLayout() );
-		//custWindowLastNamePnl = new JPanel( new FlowLayout() );
-		//custWindowPhonePnl = new JPanel( new FlowLayout() );
-		//custWindowBornPnl = new JPanel( new FlowLayout() );
-		//custWindowBtnPnl = new JPanel( new FlowLayout() );
-
 		custWindowFirstName = new JTextField(10);
 		custWindowLastName = new JTextField(10);
 		custWindowPhone = new JTextField(10);
@@ -119,32 +102,8 @@ public class CustWindowPanel extends JPanel
 		imageBtn.addActionListener( custListener );
 		custWindowRegBtn.addActionListener( custListener );
 		custWindowSearchBtn.addActionListener( custListener );
-/*
-		add(custWindowFirstNamePnl);
-		add(custWindowLastNamePnl);
-		add(custWindowPhonePnl);
-		add(custWindowBornPnl);
-		add(custWindowBtnPnl);
-		add(list);
-		add(custWindowSearchInfoTxt);
-*/
 
 		rsltPnl.add( scrolList );
-		//rsltPnl.add( custWindowSearchInfoTxt );
-
-
-/*
-		custWindowFirstNamePnl.add( new JLabel( "Fornavn" ) );
-		custWindowFirstNamePnl.add( custWindowFirstName );
-		custWindowLastNamePnl.add( new JLabel( "Etternavn" ) );
-		custWindowLastNamePnl.add( custWindowLastName );
-		custWindowPhonePnl.add( new JLabel( "Telefon" ) );
-		custWindowPhonePnl.add( custWindowPhone );
-		custWindowBornPnl.add( new JLabel( "Født") );
-		custWindowBornPnl.add( custWindowBorn );
-		custWindowBtnPnl.add( custWindowRegBtn );
-		custWindowBtnPnl.add( custWindowSearchBtn );
-*/
 
 		formPnl.add( new JLabel( "Fornavn" ) );
 		formPnl.add( custWindowFirstName );
@@ -216,13 +175,11 @@ public class CustWindowPanel extends JPanel
 
 				return p;
 			}
-			//JOptionPane.showMessageDialog(null, "Du må ha 8 siffer i telefonnummer.");
 			throw new NumberFormatException(); 
 
 		}
 		catch( ParseException pe )
 		{
-			//JOptionPane.showMessageDialog(null, "Fødselsdato må være på formen ddmmyy!");
 			statusTxt.setText( "Fødselsdato må være på formen ddmmyy" );
 		}
 		catch( NumberFormatException nfe )
@@ -244,7 +201,6 @@ public class CustWindowPanel extends JPanel
 		{
 			int number = Integer.parseInt(custWindowPhone.getText());
 
-			String item = ""; 
 			listmodel = custRegistry.findPerson( number );
 			list.setModel( listmodel );
 
@@ -264,20 +220,12 @@ public class CustWindowPanel extends JPanel
 
 		if(firstname != null)
 		{
-			String item = ""; 
 
 			listmodel = custRegistry.findPerson( firstname, lastname );
-	
-/*			list.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
-			list.setCellRenderer( new SearchListCellRenderer());
-			list.addListSelectionListener( listListener );
-*/
 			list.setModel( listmodel );
 
 
 		}
-//		if(firstname != null)
-//			statusTxt.setText(custRegistry.findPerson(firstname, lastname));
 		blankOut();
 
 	}
@@ -350,36 +298,8 @@ public class CustWindowPanel extends JPanel
 
 		return null;
 
-//		JFrame fr = new JFrame ("Skønner ikke !");
-//		FileDialog fd = new FileDialog(fr,"Åpne", FileDialog.LOAD);
-//		FileDialog fdsave = new FileDialog(fr,"Lagre", FileDialog.SAVE);
-
-//		fd.setVisible(true);
-
-//		if(fd.getFile() == null)
-//		{
-//			statusTxt.setText("Du har ikke valgt noe bilde");
-//		}
-//		else
-//		{
-			
-//			String d = (fd.getDirectory() + fd.getFile());
-//			Toolkit toolkit = Toolkit.getDefaultToolkit();
-//			img = toolkit.getImage(d);
-//			statusTxt.setText("Bilde er lagret");
-//			fdsave.setVisible(true);
-			
-//		}
 	}
 
-	/*public void paint (Graphics g)
-	{
-		if (img != null)
-		{
-			g.drawImage(img, 100, int, custListener);
-
-		}
-	}*/
 	private void moveAndRenameImg(File f, Person p)
 	{
 		
@@ -401,11 +321,6 @@ public class CustWindowPanel extends JPanel
 
 	}
 
-
-
-
-
-
 	private class ListListener implements ListSelectionListener
 	{
 		public void valueChanged( ListSelectionEvent lse )
@@ -426,10 +341,6 @@ public class CustWindowPanel extends JPanel
 				custWindowFirstName.setText(Salesclerk.customer.getFirstName());
 				custWindowLastName.setText(Salesclerk.customer.getLastName());
 				custWindowPhone.setText(""+Salesclerk.customer.getphoneNr());
-				//Calendar cal = Calendar.getInstance(); 
-				//cal.setTime(Salesclerk.customer.getBirth());
-				//String bdate = (cal.get(Calendar.DAY_OF_MONTH) + "" + (cal.get(Calendar.MONTH) + 1) + "" + cal.get(Calendar.YEAR));
-				//custWindowBorn.setText(bdate);
 
 				Date bDate = Salesclerk.customer.getBirth();
  				String born = new SimpleDateFormat("ddMMyy").format(bDate);

@@ -56,7 +56,7 @@ public class Info extends JFrame
 
 
 
-		Toolkit verktoykasse = Toolkit.getDefaultToolkit();
+		Toolkit toolbox = Toolkit.getDefaultToolkit();
 
 		
 
@@ -87,11 +87,11 @@ public class Info extends JFrame
 		sideMenu.setLayout( new GridLayout( 4,1 ) );
 
 
-		ImageIcon nyheter = new ImageIcon("img/nyheter.png");
-		newsButton = new JButton(nyheter);
+		ImageIcon news = new ImageIcon("img/nyheter.png");
+		newsButton = new JButton(news);
 		newsButton.setToolTipText("OFFPIST: Nyheter");
-		ImageIcon nyheter2 = new ImageIcon("img/nyheter2.png");
-		newsButton.setPressedIcon(nyheter2);
+		ImageIcon news2 = new ImageIcon("img/nyheter2.png");
+		newsButton.setPressedIcon(news2);
 		newsButton.setFocusPainted(false);
 		newsButton.setBorderPainted(false);
 		newsButton.setContentAreaFilled(false);
@@ -109,11 +109,11 @@ public class Info extends JFrame
 
 		sideMenu.add(infoButton);
 
-		ImageIcon tilbud = new ImageIcon("img/tilbud.png");
-		offersButton = new JButton(tilbud);
+		ImageIcon offer = new ImageIcon("img/tilbud.png");
+		offersButton = new JButton(offer);
 		offersButton.setToolTipText("OFFPIST: Tilbud");
-		ImageIcon tilbud2 = new ImageIcon("img/tilbud2.png");
-		offersButton.setPressedIcon(tilbud2);
+		ImageIcon offer2 = new ImageIcon("img/tilbud2.png");
+		offersButton.setPressedIcon(offer2);
 		offersButton.setFocusPainted(false);
 		offersButton.setBorderPainted(false);
 		offersButton.setContentAreaFilled(false);
@@ -122,11 +122,11 @@ public class Info extends JFrame
 
 	
 
-		ImageIcon priser = new ImageIcon("img/priser.png");
-		pricesButton = new JButton(priser);
+		ImageIcon price = new ImageIcon("img/priser.png");
+		pricesButton = new JButton(price);
 		pricesButton.setToolTipText("OFFPIST: Priser");
-		ImageIcon priser2 = new ImageIcon("img/priser2.png");
-		pricesButton.setPressedIcon(priser2);
+		ImageIcon price2 = new ImageIcon("img/priser2.png");
+		pricesButton.setPressedIcon(price2);
 		pricesButton.setFocusPainted(false);
 		pricesButton.setBorderPainted(false);
 		pricesButton.setContentAreaFilled(false);
@@ -180,7 +180,7 @@ public class Info extends JFrame
 		c.weightx = 1.0;
 		c.weighty = 0.1;
 		c.gridheight = 1 ;
-		//	c.gridwidth = 2;
+
 		c.gridwidth = 1;
 		c.gridx = 1;
 		c.gridy = 0;
@@ -210,19 +210,19 @@ public class Info extends JFrame
 
 		c.fill = GridBagConstraints.BOTH;
 		contentPanel.setBackground(new Color(220, 240, 255));
-	//	c.weightx = 1.0;
+
 		c.gridheight = 2;
 		c.weighty = 1.0;
 		c.anchor = GridBagConstraints.PAGE_START;
-		//	c.gridwidth = 4;
+		
 		c.gridx = 1;
 		c.gridy = 1;
 		JScrollPane contentScrollPanel = new JScrollPane(contentPanel);
 		add(contentScrollPanel, c);
 
 
-		ImageIcon bilde = new ImageIcon("img/offpist_liten.png");
-		label = new JLabel("<html>Granskogen 1 - Tlf: 22 33 44 55</html>", bilde, JLabel.CENTER);
+		ImageIcon image = new ImageIcon("img/offpist_liten.png");
+		label = new JLabel("<html>Granskogen 1 - Tlf: 22 33 44 55</html>", image, JLabel.CENTER);
 		label.setHorizontalTextPosition(JLabel.CENTER);
 		label.setVerticalTextPosition(JLabel.BOTTOM);
 		label.setFont(new Font("Calibri", Font.PLAIN, 15));
@@ -308,9 +308,9 @@ public class Info extends JFrame
 
 
 
-		String bildefil = "img/offpist_logo.png";
-		Image ikon = verktoykasse.getImage(bildefil);
-		setIconImage(ikon);
+		String imagefile = "img/offpist_logo.png";
+		Image icon = toolbox.getImage(imagefile);
+		setIconImage(icon);
 		//Display the window.
 		pack();
 		setSize(1000,1000);

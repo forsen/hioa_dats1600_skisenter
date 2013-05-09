@@ -116,7 +116,7 @@ public class CardPainting extends JPanel
 		}
 		catch( IOException ioe )
 		{
-			System.out.println( "Couln't load the image" );
+			System.out.println( "Couldn't load the image" );
 		}
 
 
@@ -129,9 +129,6 @@ public class CardPainting extends JPanel
 
 		Graphics2D g2d = (Graphics2D) g;
 
-		
-		
-//		g2d.drawRect(9, 9, 476, 640);
 
 		g2d.setFont( new Font( "Arial", Font.PLAIN, 30 ));
 
@@ -164,15 +161,7 @@ public class CardPainting extends JPanel
 		g2d.drawString( cardNr, 20, 645 );
 		printRightAlignedString( customerID, 485, 0, 645, g2d );
 
-
-
-
-
 		g2d.drawRoundRect(10,10,475,640, 15,15); 
-
-
-
-		
 
 	}
 

@@ -31,7 +31,7 @@ public class Hourcard extends Timebasedcard
 
 	public String toString()
 	{
-		return super.toString()+ "\tTimeskort\tGår ut: " + super.getExpires();
+		return  "Timeskort\tGår ut: " + super.getExpires()+ "\t"+super.toString();
 	}
 
 }// end of class Hourcard
