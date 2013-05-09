@@ -37,7 +37,7 @@ public class SpOfferWindowPanel extends JPanel
 	    offer3.setFont(new Font("Calibri", Font.PLAIN, 14));
 
 
-	    c.insets = new Insets(10, 5, 5, 5);
+	    c.insets = new Insets(20, 5, 5, 5);
 	    c.anchor = GridBagConstraints.WEST;
 		c.fill = GridBagConstraints.BOTH;
 
@@ -45,8 +45,8 @@ public class SpOfferWindowPanel extends JPanel
 
 		c.gridx=0;
 		c.gridy=0;
-		c.weightx=1;
-		c.weighty=1;
+		c.weightx=0.5;
+		c.weighty=0.5;
 		c.gridwidth = 2;
 		add(offerPic1, c);
 
@@ -58,6 +58,7 @@ public class SpOfferWindowPanel extends JPanel
 
 		/* Andre kolonne ****************/
 		c.gridwidth=1;
+		c.weightx=1;
 		c.gridx=3;
 		c.gridy=0;
 		add(offer1, c);
