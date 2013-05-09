@@ -52,6 +52,7 @@ public class CashRegister extends JDialog
 			{
 				System.out.println("Sletter all dataaaaaa....");
 				shoppingCartList.setModel( ShoppingCart.emptyCart() );
+				SalesWindowPanel.updateCartPrice();
 				SalesWindowPanel.cardIDList.setModel( new DefaultListModel<Card>() );
 				
 			}

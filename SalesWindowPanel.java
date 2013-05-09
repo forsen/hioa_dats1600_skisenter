@@ -5,6 +5,8 @@ import java.awt.event.*;
 import javax.swing.event.*;
 import java.io.*;
 import java.util.Date;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class SalesWindowPanel extends JPanel
 {
@@ -20,10 +22,14 @@ public class SalesWindowPanel extends JPanel
 	private String[] cardTypeString; 
 	private CardListener cardListener;
 	private BtnListener btnListener;
-	private JScrollPane cardScrolList, shoppingScrolList, cardTypeScrolList;
-	private ShoppingCart shoppingCart; 
-	private JLabel cartPrice, discountLbl;
+	private JScrollPane cardScrolList, cardTypeScrolList;
+	private static JScrollPane shoppingScrolList;
+	private static ShoppingCart shoppingCart; 
+	private JLabel discountLbl;
+	private static double cartPrice;
 	private Cardlist cardregistry;
+	private static NumberFormat paymentFormat;
+	private static Border etched;
 
 	//private Person customer;
 
@@ -33,7 +39,10 @@ public class SalesWindowPanel extends JPanel
 		setBackground(new Color(200, 230, 255));
 		cardregistry = cl;
 
-		Border etched = BorderFactory.createEtchedBorder();
+		paymentFormat = NumberFormat.getCurrencyInstance( new Locale( "no", "NO" ) );
+		cartPrice = 0.0;
+
+		etched = BorderFactory.createEtchedBorder();
 		Border resultBdr = BorderFactory.createTitledBorder(etched, "Kortsalg");
 
 		setBorder(resultBdr);
@@ -65,7 +74,7 @@ public class SalesWindowPanel extends JPanel
 
 		btnListener = new BtnListener();
 
-		cartPrice = new JLabel(" Sum: 0kr");
+		
 
 		salesNewCardBtn = new JButton("Nytt kort");
 		salesNewCardBtn.setMnemonic(KeyEvent.VK_N);
@@ -128,7 +137,7 @@ public class SalesWindowPanel extends JPanel
 		shoppingCartList.setSelectionMode( ListSelectionModel.SINGLE_SELECTION );
 		shoppingCartList.setCellRenderer( new ShoppingCartCellListRenderer() );
 		shoppingScrolList = new JScrollPane( shoppingCartList, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER );
-		shoppingScrolList.setBorder(BorderFactory.createTitledBorder(etched, "Handlekurv"));
+		shoppingScrolList.setBorder(BorderFactory.createTitledBorder(etched, "Handlekurv: " + paymentFormat.format( cartPrice ) ) );
 		shoppingScrolList.setBackground(new Color(200, 230, 255));
 
 		cardScrolList = new JScrollPane( cardIDList, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER );
@@ -339,7 +348,7 @@ public class SalesWindowPanel extends JPanel
 					else
 					{
 						shoppingCartList.setModel( shoppingCart.addToCart( c, sc ) );
-						cartPrice.setText(" Sum: " + shoppingCart.getSum() + "kr");
+						updateCartPrice();
 					}
 				}
 				else
@@ -348,7 +357,7 @@ public class SalesWindowPanel extends JPanel
 			else if( c != null )
 			{
 				shoppingCartList.setModel( shoppingCart.addToCart( c, sc ) );
-				cartPrice.setText(" Sum: " + shoppingCart.getSum() + "kr");
+				updateCartPrice();
 			}
 			else
 				throw new NullPointerException();		
@@ -368,12 +377,18 @@ public class SalesWindowPanel extends JPanel
 		int removeLine = shoppingCartList.getSelectedIndex(); 
 
 		Card c = shoppingCartList.getModel().getElementAt(removeLine).getCard();
+
 		
+		
+		
+
 		shoppingCartList.setModel( shoppingCart.deleteFromCart( removeLine ) );
 
 		DefaultListModel<Card> lmc = (DefaultListModel<Card>) cardIDList.getModel();
 		lmc.addElement( c );
 		cardIDList.setModel( lmc );
+
+		updateCartPrice();
 
 	}
 
@@ -392,10 +407,16 @@ public class SalesWindowPanel extends JPanel
 	{
 	
 		SalesWindowPanel.cardIDList.setModel( shoppingCart.newCard() );
-		cartPrice.setText(" Sum: " + shoppingCart.getSum() + "kr");
+		updateCartPrice();
 		
 
 
+	}
+
+	public static void updateCartPrice()
+	{
+		cartPrice = shoppingCart.getSum();
+		shoppingScrolList.setBorder(BorderFactory.createTitledBorder(etched, "Handlekurv: " + paymentFormat.format( cartPrice ) ) );
 	}
 
 	private void returnCard()
@@ -408,7 +429,7 @@ public class SalesWindowPanel extends JPanel
 			DefaultListModel<Card> lmc = (DefaultListModel<Card>) cardIDList.getModel();
 			lmc.removeElementAt( cardIDList.getSelectedIndex() );
 			cardIDList.setModel( lmc );
-
+			updateCartPrice();
 		}
 		catch( NullPointerException npe )
 		{

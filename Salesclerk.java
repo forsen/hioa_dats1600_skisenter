@@ -234,6 +234,7 @@ public class Salesclerk extends JFrame
 			salesClerkSearchInfoTxt.setBackground(Color.WHITE);
 			CustWindowPanel.clearSearch(); 
 			SalesWindowPanel.shoppingCartList.setModel(ShoppingCart.emptyCart());
+			SalesWindowPanel.updateCartPrice();
 
 
 		}
