@@ -190,6 +190,7 @@ public class CustWindowPanel extends JPanel
 	{
 		String firstname = custWindowFirstName.getText();
 		String lastname = custWindowLastName.getText();
+
 		
 		try
 		{
@@ -199,6 +200,12 @@ public class CustWindowPanel extends JPanel
 			{
 				int number = Integer.parseInt(snumber);
 				Date born = new SimpleDateFormat("ddMMyy").parse(custWindowBorn.getText());
+				if( custRegistry.findPerson( number, firstname, lastname) != null )
+				{
+					statusTxt.setText( "Denne personen finnes allerede, finn personen i søkeresultatet.");
+					findPerson(); 
+					return null;
+				}
 				Person p = new Person( firstname, lastname, number, born, img );
 			
 				statusTxt.setText(custRegistry.input( p ));
@@ -210,7 +217,7 @@ public class CustWindowPanel extends JPanel
 				return p;
 			}
 			//JOptionPane.showMessageDialog(null, "Du må ha 8 siffer i telefonnummer.");
-			statusTxt.setText( "Du må ha 8 siffer i telefonnummer." );
+			throw new NumberFormatException(); 
 
 		}
 		catch( ParseException pe )
@@ -221,7 +228,7 @@ public class CustWindowPanel extends JPanel
 		catch( NumberFormatException nfe )
 		{
 			//JOptionPane.showMessageDialog(null, "Telefonnummeret må kun bestå av siffer!");
-			statusTxt.setText( "Telefonnummeret må kun bestå av siffer" );
+			statusTxt.setText( "Telefonnummeret må bestå av 8 siffer" );
 		}
 
 
@@ -293,6 +300,7 @@ public class CustWindowPanel extends JPanel
 			Salesclerk.customer.setBirth(born);
 
 			Salesclerk.salesClerkSearchInfoTxt.setText( "Har oppdatert:\n"+ Salesclerk.customer.getCustId() + "\n" + Salesclerk.customer.toString() );
+			statusTxt.setText("Kundeinfo ble oppdatert.");
 
 		}
 		catch(NullPointerException npe)
@@ -451,10 +459,13 @@ public class CustWindowPanel extends JPanel
 					updateCust();	
 					
 				}
-				Person p = registerPerson();
-				if(img!= null)
+				else
 				{
-					moveAndRenameImg(img,  p);
+					Person p = registerPerson();
+					if(img!= null)
+					{
+						moveAndRenameImg(img,  p);
+					}
 				}
 			}
 			if( e.getSource() == custWindowSearchBtn )

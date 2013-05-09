@@ -130,6 +130,22 @@ public class Personlist implements Serializable
 		return searchresult;
 		
 	}
+
+	public Person findPerson( int nr, String fn, String ln )
+	{
+		Iterator<Person> it = registry.iterator(); 
+
+		while( it.hasNext() )
+		{
+			Person p = it.next();
+
+			if( p.getFirstName().toLowerCase().matches(fn.toLowerCase()) && p.getLastName().toLowerCase().matches(ln.toLowerCase())
+				&& p.getphoneNr() == nr )
+				return p;
+		}
+
+		return null; 
+	}
 //STATISTIKK//////////////////////////////////////////////////////////////////////////////////////////
 
 	public List<Person> totalRegPeople( Date s, Date e )
