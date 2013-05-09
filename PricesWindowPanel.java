@@ -66,7 +66,7 @@ public class PricesWindowPanel extends JPanel
 		add(header, c);
 
 		content = new JLabel("<html>Hos oss vil alle småracere som er 16 år eller yngre få kjøre i bakken" +
-							 "til halv pris, uansett type heiskort.<br><br><br></html>");
+							 "til halv pris, uansett type heiskort.<br>Les om fler rabattyper i 'Priser' i fanen til venstre<br><br><br></html>");
 		content.setFont(new Font("Calibri", Font.PLAIN, 14));
 		c.gridx = 1;
 		c.weighty=0;
