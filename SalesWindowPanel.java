@@ -272,6 +272,8 @@ public class SalesWindowPanel extends JPanel
 
 		Date bDate;
 
+
+
 		try
 		{
 			bDate = Salesclerk.customer.getBirth();
@@ -291,7 +293,7 @@ public class SalesWindowPanel extends JPanel
 									break;
 			case Skicard.PUNCHCARD: sc = new Punchcard( bDate, now ); 
 									break;
-			default: 				sc = null;
+			default: 				return; // we want to return here. If not you'll get unexpected behaviour if the cardtypelist gets unselected and you try to add to cart
 		}
 
 		try
@@ -498,7 +500,7 @@ public class SalesWindowPanel extends JPanel
 					Salesclerk.statusTxt.setText("Sesongkort kan kun selges til registrerte kunder");
 					cardTypeList.clearSelection();
 				}
-				else if( Salesclerk.customer.getImage().getName().equals("default.png") )
+				else if( Salesclerk.customer.getImage() == null )
 				{
 					Salesclerk.statusTxt.setText("For å kjøpe Sesongkort må kunden ha et bilde");
 					cardTypeList.clearSelection();
