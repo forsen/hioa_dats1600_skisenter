@@ -17,12 +17,15 @@ public class AdminInfoPanel extends JPanel
 	private JTextArea display;
 	private JPanel fieldPnl, butnPnl, dispPnl;
 	private Listener listener;
-	private JScrollPane scroll;
+	private JScrollPane scroll, listscroll;
 	private Personlist list;
 	private List<Validations> validations;
 	private Cardlist cardregistry;
 	private JTable perstable, passTable;
 	private Toolkit toolbox;
+	private JList<Person> reg;
+	private DefaultListModel model;
+	
 
  	
 
@@ -48,7 +51,7 @@ public class AdminInfoPanel extends JPanel
 		
 
 		listener = new Listener();
-		
+		reg = null;
 
 		showpersons();
 		showpassings();
@@ -98,6 +101,8 @@ public class AdminInfoPanel extends JPanel
 		showPassings.addActionListener( listener );
 		showPersons.setToolTipText("Vis en liste over alle passeringer som er gjort i alle heiser ");
 		butnPnl.add(showPassings);
+
+		 
 		
 
 		
@@ -175,25 +180,81 @@ public class AdminInfoPanel extends JPanel
 	
 	private void deletePerson()
 	{
-		/*try
+		Person p = null;
+		∏
+		try
 		{
 			String pattern = "\\d{8}";
 			String stingtlf = tlfNr.getText();
 			
 			if(stingtlf.matches(pattern))
 			{
-				int tlfnr = Integer.parseInt(stingtlf);
-				Person p = list.deletePerson((list.findPerson(tlfnr)));
-				display.setText(p.getFirstName() +" "+ p.getLastName()+ " er nå slettet fra systemet");
+				int tlfnr = Integer.parseInt(stingtlf); 
+				System.out.println("du har gjort om til int");	
+				if(reg != null)
+				{
+					System.out.println("nå skal jeg ha valgt en person");
+					p = (Person) model.get(reg.getSelectedIndex());
+					System.out.println(p.toString());
+					p = list.deletePerson(p);
+					if(p==null)
+					System.out.println("ut igjen av delete men uten person");
+					if (p != null)
+						System.out.println("ut igjen av delete med person");
+					reg = null;
+				}		
+
+				else
+				{
+					reg  = new JList<Person>();
+					String item = ""; 
+					model = (list.findPerson(tlfnr));
+					reg.setModel( model );
+					System.out.println("Satt opp lista");
+					
+					if(model.getSize() == 1)
+					{	
+						p = (Person)model.firstElement();
+						p = list.deletePerson(p);
+						System.out.println("den var == 1");
+						//reg = null;
+
+					}
+					else if(model.getSize() >= 2)
+					{ 
+						listscroll = new JScrollPane(reg );
+						JOptionPane.showMessageDialog(null, "Det er fler enn 1 med samme nr. Velg 1 og trykk på slett Person knappen igjen\n");
+						System.out.println("den var >= 2");
+						return;
+					}
+
+				//Person del = getSelectedValue();
+				}	
+				
+				
+				System.out.println("burde vises noe nå som vi har kommi så langt");
+				if(p == null)
+				{
+					System.out.println("p == null");
+				}
+				if(display == null)
+				{	
+					System.out.println("display == null");
+				}
+				scroll.setViewportView(display);
+				display.setText(p.getFirstName() +" "+ p.getLastName()+ " er nå slettet fra systemet");	
+				System.out.println("enda lenre");
 				tlfNr.setText("");
-			}JOptionPane.showMessageDialog(null,"Du må ha 8 siffre");
+				System.out.println("lengst");
+			}
 
 		}
 		catch(NullPointerException npe)
 		{
-			System.out.println("Every field has to be filled");
+			JOptionPane.showMessageDialog(null,"Du må ha 8 siffre");
+			npe.printStackTrace();
 		}
-*/
+
 	}
 
 	private JTable showPassings()
@@ -263,7 +324,7 @@ public class AdminInfoPanel extends JPanel
       		if(e.getSource() == deletePersBtn)
       		{
       			deletePerson();
-      			scroll.setViewportView(display);
+      			scroll.setViewportView(listscroll);
       		}
 
       		

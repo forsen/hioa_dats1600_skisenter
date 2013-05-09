@@ -272,7 +272,7 @@ public class Personlist implements Serializable
 	{
 		/*if(isEmpty())
 			return null;*/
-
+			System.out.println("inne i deletemetoden");
 		Skisenter.unsaved = true; 
 
 		Iterator<Person> it = registry.iterator();
