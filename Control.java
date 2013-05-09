@@ -328,7 +328,7 @@ public class Control extends JFrame
 					((Punchcard) currentCard).initialized();
 				}
 
-				if( ((Punchcard) currentCard).getClipCount() > 0)
+				if( ((Punchcard) currentCard).getClipCount() >= lift.getClips() )
 				{
 					ctrlWindowPassThrough.setBackground(Color.GREEN);
 					((Punchcard) currentCard).usePunchCard( lift.getClips());
