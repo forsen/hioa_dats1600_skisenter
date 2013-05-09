@@ -25,9 +25,9 @@ public class SpOfferWindowPanel extends JPanel
 		offerPic2 = new JLabel(gD);
 		offerPic3 = new JLabel(sD);
 
-		offer1 = new JLabel("FREAKY FRIDAY YEEEEEAH");
-		offer2 = new JLabel("Grupperabatt er lurt. ");
-		offer3 = new JLabel("Studentrabatt er hendig.");
+		offer1 = new JLabel("<html> Siste fredag i måneden, arrangerer vi FREAKY FRIDAY. Hver Freaky Friday får du halv pris på alle <br> heiskort. Dette er de desidert kuleste dagene i skitrekket våres.</html>");
+		offer2 = new JLabel("<html> Kommer du til skianlegget med 9 kamerater, familiemedlemmer eller kolleger kan du vente deg en <br>saftig rabatt. Er dere minst 10 personer, får dere 10% rabatt pr. kort. </html>");
+		offer3 = new JLabel("<html> Er du en student med stram økonomi? Ikke bekymre deg. Hos oss får du 20% rabatt, samt gratis<br> inngang på afterski.</html>");
 
 		setLayout(new GridBagLayout() );
 		GridBagConstraints c = new GridBagConstraints();
