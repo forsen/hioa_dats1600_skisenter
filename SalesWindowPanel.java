@@ -12,7 +12,7 @@ public class SalesWindowPanel extends JPanel
 	public static JTextField salesWindowCustIDtf; 
 	public static JTextField cardnrf;
 	private JList<String> cardTypeList;
-	private JList<CartItems> shoppingCartList;
+	public static JList<CartItems> shoppingCartList;
 	public static JList<Card> cardIDList;
 	private DefaultListModel<Card> listmodel;
 	private JButton salesAddCartBtn, salesCheckoutBtn, salesNewCardBtn, salesRemoveLineCart;
