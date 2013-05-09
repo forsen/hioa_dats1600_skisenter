@@ -345,6 +345,11 @@ public class SalesWindowPanel extends JPanel
 					c = cardregistry.findCard(cNr);
 					if( c == null )
 						Salesclerk.statusTxt.setText("Fant ikke kortet.");
+					else if ( c.getReturned() )
+					{
+						Salesclerk.statusTxt.setText("Dette kortet er pantet, man kan dermed ikke legge skikort på dette.");
+						return;
+					}
 					else
 					{
 						shoppingCartList.setModel( shoppingCart.addToCart( c, sc ) );
@@ -427,12 +432,61 @@ public class SalesWindowPanel extends JPanel
 	private void returnCard()
 	{
 		try
-		{
-			Card c = cardIDList.getSelectedValue(); 
+		{	
 			
-			// need to force a nullpointerexception if the card is null
-			if( c == null )
-				throw new NullPointerException(); 
+			Card c = (Card) cardIDList.getSelectedValue();
+			String stringcNr = cardnrf.getText(); 
+
+
+			if (!stringcNr.isEmpty() )
+			{
+				String pattern = "\\d{6}";
+				if(stringcNr.matches(pattern))
+				{
+					int cNr = Integer.parseInt(stringcNr);
+					c = cardregistry.findCard(cNr);
+					if( c == null )
+						Salesclerk.statusTxt.setText("Fant ikke kortet.");
+					else
+					{
+	
+						returnCard( c );
+					}
+				}
+				else
+					throw new NumberFormatException(); 
+			}
+			else if( c != null )
+			{
+
+				returnCard( c ); 
+			}
+			else
+				throw new NullPointerException();		
+		}
+		catch( NumberFormatException nfe )
+		{
+			Salesclerk.statusTxt.setText("Kortnr må bestå av 6 siffer.");
+		}
+		catch( NullPointerException npe )
+		{
+			Salesclerk.statusTxt.setText("Ingen kort valgt. Velg et fra listen, eller skriv inn kortnr i kortnrfeltet.");
+		}
+	}
+
+
+
+
+	private void returnCard( Card c )
+	{
+		try
+		{
+			if( c.getReturned() )
+			{
+				Salesclerk.statusTxt.setText("Dette kortet er allerede pantet");
+				return;
+			}
+
 
 			shoppingCartList.setModel( shoppingCart.addToCart( c, null ) );
 			//cardIDList.getModel().removeElementAt(cardIDList.getSelectedIndex() );
@@ -449,8 +503,6 @@ public class SalesWindowPanel extends JPanel
 		{
 			System.out.println("Array index out of range: -1");
 		}
-
-
 	}
 
 	private class CardListener implements ListSelectionListener
