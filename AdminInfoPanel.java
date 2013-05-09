@@ -218,6 +218,7 @@ public class AdminInfoPanel extends JPanel
 						JOptionPane.showMessageDialog(null, "Det er fler enn 1 med samme nr. Velg 1 og trykk på slett Person knappen igjen\n");
 						return;
 					}
+
 				}	
 				
 				scroll.setViewportView(display);

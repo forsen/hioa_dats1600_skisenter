@@ -25,7 +25,7 @@ public class NewsWindowPanel extends JPanel
 		c.anchor = GridBagConstraints.FIRST_LINE_START;
 
 
-		/***** 1. NYHET ******************************************************/
+		/***** 1st ARTICLE ******************************************************/
 		ImageIcon npic4 = new ImageIcon("img/npic4.png");
 		icon4 = new JLabel();
 	    icon4.setIcon(npic4);
@@ -45,7 +45,7 @@ public class NewsWindowPanel extends JPanel
 
 
 
-		/***** 2. NYHET ******************************************************/
+		/***** 2nd ARTICLE ******************************************************/
 
 		ImageIcon npic3 = new ImageIcon("img/npic3.png");
 		icon3 = new JLabel();
@@ -68,7 +68,7 @@ public class NewsWindowPanel extends JPanel
 
 
 
-		/***** 3. NYHET ******************************************************/
+		/***** 3rd ARTICLE ******************************************************/
 
 		ImageIcon npic2 = new ImageIcon("img/npic2.png");
 		
@@ -88,7 +88,7 @@ public class NewsWindowPanel extends JPanel
 		c.gridy= 5;
 		add(news1,c);
 
-		/***** 4. NYHET ******************************************************/
+		/***** 4th ARTICLE ******************************************************/
 
 		ImageIcon npic1 = new ImageIcon("img/npic1.png");
 		icon2 = new JLabel();

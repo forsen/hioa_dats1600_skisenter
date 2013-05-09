@@ -25,7 +25,7 @@ public class SpOfferWindowPanel extends JPanel
 		offerPic2 = new JLabel(gD);
 		offerPic3 = new JLabel(sD);
 
-		offer1 = new JLabel("<html> Siste fredag i måneden, arrangerer vi FREAKY FRIDAY. Hver Freaky Friday får du halv pris på alle <br> heiskort. Dette er de desidert kuleste dagene i skitrekket våres.</html>");
+		offer1 = new JLabel("<html> Siste fredag i måneden, arrangerer vi FREAKY FRIDAY. Hver Freaky Friday får du halv pris på alle <br> heiskort. Dette er de desidert kuleste dagene i skitrekket våres. <br> <i>PS: FF-rabatten kan ikke kombineres med andre rabatter.</i></html>");
 		offer2 = new JLabel("<html> Kommer du til skianlegget med 9 kamerater, familiemedlemmer eller kolleger kan du vente deg en <br>saftig rabatt. Er dere minst 10 personer, får dere 10% rabatt pr. kort. </html>");
 		offer3 = new JLabel("<html> Er du en student med stram økonomi? Ikke bekymre deg. Hos oss får du 20% rabatt, samt gratis<br> inngang på afterski.</html>");
 
@@ -41,7 +41,7 @@ public class SpOfferWindowPanel extends JPanel
 	    c.anchor = GridBagConstraints.WEST;
 		c.fill = GridBagConstraints.BOTH;
 
-		/* Første kolonne ****************/
+		/* First column ****************/
 
 		c.gridx=0;
 		c.gridy=0;
@@ -56,7 +56,7 @@ public class SpOfferWindowPanel extends JPanel
 		c.gridy=2;
 		add(offerPic3, c);
 
-		/* Andre kolonne ****************/
+		/* Second column ****************/
 		c.gridwidth=1;
 		c.weightx=1;
 		c.gridx=3;

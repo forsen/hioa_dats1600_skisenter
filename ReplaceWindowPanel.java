@@ -47,8 +47,6 @@ public class ReplaceWindowPanel extends JPanel
 		cardIDList.setCellRenderer( new CardListCellRenderer() );
 		cardIDList.addListSelectionListener( listListener );
 		cardScrollList = new JScrollPane( cardIDList, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		cardScrollList.setPreferredSize(new Dimension(120, 140));
-
 
 		resultPnl= new JPanel();
 		resultPnl.add(cardScrollList);
@@ -97,32 +95,32 @@ public class ReplaceWindowPanel extends JPanel
 		GridBagConstraints c = new GridBagConstraints();
 
 		c.anchor = GridBagConstraints.FIRST_LINE_START;
-		c.fill = GridBagConstraints.VERTICAL;
+		c.fill = GridBagConstraints.BOTH;
 
-		c.weightx = 1;
-		c.weighty= 1;
+		c.weightx = 0.5;
+		c.weighty= 0.5;
 
 		c.gridx = 0;
 		c.gridy = 0;
 		contentPnl.add(formPnl,c);
 
-		c.gridy=3;
-		c.gridx=0;
-		contentPnl.add(replaceWindowRepBtn, c);
-
 		c.gridx=0;
 		c.gridy=1;
+		contentPnl.add(replaceWindowRepBtn, c);
+
+		c.gridx=1;
+		c.gridy=0;
 		c.gridheight=2;
 		contentPnl.add(resultPnl,c);
+
 
 		setLayout(new GridBagLayout());
 		GridBagConstraints cc = new GridBagConstraints();
 
-		cc.fill=GridBagConstraints.BOTH;
+		cc.fill=GridBagConstraints.NONE;
 		cc.anchor= GridBagConstraints.FIRST_LINE_START;
-		cc.weightx = 1;
-		cc.weighty = 1;
-
+		cc.weighty=1;
+		cc.weightx=1;
 		add(contentPnl, cc);	
 		
 	}
