@@ -17,7 +17,7 @@ public class Control extends JFrame
 	private JButton ctrlRegCustNr;
 	private JTextField ctrlWindowCustNr, ctrlWindowShowTime; 
 	private JPanel ctrlWindowPassThrough, contentPanel;
-	private JLabel ctrlWindowTextShowTime, ctrlWindowTextCustNr, ctrlWindowPassThroughLabelText;
+	private JLabel ctrlWindowTextShowTime, ctrlWindowTextCustNr, ctrlWindowLiftName, ctrlWindowPassThroughLabelText;
 	private Lift lift;
 	private Personlist registry;
 	private Cardlist cardlist;
@@ -80,7 +80,7 @@ public class Control extends JFrame
 		int width = windowDimension.width; 
 
 		setSize( width/4, height/4 );
-		setMinimumSize( new Dimension( 400,300) );
+		setMinimumSize( new Dimension( 500,250) );
 
 
 //		JLabel background = new JLabel(new ImageIcon("bakgrunn.jpg"));
@@ -95,6 +95,9 @@ public class Control extends JFrame
 
 		ctrlWindowTextCustNr = new JLabel("Kort ID:");
 		ctrlWindowTextShowTime = new JLabel("Klokke:");
+		ctrlWindowLiftName = new JLabel();
+		ctrlWindowLiftName.setText(lift.getName());
+		ctrlWindowLiftName.setFont(new Font("Calibri", Font.BOLD, 20));
 
 		ctrlWindowCustNr = new JTextField();
 		ctrlWindowCustNr.addActionListener( btnListener );
@@ -171,25 +174,32 @@ public class Control extends JFrame
 
 
 		cc.gridx = 0;
-		cc.gridy=5;
+		cc.gridy=6;
 		cc.gridwidth=2;
 		cc.weightx = 0.5;
 		cc.anchor = GridBagConstraints.CENTER;
 		contentPanel.add(ctrlRegCustNr, cc);
 
+
+		
+		cc.gridx=0;
+		cc.gridy=0;
+		cc.gridwidth=2;
+		contentPanel.add(ctrlWindowLiftName, cc);
+
 		cc.gridx=0;
 		cc.gridwidth=1;
-		cc.gridy=1;
+		cc.gridy=2;
 		contentPanel.add(ctrlWindowTextCustNr, cc);
 
 		cc.gridx=0;
-		cc.gridy=0;
+		cc.gridy=1;
 		cc.gridwidth=4;
 		cc.anchor=GridBagConstraints.PAGE_START;
 		contentPanel.add(ctrlWindowShowTime,cc);
 
 		cc.gridx=1;
-		cc.gridy=1;
+		cc.gridy=2;
 		cc.gridwidth=1;
 		cc.anchor = GridBagConstraints.WEST;
 		contentPanel.add(ctrlWindowCustNr, cc) ;
@@ -197,7 +207,7 @@ public class Control extends JFrame
 
 
 		cc.gridx=0;
-		cc.gridy=2;
+		cc.gridy=3;
 		cc.gridwidth = 2;
 		cc.gridheight = 3;
 		contentPanel.add(ctrlWindowPassThrough, cc);
