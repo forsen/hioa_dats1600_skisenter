@@ -6,6 +6,9 @@ import java.io.*;
 import java.util.Date;
 import javax.imageio.*;
 
+// Til Ole: 
+// String tekst = Skisenter.lift1.getLift().toString(); 
+
 public class InfoWindowPanel extends JPanel
 {
 	private JLabel headerImg1, headerImg2;
