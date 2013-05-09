@@ -221,6 +221,11 @@ public class Control extends JFrame
 
 	}
 
+	public Lift getLift()
+	{
+		return lift; 
+	}
+
 	private boolean setFonts(String s)
 	{
 		try{

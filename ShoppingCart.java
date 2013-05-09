@@ -1,5 +1,7 @@
 import java.util.*;
 import javax.swing.DefaultListModel;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 public class ShoppingCart
 {
@@ -9,6 +11,8 @@ public class ShoppingCart
 	private static DefaultListModel<Card> cardList;
 
 	private static List<Card> newCards; 
+
+	private NumberFormat paymentFormat;
 
 	private Cardlist unregCardList;
 
@@ -29,6 +33,7 @@ public class ShoppingCart
 		cardList = new DefaultListModel<Card>();
 //		}
 
+		paymentFormat = NumberFormat.getCurrencyInstance( new Locale( "no", "NO" ) );
 
 	}
 
@@ -197,7 +202,7 @@ public class ShoppingCart
 
 			while( cIt.hasNext() )
 			{
-				text.append( cIt.next().toString() + "\t\t70,-" );
+				text.append( cIt.next().toString() + "\t\t" + paymentFormat.format( Info.CARDPRICE ) );
 				text.append( "\n" );
 			}
 
@@ -214,13 +219,13 @@ public class ShoppingCart
 			{
 				text.append( ci.getType() );
 				text.append( "\t" );
-				text.append( ci.getPrice() + ",-" );
+				text.append( paymentFormat.format( ci.getPrice() ) );
 				text.append( "\n" );
 			}
 			catch( NullPointerException npe )
 			{
 				text.append( "\t\t" );
-				text.append( Info.RETURNPRICE + ",-");
+				text.append( paymentFormat.format( Info.RETURNPRICE ) );
 				text.append( "\n" );
 			}
 		}
