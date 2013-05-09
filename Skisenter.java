@@ -39,9 +39,9 @@ public class Skisenter
 
 		test.readFile(); 
 		
-		chLift = new Chairlift(validations, registry, "Superheisen", 2000, 3 );
+		chLift = new Chairlift(validations, registry, "Eventyrheisen", 2000, 3 );
 
-		tLift = new Tcuplift( validations, registry, "Rævvaheisen", 1433 );
+		tLift = new Tcuplift( validations, registry, "Lårgnagern", 1433 );
 		
 
 
