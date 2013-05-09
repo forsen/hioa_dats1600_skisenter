@@ -41,7 +41,7 @@ public class SpOfferWindowPanel extends JPanel
 	    c.anchor = GridBagConstraints.WEST;
 		c.fill = GridBagConstraints.BOTH;
 
-		/* Første kolonne ****************/
+		/* First column ****************/
 
 		c.gridx=0;
 		c.gridy=0;
@@ -56,7 +56,7 @@ public class SpOfferWindowPanel extends JPanel
 		c.gridy=2;
 		add(offerPic3, c);
 
-		/* Andre kolonne ****************/
+		/* Second column ****************/
 		c.gridwidth=1;
 		c.weightx=1;
 		c.gridx=3;

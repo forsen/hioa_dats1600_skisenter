@@ -31,9 +31,7 @@ public class SalesWindowPanel extends JPanel
 	private static NumberFormat paymentFormat;
 	private static Border etched;
 
-	//private Person customer;
 
-	//public SalesWindowPanel( Person p )
 	public SalesWindowPanel(Cardlist cl)
 	{
 		setBackground(new Color(200, 230, 255));
@@ -107,7 +105,6 @@ public class SalesWindowPanel extends JPanel
 		salesRemoveLineCart.setToolTipText("Fjerner valgt linje fra handlekurven");
 
 
-		//customer = p; 
 
 		cardListener = new CardListener();
 
@@ -155,7 +152,7 @@ public class SalesWindowPanel extends JPanel
 
 
 
-		//Første kolonne////////////////////////////////////////////////////////////
+		//First column////////////////////////////////////////////////////////////
 		c.gridheight = 1; 
 		c.weightx = 0.5;
 		c.gridx = 0; 
@@ -196,7 +193,7 @@ public class SalesWindowPanel extends JPanel
 		c.weighty = 0.2;
 		add(shoppingScrolList, c);
 
-		//Andre kolonne////////////////////////////////////////////////////////////
+		//Second column////////////////////////////////////////////////////////////
 		c.gridheight = 1; 
 		c.weightx = 0.5;
 		c.gridx = 1; 
@@ -255,7 +252,7 @@ public class SalesWindowPanel extends JPanel
 		c.gridwidth = 2;
 		add(salesCheckoutBtn, c);
 
-		//Tredje kolonne////////////////////////////////////////////////////////////
+		//Third column////////////////////////////////////////////////////////////
 
 		c.gridheight = 1;
 		c.gridx = 2; 
@@ -263,18 +260,6 @@ public class SalesWindowPanel extends JPanel
 		c.gridwidth = 1;
 		add(discountTf, c);
 
-
-
-		/*add( custIDLbl );
-		add( salesWindowCustIDtf );
-		add( cardScrolList );
-		add( cardTypeLbl );
-		add( cardTypeList );
-		add( salesAddCartBtn );
-		add( salesCheckoutBtn );
-		add( salesNewCardBtn );
-		add( shoppingScrolList );
-		add( cartPrice );*/
 
 	} 
 
@@ -404,12 +389,10 @@ public class SalesWindowPanel extends JPanel
 
 	private void payment()
 	{
-		// tar i mot betaling og slikt.
+		// Recieves payment
 
 		CashRegister cr = new CashRegister((Window) this.getRootPane().getParent(), shoppingCart, shoppingCartList );
 
-		//shoppingCartList.setModel(shoppingCart.emptyCart());
-		
 
 	}
 
@@ -489,7 +472,6 @@ public class SalesWindowPanel extends JPanel
 
 
 			shoppingCartList.setModel( shoppingCart.addToCart( c, null ) );
-			//cardIDList.getModel().removeElementAt(cardIDList.getSelectedIndex() );
 			DefaultListModel<Card> lmc = (DefaultListModel<Card>) cardIDList.getModel();
 			lmc.removeElementAt( cardIDList.getSelectedIndex() );
 			cardIDList.setModel( lmc );

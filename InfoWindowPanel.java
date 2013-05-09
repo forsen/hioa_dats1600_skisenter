@@ -6,9 +6,6 @@ import java.io.*;
 import java.util.Date;
 import javax.imageio.*;
 
-// Til Ole: 
-// String tekst = Skisenter.lift1.getLift().toString(); 
-
 public class InfoWindowPanel extends JPanel
 {
 	private JLabel headerImg1, headerImg2;
@@ -34,7 +31,6 @@ public class InfoWindowPanel extends JPanel
 
 
 
-//****** NYTT ELEMENT *************************************//
 		header = new JLabel("Skitrekket");
 		header.setFont(new Font("Calibri", Font.BOLD, 20));
 
@@ -67,7 +63,7 @@ public class InfoWindowPanel extends JPanel
 		c.gridy=3;
 		add(header, c);
 
-		/* ********************Lager heistabell******************* */
+		/* ********************Creates the lifttable******************* */
 		Object rowData[][] = { 
 		{"Stolheis", Skisenter.chLift.getName(), Skisenter.chLift.getLiftNr() , Skisenter.chLift.getClips(), Skisenter.chLift.getLength() + " m."},
         {"Krokheis", Skisenter.tLift.getName(), Skisenter.tLift.getLiftNr() , Skisenter.tLift.getClips(), Skisenter.tLift.getLength() + " m."}};
@@ -85,7 +81,7 @@ public class InfoWindowPanel extends JPanel
 		add(liftScrollPane, c);
 
 
-//****** NYTT ELEMENT *************************************//
+
 
 		header = new JLabel("<html><br><br><br>Åpningstider</html>");
 		header.setFont(new Font("Calibri", Font.BOLD, 20));
