@@ -15,7 +15,7 @@ public abstract class Skicard implements Serializable
 
 
 
-	private int price;
+	private double price;
 	private double discount;
 	private int ageGroup;
 	private int type;
@@ -50,14 +50,19 @@ public abstract class Skicard implements Serializable
 		else 
 			ageGroup = ADULT;
 
-		price = (int) (price * discount);
+		price = price * discount;
 
 	}
 
 
-	public int getPrice()
+	public double getPrice()
 	{
 		return price;
+	}
+
+	public void setPrice( double p )
+	{
+		price = p;
 	}
 
 	public double getDiscount()

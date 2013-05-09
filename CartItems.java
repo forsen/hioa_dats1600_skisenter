@@ -19,7 +19,7 @@ public class CartItems
 		return skicard.getType("");
 	}
 
-	public int getPrice()
+	public double getPrice()
 	{
 		return skicard.getPrice();
 	}

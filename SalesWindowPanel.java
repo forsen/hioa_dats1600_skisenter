@@ -50,8 +50,10 @@ public class SalesWindowPanel extends JPanel
 
 		discountTf= new JTextField( 1 );
 		discountTf.setEditable(true);
+		discountTf.setToolTipText( "Reduserer prisen i prosent" );
 
 		discountLbl = new JLabel("Rabatt: ");
+		discountLbl.setToolTipText( "Reduserer prisen i prosent" );
 
 		cardTypeString = new String[4];
 		cardTypeString[Skicard.DAYCARD] = "Dagskort";
@@ -297,6 +299,26 @@ public class SalesWindowPanel extends JPanel
 									break;
 			default: 				sc = null;
 		}
+
+		try
+		{
+			if( !discountTf.getText().isEmpty())
+			{
+				double discount = Double.parseDouble( discountTf.getText());
+
+				discount = (100-discount)/100;
+				sc.setPrice( discount * sc.getPrice() );
+				discountTf.setText(""); 
+			}
+		}
+		catch( NumberFormatException nfe )
+		{
+			Salesclerk.statusTxt.setText( "Rabatten skal bestå av tall, i prosent" );
+		}
+		catch( NullPointerException npe )
+		{
+			// We do nothing here. This situation is cought by the nullpointerexception below.
+		}
 		
 		try
 		{	
@@ -373,16 +395,7 @@ public class SalesWindowPanel extends JPanel
 		cartPrice.setText(" Sum: " + shoppingCart.getSum() + "kr");
 		
 
-	/*	Card nCard = new Card(); 
-		try
-		{
-			Salesclerk.customer.addCard( nCard );
-			SalesWindowPanel.cardIDList.setModel( Salesclerk.customer.listCards() );
-		}
-		catch( NullPointerException npe )
-		{
-			JOptionPane.showMessageDialog( null, "Du må velge en person først!" );
-		}*/
+
 	}
 
 	private void returnCard()
@@ -408,13 +421,7 @@ public class SalesWindowPanel extends JPanel
 
 
 	}
-/*
-	public void setCustId()
-	{
-		if( customer != null )
-			custIDtf.setText( "" + customer.getCustId() );
-	}
-*/
+
 	private class CardListener implements ListSelectionListener
 	{
 		public void valueChanged( ListSelectionEvent lse )
@@ -430,24 +437,6 @@ public class SalesWindowPanel extends JPanel
 		}
 	}
 
-
-/*
-	private void registerCard()
-	{
-		int custID = custIDtf.getText();
-
-		try
-		{
-			Skicard c = new Skicard(cardNumber, price, discount, ag);
-
-//			card
-		}
-		catch( IOException ioe )
-		{
-
-		}
-	}
-*/
 
 
 	private class BtnListener implements ActionListener
