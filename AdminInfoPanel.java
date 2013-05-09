@@ -181,7 +181,7 @@ public class AdminInfoPanel extends JPanel
 	private void deletePerson()
 	{
 		Person p = null;
-		∏
+		
 		try
 		{
 			String pattern = "\\d{8}";
@@ -197,6 +197,8 @@ public class AdminInfoPanel extends JPanel
 					p = (Person) model.get(reg.getSelectedIndex());
 					System.out.println(p.toString());
 					p = list.deletePerson(p);
+					
+
 					if(p==null)
 					System.out.println("ut igjen av delete men uten person");
 					if (p != null)
@@ -216,6 +218,7 @@ public class AdminInfoPanel extends JPanel
 					{	
 						p = (Person)model.firstElement();
 						p = list.deletePerson(p);
+					
 						System.out.println("den var == 1");
 						//reg = null;
 
@@ -241,6 +244,7 @@ public class AdminInfoPanel extends JPanel
 				{	
 					System.out.println("display == null");
 				}
+				
 				scroll.setViewportView(display);
 				display.setText(p.getFirstName() +" "+ p.getLastName()+ " er nå slettet fra systemet");	
 				System.out.println("enda lenre");
