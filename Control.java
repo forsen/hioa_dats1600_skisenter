@@ -331,7 +331,7 @@ public class Control extends JFrame
 				if( ((Punchcard) currentCard).getClipCount() > 0)
 				{
 					ctrlWindowPassThrough.setBackground(Color.GREEN);
-					((Punchcard) currentCard).usePunchCard();
+					((Punchcard) currentCard).usePunchCard( lift.getClips());
 					ctrlWindowPassThroughLabelText.setText("Gyldig: Antall klipp igjen: " + ((Punchcard) currentCard).getClipCount());
 
 					lift.registrations( validatingCard );

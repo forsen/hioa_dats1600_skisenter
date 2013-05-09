@@ -20,9 +20,9 @@ public class Punchcard extends Skicard
 		clipCount += 11;
 	}
 
-	public void usePunchCard()
+	public void usePunchCard( int c )
 	{
-		clipCount -= 1;
+		clipCount -= c;
 	}
 
 	public String toString()
