@@ -233,7 +233,6 @@ public class AdminInfoPanel extends JPanel
 						return;
 					}
 
-				//Person del = getSelectedValue();
 				}	
 				
 				

@@ -48,17 +48,11 @@ public class Info extends JFrame
 			pe.printStackTrace( System.out );
 		}
 
-
-
 		GridBagLayout gbl = new GridBagLayout();
 
 		setLayout(gbl);
 
-
-
 		Toolkit verktoykasse = Toolkit.getDefaultToolkit();
-
-		
 
 		sideMenu = new JPanel()
 		{
@@ -137,7 +131,7 @@ public class Info extends JFrame
 		GridBagConstraints c = new GridBagConstraints();
 
 
-		// første kolonne /////////////////////////////
+		// first column /////////////////////////////
 		c.insets = new Insets(0,0,0,0);
 		c.fill = GridBagConstraints.BOTH;
 		c.gridx=0;
@@ -148,11 +142,8 @@ public class Info extends JFrame
 
 		add(sideMenu, c);
 
-	
 
-
-
-		// andre kolonne /////////////////////////////
+		// second colum /////////////////////////////
 
 		panel = new JPanel()
 		{

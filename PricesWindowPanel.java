@@ -39,7 +39,7 @@ public class PricesWindowPanel extends JPanel
 		setBackground(new Color(220, 240, 255));
 
 
-		/************ SAK 1 **************************************************/
+		/************ ELEMENT 1 **************************************************/
 
 
 		header = new JLabel("Heiskort");
@@ -60,7 +60,7 @@ public class PricesWindowPanel extends JPanel
 		c.anchor = GridBagConstraints.LINE_START;
 		add(priceScrollPane, c);
 
-		/************ SAK 2 ***************************************************/
+		/************ ELEMENT 2 ***************************************************/
 
 		header = new JLabel("<html><br><br>Rabatter</html>");
 	    header.setFont(new Font("Calibri", Font.BOLD, 20));
@@ -78,7 +78,7 @@ public class PricesWindowPanel extends JPanel
 		c.gridy= 4;
 		add(content, c);
 
-		/************ SAK 3 *****************************************************/
+		/************ ELEMENT 3 *****************************************************/
 
 		header = new JLabel("Afterski");
 		header.setFont(new Font("Calibri", Font.BOLD, 20));
@@ -93,7 +93,7 @@ public class PricesWindowPanel extends JPanel
 		c.weighty=0;
 		add(content,c);
 
-		/************ SAK 4 *****************************************************/
+		/************ ELEMENT 4 *****************************************************/
 
 		header = new JLabel("Skiskole");
 		header.setFont(new Font("Calibri", Font.BOLD, 20));
@@ -108,6 +108,6 @@ public class PricesWindowPanel extends JPanel
 		c.weighty=0;
 		add(content,c);
 
-		/* For å legge til fler saker, kopier en tidligere sak, og endre vesentlige verdier */
+		/* To add more elements, copy an existing element, and change values */
 	}
 }
