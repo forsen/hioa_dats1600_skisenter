@@ -13,7 +13,7 @@ public class InfoWindowPanel extends JPanel
 {
 	private JLabel headerImg1, headerImg2;
 	private JLabel header;
-	private JLabel content;
+	private JLabel content, liftInfo;
 
 
 
@@ -50,22 +50,28 @@ public class InfoWindowPanel extends JPanel
 		content.setFont(new Font("Calibri", Font.PLAIN, 14));
 		content.setHorizontalAlignment(JLabel.CENTER);
 
+		liftInfo = new JLabel();
+		liftInfo.setText(Skisenter.lift1.getLift().toString());
+
 		c.gridy=2;
 		add(content, c);
+
+		c.gridy=3;
+		add(liftInfo, c);
 
 
 //****** NYTT ELEMENT *************************************//
 
 		headerImg1 = new JLabel(snowboarder);
 		
-		c.gridy=3;
+		c.gridy=4;
 		add(headerImg1, c);
 
 
 		header = new JLabel("Åpningstider");
 		header.setFont(new Font("Calibri", Font.BOLD, 20));
 		c.gridx = 0;
-		c.gridy = 4;
+		c.gridy = 5;
 		add(header,c);
 
 		content = new JLabel("<html>Mandag: 10:00-16:30<br>"
@@ -79,7 +85,7 @@ public class InfoWindowPanel extends JPanel
 	    content.setHorizontalAlignment(JLabel.CENTER);
 
 		c.gridx = 0;
-		c.gridy = 5;
+		c.gridy = 6;
 		c.anchor = GridBagConstraints.PAGE_START;
 		add(content, c);
 	}
