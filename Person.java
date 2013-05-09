@@ -199,6 +199,7 @@ public class Person implements Serializable, Comparable<Person>
 		text.append("\n"); 
 		text.append("Opprettet: ");
 		text.append( created.toString() );
+		
 		String doneTekst = text.toString();
 
 		return doneTekst;

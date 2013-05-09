@@ -181,9 +181,11 @@ public class Cardlist implements Serializable
 			Card runner = it.next();
 			if( !runner.getReturned() )
 			{
-				text.append(runner.toString());
-				text.append(runner.history());
 				text.append("\n");
+				text.append(runner.toString());
+				text.append("\n");
+				text.append(runner.history());
+				//text.append("\n");
 			}
 		
 		} 

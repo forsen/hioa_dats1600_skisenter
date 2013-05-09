@@ -106,9 +106,16 @@ public abstract class Skicard implements Serializable
 		StringBuilder text = new StringBuilder();
 
 		//text.append("Card ID: " + cardNumber + "\n");
-		text.append("Price: " + price + "\n");
-		text.append("Discount: " + Info.DISCOUNT + "\n");
-		text.append(ageGroup + "\n");
+		text.append("Price: ");
+		text.append(price);
+		text.append("\t");
+		text.append("Discount: ");
+		text.append(Info.DISCOUNT);
+		text.append( "\t");
+		text.append( "Aldersgruppe: ");
+		text.append(ageGroup);
+		
+
 
 		String doneText = text.toString();
 
