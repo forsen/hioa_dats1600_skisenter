@@ -10,7 +10,7 @@ public class SalesWindowPanel extends JPanel
 {
 	private JLabel custIDLbl,cardnrLbl;
 	public static JTextField salesWindowCustIDtf; 
-	public static JTextField cardnrf;
+	public static JTextField cardnrf, discountTf;
 	private JList<String> cardTypeList;
 	public static JList<CartItems> shoppingCartList;
 	public static JList<Card> cardIDList;
@@ -22,7 +22,7 @@ public class SalesWindowPanel extends JPanel
 	private BtnListener btnListener;
 	private JScrollPane cardScrolList, shoppingScrolList, cardTypeScrolList;
 	private ShoppingCart shoppingCart; 
-	private JLabel cartPrice;
+	private JLabel cartPrice, discountLbl;
 	private Cardlist cardregistry;
 
 	//private Person customer;
@@ -47,6 +47,11 @@ public class SalesWindowPanel extends JPanel
 
 		cardnrf = new JTextField( 3 );
 		cardnrf.setEditable(true);
+
+		discountTf= new JTextField( 1 );
+		discountTf.setEditable(true);
+
+		discountLbl = new JLabel("Rabatt: ");
 
 		cardTypeString = new String[4];
 		cardTypeString[Skicard.DAYCARD] = "Dagskort";
@@ -164,7 +169,7 @@ public class SalesWindowPanel extends JPanel
 		c.weighty = 0.2;
 		add(cardTypeScrolList, c);
 
-		c.gridheight = 1;
+		c.gridheight = 2;
 		c.weightx = 0.5;
 		c.gridx = 0; 
 		c.gridy = 4; 
@@ -175,7 +180,7 @@ public class SalesWindowPanel extends JPanel
 		c.gridheight = 2;
 		c.weightx = 1;
 		c.gridx = 0; 
-		c.gridy = 5; 
+		c.gridy = 6; 
 		c.gridwidth = 1;
 		c.weighty = 0.2;
 		add(shoppingScrolList, c);
@@ -185,7 +190,7 @@ public class SalesWindowPanel extends JPanel
 		c.weightx = 0.5;
 		c.gridx = 1; 
 		c.gridy = 0;
-		c.gridwidth = 1; 
+		c.gridwidth = 2; 
 		c.weighty = 0.2;
 		add(salesWindowCustIDtf, c);
 
@@ -193,7 +198,7 @@ public class SalesWindowPanel extends JPanel
 		c.weightx = 0.5;
 		c.gridx = 1; 
 		c.gridy = 1;
-		c.gridwidth = 1; 
+		c.gridwidth = 2; 
 		c.weighty = 0.2;
 		add(cardnrf,c);	
 
@@ -204,37 +209,48 @@ public class SalesWindowPanel extends JPanel
 		c.gridheight = 1;
 		c.gridx = 1; 
 		c.gridy = 2; 
-		c.gridwidth = 1;
+		c.gridwidth = 2;
 		c.weighty=0;
 		add(salesNewCardBtn, c);
 
 		c.gridheight = 1;
 		c.gridx = 1;
 		c.gridy = 3;
-		c.gridwidth = 1;
+		c.gridwidth = 2;
 		add(salesReturnCardBtn, c);
 
 		c.gridheight = 1;
 		c.gridx = 1; 
 		c.gridy = 4; 
+		c.gridwidth = 1;
+		add(discountLbl, c);
+
+		c.gridheight = 1;
+		c.gridx = 1; 
+		c.gridy = 5; 
 		c.gridwidth = 2;
+
 		add(salesAddCartBtn, c);
 
 		c.gridheight = 1;
 		c.gridx = 1;
-		c.gridy = 5;
-		c.gridwidth = 1;
+		c.gridy = 6;
+		c.gridwidth = 2;
 		add(salesRemoveLineCart, c);
 
 		c.gridheight = 1;
 		c.gridx = 1; 
-		c.gridy = 6; 
-		c.gridwidth = 1;
+		c.gridy = 7; 
+		c.gridwidth = 2;
 		add(salesCheckoutBtn, c);
 
 		//Tredje kolonne////////////////////////////////////////////////////////////
 
-
+		c.gridheight = 1;
+		c.gridx = 2; 
+		c.gridy = 4; 
+		c.gridwidth = 1;
+		add(discountTf, c);
 
 
 
