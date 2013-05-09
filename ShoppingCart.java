@@ -103,8 +103,15 @@ public class ShoppingCart
 	{
 		try
 		{
-			Salesclerk.statusTxt.setText( "" );
 			sum -= items.getElementAt( index ).getPrice();
+		}
+		catch( NullPointerException npe )
+		{
+			sum -= Info.RETURNPRICE; 
+		}
+		try
+		{
+			//sum -= items.getElementAt( index ).getPrice();
 			items.removeElementAt( index );
 			cartList.remove( index );
 		}

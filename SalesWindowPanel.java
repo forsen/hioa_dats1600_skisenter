@@ -328,8 +328,14 @@ public class SalesWindowPanel extends JPanel
 	private void deleteFromCart()
 	{
 		int removeLine = shoppingCartList.getSelectedIndex(); 
+
+		Card c = shoppingCartList.getModel().getElementAt(removeLine).getCard();
 		
 		shoppingCartList.setModel( shoppingCart.deleteFromCart( removeLine ) );
+
+		DefaultListModel<Card> lmc = (DefaultListModel<Card>) cardIDList.getModel();
+		lmc.addElement( c );
+		cardIDList.setModel( lmc );
 
 	}
 
@@ -343,57 +349,7 @@ public class SalesWindowPanel extends JPanel
 		
 
 	}
-/*
-	private void checkOut()
-	{
-		shoppingCart.checkOut();
-		shoppingCartList.setModel(shoppingCart.emptyCart());
-	}
-*/
-/*
-	private void addProduct()
-	{
-		int cardType = cardTypeList.getSelectedIndex();
-		Skicard sc;
 
-		Date now = new Date();
-		switch( cardType )
-		{
-			case Skicard.DAYCARD: sc = new Daycard( 100, 0, "barn", now );
-									break;
-			case Skicard.HOURCARD: sc = new Hourcard( 100, 0, "barn", now );
-									break; 
-			case Skicard.SEASONCARD: sc = new Seasoncard( 100, 0, "barn", now );
-									break;
-		//	case Skicard.PUNCHCARD: sc = new Punchcard( 10, 10, 0, "barn" ); 
-		//							break;
-			default: 				sc = null;
-		}
-
-		if( Salesclerk.customer == null )
-		{
-			JOptionPane.showMessageDialog( null, "Legger til et kort uten bruker");
-		}
-		else
-		{
-
-			try
-			{
-				Card c = (Card) cardIDList.getSelectedValue();
-				JOptionPane.showMessageDialog(null, c.input( sc ));
-			}
-			catch( NullPointerException npe )
-			{
-				if( Salesclerk.customer.isEmpty() )
-					JOptionPane.showMessageDialog(null, "Du må opprette et kort først, trykk på nytt kort");
-				else
-					JOptionPane.showMessageDialog( null, "Du må velge hvilket kort fra kortlista som skal få det nye produktet" );
-
-			}
-
-		}
-	}
-*/
 	private void newCard()
 	{
 	
