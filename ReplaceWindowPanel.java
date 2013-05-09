@@ -134,14 +134,15 @@ public class ReplaceWindowPanel extends JPanel
 		{
 			int custid = Integer.parseInt(replaceWindowCustIdtf.getText());
 
-			String item = ""; 
+			//String item = ""; 
 
 			ReplaceWindowPanel.cardIDList.setModel( Salesclerk.customer.listCards() );	
 			
 		}
 		catch( NumberFormatException nfe )
 		{
-			JOptionPane.showMessageDialog(null, "Må putte inn siffer");
+			//JOptionPane.showMessageDialog(null, "Må putte inn siffer");
+			statusTxt.setText( "Kan kun bestå av siffer.");
 		}
 
 

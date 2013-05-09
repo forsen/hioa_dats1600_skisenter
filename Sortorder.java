@@ -20,7 +20,7 @@ public class Sortorder implements Serializable, Comparator<Person>
     	}
     	catch(ParseException pe)
     	{
-    		JOptionPane.showMessageDialog(null, "kollator feil.");
+    		pe.printStackTrace( System.out );
     		System.exit(0);
     	}
     } 

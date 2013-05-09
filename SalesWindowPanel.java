@@ -284,36 +284,44 @@ public class SalesWindowPanel extends JPanel
 		
 		try
 		{	
+			
 			Card c = (Card) cardIDList.getSelectedValue();
-			if( c != null )
+			String stringcNr = cardnrf.getText(); 
+
+
+			if (!stringcNr.isEmpty() )
+			{
+				String pattern = "\\d{6}";
+				if(stringcNr.matches(pattern))
+				{
+					int cNr = Integer.parseInt(stringcNr);
+					c = cardregistry.findCard(cNr);
+					if( c == null )
+						Salesclerk.statusTxt.setText("Fant ikke kortet.");
+					else
+					{
+						shoppingCartList.setModel( shoppingCart.addToCart( c, sc ) );
+						cartPrice.setText(" Sum: " + shoppingCart.getSum() + "kr");
+					}
+				}
+				else
+					throw new NumberFormatException(); 
+			}
+			else if( c != null )
 			{
 				shoppingCartList.setModel( shoppingCart.addToCart( c, sc ) );
 				cartPrice.setText(" Sum: " + shoppingCart.getSum() + "kr");
 			}
 			else
-			{
-				String pattern = "\\d{6}";
-				String  stringcNr = cardnrf.getText();
-				if(stringcNr.matches(pattern))
-				{
-					int cNr = Integer.parseInt(stringcNr);
-					c = cardregistry.findCard(cNr);
-					shoppingCartList.setModel( shoppingCart.addToCart( c, sc ) );
-					cartPrice.setText(" Sum: " + shoppingCart.getSum() + "kr");
-				}JOptionPane.showMessageDialog(null, "Du må sette inn 6 siffre");
-			}			
+				throw new NullPointerException();		
 		}
 		catch( NumberFormatException nfe )
 		{
-			Salesclerk.statusTxt.setText("Du må gjøre noe");
+			Salesclerk.statusTxt.setText("Kortnr må bestå av 6 siffer.");
 		}
 		catch( NullPointerException npe )
 		{
-			if( Salesclerk.customer.isEmpty() )
-				JOptionPane.showMessageDialog( null, "Du må opprette et nytt" );
-
-			else
-				JOptionPane.showMessageDialog( null, "Du må velge hvilket kort fra kortlista som skal få det nye produktet" );
+			Salesclerk.statusTxt.setText("Ingen kort valgt. Velg et fra listen, opprett et nytt, eller skriv inn kortnr i kortnrfeltet.");
 		}
 	}
 

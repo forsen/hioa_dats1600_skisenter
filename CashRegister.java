@@ -666,6 +666,7 @@ public class CashRegister extends JDialog
 			return true;
 		}
 		catch(Exception ex){
+			ex.printStackTrace( System.out );
 			JOptionPane.showMessageDialog(null,"Finner ikke fonten. Bruker standard font.");
 			return false;
 		}
