@@ -376,7 +376,8 @@ public class SalesWindowPanel extends JPanel
 	{
 		int removeLine = shoppingCartList.getSelectedIndex(); 
 
-		Card c = shoppingCartList.getModel().getElementAt(removeLine).getCard();
+		CartItems c = shoppingCartList.getModel().getElementAt(removeLine);
+
 
 		
 		
@@ -384,10 +385,14 @@ public class SalesWindowPanel extends JPanel
 
 		shoppingCartList.setModel( shoppingCart.deleteFromCart( removeLine ) );
 
-		DefaultListModel<Card> lmc = (DefaultListModel<Card>) cardIDList.getModel();
-		lmc.addElement( c );
-		cardIDList.setModel( lmc );
-
+		// need this, or we will get double entries in the cardidlist
+		if( c.getSkiCard() == null )
+		{
+			DefaultListModel<Card> lmc = (DefaultListModel<Card>) cardIDList.getModel();
+			lmc.addElement( c.getCard() );
+			cardIDList.setModel( lmc );
+		}
+		
 		updateCartPrice();
 
 	}
@@ -424,6 +429,11 @@ public class SalesWindowPanel extends JPanel
 		try
 		{
 			Card c = cardIDList.getSelectedValue(); 
+			
+			// need to force a nullpointerexception if the card is null
+			if( c == null )
+				throw new NullPointerException(); 
+
 			shoppingCartList.setModel( shoppingCart.addToCart( c, null ) );
 			//cardIDList.getModel().removeElementAt(cardIDList.getSelectedIndex() );
 			DefaultListModel<Card> lmc = (DefaultListModel<Card>) cardIDList.getModel();

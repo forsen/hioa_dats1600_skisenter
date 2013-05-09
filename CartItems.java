@@ -33,6 +33,10 @@ public class CartItems
 	{
 		return card; 
 	}
+	public Skicard getSkiCard()
+	{
+		return skicard;
+	}
 
 	public void checkOut()
 	{
