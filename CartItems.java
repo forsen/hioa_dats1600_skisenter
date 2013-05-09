@@ -24,6 +24,11 @@ public class CartItems
 		return skicard.getPrice();
 	}
 
+	public void setPrice( double d )
+	{
+		skicard.setPrice( d );
+	}
+
 	public int getCardID()
 	{
 		return card.getCardID();

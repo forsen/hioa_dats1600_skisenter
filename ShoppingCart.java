@@ -2,6 +2,8 @@ import java.util.*;
 import javax.swing.DefaultListModel;
 import java.text.NumberFormat;
 import java.util.Locale;
+import java.util.Date;
+import java.util.Calendar;
 
 public class ShoppingCart
 {
@@ -187,6 +189,25 @@ public class ShoppingCart
 		return items;	
 	}
 
+	private boolean freakyFriday()
+	{
+		Calendar cal = Calendar.getInstance();
+		cal.setTime( new Date() );
+
+		cal.set( Calendar.DAY_OF_MONTH, 1);
+		cal.set( Calendar.MONTH, cal.get(Calendar.MONTH) + 1 );
+
+		cal.add( Calendar.DAY_OF_MONTH, -( cal.get( Calendar.DAY_OF_WEEK ) % 7 + 1 ) );
+		System.out.println( cal.getTime() );
+
+		Calendar calCompare = Calendar.getInstance();
+		calCompare.setTime( new Date() );
+
+		if( calCompare.get(Calendar.DAY_OF_MONTH) == cal.get(Calendar.DAY_OF_MONTH ) )
+			return true;
+		return false;
+	}
+
 	public String toString()
 	{
 		StringBuilder text = new StringBuilder();
@@ -216,7 +237,12 @@ public class ShoppingCart
 			text.append( ""+ci.getCardID() );
 			text.append( ", ");
 			try
-			{
+			{	
+				if( freakyFriday() )
+					ci.setPrice( ci.getPrice() * Info.FREAKYFRIDAY );
+				else if( cartList.size() > 9 )
+					ci.setPrice( ci.getPrice() * Info.GROUPDISCOUNT );
+				
 				text.append( ci.getType() );
 				text.append( "\t" );
 				text.append( paymentFormat.format( ci.getPrice() ) );
@@ -230,6 +256,7 @@ public class ShoppingCart
 			}
 		}
 
+		sum = sum*Info.GROUPDISCOUNT;
 		
 		return text.toString();
 	}
