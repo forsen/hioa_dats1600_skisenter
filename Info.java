@@ -29,8 +29,10 @@ public class Info extends JFrame
 	final static boolean shouldFill = true;
     final static boolean shouldWeightX = true;
     final static boolean RIGHT_TO_LEFT = false;
+    private static Listener listener;
+    private static JLabel label;
     private static JButton button, newsButton, infoButton, offersButton, pricesButton;
-    private static JPanel newsWindowPnl, infoWindowPnl, spOffersWindowPnl, pricesWindowPnl;
+    private static JPanel newsWindowPnl, infoWindowPnl, spOffersWindowPnl, panel, sideMenu, pricesWindowPnl, contentPanel;
  
     public Info()
     {
@@ -45,35 +47,10 @@ public class Info extends JFrame
 		}
 
 
-		JPanel contentPanel;
-		Listener listener;
-		JPanel sideMenu;
-		JPanel panel;
-		JPanel image;
-		JLabel label;
 
 		GridBagLayout gbl = new GridBagLayout();
 
 		setLayout(gbl);
-
-/*
-		gbl.layoutContainer( this );
-		double[][] weights = gbl.getLayoutWeights();
-		for (int i = 0; i < 2; i++) 
-		{
-			for (int j = 0; j < weights[i].length; j++) 
-			{
-				weights[i][j] = 1;
-			}
-		}
-		
-		gbl.columnWeights = weights[0];
-		gbl.rowWeights = weights[1];
-
-*/
-		//GridBagConstraints sc = new GridBagConstraints();
-
-
 
 
 
@@ -112,44 +89,33 @@ public class Info extends JFrame
 		newsButton = new JButton(nyheter);
 		newsButton.setToolTipText("OFFPIST: Nyheter");
 		ImageIcon nyheter2 = new ImageIcon("img/nyheter2.png");
-		newsButton.setRolloverIcon(nyheter2);
+		newsButton.setPressedIcon(nyheter2);
 		newsButton.setFocusPainted(false);
 		newsButton.setBorderPainted(false);
 		newsButton.setContentAreaFilled(false);
-/*
 
-		sc.fill = GridBagConstraints.BOTH;
-		sc.gridx = 0;
-		sc.gridy = 0;*/
 		sideMenu.add(newsButton);
 
 		ImageIcon info = new ImageIcon("img/info.png");
 		infoButton = new JButton(info);
 		infoButton.setToolTipText("OFFPIST: Informasjon");
 		ImageIcon info2 = new ImageIcon("img/info2.png");
-		infoButton.setRolloverIcon(info2);
+		infoButton.setPressedIcon(info2);
 		infoButton.setFocusPainted(false);
 		infoButton.setBorderPainted(false);
 		infoButton.setContentAreaFilled(false);
-/*
-		sc.fill = GridBagConstraints.BOTH;
-		sc.weightx = 0.5;
-		sc.gridx = 0;
-		sc.gridy = 1;*/
+
 		sideMenu.add(infoButton);
 
 		ImageIcon tilbud = new ImageIcon("img/tilbud.png");
 		offersButton = new JButton(tilbud);
 		offersButton.setToolTipText("OFFPIST: Tilbud");
 		ImageIcon tilbud2 = new ImageIcon("img/tilbud2.png");
-		offersButton.setRolloverIcon(tilbud2);
+		offersButton.setPressedIcon(tilbud2);
 		offersButton.setFocusPainted(false);
 		offersButton.setBorderPainted(false);
 		offersButton.setContentAreaFilled(false);
-/*		sc.fill = GridBagConstraints.BOTH;
-		sc.weightx = 0.5;
-		sc.gridx = 0;
-		sc.gridy = 2;*/
+
 		sideMenu.add(offersButton);
 
 	
@@ -158,20 +124,15 @@ public class Info extends JFrame
 		pricesButton = new JButton(priser);
 		pricesButton.setToolTipText("OFFPIST: Priser");
 		ImageIcon priser2 = new ImageIcon("img/priser2.png");
-		pricesButton.setRolloverIcon(priser2);
+		pricesButton.setPressedIcon(priser2);
 		pricesButton.setFocusPainted(false);
 		pricesButton.setBorderPainted(false);
 		pricesButton.setContentAreaFilled(false);
-/*		sc.fill = GridBagConstraints.BOTH;
-		sc.weightx = 0.5;
-		sc.gridx = 0;
-		sc.gridy = 3;*/
+
 		sideMenu.add(pricesButton);
-		//sideMenu.setBackground(Color.RED);		muligens legge på en gradient her seinere
+
 
 		GridBagConstraints c = new GridBagConstraints();
-		//sideMenu.setPreferredSize(new Dimension(100, 800)); //finn en bedre måte å gjøre dette på. Skalering vil ødelegge
-		//c.fill = GridBagConstraints.BOTH;
 
 
 		// første kolonne /////////////////////////////
@@ -257,17 +218,15 @@ public class Info extends JFrame
 		JScrollPane contentScrollPanel = new JScrollPane(contentPanel);
 		add(contentScrollPanel, c);
 
-		image = new JPanel(new BorderLayout());
-		label = new JLabel(new ImageIcon("img/offpist_liten.png"));
+
+		ImageIcon bilde = new ImageIcon("img/offpist_liten.png");
+		label = new JLabel("<html>Granskogen 1 - Tlf: 22 33 44 55</html>", bilde, JLabel.CENTER);
+		label.setHorizontalTextPosition(JLabel.CENTER);
+		label.setVerticalTextPosition(JLabel.BOTTOM);
+		label.setFont(new Font("Calibri", Font.PLAIN, 15));
+		label.setForeground(Color.WHITE);
 
 		panel.add(label);
-
-
-
-
-		// tredje kolonne/////////////
-
-		//// fredje kolonne///////////////////////
 
 
 
@@ -343,9 +302,6 @@ public class Info extends JFrame
 		offersButton.addActionListener( listener );
 		pricesButton.addActionListener( listener );
 
-
-
-		//Set up the content pane.
 		getContentPane();
 
 
@@ -358,25 +314,6 @@ public class Info extends JFrame
 		setSize(1000,1000);
 		setVisible(true);
 	}
-
-	// public void paint( Graphics g ) 
-	// { 
-	// 	super.paint(g);
-	// 	g.setColor(new Color(230,245,255));
-	// 	g.fillRect(0,0, getWidth(), getHeight());
-		
-
-	// 	int[]x={0,0,getWidth()};
-
-	// 	int[]y={0,1400,getHeight()}; 
-
-	// 	g.setColor(new Color(235,250,255));
-	// 	g.fillPolygon(x,y,3);	
-
-	// 	g.setColor(new Color(238, 238, 238));
-	// 	g.fillRect(0,0, getWidth(), 100);
-
-	// }
 
 	private class Listener implements ActionListener
 	{
@@ -410,29 +347,4 @@ public class Info extends JFrame
 
 		}
 	}
-
-
-
-
-	// fjerde kolonne/////////////
-
-
-    /**
-     * Create the GUI and show it.  For thread safety,
-     * this method should be invoked from the
-     * event-dispatching thread.
-     */
-
-
-
-
-}/*<datafelt, inkludert statiske priskonstanter som brukes av de forskjellige heiskortklassene>
-
-	<konstruktør som oppretter vindu>
-
-	<grafiske metoder som vi enda ikke har lært (vi ønsker å ha et menybasert system, som endrer 
-		hovedinnhold basert på hvilken knapp man trykker)>
-
-	<metode for å hente ut informasjon om åpne heiser>
-
-	<diverse knappelyttere og slikt>*/
+}
