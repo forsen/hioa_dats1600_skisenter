@@ -5,6 +5,7 @@ import javax.swing.event.*;
 import java.io.*;
 import java.util.Date;
 
+
 public class PricesWindowPanel extends JPanel
 {
 	private JLabel header;
