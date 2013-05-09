@@ -37,6 +37,7 @@ public class ShoppingCart
 //		}
 
 		paymentFormat = NumberFormat.getCurrencyInstance( new Locale( "no", "NO" ) );
+		paymentFormat.setGroupingUsed( false );
 
 	}
 
@@ -225,7 +226,7 @@ public class ShoppingCart
 
 			while( cIt.hasNext() )
 			{
-				text.append( cIt.next().toString() + "\t" + paymentFormat.format( Info.CARDPRICE ) );
+				text.append( cIt.next().toString() + "             " + paymentFormat.format( Info.CARDPRICE ) );
 				text.append( "\n" );
 			}
 
@@ -253,14 +254,14 @@ public class ShoppingCart
 
 				text.append( ci.getType() );
 				// tried with \t, but it wouldn't align properly (since the cardtype length differs)
-				text.append( "          " );
+				text.append( "        " );
 				text.append( paymentFormat.format( ci.getPrice() ) );
 				text.append( "\n" );
 			}
 			catch( NullPointerException npe )
 			{
 				// tried with \t, but it wouldn't align properly (since the cardtype length differs)
-				text.append( "    " );
+				text.append( "        " );
 				text.append( paymentFormat.format( Info.RETURNPRICE ) );
 				text.append( "\n" );
 			}

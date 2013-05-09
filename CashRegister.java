@@ -59,6 +59,7 @@ public class CashRegister extends JDialog
 		});
 
 		paymentFormat = NumberFormat.getCurrencyInstance( new Locale( "no", "NO") );
+		paymentFormat.setGroupingUsed( false );
 
 
 		contentPanel = new JPanel()
