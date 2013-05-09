@@ -224,7 +224,7 @@ public class ShoppingCart
 			}
 			catch( NullPointerException npe )
 			{
-				text.append( "\t\t" );
+				text.append( "\t" );
 				text.append( paymentFormat.format( Info.RETURNPRICE ) );
 				text.append( "\n" );
 			}
