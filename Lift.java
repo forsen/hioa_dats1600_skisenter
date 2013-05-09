@@ -45,7 +45,7 @@ public abstract class Lift implements Serializable
 	}
 
 	public List<Validations> getValidations()
-	{''
+	{
 		return validations;
 	}
 
