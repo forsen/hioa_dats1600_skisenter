@@ -545,6 +545,8 @@ public class CashRegister extends JDialog
 			printCard.setEnabled( true );
 			shoppingCart.checkOut();
 			printableCards = shoppingCart.getNewCards();
+			payByCash.setEnabled( false );
+			payByCard.setEnabled( false );
 		}
 	}
 
