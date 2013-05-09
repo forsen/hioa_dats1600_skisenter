@@ -202,7 +202,7 @@ public class ShoppingCart
 
 			while( cIt.hasNext() )
 			{
-				text.append( cIt.next().toString() + "\t\t" + paymentFormat.format( Info.CARDPRICE ) );
+				text.append( cIt.next().toString() + "\t" + paymentFormat.format( Info.CARDPRICE ) );
 				text.append( "\n" );
 			}
 
@@ -224,7 +224,7 @@ public class ShoppingCart
 			}
 			catch( NullPointerException npe )
 			{
-				text.append( "\t\t" );
+				text.append( "\t" );
 				text.append( paymentFormat.format( Info.RETURNPRICE ) );
 				text.append( "\n" );
 			}

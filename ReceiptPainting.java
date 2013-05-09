@@ -6,6 +6,8 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import javax.imageio.ImageIO;
+import java.util.Locale;
+import java.text.NumberFormat;
 
 public class ReceiptPainting extends JPanel
 {
@@ -19,6 +21,7 @@ public class ReceiptPainting extends JPanel
 	private int WIDTH = 350;
 	private int currentY = YSTART;
 	private int size;  
+	private NumberFormat paymentFormat;
 
 	public ReceiptPainting( JTextArea p, double[] o, double s )
 	{
@@ -35,6 +38,8 @@ public class ReceiptPainting extends JPanel
 		{
 			System.out.println( "couldn't load the image" );
 		}
+
+		paymentFormat = NumberFormat.getCurrencyInstance( new Locale( "no", "NO" ) );
 
 
 	}
@@ -88,10 +93,10 @@ public class ReceiptPainting extends JPanel
 		printDashedLine( MARGIN, WIDTH - MARGIN, currentY, g2d );
 		currentY += LINESPACE;
 		g2d.drawString( "Total eks. moms", MARGIN, currentY );
-		printRightAlignedString( "" + sum*0.8 , WIDTH, 0, currentY, g2d );
+		printRightAlignedString( paymentFormat.format( sum*0.8 ) , WIDTH, 0, currentY, g2d );
 		currentY += LINESPACE; 
 		g2d.drawString( "Moms 25%", MARGIN, currentY );
-		printRightAlignedString( "" + (sum - (sum*0.8)), WIDTH, 0, currentY, g2d );
+		printRightAlignedString( paymentFormat.format(sum - (sum*0.8)), WIDTH, 0, currentY, g2d );
 		currentY += 0.5*LINESPACE;
 		printDashedLine( MARGIN, WIDTH - MARGIN, currentY, g2d );
 		currentY += LINESPACE;
@@ -101,7 +106,7 @@ public class ReceiptPainting extends JPanel
 		g2d.setFont( f.deriveFont( Font.BOLD, 16F ) );
 
 		g2d.drawString( "Total", MARGIN, currentY );
-		printRightAlignedString( "" + sum, WIDTH, 0, currentY, g2d );
+		printRightAlignedString( paymentFormat.format( sum ), WIDTH, 0, currentY, g2d );
 		currentY += 2*LINESPACE;
 
 		g2d.setFont( orig );
@@ -109,19 +114,19 @@ public class ReceiptPainting extends JPanel
 		if( payments[CashRegister.CASH] != 0 )
 		{
 			g2d.drawString("Mottat kontant: ", MARGIN, currentY);
-			printRightAlignedString( ""+ payments[CashRegister.CASH], WIDTH, 0, currentY, g2d );
+			printRightAlignedString( paymentFormat.format( payments[CashRegister.CASH] ), WIDTH, 0, currentY, g2d );
 			currentY += LINESPACE; 
 		}
 		if( payments[CashRegister.CARD] != 0 )
 		{
 			g2d.drawString("Mottat med kort: ", MARGIN, currentY);
-			printRightAlignedString( ""+payments[CashRegister.CARD], WIDTH, 0, currentY, g2d );
+			printRightAlignedString( paymentFormat.format( payments[CashRegister.CARD] ), WIDTH, 0, currentY, g2d );
 			currentY += LINESPACE; 
 		}
 		if( payments[CashRegister.CASH] + payments[CashRegister.CARD] > sum )
 		{
 			g2d.drawString("Tilbake: ", MARGIN, currentY );
-			printRightAlignedString( "" + (sum - (payments[CashRegister.CASH] + payments[CashRegister.CARD])), WIDTH, 0, currentY, g2d );
+			printRightAlignedString( paymentFormat.format(sum - (payments[CashRegister.CASH] + payments[CashRegister.CARD])), WIDTH, 0, currentY, g2d );
 			currentY += LINESPACE;
 		}
 
@@ -155,7 +160,8 @@ public class ReceiptPainting extends JPanel
 	{
 		String[] strings = areaToString();
 		String[] amounts = new String[ strings.length];
-		Pattern pattern = Pattern.compile("(\\d{2,},-)");
+		//Pattern pattern = Pattern.compile("(\\d{2,},-)");
+		Pattern pattern = Pattern.compile("(\\Dkr\\s\\d*,\\d{2})");
 		
 		Matcher matcher;
 
@@ -182,7 +188,8 @@ public class ReceiptPainting extends JPanel
 	private String[] getStrings()
 	{
 		String[] strings = areaToString();
-		Pattern pattern = Pattern.compile("(\\d{2,},-)");
+		//Pattern pattern = Pattern.compile("(\\d{2,},-)");
+		Pattern pattern = Pattern.compile("(\\Dkr*\\s\\d*,\\d{2})");
 
 		Matcher matcher; 
 

@@ -519,7 +519,7 @@ public class CashRegister extends JDialog
 			if( n == CASH )
 			{
 				s += "kontant:";
-				paymentMethod[CASH] += paid; 
+				paymentMethod[CASH] += paid ; 
 			}
 			else if( n == CARD )
 			{
@@ -527,7 +527,7 @@ public class CashRegister extends JDialog
 				paymentMethod[CARD] += paid; 
 			}
 
-			s += " \t" + paid + "\n\nRest: \t\t" + remains;
+			s += " \t" + paymentFormat.format( paid ) + "\n\nRest: \t\t" + paymentFormat.format( remains );
 			overview.append( s ); 
 			cashInput.setText("");
 
