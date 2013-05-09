@@ -24,7 +24,7 @@ public class AdminInfoPanel extends JPanel
 	private JTable perstable, passTable;
 	private Toolkit toolbox;
 	private JList<Person> reg;
-	private DefaultListModel model;
+	private DefaultListModel<Person> model;
 	
 
  	
