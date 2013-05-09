@@ -13,7 +13,9 @@ public class InfoWindowPanel extends JPanel
 {
 	private JLabel headerImg1, headerImg2;
 	private JLabel header;
-	private JLabel content, liftInfo;
+	private JLabel content;
+	private JTable liftTable;
+	private JScrollPane liftScrollPane;
 
 
 
@@ -52,39 +54,52 @@ public class InfoWindowPanel extends JPanel
 
 
 
-		liftInfo = new JLabel();
-		liftInfo.setText(Skisenter.chLift.toString());
-		//liftInfo.setText(Skisenter.tLift.toString() ); 
+
+
 
 
 		c.gridy=2;
 		add(content, c);
 
+
+		header = new JLabel("Heiser");
+		header.setFont(new Font("Calibri", Font.BOLD, 20));
 		c.gridy=3;
-		add(liftInfo, c);
+		add(header, c);
+
+		/* ********************Lager heistabell******************* */
+		Object rowData[][] = { 
+		{"Stolheis", Skisenter.chLift.getName(), Skisenter.chLift.getLiftNr() , Skisenter.chLift.getClips(), Skisenter.chLift.getLength() + " m."},
+        {"Krokheis", Skisenter.tLift.getName(), Skisenter.tLift.getLiftNr() , Skisenter.tLift.getClips(), Skisenter.tLift.getLength() + " m."}};
+     
+    	Object columnNames[] = {"Type", "Heisnavn", "Heisnummer", "Tar antall klipp", "Lengde" };
+ 
+    	liftTable = new JTable(rowData, columnNames);
+    	liftTable.setEnabled(false);
+    	liftTable.setBackground(new Color(220, 240, 255));
+    	liftScrollPane = new JScrollPane(liftTable);
+    	liftScrollPane.setPreferredSize(new Dimension(550,55));
+
+        /* ******************************************************* */
+		c.gridy=4;
+		add(liftScrollPane, c);
 
 
 //****** NYTT ELEMENT *************************************//
 
-		headerImg1 = new JLabel(snowboarder);
-		
-		c.gridy=4;
-		add(headerImg1, c);
-
-
-		header = new JLabel("Åpningstider");
+		header = new JLabel("<html><br><br><br>Åpningstider</html>");
 		header.setFont(new Font("Calibri", Font.BOLD, 20));
 		c.gridx = 0;
 		c.gridy = 5;
 		add(header,c);
 
-		content = new JLabel("<html>Mandag: 10:00-16:30<br>"
-							+"Tirsdag: 10:00-17:00<br>"
-							+"Onsdag: 9:30-17:00<br>"
-							+"Torsdag: 10:00-17:00<br>"
-							+"Fredag: 9:00-17:30<br>"
-							+"Lørdag: 9:00-18:00<br>"
-							+"Søndag: 9:00-18:00</html>");
+		content = new JLabel("<html>Man: 10:00-16:30<br>"
+							+"Tir: 10:00-17:00<br>"
+							+"Ons: 9:30-17:00<br>"
+							+"Tor: 10:00-17:00<br>"
+							+"Fre: 9:00-17:30<br>"
+							+"Lør: 9:00-18:00<br>"
+							+"Søn: 9:00-18:00</html>");
 	    content.setFont(new Font("Calibri", Font.PLAIN, 14));
 	    content.setHorizontalAlignment(JLabel.CENTER);
 
@@ -92,6 +107,13 @@ public class InfoWindowPanel extends JPanel
 		c.gridy = 6;
 		c.anchor = GridBagConstraints.PAGE_START;
 		add(content, c);
+		headerImg1 = new JLabel(snowboarder);
+		
+		c.gridy=7;
+		add(headerImg1, c);
+
+
+
 	}
 }
 

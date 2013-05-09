@@ -59,14 +59,14 @@ public abstract class Lift implements Serializable
 
     	StringBuilder text = new StringBuilder();
     
-    	text.append(name); 
+    	text.append(name + ":\t"); 
     	text.append("\nHeisnummer: "); 
     	text.append(liftNr); 
-    	text.append("\nKlipp som trengs for å kunne kjøre: "); 
+    	text.append("\n Klipp som trengs for å kunne kjøre: "); 
     	text.append(clips); 
-   	 	text.append("\nlengde"); 
+   	 	text.append("\n Lengde:"); 
    	 	text.append(length); 
-   		text.append("\n"); 
+   		text.append("\n "); 
     
     	String doneTekst = text.toString();
     
