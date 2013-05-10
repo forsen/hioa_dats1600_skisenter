@@ -176,6 +176,10 @@ public class AdminInfoPanel extends JPanel
 		display.setText(list.toString());
 	}
 
+/**
+  * This method deletes a person from our registry based on the phone number. If more than one person share a phone number, you'll be able to choose from
+  * a list which one to delete. It will write the result to the display.
+  */
 	private void deletePerson()
 	{
 		Person p = null;
@@ -231,6 +235,10 @@ public class AdminInfoPanel extends JPanel
 
 	}
 
+/**
+  * This method will show every passing through the lifts in a jtable.
+  * @return Return a JTable containing all passings through our lifts. 
+  */
 	private JTable showPassings()
 	{
 		
@@ -260,6 +268,10 @@ public class AdminInfoPanel extends JPanel
 		
 	}	
 
+/**
+  * This method will create a table of all the unregistered cards, and their skicards.
+  * @return Returns a JTable containing all unregistered cards. 
+  */
 	public JTable unregCardTable()
 	{
 
@@ -300,37 +312,23 @@ public class AdminInfoPanel extends JPanel
 					else if (skicrunner instanceof Punchcard )
 						list.add( new ListObject( runner.getCardID(), skicrunner.getType(""), "" + ((Punchcard) skicrunner).getClipCount(), paymentFormat.format(skicrunner.getPrice()),
 							skicrunner.getDiscount(), skicrunner.getAgeGroup() ) );
-	/*				unRegCards[tblIdx][0] = runner.getCardID();
-					unRegCards[tblIdx][1] = skicrunner.getType("");
 
-					if( skicrunner instanceof Timebasedcard)
-					{	
-						unRegCards[tblIdx][2] = ((Timebasedcard) skicrunner).getExpires();
-					}
-			
-					else if (skicrunner instanceof Punchcard)
-					{		
-						unRegCards[tblIdx][2] = ((Punchcard) skicrunner).getClipCount();
-					}
-					
-					
-					unRegCards[tblIdx][3] = skicrunner.getPrice();
-					unRegCards[tblIdx][4] = skicrunner.getDiscount();
-					unRegCards[tblIdx][5] = skicrunner.getAgeGroup();
-					tblIdx ++;*/
 				}
 			
 		
 			} 
 		}
-		//JTable unRegCtable = new JTable(unRegCards,columnName);
+
 		JTable unRegCtable = new JTable( new MyTableModel( list ));
 		unRegCtable.setAutoCreateRowSorter(true);
 		unRegCtable.setEnabled(false);
 		return unRegCtable;
-		
-		
+	
 	}
+
+/**
+  * A class creating a custom tablemodel. The is used to create a table of cards and skicards. 
+  */
 	private class MyTableModel extends AbstractTableModel 
 	{
 		String[] columnName = {"Kortnummer", "Type", "Går ut", "Pris", "Rabatt", "Aldersgruppe"};
@@ -384,7 +382,9 @@ public class AdminInfoPanel extends JPanel
 		}
 	}
  
-
+/**
+  * A class to create Object to put in a JTable. The object will contain information about Cards and Skicards.
+  */
 	private class ListObject
 	{
 		int cardId;
@@ -403,17 +403,7 @@ public class AdminInfoPanel extends JPanel
 			discount = d;
 			ageGroup = ag;
 		}
-/*
-		public ListObject( int cId, String t, int cl, double p, double d, int ag )
-		{
-			cardId = cId;
-			type = t;
-			int clips = cl;
-			price = p;
-			discount = d;
-			ageGroup = ag; 
-		}
-*/
+
 		public int getCardID()
 		{
 			return cardId;
