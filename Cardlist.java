@@ -3,6 +3,7 @@ import java.util.*;
 import javax.swing.DefaultListModel;
 import java.util.Date;
 import java.util.Calendar;
+import javax.swing.*;
 
 /**
  * Cardlist is a class that makes a list of Card objects. It is used both as
@@ -131,12 +132,56 @@ public class Cardlist implements Serializable
 		return tempList;
 	}
 
+
+	public int allCards()
+	{
+		Iterator<Card> it = list.iterator();
+
+		int total = 0;
+
+		while (it.hasNext())
+		{
+			Card runner = it.next();
+	
+			total ++;
+			
+		}
+		return total;
+	}
+
+	public int unregCardsSoldInMonthX(int x)
+	{
+
+		Iterator<Card> it = list.iterator();
+
+		int total = 0;
+
+		Calendar helper = Calendar.getInstance();
+
+		while (it.hasNext())
+		{
+
+			Card runner = it.next();
+			helper.setTime( runner.getBought() );
+			
+			if( helper.get(Calendar.MONTH )== x)
+			total ++;
+			
+		}
+		return total;
+	}
+//END OF STATISTIKK//////////////////////////////////////////////////////////////////////
+	
+
+
+
 /**
   * The toString method for this class. 
   * @return Returns a String containing Card.toString() and Card.history().
   * @see Card#history()
   * @see Card#toString()
   */
+
 	public String toString()
 	{
 		StringBuilder text = new StringBuilder();

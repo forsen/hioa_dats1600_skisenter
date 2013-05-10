@@ -200,10 +200,15 @@ public class Card implements Serializable
 		
 		return doneText;
 	}
+
+
 /**
   * The toString method for this Card
   * @return Returns a String containing some text and the ID of the Card
-  */
+*/
+	
+
+
 	public String toString()
 	{
 		return "Kortnr: " + cardNumber;
