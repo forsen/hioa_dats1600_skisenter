@@ -96,7 +96,7 @@ public class Skisenter
 				
 				lift1 = new Control( registry,  chLift, cardregistry );
 				lift1.setJMenuBar( new MenuBar().createMenu() );
-				lift1.setLocation(700,425);
+				lift1.setLocation(700,625);
 				lift1.setIconImage(ikon);
 				lift1.setVisible(false);
 
@@ -104,7 +104,7 @@ public class Skisenter
 
 				lift2 = new Control( registry, tLift, cardregistry );   
 				lift2.setJMenuBar( new MenuBar().createMenu() );
-				lift2.setLocation(700,425);
+				lift2.setLocation(200,625);
 				lift2.setIconImage(ikon);
 				lift2.setVisible(false);
 			}			
