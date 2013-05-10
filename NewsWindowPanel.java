@@ -26,9 +26,15 @@ public class NewsWindowPanel extends JPanel
 
 
 		/***** 1st ARTICLE ******************************************************/
-		ImageIcon npic4 = new ImageIcon("img/npic4.png");
-		icon4 = new JLabel();
-	    icon4.setIcon(npic4);
+		try{
+			ImageIcon npic4 = new ImageIcon("img/npic4.png");
+			icon4 = new JLabel();
+	    	icon4.setIcon(npic4);
+	    	}
+	    catch(Exception e)
+	    {
+	    	e.printStackTrace(System.out);
+	    }
 
 		add(icon4,c);
 
@@ -47,9 +53,16 @@ public class NewsWindowPanel extends JPanel
 
 		/***** 2nd ARTICLE ******************************************************/
 
-		ImageIcon npic3 = new ImageIcon("img/npic3.png");
-		icon3 = new JLabel();
-	    icon3.setIcon(npic3);
+		try{
+			ImageIcon npic3 = new ImageIcon("img/npic3.png");
+			icon3 = new JLabel();
+	    	icon3.setIcon(npic3);
+	    	}
+	    catch(Exception e)
+	    {
+	    	e.printStackTrace(System.out);
+	    }
+
 
 		c.gridy=2;
 		add(icon3,c);
@@ -70,10 +83,17 @@ public class NewsWindowPanel extends JPanel
 
 		/***** 3rd ARTICLE ******************************************************/
 
-		ImageIcon npic2 = new ImageIcon("img/npic2.png");
-		
-		icon1 = new JLabel();
-		icon1.setIcon(npic2);
+		try{
+			ImageIcon npic2 = new ImageIcon("img/npic2.png");
+			icon1 = new JLabel();
+			icon1.setIcon(npic2);
+	    	}
+	    catch(Exception e)
+	    {
+	    	e.printStackTrace(System.out);
+	    }
+
+
 		c.gridy= 4;
 		add(icon1,c);
 
@@ -90,9 +110,16 @@ public class NewsWindowPanel extends JPanel
 
 		/***** 4th ARTICLE ******************************************************/
 
-		ImageIcon npic1 = new ImageIcon("img/npic1.png");
-		icon2 = new JLabel();
-	    icon2.setIcon(npic1);
+		try{
+			ImageIcon npic1 = new ImageIcon("img/npic1.png");
+			icon2 = new JLabel();
+	   	    icon2.setIcon(npic1);
+	    	}
+	    catch(Exception e)
+	    {
+	    	e.printStackTrace(System.out);
+	    }
+
 
 		c.gridy=6;
 		add(icon2,c);
