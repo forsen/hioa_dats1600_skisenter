@@ -6,6 +6,7 @@ import java.io.*;
 import javax.imageio.*;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
+import java.awt.image.BufferedImage;
 import java.awt.Graphics;
 import java.net.URL;
 import java.util.Date;
@@ -31,6 +32,7 @@ public class Info extends JFrame
 	final static boolean shouldFill = true;
     final static boolean shouldWeightX = true;
     final static boolean RIGHT_TO_LEFT = false;
+    private BufferedImage newsBtnImg, infoBtnImg, offerBtnImg, pricesBtnImg,newsBtnImg1, infoBtnImg1, offerBtnImg1, pricesBtnImg1; 
     private static Listener listener;
     private static JLabel label;
     private static JButton button, newsButton, infoButton, offersButton, pricesButton;
@@ -86,7 +88,8 @@ public class Info extends JFrame
 
 		/* News-button */
 		try{
-			ImageIcon news = new ImageIcon("img/nyheter.png");
+			newsBtnImg = ImageIO.read( new File("img/nyheter.png"));
+			ImageIcon news = new ImageIcon(newsBtnImg);
 			newsButton = new JButton(news);
 			newsButton.setFocusPainted(false);
 			newsButton.setBorderPainted(false);
@@ -96,23 +99,27 @@ public class Info extends JFrame
 			catch (Exception e)
 			{
 				e.printStackTrace(System.out);
+				JOptionPane.showMessageDialog(null, "En nødvendig fil mangler. Reinstaller programmet.", "Feil: manglende fil", JOptionPane.ERROR_MESSAGE);
 				System.exit(1);
 			}
 
 		try{
-			ImageIcon news2 = new ImageIcon("img/nyheter2.png");
+			newsBtnImg1 = ImageIO.read( new File("img/nyheter2.png"));
+			ImageIcon news2 = new ImageIcon(newsBtnImg1);
 			newsButton.setToolTipText("OFFPIST: Nyheter");
 			newsButton.setPressedIcon(news2);
 			}
 			catch (Exception e)
 			{
 				e.printStackTrace(System.out);
+				JOptionPane.showMessageDialog(null, "En fil(mindre viktig) mangler. Reinstaller programmet for bedre opplevelse.", "Feil: manglende fil", JOptionPane.INFORMATION_MESSAGE);
 			}
 
 			
 		/* Info-button*/
 		try{
-			ImageIcon info = new ImageIcon("img/info.png");
+			infoBtnImg = ImageIO.read( new File("img/info.png"));
+			ImageIcon info = new ImageIcon(infoBtnImg);
 			infoButton = new JButton(info);
 			infoButton.setFocusPainted(false);
 			infoButton.setBorderPainted(false);
@@ -121,22 +128,26 @@ public class Info extends JFrame
 			catch (Exception e)
 			{
 				e.printStackTrace(System.out);
+				JOptionPane.showMessageDialog(null, "En nødvendig fil mangler. Reinstaller programmet.", "Feil: manglende fil", JOptionPane.ERROR_MESSAGE);
 				System.exit(1);
 			}
 
 		try{
-			ImageIcon info2 = new ImageIcon("img/info2.png");
+			infoBtnImg1 = ImageIO.read( new File("img/info2.png"));
+			ImageIcon info2 = new ImageIcon(infoBtnImg1);
 			infoButton.setToolTipText("OFFPIST: Informasjon");
 			infoButton.setPressedIcon(info2);
 			} 
 			catch (Exception e)
 			{
 				e.printStackTrace(System.out);
+				JOptionPane.showMessageDialog(null, "En fil(mindre viktig) mangler. Reinstaller programmet for bedre opplevelse.", "Feil: manglende fil", JOptionPane.INFORMATION_MESSAGE);
 			}
 
 		/* Offers-button */
 		try{
-			ImageIcon offer = new ImageIcon("img/tilbud.png");
+			offerBtnImg = ImageIO.read( new File("img/tilbud.png"));
+			ImageIcon offer = new ImageIcon(offerBtnImg);
 			offersButton = new JButton(offer);
 			offersButton.setFocusPainted(false);
 			offersButton.setBorderPainted(false);
@@ -145,22 +156,26 @@ public class Info extends JFrame
 			catch (Exception e)
 			{
 				e.printStackTrace(System.out);
+				JOptionPane.showMessageDialog(null, "En nødvendig fil mangler. Reinstaller programmet.", "Feil: manglende fil", JOptionPane.ERROR_MESSAGE);
 				System.exit(1);
 			}
 
 		try{
-			ImageIcon offer2 = new ImageIcon("img/tilbud2.png");
+			offerBtnImg1 = ImageIO.read( new File("img/tilbud2.png"));
+			ImageIcon offer2 = new ImageIcon(offerBtnImg1);
 			offersButton.setToolTipText("OFFPIST: Tilbud");
 			offersButton.setPressedIcon(offer2);
 			} 
 			catch (Exception e)
 			{
 				e.printStackTrace(System.out);
+				JOptionPane.showMessageDialog(null, "En fil(mindre viktig) mangler. Reinstaller programmet for bedre opplevelse.", "Feil: manglende fil", JOptionPane.INFORMATION_MESSAGE);
 			}
 
 		/* Prices-button */
 		try{
-			ImageIcon price = new ImageIcon("img/priser.png");
+			pricesBtnImg = ImageIO.read( new File("img/priser.png"));
+			ImageIcon price = new ImageIcon(pricesBtnImg);
 			pricesButton = new JButton(price);
 			pricesButton.setFocusPainted(false);
 			pricesButton.setBorderPainted(false);
@@ -169,17 +184,20 @@ public class Info extends JFrame
 			catch (Exception e)
 			{
 				e.printStackTrace(System.out);
+				JOptionPane.showMessageDialog(null, "En nødvendig fil mangler. Reinstaller programmet.", "Feil: manglende fil", JOptionPane.ERROR_MESSAGE);
 				System.exit(1);
 			}
 
 		try{
-			ImageIcon price2 = new ImageIcon("img/priser2.png");
+			pricesBtnImg1 = ImageIO.read( new File("img/info.png"));
+			ImageIcon price2 = new ImageIcon(pricesBtnImg1);
 			pricesButton.setToolTipText("OFFPIST: Priser");
 			pricesButton.setPressedIcon(price2);
 			} 
 			catch (Exception e)
 			{
 				e.printStackTrace(System.out);
+				JOptionPane.showMessageDialog(null, "En fil(mindre viktig) mangler. Reinstaller programmet for bedre opplevelse.", "Feil: manglende fil", JOptionPane.INFORMATION_MESSAGE);
 			}
 
 
