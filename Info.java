@@ -84,51 +84,110 @@ public class Info extends JFrame
 
 		sideMenu.setLayout( new GridLayout( 4,1 ) );
 
+		/* News-button */
+		try{
+			ImageIcon news = new ImageIcon("img/nyheter.png");
+			newsButton = new JButton(news);
+			newsButton.setFocusPainted(false);
+			newsButton.setBorderPainted(false);
+			newsButton.setContentAreaFilled(false);
 
-		ImageIcon news = new ImageIcon("img/nyheter.png");
-		newsButton = new JButton(news);
-		newsButton.setToolTipText("OFFPIST: Nyheter");
-		ImageIcon news2 = new ImageIcon("img/nyheter2.png");
-		newsButton.setPressedIcon(news2);
-		newsButton.setFocusPainted(false);
-		newsButton.setBorderPainted(false);
-		newsButton.setContentAreaFilled(false);
+			} 
+			catch (Exception e)
+			{
+				e.printStackTrace(System.out);
+				System.exit(1);
+			}
 
-		sideMenu.add(newsButton);
+		try{
+			ImageIcon news2 = new ImageIcon("img/nyheter2.png");
+			newsButton.setToolTipText("OFFPIST: Nyheter");
+			newsButton.setPressedIcon(news2);
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace(System.out);
+			}
 
-		ImageIcon info = new ImageIcon("img/info.png");
-		infoButton = new JButton(info);
-		infoButton.setToolTipText("OFFPIST: Informasjon");
-		ImageIcon info2 = new ImageIcon("img/info2.png");
-		infoButton.setPressedIcon(info2);
-		infoButton.setFocusPainted(false);
-		infoButton.setBorderPainted(false);
-		infoButton.setContentAreaFilled(false);
+			
+		/* Info-button*/
+		try{
+			ImageIcon info = new ImageIcon("img/info.png");
+			infoButton = new JButton(info);
+			infoButton.setFocusPainted(false);
+			infoButton.setBorderPainted(false);
+			infoButton.setContentAreaFilled(false);
+			} 
+			catch (Exception e)
+			{
+				e.printStackTrace(System.out);
+				System.exit(1);
+			}
 
+		try{
+			ImageIcon info2 = new ImageIcon("img/info2.png");
+			infoButton.setToolTipText("OFFPIST: Informasjon");
+			infoButton.setPressedIcon(info2);
+			} 
+			catch (Exception e)
+			{
+				e.printStackTrace(System.out);
+			}
+
+		/* Offers-button */
+		try{
+			ImageIcon offer = new ImageIcon("img/tilbud.png");
+			offersButton = new JButton(offer);
+			offersButton.setFocusPainted(false);
+			offersButton.setBorderPainted(false);
+			offersButton.setContentAreaFilled(false);
+			} 
+			catch (Exception e)
+			{
+				e.printStackTrace(System.out);
+				System.exit(1);
+			}
+
+		try{
+			ImageIcon offer2 = new ImageIcon("img/tilbud2.png");
+			offersButton.setToolTipText("OFFPIST: Tilbud");
+			offersButton.setPressedIcon(offer2);
+			} 
+			catch (Exception e)
+			{
+				e.printStackTrace(System.out);
+			}
+
+		/* Prices-button */
+		try{
+			ImageIcon price = new ImageIcon("img/priser.png");
+			pricesButton = new JButton(price);
+			pricesButton.setFocusPainted(false);
+			pricesButton.setBorderPainted(false);
+			pricesButton.setContentAreaFilled(false);
+			} 
+			catch (Exception e)
+			{
+				e.printStackTrace(System.out);
+				System.exit(1);
+			}
+
+		try{
+			ImageIcon price2 = new ImageIcon("img/priser2.png");
+			pricesButton.setToolTipText("OFFPIST: Priser");
+			pricesButton.setPressedIcon(price2);
+			} 
+			catch (Exception e)
+			{
+				e.printStackTrace(System.out);
+			}
+
+
+
+
+		sideMenu.add(newsButton);	
 		sideMenu.add(infoButton);
-
-		ImageIcon offer = new ImageIcon("img/tilbud.png");
-		offersButton = new JButton(offer);
-		offersButton.setToolTipText("OFFPIST: Tilbud");
-		ImageIcon offer2 = new ImageIcon("img/tilbud2.png");
-		offersButton.setPressedIcon(offer2);
-		offersButton.setFocusPainted(false);
-		offersButton.setBorderPainted(false);
-		offersButton.setContentAreaFilled(false);
-
 		sideMenu.add(offersButton);
-
-	
-
-		ImageIcon price = new ImageIcon("img/priser.png");
-		pricesButton = new JButton(price);
-		pricesButton.setToolTipText("OFFPIST: Priser");
-		ImageIcon price2 = new ImageIcon("img/priser2.png");
-		pricesButton.setPressedIcon(price2);
-		pricesButton.setFocusPainted(false);
-		pricesButton.setBorderPainted(false);
-		pricesButton.setContentAreaFilled(false);
-
 		sideMenu.add(pricesButton);
 
 
@@ -215,11 +274,15 @@ public class Info extends JFrame
 		JScrollPane contentScrollPanel = new JScrollPane(contentPanel);
 		add(contentScrollPanel, c);
 
-
-		ImageIcon image = new ImageIcon("img/offpist_liten.png");
-		label = new JLabel(image);
-
-		panel.add(label);
+		try{
+			ImageIcon image = new ImageIcon("img/offpist_liten.png");
+			label = new JLabel(image);
+			panel.add(label);
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace(System.out);
+			}
 
 
 
