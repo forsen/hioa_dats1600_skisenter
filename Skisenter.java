@@ -198,7 +198,7 @@ public class Skisenter
 		return false; 
 	}
 
-/*	<datafelter>
+/*	<datafelter>	
 
 	<konstruktør som oppretter alle lister / vinduer>
 
