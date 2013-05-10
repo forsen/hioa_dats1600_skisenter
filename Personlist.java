@@ -150,25 +150,7 @@ public class Personlist implements Serializable
 		return returnList;
 	}
 
-	public int regThatTime(int nr)
-	{
-		Calendar helper = Calendar.getInstance();
-		Iterator<Person> it = registry.iterator();
-		int antall=0;;
-		
-		while(it.hasNext())
-		{	
-			Person p = it.next();
-			helper.setTime( p.getCreated());
-			
-			if(helper.get(Calendar.MONTH ) == nr)
-			{
-				antall++;
-			}
-			
-		}
-		return antall;
-	}
+
 
 	public List<Card> getRelevantCards(Date start, Date end)
 	{

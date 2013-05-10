@@ -88,37 +88,24 @@ public class Salesclerk extends JFrame
 		salesClerkCustInfoPnl = new JPanel( new BorderLayout() );
 
 
-	
+		//Will not use "try-catch" here, because the panetabs will appear fine, even 
+		//though the pictures cannot be found.
 		ImageIcon kunde = new ImageIcon("img/kunde.png");
-		// custWindowBtn = new JButton(kunde);
-		// ImageIcon kunde2 = new ImageIcon("img/kunde2.png");
-		// // custWindowBtn.setRolloverIcon(kunde2);
-		// // custWindowBtn.setFocusPainted(false);
-		// // custWindowBtn.setContentAreaFilled(false);
-		// // custWindowBtn.setBorderPainted(false);
-		// // custWindowBtn.setToolTipText("Registrering av kunde");
-
 		ImageIcon salg = new ImageIcon("img/salg.png");
-		// salesWindowBtn = new JButton(salg);
-		// ImageIcon salg2 = new ImageIcon("img/salg2.png");
-		// salesWindowBtn.setRolloverIcon(salg2);
-		// salesWindowBtn.setFocusPainted(false);
-		// salesWindowBtn.setContentAreaFilled(false);
-		// salesWindowBtn.setBorderPainted(false);
-		// salesWindowBtn.setToolTipText("Registrering av nytt salg");
-
 		ImageIcon erstatt = new ImageIcon("img/erstatt.png");
-		replaceWindowBtn = new JButton(erstatt);
-		ImageIcon erstatt2 = new ImageIcon("img/erstatt2.png");
-		replaceWindowBtn.setRolloverIcon(erstatt2);
-		replaceWindowBtn.setFocusPainted(false);
-		replaceWindowBtn.setContentAreaFilled(false);
-		replaceWindowBtn.setBorderPainted(false);
-		replaceWindowBtn.setToolTipText("Erstatt kort");
 
-		ImageIcon next = new ImageIcon("img/neste.png");
-		nextCustBtn = new JButton(next);
-		nextCustBtn.setToolTipText("For å ekspedere neste kunde");
+		try{
+
+			ImageIcon next = new ImageIcon("img/neste.png");
+			nextCustBtn = new JButton(next);
+			nextCustBtn.setToolTipText("For å ekspedere neste kunde");
+			}
+		catch(Exception e)
+		{
+			e.printStackTrace(System.out);
+			nextCustBtn = new JButton("Neste kunde");
+		}
+		
 		ImageIcon next2 = new ImageIcon("img/neste2.png");
 		nextCustBtn.setRolloverIcon(next2);
 

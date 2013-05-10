@@ -86,6 +86,8 @@ public class SalesWindowPanel extends JPanel
 			"Du kan enten velge et kortnr fra listen,<br>" +
 			"eller skrive inn kortnr i kortnrfeltet.</HTML>");
 
+		//Will not use "try-catch" here, because the buttons will appear fine, even 
+		//though the pictures cannot be found.
 		ImageIcon cart = new ImageIcon("img/cart.png");
 		ImageIcon payment = new ImageIcon("img/payment.png");
 
