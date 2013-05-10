@@ -9,7 +9,14 @@ import javax.imageio.ImageIO;
 import java.awt.geom.RoundRectangle2D; 
 
 
-
+/**
+  * Class to paint Skicards. Will put the resulting painting in a JPanel.
+  * @author Erik Haider Forsén
+  * @author Ole Hansen
+  * @author Julie Hill Roa
+  * @version 0.9
+  * @see PrintWindow#PrintWindow( Window parent, Card c )
+  */
 public class CardPainting extends JPanel
 {
 	private BufferedImage img;
@@ -29,6 +36,13 @@ public class CardPainting extends JPanel
 	private String customerID; 
 	private Date purchaseDate; 
 
+/**
+  * This constructor gather the necessary data to paint this Skicard. It will
+  * try to load the customers photo image, if failing, it will load our default
+  * photo image for the print. 
+  * It will also prepare the data for painting.
+  * @param c 	The card to be painted
+  */
 	public CardPainting( Card c )
 	{
 		setBackground( Color.WHITE );
@@ -123,6 +137,10 @@ public class CardPainting extends JPanel
 
 	}
 
+/**
+  * This method will do the actual painting. 
+  * @param g 	The graphics object to be used for painting.
+  */
 	public void paintComponent( Graphics g )
 	{
 		super.paintComponent( g );
@@ -165,7 +183,12 @@ public class CardPainting extends JPanel
 
 	}
 
-
+/**
+  * This method will print a horizontal dashed line between the given coordinates.
+  * @param x1Pos 	the x-position to start the line from
+  * @param x2Pos	the x-position where the line ends
+  * @param yPos		the y-position, where to place the horizontal line
+  */
 	private void printDashedLine( int x1Pos, int x2Pos, int yPos, Graphics2D g2d )
 	{
 		float[] dashPattern = {6, 3, 6, 3};
@@ -175,6 +198,14 @@ public class CardPainting extends JPanel
 		g2d.drawLine(x1Pos, yPos, x2Pos, yPos);
 	}
 
+/**
+  * This method prints a centered string. It calculates the length of the String, and 
+  * place it in the middle of the area.
+  * @param s 	the String to be drawn
+  * @param width 	the width of the area you want to have the centered String in
+  * @param xPos 	the x-position where the area starts (left side of your area)
+  * @param yPos 	the y-position where you want to place the String
+  */
 	private void printCenteredString( String s, int width, int xPos, int yPos, Graphics2D g2d)
 	{
 		int stringLength = (int) g2d.getFontMetrics().getStringBounds(s, g2d).getWidth();
@@ -184,6 +215,14 @@ public class CardPainting extends JPanel
 		g2d.drawString(s, start + xPos, yPos );
 	}
 
+/**
+  * This method prints a right aligned string. It calculates the length of the String, and
+  * place it right aligned based on that. 
+  * @param s 	the String to be drawn
+  * @param width 	the width of the area where you want your string to be right aligned
+  * @param xPos 	the x-position where the area starts (left side of your area)
+  * @param yPos 	the y-position where you want to place the String
+  */
 	private void printRightAlignedString( String s, int width, int xPos, int yPos, Graphics2D g2d )
 	{
 		int stringLength = (int) g2d.getFontMetrics().getStringBounds(s, g2d).getWidth();
