@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-
+import java.lang.Math;
 //Superclass for all the different cardtypes 
 
 public abstract class Skicard implements Serializable 
@@ -69,6 +69,10 @@ public abstract class Skicard implements Serializable
 	{
 		return discount;
 	}
+	public void setDiscount(double d)
+	{
+		discount = d;
+	}
 
 	public int getAgeGroup()
 	{
@@ -108,17 +112,28 @@ public abstract class Skicard implements Serializable
 
 	public String toString()
 	{
-		StringBuilder text = new StringBuilder();
+		
 
-		//text.append("Card ID: " + cardNumber + "\n");
+		int disc = (int)(100 - (discount * 100));
+		String age = null;
+
+		if(ageGroup == CHILD)
+			age = "Barn";
+		if(ageGroup == ADULT)
+			age = "Voksen";
+
+
+
+		StringBuilder text = new StringBuilder();
 		text.append("Price: ");
 		text.append(price);
 		text.append("\t");
 		text.append("Discount: ");
-		text.append(discount);
+		text.append("" + disc);
+		text.append("%");
 		text.append( "\t");
 		text.append( "Aldersgruppe: ");
-		text.append(ageGroup);
+		text.append(age);
 		
 
 

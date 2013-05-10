@@ -40,7 +40,8 @@ public class Hourcard extends Timebasedcard
 		{
 			Calendar cal = Calendar.getInstance(); 
 			cal.setTime(super.getExpires());
-			expires = ( "" + cal.get(Calendar.DAY_OF_MONTH) + "." + (cal.get(Calendar.MONTH ) + 1) + "." + cal.get(Calendar.YEAR ) );
+			expires = ( "" + cal.get(Calendar.DAY_OF_MONTH) + "." + (cal.get(Calendar.MONTH ) + 1) + "." + cal.get(Calendar.YEAR ) 
+				+ " kl " + cal.get(Calendar.HOUR_OF_DAY) + ":" +  cal.get(Calendar.MINUTE));
 		}
 
 		return  "Timeskort\tGår ut: " + expires + "\t"+super.toString();
