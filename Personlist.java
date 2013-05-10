@@ -290,22 +290,30 @@ public class Personlist implements Serializable
 		sort();
 		String[] columnName = {"Fornavn", "Etternavn", "Født", "Tlf Nummer", "Opprettet"};
 		Object[][] people = new Object[registry.size() ][5]; 
-
+		
 		
 		Iterator<Person> it = registry.iterator();
 		
 		for(int i = 0; i < registry.size(); i++)
 		{	
 			Person runner = it.next();
+			Calendar cal = Calendar.getInstance();
+			Calendar cal2 = Calendar.getInstance();  
+			cal.setTime(runner.getBirth());
+			cal2.setTime(runner.getCreated());
+			String born = "" + cal.get(Calendar.DAY_OF_MONTH) + "."+ (cal.get(Calendar.MONTH ) + 1) +"."+ cal.get(Calendar.YEAR );
+			String created = "" + cal2.get(Calendar.DAY_OF_MONTH) +"."+  (cal2.get(Calendar.MONTH ) + 1) +"."+  cal2.get(Calendar.YEAR );
+
 			
 			people[i][0] = runner.getLastName();
 			people[i][1] = runner.getFirstName();
-			people[i][2] = runner.getBirth();
+			people[i][2] = born;
 			people[i][3] = runner.getphoneNr();
-			people[i][4] = runner.getCreated();
+			people[i][4] = created;
 		
 		} 
 		JTable perstable = new JTable(people,columnName);
+		perstable.setAutoCreateRowSorter(true);
 		perstable.setEnabled(false);
 		return perstable;
 		
