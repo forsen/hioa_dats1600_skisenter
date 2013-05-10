@@ -4,11 +4,13 @@ import java.awt.event.*;
 import javax.swing.event.*;
 import java.io.*;
 import java.util.Date;
+import java.awt.image.BufferedImage;
+import javax.imageio.*;
 
 public class SpOfferWindowPanel extends JPanel
 {
 	private JLabel offerPic1, offerPic2, offerPic3, offer1, offer2, offer3;
-
+	private BufferedImage offerPic1Img, offerPic2Img, offerPic3Img;
 
 
 	public SpOfferWindowPanel()
@@ -19,30 +21,36 @@ public class SpOfferWindowPanel extends JPanel
 		setBackground(new Color(220, 240, 255));
 
 		try{
-			ImageIcon ff = new ImageIcon("img/freakyfriday.png");
+			offerPic1Img = ImageIO.read( new File("img/freakyfriday.png"));
+			ImageIcon ff = new ImageIcon(offerPic1Img);
 			offerPic1 = new JLabel(ff);
 			}
 		catch(Exception e)
 		{
 			e.printStackTrace(System.out);
+			JOptionPane.showMessageDialog(null, "En fil(freakyfriday.png) mangler. Reinstaller programmet for bedre opplevelse.", "Feil: manglende fil", JOptionPane.INFORMATION_MESSAGE);
 		}
 
 		try{
-			ImageIcon gD = new ImageIcon("img/groupdiscount.png");
+			offerPic2Img = ImageIO.read( new File("img/groupdiscount.png"));
+			ImageIcon gD = new ImageIcon(offerPic2Img);
 			offerPic2 = new JLabel(gD);
 			}
 		catch(Exception e)
 		{
 			e.printStackTrace(System.out);
+			JOptionPane.showMessageDialog(null, "En fil(groupdiscount.png) mangler. Reinstaller programmet for bedre opplevelse.", "Feil: manglende fil", JOptionPane.INFORMATION_MESSAGE);
 		}
 
 		try{
-			ImageIcon sD = new ImageIcon("img/studentdiscount.png");
+			offerPic3Img = ImageIO.read( new File("img/studentdiscount.png"));
+			ImageIcon sD = new ImageIcon(offerPic3Img);
 			offerPic3 = new JLabel(sD);
 			}
 		catch(Exception e)
 		{
 			e.printStackTrace(System.out);
+			JOptionPane.showMessageDialog(null, "En fil(studentdiscount.png) mangler. Reinstaller programmet for bedre opplevelse.", "Feil: manglende fil", JOptionPane.INFORMATION_MESSAGE);
 		}
 
 		
