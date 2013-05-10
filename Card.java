@@ -203,11 +203,33 @@ public class Card implements Serializable
 		
 		return doneText;
 	}
+	/*public Object[][] cardinfo()
+	{
+		Object[][] cardinfo = new Object[skiCardList.size()][5];
+		Iterator<Skicard> it = skiCardList.iterator();
+		
+		for(int i = 0; i < 5; i++)
+		{
+			Skicard runner = it.next();
+			Object[] info = runner.cardinfo();
+
+			cardinfo[i][0] = info[0];
+			cardinfo[i][1] = info[1];
+			cardinfo[i][2] = info[2];
+			cardinfo[i][3] = info[3];
+			cardinfo[i][4] = info[4];
+		}
+		return cardinfo;
+	
+		
+
+	}*/
 
 /**
   * The toString method for this Card
   * @return Returns a String containing some text and the ID of the Card
 */
+	
 	public String toString()
 	{
 		return "Kortnr: " + cardNumber;

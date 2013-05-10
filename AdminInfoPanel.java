@@ -22,7 +22,7 @@ public class AdminInfoPanel extends JPanel
 	private Personlist list;
 	private List<Validations> validations;
 	private Cardlist cardregistry;
-	private JTable perstable, passTable;
+	private JTable perstable, passTable, cardTable;
 	private Toolkit toolbox;
 	private JList<Person> reg;
 	private DefaultListModel<Person> model;
@@ -54,8 +54,9 @@ public class AdminInfoPanel extends JPanel
 		listener = new Listener();
 		reg = null;
 
-		showpersons();
+		/*showpersons();
 		showpassings();
+		showCards();*/
 
 
 		display = new JTextArea(1,65);
@@ -164,7 +165,7 @@ public class AdminInfoPanel extends JPanel
 	private void showCards()
 	{
 
-		display.setText(cardregistry.toString());
+		cardTable = unregCardTable();
 		
 	}
 
@@ -264,6 +265,61 @@ public class AdminInfoPanel extends JPanel
 		
 	}	
 
+	public JTable unregCardTable()
+	{
+		String[] columnName = {"Kortnummer", "Type", "Går ut", "Pris", "Rabatt", "Aldersgruppe"};
+		DefaultListModel<Card> cards = cardregistry.listCards();
+		Object[][] unRegCards = new Object[cards.size() ][6]; 
+		int size = cards.getSize();
+		
+		
+		for(int i = 0; i < size; i++)
+		{	
+			Card runner = cards.getElementAt(i);
+			unRegCards[i][0] = runner.getCardID();
+
+			for(int j = 0; j<size; j++)
+			{
+				List<Skicard> skicards = runner.getSkicardlist();
+				Iterator it = skicards.iterator();
+				while(it.hasNext())
+				{	
+					Skicard skicrunner = (Skicard)it.next();
+					
+					
+					for(int h = 1; h<skicards.size(); h++)
+					{
+						unRegCards[i][1] = skicrunner.getType("");
+
+						if( skicrunner instanceof Timebasedcard)
+						{
+							
+							unRegCards[i][2] = ((Timebasedcard) skicrunner).getExpires();
+						}
+				
+						else if (skicrunner instanceof Punchcard)
+						{	
+							
+							unRegCards[i][2] = ((Punchcard) skicrunner).getClipCount();
+						}
+						
+						
+						unRegCards[i][3] = skicrunner.getPrice();
+						unRegCards[i][4] = skicrunner.getDiscount();
+						unRegCards[i][5] = skicrunner.getAgeGroup();
+					}
+				}
+		
+			} 
+		}
+		JTable unRegCtable = new JTable(unRegCards,columnName);
+		unRegCtable.setAutoCreateRowSorter(true);
+		unRegCtable.setEnabled(false);
+		return unRegCtable;
+		
+		
+	}
+
 	
 
 
@@ -292,7 +348,7 @@ public class AdminInfoPanel extends JPanel
       		if(e.getSource() == showCards)
       		{
       			showCards();
-      			scroll.setViewportView(display);
+      			scroll.setViewportView(cardTable);
       		}
       		if(e.getSource() == showPassings)
       		{

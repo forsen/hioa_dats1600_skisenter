@@ -29,6 +29,7 @@ public class Daycard extends Timebasedcard
 		expires = calHelper.getTime();
 	}
 
+
 	public String toString()
 	{
 

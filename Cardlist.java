@@ -4,6 +4,7 @@ import java.util.*;
 import javax.swing.DefaultListModel;
 import java.util.Date;
 import java.util.Calendar;
+import javax.swing.*;
 
 public class Cardlist implements Serializable
 {
@@ -145,6 +146,9 @@ public class Cardlist implements Serializable
 		return total;
 	}
 //END OF STATISTIKK//////////////////////////////////////////////////////////////////////
+	
+
+
 	public String toString()
 	{
 		StringBuilder text = new StringBuilder();
