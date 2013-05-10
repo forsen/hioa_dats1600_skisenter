@@ -592,7 +592,9 @@ public class CashRegister extends JDialog
 		PrintWindow w = new PrintWindow( this, orderList, paymentMethod, sum );
 	}
 
-
+/**
+  * This class will simulate the "click" animation on the button when shortkeys are used instead of mouse click.
+  */
 	private class KeyLstnr extends AbstractAction
 	{
 		public void actionPerformed( ActionEvent e )
@@ -674,7 +676,11 @@ public class CashRegister extends JDialog
 	}
 
 
-
+/**
+  * A method to set a custom font.
+  * @param s 	The filepath of the custom font you want to use
+  * @return Returns true if it succeeded in setting the new font, false otherwise.
+  */
 	public boolean setFonts(String s)
 	{
 		try{
