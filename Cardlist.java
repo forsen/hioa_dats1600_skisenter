@@ -131,10 +131,12 @@ public class Cardlist implements Serializable
 		return tempList;
 	}
 
-
-
-
-//END OF STATISTIKK//////////////////////////////////////////////////////////////////////
+/**
+  * The toString method for this class. 
+  * @return Returns a String containing Card.toString() and Card.history().
+  * @see Card#history()
+  * @see Card#toString()
+  */
 	public String toString()
 	{
 		StringBuilder text = new StringBuilder();
