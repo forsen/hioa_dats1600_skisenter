@@ -1,4 +1,3 @@
-
 import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.event.*;
@@ -11,6 +10,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.text.NumberFormat;
+
+/**
+  * This class creates the statistics panel on the Admin window. The statistics panel can display reports and graphs of data, revenue, registered person,
+  * sold cards, and validations.
+  * @author Erik Haider Forsén
+  * @author Ole Hansen
+  * @author Julie Hill Roa
+  * @version 0.9
+  */
+
 
 public class AdminStatistikkPanel extends JPanel
 {	
@@ -37,10 +46,14 @@ public class AdminStatistikkPanel extends JPanel
 	public final static int PERSON = 3; 
 	public final static int REVENUE = 4; 
 
-
-	// fjern etterhvert
 	private int[][] graph;
 
+/**
+  * This constructor creates elements and place them on the panel. It also receives the necessary data to create the reports and graphs.
+  * @param l 	The personlist to show stats about
+  * @param v 	The validations to show stats about
+  * @param cr 	The cardlist to show stats about
+  */
 	public AdminStatistikkPanel(Personlist l,List<Validations> v, Cardlist cr )
 	{
 		setBackground(new Color(200, 230, 255));
@@ -227,11 +240,10 @@ public class AdminStatistikkPanel extends JPanel
 
 
 	}
-//START-BEREGN
 
-
-
-
+/**
+  * This method will gather the data based on a time range, compile it to a nested array, and put the data to display as a report and as a graph. 
+  */
 	private void totalRegPepole()
 	{
 
@@ -246,6 +258,7 @@ public class AdminStatistikkPanel extends JPanel
 
 		int[][] regPeopleIntrvl = cal.totalRegPeople(start, end);
 		
+		// the following code is necessary to repaint the graph with new data. 		
 		graphPnl = new GraphPanel( regPeopleIntrvl, scale, "Ant", formatter.format(start) + " - " + formatter.format(end), PERSON );
 		int idx = tabDisp.getSelectedIndex();
 		tabDisp.remove( 1 );
@@ -262,7 +275,9 @@ public class AdminStatistikkPanel extends JPanel
 		display.append( "" + total );
 		
 	}
-
+/**
+  * This method will gather the data based on a time range, compile it to a nested array, and put the data to display as a report and as a graph. 
+  */
 	private void totalSoldCard()
 	{
 		Date start;
@@ -276,6 +291,7 @@ public class AdminStatistikkPanel extends JPanel
 
 		int[][] soldCardIntrvl = cal.totalSoldCard(start, end);
 
+		// the following code is necessary to repaint the graph with new data. 
 		graphPnl = new GraphPanel( soldCardIntrvl, scale, "Ant", formatter.format(start) + " - " + formatter.format( end ), CARDS );
 		int idx = tabDisp.getSelectedIndex();
 		tabDisp.remove( 1 );
@@ -297,7 +313,9 @@ public class AdminStatistikkPanel extends JPanel
 		display.append( "\nFysiske kort: \t" + total[4] );
 	}
 
-
+/**
+  * This method will gather the data based on a time range, compile it to a nested array, and put the data to display as a report and as a graph. 
+  */
 	private void passings()
 	{
 		Date start; 
@@ -310,7 +328,8 @@ public class AdminStatistikkPanel extends JPanel
 			return; 
 
 		int[][] passingsIntrvl = cal.showPassings( start, end );
-
+		
+		// the following code is necessary to repaint the graph with new data. 
 		graphPnl = new GraphPanel( passingsIntrvl, scale, "Ant", formatter.format( start ) + " - " + formatter.format( end ), VALIDS ); 
 		int idx = tabDisp.getSelectedIndex();
 		tabDisp.remove( 1 );
@@ -335,7 +354,9 @@ public class AdminStatistikkPanel extends JPanel
 		display.append("\nTotalt: " + "\t\t" + total ); 
 	}
 
-
+/**
+  * This method will gather the data based on a time range, compile it to a nested array, and put the data to display as a report and as a graph. 
+  */
 	private void revenue()
 	{
 
@@ -350,6 +371,7 @@ public class AdminStatistikkPanel extends JPanel
 
 		int[][] totalRevenue = cal.totalRevenue(start, end);
 		
+		// the following code is necessary to repaint the graph with new data. 		
 		graphPnl = new GraphPanel( totalRevenue, scale, "KR", formatter.format(start) + " - " + formatter.format(end), REVENUE );
 		int idx = tabDisp.getSelectedIndex();
 		tabDisp.remove( 1 );
@@ -379,10 +401,14 @@ public class AdminStatistikkPanel extends JPanel
 		
 	}
 
-//END-BEREGN
 
-//START-GRAF
 
+
+/**
+  * A method to retrieve the start Date of the range. If no start Date is specified, it will use the date when this Skisenter first opened.
+  * @return Returns a Date object for the beginning of the range
+  * @see Info#firstLight
+  */
 	private Date getStartDate()
 	{
 		Date start; 
@@ -406,6 +432,10 @@ public class AdminStatistikkPanel extends JPanel
 
 	}
 
+/**
+  * A method to retrieve the end Date of the range. If no end Date is specified, it will use the today's date.
+  * @return Returns a Date object for the end of the range
+  */
 	private Date getEndDate()
 	{
 		Date end; 
@@ -437,11 +467,6 @@ public class AdminStatistikkPanel extends JPanel
        		if (e.getSource() == soldCardsBtn )
        		{
        			totalSoldCard();
-
-
-
-/* 			Dirty hack to have the panel refresh when you draw new data on it */
-
        		}
        		else if (e.getSource() == regPersBtn )
        			totalRegPepole();

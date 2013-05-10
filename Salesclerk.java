@@ -9,6 +9,8 @@ import java.io.*;
 import java.text.ParseException;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.awt.image.BufferedImage;
+import javax.imageio.*;
 
 
 public class Salesclerk extends JFrame
@@ -20,6 +22,7 @@ public class Salesclerk extends JFrame
 	private JButton custWindowBtn, salesWindowBtn, replaceWindowBtn, nextCustBtn;
 	private JPanel custWindowPnl, salesWindowPnl, replaceWindowPnl, statusPnl; 
 	private JPanel framePnl, salesClerkCustInfoPnl;
+	private BufferedImage nextCustBtnImg;
 	public static JTextArea statusTxt;
 
 	//replaceWindowTxt
@@ -95,8 +98,8 @@ public class Salesclerk extends JFrame
 		ImageIcon erstatt = new ImageIcon("img/erstatt.png");
 
 		try{
-
-			ImageIcon next = new ImageIcon("img/neste.png");
+			nextCustBtnImg = ImageIO.read( new File("img/neste.png"));
+			ImageIcon next = new ImageIcon(nextCustBtnImg);
 			nextCustBtn = new JButton(next);
 			nextCustBtn.setToolTipText("For å ekspedere neste kunde");
 			}

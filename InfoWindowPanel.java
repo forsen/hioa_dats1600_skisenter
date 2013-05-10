@@ -5,6 +5,7 @@ import javax.swing.event.*;
 import java.io.*;
 import java.util.Date;
 import javax.imageio.*;
+import java.awt.image.BufferedImage;
 
 public class InfoWindowPanel extends JPanel
 {
@@ -13,6 +14,7 @@ public class InfoWindowPanel extends JPanel
 	private JLabel content;
 	private JTable liftTable;
 	private JScrollPane liftScrollPane;
+	private BufferedImage snowboarderImg, skimapImg;
 
 
 
@@ -29,23 +31,28 @@ public class InfoWindowPanel extends JPanel
 		setBackground(new Color(220, 240, 255));
 
 		try{
-			ImageIcon snowboarder = new ImageIcon("img/snowboarder.png");
+			snowboarderImg = ImageIO.read( new File("img/snowboarder.png"));
+			ImageIcon snowboarder = new ImageIcon(snowboarderImg);
 			headerImg1 = new JLabel(snowboarder);
 			headerImg1.setHorizontalAlignment(JLabel.CENTER);
 			}
 		catch(Exception e)
 		{
 			e.printStackTrace(System.out);
+			JOptionPane.showMessageDialog(null, "En fil(snowboarder.png) mangler. Reinstaller programmet for bedre opplevelse.", "Feil: manglende fil", JOptionPane.INFORMATION_MESSAGE);
 		}
 
 		try{
-			ImageIcon skimap = new ImageIcon("img/skimap.png");
+			skimapImg = ImageIO.read( new File("img/skimap.png"));
+			ImageIcon skimap = new ImageIcon(skimapImg);
 			headerImg2 = new JLabel(skimap);
 			headerImg2.setHorizontalAlignment(JLabel.CENTER);
 			}
 		catch(Exception e)
 		{
 			e.printStackTrace(System.out);
+	    	JOptionPane.showMessageDialog(null, "En fil(skimap.png) mangler. Reinstaller programmet for bedre opplevelse.", "Feil: manglende fil", JOptionPane.INFORMATION_MESSAGE);
+
 		}
 
 
