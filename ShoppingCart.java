@@ -157,7 +157,7 @@ public class ShoppingCart
 			{	
 				try
 				{
-					unregCardList.input(cIt.next());
+					unregCardList.addCard(cIt.next());
 				}
 				catch( NullPointerException npe )
 				{

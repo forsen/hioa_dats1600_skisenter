@@ -105,10 +105,6 @@ public class Person implements Serializable, Comparable<Person>
 		return p.getFirstName().equals( firstname ) && p.getLastName().equals( lastname )&& (p.getphoneNr() == ( phoneNr ) ) && (p.getBirth().compareTo( born ) == 0);
 	}
 
-	public Person ownsCard(Card card)
-	{
-		return (list.ownsCard( card ) == true )? this : null ;
-	}
 
 	// legg til en "add ski card" metode her, som tar imot
 	// et skikort, sammen med et kortid, og legger det til riktig 
@@ -157,11 +153,6 @@ public class Person implements Serializable, Comparable<Person>
 	}
 
 //STATISTIKK//////////////////////////////////////////////////////////////////////////
-
-	public int soldCards()
-	{
-		return list.allCards();
-	}
 
 
 	public List<Card> getRelevantCards(Date start, Date end)

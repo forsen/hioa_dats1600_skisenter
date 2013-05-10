@@ -399,6 +399,11 @@ public class Calculator
 		return days; 
 	}
 
+/**
+  * This method calculates how many days there is in a given year, basically calculating leap year.
+  * @param y 	The year you want to calculate
+  * @return number of days in year y. 
+  */
 	private int daysPerYear( int y )
 	{
 		return (( y % 4 == 0 && y % 100 != 0 )  || (y % 400 == 0 )? 366:365 );

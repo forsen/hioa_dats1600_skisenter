@@ -24,7 +24,7 @@ public class Card implements Serializable
   *
   *	@param b 	The creation date of the Card
   *
-*/
+  */
 	public Card( Date b )
 	{
 		Skisenter.unsaved = true; 
@@ -39,7 +39,7 @@ public class Card implements Serializable
   * @param obj the Skicard to be added. It will also become the current Skicard
   * @return Returns information about the Skicard you added (its toString())
   *
-*/
+  */
 	public String input( Skicard obj )
 	{
 		skiCardList.add(obj);
@@ -50,7 +50,7 @@ public class Card implements Serializable
 /**
   * Method to retrieve the current Skicard
   * @return Returns the current Skicard object
- */
+  */
 	public Skicard getCurrent()
 	{
 		return current; 
@@ -59,7 +59,7 @@ public class Card implements Serializable
 /**
   * Method to set the current Skicard
   * @param c the Skicard to be set as current
- */
+  */
 	public void setCurrent(Skicard c)
 	{
 		 current = c; 
@@ -67,7 +67,7 @@ public class Card implements Serializable
 /**
   * Method to mark a Card as "returned". When a customer wish to return a Card, it's still kept in his Skicard list for 
   * keeping statistics etc. 
-*/
+  */
 	public void setReturned()
 	{
 		returned = true; 
@@ -76,7 +76,7 @@ public class Card implements Serializable
 /**
   * Method to check if this card is returned, and should only appear in statistics
   * @return the returned status of this Card
- */
+  */
 	public boolean getReturned()
 	{
 		return returned;
@@ -85,7 +85,7 @@ public class Card implements Serializable
 /**
   * Method to retrieve information of when this Card was bought (created)
   * @return the creation date of this Card
-*/
+  */
 	public Date getCardBought()
 	{
 		return bought;
@@ -94,7 +94,7 @@ public class Card implements Serializable
 /**
   * Method to retrieve the unique ID of this Card
   * @return ID of this Card
-*/
+  */
 	public int getCardID()
 	{
 		return cardNumber; 
@@ -104,7 +104,8 @@ public class Card implements Serializable
   * Method to save the next Card number when writing to file, as static variables is not written with the Object. Unless we save this 
   * varible, we'll end up with several cards with the same ID, as it will start over at the beginning after a restart of the program.
   * @return returns the next available ID for new cards.
-*/
+  * @see Skisenter#saveFile()
+  */
 	public static int readNext()
 	{
 		return next;
@@ -112,9 +113,11 @@ public class Card implements Serializable
 
 /**
   * Method to write the next Card number when reading from file. 
-  * @see #readNext()
+  *
   * @param n the next available ID for Cards
-*/
+  * @see #readNext()
+  * @see Skisenter#readFile()
+  */
 	public static void setNext( int n )
 	{
 		next = n; 
@@ -124,7 +127,7 @@ public class Card implements Serializable
   * Method to copy a Skicard list from one Card to another. 
   * @param c the Skicard list you want to set
   * @see ReplaceWindowPanel#replace()
-*/
+  */
 	public void setSkicardlist(List<Skicard> c)
 	{
 		skiCardList = c; 
@@ -135,7 +138,7 @@ public class Card implements Serializable
   * @return the Skicard list of this Card
   * @see ReplaceWindowPanel#replace()
   * @see #setSkicardlist( List )
-*/
+  */
 	public List<Skicard> getSkicardlist()
 	{
 		return skiCardList; 
@@ -144,21 +147,19 @@ public class Card implements Serializable
 /**
   * Method to get the date when the current Skicard for this Card was bought
   * @return Date when the current card was bought
-*/
+  */
 	public Date getBought()
 	{
 		return current.getBought();
 	}
 
-
-//STATISTIKK//////////////////////////////////////////////////////////////////
 /**
   * Method to help generate statistics.
   * @param start The start date of the interval you want to get Skicards from
   * @param end The end date of the interval you want to get Skicards from
   * @return Returns a list of all the Skicards this Card holds, between the dates specified. 
   * @see AdminStatistikkPanel
-*/
+  */
 	public List<Skicard> getRelevantCards(Date start, Date end)
 	{
 		List<Skicard> tempList = new LinkedList<>();
@@ -177,13 +178,11 @@ public class Card implements Serializable
 
 	}
 
-	
 /**
   * Method to get information on all the previous Skicards on this Card
   * @return A string containing information on all the previous Skicards on this Card
   * @see Skicard#toString()
-*/
-	//metode for å se hva slags type kort dette kortet tidligere har vært
+  */
 	public String history()
 	{
 		StringBuilder text = new StringBuilder();
@@ -194,20 +193,17 @@ public class Card implements Serializable
 		{
 			Skicard runner = it.next();
 			text.append(runner.toString());
-			text.append("\n");
-
-		
+			text.append("\n");	
 		} 
 		
 		String doneText = text.toString();
 		
 		return doneText;
 	}
-
 /**
   * The toString method for this Card
   * @return Returns a String containing some text and the ID of the Card
-*/
+  */
 	public String toString()
 	{
 		return "Kortnr: " + cardNumber;
