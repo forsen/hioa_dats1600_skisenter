@@ -1,4 +1,3 @@
-
 import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.border.*;
@@ -14,6 +13,15 @@ import javax.swing.table.AbstractTableModel;
 import java.util.Locale;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+
+/**
+  * This class creates the info panel on the Admin window. The info panel can display information on our different registries, like person registry,
+  * card registry, validations registry.
+  * @author Erik Haider Forsén
+  * @author Ole Hansen
+  * @author Julie Hill Roa
+  * @version 0.9
+  */
 
 public class AdminInfoPanel extends JPanel
 {	
@@ -33,6 +41,13 @@ public class AdminInfoPanel extends JPanel
 	private NumberFormat paymentFormat;
 
 
+/**
+  * The constructor creates all the elements and place them on the panel. 
+  * @param l 	the personlist to show information about
+  * @param v 	the validations to show information about
+  * @param cr 	the cardlist to show information about
+  * @see Admin
+  */
 	public AdminInfoPanel(Personlist l,List<Validations> v, Cardlist cr )
 	{
 		Border etched = BorderFactory.createEtchedBorder();
@@ -57,11 +72,6 @@ public class AdminInfoPanel extends JPanel
 
 		listener = new Listener();
 		reg = null;
-
-		/*showpersons();
-		showpassings();
-		showCards();*/
-
 
 		display = new JTextArea(1,65);
 		display.setEditable(false);
@@ -108,17 +118,12 @@ public class AdminInfoPanel extends JPanel
 		showPassings.addActionListener( listener );
 		showPersons.setToolTipText("Vis en liste over alle passeringer som er gjort i alle heiser ");
 		butnPnl.add(showPassings);
-
-		 
-		
-
-		
+	
 		setLayout( new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.VERTICAL;
 		c.anchor = GridBagConstraints.PAGE_END;
 	
-
 		add(fieldPnl, c);
 
 		c.gridy=1;
@@ -132,11 +137,12 @@ public class AdminInfoPanel extends JPanel
 		add(dispPnl, c);
 
 		c.gridy=3;
-
-		
-
-
 	}
+
+/** 
+  * This method is used to find a person based on the card number. It will add the persons toString() info to the display if found. 
+  * @see Person
+  */
 
 	private void findPerson()
 	{
@@ -149,7 +155,9 @@ public class AdminInfoPanel extends JPanel
 				int cardnr = Integer.parseInt(crdNr.getText());
 				Person p = list.findPersonByCard(cardnr);
 				display.setText(p.toString());
-			}JOptionPane.showMessageDialog(null,"Du må ha 6 siffre");
+			}
+			else
+				JOptionPane.showMessageDialog(null,"Du må ha 6 siffre");
 		}
 		catch(NullPointerException npe)
 		{
@@ -158,6 +166,9 @@ public class AdminInfoPanel extends JPanel
 		
 	} 
 
+/**
+  * This method writes out every person to the display, including all the cards this person holds. 
+  */
 
 	private void showPersonsWithcards()
 	{
@@ -165,26 +176,6 @@ public class AdminInfoPanel extends JPanel
 		display.setText(list.toString());
 	}
 
-		
-	private void showCards()
-	{
-
-		cardTable = unregCardTable();
-		
-	}
-
-	private void showpersons()
-	{
-		perstable = list.personTable();
-		
-	}
-
-	private void showpassings()
-	{
-		passTable = showPassings();
-	}
-	
-	
 	private void deletePerson()
 	{
 		Person p = null;
@@ -463,32 +454,23 @@ public class AdminInfoPanel extends JPanel
       			scroll.setViewportView(display);
       		}
       		if(e.getSource() == showPersons)
-      		{
+      			scroll.setViewportView(list.personTable());
 
-      			showpersons();
-      			scroll.setViewportView(perstable);
-
-      		}
       		if(e.getSource() == showPersWcards)
       		{
       			showPersonsWithcards();
       			scroll.setViewportView(display);
       		}
       		if(e.getSource() == showCards)
-      		{
-      			showCards();
-      			scroll.setViewportView(cardTable);
-      		}
+      			scroll.setViewportView(unregCardTable());
+
       		if(e.getSource() == showPassings)
-      		{
-      			showpassings();
-      			scroll.setViewportView(passTable);
-      		}
+      			scroll.setViewportView(showPassings());
+
       		if(e.getSource() == deletePersBtn)
-      		{
       			deletePerson();	
-      		}
     	}
 	}	
 }
+// end of class AdminInfoPanel
 	

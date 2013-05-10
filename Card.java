@@ -211,3 +211,4 @@ public class Card implements Serializable
 		return "Kortnr: " + cardNumber;
 	}
 }
+// end of class Card
