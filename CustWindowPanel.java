@@ -1,4 +1,4 @@
- import javax.swing.*;
+import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -29,6 +29,7 @@ public class CustWindowPanel extends JPanel
 	private File img; 
 	private ImageUtility iu;
 	
+
 
 	public CustWindowPanel( Personlist cr, JTextArea s )
 	{

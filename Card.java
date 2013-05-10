@@ -206,9 +206,6 @@ public class Card implements Serializable
   * The toString method for this Card
   * @return Returns a String containing some text and the ID of the Card
 */
-	
-
-
 	public String toString()
 	{
 		return "Kortnr: " + cardNumber;
