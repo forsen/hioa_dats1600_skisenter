@@ -28,8 +28,26 @@ public class InfoWindowPanel extends JPanel
 		c.fill = GridBagConstraints.BOTH;
 		setBackground(new Color(220, 240, 255));
 
-		ImageIcon snowboarder = new ImageIcon("img/snowboarder.png");
-		ImageIcon skimap = new ImageIcon("img/skimap.png");
+		try{
+			ImageIcon snowboarder = new ImageIcon("img/snowboarder.png");
+			headerImg1 = new JLabel(snowboarder);
+			headerImg1.setHorizontalAlignment(JLabel.CENTER);
+			}
+		catch(Exception e)
+		{
+			e.printStackTrace(System.out);
+		}
+
+		try{
+			ImageIcon skimap = new ImageIcon("img/skimap.png");
+			headerImg2 = new JLabel(skimap);
+			headerImg2.setHorizontalAlignment(JLabel.CENTER);
+			}
+		catch(Exception e)
+		{
+			e.printStackTrace(System.out);
+		}
+
 
 
 
@@ -45,8 +63,7 @@ public class InfoWindowPanel extends JPanel
 		add(header, c);
 
 		c.gridy=1;
-		headerImg2 = new JLabel(skimap);
-		headerImg2.setHorizontalAlignment(JLabel.CENTER);
+
 		add(headerImg2, c);
 
 		content = new JLabel("<html>Skitrekket består av to heiser, en stolheis og en krokheis. Vi har alt fra grønne til svarte løyper, <br>" +
@@ -113,8 +130,7 @@ public class InfoWindowPanel extends JPanel
 		c.gridy = 6;
 
 		add(content, c);
-		headerImg1 = new JLabel(snowboarder);
-		headerImg1.setHorizontalAlignment(JLabel.CENTER);
+
 		
 		c.gridy=7;
 		add(headerImg1, c);

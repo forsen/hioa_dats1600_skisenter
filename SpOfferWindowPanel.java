@@ -18,12 +18,38 @@ public class SpOfferWindowPanel extends JPanel
 		
 		setBackground(new Color(220, 240, 255));
 
-		ImageIcon ff = new ImageIcon("img/freakyfriday.png");
-		ImageIcon gD = new ImageIcon("img/groupdiscount.png");
-		ImageIcon sD = new ImageIcon("img/studentdiscount.png");
-		offerPic1 = new JLabel(ff);
-		offerPic2 = new JLabel(gD);
-		offerPic3 = new JLabel(sD);
+		try{
+			ImageIcon ff = new ImageIcon("img/freakyfriday.png");
+			offerPic1 = new JLabel(ff);
+			}
+		catch(Exception e)
+		{
+			e.printStackTrace(System.out);
+		}
+
+		try{
+			ImageIcon gD = new ImageIcon("img/groupdiscount.png");
+			offerPic2 = new JLabel(gD);
+			}
+		catch(Exception e)
+		{
+			e.printStackTrace(System.out);
+		}
+
+		try{
+			ImageIcon sD = new ImageIcon("img/studentdiscount.png");
+			offerPic3 = new JLabel(sD);
+			}
+		catch(Exception e)
+		{
+			e.printStackTrace(System.out);
+		}
+
+		
+		
+		
+		
+		
 
 		offer1 = new JLabel("<html> Siste fredag i måneden, arrangerer vi FREAKY FRIDAY. Hver Freaky Friday får du halv pris på alle <br> heiskort. Dette er de desidert kuleste dagene i skitrekket våres. <br> <i>PS: FF-rabatten kan ikke kombineres med andre rabatter.</i></html>");
 		offer2 = new JLabel("<html> Kommer du til skianlegget med 9 kamerater, familiemedlemmer eller kolleger kan du vente deg en <br>saftig rabatt. Er dere minst 10 personer, får dere 10% rabatt pr. kort. </html>");

@@ -301,8 +301,8 @@ public class SalesWindowPanel extends JPanel
 			if( !discountTf.getText().isEmpty())
 			{
 				double discount = Double.parseDouble( discountTf.getText());
-
 				discount = (100-discount)/100;
+				sc.setDiscount(discount);
 				sc.setPrice( discount * sc.getPrice() );
 				discountTf.setText(""); 
 			}
