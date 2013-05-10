@@ -1,14 +1,18 @@
-
 import javax.swing.*;
 import java.util.*;
 import java.util.Date;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Iterator;
-
-// kan fjernes
 import java.text.SimpleDateFormat;
 
+/**
+  * Calculator is a class to do the calculations for statistics, reports and graphs.
+  * @author Erik Haider Forsén
+  * @author Ole Hansen
+  * @author Julie Hill Roa
+  * @version 0.9
+  */
 public class Calculator
 {
 	private Personlist custRegistry;
@@ -16,6 +20,15 @@ public class Calculator
 	private List<Validations> validations;
 	private int[][] graph;
 
+/**
+  * This constructor will need access to relevant information to do its calculations
+  * @param cr 	the personlist
+  * @param v 	the validations
+  * @param cl 	the unregistered cards
+  * @see Personlist
+  * @see Validations
+  * @see Cardlist
+  */
 	public Calculator(Personlist cr, List<Validations> v, Cardlist cl )
 	{
 		custRegistry = cr;
@@ -24,6 +37,18 @@ public class Calculator
 	
 	}
 
+/**
+  * This method calculates all cards sold within the specified time range. The result will
+  * be used to draw a graph. Depending on the range, the data will be normalized
+  * to fit within 20 "x-steps" on a graph. The method will also set the proper
+  * scale depending on how many times it is normalized.
+  *
+  * @param s 	Date object representing the start date of the interval
+  * @param e 	Date object representing the end date of the interval
+  * @return This method returns a multidimensional array of Integers[x][y].
+  * The x represents type of card, while y represents the date. The value of
+  * int[x][y] is the number of x cards sold the y'th day.  
+  */
 	public int[][] totalSoldCard(Date s, Date e)
 	{
 		List<Card> clist = custRegistry.getRelevantCards( s, e );
