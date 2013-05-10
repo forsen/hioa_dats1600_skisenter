@@ -38,7 +38,7 @@ public class NewsWindowPanel extends JPanel
 	    catch(Exception e)
 	    {
 	    	e.printStackTrace(System.out);
-	    	JOptionPane.showMessageDialog(null, "En fil(bilde) mangler. Reinstaller programmet for bedre opplevelse.", "Feil: manglende fil", JOptionPane.INFORMATION_MESSAGE);
+	    	JOptionPane.showMessageDialog(null, "En fil(npic4.png) mangler. Reinstaller programmet for bedre opplevelse.", "Feil: manglende fil", JOptionPane.INFORMATION_MESSAGE);
 	    }
 
 		add(icon4,c);
@@ -67,7 +67,7 @@ public class NewsWindowPanel extends JPanel
 	    catch(Exception e)
 	    {
 	    	e.printStackTrace(System.out);
-	    	JOptionPane.showMessageDialog(null, "En fil(bilde) mangler. Reinstaller programmet for bedre opplevelse.", "Feil: manglende fil", JOptionPane.INFORMATION_MESSAGE);
+	    	JOptionPane.showMessageDialog(null, "En fil(npic3.png) mangler. Reinstaller programmet for bedre opplevelse.", "Feil: manglende fil", JOptionPane.INFORMATION_MESSAGE);
 	    }
 
 
@@ -99,7 +99,7 @@ public class NewsWindowPanel extends JPanel
 	    catch(Exception e)
 	    {
 	    	e.printStackTrace(System.out);
-	    	JOptionPane.showMessageDialog(null, "En fil(bilde) mangler. Reinstaller programmet for bedre opplevelse.", "Feil: manglende fil", JOptionPane.INFORMATION_MESSAGE);
+	    	JOptionPane.showMessageDialog(null, "En fil(npic2.png) mangler. Reinstaller programmet for bedre opplevelse.", "Feil: manglende fil", JOptionPane.INFORMATION_MESSAGE);
 
 	    }
 
@@ -129,7 +129,7 @@ public class NewsWindowPanel extends JPanel
 	    catch(Exception e)
 	    {
 	    	e.printStackTrace(System.out);
-	   	    JOptionPane.showMessageDialog(null, "En fil(bilde) mangler. Reinstaller programmet for bedre opplevelse.", "Feil: manglende fil", JOptionPane.INFORMATION_MESSAGE);
+	   	    JOptionPane.showMessageDialog(null, "En fil(npic1.png) mangler. Reinstaller programmet for bedre opplevelse.", "Feil: manglende fil", JOptionPane.INFORMATION_MESSAGE);
 
 	    }
 
