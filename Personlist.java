@@ -168,21 +168,6 @@ public class Personlist implements Serializable
 	}
 
 
-	public int soldCards()
-	{
-		
-		Iterator<Person> it = registry.iterator();
-
-		int sold = 0;
-
-		while(it.hasNext())
-		{
-			Person owner = it.next();
-
-			sold += owner.soldCards();
-		}
-		return sold;
-	}
 //END OF STATISTIKK///////////////////////////////////////////////////////
 	
 
