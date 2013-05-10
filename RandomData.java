@@ -55,9 +55,9 @@ public class RandomData
 			String firstname = gen.compose(2);
 			String lastname = gen.compose( 4 );
 
-			Date dob = randomDate( 1920, 2010 );
+			Date dob = randomDate( 1950, 2010 );
 
-			int number = rand.nextInt( 88888888 + 1) + 1000000; 
+			int number = rand.nextInt( 88888888 + 1) + 10000000; 
 
 			Person p = new Person( firstname, lastname, number, dob, null);
 
@@ -87,7 +87,8 @@ public class RandomData
 
 		Card n = new Card( rDate ); 
 		Skicard s = new Daycard( b, b );
-		int random = randBetween( 1, 4 );
+		//int random = randBetween( 1, 4 );
+		int random = rand.nextInt( 4 ) + 1; 
 		int i = 0; 
 		do
 		{
@@ -147,6 +148,7 @@ public class RandomData
 		Validations v = new Validations( randBetween(1,2), c, d );
 
 		validations.add( v );
+		sc.initialized();
 
 	}
 
