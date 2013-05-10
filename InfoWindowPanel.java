@@ -22,6 +22,10 @@ public class InfoWindowPanel extends JPanel
 
 		setLayout(new GridBagLayout() );
 		GridBagConstraints c = new GridBagConstraints();
+
+
+		c.anchor = GridBagConstraints.PAGE_START;
+		c.fill = GridBagConstraints.BOTH;
 		setBackground(new Color(220, 240, 255));
 
 		ImageIcon snowboarder = new ImageIcon("img/snowboarder.png");
@@ -33,6 +37,7 @@ public class InfoWindowPanel extends JPanel
 
 		header = new JLabel("Skitrekket");
 		header.setFont(new Font("Calibri", Font.BOLD, 20));
+		header.setHorizontalAlignment(JLabel.CENTER);
 
 		c.gridx =0;
 		c.gridy =0;
@@ -41,6 +46,7 @@ public class InfoWindowPanel extends JPanel
 
 		c.gridy=1;
 		headerImg2 = new JLabel(skimap);
+		headerImg2.setHorizontalAlignment(JLabel.CENTER);
 		add(headerImg2, c);
 
 		content = new JLabel("<html>Skitrekket består av to heiser, en stolheis og en krokheis. Vi har alt fra grønne til svarte løyper, <br>" +
@@ -60,6 +66,7 @@ public class InfoWindowPanel extends JPanel
 
 		header = new JLabel("Heiser");
 		header.setFont(new Font("Calibri", Font.BOLD, 20));
+		header.setHorizontalAlignment(JLabel.CENTER);
 		c.gridy=3;
 		add(header, c);
 
@@ -76,6 +83,7 @@ public class InfoWindowPanel extends JPanel
     	liftScrollPane = new JScrollPane(liftTable);
     	liftScrollPane.setPreferredSize(new Dimension(550,55));
 
+
         /* ******************************************************* */
 		c.gridy=4;
 		add(liftScrollPane, c);
@@ -85,8 +93,10 @@ public class InfoWindowPanel extends JPanel
 
 		header = new JLabel("<html><br><br><br>Åpningstider</html>");
 		header.setFont(new Font("Calibri", Font.BOLD, 20));
+		header.setHorizontalAlignment(JLabel.CENTER);
 		c.gridx = 0;
 		c.gridy = 5;
+
 		add(header,c);
 
 		content = new JLabel("<html>Man: 10:00-16:30<br>"
@@ -101,12 +111,35 @@ public class InfoWindowPanel extends JPanel
 
 		c.gridx = 0;
 		c.gridy = 6;
-		c.anchor = GridBagConstraints.PAGE_START;
+
 		add(content, c);
 		headerImg1 = new JLabel(snowboarder);
+		headerImg1.setHorizontalAlignment(JLabel.CENTER);
 		
 		c.gridy=7;
 		add(headerImg1, c);
+
+		header = new JLabel("<html><br><br><br>Kontaktinformasjon</html>");
+		header.setFont(new Font("Calibri", Font.BOLD, 20));
+		header.setHorizontalAlignment(JLabel.CENTER);
+
+		c.gridy=8;
+		add(header, c);
+
+
+
+
+
+		content = new JLabel("<html>Granskogen 1<br>"+
+									"9999, HUNDREMETERFJELLET <br>" +
+							        "Telefon: 22 33 44 66 <br>" +
+							        "E-post : post@offpist.no<br>" +
+							        "<br><br><br></html>");
+	    content.setFont(new Font("Calibri", Font.PLAIN, 14));
+	    content.setHorizontalAlignment(JLabel.CENTER);
+
+		c.gridy=9;
+		add(content,c);
 
 
 

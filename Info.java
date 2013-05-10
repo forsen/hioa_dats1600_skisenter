@@ -217,11 +217,7 @@ public class Info extends JFrame
 
 
 		ImageIcon image = new ImageIcon("img/offpist_liten.png");
-		label = new JLabel("<html>Granskogen 1 - Tlf: 22 33 44 55</html>", image, JLabel.CENTER);
-		label.setHorizontalTextPosition(JLabel.CENTER);
-		label.setVerticalTextPosition(JLabel.BOTTOM);
-		label.setFont(new Font("Calibri", Font.PLAIN, 15));
-		label.setForeground(Color.WHITE);
+		label = new JLabel(image);
 
 		panel.add(label);
 

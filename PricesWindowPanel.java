@@ -71,7 +71,7 @@ public class PricesWindowPanel extends JPanel
 		add(header, c);
 
 		content = new JLabel("<html>Hos oss vil alle småracere som er 16 år eller yngre få kjøre i bakken" +
-							 "til halv pris, uansett type heiskort.<br>Les om fler rabattyper i 'Priser' i fanen til venstre<br><br><br></html>");
+							 "til halv pris, uansett type heiskort.<br>Les om fler rabattyper i 'Tilbud' i fanen til venstre<br><br><br></html>");
 		content.setFont(new Font("Calibri", Font.PLAIN, 14));
 		c.gridx = 1;
 		c.weighty=0;
@@ -87,7 +87,8 @@ public class PricesWindowPanel extends JPanel
 		add(header, c);
 
 		content = new JLabel("<html>Skisenteret tilbyr egen afterski, som går for å være en av landets beste." +
-							"Møt opp med godt humør og <br> tørst hals, her har vi både god partystemning og billige priser i baren.<br><br><br></html>");
+							"Møt opp med godt humør og <br> tørst hals, her har vi både god partystemning og billige priser i baren.<br>"+
+							"Inngang: 50kr. CC: 20 år.<br><br><br></html>");
 		content.setFont(new Font("Calibri", Font.PLAIN, 14));
 		c.gridy=6;
 		c.weighty=0;
