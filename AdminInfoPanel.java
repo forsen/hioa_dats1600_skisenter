@@ -355,11 +355,7 @@ public class AdminInfoPanel extends JPanel
 			case 1:
 				return object.getType();
 			case 2:
-<<<<<<< HEAD
-				return object.getObject();
-=======
-				return object.getString(); 
->>>>>>> 769d90b2c2b25240a45eb3381f55d352fce7a256
+
 			case 3:
 				return object.getPrice();
 			case 4:
