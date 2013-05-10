@@ -270,7 +270,6 @@ public class AdminInfoPanel extends JPanel
 	{
 
 		DefaultListModel<Card> cards = cardregistry.listCards();
-		//Object[][] unRegCards = new Object[cards.size() ][6]; 
 		int size = cards.getSize();
 		
 		ArrayList<ListObject> list = new ArrayList<ListObject>(); 
@@ -297,30 +296,11 @@ public class AdminInfoPanel extends JPanel
 					else if (skicrunner instanceof Punchcard )
 						list.add( new ListObject( runner.getCardID(), skicrunner.getType(""), ((Punchcard) skicrunner).getClipCount(), skicrunner.getPrice(),
 							skicrunner.getDiscount(), skicrunner.getAgeGroup() ) );
-	/*				unRegCards[tblIdx][0] = runner.getCardID();
-					unRegCards[tblIdx][1] = skicrunner.getType("");
-
-					if( skicrunner instanceof Timebasedcard)
-					{	
-						unRegCards[tblIdx][2] = ((Timebasedcard) skicrunner).getExpires();
-					}
-			
-					else if (skicrunner instanceof Punchcard)
-					{		
-						unRegCards[tblIdx][2] = ((Punchcard) skicrunner).getClipCount();
-					}
-					
-					
-					unRegCards[tblIdx][3] = skicrunner.getPrice();
-					unRegCards[tblIdx][4] = skicrunner.getDiscount();
-					unRegCards[tblIdx][5] = skicrunner.getAgeGroup();
-					tblIdx ++;*/
+	
 				}
 			
 		
 			} 
-		}
-		//JTable unRegCtable = new JTable(unRegCards,columnName);
 		JTable unRegCtable = new JTable( new MyTableModel( list ));
 		unRegCtable.setAutoCreateRowSorter(true);
 		unRegCtable.setEnabled(false);
@@ -363,9 +343,9 @@ public class AdminInfoPanel extends JPanel
 			case 1:
 				return object.getType();
 			case 2:
-				return object.getPrice();
-			case 3:
 				return object.getObject();
+			case 3:
+				return object.getPrice();
 			case 4:
 				return object.getDiscount();
 			case 5: 
