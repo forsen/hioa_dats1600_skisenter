@@ -4,6 +4,7 @@ import java.awt.event.*;
 import javax.swing.event.*;
 import java.io.*;
 import java.util.Date;
+import java.awt.image.BufferedImage;
 
 public class NewsWindowPanel extends JPanel
 {

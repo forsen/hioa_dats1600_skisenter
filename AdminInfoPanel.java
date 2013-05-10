@@ -11,6 +11,9 @@ import java.util.Iterator;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.AbstractTableModel;
+import java.util.Locale;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 
 public class AdminInfoPanel extends JPanel
 {	
@@ -27,15 +30,15 @@ public class AdminInfoPanel extends JPanel
 	private Toolkit toolbox;
 	private JList<Person> reg;
 	private DefaultListModel<Person> model;
-	
-
- 	
+	private NumberFormat paymentFormat;
 
 
 	public AdminInfoPanel(Personlist l,List<Validations> v, Cardlist cr )
 	{
 		Border etched = BorderFactory.createEtchedBorder();
 		toolbox = Toolkit.getDefaultToolkit();
+
+		paymentFormat = NumberFormat.getCurrencyInstance( new Locale( "no", "NO" ) );
 
 		list = l;
 		validations = v;
@@ -290,11 +293,20 @@ public class AdminInfoPanel extends JPanel
 				for(int j = 0; j<skicards.size(); j++)
 				{
 
-					if( skicrunner instanceof Timebasedcard )		
-						list.add( new ListObject( runner.getCardID(), skicrunner.getType(""), ((Timebasedcard) skicrunner).getExpires(), skicrunner.getPrice(),
+					if( skicrunner instanceof Timebasedcard )
+					{	
+						String expire;
+						if( skicrunner instanceof Hourcard )
+							expire = new SimpleDateFormat("ddMMyy HH:mm").format( ((Timebasedcard) skicrunner).getExpires());
+						else
+							expire = new SimpleDateFormat("ddMMyy").format( ((Timebasedcard) skicrunner).getExpires() );
+
+						list.add( new ListObject( runner.getCardID(), skicrunner.getType(""), expire, paymentFormat.format(skicrunner.getPrice()),
 							skicrunner.getDiscount(), skicrunner.getAgeGroup() ) );
+					}
+
 					else if (skicrunner instanceof Punchcard )
-						list.add( new ListObject( runner.getCardID(), skicrunner.getType(""), ((Punchcard) skicrunner).getClipCount(), skicrunner.getPrice(),
+						list.add( new ListObject( runner.getCardID(), skicrunner.getType(""), "" + ((Punchcard) skicrunner).getClipCount(), paymentFormat.format(skicrunner.getPrice()),
 							skicrunner.getDiscount(), skicrunner.getAgeGroup() ) );
 	
 				}
@@ -343,7 +355,11 @@ public class AdminInfoPanel extends JPanel
 			case 1:
 				return object.getType();
 			case 2:
+<<<<<<< HEAD
 				return object.getObject();
+=======
+				return object.getString(); 
+>>>>>>> 769d90b2c2b25240a45eb3381f55d352fce7a256
 			case 3:
 				return object.getPrice();
 			case 4:
@@ -366,12 +382,12 @@ public class AdminInfoPanel extends JPanel
 	{
 		int cardId;
 		String type;
-		double price;
-		Object both;
+		String price;
+		String both;
 		double discount;
 		int ageGroup;
 
-		public ListObject( int cId, String t, Object b, double p, double d, int ag )
+		public ListObject( int cId, String t, String b, String p, double d, int ag )
 		{
 			cardId = cId;
 			type = t; 
@@ -399,7 +415,7 @@ public class AdminInfoPanel extends JPanel
 		{
 			return type;
 		}
-		public double getPrice()
+		public String getPrice()
 		{
 			return price;
 		}
@@ -407,7 +423,7 @@ public class AdminInfoPanel extends JPanel
 		{
 			return discount;
 		}
-		public Object getObject()
+		public String getString()
 		{
 			return both;
 		}
