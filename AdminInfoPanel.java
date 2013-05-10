@@ -5,6 +5,7 @@ import javax.swing.border.*;
 import java.awt.event.*;
 import java.awt.*;
 import java.io.*;
+import java.util.*;
 import java.util.List;
 import java.util.Iterator;
 import javax.swing.JTable;
@@ -244,14 +245,20 @@ public class AdminInfoPanel extends JPanel
 		for (int i = 0; i < validations.size(); i++ )
 		{
 			Validations runner = it.next();
+			Calendar cal = Calendar.getInstance();  
+			cal.setTime(runner.getDate());
+			String date = "" + cal.get(Calendar.DAY_OF_MONTH) +"."+ (cal.get(Calendar.MONTH ) + 1) +"."+  cal.get(Calendar.YEAR ) 
+			+ " Kl " + cal.get(Calendar.HOUR_OF_DAY )+ ":" + cal.get(Calendar.MINUTE );
+			
 
 			passings[i][0] = runner.getLiftId();
 			passings[i][1] = runner.getCard();
 			passings[i][2] = runner.getCard().getCurrent().getType("");
-			passings[i][3] = runner.getDate();
+			passings[i][3] = date;
 
 		}
 		passTable = new JTable(passings,columnName);
+		passTable.setAutoCreateRowSorter(true);
 		passTable.setEnabled(false);
 		return passTable;
 		
