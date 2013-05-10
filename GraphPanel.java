@@ -12,8 +12,10 @@ public class GraphPanel extends JPanel
 
 	private static final int XAXISLENGTH = 520;
 	private static final int YAXISLENGTH = 450;
-	private static final int ORIGOX = 30; 
+	private static final int ORIGOX = 100; 
 	private static final int ORIGOY = 450; 
+	private static final int MARGIN = 10; 
+	private static final int LINESPACE = 20; 
 
 	private int xAxisInterval;
 	private double yAxisInterval; 
@@ -109,9 +111,9 @@ public class GraphPanel extends JPanel
 		for(int i = 1; i < 10; i++)
 		{
 
-			g2d.drawLine(25, ORIGOY - (i * YAXISLENGTH / 10 ), 35,  ORIGOY - (i * YAXISLENGTH / 10 ));
-			g2d.drawString("" + ( (int) (((yAxisMax - yAxisMin)/ (double) 10.0 ) * i) + yAxisMin), 0 , ORIGOY - (i * YAXISLENGTH/10));
-			printDashedLine( 35, ORIGOY - (i * YAXISLENGTH / 10 ), 550, ORIGOY - (i * YAXISLENGTH / 10 ), g2d );
+			g2d.drawLine(ORIGOX - 5, ORIGOY - (i * YAXISLENGTH / 10 ), ORIGOX + 5,  ORIGOY - (i * YAXISLENGTH / 10 ));
+			g2d.drawString("" + ( (int) (((yAxisMax - yAxisMin)/ (double) 10.0 ) * i) + yAxisMin), ORIGOX - 8*MARGIN , ORIGOY - (i * YAXISLENGTH/10));
+			printDashedLine( ORIGOX + 5, ORIGOY - (i * YAXISLENGTH / 10 ), ORIGOX + XAXISLENGTH, ORIGOY - (i * YAXISLENGTH / 10 ), g2d );
 
 			System.out.println( "ymin:" + yAxisMin + ", ymax: " + yAxisMax + ", i: " + i);
 			System.out.println( "" + (int) (((yAxisMax - yAxisMin)/(double) 10.0) * i));	
@@ -164,10 +166,10 @@ public class GraphPanel extends JPanel
 
 		Graphics2D g2d = (Graphics2D) g; 
 
-		g2d.drawLine(ORIGOX, 10, ORIGOX, ORIGOY);
-		g2d.drawString(labelY, 5,15);
-		g2d.drawLine(ORIGOX,ORIGOY , 550, ORIGOY);
-		g2d.drawString(labelX, 560,450);
+		g2d.drawLine(ORIGOX, MARGIN, ORIGOX, ORIGOY);
+		g2d.drawString(labelY, ORIGOX - 8*MARGIN, 2*MARGIN);
+		g2d.drawLine(ORIGOX,ORIGOY , ORIGOX + XAXISLENGTH, ORIGOY);
+		g2d.drawString(labelX, ORIGOX + XAXISLENGTH + MARGIN ,450);
 
 		drawXinterval(g2d);
 		drawYinterval(g2d);
@@ -198,32 +200,32 @@ public class GraphPanel extends JPanel
 
 	private void drawInfo( Graphics2D g2d )
 	{
-		int startX = 580;
-		int startY = 20; 
-		int linespace = 20; 
+		int startX = ORIGOX + XAXISLENGTH + 2*MARGIN;
+		int startY = 2*MARGIN; 
+		 
 
 		g2d.drawString( "Intervall:", startX, startY );
-		startY += linespace;
+		startY += LINESPACE;
 		g2d.drawString( label, startX, startY );
-		startY += 3*linespace; 
+		startY += 3*LINESPACE; 
 
 		if( type == AdminStatistikkPanel.CARDS || type == AdminStatistikkPanel.REVENUE )
 		{
 			g2d.setColor(nextColor()[Skicard.DAYCARD]);
 			g2d.drawString( "Dagskort", startX, startY );
-			startY += linespace;
+			startY += LINESPACE;
 
 			g2d.setColor(nextColor()[Skicard.HOURCARD]);
 			g2d.drawString( "Timeskort", startX, startY );
-			startY += linespace; 
+			startY += LINESPACE; 
 
 			g2d.setColor(nextColor()[Skicard.SEASONCARD]);
 			g2d.drawString( "Sesongkort", startX, startY );
-			startY += linespace; 
+			startY += LINESPACE; 
 
 			g2d.setColor(nextColor()[Skicard.PUNCHCARD]);
 			g2d.drawString( "Klippekort", startX, startY );
-			startY += linespace;
+			startY += LINESPACE;
 
 			g2d.setColor(nextColor()[4]);
 			g2d.drawString( "Fysiske kort", startX, startY );
@@ -238,7 +240,7 @@ public class GraphPanel extends JPanel
 			{
 				g2d.setColor(nextColor()[i]);
 				g2d.drawString("Heis nr: " + (i+1), startX, startY );
-				startY += linespace; 
+				startY += LINESPACE; 
 			}
 		}
 	}
