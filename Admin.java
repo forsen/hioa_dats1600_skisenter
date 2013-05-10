@@ -1,4 +1,3 @@
-
 import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.event.*;
@@ -7,11 +6,20 @@ import java.io.*;
 import java.util.List;
 import java.util.Iterator;
 
+/**
+  * Admin is a window class for the admin interface.
+  * Admin puts a JFrame on your screen, with several different
+  * panels in JTabbedPane
+  *
+  * @author Erik Haider Forsén
+  * @author Ole Hansen
+  * @author Julie Hill Roa
+  */
 public class Admin extends JFrame
 {	
+
 	private JPanel framePnl,topPnl,adminInfoPnl, statInfoPnl;
 	private JButton admInfoBtn, admStatBtn;
-	private Listner listner;
 	private Personlist list;
 	private Container c;
 	private BorderLayout layout;
@@ -21,7 +29,15 @@ public class Admin extends JFrame
 	
 
 	
-	
+/**
+  * This constructor sets up the window. 
+  * @param l 	the person registry
+  * @param v 	the validations registry
+  * @param cl 	the cardlist registry (unregistered cards)
+  * @see Personlist
+  * @see Validations
+  * @see Cardlist
+  */ 	
 
 	public Admin(Personlist l,List<Validations> v, Cardlist cl) 
 	{
@@ -29,7 +45,6 @@ public class Admin extends JFrame
 		list = l;
 		validations = v;
 		cardregistry = cl;
-
 
 		framePnl = new JPanel()
 		{
@@ -47,15 +62,11 @@ public class Admin extends JFrame
 				g2d.fillRect(0, 0, getWidth(), getHeight());
 
 			}
-
 		};
 
 		adminInfoPnl = new AdminInfoPanel(list, validations, cardregistry);
 		statInfoPnl = new AdminStatistikkPanel(list, validations, cardregistry );
 		
-		
-		listner = new Listner();
-
 		layout = new BorderLayout( 5, 5 );
 		
 		c = getContentPane();
@@ -79,19 +90,5 @@ public class Admin extends JFrame
 		layout.layoutContainer( c );
 
 		setSize( 830, 780 );
-
-
-	}
-
-	private class Listner implements ActionListener
-  	{
-   		public void actionPerformed( ActionEvent e )
-    	{ 
-     		
-    		adminInfoPnl.setVisible(false);
-			statInfoPnl.setVisible(false);
-			
-
-    	}
 	}
 }

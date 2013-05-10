@@ -1,14 +1,14 @@
-/**
-  * Card is the class to create Card objects.
-  *
-  *	@author Erik Haider Forsén
-  *	@author Ole Hansen
-  *	@author Julie Hill Roa
-*/
-
 import java.io.Serializable;
 import java.util.*;
 
+/**
+ * Card is the class to create Card objects.
+ *
+ *	@author Erik Haider Forsén
+ *	@author Ole Hansen
+ *	@author Julie Hill Roa
+ * @version 0.9
+ */
 public class Card implements Serializable
 {
 	private List<Skicard> skiCardList; 
