@@ -5,10 +5,12 @@ import javax.swing.event.*;
 import java.io.*;
 import java.util.Date;
 import java.awt.image.BufferedImage;
+import javax.imageio.*;
 
 public class NewsWindowPanel extends JPanel
 {
 	private JLabel header, news1, news2, news3, news4, icon1, icon2, icon3, icon4;
+	private BufferedImage icon4br, icon3br, icon2br, icon1br;
 
 
 
@@ -28,13 +30,15 @@ public class NewsWindowPanel extends JPanel
 
 		/***** 1st ARTICLE ******************************************************/
 		try{
-			ImageIcon npic4 = new ImageIcon("img/npic4.png");
+			icon4br = ImageIO.read( new File("img/npic4.png"));
+			ImageIcon npic4 = new ImageIcon(icon4br);
 			icon4 = new JLabel();
 	    	icon4.setIcon(npic4);
 	    	}
 	    catch(Exception e)
 	    {
 	    	e.printStackTrace(System.out);
+	    	JOptionPane.showMessageDialog(null, "En fil(bilde) mangler. Reinstaller programmet for bedre opplevelse.", "Feil: manglende fil", JOptionPane.INFORMATION_MESSAGE);
 	    }
 
 		add(icon4,c);
@@ -55,13 +59,15 @@ public class NewsWindowPanel extends JPanel
 		/***** 2nd ARTICLE ******************************************************/
 
 		try{
-			ImageIcon npic3 = new ImageIcon("img/npic3.png");
+			icon3br = ImageIO.read( new File("img/npic3.png"));
+			ImageIcon npic3 = new ImageIcon(icon3br);
 			icon3 = new JLabel();
 	    	icon3.setIcon(npic3);
 	    	}
 	    catch(Exception e)
 	    {
 	    	e.printStackTrace(System.out);
+	    	JOptionPane.showMessageDialog(null, "En fil(bilde) mangler. Reinstaller programmet for bedre opplevelse.", "Feil: manglende fil", JOptionPane.INFORMATION_MESSAGE);
 	    }
 
 
@@ -85,13 +91,16 @@ public class NewsWindowPanel extends JPanel
 		/***** 3rd ARTICLE ******************************************************/
 
 		try{
-			ImageIcon npic2 = new ImageIcon("img/npic2.png");
+			icon2br = ImageIO.read( new File("img/npic2.png"));
+			ImageIcon npic2 = new ImageIcon(icon2br);
 			icon1 = new JLabel();
 			icon1.setIcon(npic2);
 	    	}
 	    catch(Exception e)
 	    {
 	    	e.printStackTrace(System.out);
+	    	JOptionPane.showMessageDialog(null, "En fil(bilde) mangler. Reinstaller programmet for bedre opplevelse.", "Feil: manglende fil", JOptionPane.INFORMATION_MESSAGE);
+
 	    }
 
 
@@ -112,13 +121,16 @@ public class NewsWindowPanel extends JPanel
 		/***** 4th ARTICLE ******************************************************/
 
 		try{
-			ImageIcon npic1 = new ImageIcon("img/npic1.png");
+			icon1br = ImageIO.read( new File("img/npic1.png"));
+			ImageIcon npic1 = new ImageIcon(icon1br);
 			icon2 = new JLabel();
 	   	    icon2.setIcon(npic1);
 	    	}
 	    catch(Exception e)
 	    {
 	    	e.printStackTrace(System.out);
+	   	    JOptionPane.showMessageDialog(null, "En fil(bilde) mangler. Reinstaller programmet for bedre opplevelse.", "Feil: manglende fil", JOptionPane.INFORMATION_MESSAGE);
+
 	    }
 
 
