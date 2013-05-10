@@ -12,11 +12,11 @@ public class ShoppingCartCellListRenderer extends DefaultListCellRenderer
 
 		try
 		{
-			label.setText( ci.getCardID() + " " +  ci.getType() + ", " + ci.getPrice() + "kr" );
+			label.setText( ci.getCard().getCardID() + " " +  ci.getSkiCard().getType() + ", " + ci.getSkiCard().getPrice() + "kr" );
 		}
 		catch( NullPointerException npe )
 		{
-			label.setText( "-" + ci.getCardID() + ", " + Info.RETURNPRICE + "kr" ); 
+			label.setText( "-" + ci.getCard().getCardID() + ", " + Info.RETURNPRICE + "kr" ); 
 		}
 		return label;
 	}

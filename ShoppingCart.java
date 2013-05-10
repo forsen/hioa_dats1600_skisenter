@@ -112,7 +112,7 @@ public class ShoppingCart
 	{
 		try
 		{
-			sum -= items.getElementAt( index ).getPrice();
+			sum -= items.getElementAt( index ).getSkiCard().getPrice();
 		}
 		catch( NullPointerException npe )
 		{
@@ -237,25 +237,25 @@ public class ShoppingCart
 		while( it.hasNext() )
 		{
 			CartItems ci = it.next();
-			text.append( ""+ci.getCardID() );
+			text.append( ""+ci.getCard().getCardID() );
 			text.append( ", ");
 			try
 			{	
 				if( freakyFriday() )
 				{
-					ci.setPrice( ci.getPrice() * Info.FREAKYFRIDAY );
+					ci.getSkiCard().setPrice( ci.getSkiCard().getPrice() * Info.FREAKYFRIDAY );
 					discount = Info.FREAKYFRIDAY;
 				}
 				else if( cartList.size() > 9 )
 				{
-					ci.setPrice( ci.getPrice() * Info.GROUPDISCOUNT );
+					ci.getSkiCard().setPrice( ci.getSkiCard().getPrice() * Info.GROUPDISCOUNT );
 					discount = Info.GROUPDISCOUNT;
 				}
 
-				text.append( ci.getType() );
+				text.append( ci.getSkiCard().getType() );
 				// tried with \t, but it wouldn't align properly (since the cardtype length differs)
 				text.append( "        " );
-				text.append( paymentFormat.format( ci.getPrice() ) );
+				text.append( paymentFormat.format( ci.getSkiCard().getPrice() ) );
 				text.append( "\n" );
 			}
 			catch( NullPointerException npe )
