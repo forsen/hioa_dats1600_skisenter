@@ -103,7 +103,7 @@ public abstract class Skicard implements Serializable
 		return bought;
 	}
 
-
+	abstract public void initialized();
   
 
 	public String toString()

@@ -180,14 +180,15 @@ public class GraphPanel extends JPanel
 
 		for( int i = 0; i<data.length; i++)
 		{
+			lastx = ORIGOX;
+			lasty =(int) (YAXISLENGTH - ((data[i][0] - yAxisMin) * yAxisInterval)); 
 
-			for( int j = 0; j<data[i].length; j++ )
+			for( int j = 1; j<data[i].length; j++ )
 			{
 				g2d.setColor( nextColor()[i] );
 				drawGraphCoordinates( data[i][j], g2d );
 			}
-			lastx = ORIGOX;
-			lasty =(int) (YAXISLENGTH - ((data[i][0] - yAxisMin) * yAxisInterval)); 
+
 		}
 		lastx = ORIGOX; 
 		lasty = YAXISLENGTH - data[0][0];
@@ -206,7 +207,7 @@ public class GraphPanel extends JPanel
 		g2d.drawString( label, startX, startY );
 		startY += 3*linespace; 
 
-		if( type == AdminStatistikkPanel.CARDS )
+		if( type == AdminStatistikkPanel.CARDS || type == AdminStatistikkPanel.REVENUE )
 		{
 			g2d.setColor(nextColor()[Skicard.DAYCARD]);
 			g2d.drawString( "Dagskort", startX, startY );
