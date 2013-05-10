@@ -176,13 +176,6 @@ public class AdminInfoPanel extends JPanel
 		display.setText(list.toString());
 	}
 
-
-	private void showpassings()
-	{
-		passTable = showPassings();
-	}
-	
-	
 	private void deletePerson()
 	{
 		Person p = null;
@@ -475,9 +468,7 @@ public class AdminInfoPanel extends JPanel
       			scroll.setViewportView(showPassings());
 
       		if(e.getSource() == deletePersBtn)
-      		{
       			deletePerson();	
-      		}
     	}
 	}	
 }
