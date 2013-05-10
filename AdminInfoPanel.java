@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Iterator;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.AbstractTableModel;
 
 public class AdminInfoPanel extends JPanel
 {	
@@ -267,57 +268,173 @@ public class AdminInfoPanel extends JPanel
 
 	public JTable unregCardTable()
 	{
-		String[] columnName = {"Kortnummer", "Type", "Går ut", "Pris", "Rabatt", "Aldersgruppe"};
+
 		DefaultListModel<Card> cards = cardregistry.listCards();
-		Object[][] unRegCards = new Object[cards.size() ][6]; 
+		//Object[][] unRegCards = new Object[cards.size() ][6]; 
 		int size = cards.getSize();
 		
-		
+		ArrayList<ListObject> list = new ArrayList<ListObject>(); 
+
+		int tblIdx = 0; 
 		for(int i = 0; i < size; i++)
 		{	
 			Card runner = cards.getElementAt(i);
-			unRegCards[i][0] = runner.getCardID();
 
-			for(int j = 0; j<size; j++)
-			{
-				List<Skicard> skicards = runner.getSkicardlist();
-				Iterator it = skicards.iterator();
-				while(it.hasNext())
-				{	
-					Skicard skicrunner = (Skicard)it.next();
-					
-					
-					for(int h = 1; h<skicards.size(); h++)
-					{
-						unRegCards[i][1] = skicrunner.getType("");
 
-						if( skicrunner instanceof Timebasedcard)
-						{
-							
-							unRegCards[i][2] = ((Timebasedcard) skicrunner).getExpires();
-						}
+			List<Skicard> skicards = runner.getSkicardlist();
+			Iterator it = skicards.iterator();
+			while(it.hasNext())
+			{	
+				Skicard skicrunner = (Skicard)it.next();
+
 				
-						else if (skicrunner instanceof Punchcard)
-						{	
-							
-							unRegCards[i][2] = ((Punchcard) skicrunner).getClipCount();
-						}
-						
-						
-						unRegCards[i][3] = skicrunner.getPrice();
-						unRegCards[i][4] = skicrunner.getDiscount();
-						unRegCards[i][5] = skicrunner.getAgeGroup();
+				for(int j = 0; j<skicards.size(); j++)
+				{
+
+					if( skicrunner instanceof Timebasedcard )		
+						list.add( new ListObject( runner.getCardID(), skicrunner.getType(""), ((Timebasedcard) skicrunner).getExpires(), skicrunner.getPrice(),
+							skicrunner.getDiscount(), skicrunner.getAgeGroup() ) );
+					else if (skicrunner instanceof Punchcard )
+						list.add( new ListObject( runner.getCardID(), skicrunner.getType(""), ((Punchcard) skicrunner).getClipCount(), skicrunner.getPrice(),
+							skicrunner.getDiscount(), skicrunner.getAgeGroup() ) );
+	/*				unRegCards[tblIdx][0] = runner.getCardID();
+					unRegCards[tblIdx][1] = skicrunner.getType("");
+
+					if( skicrunner instanceof Timebasedcard)
+					{	
+						unRegCards[tblIdx][2] = ((Timebasedcard) skicrunner).getExpires();
 					}
+			
+					else if (skicrunner instanceof Punchcard)
+					{		
+						unRegCards[tblIdx][2] = ((Punchcard) skicrunner).getClipCount();
+					}
+					
+					
+					unRegCards[tblIdx][3] = skicrunner.getPrice();
+					unRegCards[tblIdx][4] = skicrunner.getDiscount();
+					unRegCards[tblIdx][5] = skicrunner.getAgeGroup();
+					tblIdx ++;*/
 				}
+			
 		
 			} 
 		}
-		JTable unRegCtable = new JTable(unRegCards,columnName);
+		//JTable unRegCtable = new JTable(unRegCards,columnName);
+		JTable unRegCtable = new JTable( new MyTableModel( list ));
 		unRegCtable.setAutoCreateRowSorter(true);
 		unRegCtable.setEnabled(false);
 		return unRegCtable;
 		
 		
+	}
+	private class MyTableModel extends AbstractTableModel 
+	{
+		String[] columnName = {"Kortnummer", "Type", "Går ut", "Pris", "Rabatt", "Aldersgruppe"};
+
+		ArrayList<ListObject> list = null;
+ 
+		public MyTableModel(ArrayList<ListObject> list) 
+		{
+			this.list = list;
+		}
+ 
+		public int getColumnCount() {
+			return columnName.length;
+		}
+ 
+		public int getRowCount() {
+			return list.size();
+		}
+ 
+		public String getColumnName(int col) {
+			return columnName[col];
+		}
+ 
+		public Object getValueAt(int row, int col) 
+		{
+ 
+			ListObject object = list.get(row);
+ 
+			switch (col) 
+			{
+			case 0:
+				return object.getCardID();
+			case 1:
+				return object.getType();
+			case 2:
+				return object.getPrice();
+			case 3:
+				return object.getObject();
+			case 4:
+				return object.getDiscount();
+			case 5: 
+				return object.getAgeGroup();
+			default:
+				return "unknown";
+			}
+		}
+ 
+		public Class getColumnClass(int c) 
+		{
+			return getValueAt(0, c).getClass();
+		}
+	}
+ 
+
+	private class ListObject
+	{
+		int cardId;
+		String type;
+		double price;
+		Object both;
+		double discount;
+		int ageGroup;
+
+		public ListObject( int cId, String t, Object b, double p, double d, int ag )
+		{
+			cardId = cId;
+			type = t; 
+			both = b;
+			price = p;
+			discount = d;
+			ageGroup = ag;
+		}
+/*
+		public ListObject( int cId, String t, int cl, double p, double d, int ag )
+		{
+			cardId = cId;
+			type = t;
+			int clips = cl;
+			price = p;
+			discount = d;
+			ageGroup = ag; 
+		}
+*/
+		public int getCardID()
+		{
+			return cardId;
+		}
+		public String getType()
+		{
+			return type;
+		}
+		public double getPrice()
+		{
+			return price;
+		}
+		public double getDiscount()
+		{
+			return discount;
+		}
+		public Object getObject()
+		{
+			return both;
+		}
+		public int getAgeGroup()
+		{
+			return ageGroup;
+		}
 	}
 
 	
