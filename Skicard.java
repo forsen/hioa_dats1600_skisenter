@@ -67,7 +67,7 @@ public abstract class Skicard implements Serializable
 
 	public double getDiscount()
 	{
-		return Info.DISCOUNT;
+		return discount;
 	}
 
 	public int getAgeGroup()
