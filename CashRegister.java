@@ -11,7 +11,13 @@ import java.io.*;
 import java.text.NumberFormat; 
 import java.util.Locale; 
 
-
+/**
+  * This class creates the Cash Register dialog. 
+  * @author Erik Haider Forsén
+  * @author Ole Hansen
+  * @author Julie Hill Roa
+  * @version 0.9
+  */
 public class CashRegister extends JDialog
 {
 	private JTextArea orderList, total, overview; 
@@ -39,7 +45,12 @@ public class CashRegister extends JDialog
 
 
 
-	
+/**
+  * This constructor sets up the Cash Register with all the panels / buttons / fields etc. 
+  * @param parent 	The parent window, for modality
+  * @param s 		The shoppingcart to pay
+  * @param sl 		All the items in the shoppingcart
+  */	
 	public CashRegister(Window parent, ShoppingCart s, JList<CartItems> sl )
 	{
 		super(parent, "Betaling", Dialog.ModalityType.DOCUMENT_MODAL );
@@ -85,51 +96,51 @@ public class CashRegister extends JDialog
 
 		Border etched = BorderFactory.createEtchedBorder();
 
-		// bilder i bigButtonPanel
+		// images in bigButtonPanel
 
-				ImageIcon paycash = new ImageIcon("img/cash/paycash.png");
-				ImageIcon paycashp = new ImageIcon("img/cash/paycashp.png");
-				ImageIcon paycard = new ImageIcon("img/cash/paycard.png");
-				ImageIcon paycardp = new ImageIcon("img/cash/paycardp.png");
-				ImageIcon printreceipt = new ImageIcon("img/cash/printreceipt.png");
-				ImageIcon printreceiptp = new ImageIcon("img/cash/printreceiptp.png");
-				ImageIcon printcard = new ImageIcon("img/cash/printcard.png");
-				ImageIcon printcardp = new ImageIcon("img/cash/printcardp.png");
-				ImageIcon printcardua = new ImageIcon("img/cash/printcardua.png");
-				ImageIcon printreceiptua = new ImageIcon("img/cash/printreceiptua.png");
+		ImageIcon paycash = new ImageIcon("img/cash/paycash.png");
+		ImageIcon paycashp = new ImageIcon("img/cash/paycashp.png");
+		ImageIcon paycard = new ImageIcon("img/cash/paycard.png");
+		ImageIcon paycardp = new ImageIcon("img/cash/paycardp.png");
+		ImageIcon printreceipt = new ImageIcon("img/cash/printreceipt.png");
+		ImageIcon printreceiptp = new ImageIcon("img/cash/printreceiptp.png");
+		ImageIcon printcard = new ImageIcon("img/cash/printcard.png");
+		ImageIcon printcardp = new ImageIcon("img/cash/printcardp.png");
+		ImageIcon printcardua = new ImageIcon("img/cash/printcardua.png");
+		ImageIcon printreceiptua = new ImageIcon("img/cash/printreceiptua.png");
 
-		// bilder i smallButtonPanel
+		// images in smallButtonPanel
 
 
-				ImageIcon one = new ImageIcon("img/cash/1.png");
-				ImageIcon two = new ImageIcon("img/cash/2.png");
-				ImageIcon three = new ImageIcon("img/cash/3.png");
-				ImageIcon four = new ImageIcon("img/cash/4.png");
-				ImageIcon five = new ImageIcon("img/cash/5.png");
-				ImageIcon six = new ImageIcon("img/cash/6.png");
-				ImageIcon seven = new ImageIcon("img/cash/7.png");
-				ImageIcon eight = new ImageIcon("img/cash/8.png");
-				ImageIcon nine = new ImageIcon("img/cash/9.png");
-				ImageIcon zero = new ImageIcon("img/cash/0.png");
-				ImageIcon clear = new ImageIcon("img/cash/clear.png");
-				ImageIcon corr = new ImageIcon("img/cash/corr.png");
-				ImageIcon dot = new ImageIcon("img/cash/dot.png");
+		ImageIcon one = new ImageIcon("img/cash/1.png");
+		ImageIcon two = new ImageIcon("img/cash/2.png");
+		ImageIcon three = new ImageIcon("img/cash/3.png");
+		ImageIcon four = new ImageIcon("img/cash/4.png");
+		ImageIcon five = new ImageIcon("img/cash/5.png");
+		ImageIcon six = new ImageIcon("img/cash/6.png");
+		ImageIcon seven = new ImageIcon("img/cash/7.png");
+		ImageIcon eight = new ImageIcon("img/cash/8.png");
+		ImageIcon nine = new ImageIcon("img/cash/9.png");
+		ImageIcon zero = new ImageIcon("img/cash/0.png");
+		ImageIcon clear = new ImageIcon("img/cash/clear.png");
+		ImageIcon corr = new ImageIcon("img/cash/corr.png");
+		ImageIcon dot = new ImageIcon("img/cash/dot.png");
 
-				ImageIcon cancel = new ImageIcon("img/cash/cancel.png");
-				ImageIcon onep= new ImageIcon("img/cash/1p.png");
-				ImageIcon twop = new ImageIcon("img/cash/2p.png");
-				ImageIcon threep = new ImageIcon("img/cash/3p.png");
-				ImageIcon fourp = new ImageIcon("img/cash/4p.png");
-				ImageIcon fivep = new ImageIcon("img/cash/5p.png");
-				ImageIcon sixp = new ImageIcon("img/cash/6p.png");
-				ImageIcon sevenp = new ImageIcon("img/cash/7p.png");
-				ImageIcon eightp = new ImageIcon("img/cash/8p.png");
-				ImageIcon ninep = new ImageIcon("img/cash/9p.png");
-				ImageIcon zerop = new ImageIcon("img/cash/0p.png");
-				ImageIcon clearp = new ImageIcon("img/cash/clearp.png");
-				ImageIcon corrp = new ImageIcon("img/cash/corrp.png");
-				ImageIcon dotp = new ImageIcon("img/cash/dotp.png");
-				ImageIcon cancelp = new ImageIcon("img/cash/cancelp.png");
+		ImageIcon cancel = new ImageIcon("img/cash/cancel.png");
+		ImageIcon onep= new ImageIcon("img/cash/1p.png");
+		ImageIcon twop = new ImageIcon("img/cash/2p.png");
+		ImageIcon threep = new ImageIcon("img/cash/3p.png");
+		ImageIcon fourp = new ImageIcon("img/cash/4p.png");
+		ImageIcon fivep = new ImageIcon("img/cash/5p.png");
+		ImageIcon sixp = new ImageIcon("img/cash/6p.png");
+		ImageIcon sevenp = new ImageIcon("img/cash/7p.png");
+		ImageIcon eightp = new ImageIcon("img/cash/8p.png");
+		ImageIcon ninep = new ImageIcon("img/cash/9p.png");
+		ImageIcon zerop = new ImageIcon("img/cash/0p.png");
+		ImageIcon clearp = new ImageIcon("img/cash/clearp.png");
+		ImageIcon corrp = new ImageIcon("img/cash/corrp.png");
+		ImageIcon dotp = new ImageIcon("img/cash/dotp.png");
+		ImageIcon cancelp = new ImageIcon("img/cash/cancelp.png");
 
 
 
@@ -154,78 +165,70 @@ public class CashRegister extends JDialog
 		overview.setText("Betalt: \n\n");
 
 
-			printReceipt = new JButton(printreceipt);
-			printReceipt.addActionListener( btnListener );
-			printCard = new JButton(printcard);
-			printCard.addActionListener( btnListener );
-			payByCard = new JButton(paycard);
-			payByCard.addActionListener( btnListener );
-			payByCash = new JButton(paycash);
-			payByCash.addActionListener( btnListener );
+		printReceipt = new JButton(printreceipt);
+		printReceipt.addActionListener( btnListener );
+		printCard = new JButton(printcard);
+		printCard.addActionListener( btnListener );
+		payByCard = new JButton(paycard);
+		payByCard.addActionListener( btnListener );
+		payByCash = new JButton(paycash);
+		payByCash.addActionListener( btnListener );
 
 
-			oneBtn = new JButton(one);
-			oneBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke(KeyEvent.VK_1,0), "1");
-			oneBtn.getActionMap().put("1", keyLstnr );
-			oneBtn.addActionListener( btnListener );
-			twoBtn = new JButton(two);
-			twoBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_2,0), "2");
-			twoBtn.getActionMap().put("2", keyLstnr );
-			twoBtn.addActionListener( btnListener );
-			threeBtn = new JButton(three);
-			threeBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_3,0), "3");
-			threeBtn.getActionMap().put("3", keyLstnr );
-			threeBtn.addActionListener( btnListener );
-			fourBtn = new JButton(four);
-			fourBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_4,0), "4");
-			fourBtn.getActionMap().put("4", keyLstnr );
-			fourBtn.addActionListener( btnListener );
-			fiveBtn = new JButton(five);
-			fiveBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_5,0), "5");
-			fiveBtn.getActionMap().put("5", keyLstnr );
-			fiveBtn.addActionListener( btnListener );
-			sixBtn = new JButton(six);
-			sixBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_6,0), "6");
-			sixBtn.getActionMap().put("6", keyLstnr );
-			sixBtn.addActionListener( btnListener );
-			sevenBtn = new JButton(seven);
-			sevenBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_7,0), "7");
-			sevenBtn.getActionMap().put("7", keyLstnr );
-			sevenBtn.addActionListener( btnListener );
-			eightBtn = new JButton(eight);
-			eightBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_8,0), "8");
-			eightBtn.getActionMap().put("8", keyLstnr );
-			eightBtn.addActionListener( btnListener );
-			nineBtn = new JButton(nine);
-			nineBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_9,0), "9");
-			nineBtn.getActionMap().put("9", keyLstnr );			
-			nineBtn.addActionListener( btnListener );
-			zeroBtn = new JButton(zero);
-			zeroBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_0,0), "0");
-			zeroBtn.getActionMap().put("0", keyLstnr );
-			zeroBtn.addActionListener( btnListener );
-			clearBtn = new JButton(clear);
-			clearBtn.addActionListener( btnListener );
-			cancelBtn = new JButton(cancel);
-			cancelBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_ESCAPE,0), "esc");
-			cancelBtn.getActionMap().put("esc", keyLstnr );
-			cancelBtn.addActionListener( btnListener );
-			dotBtn = new JButton(dot);
-			dotBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_PERIOD,0), "dot");
-			dotBtn.getActionMap().put("dot", keyLstnr );
-			dotBtn.addActionListener( btnListener );
-			corrBtn = new JButton(corr);
-			corrBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_BACK_SPACE,0), "bckspc");
-			corrBtn.getActionMap().put("bckspc", keyLstnr );
-			corrBtn.addActionListener( btnListener );
-
-
-
-
-
-
-
-
+		oneBtn = new JButton(one);
+		oneBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke(KeyEvent.VK_1,0), "1");
+		oneBtn.getActionMap().put("1", keyLstnr );
+		oneBtn.addActionListener( btnListener );
+		twoBtn = new JButton(two);
+		twoBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_2,0), "2");
+		twoBtn.getActionMap().put("2", keyLstnr );
+		twoBtn.addActionListener( btnListener );
+		threeBtn = new JButton(three);
+		threeBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_3,0), "3");
+		threeBtn.getActionMap().put("3", keyLstnr );
+		threeBtn.addActionListener( btnListener );
+		fourBtn = new JButton(four);
+		fourBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_4,0), "4");
+		fourBtn.getActionMap().put("4", keyLstnr );
+		fourBtn.addActionListener( btnListener );
+		fiveBtn = new JButton(five);
+		fiveBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_5,0), "5");
+		fiveBtn.getActionMap().put("5", keyLstnr );
+		fiveBtn.addActionListener( btnListener );
+		sixBtn = new JButton(six);
+		sixBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_6,0), "6");
+		sixBtn.getActionMap().put("6", keyLstnr );
+		sixBtn.addActionListener( btnListener );
+		sevenBtn = new JButton(seven);
+		sevenBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_7,0), "7");
+		sevenBtn.getActionMap().put("7", keyLstnr );
+		sevenBtn.addActionListener( btnListener );
+		eightBtn = new JButton(eight);
+		eightBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_8,0), "8");
+		eightBtn.getActionMap().put("8", keyLstnr );
+		eightBtn.addActionListener( btnListener );
+		nineBtn = new JButton(nine);
+		nineBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_9,0), "9");
+		nineBtn.getActionMap().put("9", keyLstnr );			
+		nineBtn.addActionListener( btnListener );
+		zeroBtn = new JButton(zero);
+		zeroBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_0,0), "0");
+		zeroBtn.getActionMap().put("0", keyLstnr );
+		zeroBtn.addActionListener( btnListener );
+		clearBtn = new JButton(clear);
+		clearBtn.addActionListener( btnListener );
+		cancelBtn = new JButton(cancel);
+		cancelBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_ESCAPE,0), "esc");
+		cancelBtn.getActionMap().put("esc", keyLstnr );
+		cancelBtn.addActionListener( btnListener );
+		dotBtn = new JButton(dot);
+		dotBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_PERIOD,0), "dot");
+		dotBtn.getActionMap().put("dot", keyLstnr );
+		dotBtn.addActionListener( btnListener );
+		corrBtn = new JButton(corr);
+		corrBtn.getInputMap( JComponent.WHEN_IN_FOCUSED_WINDOW).put( KeyStroke.getKeyStroke( KeyEvent.VK_BACK_SPACE,0), "bckspc");
+		corrBtn.getActionMap().put("bckspc", keyLstnr );
+		corrBtn.addActionListener( btnListener );
 
 		cashInput = new JTextField( 7 );
 		cashInput.setBackground(new Color(187,229,171));
@@ -411,84 +414,84 @@ public class CashRegister extends JDialog
 
 
 
-			// knappemodifikasjoner
+		// button modifications
 
-						oneBtn.setFocusPainted(false);
-						oneBtn.setContentAreaFilled(false);
-						oneBtn.setBorderPainted(false);
-						twoBtn.setFocusPainted(false);
-						twoBtn.setContentAreaFilled(false);
-						twoBtn.setBorderPainted(false);
-						threeBtn.setFocusPainted(false);
-						threeBtn.setContentAreaFilled(false);
-						threeBtn.setBorderPainted(false);
-						fourBtn.setFocusPainted(false);
-						fourBtn.setContentAreaFilled(false);
-						fourBtn.setBorderPainted(false);
-						fiveBtn.setFocusPainted(false);
-						fiveBtn.setContentAreaFilled(false);
-						fiveBtn.setBorderPainted(false);
-						sixBtn.setFocusPainted(false);
-						sixBtn.setContentAreaFilled(false);
-						sixBtn.setBorderPainted(false);
-						sevenBtn.setFocusPainted(false);
-						sevenBtn.setContentAreaFilled(false);
-						sevenBtn.setBorderPainted(false);
-						eightBtn.setFocusPainted(false);
-						eightBtn.setContentAreaFilled(false);
-						eightBtn.setBorderPainted(false);
-						nineBtn.setFocusPainted(false);
-						nineBtn.setContentAreaFilled(false);
-						nineBtn.setBorderPainted(false);
-						zeroBtn.setFocusPainted(false);
-						zeroBtn.setContentAreaFilled(false);
-						zeroBtn.setBorderPainted(false);
-						clearBtn.setFocusPainted(false);
-						clearBtn.setContentAreaFilled(false);
-						clearBtn.setBorderPainted(false);
-						dotBtn.setFocusPainted(false);
-						dotBtn.setContentAreaFilled(false);
-						dotBtn.setBorderPainted(false);
-						cancelBtn.setFocusPainted(false);
-						cancelBtn.setContentAreaFilled(false);
-						cancelBtn.setBorderPainted(false);
-						corrBtn.setFocusPainted(false);
-						corrBtn.setContentAreaFilled(false);
-						corrBtn.setBorderPainted(false);
-						payByCard.setFocusPainted(false);
-						payByCard.setContentAreaFilled(false);
-						payByCard.setBorderPainted(false);
-						payByCash.setFocusPainted(false);
-						payByCash.setContentAreaFilled(false);
-						payByCash.setBorderPainted(false);
-						printReceipt.setFocusPainted(false);
-						printReceipt.setContentAreaFilled(false);
-						printReceipt.setBorderPainted(false);
-						printCard.setFocusPainted(false);
-						printCard.setContentAreaFilled(false);
-						printCard.setBorderPainted(false);
+		oneBtn.setFocusPainted(false);
+		oneBtn.setContentAreaFilled(false);
+		oneBtn.setBorderPainted(false);
+		twoBtn.setFocusPainted(false);
+		twoBtn.setContentAreaFilled(false);
+		twoBtn.setBorderPainted(false);
+		threeBtn.setFocusPainted(false);
+		threeBtn.setContentAreaFilled(false);
+		threeBtn.setBorderPainted(false);
+		fourBtn.setFocusPainted(false);
+		fourBtn.setContentAreaFilled(false);
+		fourBtn.setBorderPainted(false);
+		fiveBtn.setFocusPainted(false);
+		fiveBtn.setContentAreaFilled(false);
+		fiveBtn.setBorderPainted(false);
+		sixBtn.setFocusPainted(false);
+		sixBtn.setContentAreaFilled(false);
+		sixBtn.setBorderPainted(false);
+		sevenBtn.setFocusPainted(false);
+		sevenBtn.setContentAreaFilled(false);
+		sevenBtn.setBorderPainted(false);
+		eightBtn.setFocusPainted(false);
+		eightBtn.setContentAreaFilled(false);
+		eightBtn.setBorderPainted(false);
+		nineBtn.setFocusPainted(false);
+		nineBtn.setContentAreaFilled(false);
+		nineBtn.setBorderPainted(false);
+		zeroBtn.setFocusPainted(false);
+		zeroBtn.setContentAreaFilled(false);
+		zeroBtn.setBorderPainted(false);
+		clearBtn.setFocusPainted(false);
+		clearBtn.setContentAreaFilled(false);
+		clearBtn.setBorderPainted(false);
+		dotBtn.setFocusPainted(false);
+		dotBtn.setContentAreaFilled(false);
+		dotBtn.setBorderPainted(false);
+		cancelBtn.setFocusPainted(false);
+		cancelBtn.setContentAreaFilled(false);
+		cancelBtn.setBorderPainted(false);
+		corrBtn.setFocusPainted(false);
+		corrBtn.setContentAreaFilled(false);
+		corrBtn.setBorderPainted(false);
+		payByCard.setFocusPainted(false);
+		payByCard.setContentAreaFilled(false);
+		payByCard.setBorderPainted(false);
+		payByCash.setFocusPainted(false);
+		payByCash.setContentAreaFilled(false);
+		payByCash.setBorderPainted(false);
+		printReceipt.setFocusPainted(false);
+		printReceipt.setContentAreaFilled(false);
+		printReceipt.setBorderPainted(false);
+		printCard.setFocusPainted(false);
+		printCard.setContentAreaFilled(false);
+		printCard.setBorderPainted(false);
 
-						oneBtn.setPressedIcon(onep);
-						twoBtn.setPressedIcon(twop);
-						threeBtn.setPressedIcon(threep);
-						fourBtn.setPressedIcon(fourp);
-						fiveBtn.setPressedIcon(fivep);
-						sixBtn.setPressedIcon(sixp);
-						sevenBtn.setPressedIcon(sevenp);
-						eightBtn.setPressedIcon(eightp);
-						nineBtn.setPressedIcon(ninep);
-						zeroBtn.setPressedIcon(zerop);
-						dotBtn.setPressedIcon(dotp);
-						clearBtn.setPressedIcon(clearp);
-						cancelBtn.setPressedIcon(cancelp);
-						corrBtn.setPressedIcon(corrp);
-						
-						payByCash.setPressedIcon(paycashp);
-						payByCard.setPressedIcon(paycardp);
-						printReceipt.setPressedIcon(printreceiptp);
-						printReceipt.setDisabledIcon(printreceiptua);
-						printCard.setPressedIcon(printcardp);
-						printCard.setDisabledIcon(printcardua);
+		oneBtn.setPressedIcon(onep);
+		twoBtn.setPressedIcon(twop);
+		threeBtn.setPressedIcon(threep);
+		fourBtn.setPressedIcon(fourp);
+		fiveBtn.setPressedIcon(fivep);
+		sixBtn.setPressedIcon(sixp);
+		sevenBtn.setPressedIcon(sevenp);
+		eightBtn.setPressedIcon(eightp);
+		nineBtn.setPressedIcon(ninep);
+		zeroBtn.setPressedIcon(zerop);
+		dotBtn.setPressedIcon(dotp);
+		clearBtn.setPressedIcon(clearp);
+		cancelBtn.setPressedIcon(cancelp);
+		corrBtn.setPressedIcon(corrp);
+		
+		payByCash.setPressedIcon(paycashp);
+		payByCard.setPressedIcon(paycardp);
+		printReceipt.setPressedIcon(printreceiptp);
+		printReceipt.setDisabledIcon(printreceiptua);
+		printCard.setPressedIcon(printcardp);
+		printCard.setDisabledIcon(printcardua);
 
 
 
@@ -504,6 +507,11 @@ public class CashRegister extends JDialog
 	
 	}
 
+/**
+  * Method to receive payment. It will register how you paid (by cash or card), how much you paid, 
+  * how much is left to be paid, and finalize the payment if everything is paid for.
+  * @param n 	This is the constant to tell if the payment was made by cash or by card. 
+  */
 	public void paid( int n )
 	{
 		try 
@@ -544,7 +552,11 @@ public class CashRegister extends JDialog
 			payByCard.setEnabled( false );
 		}
 	}
-
+/**
+  * Method to print the purchased cards. The button to activate this method will be enabled
+  * as soon as everything is paid. 
+  * @see PrintWindow
+  */
 	private void printCard()
 	{
 		Iterator<Card> it = printableCards.iterator(); 
@@ -570,7 +582,11 @@ public class CashRegister extends JDialog
 		}
 
 	}
-
+/**
+  * Method to print the receipt. The button to activate this method will be enabled
+  * as soon as everything is paid. 
+  * @see PrintWindow
+  */
 	private void printReceipt()
 	{
 		PrintWindow w = new PrintWindow( this, orderList, paymentMethod, sum );
