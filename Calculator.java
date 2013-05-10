@@ -370,9 +370,10 @@ public class Calculator
   * This method will calculate the number of days since this Skisenter launched. This is necessary
   * to create and propagate the Integer arrays of data properly when the range spans over one or more
   * new years. 
-  * @see Info.firstLight
+  *
   * @param d 	Date object to calculate on
   * @return Returns an int of how many days between the incoming Date object and the launch of this Skisenter.
+  * @see Info#firstLight
   */
 
 	private int daysSinceOpening( Date d )
