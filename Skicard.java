@@ -26,7 +26,7 @@ public abstract class Skicard implements Serializable
 	{
 
 		price = p;
-		discount = 1;
+		discount = 1.0;
 		bought = b; 
 		type = t; 
 
@@ -115,7 +115,7 @@ public abstract class Skicard implements Serializable
 		text.append(price);
 		text.append("\t");
 		text.append("Discount: ");
-		text.append(Info.DISCOUNT);
+		text.append(discount);
 		text.append( "\t");
 		text.append( "Aldersgruppe: ");
 		text.append(ageGroup);

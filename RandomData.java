@@ -19,6 +19,7 @@ public class RandomData
 	private final int MAXSKIKORTPERKORT = 4;
 	private final int SKISESONGSTARTMND = 11;
 	private final int SKISESONGSLUTTMND = 5; 
+	private final int UNREGCARDS = 20000;
 
 
 
@@ -45,6 +46,11 @@ public class RandomData
 		rand = new Random();
 
 		addPerson();
+
+		for( int i = 0; i < UNREGCARDS; i++ )
+		{
+			cardlist.addCard( addCards( null, randomDate( 2005, 2013 ) ) );
+		}
 	}
 
 
