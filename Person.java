@@ -175,8 +175,11 @@ public class Person implements Serializable, Comparable<Person>
 		StringBuilder text = new StringBuilder();
 
 		Calendar cal = Calendar.getInstance(); 
+		Calendar cal2 = Calendar.getInstance(); 
 
 		cal.setTime(born);
+		cal2.setTime(created);
+
 
 		text.append(firstname); 
 		text.append(" ");
@@ -189,7 +192,9 @@ public class Person implements Serializable, Comparable<Person>
 		text.append( "." + cal.get(Calendar.YEAR ) );
 		text.append("\n"); 
 		text.append("Opprettet: ");
-		text.append( created.toString() );
+		text.append( "" + cal2.get(Calendar.DAY_OF_MONTH) );
+		text.append( "." + (cal2.get(Calendar.MONTH ) + 1) );
+		text.append( "." + cal2.get(Calendar.YEAR ) );
 		
 		String doneTekst = text.toString();
 

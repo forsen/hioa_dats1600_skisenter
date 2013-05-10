@@ -33,6 +33,19 @@ public class Seasoncard extends Timebasedcard
 
 	public String toString()
 	{
-		return "Sesongkort\tGår ut: " + super.getExpires() +  "\t" + super.toString();
+		
+		String expires= null;
+
+		if(super.getExpires() == null)
+			expires = "ikke Validert";
+		if (super.getExpires() != null)
+		{
+			Calendar cal = Calendar.getInstance(); 
+			cal.setTime(super.getExpires());
+			expires = ( "" + cal.get(Calendar.DAY_OF_MONTH) + "." + (cal.get(Calendar.MONTH ) + 1) + "." + cal.get(Calendar.YEAR ) );
+		}
+
+
+		return "Sesongkort\tGår ut: " + expires+  "\t" + super.toString();
 	}
 }
