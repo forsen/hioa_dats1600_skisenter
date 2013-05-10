@@ -92,3 +92,4 @@ public class Admin extends JFrame
 		setSize( 830, 780 );
 	}
 }
+// end of class Admin
