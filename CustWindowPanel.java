@@ -80,7 +80,8 @@ public class CustWindowPanel extends JPanel
 
 		custRegistry = cr; 
 
-
+		//Will not use "try-catch" here, because the buttons will appear fine, even 
+		//though the pictures cannot be found.
 		ImageIcon camera = new ImageIcon("img/camera.png");
 		ImageIcon search = new ImageIcon("img/search.png");
 		ImageIcon customer = new ImageIcon("img/customer.png");
