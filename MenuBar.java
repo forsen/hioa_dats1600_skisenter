@@ -11,7 +11,6 @@ public class MenuBar
 {
 	private JMenuBar menuBar;
 	private JMenu file; 
-	private JMenu edit; 
 	private JMenu windows;	
 	private MenuListener menuListener;
 
@@ -26,7 +25,6 @@ public class MenuBar
 	{
 		menuBar = new JMenuBar();
 		file = new JMenu("File");
-		edit = new JMenu("Edit");
 		windows = new JMenu("Windows");
 
 		menuListener = new MenuListener();
@@ -40,7 +38,6 @@ public class MenuBar
 		makeFile();
 		makeWindows();
 		menuBar.add( file );
-		menuBar.add( edit );
 		menuBar.add( windows );
 
 		return menuBar;
