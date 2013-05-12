@@ -144,7 +144,7 @@ public class Salesclerk extends JFrame
 		//salesWindowPnl = new SalesWindowPanel( customer );
 		salesWindowPnl = new SalesWindowPanel(cardregistry);
 
-		replaceWindowPnl = new ReplaceWindowPanel( statusTxt);
+		replaceWindowPnl = new ReplaceWindowPanel();
 
 
 		//statusPnl = new JPanel( new FlowLayout() );

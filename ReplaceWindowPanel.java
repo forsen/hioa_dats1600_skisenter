@@ -12,7 +12,6 @@ public class ReplaceWindowPanel extends JPanel
 	private JLabel custIdLb, cardNrLb;
 	private JButton  replaceWindowRepBtn;
 	public static JTextField replaceWindowCustIdtf;
-	private JTextArea statusTxt;
 	private JPanel formPnl, resultPnl, contentPnl;
 	private Listener listener;
 	public static JList<Card> cardIDList;
@@ -20,7 +19,8 @@ public class ReplaceWindowPanel extends JPanel
 	private JScrollPane cardScrollList;
 	private Card card;
 	private Toolkit toolbox;
-	public ReplaceWindowPanel(JTextArea s)
+
+	public ReplaceWindowPanel()
 	{
 		Border etched = BorderFactory.createEtchedBorder();
 		Border header = BorderFactory.createTitledBorder(etched, "Erstatt kort");
@@ -63,21 +63,16 @@ public class ReplaceWindowPanel extends JPanel
 
 
 		replaceWindowCustIdtf.setEditable( false );
-	//	fielPnl.add(replaceWindowCustIdtf);
+	
 
 		cardNrLb = new JLabel( "Kortnummer" ) ;
 		cardNrLb.setToolTipText("Har du søkt på en kunde og trykket på denne vil kortene automatisk komme opp her");
-	//	fielPnl.add(cardScrollList);
+	
 
 		replaceWindowRepBtn = new JButton(" Erstatt kort ");
 		replaceWindowRepBtn.setToolTipText("Erstatt kortet du har valgt");
 		replaceWindowRepBtn.addActionListener( listener );
-	//	butnFld.add(replaceWindowRepBtn);
-		statusTxt = s;
-
-	/*	add(labelPnl, BorderLayout.LINE_START);
-		add(fielPnl, BorderLayout.LINE_END);
-		add(butnFld, BorderLayout.PAGE_END);*/
+	
 
 		formPnl = new JPanel();
 		formPnl.setLayout(new GridBagLayout());
@@ -140,7 +135,7 @@ public class ReplaceWindowPanel extends JPanel
 		catch( NumberFormatException nfe )
 		{
 			//JOptionPane.showMessageDialog(null, "Må putte inn siffer");
-			statusTxt.setText( "Kan kun bestå av siffer.");
+			Salesclerk.statusTxt.setText( "Kan kun bestå av siffer.");
 		}
 
 
@@ -155,7 +150,7 @@ public class ReplaceWindowPanel extends JPanel
 		nCard.setCurrent(card.getCurrent());
 		Salesclerk.customer.addCard(nCard);
 
-		statusTxt.setText( "Kortet med kortnr: " + card.getCardID() + " ble er erstattet med kortnr: " + nCard.getCardID());
+		Salesclerk.statusTxt.setText( "Kortet med kortnr: " + card.getCardID() + " ble er erstattet med kortnr: " + nCard.getCardID());
 
 	}
 

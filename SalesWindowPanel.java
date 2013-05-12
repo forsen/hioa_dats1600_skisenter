@@ -30,12 +30,14 @@ public class SalesWindowPanel extends JPanel
 	private Cardlist cardregistry;
 	private static NumberFormat paymentFormat;
 	private static Border etched;
+	
 
 
 	public SalesWindowPanel(Cardlist cl)
 	{
 		setBackground(new Color(200, 230, 255));
 		cardregistry = cl;
+		
 
 		paymentFormat = NumberFormat.getCurrencyInstance( new Locale( "no", "NO" ) );
 		cartPrice = 0.0;
@@ -368,26 +370,31 @@ public class SalesWindowPanel extends JPanel
 
 	private void deleteFromCart()
 	{
-		int removeLine = shoppingCartList.getSelectedIndex(); 
+		try
+		{	int removeLine = shoppingCartList.getSelectedIndex(); 
 
-		CartItems c = shoppingCartList.getModel().getElementAt(removeLine);
+			CartItems c = shoppingCartList.getModel().getElementAt(removeLine);
 
 
 		
 		
 		
 
-		shoppingCartList.setModel( shoppingCart.deleteFromCart( removeLine ) );
+			shoppingCartList.setModel( shoppingCart.deleteFromCart( removeLine ) );
 
-		// need this, or we will get double entries in the cardidlist
-		if( c.getSkiCard() == null )
+			// need this, or we will get double entries in the cardidlist
+			if( c.getSkiCard() == null )
+			{
+				DefaultListModel<Card> lmc = (DefaultListModel<Card>) cardIDList.getModel();
+				lmc.addElement( c.getCard() );
+				cardIDList.setModel( lmc );
+			}
+		
+			updateCartPrice();
+		}catch (ArrayIndexOutOfBoundsException aiobe)
 		{
-			DefaultListModel<Card> lmc = (DefaultListModel<Card>) cardIDList.getModel();
-			lmc.addElement( c.getCard() );
-			cardIDList.setModel( lmc );
+			Salesclerk.statusTxt.setText("Du må velge en linje du ønsker og slette");
 		}
-		
-		updateCartPrice();
 
 	}
 

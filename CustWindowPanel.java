@@ -17,7 +17,6 @@ public class CustWindowPanel extends JPanel
 	private JPanel imagePnl,custWindowSearchInfoPnl, custWindowFirstNamePnl, custWindowLastNamePnl, custWindowPhonePnl, custWindowBornPnl, custWindowBtnPnl;
 	private static JTextField custWindowFirstName, custWindowLastName, custWindowPhone, custWindowBorn;
 	private JTextArea custWindowSearchInfoTxt;
-	private JTextArea statusTxt;
 	private JPanel formPnl, btnPnl, rsltPnl; 
 	private CustListener custListener;
 	private static JList<Person> list; 
@@ -75,7 +74,6 @@ public class CustWindowPanel extends JPanel
 		imagePnl.setBackground(new Color(200, 230, 255));
 
 
-		statusTxt = s;
 
 		listListener = new ListListener(); 
 
@@ -167,13 +165,13 @@ public class CustWindowPanel extends JPanel
 				Date born = dateFormatter.parse(custWindowBorn.getText());
 				if( custRegistry.findPerson( number, firstname, lastname) != null )
 				{
-					statusTxt.setText( "Denne personen finnes allerede, finn personen i søkeresultatet.");
+					Salesclerk.statusTxt.setText( "Denne personen finnes allerede, finn personen i søkeresultatet.");
 					findPerson(); 
 					return null;
 				}
 				Person p = new Person( firstname, lastname, number, born, img );
 			
-				statusTxt.setText(custRegistry.input( p ));
+				Salesclerk.statusTxt.setText(custRegistry.input( p ));
 
 				findPerson();
 
@@ -186,12 +184,12 @@ public class CustWindowPanel extends JPanel
 		}
 		catch( ParseException pe )
 		{
-			statusTxt.setText( "Fødselsdato må være på formen ddmmyy" );
+			Salesclerk.statusTxt.setText( "Fødselsdato må være på formen ddmmyy" );
 		}
 		catch( NumberFormatException nfe )
 		{
 			//JOptionPane.showMessageDialog(null, "Telefonnummeret må kun bestå av siffer!");
-			statusTxt.setText( "Telefonnummeret må bestå av 8 siffer" );
+			Salesclerk.statusTxt.setText( "Telefonnummeret må bestå av 8 siffer" );
 		}
 
 
@@ -220,7 +218,7 @@ public class CustWindowPanel extends JPanel
 		}
 		catch(NullPointerException npe)
 		{
-			statusTxt.setText("Må være 8 siffer i tlfnr");
+			Salesclerk.statusTxt.setText("Må være 8 siffer i tlfnr");
 		}
 
 
@@ -254,7 +252,7 @@ public class CustWindowPanel extends JPanel
 			Salesclerk.customer.setBirth(born);
 
 			Salesclerk.salesClerkSearchInfoTxt.setText( "Har oppdatert:\n"+ Salesclerk.customer.getCustId() + "\n" + Salesclerk.customer.toString() );
-			statusTxt.setText("Kundeinfo ble oppdatert.");
+			Salesclerk.statusTxt.setText("Kundeinfo ble oppdatert.");
 
 		}
 		catch(NullPointerException npe)
@@ -273,7 +271,7 @@ public class CustWindowPanel extends JPanel
 	{
 		if( Salesclerk.customer == null )
 		{
-			statusTxt.setText("Du må opprette / velge en person før du velger bilde");
+			Salesclerk.statusTxt.setText("Du må opprette / velge en person før du velger bilde");
 			return; 
 		}
 		try
@@ -290,8 +288,9 @@ public class CustWindowPanel extends JPanel
 			{
 				img = fc.getSelectedFile(); 
 				moveAndRenameImg(img,  Salesclerk.customer);
-				statusTxt.setText("Du har valgt å åpne bildet: " + img.getName() );
+				Salesclerk.statusTxt.setText("Du har valgt å åpne bildet: " + img.getName() );
 			}
+
 
 
 
@@ -302,8 +301,10 @@ public class CustWindowPanel extends JPanel
 		}
 		catch(NullPointerException nfe)
 		{
-			statusTxt.setText("Ble ikke valgt et bilde");
+
+			Salesclerk.statusTxt.setText("Ble ikke valgt et bilde");
 			nfe.printStackTrace( System.out );
+
 		}
 		
 		img = null;

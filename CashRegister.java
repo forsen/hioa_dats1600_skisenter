@@ -65,6 +65,7 @@ public class CashRegister extends JDialog
 				SalesWindowPanel.updateCartPrice();
 				SalesWindowPanel.cardIDList.setModel( new DefaultListModel<Card>() );
 				
+				
 			}
 		});
 
