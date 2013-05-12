@@ -1,4 +1,5 @@
 import java.util.*;
+import javax.swing.*;
 
 /**
  * Seasoncard is a subclass of Timebasedcard.
@@ -12,7 +13,7 @@ import java.util.*;
 
 public class Seasoncard extends Timebasedcard
 {
-	Calendar calHelper, nextSeason; 
+	private Calendar calHelper, nextSeason; 
 
 
 /**
@@ -26,7 +27,8 @@ public class Seasoncard extends Timebasedcard
 	public Seasoncard( Date bd, Date b )
 	{
 		super(Info.SEASONCARDPRICE, bd, b, Skicard.SEASONCARD);  	
-		calHelper = Calendar.getInstance(); 		
+		calHelper = Calendar.getInstance(); 
+		nextSeason = Calendar.getInstance();		
 	}
 
 
@@ -37,9 +39,8 @@ public class Seasoncard extends Timebasedcard
   */
 	public void initialized()
 	{
-		setExpires(new Date());
-		nextSeason = Calendar.getInstance();
 
+		setExpires(new Date());
 
 		calHelper.setTime( expires );
 		calHelper.set( Calendar.MONTH, Calendar.MAY);
@@ -48,17 +49,22 @@ public class Seasoncard extends Timebasedcard
 		calHelper.set( Calendar.MINUTE, 0 );
 		calHelper.set( Calendar.SECOND, 0 );
 
-		nextSeason = calHelper;
-		nextSeason.add(Calendar.YEAR, 1);
+		nextSeason.setTime(calHelper.getTime());
+		nextSeason.add( Calendar.YEAR, 1);
 
-		setExpires(calHelper.getTime());
 
-//		if(Calendar.getInstance().after(calHelper.getTime()))
-		if(calHelper.getTime().after( new Date() ))
+		if(Calendar.getInstance().after(calHelper))
 		{
 			setExpires(nextSeason.getTime());
+			JOptionPane.showMessageDialog(null, "Du er utenfor sesongen. Kortet ditt blir dermed gyldig ut neste sesong.");
 		}
 
+		else
+		{
+			setExpires(calHelper.getTime());
+		}
+
+//		if(Calendar.getInstance().after(calHelper.getTime()))
 	}
 
 
