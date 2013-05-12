@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.text.NumberFormat;
+import java.util.Calendar;
 
 /**
   * This class creates the statistics panel on the Admin window. The statistics panel can display reports and graphs of data, revenue, registered person,
@@ -438,10 +439,16 @@ public class AdminStatistikkPanel extends JPanel
   */
 	private Date getEndDate()
 	{
+		Calendar cal = Calendar.getInstance();
 		Date end; 
 		try
 		{
 			end = formatter.parse(toFld.getText());
+			cal.setTime( end );
+			cal.set( Calendar.HOUR_OF_DAY, 23 );
+			cal.set( Calendar.MINUTE, 59 );
+			end = cal.getTime();
+
 		}
 		catch( ParseException pe )
 		{
