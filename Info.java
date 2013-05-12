@@ -43,7 +43,7 @@ public class Info extends JFrame
 
     	try
 		{
-			firstLight = new SimpleDateFormat("ddMMyy").parse("010105");
+			firstLight = new SimpleDateFormat("ddMMyy").parse("010112");
 		}
 		catch( ParseException pe )
 		{

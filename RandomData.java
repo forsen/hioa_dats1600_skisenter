@@ -12,14 +12,14 @@ public class RandomData
 
 
 
-	private final int ANTALLPERSONER = 10000;
+	private final int ANTALLPERSONER = 5000;
 	private final int MINKORTPERPERSON = 2;
 	private final int MAXKORTPERPERSON = 5;
 	private final int MINSKIKORTPERKORT = 1; 
 	private final int MAXSKIKORTPERKORT = 4;
 	private final int SKISESONGSTARTMND = 11;
 	private final int SKISESONGSLUTTMND = 5; 
-	private final int UNREGCARDS = 20000;
+	private final int UNREGCARDS = 10000;
 
 
 
@@ -49,7 +49,7 @@ public class RandomData
 
 		for( int i = 0; i < UNREGCARDS; i++ )
 		{
-			cardlist.addCard( addCards( null, randomDate( 2005, 2013 ) ) );
+			cardlist.addCard( addCards( null, randomDate( 2012, 2013 ) ) );
 		}
 	}
 
@@ -67,7 +67,7 @@ public class RandomData
 
 			Person p = new Person( firstname, lastname, number, dob, null);
 
-			Date rDate = randomDate( 2005, 2013 );
+			Date rDate = randomDate( 2012, 2013 );
 
 			p.setCreated( rDate );
 
@@ -94,23 +94,24 @@ public class RandomData
 		Card n = new Card( rDate ); 
 		Skicard s = new Daycard( b, b );
 		//int random = randBetween( 1, 4 );
-		int random = rand.nextInt( 4 ) + 1; 
+		int randomNumber = rand.nextInt( 4 ) + 1; 
 		int i = 0; 
 		do
 		{
+			int random =rand.nextInt( 4 ) + 1;
 			switch( random ) 
 			{
 				case 1: 
-					s = new Daycard( b, randomDate(2005, 2013) );
+					s = new Daycard( b, randomDate(2012, 2013) );
 					break;
 				case 2: 
-					s = new Seasoncard( b, randomDate(2005,2013) );
+					s = new Seasoncard( b, randomDate(2012,2013) );
 					break;
 				case 3: 
-					s = new Hourcard( b, randomDate( 2005, 2013) );
+					s = new Hourcard( b, randomDate( 2012, 2013) );
 					break; 
 				case 4:
-					s = new Punchcard( b, randomDate( 2005, 2013 ) );
+					s = new Punchcard( b, randomDate( 2012, 2013 ) );
 					break; 
 			}
 
@@ -119,7 +120,7 @@ public class RandomData
 
 			validate( n ); 
 		}
-		while( i < random );
+		while( i < randomNumber );
 
 		return n; 
 	}
