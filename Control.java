@@ -439,6 +439,6 @@ public class Control extends JFrame
      	   ctrlWindowShowTime.setText(time);
      	   ctrlWindowShowTime.setEditable(false);
     	}
-	}
+	} // end of class UpdateTime
 
-}
+} //end of class Control
