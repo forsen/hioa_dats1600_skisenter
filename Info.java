@@ -15,7 +15,9 @@ import java.text.ParseException;
 
 
 /**
-  * Info is the class that creates the Info-window, and fills it with panels and content.
+  * Info is the class that creates the Info-window. The info window is just for displaying information
+  * and there is no methods in this class worth mentioning.
+  * However, this class holds many static constants which are being fetched up in other classes.
   * @author Erik Haider Forsén
   * @author Ole Hansen
   * @author Julie Hill Roa
@@ -438,5 +440,5 @@ public class Info extends JFrame
 			}
 
 		}
-	}
-}
+	} //end of class Listener
+} //end of class Info

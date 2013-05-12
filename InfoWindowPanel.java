@@ -7,6 +7,18 @@ import java.util.Date;
 import javax.imageio.*;
 import java.awt.image.BufferedImage;
 
+
+
+/**
+  * InfoWindowPanel is one of the four panels available for displaying in the Info-window.
+  * This one displays useful information to the customer. 
+  * @author Erik Haider Forsén
+  * @author Ole Hansen
+  * @author Julie Hill Roa
+  * @version 0.9
+  */
+
+
 public class InfoWindowPanel extends JPanel
 {
 	private JLabel headerImg1, headerImg2;
@@ -17,6 +29,10 @@ public class InfoWindowPanel extends JPanel
 	private BufferedImage snowboarderImg, skimapImg;
 
 
+	/**
+	  * The constructor creates all the elements and place them on the panel.
+	  * This panel has no other intention than to display information.
+	  */
 
 	public InfoWindowPanel()
 	{
@@ -167,5 +183,5 @@ public class InfoWindowPanel extends JPanel
 
 
 	}
-}
+} //end of class InfoWindowPanel
 
