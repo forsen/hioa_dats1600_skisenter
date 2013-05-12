@@ -86,7 +86,7 @@ public class PricesWindowPanel extends JPanel
 		c.weighty=0.5;
 		add(header, c);
 
-		content = new JLabel("<html>Skisenteret tilbyr egen afterski, som går for å være en av landets beste." +
+		content = new JLabel("<html>Skiresortet tilbyr egen afterski, som går for å være en av landets beste." +
 							"Møt opp med godt humør og <br> tørst hals, her har vi både god partystemning og billige priser i baren.<br>"+
 							"Inngang: 50kr. CC: 20 år.<br><br><br></html>");
 		content.setFont(new Font("Calibri", Font.PLAIN, 14));

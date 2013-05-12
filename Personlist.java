@@ -19,7 +19,7 @@ public class Personlist implements Serializable
 
 	public String input(Person obj)
 	{
-		Skisenter.unsaved = true; 
+		Skiresort.unsaved = true; 
 
 		if(isEmpty())
 		{
@@ -193,7 +193,7 @@ public class Personlist implements Serializable
 	{
 		
 		System.out.println("inne i deletemetoden");
-		Skisenter.unsaved = true; 
+		Skiresort.unsaved = true; 
 
 		Iterator<Person> it = registry.iterator();
 

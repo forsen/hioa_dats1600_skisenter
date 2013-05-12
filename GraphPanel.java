@@ -209,7 +209,7 @@ public class GraphPanel extends JPanel
 		g2d.drawString( label, startX, startY );
 		startY += 3*LINESPACE; 
 
-		if( type == AdminStatistikkPanel.CARDS || type == AdminStatistikkPanel.REVENUE )
+		if( type == AdminStatisticsPanel.CARDS || type == AdminStatisticsPanel.REVENUE )
 		{
 			g2d.setColor(nextColor()[Skicard.DAYCARD]);
 			g2d.drawString( "Dagskort", startX, startY );
@@ -234,7 +234,7 @@ public class GraphPanel extends JPanel
 	
 		}
 
-		else if ( type == AdminStatistikkPanel.VALIDS )
+		else if ( type == AdminStatisticsPanel.VALIDS )
 		{
 			for( int i = 0; i < data.length; i++ )
 			{

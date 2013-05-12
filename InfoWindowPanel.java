@@ -96,8 +96,8 @@ public class InfoWindowPanel extends JPanel
 
 		/* ********************Creates the lifttable******************* */
 		Object rowData[][] = { 
-		{"Stolheis", Skisenter.chLift.getName(), Skisenter.chLift.getLiftNr() , Skisenter.chLift.getClips(), Skisenter.chLift.getLength() + " m."},
-        {"Krokheis", Skisenter.tLift.getName(), Skisenter.tLift.getLiftNr() , Skisenter.tLift.getClips(), Skisenter.tLift.getLength() + " m."}};
+		{"Stolheis", Skiresort.chLift.getName(), Skiresort.chLift.getLiftNr() , Skiresort.chLift.getClips(), Skiresort.chLift.getLength() + " m."},
+        {"Krokheis", Skiresort.tLift.getName(), Skiresort.tLift.getLiftNr() , Skiresort.tLift.getClips(), Skiresort.tLift.getLength() + " m."}};
      
     	Object columnNames[] = {"Type", "Heisnavn", "Heisnummer", "Tar antall klipp", "Lengde" };
  

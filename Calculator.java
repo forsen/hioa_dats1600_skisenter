@@ -95,7 +95,7 @@ public class Calculator
 		{
 			for( int i = 0; i < graph.length; i++ )
 				graph[i] = normalize( graph[i], 7 );
-			AdminStatistikkPanel.scale = "Uker";
+			AdminStatisticsPanel.scale = "Uker";
 		}
 
 		// it is assumed that every month is exactly 4 weeks. That is not
@@ -105,14 +105,14 @@ public class Calculator
 		{
 			for( int i = 0; i < graph.length; i++ )
 				graph[i] = normalize( graph[i], 4 );
-			AdminStatistikkPanel.scale = "Mnd";
+			AdminStatisticsPanel.scale = "Mnd";
 		}
 
 		if( graph[0].length > 20 )
 		{
 			for( int i = 0; i < graph.length; i++ )
 				graph[i] = normalize( graph[i], 12 );
-			AdminStatistikkPanel.scale = "År"; 
+			AdminStatisticsPanel.scale = "År"; 
 		}
 
 		
@@ -163,7 +163,7 @@ public class Calculator
 		if( graph[0].length > 20 )
 		{
 			graph[0] = normalize( graph[0], 7 );
-			AdminStatistikkPanel.scale = "Uker";
+			AdminStatisticsPanel.scale = "Uker";
 		}
 
 		// it is assumed that every month is exactly 4 weeks. That is not
@@ -172,12 +172,12 @@ public class Calculator
 		if( graph[0].length > 20 )
 		{
 			graph[0] = normalize( graph[0], 4 );
-			AdminStatistikkPanel.scale = "Mnd";
+			AdminStatisticsPanel.scale = "Mnd";
 		}
 		if( graph[0].length > 20 )
 		{
 			graph[0] = normalize( graph[0], 12 );
-			AdminStatistikkPanel.scale = "År";
+			AdminStatisticsPanel.scale = "År";
 		}
  
 		return graph;
@@ -243,7 +243,7 @@ public class Calculator
 		{
 			for( int i = 0; i < graph.length; i++ )
 				graph[i] = normalize( graph[i], 7 );
-			AdminStatistikkPanel.scale = "Uker";
+			AdminStatisticsPanel.scale = "Uker";
 		}
 
 		// it is assumed that every month is exactly 4 weeks. That is not
@@ -253,14 +253,14 @@ public class Calculator
 		{
 			for( int i = 0; i < graph.length; i++ )
 				graph[i] = normalize( graph[i], 4 );
-			AdminStatistikkPanel.scale = "Mnd";
+			AdminStatisticsPanel.scale = "Mnd";
 		}
 
 		if( graph[0].length > 20 )
 		{
 			for( int i = 0; i < graph.length; i++ )
 				graph[i] = normalize( graph[i], 12 );
-			AdminStatistikkPanel.scale = "År";
+			AdminStatisticsPanel.scale = "År";
 		}
 
 		
@@ -306,7 +306,7 @@ public class Calculator
 		{
 			for( int i = 0; i < graph.length; i++ )
 				graph[i] = normalize( graph[i], 7 );
-			AdminStatistikkPanel.scale = "Uker";
+			AdminStatisticsPanel.scale = "Uker";
 		}
 
 		// it is assumed that every month is exactly 4 weeks. That is not
@@ -316,14 +316,14 @@ public class Calculator
 		{
 			for( int i = 0; i < graph.length; i++ )
 				graph[i] = normalize( graph[i], 4 );
-			AdminStatistikkPanel.scale = "Mnd";
+			AdminStatisticsPanel.scale = "Mnd";
 		}
 
 		if( graph[0].length > 20 )
 		{
 			for( int i = 0; i < graph.length; i++ )
 				graph[i] = normalize( graph[i], 12 );
-			AdminStatistikkPanel.scale = "År"; 
+			AdminStatisticsPanel.scale = "År"; 
 		}
 
 		return graph;
@@ -367,12 +367,12 @@ public class Calculator
 	}
 
 /**
-  * This method will calculate the number of days since this Skisenter launched. This is necessary
+  * This method will calculate the number of days since this Skiresort launched. This is necessary
   * to create and propagate the Integer arrays of data properly when the range spans over one or more
   * new years. 
   *
   * @param d 	Date object to calculate on
-  * @return Returns an int of how many days between the incoming Date object and the launch of this Skisenter.
+  * @return Returns an int of how many days between the incoming Date object and the launch of this Skiresort.
   * @see Info#firstLight
   */
 
