@@ -18,7 +18,7 @@ public class Seasoncard extends Timebasedcard
 /**
   *	Creates the Seasoncard
   *
-  *	@param bd 	The cards bought date
+  *	@param bd 	The card holders birthdate, determines if child discount should be used.
   * @param b	The creation date of the Card
   *
   */
