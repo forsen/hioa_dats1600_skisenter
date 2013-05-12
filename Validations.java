@@ -17,7 +17,7 @@ public class Validations implements Serializable
 		else
 			date = d; 
 		
-		Skisenter.unsaved = true; 
+		Skiresort.unsaved = true; 
 	}
 
 	public int getLiftId()

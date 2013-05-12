@@ -65,7 +65,7 @@ public class ReceiptPainting extends JPanel
 
 		g2d.drawImage( img, (WIDTH/2 - size/2), 10, null );
 
-		printCenteredString( "Offpist skisenter", WIDTH, 0, currentY, g2d );
+		printCenteredString( "Offpist Skiresort", WIDTH, 0, currentY, g2d );
 		currentY += LINESPACE; 
 		printCenteredString( "ORG.NR. 123 456 789 MVA", WIDTH, 0, currentY, g2d );
 		currentY += LINESPACE; 

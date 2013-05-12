@@ -298,6 +298,7 @@ public class AdminInfoPanel extends JPanel
 				for(int j = 0; j<skicards.size(); j++)
 				{
 
+					
 					if( skicrunner instanceof Timebasedcard )
 					{	
 						String expire;
@@ -306,17 +307,29 @@ public class AdminInfoPanel extends JPanel
 						else
 						{
 							if( skicrunner instanceof Hourcard )
-								expire = new SimpleDateFormat("ddMMyy HH:mm").format( ((Timebasedcard) skicrunner).getExpires());
+								expire = new SimpleDateFormat("dd.MM.yy HH:mm").format( ((Timebasedcard) skicrunner).getExpires());
 							else
-								expire = new SimpleDateFormat("ddMMyy").format( ((Timebasedcard) skicrunner).getExpires() );
+								expire = new SimpleDateFormat("dd.MM.yy").format( ((Timebasedcard) skicrunner).getExpires() );
 						}
+
+						String age = null;
+						if(skicrunner.getAgeGroup() == 1)
+							age = "Barn";
+						if(skicrunner.getAgeGroup() == 2)
+							age = "Voksen";
+
 						list.add( new ListObject( runner.getCardID(), skicrunner.getType(""), expire, paymentFormat.format(skicrunner.getPrice()),
-							skicrunner.getDiscount(), skicrunner.getAgeGroup() ) );
+							100-(100* skicrunner.getDiscount())+ "%", age  ));
 					}
+					String age = null;
+						if(skicrunner.getAgeGroup() == 1)
+							age = "Barn";
+						if(skicrunner.getAgeGroup() == 2)
+							age = "Voksen";
 
 					else if (skicrunner instanceof Punchcard )
 						list.add( new ListObject( runner.getCardID(), skicrunner.getType(""), "" + ((Punchcard) skicrunner).getClipCount(), paymentFormat.format(skicrunner.getPrice()),
-							skicrunner.getDiscount(), skicrunner.getAgeGroup() ) );
+							100-(100* skicrunner.getDiscount()) + "%", age) );
 
 				}
 			
@@ -396,10 +409,10 @@ public class AdminInfoPanel extends JPanel
 		String type;
 		String price;
 		String both;
-		double discount;
-		int ageGroup;
+		String discount;
+		String ageGroup;
 
-		public ListObject( int cId, String t, String b, String p, double d, int ag )
+		public ListObject( int cId, String t, String b, String p, String d, String ag )
 		{
 			cardId = cId;
 			type = t; 
@@ -421,7 +434,7 @@ public class AdminInfoPanel extends JPanel
 		{
 			return price;
 		}
-		public double getDiscount()
+		public String getDiscount()
 		{
 			return discount;
 		}
@@ -429,7 +442,7 @@ public class AdminInfoPanel extends JPanel
 		{
 			return both;
 		}
-		public int getAgeGroup()
+		public String getAgeGroup()
 		{
 			return ageGroup;
 		}

@@ -65,7 +65,7 @@ public class Admin extends JFrame
 		};
 
 		adminInfoPnl = new AdminInfoPanel(list, validations, cardregistry);
-		statInfoPnl = new AdminStatistikkPanel(list, validations, cardregistry );
+		statInfoPnl = new AdminStatisticsPanel(list, validations, cardregistry );
 		
 		layout = new BorderLayout( 5, 5 );
 		

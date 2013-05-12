@@ -20,7 +20,7 @@ public class Person implements Serializable, Comparable<Person>
 
 	public Person( String fn, String ln, int p, Date b, File i )
 	{
-		Skisenter.unsaved = true;
+		Skiresort.unsaved = true;
 		custId = ++next;
 		firstname = fn;
 		lastname = ln;

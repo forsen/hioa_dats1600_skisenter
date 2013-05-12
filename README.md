@@ -1,4 +1,4 @@
-skisenter
+Skiresort
 =========
 
 Prosjektoppgave

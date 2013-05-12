@@ -14,7 +14,7 @@ import javax.swing.*;
  * @author Julie Hill Roa
  * @version 0.9
  * @see Person#list
- * @see Skisenter#cardregistry
+ * @see Skiresort#cardregistry
  */
 public class Cardlist implements Serializable
 {
@@ -51,7 +51,7 @@ public class Cardlist implements Serializable
 		{
 			if(it.next().equals(obj))
 			{
-				Skisenter.unsaved = true;
+				Skiresort.unsaved = true;
 				it.remove();
 				return obj;
 			}
@@ -87,7 +87,7 @@ public class Cardlist implements Serializable
   */
 	public int addCard( Card n )
 	{
-		Skisenter.unsaved = true; 
+		Skiresort.unsaved = true; 
 		list.add( n );
 		return n.getCardID();
 	}
@@ -118,7 +118,7 @@ public class Cardlist implements Serializable
   * @param start 	The start date of the interval you want to get Cards from
   * @param end 		The end date of the interval you want to get Cards from
   * @return Returns a list of all the Cards in this list, between the given dates.
-  * @see AdminStatistikkPanel
+  * @see AdminStatisticsPanel
   */
 	public List<Card> getRelevantCards(Date start, Date end)
 	{

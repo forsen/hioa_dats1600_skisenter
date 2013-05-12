@@ -46,7 +46,7 @@ public class NewsWindowPanel extends JPanel
 		news4 = new JLabel(
 		"<html><i>Skrevet: 01. mai 2013</i><br><br>" +
 		"Takk for en knakendes fin sesong. Titt innom nærmere sesongstart for nyheter ang. sesongåpning 2013/2014!" +
-		"Send oss gjerne ris <br> og ros. Vi håper å se deg her på Offpist Skisenter, neste sesong. <br><br><br><br></html>");
+		"Send oss gjerne ris <br> og ros. Vi håper å se deg her på Offpist Skiresort, neste sesong. <br><br><br><br></html>");
 
 
 	    news4.setFont(new Font("Calibri", Font.PLAIN, 14));

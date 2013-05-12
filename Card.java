@@ -27,7 +27,7 @@ public class Card implements Serializable
   */
 	public Card( Date b )
 	{
-		Skisenter.unsaved = true; 
+		Skiresort.unsaved = true; 
 		skiCardList = new LinkedList<>(); 
 		cardNumber = ++next; 
 		current = null; 
@@ -104,7 +104,7 @@ public class Card implements Serializable
   * Method to save the next Card number when writing to file, as static variables is not written with the Object. Unless we save this 
   * varible, we'll end up with several cards with the same ID, as it will start over at the beginning after a restart of the program.
   * @return returns the next available ID for new cards.
-  * @see Skisenter#saveFile()
+  * @see Skiresort#saveFile()
   */
 	public static int readNext()
 	{
@@ -116,7 +116,7 @@ public class Card implements Serializable
   *
   * @param n the next available ID for Cards
   * @see #readNext()
-  * @see Skisenter#readFile()
+  * @see Skiresort#readFile()
   */
 	public static void setNext( int n )
 	{
@@ -158,7 +158,7 @@ public class Card implements Serializable
   * @param start The start date of the interval you want to get Skicards from
   * @param end The end date of the interval you want to get Skicards from
   * @return Returns a list of all the Skicards this Card holds, between the dates specified. 
-  * @see AdminStatistikkPanel
+  * @see AdminStatisticsPanel
   */
 	public List<Skicard> getRelevantCards(Date start, Date end)
 	{

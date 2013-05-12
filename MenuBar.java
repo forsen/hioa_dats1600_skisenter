@@ -81,7 +81,7 @@ public class MenuBar
 		public void actionPerformed( ActionEvent ae )
 		{
 			if( ae.getSource() == save )
-				Skisenter.saveFile(); 
+				Skiresort.saveFile(); 
 			if( ae.getSource() == exit )
 			{
 				JMenuItem menuItem = (JMenuItem) ae.getSource();
@@ -91,7 +91,7 @@ public class MenuBar
 				Container topLevel = invokerAsJComponent.getTopLevelAncestor();
 				if( topLevel instanceof Salesclerk )
 				{
-					if( Skisenter.checkForUnsaved() )
+					if( Skiresort.checkForUnsaved() )
 						System.exit( 0 );
 				}
 
@@ -100,13 +100,13 @@ public class MenuBar
 			}
 			if( ae.getSource() == lifts )
 			{
-				Skisenter.lift1.setVisible(true);
-				Skisenter.lift2.setVisible(true);
+				Skiresort.lift1.setVisible(true);
+				Skiresort.lift2.setVisible(true);
 			}
 			if( ae.getSource() == info )
-				Skisenter.i.setVisible( true );
+				Skiresort.i.setVisible( true );
 			if( ae.getSource() == admin )
-				Skisenter.a.setVisible( true );
+				Skiresort.a.setVisible( true );
 		}
 	}
 }
