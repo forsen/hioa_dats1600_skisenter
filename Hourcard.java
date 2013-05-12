@@ -23,11 +23,14 @@ public class Hourcard extends Timebasedcard
 
 	}
 
-	public void unvalidate()
-	{
-		calHelper.setTime( new Date() );
-		expires = calHelper.getTime();
-	}
+	/* This method is made for future versions, when it may become necessary to unvalidate a card.
+	 *
+	 *	public void unvalidate()
+	 *	{
+	 *		calHelper.setTime( new Date() );
+	 *		expires = calHelper.getTime();
+	 *	}  
+	 **/
 
 	public String toString()
 	{
