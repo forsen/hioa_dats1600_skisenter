@@ -53,7 +53,8 @@ public class Seasoncard extends Timebasedcard
 
 		setExpires(calHelper.getTime());
 
-		if(Calendar.getInstance().after(calHelper.getTime()))
+//		if(Calendar.getInstance().after(calHelper.getTime()))
+		if(calHelper.getTime().after( new Date() ))
 		{
 			setExpires(nextSeason.getTime());
 		}
