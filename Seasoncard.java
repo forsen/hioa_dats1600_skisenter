@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Seasoncard extends Timebasedcard
 {
-	Calendar calHelper; 
+	Calendar calHelper, nextSeason; 
 
 	public Seasoncard( Date bd, Date b )
 	{
@@ -13,6 +13,7 @@ public class Seasoncard extends Timebasedcard
 	public void initialized()
 	{
 		setExpires(new Date());
+		nextSeason = Calendar.getInstance();
 
 
 		calHelper.setTime( expires );
@@ -21,7 +22,16 @@ public class Seasoncard extends Timebasedcard
 		calHelper.set( Calendar.HOUR_OF_DAY, 0 );
 		calHelper.set( Calendar.MINUTE, 0 );
 		calHelper.set( Calendar.SECOND, 0 );
+
+		nextSeason = calHelper;
+		nextSeason.add(Calendar.YEAR, 1);
+
 		setExpires(calHelper.getTime());
+
+		if(Calendar.getInstance().after(calHelper.getTime()))
+		{
+			setExpires(nextSeason.getTime());
+		}
 
 	}
 
