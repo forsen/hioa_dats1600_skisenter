@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
 import java.util.LinkedList;
-import java.util.Objects; 
+import java.util.Objects;  
 
 public class Skisenter
 {

@@ -12,6 +12,19 @@ import javax.swing.border.*;
 import java.text.ParseException;
 import javax.imageio.ImageIO;
 
+
+
+/**
+  * Control creates the typical controlscreens you see when entering a ski lift. It also
+  * calculates if skicards are valid and then eventually grants the user access to walk through.
+  * @author Erik Haider Forsén
+  * @author Ole Hansen
+  * @author Julie Hill Roa
+  * @version 0.9
+  */
+
+
+
 public class Control extends JFrame
 {
 	private JButton ctrlRegCustNr;
@@ -31,7 +44,12 @@ public class Control extends JFrame
 	private Toolkit toolbox;
 
 
-
+/**
+  * This constructor creates elements and place them on the frame. It also receives the necessary data to determine whether a card is valid or not.
+  * @param cr 	The personlist
+  * @param l    The lifts
+  * @param cl 	The cardlist, to get necessary data about cards.
+  */
 
 	public Control( Personlist cr, Lift l, Cardlist cl )
 	{
@@ -214,6 +232,10 @@ public class Control extends JFrame
 		
 	}
 
+	/**
+	  * A method that gets, and updates, the current time every second.
+	  */
+
 	private void updateTime()
 	{
 		Timer timer = new Timer();
@@ -221,10 +243,25 @@ public class Control extends JFrame
 
 	}
 
+	/**
+	  * A method that gets the object Lift.
+	  * @return Returns a Lift object
+	  * @see Lift
+	  */
+
 	public Lift getLift()
 	{
 		return lift; 
 	}
+
+
+
+
+/**
+ * A method that sets the font type for the different labels we use
+ * @param s  String object with the font path
+ * @return Returns a boolean value, that tells whether the fonts have been found and set, or not.
+ */
 
 	private boolean setFonts(String s)
 	{
@@ -243,6 +280,12 @@ public class Control extends JFrame
 		}
 	}
 
+
+/**
+ * A method that finds card, based on what is written in the cardnumber field. The method will also tell the user whether they have 
+ * written a valid value, and if not, help the user.
+ * @return Returns a Skicard object, if card is found.
+ */
 
 	private Skicard findCard()
 	{
@@ -281,6 +324,16 @@ public class Control extends JFrame
 
 		return null;
 	}
+
+/**
+ * This method checks if a card has an expire date. If it doesn't, then the card hasn't yet been used.
+ * If the card hasn't yet been used, the method will initialize the card(give it an expire date).
+ * The method also checks whether a card is valid or not, based on card type,
+ * expiration date(timebasedcard) or the amount of clips(punchcard). It will also excecute useCard from punchcards, which removes a number of clips, when a person uses it.
+ * It also displays for the user whether they can go through or not, their cards expire date(timebasedcard), or their cards remaining amount of clips(punchcard)
+ * The method will prevent users from cheating, or using eachothers card by checking if the last passthrough is under 10 seconds ago. 
+ * In the real life, we would probably set five minutes, but ten seconds is a lot easier for testing and reviewing the program.
+ */
 
 	private void tryValidate()
 	{
@@ -375,6 +428,9 @@ public class Control extends JFrame
 
 	}
 
+/**
+ * This class updates and displays time.
+ */
 	private class UpdateTime extends TimerTask
 	{
     	public void run()
@@ -384,19 +440,5 @@ public class Control extends JFrame
      	   ctrlWindowShowTime.setEditable(false);
     	}
 	}
-
-
-	/* ta imoot kortID, validere, sjekke om det finnes, gyldig, hvis klippekort trekke et klipp*/
-	/* instanceOf Timebasedcard, sjekk om det er initializert;
-
-	/*<konstruktør for å opprette vinduet>
-
-	<metoder for å validere kort basert på kortnr>
-	
-	<abstrakte metode for å undersøke om et tidsbasert skikort er gyldig>
-
-	<abstrakt metode for å trekke X klipp>
-
-	<knappelytter og diverse andre ting som kreves i en vindusklasse>*/
 
 }
