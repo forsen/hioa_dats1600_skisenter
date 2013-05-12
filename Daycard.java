@@ -1,8 +1,26 @@
 import java.util.*;
 
+/**
+ * Daycard is a subclass of Timebasedcard.
+ * 
+ * @author Erik Haider Forsén
+ * @author Ole Hansen
+ * @author Julie Hill Roa
+ * @version 0.9
+ */
+
+
 public class Daycard extends Timebasedcard
 {
 	Calendar calHelper; 
+
+/**
+  *	Creates the Daycard
+  *
+  *	@param bd 	The card holders birthdate, determines if child discount should be used.
+  * @param b	The creation date of the Card
+  *
+  */
 	
 
 	public Daycard( Date bd, Date b)
@@ -11,6 +29,11 @@ public class Daycard extends Timebasedcard
 		calHelper = Calendar.getInstance(); 		
 	}
 
+/**
+  *	This method is an abstract method in Timebasedcard. 
+  * The method initializes the card, and gives the card an expire date. 
+  * 
+  */
 		public void initialized()
 		{
 			setExpires(new Date());
@@ -33,6 +56,9 @@ public class Daycard extends Timebasedcard
 	 **/
 
 
+/**
+  * This is Dayscards toString. It returns a string that contains a cards expire date.
+  */
 	public String toString()
 	{
 

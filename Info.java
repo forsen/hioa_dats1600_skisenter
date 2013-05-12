@@ -13,6 +13,17 @@ import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 
+
+/**
+  * Info is the class that creates the Info-window. The info window is just for displaying information
+  * and there is no methods in this class worth mentioning.
+  * However, this class holds many static constants which are being fetched up in other classes.
+  * @author Erik Haider Forsén
+  * @author Ole Hansen
+  * @author Julie Hill Roa
+  * @version 0.9
+  */
+
 public class Info extends JFrame 
 {
 	public final static int PUNCHCARDPRICE = 200;
@@ -38,6 +49,11 @@ public class Info extends JFrame
     private static JButton button, newsButton, infoButton, offersButton, pricesButton;
     private static JPanel newsWindowPnl, infoWindowPnl, spOffersWindowPnl, panel, sideMenu, pricesWindowPnl, contentPanel;
  
+
+
+	 /**
+	  * The constructor creates all the elements and place them in the frame.
+	  */
     public Info()
     {
 
@@ -389,6 +405,10 @@ public class Info extends JFrame
 		setVisible(true);
 	}
 
+
+	 /**
+	  * This Listener makes changing the content possible by clicking buttons.
+	  */
 	private class Listener implements ActionListener
 	{
 		public void actionPerformed( ActionEvent e )
@@ -420,5 +440,5 @@ public class Info extends JFrame
 			}
 
 		}
-	}
-}
+	} //end of class Listener
+} //end of class Info
