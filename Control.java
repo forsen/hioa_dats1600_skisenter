@@ -407,7 +407,7 @@ public class Control extends JFrame
 		}
 		catch( NullPointerException npe )
 		{
-			return; //
+			npe.printStackTrace( System.out );
 		}
 	}
 

@@ -149,12 +149,16 @@ public class RandomData
 			cal.set(Calendar.MINUTE, randBetween( 0, 59 ) );
 		}
 
+		if( sc instanceof Timebasedcard)
+			((Timebasedcard) sc).setLastValidated( cal.getTime()); 
+
 		d = cal.getTime(); 
 
 		Validations v = new Validations( randBetween(1,2), c, d );
 
 		validations.add( v );
 		sc.initialized();
+
 
 	}
 
