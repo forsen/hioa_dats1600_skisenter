@@ -99,6 +99,7 @@ public class ImageUtility
 		catch(NullPointerException npe)
 		{
 			System.out.println("Didn't get a image");
+			npe.printStackTrace( System.out ); 
 		}
 	}
 

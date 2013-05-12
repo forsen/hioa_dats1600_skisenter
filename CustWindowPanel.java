@@ -265,8 +265,13 @@ public class CustWindowPanel extends JPanel
 		
 	}
 
-	private File imageUpload()
+	private void imageUpload()
 	{
+		if( Salesclerk.customer == null )
+		{
+			statusTxt.setText("Du må opprette / velge en person før du velger bilde");
+			return; 
+		}
 		try
 		{
 			JFileChooser fc = new JFileChooser();
@@ -280,12 +285,12 @@ public class CustWindowPanel extends JPanel
 			if( returnValue == JFileChooser.APPROVE_OPTION )
 			{
 				img = fc.getSelectedFile(); 
+				moveAndRenameImg(img,  Salesclerk.customer);
+				statusTxt.setText("Du har valgt å åpne bildet: " + img.getName() );
 			}
 
-			statusTxt.setText("Du har valgt å åpne bildet: " + img.getName() );
 
 
-       		return img;
    		}
 		catch(NumberFormatException nfe)
 		{
@@ -294,11 +299,11 @@ public class CustWindowPanel extends JPanel
 		catch(NullPointerException nfe)
 		{
 			statusTxt.setText("Ble ikke valgt et bilde");
+			nfe.printStackTrace( System.out );
 		}
 		
+		img = null;
 
-
-		return null;
 
 	}
 
@@ -368,17 +373,11 @@ public class CustWindowPanel extends JPanel
 			if( e.getSource() == custWindowRegBtn )
 			{
 				if(Salesclerk.customer != null)
-				{
 					updateCust();	
-					
-				}
+
 				else
 				{
 					Person p = registerPerson();
-					if(img!= null)
-					{
-						moveAndRenameImg(img,  p);
-					}
 				}
 			}
 			if( e.getSource() == custWindowSearchBtn )
