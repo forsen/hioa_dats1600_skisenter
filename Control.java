@@ -3,6 +3,7 @@ import javax.swing.event.*;
 import java.awt.*;
 import java.awt.Font;
 import java.awt.event.*;
+import java.util.*;
 import java.util.Timer;
 import java.util.Date;
 import java.util.TimerTask;
@@ -350,7 +351,11 @@ public class Control extends JFrame
 					((Timebasedcard) currentCard).setLastValidated( new Date() );
 					lift.registrations( validatingCard );
 					ctrlWindowPassThrough.setBackground(Color.GREEN);
-					ctrlWindowPassThroughLabelText.setText("Velkommen: Kortet er gyldig til: " + ((Timebasedcard) currentCard).getExpires());
+					Calendar cal = Calendar.getInstance();  
+					cal.setTime(((Timebasedcard) currentCard).getExpires());
+					String date = "" + cal.get(Calendar.DAY_OF_MONTH) +"."+ (cal.get(Calendar.MONTH ) + 1) +"."+  cal.get(Calendar.YEAR ) 
+					+ " Kl " + cal.get(Calendar.HOUR_OF_DAY )+ ":" + cal.get(Calendar.MINUTE );
+					ctrlWindowPassThroughLabelText.setText("Velkommen: Kortet er gyldig til: " + date);
 
 				}
 				else if( ((Timebasedcard) currentCard).getExpires().after(now) )
