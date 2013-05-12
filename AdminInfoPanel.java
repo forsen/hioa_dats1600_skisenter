@@ -301,11 +301,15 @@ public class AdminInfoPanel extends JPanel
 					if( skicrunner instanceof Timebasedcard )
 					{	
 						String expire;
-						if( skicrunner instanceof Hourcard )
-							expire = new SimpleDateFormat("ddMMyy HH:mm").format( ((Timebasedcard) skicrunner).getExpires());
+						if( ((Timebasedcard) skicrunner).getExpires() == null )
+							expire = "Ikke validert enda";
 						else
-							expire = new SimpleDateFormat("ddMMyy").format( ((Timebasedcard) skicrunner).getExpires() );
-
+						{
+							if( skicrunner instanceof Hourcard )
+								expire = new SimpleDateFormat("ddMMyy HH:mm").format( ((Timebasedcard) skicrunner).getExpires());
+							else
+								expire = new SimpleDateFormat("ddMMyy").format( ((Timebasedcard) skicrunner).getExpires() );
+						}
 						list.add( new ListObject( runner.getCardID(), skicrunner.getType(""), expire, paymentFormat.format(skicrunner.getPrice()),
 							skicrunner.getDiscount(), skicrunner.getAgeGroup() ) );
 					}

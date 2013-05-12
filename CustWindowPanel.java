@@ -28,6 +28,7 @@ public class CustWindowPanel extends JPanel
 	private Personlist custRegistry;
 	private File img; 
 	private ImageUtility iu;
+	private SimpleDateFormat dateFormatter;
 	
 
 
@@ -35,6 +36,9 @@ public class CustWindowPanel extends JPanel
 	{
 		setBackground(new Color(200, 230, 255));
 		setLayout( new GridBagLayout() );
+
+		dateFormatter = new SimpleDateFormat("ddMMyy");
+		dateFormatter.setLenient( false );
 
 		iu = new ImageUtility();
 		img = null;
@@ -160,7 +164,7 @@ public class CustWindowPanel extends JPanel
 			if(snumber.matches(pattern))
 			{
 				int number = Integer.parseInt(snumber);
-				Date born = new SimpleDateFormat("ddMMyy").parse(custWindowBorn.getText());
+				Date born = dateFormatter.parse(custWindowBorn.getText());
 				if( custRegistry.findPerson( number, firstname, lastname) != null )
 				{
 					statusTxt.setText( "Denne personen finnes allerede, finn personen i søkeresultatet.");
@@ -239,7 +243,7 @@ public class CustWindowPanel extends JPanel
 		try
 		{
 			int tlfNr = Integer.parseInt(custWindowPhone.getText());
-			Date born = new SimpleDateFormat("ddMMyy").parse(custWindowBorn.getText());
+			Date born = dateFormatter.parse(custWindowBorn.getText());
 			if(img!= null)
 			{
 				moveAndRenameImg(img, Salesclerk.customer);
@@ -350,7 +354,7 @@ public class CustWindowPanel extends JPanel
 				custWindowPhone.setText(""+Salesclerk.customer.getphoneNr());
 
 				Date bDate = Salesclerk.customer.getBirth();
- 				String born = new SimpleDateFormat("ddMMyy").format(bDate);
+ 				String born = dateFormatter.format(bDate);
  				custWindowBorn.setText(born);
 				
 			}
