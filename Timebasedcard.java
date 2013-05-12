@@ -32,7 +32,10 @@ public abstract class Timebasedcard extends Skicard
 		return lastValidated;
 	}
 
-	abstract public void initialized();		/*abstrakt metode for å initializere (gi kortet startttid og slutttid)*/
+	
 
-	abstract public void unvalidate(); 		/*<abstrakt metode for å sette ugyldig>*/
+	abstract public void initialized();	
+
+	/* This method is made for future versions, when it may become necessary to unvalidate a card.
+	abstract public void unvalidate(); 	*/
 }
