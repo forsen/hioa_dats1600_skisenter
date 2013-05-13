@@ -71,6 +71,9 @@ public class Salesclerk extends JFrame
 		setBackground(new Color(200, 230, 255));
 		framePnl = new JPanel()
 		{
+	/**
+    * Paints the panel, so it appears like a gradient bakground.
+	*/
 			@Override
 			protected void paintComponent(Graphics grphcs)
 			{		
