@@ -24,7 +24,7 @@ public class Sortorder implements Serializable, Comparator<Person>
   * Creates the collator
   *
   * @see Personlist#sort()
-  * @see AdminInfoPanel#showPersonsWithCard()
+  * @see AdminInfoPanel#showPersonsWithCards()
   */
 
     public Sortorder()
