@@ -155,6 +155,9 @@ public class AdminInfoPanel extends JPanel
 				int cardnr = Integer.parseInt(crdNr.getText());
 				Person p = list.findPersonByCard(cardnr);
 				display.setText(p.toString());
+
+				if(p==null)
+					display.setText("Søket gav ingen treff");
 			}
 			else
 				JOptionPane.showMessageDialog(null,"Du må ha 6 siffre");

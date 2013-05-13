@@ -230,6 +230,9 @@ public class CustWindowPanel extends JPanel
 			listmodel = custRegistry.findPerson( number );
 			list.setModel( listmodel );
 
+			if(listmodel.getSize() == 0)
+			Salesclerk.statusTxt.setText("Søket gav ingen treff");
+
 			return;
 
 			
@@ -250,6 +253,8 @@ public class CustWindowPanel extends JPanel
 			listmodel = custRegistry.findPerson( firstname, lastname );
 			list.setModel( listmodel );
 
+			if(listmodel.getSize() == 0)
+			Salesclerk.statusTxt.setText("Søket gav ingen treff");
 
 		}
 		blankOut();
@@ -266,19 +271,24 @@ public class CustWindowPanel extends JPanel
 		String lName = custWindowLastName.getText();
 		try
 		{
-			int tlfNr = Integer.parseInt(custWindowPhone.getText());
-			Date born = dateFormatter.parse(custWindowBorn.getText());
-			if(img!= null)
+			String pattern = "\\d{8}";
+			String number = custWindowPhone.getText();
+			if(number.matches(pattern))
 			{
-				moveAndRenameImg(img, Salesclerk.customer);
-			}
-			Salesclerk.customer.setFirstName(fName);
-			Salesclerk.customer.setLastName(lName);
-			Salesclerk.customer.setphoneNr(tlfNr);
-			Salesclerk.customer.setBirth(born);
+				int tlfNr = Integer.parseInt(number);
+				Date born = dateFormatter.parse(custWindowBorn.getText());
+				if(img!= null)
+				{
+					moveAndRenameImg(img, Salesclerk.customer);
+				}
+				Salesclerk.customer.setFirstName(fName);
+				Salesclerk.customer.setLastName(lName);
+				Salesclerk.customer.setphoneNr(tlfNr);
+				Salesclerk.customer.setBirth(born);
 
-			Salesclerk.salesClerkSearchInfoTxt.setText( "Har oppdatert:\n"+ Salesclerk.customer.getCustId() + "\n" + Salesclerk.customer.toString() );
-			Salesclerk.statusTxt.setText("Kundeinfo ble oppdatert.");
+				Salesclerk.salesClerkSearchInfoTxt.setText( "Har oppdatert:\n"+ Salesclerk.customer.getCustId() + "\n" + Salesclerk.customer.toString() );
+				Salesclerk.statusTxt.setText("Kundeinfo ble oppdatert.");
+			}Salesclerk.statusTxt.setText("Tlf nummer må bestå av 8 siffre.");
 
 		}
 		catch(NullPointerException npe)
