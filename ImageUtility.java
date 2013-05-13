@@ -25,7 +25,7 @@ public class ImageUtility
 /** 
   *This methode draws a buffred image like the original image, but with a different size and with JPG as last name.
   * 
-  * @param f: a File object for the image you want to resize
+  * @param f a File object for the image you want to resize
   * @return Returns a file object for the new image
   * @see CustWindowPanel
   */
@@ -75,10 +75,10 @@ public class ImageUtility
   *This methode makes a new file with the name of the persons custId, and puts the image drawn by the methode drawImage() 
   * onto the new file.
   *
-  * @param f: File object for the chosen personal image. 
-  * @param p: Witch person the image belongs to. 
+  * @param f File object for the chosen personal image. 
+  * @param p Witch person the image belongs to. 
   * @see CustWindowPanel
-  * @see drawImage( File f)
+  * @see #drawImage( File f)
   */
 	public void saveImage(File f, Person p)
 	{
