@@ -7,6 +7,14 @@ import java.util.Date;
 import java.text.NumberFormat;
 import java.util.Locale;
 
+/**
+  * PricesWindowPanel is one of the four panels available for displaying in the Info-window.
+  * This one displays useful information about prices to the customer. 
+  * @author Erik Haider Forsén
+  * @author Ole Hansen
+  * @author Julie Hill Roa
+  * @version 0.9
+  */
 
 public class PricesWindowPanel extends JPanel
 {
@@ -17,6 +25,10 @@ public class PricesWindowPanel extends JPanel
 	private NumberFormat paymentFormat; 
 
 
+  /**
+	* The constructor creates all the elements and place them on the panel.
+	* This panel has no other intention than to display information.
+ 	*/
 
 	public PricesWindowPanel()
 	{
@@ -111,4 +123,4 @@ public class PricesWindowPanel extends JPanel
 
 		/* To add more elements, copy an existing element, and change values */
 	}
-}
+}// end of class PricesWindowPanel
