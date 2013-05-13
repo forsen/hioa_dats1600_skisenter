@@ -26,7 +26,7 @@ public class Validations implements Serializable
   *	@param l 		the lift ID
   * @param c 		the card object
   * @param d 		the date object 
-  * @see Skisenter
+  * @see Skiresort
   */
 
 	public Validations( int l, Card c, Date d )
