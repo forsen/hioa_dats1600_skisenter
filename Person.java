@@ -144,7 +144,7 @@ public class Person implements Serializable, Comparable<Person>
 	}
 /**
   * Method to return the image file object associated with this person.
-  * @returs Returns the file object
+  * @return Returns the file object
   */
 	public File getImage()
 	{
@@ -277,7 +277,7 @@ public class Person implements Serializable, Comparable<Person>
   * @param end 		The end of the interval to look for cards in
   * @return Returns a list of all the cards created between the start date and the end date
   * @see Calculator#totalSoldCard( Date start, Date end )
-  * @ese Calculator#totalRevenue( Date start, Date end )
+  * @see Calculator#totalRevenue( Date start, Date end )
   */
 	public List<Card> getRelevantCards(Date start, Date end)
 	{
