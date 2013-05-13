@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.KeyStroke;
 import javax.swing.JComponent;
+import javax.swing.JTextArea;
 import javax.swing.*;
 import java.io.IOException;
 import java.net.URI;
@@ -20,6 +21,8 @@ public class MenuBar
 	private JMenu windows;	
 	private JMenu help; 
 	private MenuListener menuListener;
+
+	private JTextArea aboutText;
 
 	private JMenuItem save;
 	private JMenuItem exit;
@@ -41,6 +44,8 @@ public class MenuBar
 		menuListener = new MenuListener();
 
 		c = (Container) menuBar.getTopLevelAncestor();
+
+		aboutText = new JTextArea();
 
 	}
 
@@ -121,6 +126,16 @@ public class MenuBar
 		}
 	}
 
+	private void printAbout()
+	{
+		aboutText.append("Dette er et flott program\n");
+		aboutText.append("Skrevet av en flott gjeng ungdom\n");
+		aboutText.append("Vi har hatt det veldig gøy da vi skrev dette\n");
+		aboutText.append("Vi fortjener en A!");
+
+		JOptionPane.showMessageDialog( null, aboutText );
+	}
+
 	private class MenuListener implements ActionListener
 	{
 		public void actionPerformed( ActionEvent ae )
@@ -154,6 +169,8 @@ public class MenuBar
 				Skiresort.a.setVisible( true );
 			if( ae.getSource() == javadoc )
 				openURL( "http://dev.forsen.no/skisenter/");
+			if( ae.getSource() == about )
+				printAbout();
 		}
 	}
 }
