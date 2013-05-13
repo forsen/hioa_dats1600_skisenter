@@ -276,7 +276,8 @@ public class Person implements Serializable, Comparable<Person>
   * @param start 	The beginning of the interval to look for cards in
   * @param end 		The end of the interval to look for cards in
   * @return Returns a list of all the cards created between the start date and the end date
-  * @see Calculator#getRelevantCards( Date start, Date end )
+  * @see Calculator#totalSoldCard( Date start, Date end )
+  * @ese Calculator#totalRevenue( Date start, Date end )
   */
 	public List<Card> getRelevantCards(Date start, Date end)
 	{
