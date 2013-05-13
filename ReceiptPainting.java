@@ -9,6 +9,14 @@ import javax.imageio.ImageIO;
 import java.util.Locale;
 import java.text.NumberFormat;
 
+/**
+  * This is a class to paint the receipt on a JPanel
+  * @author Erik Haider Forsén
+  * @author Ole Hansen
+  * @author Julie Hill Roa
+  * @version 0.9
+  */
+
 public class ReceiptPainting extends JPanel
 {
 	private JTextArea printItems;
@@ -23,6 +31,16 @@ public class ReceiptPainting extends JPanel
 	private int size;  
 	private NumberFormat paymentFormat;
 
+/**
+  * This constructor receives the necessary data to paint the receipt. It will also try to load our logo.
+  * @param p 	The textarea containing all items in the order
+  * @param o 	A double array containing the payments made. Index tells if it's paid
+  * 			with card or cash, value tells how much is paid.
+  * @param s 	A double containing the sum of the order. 
+  * @see CashRegister#CASH
+  * @see CashRegister#CARD
+  * @see PrintWindow
+  */
 	public ReceiptPainting( JTextArea p, double[] o, double s )
 	{
 		sum = s;
@@ -44,16 +62,27 @@ public class ReceiptPainting extends JPanel
 
 	}
 
+/**
+  * Method to calculate the height. Necessary to make sure the entire receipt is visible, no matter how many items is on the list.
+  * @return Returns an integer containing the desired height in pixels
+  */
 	public int calculateHeight()
 	{
 		return 500 + (areaToString().length * LINESPACE);
 	}
 
-
+/**
+  * Method to set the preferredsize of the receipt. Necessary to make sure the entire receipt is visible.
+  * @return Returns a suiting Dimension for our receipt.
+  */
 	public Dimension setPreferredSize()
 	{
 		return new Dimension(WIDTH,calculateHeight());
 	}
+
+/**
+  * Method that draws the receipt. 
+  */
 	public void paintComponent( Graphics g )
 	{
 		super.paintComponent( g );
@@ -143,6 +172,10 @@ public class ReceiptPainting extends JPanel
 
 	}
 
+/**
+  * A method to split the TextArea into a String Array. It splits the text each time it sees a newline character "\n"
+  * @return Returns a string array containing all the original text.
+  */
 	private String[] areaToString()
 	{
 		int lines = printItems.getLineCount();
@@ -156,6 +189,13 @@ public class ReceiptPainting extends JPanel
 		return strings;
 	}
 
+/**
+  * A method to retrieve the individual amounts on each items from the String array containing both text and amounts. The following pattern is used for the split:
+  * (\\Dkr\\s\\d*,\\d{2})
+  * @return Returns a String array containing one element per item, where the value is the price tag of the item.
+  * @see #areaToString()
+  * @see #getStrings()
+  */
 	private String[] getAmounts()
 	{
 		String[] strings = areaToString();
@@ -185,6 +225,13 @@ public class ReceiptPainting extends JPanel
 
 	}
 
+/**
+  * A method to retrieve the item names from a string array, leaving out the price tags. The following pattern is used when splitting:
+  * (\\Dkr\\s\\d*,\\d{2})
+  * @see #getAmounts()
+  * @see #areaToString()
+  * @return A String array containing the item names.
+  */
 	private String[] getStrings()
 	{
 		String[] strings = areaToString();
@@ -214,6 +261,13 @@ public class ReceiptPainting extends JPanel
 		return strings;
 	}
 
+/**
+  * A method to draw a horizontal dashed line. 
+  * @param x1Pos 	the x-position where the line should start
+  * @param x2Pos 	the x-position where the line should end
+  * @param yPos		the y-position of the horizontal line
+  * @param g2d 		The Graphics2D object used to draw
+  */
 	private void printDashedLine( int x1Pos, int x2Pos, int yPos, Graphics2D g2d )
 	{
 		float[] dashPattern = {6, 3, 6, 3};
@@ -223,6 +277,14 @@ public class ReceiptPainting extends JPanel
 		g2d.drawLine(x1Pos, yPos, x2Pos, yPos);
 	}
 
+/**
+  * A method to draw a centered string. It takes the print area width, and the length of the String into account when calculating where to start.
+  * @param s 	The String to be centered
+  * @param width 	The width of the print area
+  * @param xPos 	The left threshold of the print area
+  * @param yPos 	The y-position where you want the String
+  * @param g2d 		The Graphics2D object used to draw
+  */
 	private void printCenteredString( String s, int width, int xPos, int yPos, Graphics2D g2d)
 	{
 		int stringLength = (int) g2d.getFontMetrics().getStringBounds(s, g2d).getWidth();
@@ -232,6 +294,14 @@ public class ReceiptPainting extends JPanel
 		g2d.drawString(s, start + xPos, yPos );
 	}
 
+/**
+  * A method to draw a right aligned String. It takes the print area width, and the length of the String into account when calculating where to start.
+  * @param s 	The String to be centered
+  * @param width 	The width of the print area
+  * @param xPos 	The left threshold of the print area
+  * @param yPos 	The y-position where you want the String
+  * @param g2d 		The Graphics2D object used to draw
+  */
 	private void printRightAlignedString( String s, int width, int xPos, int yPos, Graphics2D g2d )
 	{
 		int stringLength = (int) g2d.getFontMetrics().getStringBounds(s, g2d).getWidth();
