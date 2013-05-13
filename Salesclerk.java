@@ -253,7 +253,7 @@ public class Salesclerk extends JFrame
 /**
   * This class uses time to clear the status field. It clears the status field 1000 ms * DELAY.
   *
-  * @see Salesclerk#statusTxt#setText()
+  * @see statusTxt
   */
 
 	private class ClearStatusTxt extends TimerTask
