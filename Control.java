@@ -290,6 +290,7 @@ public class Control extends JFrame
 
 	private Skicard findCard()
 	{
+		validatingCard = null;
 		try
 		{
 			

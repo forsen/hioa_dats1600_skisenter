@@ -10,6 +10,10 @@ import java.text.ParseException;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.util.Calendar;
 
+/**
+  * This class sets up the customer panel, which is placed on Salesclerk JFrame. This 
+  * is where you create new customers, and search for existing customers.
+  */
 
 public class CustWindowPanel extends JPanel
 {	
@@ -29,9 +33,11 @@ public class CustWindowPanel extends JPanel
 	private ImageUtility iu;
 	private SimpleDateFormat dateFormatter;
 	
+/**
+  * 
+  */
 
-
-	public CustWindowPanel( Personlist cr, JTextArea s )
+	public CustWindowPanel( Personlist cr )
 	{
 		setBackground(new Color(200, 230, 255));
 		setLayout( new GridBagLayout() );

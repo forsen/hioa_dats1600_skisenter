@@ -136,7 +136,7 @@ public class Salesclerk extends JFrame
 		statusTxt.setEditable( false );
 
 		//custWindowPnl = new CustWindowPanel( custRegistry, statusTxt, customer );
-		custWindowPnl = new CustWindowPanel( custRegistry, statusTxt );
+		custWindowPnl = new CustWindowPanel( custRegistry );
 		//custWindowPnl.setLayout( new BoxLayout( custWindowPnl, BoxLayout.PAGE_AXIS) );
 		//custWindowPnl.setLayout( new BorderLayout( 5,5 ) );
 
