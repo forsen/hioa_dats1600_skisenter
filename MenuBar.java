@@ -34,6 +34,9 @@ public class MenuBar
 	private JMenuItem about;
 	private Container c; 
 
+/**
+  * The constructor creates the menu's
+  */
 	public MenuBar()
 	{
 		menuBar = new JMenuBar();
@@ -49,6 +52,7 @@ public class MenuBar
 
 	}
 
+
 	public JMenuBar createMenu()
 	{
 		makeFile();
@@ -60,6 +64,9 @@ public class MenuBar
 		return menuBar;
 	}
 
+/**
+  * This method sets up the "File" menu
+  */
 	private void makeFile()
 	{
 		save = new JMenuItem("Lagre");
@@ -73,7 +80,9 @@ public class MenuBar
 		file.addSeparator();
 		file.add( exit );
 	}
-
+/**
+  * This method sets up the "Windows" menu
+  */
 	private void makeWindows()
 	{
 		lifts = new JMenuItem("Heiskontroll");
@@ -93,6 +102,9 @@ public class MenuBar
 
 	}
 
+/**
+  * This method sets up the "Help" menu
+  */
 	private void makeHelp()
 	{
 		about = new JMenuItem("Om");
@@ -110,6 +122,11 @@ public class MenuBar
 
 	}
 
+/** 
+  * A method to take an incoming String url, and open your 
+  * system's default browser. 
+  * @param url 	The url to open
+  */
 	private void openURL( String url )
 	{
 		if( Desktop.isDesktopSupported() )
@@ -126,9 +143,13 @@ public class MenuBar
 		}
 	}
 
+/**
+  * This method will open a message dialog, with some 
+  * information about this project and its developers.
+  */
 	private void printAbout()
 	{
-		aboutText.append("Dette er et flott program\n");
+		aboutText.setText("Dette er et flott program\n");
 		aboutText.append("Skrevet av en flott gjeng ungdom\n");
 		aboutText.append("Vi har hatt det veldig gøy da vi skrev dette\n");
 		aboutText.append("Vi fortjener en A!");
