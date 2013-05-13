@@ -34,7 +34,10 @@ public class CustWindowPanel extends JPanel
 	private SimpleDateFormat dateFormatter;
 	
 /**
-  * 
+  * This constructor will set up all the elements on this panel. 
+  * @param cr 	The person registry to operate on
+  * @see Salesclerk
+  * @see Personlist
   */
 
 	public CustWindowPanel( Personlist cr )
@@ -155,6 +158,12 @@ public class CustWindowPanel extends JPanel
 		add(btnPnl, c);
 	}
 
+/**
+  * this method will try to register a new customer based on input from the various 
+  * text fields in this class. It will make sure the customer does not already exist,
+  * but it will accept same phone number on two different customers.
+  * @return Returns the newly created customer
+  */
 	private Person registerPerson()
 	{
 		String firstname = custWindowFirstName.getText();
@@ -194,7 +203,6 @@ public class CustWindowPanel extends JPanel
 		}
 		catch( NumberFormatException nfe )
 		{
-			//JOptionPane.showMessageDialog(null, "Telefonnummeret må kun bestå av siffer!");
 			Salesclerk.statusTxt.setText( "Telefonnummeret må bestå av 8 siffer" );
 		}
 
@@ -203,6 +211,10 @@ public class CustWindowPanel extends JPanel
 
 	}
 
+/**
+  * this method will search for a customer in our registry based on input from the 
+  * text fields. It will place the result in a listmodel, which is displayed in the window.
+  */
 	private void findPerson()
 	{
 		String firstname = custWindowFirstName.getText();
@@ -240,6 +252,10 @@ public class CustWindowPanel extends JPanel
 
 	}
 
+/**
+  * this method will update a customer. If a customer is chosen, it will update the existing 
+  * customer based on input from the text fields, instead of creating a new customer. 
+  */
 	private void updateCust()
 	{
 		String fName = custWindowFirstName.getText();
@@ -273,6 +289,11 @@ public class CustWindowPanel extends JPanel
 		
 	}
 
+/**
+  * this method will open a JFileChooser dialog when called. The file chosen will be assigned
+  * to the File object img. 
+  * @see img
+  */
 	private void imageUpload()
 	{
 		if( Salesclerk.customer == null )
