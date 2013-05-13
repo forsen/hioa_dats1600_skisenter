@@ -292,7 +292,7 @@ public class CustWindowPanel extends JPanel
 /**
   * this method will open a JFileChooser dialog when called. The file chosen will be assigned
   * to the File object img. 
-  * @see img
+  * @see CustWindowPanel#img
   */
 	private void imageUpload()
 	{
