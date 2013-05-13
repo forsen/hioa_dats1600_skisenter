@@ -12,6 +12,13 @@ import java.util.TimerTask;
 import java.awt.image.BufferedImage;
 import javax.imageio.*;
 
+/**
+  * Salesclerk is the class that creates the sale window. 
+  * @author Erik Haider Forsén
+  * @author Ole Hansen
+  * @author Julie Hill Roa
+  * @version 0.9
+  */
 
 public class Salesclerk extends JFrame
 {
@@ -41,6 +48,14 @@ public class Salesclerk extends JFrame
 
 	private Container c;
 	private BorderLayout layout;
+
+/**
+  * The constructor creates all the elements and place them in the frame.
+  * It also contains a method to set the time for updating status field.
+  * @param cr 		the customer registry
+  * @param cardr 	the card registry
+  * @param m 		the status panel text
+  */
 
 	public Salesclerk( Personlist cr, Cardlist cardr, String m )
 	{
@@ -120,6 +135,11 @@ public class Salesclerk extends JFrame
 		salesClerkCustInfoPnl.add( salesClerkSearchInfoTxt, BorderLayout.CENTER );
 
 		statusTxt = new JTextArea(5,50){
+  
+  /**
+	* This method is for clearing the status field every fifth second.
+	* 
+	*/
 			@Override
 			public void setText( String t )
 			{
@@ -135,28 +155,12 @@ public class Salesclerk extends JFrame
 		statusTxt.setBackground(new Color(238, 248, 255));
 		statusTxt.setEditable( false );
 
-		//custWindowPnl = new CustWindowPanel( custRegistry, statusTxt, customer );
+
 		custWindowPnl = new CustWindowPanel( custRegistry );
-		//custWindowPnl.setLayout( new BoxLayout( custWindowPnl, BoxLayout.PAGE_AXIS) );
-		//custWindowPnl.setLayout( new BorderLayout( 5,5 ) );
 
-
-		//salesWindowPnl = new SalesWindowPanel( customer );
 		salesWindowPnl = new SalesWindowPanel(cardregistry);
 
 		replaceWindowPnl = new ReplaceWindowPanel();
-
-
-		//statusPnl = new JPanel( new FlowLayout() );
-
-
-
-
-		//replaceWindowTxt = new JTextArea(LEFT, RIGHT);
-
-
-
-
 
 		listener = new Listener(); 
 
@@ -166,18 +170,9 @@ public class Salesclerk extends JFrame
 		c.setLayout( layout );
 		c.add(framePnl, BorderLayout.LINE_START );
 		c.add(salesClerkCustInfoPnl, BorderLayout.CENTER );
-//		c.add(salesClerkSearchInfoTxt, BorderLayout.CENTER );
+
 
 		c.add(statusTxt, BorderLayout.PAGE_END );
-
-
-	 
-
-		// custWindowBtn.addActionListener( listener );
-
-		// salesWindowBtn.addActionListener( listener );
-
-		// replaceWindowBtn.addActionListener(listener);
 
 		nextCustBtn.addActionListener(listener);
 
@@ -188,24 +183,17 @@ public class Salesclerk extends JFrame
 		salesClerkTabs.addTab( "Erstatt", erstatt, replaceWindowPnl );
 		framePnl.add(salesClerkTabs);
 
-		//replaceWindowPnl.add(replaceWindowTxt);
-		//statusPnl.add(statusTxt);
-
-
-		//replaceWindowTxt.setText("Her kan man erstatte kort");
 		statusTxt.setText(m);
-
-
-
-		// custWindowPnl.setVisible(true);
-		// salesWindowPnl.setVisible(false);
-		// replaceWindowPnl.setVisible(false);
-		// //statusPnl.setVisible(true);
 
 		layout.layoutContainer( c );
 		
-
 	}
+
+/**
+  * This method is being excecuted by the seller when they are done with a registry or sale, and want to 
+  * move on to the next customer.
+  * It clears all the fields in the window, so the window is ready for new input.
+  */
 
 	private void clearSearch()
 	{
@@ -237,7 +225,9 @@ public class Salesclerk extends JFrame
 	}
 
 
-
+/**
+  * This Listener is for the tabbedpane, and the "next customer"-button.
+  */
 
 
 	private class Listener implements ActionListener
@@ -248,20 +238,8 @@ public class Salesclerk extends JFrame
 			custWindowPnl.setVisible(false);
 			replaceWindowPnl.setVisible(false);
 
-
-			// if( e.getSource() == custWindowBtn )
-			// 	custWindowPnl.setVisible(true);
-			// else if( e.getSource() == salesWindowBtn )
-			// {
-			// 	salesWindowPnl.setVisible(true);
-			// }
-
-			// else if( e.getSource() == replaceWindowBtn )
-			// 	replaceWindowPnl.setVisible(true);
-
 			if( e.getSource() == nextCustBtn)
 			{
-				//custWindowPnl.setVisible(true);
 				salesClerkTabs.setSelectedIndex(0);
 
 				clearSearch();
@@ -271,27 +249,18 @@ public class Salesclerk extends JFrame
 		}
 	}
 
+/**
+  * This class uses time to clear the status field. It clears the status field 1000 ms * DELAY.
+  *
+  * @see Salesclerk#setText()
+  */
+
 	private class ClearStatusTxt extends TimerTask
 	{
 		public void run()
 		{
 			statusTxt.setText( null );
 		}
-	}
+	} //end of class ClearStatusTct
 
-/*	<datafelter>
-
-	<konstruktør som oppretter vinduet>
-
-	<metode for å registrere person>
-
-	<metode for å legge heiskort på person>
-
-	<metode for å kjøpe heiskort uten person>
-
-	<kalkulator (gi tilbake x antall basert på betalt)>
-
-	<metode for å erstatt mistet / ødelagt kort>
-
-	<metode for å fylle på kort>*/
-}
+} //end of class Salesclerk
