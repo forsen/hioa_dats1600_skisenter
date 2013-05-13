@@ -216,5 +216,5 @@ public class ReplaceWindowPanel extends JPanel
 			}
 
 		}
-	}
-}
+	} //end of class ListListener
+} //end of class ReplaceWindowPanel
