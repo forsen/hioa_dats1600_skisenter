@@ -56,7 +56,6 @@ public class Seasoncard extends Timebasedcard
 		if(Calendar.getInstance().after(calHelper))
 		{
 			setExpires(nextSeason.getTime());
-			JOptionPane.showMessageDialog(null, "Du er utenfor sesongen. Kortet ditt blir dermed gyldig ut neste sesong.");
 		}
 
 		else

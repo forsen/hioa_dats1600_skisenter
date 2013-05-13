@@ -6,6 +6,14 @@ import java.awt.event.*;
 import java.io.*;
 import java.util.Date;
 
+/**
+  * ReplaceWindowPanel is one of the three panels accessible from the Salesclerk frame. 
+  * This one is for replacement of cards.
+  * @author Erik Haider Forsén
+  * @author Ole Hansen
+  * @author Julie Hill Roa
+  * @version 0.9
+  */
 
 public class ReplaceWindowPanel extends JPanel 
 {
@@ -19,6 +27,11 @@ public class ReplaceWindowPanel extends JPanel
 	private JScrollPane cardScrollList;
 	private Card card;
 	private Toolkit toolbox;
+
+
+/**
+  * The constructor creates all the elements and place them in the frame.
+  */
 
 	public ReplaceWindowPanel()
 	{
@@ -120,6 +133,10 @@ public class ReplaceWindowPanel extends JPanel
 		
 	}
 
+/**
+  * This method is used for displaying a customers list of cards.
+  */
+
 	private void search()
 	{
 		
@@ -141,6 +158,9 @@ public class ReplaceWindowPanel extends JPanel
 
 	} 
 
+/**
+  * This method removes a card from the user, and adds another one.
+  */
 	private void replace()
 	{
 		
@@ -154,6 +174,9 @@ public class ReplaceWindowPanel extends JPanel
 
 	}
 
+/**
+  * Listener for the replace-button.
+  */
 	private class Listener implements ActionListener
   	{
    		public void actionPerformed( ActionEvent e )
@@ -168,6 +191,9 @@ public class ReplaceWindowPanel extends JPanel
     	}
 	}	
 
+/**
+  * This class gets the list's selected value and sets a card's history to the info field. e 
+  */
 	private class ListListener implements ListSelectionListener
 	{
 		public void valueChanged( ListSelectionEvent lse )
