@@ -7,6 +7,14 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Iterator;
 
+/**
+  * This class will create a paint area on a JPanel. The paint area is used to draw 
+  * graphs based on the incoming parameters. 
+  * @author Erik Haider Forsén
+  * @author Ole Hansen
+  * @author Julie Hill Roa
+  * @version 0.9
+  */
 public class GraphPanel extends JPanel
 {
 
@@ -33,6 +41,21 @@ public class GraphPanel extends JPanel
 	private String label; 
 
 	private int type;
+
+/**
+  * This constructor will set up the paint area, receive the necessary parameters and prepare 
+  * the incoming data to be drawn. 
+  * @param d 	This is the data to be drawn. It's a nested array, where the number of arrays
+  *				represents the number of graphs to be drawn. The length of each array represents
+  *				the number of x-values, while the value of each array element represents the y-values
+  *				in this graph.
+  * @param x 	This is the label for the x-axis
+  * @param y 	This is the label for the y-axis
+  * @param interval 	This is a String containing the range of dates we're drawing the graph for
+  * @param t 	This specifies what kind of data we're drawing
+  * @see AdminStatisticsPanel
+  * @see java.awt.Graphics
+  */
 
 	public GraphPanel( int[][] d, String x, String y, String interval, int t )
 	{
@@ -75,7 +98,12 @@ public class GraphPanel extends JPanel
 
 	}
 
-
+/** 
+  * This is a method to calculate the minimum y-value in the data, so we're able to 
+  * adjust the y-axis according to the data.
+  * @param data 	This is the nested array containing all the data
+  * @return Returns the minimum value found in the data
+  */
 	private int arrayMin( int[][] data )
 	{
 		int  min = data[0][0];
@@ -89,7 +117,12 @@ public class GraphPanel extends JPanel
 		System.out.println( "arrayMin: " + min );
 		return min; 
 	}
-
+/**
+  * This is a method to calculate the maximum y-value in the data, so we're able to
+  * adjust the y-axis according to the data.
+  * @param data 	This is the nested array containing all the data
+  * @return Returns the maximum value found in the data
+  */
 	private int arrayMax( int[][] data )
 	{
 		
@@ -105,6 +138,11 @@ public class GraphPanel extends JPanel
 		return max; 
 	}
 
+/**
+  * This method will draw the intervals on the y-axis, with marks on the axis, and 
+  * matching values.
+  * @param g2d 	The Graphics2D object to draw with
+  */
 	public void drawYinterval(Graphics2D g2d)
 	{
 
@@ -113,13 +151,15 @@ public class GraphPanel extends JPanel
 
 			g2d.drawLine(ORIGOX - 5, ORIGOY - (i * YAXISLENGTH / 10 ), ORIGOX + 5,  ORIGOY - (i * YAXISLENGTH / 10 ));
 			g2d.drawString("" + ( (int) (((yAxisMax - yAxisMin)/ (double) 10.0 ) * i) + yAxisMin), ORIGOX - 8*MARGIN , ORIGOY - (i * YAXISLENGTH/10));
-			printDashedLine( ORIGOX + 5, ORIGOY - (i * YAXISLENGTH / 10 ), ORIGOX + XAXISLENGTH, ORIGOY - (i * YAXISLENGTH / 10 ), g2d );
-
-			System.out.println( "ymin:" + yAxisMin + ", ymax: " + yAxisMax + ", i: " + i);
-			System.out.println( "" + (int) (((yAxisMax - yAxisMin)/(double) 10.0) * i));	
+			printDashedLine( ORIGOX + 5, ORIGOY - (i * YAXISLENGTH / 10 ), ORIGOX + XAXISLENGTH, ORIGOY - (i * YAXISLENGTH / 10 ), g2d );	
 		}
 	}
 	
+/**
+  * This method will draw the intervals on the x-axis, with marks on the axis, and
+  * matching values. 
+  * @param g2d 	The Graphcs2D object to draw with
+  */
 	public void drawXinterval(Graphics2D g2d)
 	{
 
@@ -132,6 +172,12 @@ public class GraphPanel extends JPanel
 
 	}
 
+/**
+  * This method will draw the actual graph. It will draw a line from the last know coordinat, to the 
+  * new coordinate represented by an incoming y-value, and the next "x-step" based on the x interval size.
+  * @param y 	The next y-value to draw
+  * @param g2d 	The Graphics2D object to draw with
+  */
 	private void drawGraphCoordinates( int y, Graphics2D g2d )
 	{
 		g2d.drawLine( lastx, lasty, lastx + xAxisInterval, (int) (YAXISLENGTH - ((y - yAxisMin) * yAxisInterval) ) );
@@ -144,7 +190,15 @@ public class GraphPanel extends JPanel
 
 	}
 
-
+/**
+  * This method will draw a dashed line from the incoming start coordinates to the incoming end coordinates.
+  * In this context it is used to make the "checkerboard" on the graph.
+  * @param x1Pos 	The x start position
+  * @param y1Pos	The y start position
+  * @param x2Pos	The x end position
+  * @param y2Pos 	The y end position
+  * @param g2d 	The Graphics2D object to draw with
+  */
 	private void printDashedLine( int x1Pos, int y1Pos, int x2Pos, int y2Pos, Graphics2D g2d )
 	{
 		Stroke s = g2d.getStroke();
@@ -160,6 +214,11 @@ public class GraphPanel extends JPanel
 		g2d.setStroke(s); 
 	}	
 
+/**
+  * This method will initiate the drawing, and call all other necessary methods to 
+  * help draw all the elements on the paint area.
+  * @param g 	The Graphics object to draw with.
+  */
 	public void paintComponent( Graphics g )
 	{
 		super.paintComponent(g);
@@ -198,6 +257,11 @@ public class GraphPanel extends JPanel
 
 	}
 
+/**
+  * This method will create a "legend". It will draw information about the interval
+  * for this graph, and also information about the graphs if there's more than one.
+  * @param g2d 	The Graphics2D object to draw with
+  */
 	private void drawInfo( Graphics2D g2d )
 	{
 		int startX = ORIGOX + XAXISLENGTH + 2*MARGIN;
@@ -245,6 +309,10 @@ public class GraphPanel extends JPanel
 		}
 	}
 
+/** 
+  * A method to decide whether the incoming nested array contains any data or not.
+  * @return Returns true if the array is empty, false otherwise
+  */
 	private boolean arrayIsEmpty()
 	{
 		for( int i = 0; i < data.length; i++ )
@@ -259,6 +327,11 @@ public class GraphPanel extends JPanel
 		return true; 
 	}
 
+/**
+  * A sort of color-picker. Creates an array of colors, used to have different colors
+  * on different graphs when there are more than one graph to be drawn at the same time.
+  * @return Returns an array of colors.
+  */
 	private Color[] nextColor()
 	{
 		Color[] nxtCol = new Color[6]; 

@@ -13,6 +13,10 @@ import java.util.Calendar;
 /**
   * This class sets up the customer panel, which is placed on Salesclerk JFrame. This 
   * is where you create new customers, and search for existing customers.
+  * @author Erik Haider Forsén
+  * @author Ole Hansen
+  * @author Julie Hill Roa
+  * @version 0.9
   */
 
 public class CustWindowPanel extends JPanel
@@ -339,12 +343,23 @@ public class CustWindowPanel extends JPanel
 
 	}
 
+/**
+  * This method will take the current image file and Person object, and call
+  * another method that will redraw the image, place it in the proper location
+  * and assign it to the Person object.
+  * @param p 	The person to assign the image to
+  * @param f 	The file-object describing the image file
+  * @see ImageUtility#saveImage( File f, Person p )
+  */
 	private void moveAndRenameImg(File f, Person p)
 	{
 		
 		iu.saveImage(f,p);
 	}
 
+/**
+  * This is a simple method to clear the textfields.
+  */
 	public static void blankOut()
 	{
 		custWindowFirstName.setText("");
@@ -353,15 +368,26 @@ public class CustWindowPanel extends JPanel
 		custWindowBorn.setText("");
 	}
 
-
+/**
+  * This method will clear the list of search results, replacing the current
+  * DefaultListModel with an empty DefaultListModel.
+  */
 	public static void clearSearch()
 	{
 		list.setModel(new DefaultListModel<Person>()); 
 
 	}
 
+/**
+  * This class will listen for changes in the list. 
+  */
 	private class ListListener implements ListSelectionListener
 	{
+		/**
+		  * This method will be called when a new selection is made in the list. 
+		  * It will do a numerous necessary operations, to reflect that we're 
+		  * handling a Person object.
+		  */
 		public void valueChanged( ListSelectionEvent lse )
 		{
 			try
@@ -396,8 +422,11 @@ public class CustWindowPanel extends JPanel
 			
 
 		}
-	}
+	} // end of class ListListener
 
+/**
+  * This is the button listen class for the buttons in this panel. 
+  */
 	private class CustListener implements ActionListener
 	{
 		public void actionPerformed( ActionEvent e )
@@ -418,6 +447,6 @@ public class CustWindowPanel extends JPanel
 				imageUpload();
 
 		}
-	}
+	}// end of class CustListener
 
-}
+}// end of class CustWindowPanel
