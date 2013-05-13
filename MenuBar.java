@@ -36,6 +36,7 @@ public class MenuBar
 		menuBar = new JMenuBar();
 		file = new JMenu("File");
 		windows = new JMenu("Windows");
+		help = new JMenu("Help");
 
 		menuListener = new MenuListener();
 
