@@ -6,12 +6,19 @@ import java.awt.event.*;
 import javax.swing.KeyStroke;
 import javax.swing.JComponent;
 import javax.swing.*;
+import java.io.IOException;
+import java.net.URI;
+
+/**
+  * This is a class to create the menu bar we're using in our program.
+  */
 
 public class MenuBar
 {
 	private JMenuBar menuBar;
 	private JMenu file; 
 	private JMenu windows;	
+	private JMenu help; 
 	private MenuListener menuListener;
 
 	private JMenuItem save;
@@ -19,6 +26,9 @@ public class MenuBar
 	private JMenuItem lifts;
 	private JMenuItem admin; 
 	private JMenuItem info;
+	private JMenuItem javadoc;
+	private JMenuItem userdoc;
+	private JMenuItem about;
 	private Container c; 
 
 	public MenuBar()
@@ -37,9 +47,10 @@ public class MenuBar
 	{
 		makeFile();
 		makeWindows();
+		makeHelp();
 		menuBar.add( file );
 		menuBar.add( windows );
-
+		menuBar.add( help );
 		return menuBar;
 	}
 
@@ -76,6 +87,39 @@ public class MenuBar
 
 	}
 
+	private void makeHelp()
+	{
+		about = new JMenuItem("Om");
+		javadoc = new JMenuItem("JavaDoc");
+		userdoc = new JMenuItem("Brukerdokumentasjon");
+
+		about.addActionListener( menuListener );
+		javadoc.addActionListener( menuListener );
+		userdoc.addActionListener( menuListener );
+
+		help.add( about );
+		help.addSeparator();
+		help.add( userdoc );
+		help.add( javadoc ); 
+
+	}
+
+	private void openURL( String url )
+	{
+		if( Desktop.isDesktopSupported() )
+		{
+			URI uri = URI.create( url );
+			try
+			{
+				Desktop.getDesktop().browse( uri );
+			}
+			catch( IOException ioe )
+			{
+				ioe.printStackTrace( System.out );
+			}
+		}
+	}
+
 	private class MenuListener implements ActionListener
 	{
 		public void actionPerformed( ActionEvent ae )
@@ -107,6 +151,8 @@ public class MenuBar
 				Skiresort.i.setVisible( true );
 			if( ae.getSource() == admin )
 				Skiresort.a.setVisible( true );
+			if( ae.getSource() == javadoc )
+				openURL( "http://dev.forsen.no/skisenter/");
 		}
 	}
 }
