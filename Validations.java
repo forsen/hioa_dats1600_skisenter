@@ -107,4 +107,4 @@ public class Validations implements Serializable
 
 		return text.toString();
 	}
-}
+}//end of class Validations
