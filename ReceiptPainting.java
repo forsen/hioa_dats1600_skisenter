@@ -193,8 +193,8 @@ public class ReceiptPainting extends JPanel
   * A method to retrieve the individual amounts on each items from the String array containing both text and amounts. The following pattern is used for the split:
   * (\\Dkr\\s\\d*,\\d{2})
   * @return Returns a String array containing one element per item, where the value is the price tag of the item.
-  * @see areaToString()
-  * @see getStrings()
+  * @see #areaToString()
+  * @see #getStrings()
   */
 	private String[] getAmounts()
 	{
@@ -228,8 +228,8 @@ public class ReceiptPainting extends JPanel
 /**
   * A method to retrieve the item names from a string array, leaving out the price tags. The following pattern is used when splitting:
   * (\\Dkr\\s\\d*,\\d{2})
-  * @see getAmounts()
-  * @see areaToString()
+  * @see #getAmounts()
+  * @see #areaToString()
   * @return A String array containing the item names.
   */
 	private String[] getStrings()
