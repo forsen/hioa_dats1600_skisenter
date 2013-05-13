@@ -72,6 +72,6 @@ public class Punchcard extends Skicard
 		if (getClipCount() != -1)
 			expires = "" + getClipCount() + "\t";
 
-		return "Klippekort\tAntall klipp igjen: " + expires + " " + super.toString();
+		return "Klippekort\tAntall klipp igjen: " + expires + "" + super.toString();
 	}
 } //end of class Punchcard

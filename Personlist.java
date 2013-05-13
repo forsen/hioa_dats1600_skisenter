@@ -3,7 +3,14 @@ import java.util.*;
 import javax.swing.DefaultListModel;
 import javax.swing.*;
 
-
+/**
+ * Personlist creats a LinkedList of PersonObjects. 
+ * 
+ * @author Erik Haider Forsén
+ * @author Ole Hansen
+ * @author Julie Hill Roa
+ * @version 0.9
+ */
 
 public class Personlist implements Serializable
 {
@@ -11,12 +18,20 @@ public class Personlist implements Serializable
 	private List<Person> registry = new LinkedList<>();
 
 
-
+/** 
+ *This methode checks if the list is empty (No elements in the list)
+ */
 	public boolean isEmpty()
 	{
 		return registry == null || registry.size() == 0;
 	}
 
+/** 
+ *This methode adds an element to the list.
+ * First it checks if the person excist already, if it doesn't the element will be added.
+ * @param obj The Person object you want to add to the list.
+ * @return Returns a String to let the user know if it was sucsessfully added of if the object alredy excisted.
+ */
 	public String input(Person obj)
 	{
 		Skiresort.unsaved = true; 
@@ -43,6 +58,10 @@ public class Personlist implements Serializable
 		return obj.getFirstName() + " " + obj.getLastName()+ " Ble opprettet med kunde nr " + obj.getCustId(); 
 	}
 
+/**
+ *This methode sorts the list. 
+ * @see Sortorder  
+ */
 	public void sort()
 	{
 		Collections.sort(registry, new Sortorder());

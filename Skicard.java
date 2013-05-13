@@ -203,6 +203,7 @@ public abstract class Skicard implements Serializable
 		StringBuilder text = new StringBuilder();
 		text.append("Pris: ");
 		text.append((int)price);
+		text.append(",-");
 		text.append("\t");
 		text.append("Rabatt: ");
 		text.append("" + disc);
