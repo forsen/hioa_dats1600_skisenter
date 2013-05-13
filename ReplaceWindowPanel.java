@@ -192,7 +192,7 @@ public class ReplaceWindowPanel extends JPanel
 	}	
 
 /**
-  * This class gets the list's selected value and sets a card's history to the info field.  
+  * This class gets the list's selected value and sets a card's history to the info field. e 
   */
 	private class ListListener implements ListSelectionListener
 	{
