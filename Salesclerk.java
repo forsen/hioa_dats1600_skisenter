@@ -32,8 +32,6 @@ public class Salesclerk extends JFrame
 	private BufferedImage nextCustBtnImg;
 	public static JTextArea statusTxt;
 
-	//replaceWindowTxt
-
 	public static Person customer = null; 
 	public static JTextArea salesClerkSearchInfoTxt;
 
