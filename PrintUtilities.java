@@ -2,6 +2,16 @@ import java.awt.*;
 import java.awt.print.*;
 import javax.swing.*;
 
+/*
+
+A class to print our painted panels. 
+
+Not our code.
+
+
+*/
+
+
 public class PrintUtilities implements Printable {  
   private Component componentToBePrinted;  
    
