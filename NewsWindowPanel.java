@@ -7,12 +7,25 @@ import java.util.Date;
 import java.awt.image.BufferedImage;
 import javax.imageio.*;
 
+/**
+  * NewsWindowPanel is one of the four panels available for displaying in the Info-window.
+  * This one displays news from the skiresort to the customers.
+  * @author Erik Haider Forsén
+  * @author Ole Hansen
+  * @author Julie Hill Roa
+  * @version 0.9
+  */
+
 public class NewsWindowPanel extends JPanel
 {
 	private JLabel header, news1, news2, news3, news4, icon1, icon2, icon3, icon4;
 	private BufferedImage icon4br, icon3br, icon2br, icon1br;
 
 
+	/**
+	  * The constructor creates all the elements and place them on the panel.
+	  * This panel has no other intention than to display news.
+	  */
 
 	public NewsWindowPanel()
 	{
@@ -149,5 +162,4 @@ public class NewsWindowPanel extends JPanel
 		add(news2,c);
 	}
 
-
-}
+}//end of NewsWindowPanel
