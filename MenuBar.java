@@ -192,6 +192,8 @@ public class MenuBar
 				openURL( "http://dev.forsen.no/skisenter/");
 			if( ae.getSource() == about )
 				printAbout();
+			if( ae.getSource() == userdoc )
+				openURL( "http://dev.forsen.no/skisenter/Brukerveiledning5.pdf");
 		}
 	}
 }
