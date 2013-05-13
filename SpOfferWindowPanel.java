@@ -7,10 +7,26 @@ import java.util.Date;
 import java.awt.image.BufferedImage;
 import javax.imageio.*;
 
+
+/**
+  * SpOfferWindowPanel is one of the four panels available for displaying in the Info-window.
+  * This one displays special offers to the customer. 
+  * @author Erik Haider Forsén
+  * @author Ole Hansen
+  * @author Julie Hill Roa
+  * @version 0.9
+  */
+
 public class SpOfferWindowPanel extends JPanel
 {
 	private JLabel offerPic1, offerPic2, offerPic3, offer1, offer2, offer3;
 	private BufferedImage offerPic1Img, offerPic2Img, offerPic3Img;
+
+
+	/**
+	  * The constructor creates all the elements and place them on the panel.
+	  * This panel has no other intention than to display information.
+	  */
 
 
 	public SpOfferWindowPanel()
@@ -104,4 +120,4 @@ public class SpOfferWindowPanel extends JPanel
 		c.gridy=2;
 		add(offer3, c);
 	}
-}
+} // end of class SpOfferWindowPanel
