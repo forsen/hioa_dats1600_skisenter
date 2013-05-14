@@ -19,6 +19,10 @@ import javax.imageio.*;
 
 public class SpOfferWindowPanel extends JPanel
 {
+// CONSTANTS
+	private final int FONTSIZE = 14;
+// END CONSTANTS
+
 	private JLabel offerPic1, offerPic2, offerPic3, offer1, offer2, offer3;
 	private BufferedImage offerPic1Img, offerPic2Img, offerPic3Img;
 
@@ -82,9 +86,9 @@ public class SpOfferWindowPanel extends JPanel
 		setLayout(new GridBagLayout() );
 		GridBagConstraints c = new GridBagConstraints();
 
-	    offer1.setFont(new Font("Calibri", Font.PLAIN, 14));
-	    offer2.setFont(new Font("Calibri", Font.PLAIN, 14));
-	    offer3.setFont(new Font("Calibri", Font.PLAIN, 14));
+	    offer1.setFont(new Font("Calibri", Font.PLAIN, FONTSIZE));
+	    offer2.setFont(new Font("Calibri", Font.PLAIN, FONTSIZE));
+	    offer3.setFont(new Font("Calibri", Font.PLAIN, FONTSIZE));
 
 
 	    c.insets = new Insets(20, 5, 5, 5);
