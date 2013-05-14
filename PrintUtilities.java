@@ -1,3 +1,5 @@
+package skisenter;
+
 import java.awt.*;
 import java.awt.print.*;
 import javax.swing.*;

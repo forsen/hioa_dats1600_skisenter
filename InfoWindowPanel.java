@@ -1,3 +1,5 @@
+package skisenter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -52,7 +54,7 @@ public class InfoWindowPanel extends JPanel
 		setBackground(new Color(220, 240, 255));
 
 		try{
-			snowboarderImg = ImageIO.read( new File("img/snowboarder.png"));
+			snowboarderImg = ImageIO.read( getClass().getResource("img/snowboarder.png"));
 			ImageIcon snowboarder = new ImageIcon(snowboarderImg);
 			headerImg1 = new JLabel(snowboarder);
 			headerImg1.setHorizontalAlignment(JLabel.CENTER);
@@ -64,7 +66,7 @@ public class InfoWindowPanel extends JPanel
 		}
 
 		try{
-			skimapImg = ImageIO.read( new File("img/skimap.png"));
+			skimapImg = ImageIO.read( getClass().getResource("img/skimap.png"));
 			ImageIcon skimap = new ImageIcon(skimapImg);
 			headerImg2 = new JLabel(skimap);
 			headerImg2.setHorizontalAlignment(JLabel.CENTER);

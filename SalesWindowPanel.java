@@ -1,3 +1,5 @@
+package skisenter;
+
 import javax.swing.*;
 import javax.swing.border.*;
 import java.awt.*;
@@ -104,8 +106,8 @@ public class SalesWindowPanel extends JPanel
 
 		//Will not use "try-catch" here, because the buttons will appear fine, even 
 		//though the pictures cannot be found.
-		ImageIcon cart = new ImageIcon("img/cart.png");
-		ImageIcon payment = new ImageIcon("img/payment.png");
+		ImageIcon cart = new ImageIcon(getClass().getResource("img/cart.png"));
+		ImageIcon payment = new ImageIcon(getClass().getResource("img/payment.png"));
 
 
 		salesAddCartBtn = new JButton("Legg i handlevogn", cart);
@@ -354,7 +356,7 @@ public class SalesWindowPanel extends JPanel
 
 			if (!stringcNr.isEmpty() )
 			{
-				String pattern = "\\d+";
+				String pattern = "\\d{6}";
 				if(stringcNr.matches(pattern))
 				{
 					int cNr = Integer.parseInt(stringcNr);
@@ -385,7 +387,7 @@ public class SalesWindowPanel extends JPanel
 		}
 		catch( NumberFormatException nfe )
 		{
-			Salesclerk.statusTxt.setText("Kortnr må bestå av siffer.");
+			Salesclerk.statusTxt.setText("Kortnr må bestå av 6 siffer.");
 		}
 		catch( NullPointerException npe )
 		{
@@ -471,7 +473,7 @@ public class SalesWindowPanel extends JPanel
 
 			if (!stringcNr.isEmpty() )
 			{
-				String pattern = "\\d+";
+				String pattern = "\\d{6}";
 				if(stringcNr.matches(pattern))
 				{
 					int cNr = Integer.parseInt(stringcNr);

@@ -1,3 +1,6 @@
+package skisenter;
+
+import skisenter.*;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -148,13 +151,13 @@ public class MenuBar
 	}
 
 /**
-  ** This method will open a message dialog, with some 
+  * This method will open a message dialog, with some 
   * information about this project and its developers.
   */
 	private void printAbout()
 	{
 		String cr = "\u00a9";
-		ImageIcon aboutOffpist = new ImageIcon("img/aboutoffpist.png");
+		ImageIcon aboutOffpist = new ImageIcon(getClass().getResource("img/aboutoffpist.png"));
 		aboutText = new JLabel("<html>Om Offpist: <br><br> Offpist 1.0 <br> Copyright " + cr + " 2013 Gruppe 35 <br><br> Julie Hill Roa <br> Erik Haider Forsén <br> Ole Gunhildsberg Hansen <br><br> For learning purposes only", JLabel.LEFT);
 		aboutText.setFont(new Font("Calibri", Font.PLAIN, 14));
 

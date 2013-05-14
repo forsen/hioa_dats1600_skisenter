@@ -1,3 +1,5 @@
+package skisenter;
+
 import java.util.*;
 import javax.swing.*;
 import java.text.SimpleDateFormat;

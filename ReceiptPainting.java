@@ -1,3 +1,5 @@
+package skisenter;
+
 import java.awt.*;
 import javax.swing.*;
 import java.util.Date;
@@ -52,7 +54,7 @@ public class ReceiptPainting extends JPanel
 		setBackground( Color.WHITE );
 		try
 		{
-			img = ImageIO.read( new File("img/offpist_kvittering.png"));
+			img = ImageIO.read( getClass().getResource("img/offpist_kvittering.png"));
 			size = img.getWidth();
 		}
 		catch( IOException ioe )

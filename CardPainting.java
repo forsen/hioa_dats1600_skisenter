@@ -1,3 +1,5 @@
+package skisenter;
+
 import java.awt.*;
 import javax.swing.*;
 import java.util.Date;
@@ -108,7 +110,7 @@ public class CardPainting extends JPanel
 		{
 			try
 			{
-				persImg = ImageIO.read( new File("persImg/default.png"));
+				persImg = ImageIO.read( getClass().getResource("persImg/default.png"));
 			}
 			catch( IOException ioe2)
 			{
@@ -121,7 +123,7 @@ public class CardPainting extends JPanel
 		{
 			try
 			{
-				persImg = ImageIO.read( new File("persImg/default.png"));
+				persImg = ImageIO.read( getClass().getResource("persImg/default.png"));
 			}
 			catch( IOException ioe2)
 			{
@@ -133,7 +135,7 @@ public class CardPainting extends JPanel
 		{
 			try
 			{
-				persImg = ImageIO.read( new File("persImg/default.png"));
+				persImg = ImageIO.read( getClass().getResource("persImg/default.png"));
 			}
 			catch( IOException ioe )
 			{
@@ -144,7 +146,7 @@ public class CardPainting extends JPanel
 
 		try
 		{
-			img = ImageIO.read( new File("img/skicard.png"));
+			img = ImageIO.read( getClass().getResource("img/skicard.png"));
 			size = img.getWidth();
 		}
 		catch( IOException ioe )

@@ -1,3 +1,5 @@
+package skisenter;
+
 /**
   * This is a Class to create Objects to have in the ShoppingCart. It makes 
   * an object of a Card object and a Skicard object. 

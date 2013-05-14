@@ -1,3 +1,5 @@
+package skisenter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -99,49 +101,49 @@ public class CashRegister extends JDialog
 
 		// images in bigButtonPanel
 
-		ImageIcon paycash = new ImageIcon("img/cash/paycash.png");
-		ImageIcon paycashp = new ImageIcon("img/cash/paycashp.png");
-		ImageIcon paycard = new ImageIcon("img/cash/paycard.png");
-		ImageIcon paycardp = new ImageIcon("img/cash/paycardp.png");
-		ImageIcon printreceipt = new ImageIcon("img/cash/printreceipt.png");
-		ImageIcon printreceiptp = new ImageIcon("img/cash/printreceiptp.png");
-		ImageIcon printcard = new ImageIcon("img/cash/printcard.png");
-		ImageIcon printcardp = new ImageIcon("img/cash/printcardp.png");
-		ImageIcon printcardua = new ImageIcon("img/cash/printcardua.png");
-		ImageIcon printreceiptua = new ImageIcon("img/cash/printreceiptua.png");
+		ImageIcon paycash = new ImageIcon(getClass().getResource("img/cash/paycash.png"));
+		ImageIcon paycashp = new ImageIcon(getClass().getResource("img/cash/paycashp.png"));
+		ImageIcon paycard = new ImageIcon(getClass().getResource("img/cash/paycard.png"));
+		ImageIcon paycardp = new ImageIcon(getClass().getResource("img/cash/paycardp.png"));
+		ImageIcon printreceipt = new ImageIcon(getClass().getResource("img/cash/printreceipt.png"));
+		ImageIcon printreceiptp = new ImageIcon(getClass().getResource("img/cash/printreceiptp.png"));
+		ImageIcon printcard = new ImageIcon(getClass().getResource("img/cash/printcard.png"));
+		ImageIcon printcardp = new ImageIcon(getClass().getResource("img/cash/printcardp.png"));
+		ImageIcon printcardua = new ImageIcon(getClass().getResource("img/cash/printcardua.png"));
+		ImageIcon printreceiptua = new ImageIcon(getClass().getResource("img/cash/printreceiptua.png"));
 
 		// images in smallButtonPanel
 
 
-		ImageIcon one = new ImageIcon("img/cash/1.png");
-		ImageIcon two = new ImageIcon("img/cash/2.png");
-		ImageIcon three = new ImageIcon("img/cash/3.png");
-		ImageIcon four = new ImageIcon("img/cash/4.png");
-		ImageIcon five = new ImageIcon("img/cash/5.png");
-		ImageIcon six = new ImageIcon("img/cash/6.png");
-		ImageIcon seven = new ImageIcon("img/cash/7.png");
-		ImageIcon eight = new ImageIcon("img/cash/8.png");
-		ImageIcon nine = new ImageIcon("img/cash/9.png");
-		ImageIcon zero = new ImageIcon("img/cash/0.png");
-		ImageIcon clear = new ImageIcon("img/cash/clear.png");
-		ImageIcon corr = new ImageIcon("img/cash/corr.png");
-		ImageIcon dot = new ImageIcon("img/cash/dot.png");
+		ImageIcon one = new ImageIcon(getClass().getResource("img/cash/1.png"));
+		ImageIcon two = new ImageIcon(getClass().getResource("img/cash/2.png"));
+		ImageIcon three = new ImageIcon(getClass().getResource("img/cash/3.png"));
+		ImageIcon four = new ImageIcon(getClass().getResource("img/cash/4.png"));
+		ImageIcon five = new ImageIcon(getClass().getResource("img/cash/5.png"));
+		ImageIcon six = new ImageIcon(getClass().getResource("img/cash/6.png"));
+		ImageIcon seven = new ImageIcon(getClass().getResource("img/cash/7.png"));
+		ImageIcon eight = new ImageIcon(getClass().getResource("img/cash/8.png"));
+		ImageIcon nine = new ImageIcon(getClass().getResource("img/cash/9.png"));
+		ImageIcon zero = new ImageIcon(getClass().getResource("img/cash/0.png"));
+		ImageIcon clear = new ImageIcon(getClass().getResource("img/cash/clear.png"));
+		ImageIcon corr = new ImageIcon(getClass().getResource("img/cash/corr.png"));
+		ImageIcon dot = new ImageIcon(getClass().getResource("img/cash/dot.png"));
 
-		ImageIcon cancel = new ImageIcon("img/cash/cancel.png");
-		ImageIcon onep= new ImageIcon("img/cash/1p.png");
-		ImageIcon twop = new ImageIcon("img/cash/2p.png");
-		ImageIcon threep = new ImageIcon("img/cash/3p.png");
-		ImageIcon fourp = new ImageIcon("img/cash/4p.png");
-		ImageIcon fivep = new ImageIcon("img/cash/5p.png");
-		ImageIcon sixp = new ImageIcon("img/cash/6p.png");
-		ImageIcon sevenp = new ImageIcon("img/cash/7p.png");
-		ImageIcon eightp = new ImageIcon("img/cash/8p.png");
-		ImageIcon ninep = new ImageIcon("img/cash/9p.png");
-		ImageIcon zerop = new ImageIcon("img/cash/0p.png");
-		ImageIcon clearp = new ImageIcon("img/cash/clearp.png");
-		ImageIcon corrp = new ImageIcon("img/cash/corrp.png");
-		ImageIcon dotp = new ImageIcon("img/cash/dotp.png");
-		ImageIcon cancelp = new ImageIcon("img/cash/cancelp.png");
+		ImageIcon cancel = new ImageIcon(getClass().getResource("img/cash/cancel.png"));
+		ImageIcon onep= new ImageIcon(getClass().getResource("img/cash/1p.png"));
+		ImageIcon twop = new ImageIcon(getClass().getResource("img/cash/2p.png"));
+		ImageIcon threep = new ImageIcon(getClass().getResource("img/cash/3p.png"));
+		ImageIcon fourp = new ImageIcon(getClass().getResource("img/cash/4p.png"));
+		ImageIcon fivep = new ImageIcon(getClass().getResource("img/cash/5p.png"));
+		ImageIcon sixp = new ImageIcon(getClass().getResource("img/cash/6p.png"));
+		ImageIcon sevenp = new ImageIcon(getClass().getResource("img/cash/7p.png"));
+		ImageIcon eightp = new ImageIcon(getClass().getResource("img/cash/8p.png"));
+		ImageIcon ninep = new ImageIcon(getClass().getResource("img/cash/9p.png"));
+		ImageIcon zerop = new ImageIcon(getClass().getResource("img/cash/0p.png"));
+		ImageIcon clearp = new ImageIcon(getClass().getResource("img/cash/clearp.png"));
+		ImageIcon corrp = new ImageIcon(getClass().getResource("img/cash/corrp.png"));
+		ImageIcon dotp = new ImageIcon(getClass().getResource("img/cash/dotp.png"));
+		ImageIcon cancelp = new ImageIcon(getClass().getResource("img/cash/cancelp.png"));
 
 
 
@@ -502,7 +504,7 @@ public class CashRegister extends JDialog
 		contentPanel.add(smallButtonPanel);
 		add(contentPanel);
 
-		setFonts("digital.ttf");
+		setFonts(getClass().getResource("font/digital.ttf").getPath());
 		pack();
 		setVisible( true ); 
 	

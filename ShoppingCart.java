@@ -1,3 +1,5 @@
+package skisenter;
+
 import java.util.*;
 import javax.swing.DefaultListModel;
 import java.text.NumberFormat;

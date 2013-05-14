@@ -1,3 +1,5 @@
+package skisenter;
+
 import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.event.*;

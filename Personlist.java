@@ -1,3 +1,6 @@
+package skisenter;
+
+import skisenter.*;
 import java.io.*;
 import java.util.*;
 import javax.swing.DefaultListModel;

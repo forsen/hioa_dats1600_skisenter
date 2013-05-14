@@ -1,3 +1,5 @@
+package skisenter;
+
 import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.event.*;
@@ -79,9 +81,9 @@ public class Admin extends JFrame
 		adminTabs = new JTabbedPane();
 		framePnl.add(adminTabs);
 
-		ImageIcon info = new ImageIcon("img/infoadmin.png");
+		ImageIcon info = new ImageIcon(getClass().getResource("img/infoadmin.png"));
 		
-		ImageIcon statistics = new ImageIcon("img/statistikkadmin.png");
+		ImageIcon statistics = new ImageIcon(getClass().getResource("img/statistikkadmin.png"));
 		
 		adminTabs.addTab("Info", info, adminInfoPnl);
 		adminTabs.addTab("Statistikk", statistics, statInfoPnl );

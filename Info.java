@@ -1,3 +1,5 @@
+package skisenter;
+
 import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.event.*;
@@ -120,7 +122,7 @@ public class Info extends JFrame
 
 		/* News-button */
 		try{
-			newsBtnImg = ImageIO.read( new File("img/nyheter.png"));
+			newsBtnImg = ImageIO.read( getClass().getResource("img/nyheter.png"));
 			ImageIcon news = new ImageIcon(newsBtnImg);
 			newsButton = new JButton(news);
 			newsButton.setFocusPainted(false);
@@ -136,7 +138,7 @@ public class Info extends JFrame
 			}
 
 		try{
-			newsBtnImg1 = ImageIO.read( new File("img/nyheter2.png"));
+			newsBtnImg1 = ImageIO.read( getClass().getResource("img/nyheter2.png"));
 			ImageIcon news2 = new ImageIcon(newsBtnImg1);
 			newsButton.setToolTipText("OFFPIST: Nyheter");
 			newsButton.setPressedIcon(news2);
@@ -150,7 +152,7 @@ public class Info extends JFrame
 			
 		/* Info-button*/
 		try{
-			infoBtnImg = ImageIO.read( new File("img/info.png"));
+			infoBtnImg = ImageIO.read( getClass().getResource("img/info.png"));
 			ImageIcon info = new ImageIcon(infoBtnImg);
 			infoButton = new JButton(info);
 			infoButton.setFocusPainted(false);
@@ -165,7 +167,7 @@ public class Info extends JFrame
 			}
 
 		try{
-			infoBtnImg1 = ImageIO.read( new File("img/info2.png"));
+			infoBtnImg1 = ImageIO.read( getClass().getResource("img/info2.png"));
 			ImageIcon info2 = new ImageIcon(infoBtnImg1);
 			infoButton.setToolTipText("OFFPIST: Informasjon");
 			infoButton.setPressedIcon(info2);
@@ -178,7 +180,7 @@ public class Info extends JFrame
 
 		/* Offers-button */
 		try{
-			offerBtnImg = ImageIO.read( new File("img/tilbud.png"));
+			offerBtnImg = ImageIO.read( getClass().getResource("img/tilbud.png"));
 			ImageIcon offer = new ImageIcon(offerBtnImg);
 			offersButton = new JButton(offer);
 			offersButton.setFocusPainted(false);
@@ -193,7 +195,7 @@ public class Info extends JFrame
 			}
 
 		try{
-			offerBtnImg1 = ImageIO.read( new File("img/tilbud2.png"));
+			offerBtnImg1 = ImageIO.read( getClass().getResource("img/tilbud2.png"));
 			ImageIcon offer2 = new ImageIcon(offerBtnImg1);
 			offersButton.setToolTipText("OFFPIST: Tilbud");
 			offersButton.setPressedIcon(offer2);
@@ -206,7 +208,7 @@ public class Info extends JFrame
 
 		/* Prices-button */
 		try{
-			pricesBtnImg = ImageIO.read( new File("img/priser.png"));
+			pricesBtnImg = ImageIO.read( getClass().getResource("img/priser.png"));
 			ImageIcon price = new ImageIcon(pricesBtnImg);
 			pricesButton = new JButton(price);
 			pricesButton.setFocusPainted(false);
@@ -221,7 +223,7 @@ public class Info extends JFrame
 			}
 
 		try{
-			pricesBtnImg1 = ImageIO.read( new File("img/info.png"));
+			pricesBtnImg1 = ImageIO.read( getClass().getResource("img/info.png"));
 			ImageIcon price2 = new ImageIcon(pricesBtnImg1);
 			pricesButton.setToolTipText("OFFPIST: Priser");
 			pricesButton.setPressedIcon(price2);
@@ -326,7 +328,7 @@ public class Info extends JFrame
 
 
 		try{
-			ImageIcon image = new ImageIcon("img/offpist_liten.png");
+			ImageIcon image = new ImageIcon(getClass().getResource("img/offpist_liten.png"));
 			label = new JLabel(image);
 			panel.add(label);
 			}
@@ -413,8 +415,8 @@ public class Info extends JFrame
 
 
 
-		String imagefile = "img/offpist_logo.png";
-		Image icon = toolbox.getImage(imagefile);
+
+		Image icon = toolbox.getImage(getClass().getResource("img/offpist_logo.png"));
 		setIconImage(icon);
 		//Display the window.
 		pack();

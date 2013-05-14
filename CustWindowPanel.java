@@ -1,3 +1,5 @@
+package skisenter;
+
 import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.*;
@@ -98,9 +100,9 @@ public class CustWindowPanel extends JPanel
 
 		//Will not use "try-catch" here, because the buttons will appear fine, even 
 		//though the pictures cannot be found.
-		ImageIcon camera = new ImageIcon("img/camera.png");
-		ImageIcon search = new ImageIcon("img/search.png");
-		ImageIcon customer = new ImageIcon("img/customer.png");
+		ImageIcon camera = new ImageIcon(getClass().getResource("img/camera.png"));
+		ImageIcon search = new ImageIcon(getClass().getResource("img/search.png"));
+		ImageIcon customer = new ImageIcon(getClass().getResource("img/customer.png"));
 
 		imageBtn = new JButton("Velg bilde", camera);
 		imageBtn.setToolTipText("Last opp bilde til kortet");
@@ -176,7 +178,7 @@ public class CustWindowPanel extends JPanel
 		
 		try
 		{
-			String pattern = "\\d+";
+			String pattern = "\\d{8}";
 			String snumber = custWindowPhone.getText();
 			if(snumber.matches(pattern))
 			{
@@ -207,7 +209,7 @@ public class CustWindowPanel extends JPanel
 		}
 		catch( NumberFormatException nfe )
 		{
-			Salesclerk.statusTxt.setText( "Telefonnummeret må bestå av siffer" );
+			Salesclerk.statusTxt.setText( "Telefonnummeret må bestå av 8 siffer" );
 		}
 
 
@@ -272,7 +274,7 @@ public class CustWindowPanel extends JPanel
 		String lName = custWindowLastName.getText();
 		try
 		{
-			String pattern = "\\d+";
+			String pattern = "\\d{8}";
 			String number = custWindowPhone.getText();
 			if(number.matches(pattern))
 			{
@@ -289,7 +291,7 @@ public class CustWindowPanel extends JPanel
 
 				Salesclerk.salesClerkSearchInfoTxt.setText( "Har oppdatert:\n"+ Salesclerk.customer.getCustId() + "\n" + Salesclerk.customer.toString() );
 				Salesclerk.statusTxt.setText("Kundeinfo ble oppdatert.");
-			}Salesclerk.statusTxt.setText("Tlf nummer må bestå av siffre.");
+			}Salesclerk.statusTxt.setText("Tlf nummer må bestå av 8 siffre.");
 
 		}
 		catch(NullPointerException npe)

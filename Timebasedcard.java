@@ -1,3 +1,4 @@
+package skisenter;
 import java.util.Date; 
 
 public abstract class Timebasedcard extends Skicard

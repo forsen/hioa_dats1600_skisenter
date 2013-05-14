@@ -1,3 +1,5 @@
+package skisenter;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -7,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.imageio.ImageIO;
 import java.nio.channels.FileChannel;
+
 
 /**
   * This class is a helping class for copying, moving and saving an personal image.    
@@ -38,7 +41,7 @@ public class ImageUtility
 	private File drawImage( File f)
 	{	
 		
-		orgfile = f;
+		orgfile = new File( f.getPath());
 		try
 		{
 			BufferedImage img = ImageIO.read(f); //Draws the file f
@@ -56,7 +59,9 @@ public class ImageUtility
 		
 			//Converts it to a File and let it have the same name as the old image.
 			File nfile = new File(orgfile.getName());
-			ImageIO.write(resizedPic, "jpg", nfile);
+
+			ImageIO.write(resizedPic, "jpg", nfile );
+			
 			return nfile;
 		}
 		catch(IOException ie)
@@ -88,7 +93,7 @@ public class ImageUtility
 		try
 		{
 			//Creates a new file with the name of the persons custId
-			File persPic = new File("persImg/" + p.getCustId()+".jpg");
+			File persPic = new File("data/persImg/" + p.getCustId()+".jpg");
   			if (!persPic.exists()) 
   			{
        			persPic.createNewFile();

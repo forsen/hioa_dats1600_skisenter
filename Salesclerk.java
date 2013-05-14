@@ -1,3 +1,5 @@
+package skisenter;
+
 import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.event.*;
@@ -11,6 +13,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.awt.image.BufferedImage;
 import javax.imageio.*;
+import java.net.URL;
 
 /**
   * Salesclerk is the class that creates the sale window. 
@@ -113,12 +116,12 @@ public class Salesclerk extends JFrame
 
 		//Will not use "try-catch" here, because the panetabs will appear fine, even 
 		//though the pictures cannot be found.
-		ImageIcon kunde = new ImageIcon("img/kunde.png");
-		ImageIcon salg = new ImageIcon("img/salg.png");
-		ImageIcon erstatt = new ImageIcon("img/erstatt.png");
+		ImageIcon kunde = new ImageIcon(getClass().getResource("img/kunde.png"));
+		ImageIcon salg = new ImageIcon(getClass().getResource("img/salg.png"));
+		ImageIcon erstatt = new ImageIcon(getClass().getResource("img/erstatt.png"));
 
 		try{
-			nextCustBtnImg = ImageIO.read( new File("img/neste.png"));
+			nextCustBtnImg = ImageIO.read( getClass().getResource("img/neste.png"));
 			ImageIcon next = new ImageIcon(nextCustBtnImg);
 			nextCustBtn = new JButton(next);
 			nextCustBtn.setToolTipText("For å ekspedere neste kunde");
@@ -129,7 +132,7 @@ public class Salesclerk extends JFrame
 			nextCustBtn = new JButton("Neste kunde");
 		}
 		
-		ImageIcon next2 = new ImageIcon("img/neste2.png");
+		ImageIcon next2 = new ImageIcon(getClass().getResource("img/neste2.png"));
 		nextCustBtn.setRolloverIcon(next2);
 
 		nextCustBtn.setFocusPainted(false);

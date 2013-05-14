@@ -1,3 +1,5 @@
+package skisenter;
+
 import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.border.*;
@@ -148,7 +150,7 @@ public class AdminInfoPanel extends JPanel
 	{
 		try
 		{
-			String pattern = "\\d+";
+			String pattern = "\\d{6}";
 			String stingcardNr = crdNr.getText();
 			if(stingcardNr.matches(pattern))
 			{
@@ -160,7 +162,7 @@ public class AdminInfoPanel extends JPanel
 					display.setText("Søket gav ingen treff");
 			}
 			else
-				JOptionPane.showMessageDialog(null,"Du må fylle inn et kortnummer");
+				JOptionPane.showMessageDialog(null,"Du må ha 6 siffre");
 		}
 		catch(NullPointerException npe)
 		{
@@ -190,7 +192,7 @@ public class AdminInfoPanel extends JPanel
 		
 		try
 		{
-			String pattern = "\\d+";
+			String pattern = "\\d{8}";
 			String stingtlf = tlfNr.getText();
 			
 			if(stingtlf.matches(pattern))
@@ -233,7 +235,7 @@ public class AdminInfoPanel extends JPanel
 		}
 		catch(NullPointerException npe)
 		{
-			JOptionPane.showMessageDialog(null,"Du må fylle inn ett tlf nummer");
+			JOptionPane.showMessageDialog(null,"Du må ha 8 siffre");
 		}
 
 	}

@@ -1,3 +1,6 @@
+package skisenter;
+
+import skisenter.*;
 import java.io.*;
 import javax.swing.*;
 import java.awt.*;
@@ -5,6 +8,7 @@ import java.awt.event.*;
 import java.util.List;
 import java.util.LinkedList;
 import java.util.Objects;  
+import java.net.URL;
 
 /**
  * Skiresert is the class with the main-method. 
@@ -45,7 +49,7 @@ public class Skiresort
 		
 		System.setProperty("apple.laf.useScreenMenuBar", "true");
 		Toolkit verktoykasse = Toolkit.getDefaultToolkit();
-  		String bildefil = "img/offpist_logo.png";
+  		URL bildefil = Skiresort.class.getResource("img/offpist_logo.png");
   		final Image ikon = verktoykasse.getImage(bildefil);
 		
 		unsaved = false; 
@@ -117,7 +121,7 @@ public class Skiresort
 	private static void readFile()
 	{
 		try( ObjectInputStream input = new ObjectInputStream(
-			new FileInputStream( "data.dta" ) ) )
+			new FileInputStream( "data/data.dta" ) ) )
 		{
 			registry = (Personlist) input.readObject();
 			validations = (List<Validations>) input.readObject();
@@ -156,7 +160,7 @@ public class Skiresort
 	public static void saveFile()
 	{
 		try( ObjectOutputStream output = new ObjectOutputStream(
-			new FileOutputStream( "data.dta" ) ) )
+			new FileOutputStream( "data/data.dta" ) ) )
 		{
 			output.writeObject( registry );
 			output.writeObject( validations );

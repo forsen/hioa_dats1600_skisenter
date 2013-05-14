@@ -1,3 +1,5 @@
+package skisenter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -41,7 +43,7 @@ public class SpOfferWindowPanel extends JPanel
 		setBackground(new Color(220, 240, 255));
 
 		try{
-			offerPic1Img = ImageIO.read( new File("img/freakyfriday.png"));
+			offerPic1Img = ImageIO.read( getClass().getResource("img/freakyfriday.png"));
 			ImageIcon ff = new ImageIcon(offerPic1Img);
 			offerPic1 = new JLabel(ff);
 			}
@@ -52,7 +54,7 @@ public class SpOfferWindowPanel extends JPanel
 		}
 
 		try{
-			offerPic2Img = ImageIO.read( new File("img/groupdiscount.png"));
+			offerPic2Img = ImageIO.read( getClass().getResource("img/groupdiscount.png"));
 			ImageIcon gD = new ImageIcon(offerPic2Img);
 			offerPic2 = new JLabel(gD);
 			}
@@ -63,7 +65,7 @@ public class SpOfferWindowPanel extends JPanel
 		}
 
 		try{
-			offerPic3Img = ImageIO.read( new File("img/studentdiscount.png"));
+			offerPic3Img = ImageIO.read( getClass().getResource("img/studentdiscount.png"));
 			ImageIcon sD = new ImageIcon(offerPic3Img);
 			offerPic3 = new JLabel(sD);
 			}

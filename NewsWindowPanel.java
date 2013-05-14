@@ -1,3 +1,5 @@
+package skisenter;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -47,7 +49,7 @@ public class NewsWindowPanel extends JPanel
 
 		/***** 1st ARTICLE ******************************************************/
 		try{
-			icon4br = ImageIO.read( new File("img/npic4.png"));
+			icon4br = ImageIO.read( getClass().getResource("img/npic4.png"));
 			ImageIcon npic4 = new ImageIcon(icon4br);
 			icon4 = new JLabel();
 	    	icon4.setIcon(npic4);
@@ -76,7 +78,7 @@ public class NewsWindowPanel extends JPanel
 		/***** 2nd ARTICLE ******************************************************/
 
 		try{
-			icon3br = ImageIO.read( new File("img/npic3.png"));
+			icon3br = ImageIO.read( getClass().getResource("img/npic3.png"));
 			ImageIcon npic3 = new ImageIcon(icon3br);
 			icon3 = new JLabel();
 	    	icon3.setIcon(npic3);
@@ -108,7 +110,7 @@ public class NewsWindowPanel extends JPanel
 		/***** 3rd ARTICLE ******************************************************/
 
 		try{
-			icon2br = ImageIO.read( new File("img/npic2.png"));
+			icon2br = ImageIO.read( getClass().getResource("img/npic2.png"));
 			ImageIcon npic2 = new ImageIcon(icon2br);
 			icon1 = new JLabel();
 			icon1.setIcon(npic2);
@@ -138,7 +140,7 @@ public class NewsWindowPanel extends JPanel
 		/***** 4th ARTICLE ******************************************************/
 
 		try{
-			icon1br = ImageIO.read( new File("img/npic1.png"));
+			icon1br = ImageIO.read( getClass().getResource("img/npic1.png"));
 			ImageIcon npic1 = new ImageIcon(icon1br);
 			icon2 = new JLabel();
 	   	    icon2.setIcon(npic1);

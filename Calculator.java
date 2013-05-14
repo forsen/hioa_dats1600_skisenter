@@ -1,3 +1,5 @@
+package skisenter;
+
 import javax.swing.*;
 import java.util.*;
 import java.util.Date;

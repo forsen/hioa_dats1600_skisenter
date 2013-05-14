@@ -1,3 +1,5 @@
+package skisenter;
+
 import java.util.Date;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;

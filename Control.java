@@ -1,3 +1,5 @@
+package skisenter;
+
 import javax.swing.*;
 import javax.swing.event.*;
 import java.awt.*;
@@ -231,7 +233,7 @@ public class Control extends JFrame
 		add(contentPanel);
 		
 
-		setFonts("digital.ttf");
+		setFonts();
 		updateTime();
 
 		
@@ -268,10 +270,10 @@ public class Control extends JFrame
  * @return Returns a boolean value, that tells whether the fonts have been found and set, or not.
  */
 
-	private boolean setFonts(String s)
+	private boolean setFonts()
 	{
 		try{
-			font = Font.createFont(Font.TRUETYPE_FONT, new File(s));
+			font = Font.createFont(Font.TRUETYPE_FONT, getClass().getResourceAsStream("font/digital.ttf"));
 			font = font.deriveFont(Font.BOLD, 20.0f);
 			ctrlWindowPassThroughLabelText.setFont(font);
 			font = font.deriveFont(Font.PLAIN, 16.0f);
@@ -298,7 +300,7 @@ public class Control extends JFrame
 		try
 		{
 			
-			String pattern = "\\d+";
+			String pattern = "\\d{6}";
 			String stringcardNumber = ctrlWindowCustNr.getText();
 			
 			if(stringcardNumber.matches(pattern))
@@ -315,12 +317,12 @@ public class Control extends JFrame
 
 				return validatingCard.getCurrent();
 			} ctrlWindowPassThrough.setBackground(Color.RED);
-			 ctrlWindowPassThroughLabelText.setText("Skriv et gyldig kortnummer");
+			 ctrlWindowPassThroughLabelText.setText("Skriv et gyldig kortnummer (6 siffer)");
 		}
 		catch( NumberFormatException nfe )
 		{
 			 ctrlWindowPassThrough.setBackground(Color.RED);
-			 ctrlWindowPassThroughLabelText.setText("Skriv et gyldig kortnummer");
+			 ctrlWindowPassThroughLabelText.setText("Skriv et gyldig kortnummer (6 siffer)");
 		}
 		catch( NullPointerException npe )
 		{
