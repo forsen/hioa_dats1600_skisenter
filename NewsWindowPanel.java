@@ -18,6 +18,10 @@ import javax.imageio.*;
 
 public class NewsWindowPanel extends JPanel
 {
+// CONSTANTS
+	private final int FONTSIZE = 14;
+// END CONSTANTS
+
 	private JLabel header, news1, news2, news3, news4, icon1, icon2, icon3, icon4;
 	private BufferedImage icon4br, icon3br, icon2br, icon1br;
 
@@ -62,7 +66,7 @@ public class NewsWindowPanel extends JPanel
 		"Send oss gjerne ris <br> og ros. Vi håper å se deg her på Offpist Skiresort, neste sesong. <br><br><br><br></html>");
 
 
-	    news4.setFont(new Font("Calibri", Font.PLAIN, 14));
+	    news4.setFont(new Font("Calibri", Font.PLAIN, FONTSIZE));
 
 		c.gridy=1;
 		add(news4,c);
@@ -93,7 +97,7 @@ public class NewsWindowPanel extends JPanel
 		" mellom klokka 17 og 21. <br><br><br><br></html>");
 
 
-	    news3.setFont(new Font("Calibri", Font.PLAIN, 14));
+	    news3.setFont(new Font("Calibri", Font.PLAIN, FONTSIZE));
 
 		c.gridy=3;
 		add(news3,c);
@@ -125,7 +129,7 @@ public class NewsWindowPanel extends JPanel
 		"Husk å melde på dine små troll og nisser til neste skiskole! Skiskolen starter 22. februar " +
 	    "og varer til 26. februar. <br> Ring oss for påmelding og mer informasjon!<br><br><br><br></html>");    
 
-	    news1.setFont(new Font("Calibri", Font.PLAIN, 14));
+	    news1.setFont(new Font("Calibri", Font.PLAIN, FONTSIZE));
 		
 
 		c.gridy= 5;
@@ -156,7 +160,7 @@ public class NewsWindowPanel extends JPanel
 		" og håper selvfølgelig å se deg i bakken. Følg med for mer informasjon!<br><br><br><br></html>");
 
 
-	    news2.setFont(new Font("Calibri", Font.PLAIN, 14));
+	    news2.setFont(new Font("Calibri", Font.PLAIN, FONTSIZE));
 
 		c.gridy=7;
 		add(news2,c);
