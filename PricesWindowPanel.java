@@ -18,6 +18,11 @@ import java.util.Locale;
 
 public class PricesWindowPanel extends JPanel
 {
+// CONSTANTS
+	private final int BIGFONT = 20;
+	private final int SMALLFONT = 14;
+// END CONSTANTS
+
 	private JLabel header;
 	private JLabel content;
 	private JTable priceTable;
@@ -55,7 +60,7 @@ public class PricesWindowPanel extends JPanel
 
 
 		header = new JLabel("Heiskort");
-	    header.setFont(new Font("Calibri", Font.BOLD, 20));
+	    header.setFont(new Font("Calibri", Font.BOLD, BIGFONT));
 
 		c.insets = new Insets(5,5,5,5);
 		c.fill = GridBagConstraints.VERTICAL;
@@ -75,7 +80,7 @@ public class PricesWindowPanel extends JPanel
 		/************ ELEMENT 2 ***************************************************/
 
 		header = new JLabel("<html><br><br>Rabatter</html>");
-	    header.setFont(new Font("Calibri", Font.BOLD, 20));
+	    header.setFont(new Font("Calibri", Font.BOLD, BIGFONT));
 
 		c.gridx = 1;
 		c.gridy= 3;
@@ -84,7 +89,7 @@ public class PricesWindowPanel extends JPanel
 
 		content = new JLabel("<html>Hos oss vil alle småracere som er 16 år eller yngre få kjøre i bakken" +
 							 "til halv pris, uansett type heiskort.<br>Les om fler rabattyper i 'Tilbud' i fanen til venstre<br><br><br></html>");
-		content.setFont(new Font("Calibri", Font.PLAIN, 14));
+		content.setFont(new Font("Calibri", Font.PLAIN, SMALLFONT));
 		c.gridx = 1;
 		c.weighty=0;
 		c.gridy= 4;
@@ -93,7 +98,7 @@ public class PricesWindowPanel extends JPanel
 		/************ ELEMENT 3 *****************************************************/
 
 		header = new JLabel("Afterski");
-		header.setFont(new Font("Calibri", Font.BOLD, 20));
+		header.setFont(new Font("Calibri", Font.BOLD, BIGFONT));
 		c.gridy=5;
 		c.weighty=0.5;
 		add(header, c);
@@ -101,7 +106,7 @@ public class PricesWindowPanel extends JPanel
 		content = new JLabel("<html>Skiresortet tilbyr egen afterski, som går for å være en av landets beste." +
 							"Møt opp med godt humør og <br> tørst hals, her har vi både god partystemning og billige priser i baren.<br>"+
 							"Inngang: 50kr. CC: 20 år.<br><br><br></html>");
-		content.setFont(new Font("Calibri", Font.PLAIN, 14));
+		content.setFont(new Font("Calibri", Font.PLAIN, SMALLFONT));
 		c.gridy=6;
 		c.weighty=0;
 		add(content,c);
@@ -109,14 +114,14 @@ public class PricesWindowPanel extends JPanel
 		/************ ELEMENT 4 *****************************************************/
 
 		header = new JLabel("Skiskole");
-		header.setFont(new Font("Calibri", Font.BOLD, 20));
+		header.setFont(new Font("Calibri", Font.BOLD, BIGFONT));
 		c.gridy=7;
 		c.weighty=0.5;
 		add(header, c);
 
 		content = new JLabel("<html> Vi tilbyr også vår egen skiskole. Skiskolen er beregnet på barn mellom 8 og 14 år. Den varer over en <br>"
 									 +" uke og koster 2200 kr. Neste skiskole starter 28. november 2013. Ring 22 33 44 55 for påmelding!<br><br><br></html>");
-		content.setFont(new Font("Calibri", Font.PLAIN, 14));
+		content.setFont(new Font("Calibri", Font.PLAIN, SMALLFONT));
 		c.gridy=8;
 		c.weighty=0;
 		add(content,c);
