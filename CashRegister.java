@@ -602,6 +602,9 @@ public class CashRegister extends JDialog
 			button.doClick(); 
 		}
 	}
+/**
+ * This Listener initiates methodes and types inn the number on the butten by listening on clicked buttons.
+ */
 
 
 	private class BtnListener implements ActionListener
