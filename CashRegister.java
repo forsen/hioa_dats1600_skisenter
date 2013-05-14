@@ -571,7 +571,6 @@ public class CashRegister extends JDialog
 			}
 		}
 
-		System.out.println( "lengde: " + shoppingCartList.getModel().getSize() );
 		for( int i = 0; i < shoppingCartList.getModel().getSize(); i++ )
 		{
 			System.out.println("Skjer det noe her?");
@@ -658,7 +657,7 @@ public class CashRegister extends JDialog
 				}
 				catch( StringIndexOutOfBoundsException sioobe )
 				{
-					System.out.println("No more caracters to remove");
+					// no more characters to remove, not necessary to throw any errors here
 				}
 			}
 			if( ae.getSource() == clearBtn )

@@ -6,8 +6,8 @@ import java.util.Date;
 import java.util.Calendar;
 
 /**
- * 
- * 
+ * ShoppingCart 
+ *
  * @author Erik Haider Forsén
  * @author Ole Hansen
  * @author Julie Hill Roa
