@@ -26,7 +26,10 @@ public class ShoppingCartCellListRenderer extends DefaultListCellRenderer
 
 		try
 		{
-			label.setText( ci.getCard().getCardID() + " " +  ci.getSkiCard().getType("") + ", " + paymentFormatter.format( ci.getSkiCard().getPrice() ) );
+			String type = ci.getSkiCard().getType("");
+			type = type.substring(0,type.indexOf("kort"));
+
+			label.setText( ci.getCard().getCardID() + " " +  type + ", " + paymentFormatter.format( ci.getSkiCard().getPrice() ) );
 		}
 		catch( NullPointerException npe )
 		{
