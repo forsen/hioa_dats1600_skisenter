@@ -239,7 +239,8 @@ public class CustWindowPanel extends JPanel
 		}
 		catch( NumberFormatException nfe )
 		{
-			System.out.println("The phonenr has to be digits");
+			if( !custWindowPhone.getText().isEmpty() )
+				Salesclerk.statusTxt.setText("Telefonnummeret kan kun bestå av tall");
 		}
 		catch(NullPointerException npe)
 		{
@@ -329,7 +330,7 @@ public class CustWindowPanel extends JPanel
 			{
 				img = fc.getSelectedFile(); 
 				moveAndRenameImg(img,  Salesclerk.customer);
-				Salesclerk.statusTxt.setText("Du har valgt å åpne bildet: " + img.getName() );
+				Salesclerk.statusTxt.setText("Bildet " + img.getName() + " er nå knyttet opp mot kunde nr: " + Salesclerk.customer.getCustId() );
 			}
 
 
