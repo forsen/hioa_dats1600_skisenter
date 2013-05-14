@@ -60,13 +60,13 @@ public class Skiresort
 		{
 			public void run()
 			{
-				/* Uncomment this code if you want to auto-generate some demo data. */
+				/* Uncomment this code if you want to auto-generate some demo data. 
 				int yn = JOptionPane.showOptionDialog(null, "Vil du få litt tilfeldig data?", "Random stash", JOptionPane.YES_NO_OPTION,
 														JOptionPane.QUESTION_MESSAGE, null, null, null );
 
 				if( yn == JOptionPane.YES_OPTION )
 					r = new RandomData( registry, cardregistry, validations );
-				
+				*/
 				s = new Salesclerk(registry, cardregistry, message); 
 				s.setJMenuBar( new MenuBar().createMenu() );
 				s.setVisible( true );
