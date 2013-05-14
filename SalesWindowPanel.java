@@ -44,7 +44,7 @@ public class SalesWindowPanel extends JPanel
   * This constructor will set up all the elements, and place them on the panel
   * @param cl  	The card list to operate on
   * @see Salesclerk
-  * @see Cardist
+  * @see Cardlist
   */
 
 	public SalesWindowPanel(Cardlist cl)
