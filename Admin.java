@@ -18,6 +18,12 @@ import java.util.Iterator;
 public class Admin extends JFrame
 {	
 
+// CONSTANTS
+	private final int WIDTH = 830;
+	private final int HEIGHT = 780;
+// END CONSTANTS
+
+
 	private JPanel framePnl,topPnl,adminInfoPnl, statInfoPnl;
 	private JButton admInfoBtn, admStatBtn;
 	private Personlist list;
@@ -26,8 +32,6 @@ public class Admin extends JFrame
 	private List<Validations> validations;
 	private Cardlist cardregistry;
 	private JTabbedPane adminTabs;
-	
-
 	
 /**
   * This constructor sets up the window. 
@@ -89,7 +93,7 @@ public class Admin extends JFrame
 
 		layout.layoutContainer( c );
 
-		setSize( 830, 780 );
+		setSize( WIDTH, HEIGHT );
 	}
 }
 // end of class Admin
