@@ -13,14 +13,14 @@ import java.text.NumberFormat;
 
 public abstract class Skicard implements Serializable 
 {
+// CONSTANTS
 	public final static int DAYCARD = 0;
 	public final static int HOURCARD = 1;
 	public final static int SEASONCARD = 2;
 	public final static int PUNCHCARD = 3; 
-
 	private final int CHILD = 1;
 	private final int ADULT = 2;
-
+// END CONSTANTS
 
 
 	private double price;
