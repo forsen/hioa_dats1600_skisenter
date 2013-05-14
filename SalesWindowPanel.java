@@ -527,13 +527,12 @@ public class SalesWindowPanel extends JPanel
 			cardIDList.setModel( lmc );
 			updateCartPrice();
 		}
-		catch( NullPointerException npe )
-		{
-			System.out.println("No card was selected..");
-		}
 		catch(ArrayIndexOutOfBoundsException aiobe)
 		{
-			System.out.println("Array index out of range: -1");
+			/*
+			aiobe is catched by the code above if you return a card from the textfield, and not from the list.
+			case: when a unregistered card is returned. This is expected, and we will not do anything about it.
+			*/	
 		}
 	}
 
