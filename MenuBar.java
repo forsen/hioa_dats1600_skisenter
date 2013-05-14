@@ -12,7 +12,11 @@ import java.net.URI;
 
 /**
   * This is a class to create the menu bar we're using in our program.
-  */
+ * @author Erik Haider Forsén
+ * @author Ole Hansen
+ * @author Julie Hill Roa
+ * @version 0.9
+ */
 
 public class MenuBar
 {
