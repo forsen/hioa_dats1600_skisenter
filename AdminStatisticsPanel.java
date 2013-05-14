@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.text.NumberFormat;
+import java.text.DecimalFormat;
 import java.util.Calendar;
 
 /**
@@ -66,7 +67,8 @@ public class AdminStatisticsPanel extends JPanel
 
 		formatter = new SimpleDateFormat("ddMMyy"); 
 		paymentFormat = NumberFormat.getCurrencyInstance( new Locale( "no","NO" ) );
-		
+		//rounding off to the nearest whole number.
+		paymentFormat = new DecimalFormat("0");
 
 		scale = "Dager";
 		list = l;
