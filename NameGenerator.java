@@ -88,7 +88,7 @@ public class NameGenerator {
         BufferedReader bufRead;
         String line;
         
-        input = new FileReader(fileName);
+        input = new FileReader(getClass().getResource(fileName).getPath());
         
         bufRead = new BufferedReader(input);
         line="";   
