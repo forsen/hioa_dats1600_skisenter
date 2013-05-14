@@ -148,7 +148,7 @@ public class MenuBar
 	}
 
 /**
-  * This method will open a message dialog, with some 
+  ** This method will open a message dialog, with some 
   * information about this project and its developers.
   */
 	private void printAbout()
