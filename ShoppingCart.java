@@ -71,18 +71,8 @@ public class ShoppingCart
 
 		Card nCard = new Card( new Date() ); 
 
-//		try
-//		{
-//			cardList = Salesclerk.customer.listCards();
-//		}
-//		catch( NullPointerException npe )
-//		{
-			// do nothing
-//		}
-
 		cardList.addElement( nCard );
-		//System.out.println( "dette er balloks" );
-		sum += 70;
+		sum += Info.CARDPRICE;
 		newCards.add( nCard );
 
 
@@ -122,7 +112,6 @@ public class ShoppingCart
 		}
 		try
 		{
-			//sum -= items.getElementAt( index ).getPrice();
 			items.removeElementAt( index );
 			cartList.remove( index );
 		}
@@ -163,7 +152,7 @@ public class ShoppingCart
 				}
 				catch( NullPointerException npe )
 				{
-					System.out.println( "Something went wrong here" );
+					npe.printStackTrace( System.out );
 				}
 			}
 			else 
@@ -175,7 +164,7 @@ public class ShoppingCart
 				catch( NullPointerException npe )
 				{
 
-					System.out.println( "Something went wrong here" );
+					npe.printStackTrace( System.out );
 				}
 			}
 
@@ -188,7 +177,7 @@ public class ShoppingCart
 		cartList = new LinkedList<>();
 		newCards = new LinkedList<>();
 		cardList = new DefaultListModel<>(); 
-		sum = 0; 
+		sum = 0.0; 
 
 		return items;	
 	}
@@ -248,7 +237,7 @@ public class ShoppingCart
 					ci.getSkiCard().setPrice( ci.getSkiCard().getPrice() * Info.FREAKYFRIDAY );
 					discount = Info.FREAKYFRIDAY;
 				}
-				else if( cartList.size() > 9 )
+				else if( cartList.size() >= Info.GROUPDISCOUNTLIMIT )
 				{
 					ci.getSkiCard().setPrice( ci.getSkiCard().getPrice() * Info.GROUPDISCOUNT );
 					discount = Info.GROUPDISCOUNT;
