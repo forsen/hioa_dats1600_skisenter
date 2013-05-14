@@ -5,6 +5,15 @@ import java.util.Locale;
 import java.util.Date;
 import java.util.Calendar;
 
+/**
+ * 
+ * 
+ * @author Erik Haider Forsén
+ * @author Ole Hansen
+ * @author Julie Hill Roa
+ * @version 0.9
+ */
+
 public class ShoppingCart
 {
 	private static double sum; 
@@ -26,15 +35,8 @@ public class ShoppingCart
 		newCards = new LinkedList<>();
 		unregCardList = cl;
 
-
-//		try
-//		{
-//			cardList = Salesclerk.customer.listCards();
-//		}
-//		catch( NullPointerException npe )
-//		{
 		cardList = new DefaultListModel<Card>();
-//		}
+
 
 		paymentFormat = NumberFormat.getCurrencyInstance( new Locale( "no", "NO" ) );
 		paymentFormat.setGroupingUsed( false );

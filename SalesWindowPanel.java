@@ -8,6 +8,15 @@ import java.util.Date;
 import java.text.NumberFormat;
 import java.util.Locale;
 
+/**
+ * 
+ * 
+ * @author Erik Haider Forsén
+ * @author Ole Hansen
+ * @author Julie Hill Roa
+ * @version 0.9
+ */
+
 public class SalesWindowPanel extends JPanel
 {
 	private JLabel custIDLbl,cardnrLbl;

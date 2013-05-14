@@ -6,6 +6,16 @@ import java.util.List;
 import java.util.LinkedList;
 import java.util.Objects;  
 
+/**
+ * Skiresert is the class with the main-methode. 
+ * Skiresort creates the Personlist, Cardlist and List of Validations.
+ * 
+ * @author Erik Haider Forsén
+ * @author Ole Hansen
+ * @author Julie Hill Roa
+ * @version 0.9
+ */
+
 public class Skiresort
 {
 	private static String message = null; 
@@ -25,33 +35,34 @@ public class Skiresort
 
 	public static boolean unsaved; 
 
+/**
+ * main-methode tu run the program
+ *Creates the Contol-Windows, Salesclerk-Window, Admin-Window and the Info-Window. 
+ */
+
 	public static void main(String[] args)
 	{
-		//System.setProperty("com.apple.mrj.application.apple.menu.about.name", "MyApplication");
+		
 		System.setProperty("apple.laf.useScreenMenuBar", "true");
 		Toolkit verktoykasse = Toolkit.getDefaultToolkit();
   		String bildefil = "img/offpist_logo.png";
   		final Image ikon = verktoykasse.getImage(bildefil);
 		
 		unsaved = false; 
-
 		Skiresort test = new Skiresort(); 
-
 		test.readFile(); 
 		
 		chLift = new Chairlift(validations, registry, "Eventyrheisen", 2000, 3 );
-
 		tLift = new Tcuplift( validations, registry, "Lårgnagern", 1433 );
 		
-
 
 		EventQueue.invokeLater( new Runnable()
 		{
 			public void run()
 			{
-				// Fjern denne etterhvert
+			
 				int yn = JOptionPane.showOptionDialog(null, "Vil du få litt tilfeldig data?", "Random stash", JOptionPane.YES_NO_OPTION,
-					JOptionPane.QUESTION_MESSAGE, null, null, null );
+														JOptionPane.QUESTION_MESSAGE, null, null, null );
 
 				if( yn == JOptionPane.YES_OPTION )
 					r = new RandomData( registry, cardregistry, validations );
@@ -70,22 +81,11 @@ public class Skiresort
 					}
 				});
 
-				/*final Drittvindu  vindu = new Drittvindu( validations, registry, cardregistry);
-				vindu.setIconImage(ikon);
-    			vindu.setJMenuBar(new MenuBar().createMenu() );
-				vindu.setLocation(700,0); 		
-*/
-
+			
 				i = new Info();
 				i.setJMenuBar( new MenuBar().createMenu() );
 				i.setVisible(false);
-  		
-
-
-/*
-				final Control control = new Control();
-    			control.setLocation(0, 500);
-*/				
+  	
 
 				a = new Admin( registry,validations, cardregistry);
 				a.setLocation(0,425);
@@ -100,7 +100,6 @@ public class Skiresort
 				lift1.setIconImage(ikon);
 				lift1.setVisible(false);
 
-				
 
 				lift2 = new Control( registry, tLift, cardregistry );   
 				lift2.setJMenuBar( new MenuBar().createMenu() );
@@ -111,6 +110,9 @@ public class Skiresort
 
 		} );
 	}
+	/**
+	 *This methode reads the objects from file and puts them in Personlist, Cardlist and a list of Validations. 
+	 */
 
 	private static void readFile()
 	{
@@ -147,6 +149,10 @@ public class Skiresort
 		}
 	}
 
+	/**
+	 *This methode saves the objects from Personlist, Cardlist and a list of Validations onto a file 
+	 */
+
 	public static void saveFile()
 	{
 		try( ObjectOutputStream output = new ObjectOutputStream(
@@ -173,6 +179,12 @@ public class Skiresort
 		}
 	}
 
+	/**
+	 * Checks if you have unsavedobjects when you exit the program. 
+	 * if you do this methode displays a dialogbox asking if you want to save or not.
+	 * @return Returns true if the user didn't have anything unsaved, pressed option YES and NO. False if they chose CANCEL
+	 */
+
 	public static boolean checkForUnsaved()
 	{
 		if( !unsaved )
@@ -197,16 +209,5 @@ public class Skiresort
 
 		return false; 
 	}
-
-/*	<datafelter>	
-
-	<konstruktør som oppretter alle lister / vinduer>
-
-	<usikkert hva annet som skal være av metoder her>
-
-	<metode for å lese fra fil>
-	<main metoden>
-
-	<vinduslytter for å lagre til fil>*/
 
 }
