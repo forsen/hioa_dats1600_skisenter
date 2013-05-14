@@ -21,6 +21,11 @@ import java.awt.image.BufferedImage;
 
 public class InfoWindowPanel extends JPanel
 {
+// CONSTANTS
+	private final int BIGFONT = 20;
+	private final int SMALLFONT = 14;
+// END CONSTANTS 
+
 	private JLabel headerImg1, headerImg2;
 	private JLabel header;
 	private JLabel content;
@@ -77,7 +82,7 @@ public class InfoWindowPanel extends JPanel
 
 
 		header = new JLabel("Skitrekket");
-		header.setFont(new Font("Calibri", Font.BOLD, 20));
+		header.setFont(new Font("Calibri", Font.BOLD, BIGFONT));
 		header.setHorizontalAlignment(JLabel.CENTER);
 
 		c.gridx =0;
@@ -91,7 +96,7 @@ public class InfoWindowPanel extends JPanel
 
 		content = new JLabel("<html>Skitrekket består av to heiser, en stolheis og en krokheis. Vi har alt fra grønne til svarte løyper, <br>" +
 			"altså løyper for både nybegynnere og viderekomne.<br><br><br></html>");
-		content.setFont(new Font("Calibri", Font.PLAIN, 14));
+		content.setFont(new Font("Calibri", Font.PLAIN, SMALLFONT));
 		content.setHorizontalAlignment(JLabel.CENTER);
 
 
@@ -105,7 +110,7 @@ public class InfoWindowPanel extends JPanel
 
 
 		header = new JLabel("Heiser");
-		header.setFont(new Font("Calibri", Font.BOLD, 20));
+		header.setFont(new Font("Calibri", Font.BOLD, BIGFONT));
 		header.setHorizontalAlignment(JLabel.CENTER);
 		c.gridy=3;
 		add(header, c);
@@ -132,7 +137,7 @@ public class InfoWindowPanel extends JPanel
 
 
 		header = new JLabel("<html><br><br><br>Åpningstider</html>");
-		header.setFont(new Font("Calibri", Font.BOLD, 20));
+		header.setFont(new Font("Calibri", Font.BOLD, BIGFONT));
 		header.setHorizontalAlignment(JLabel.CENTER);
 		c.gridx = 0;
 		c.gridy = 5;
@@ -146,7 +151,7 @@ public class InfoWindowPanel extends JPanel
 							+"Fre: 9:00-17:30<br>"
 							+"Lør: 9:00-18:00<br>"
 							+"Søn: 9:00-18:00</html>");
-	    content.setFont(new Font("Calibri", Font.PLAIN, 14));
+	    content.setFont(new Font("Calibri", Font.PLAIN, SMALLFONT));
 	    content.setHorizontalAlignment(JLabel.CENTER);
 
 		c.gridx = 0;
@@ -159,7 +164,7 @@ public class InfoWindowPanel extends JPanel
 		add(headerImg1, c);
 
 		header = new JLabel("<html><br><br><br>Kontaktinformasjon</html>");
-		header.setFont(new Font("Calibri", Font.BOLD, 20));
+		header.setFont(new Font("Calibri", Font.BOLD, BIGFONT));
 		header.setHorizontalAlignment(JLabel.CENTER);
 
 		c.gridy=8;
@@ -174,7 +179,7 @@ public class InfoWindowPanel extends JPanel
 							        "Telefon: 22 33 44 66 <br>" +
 							        "E-post : post@offpist.no<br>" +
 							        "<br><br><br></html>");
-	    content.setFont(new Font("Calibri", Font.PLAIN, 14));
+	    content.setFont(new Font("Calibri", Font.PLAIN, SMALLFONT));
 	    content.setHorizontalAlignment(JLabel.CENTER);
 
 		c.gridy=9;
