@@ -167,8 +167,8 @@ public class Personlist implements Serializable
  *This method adds all the Persons registered between the start and the end parameters
  *All of these Persons is added to an list of persons 
  * 
- * @param start the start of the periode
- * @param end the end of the periode
+ * @param s the start of the periode
+ * @param e the end of the periode
  * @return Returns the list of persons registered in that periode
  */
 
