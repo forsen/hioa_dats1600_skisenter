@@ -59,7 +59,7 @@ public class Personlist implements Serializable
 	}
 
 /**
- *This methode sorts the list. 
+ *This methode sorts the Personlist. 
  * @see Sortorder  
  */
 	public void sort()
@@ -67,7 +67,13 @@ public class Personlist implements Serializable
 		Collections.sort(registry, new Sortorder());
 	}
 
-
+/**
+ *This methode search for an Peronobject with the firstname or Lastname containing the String paramaters
+ *All of these Persons is added to an DefaultListModel of persons 
+ * @param fn is a String with a firstname or a bit of the firstname
+ * @param ln is a String with a lastname or a bit of the lastname 
+ * @return Returns the DefaultListModel of persons
+ */
 
 	public DefaultListModel<Person> findPerson(String fn, String ln)
 	{
@@ -101,6 +107,13 @@ public class Personlist implements Serializable
 		return searchresult;
 	}
 
+/**
+ *This methode search for an Peronobject with the phonenumber equal the int paramater
+ *All of these Persons is added to an DefaultListModel of persons 
+ * 
+ * @param nr is a int with a phonenumber
+ * @return Returns the DefaultListModel of persons with that phonenumber
+ */
 
 	public DefaultListModel<Person> findPerson(int nr)
 	{
@@ -123,6 +136,16 @@ public class Personlist implements Serializable
 		
 	}
 
+/**
+ *This methode search for an Peronobject with the phonenumber equal the int nr paramater,
+ *firstname is equl to the String fn parameter and lastname equal to the String ln.
+ * 
+ * @param nr is a int with a phonenumber
+ * @param fn is a String with a firstname
+ * @param ln is a String with a lastname
+ * @return Returns the Person that matches all the parameters
+ */
+
 	public Person findPerson( int nr, String fn, String ln )
 	{
 		Iterator<Person> it = registry.iterator(); 
@@ -139,6 +162,16 @@ public class Personlist implements Serializable
 		return null; 
 	}
 //STATISTIKK//////////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ *This methode adds all the Persons registered between the start and the end parameters
+ *All of these Persons is added to an list of persons 
+ * 
+ * @param start the start of the periode
+ * @param end the end of the periode
+ * @return Returns the list of persons registered in that periode
+ */
+
 
 	public List<Person> totalRegPeople( Date s, Date e )
 	{
@@ -169,7 +202,13 @@ public class Personlist implements Serializable
 		return returnList;
 	}
 
-
+/**
+ * creates a list of cards, bought between the start and end parameters 
+ * all of these cards is added to a list of cards
+ * @param start the start of the periode 
+ * @param end the end of the periode
+ * @return returns the list of cards bought in that periode
+ */
 
 	public List<Card> getRelevantCards(Date start, Date end)
 	{
@@ -189,7 +228,11 @@ public class Personlist implements Serializable
 
 //END OF STATISTIKK///////////////////////////////////////////////////////
 	
-
+/**
+ * goes throu a persons card to see if he has a specific card
+ * @param obj the cardnumber you want to find
+ * @return returns the card 
+ */
 
 
 	public Card findCard( int nr )
@@ -206,7 +249,11 @@ public class Personlist implements Serializable
 
 		return null; 
 	}
-
+/**
+ * The methode deletes the person from the list.
+ * @param obj the person you want to delete for the list
+ * @return returns the deleted person
+ */
 
 	public Person deletePerson(Person obj)
 	{
@@ -227,7 +274,11 @@ public class Personlist implements Serializable
 		return null;
 	}
 
-
+/**
+ * Searching throu the list for a Person with a card with the cardnumber egual to the parameter.
+ * @param c the cardnumber you want to fins the owner to
+ * @return returns the owner of the card  
+ */
 	public Person findPersonByCard(int c)
 	{
 		Iterator<Person> it = registry.iterator();
@@ -244,7 +295,10 @@ public class Personlist implements Serializable
 		return null;
 	}
 
-
+/**
+ * This class' toString method. 
+ * @return Returns a string containing all the persons personalia in this list and the cards these persons has.
+ */
 	public String toString()
 	{
 		StringBuilder text = new StringBuilder();
@@ -269,6 +323,11 @@ public class Personlist implements Serializable
 		
 		return doneText;
 	}
+
+/**
+  * This class makes a JTable of all the persons in this list. 
+  * @return Returns a JTable containing these persons personalia
+  */
 
 	public JTable personTable()
 	{
@@ -308,18 +367,4 @@ public class Personlist implements Serializable
 }
 
 
-
-	/*<datafelter>
-
-	<konstruktør som oppretter listen>
-
-	<metode for å legge personer i listen>
-
-	<metode for å fjerne personer fra listen>
-
-	<metode for å søke personer basert på heiskort>
-
-	<metode for å søke personer på navn>
-
-	<metode for å sjekke om lista er tom>*/
 
