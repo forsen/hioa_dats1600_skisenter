@@ -96,7 +96,6 @@ public class GraphPanel extends JPanel
 			yAxisInterval = YAXISLENGTH / 10;
 			lastx = ORIGOX;
 			lasty = ORIGOY;
-			System.out.println( "ArithmeticException" );
 		}
 
 	}
@@ -117,7 +116,6 @@ public class GraphPanel extends JPanel
 			for(int j = 0; j < data[i].length; j++ )
 				min = (min < data[i][j])?min:data[i][j];
 		}
-		System.out.println( "arrayMin: " + min );
 		return min; 
 	}
 /**
@@ -137,7 +135,7 @@ public class GraphPanel extends JPanel
 			for( int j = 0; j < data[i].length; j++)
 				max = (max > data[i][j])?max:data[i][j]; 
 
-		System.out.println( "arrayMax: " + max );
+
 		return max; 
 	}
 
