@@ -19,6 +19,11 @@ import java.nio.channels.FileChannel;
 
 public class ImageUtility
 {	
+
+// CONSTANTS
+	private final int IMAGEWIDTH = 74;
+	private final int IMAGEHEIGHT = 120;
+// END CONSTANTS
 	
 	File orgfile;
 
@@ -38,20 +43,15 @@ public class ImageUtility
 		{
 			BufferedImage img = ImageIO.read(f); //Draws the file f
 
-		
-		
-			int width = 74;
-			int height = 120;
-
 			
-			BufferedImage resizedPic = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB); 
+			BufferedImage resizedPic = new BufferedImage(IMAGEWIDTH, IMAGEHEIGHT, BufferedImage.TYPE_INT_RGB); 
 			//Draws an empty image with the specific size
 			Graphics2D gr = resizedPic.createGraphics();
 			gr.addRenderingHints(new RenderingHints(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY));
 			gr.setColor(Color.WHITE);
-			gr.fillRect(0, 0, width, height);
+			gr.fillRect(0, 0, IMAGEWIDTH, IMAGEHEIGHT);
 			gr.setComposite(AlphaComposite.SrcOver);
-			gr.drawImage(img, 0, 0, width, height, null); //Puts the drws file onto to the Graphics object wth the new size
+			gr.drawImage(img, 0, 0, IMAGEWIDTH, IMAGEHEIGHT, null); //Puts the drws file onto to the Graphics object wth the new size
 			gr.dispose();
 		
 			//Converts it to a File and let it have the same name as the old image.
@@ -131,6 +131,4 @@ public class ImageUtility
 
 
 	
-} 
-
- //  klasse med statiske metoder for tegning og kopiering av bilder,
+} // end of class ImageUtility
