@@ -67,8 +67,7 @@ public class AdminStatisticsPanel extends JPanel
 
 		formatter = new SimpleDateFormat("ddMMyy"); 
 		paymentFormat = NumberFormat.getCurrencyInstance( new Locale( "no","NO" ) );
-		//rounding off to the nearest whole number.
-		paymentFormat = new DecimalFormat("0");
+
 
 		scale = "Dager";
 		list = l;
@@ -380,12 +379,13 @@ public class AdminStatisticsPanel extends JPanel
 				sum += totalRevenue[i][j];
 			}
 		}
-		display.append( "\nDagskort: \t" + paymentFormat.format( total[Skicard.DAYCARD] ) );
-		display.append( "\nTimeskort: \t" + paymentFormat.format( total[Skicard.HOURCARD] ) );
-		display.append( "\nSesongkort: \t" + paymentFormat.format( total[Skicard.SEASONCARD] ) );
-		display.append( "\nKlippekort: \t" + paymentFormat.format( total[Skicard.PUNCHCARD] ) );
-		display.append( "\nFysiske kort: \t" + paymentFormat.format( total[4] ) );
-		display.append( "\n\nTotalt: \t" + paymentFormat.format( sum ) );
+		// rounding down to nearest integer
+		display.append( "\nDagskort: \t" + paymentFormat.format( total[Skicard.DAYCARD] ).replaceAll("\\,00", "") );
+		display.append( "\nTimeskort: \t" + paymentFormat.format( total[Skicard.HOURCARD] ).replaceAll("\\,00", "") );
+		display.append( "\nSesongkort: \t" + paymentFormat.format( total[Skicard.SEASONCARD] ).replaceAll("\\,00", "") );
+		display.append( "\nKlippekort: \t" + paymentFormat.format( total[Skicard.PUNCHCARD] ).replaceAll("\\,00", "") );
+		display.append( "\nFysiske kort: \t" + paymentFormat.format( total[4] ).replaceAll("\\,00", "") );
+		display.append( "\n\nTotalt: \t" + paymentFormat.format( sum ).replaceAll("\\,00", "") );
 		
 	}
 

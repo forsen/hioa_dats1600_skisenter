@@ -223,7 +223,7 @@ public class Salesclerk extends JFrame
 		}
 		catch(IllegalArgumentException iae)
 		{
-			System.out.println("Something went wrong");
+			iae.printStackTrace(System.out);
 		}
 		
 		

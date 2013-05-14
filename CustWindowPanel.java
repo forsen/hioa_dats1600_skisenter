@@ -294,11 +294,11 @@ public class CustWindowPanel extends JPanel
 		}
 		catch(NullPointerException npe)
 		{
-			System.out.println("custWindowPhone, and custWindowBorn needs to be filled");
+			Salesclerk.statusTxt.setText("Alle feltene må være utfylt");
 		}
 		catch(ParseException pe)
 		{
-			System.out.println("Couldn't convert the number into date format");
+			Salesclerk.statusTxt.setText("datoen må være på formen ddMMyy");
 		}
 
 		
@@ -339,7 +339,7 @@ public class CustWindowPanel extends JPanel
    		}
 		catch(NumberFormatException nfe)
 		{
-			System.out.println("Wrong format");
+			nfe.printStackTrace(System.out);
 		}
 		catch(NullPointerException nfe)
 		{

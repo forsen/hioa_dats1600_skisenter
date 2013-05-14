@@ -199,7 +199,6 @@ public class AdminInfoPanel extends JPanel
 				if(reg != null)
 				{
 					p = (Person) model.get(reg.getSelectedIndex());
-					System.out.println(p.toString());
 					p = list.deletePerson(p);
 				
 					reg = null;

@@ -112,7 +112,9 @@ public class CardPainting extends JPanel
 			}
 			catch( IOException ioe2)
 			{
+				ioe2.printStackTrace( System.out );
 				System.out.println("Couldn't find default.png");
+
 			}			
 		}
 		catch( IOException ioe )
@@ -123,6 +125,7 @@ public class CardPainting extends JPanel
 			}
 			catch( IOException ioe2)
 			{
+				ioe2.printStackTrace( System.out );
 				System.out.println("Couldn't find default.png");
 			}
 		}
@@ -134,6 +137,7 @@ public class CardPainting extends JPanel
 			}
 			catch( IOException ioe )
 			{
+				ioe.printStackTrace(System.out);
 				System.out.println("Couldn't find default.png");
 			}
 		}
@@ -145,6 +149,7 @@ public class CardPainting extends JPanel
 		}
 		catch( IOException ioe )
 		{
+			ioe.printStackTrace( System.out );
 			System.out.println( "Couldn't load the image" );
 		}
 

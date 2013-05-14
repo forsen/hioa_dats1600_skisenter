@@ -19,14 +19,14 @@ public class RandomData
 {
 // CONSTANTS
 
-	private final int ANTALLPERSONER = 5000;
+	private final int ANTALLPERSONER = 3000;
 	private final int MINKORTPERPERSON = 2;
-	private final int MAXKORTPERPERSON = 5;
+	private final int MAXKORTPERPERSON = 4;
 	private final int MINSKIKORTPERKORT = 1; 
-	private final int MAXSKIKORTPERKORT = 4;
+	private final int MAXSKIKORTPERKORT = 3;
 	private final int SKISESONGSTARTMND = 11;
 	private final int SKISESONGSLUTTMND = 5; 
-	private final int UNREGCARDS = 10000;
+	private final int UNREGCARDS = 1500;
 
 // END CONSTANTS
 
@@ -206,6 +206,14 @@ public class RandomData
 
 		int day = randBetween( 1, gc.getActualMaximum(gc.DAY_OF_MONTH));
 
+		Calendar cal = Calendar.getInstance();
+
+		if( year == cal.get(Calendar.YEAR))
+		{
+			month = randBetween(0, cal.get(Calendar.MONTH));
+			if( month == cal.get(Calendar.MONTH))
+				day = randBetween( 1, cal.get(Calendar.DAY_OF_MONTH) );
+		}
 		gc.set( year, month, day);
 		Date d = gc.getTime();
 		return d;

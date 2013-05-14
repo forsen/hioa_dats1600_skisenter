@@ -241,7 +241,6 @@ public class ShoppingCart
 		cal.set( Calendar.MONTH, cal.get(Calendar.MONTH) + 1 );
 
 		cal.add( Calendar.DAY_OF_MONTH, -( cal.get( Calendar.DAY_OF_WEEK ) % 7 + 1 ) );
-		System.out.println( cal.getTime() );
 
 		Calendar calCompare = Calendar.getInstance();
 		calCompare.setTime( new Date() );

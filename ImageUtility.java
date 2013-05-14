@@ -61,6 +61,7 @@ public class ImageUtility
 		}
 		catch(IOException ie)
 		{
+			ie.printStackTrace(System.out);
 			System.out.println("error : opening or loading image");
 		}
 		catch(IllegalArgumentException iae)
@@ -116,15 +117,17 @@ public class ImageUtility
        	}
        	catch(FileNotFoundException fne)
 		{
+			fne.printStackTrace(System.out);
 			System.out.println("Couldn't find the directory");
 		}
 		catch(IOException ie)
 		{
+			ie.printStackTrace(System.out);
 			System.out.println("Something went wrong..");
 		}
 		catch(NullPointerException npe)
 		{
-			System.out.println("Didn't get a image");
+			System.out.println("Didn't get an image");
 			npe.printStackTrace( System.out ); 
 		}
 	}

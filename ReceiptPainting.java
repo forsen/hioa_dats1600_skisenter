@@ -25,7 +25,7 @@ public class ReceiptPainting extends JPanel
 	private int LINESPACE = 20; 
 	private int WIDTH = 350;
 // END CONSTANTS
-	
+
 	private JTextArea printItems;
 	private double[] payments;
 	private double sum;
@@ -57,6 +57,7 @@ public class ReceiptPainting extends JPanel
 		}
 		catch( IOException ioe )
 		{
+			ioe.printStackTrace(System.out);
 			System.out.println( "couldn't load the image" );
 		}
 
@@ -252,10 +253,10 @@ public class ReceiptPainting extends JPanel
 				try
 				{
 					strings[i] = strings[i].substring(0, matcher.start());
-					System.out.println( strings[i] );
 				}
 				catch( NullPointerException npe )
 				{
+					npe.printStackTrace(System.out);
 					System.out.println("Didn't get in atring");
 				}
 			}

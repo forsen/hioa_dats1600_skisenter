@@ -91,8 +91,6 @@ public class Calculator
 				Skicard sc = sIt.next(); 
 
 				graph[sc.getType()][(daysSinceOpening( sc.getBought() ) - start )]++; 
-				System.out.println( "Skikorttype" + sc.getType() + " Dag: " + ( daysSinceOpening(sc.getBought()) - start ));
-				System.out.println( "Kjøpt: " + new SimpleDateFormat("ddMMyy").format(sc.getBought() ));
 			} 
 		}
 
@@ -159,10 +157,6 @@ public class Calculator
 		{
 
 		 	Person p = it.next(); 
-
-
-		 	System.out.println( p );
-
 
 			graph[0][ daysSinceOpening( p.getCreated() ) - start ] ++;  
 		}		

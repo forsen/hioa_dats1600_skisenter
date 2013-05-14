@@ -183,9 +183,6 @@ public class GraphPanel extends JPanel
 	{
 		g2d.drawLine( lastx, lasty, lastx + xAxisInterval, (int) (YAXISLENGTH - ((y - yAxisMin) * yAxisInterval) ) );
 
-		System.out.println("x1: " + lastx +", y1: " + lasty + ", x2: " + (lastx + xAxisInterval) + ", y2: " + (YAXISLENGTH - ((y - yAxisMin) * yAxisInterval)) ); 
-		System.out.println("y: " + y);
-
 		lasty = (int) (YAXISLENGTH - ((y - yAxisMin) * yAxisInterval) );
 		lastx += xAxisInterval;
 
