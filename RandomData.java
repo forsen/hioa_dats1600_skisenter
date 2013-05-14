@@ -17,10 +17,7 @@ import java.util.List;
 
 public class RandomData
 {
-
-	/************************************************************************/
-
-
+// CONSTANTS
 
 	private final int ANTALLPERSONER = 5000;
 	private final int MINKORTPERPERSON = 2;
@@ -31,9 +28,7 @@ public class RandomData
 	private final int SKISESONGSLUTTMND = 5; 
 	private final int UNREGCARDS = 10000;
 
-
-
-	/************************************************************************/
+// END CONSTANTS
 
 	private Personlist registry;
 	private Cardlist cardlist; 
