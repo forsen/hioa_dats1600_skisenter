@@ -28,6 +28,10 @@ import javax.imageio.ImageIO;
 
 public class Control extends JFrame
 {
+// CONSTANTS
+	private final int TIMELIMIT = 10*1000; // 10 seconds for testing purpose. In final release this should be set to 5 minutes
+	private final int CLOCKUPDATEFREQUENCY = 1000; // update the clock every second
+
 	private JButton ctrlRegCustNr;
 	private JTextField ctrlWindowCustNr, ctrlWindowShowTime; 
 	private JPanel ctrlWindowPassThrough, contentPanel;
@@ -39,8 +43,6 @@ public class Control extends JFrame
 	private BtnListener btnListener;
 	private Color passThroughColor;
 	private Font font;
-	private static final int TIMELIMIT = 10*1000; // 10 seconds.
- 
 
 	private Toolkit toolbox;
 
@@ -240,7 +242,7 @@ public class Control extends JFrame
 	private void updateTime()
 	{
 		Timer timer = new Timer();
-        timer.schedule(new UpdateTime(), 0, 1000);
+        timer.schedule(new UpdateTime(), 0, CLOCKUPDATEFREQUENCY);
 
 	}
 
