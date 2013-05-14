@@ -9,7 +9,6 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 /**
-<<<<<<< HEAD
   * This class sets up the sales panel, which is placed in the Salesclerk JFrame.
   * This is where you do the selling and return of cards. 
   * @author Erik Haider Forsén
@@ -17,16 +16,6 @@ import java.util.Locale;
   * @author Julie Hill Roa
   * @version 0.9
   */
-=======
- * 
- * 
- * @author Erik Haider Forsén
- * @author Ole Hansen
- * @author Julie Hill Roa
- * @version 0.9
- */
->>>>>>> efbe1777143d2b4a0eed3607491c9e46e8cb6d4d
-
 public class SalesWindowPanel extends JPanel
 {
 	private JLabel custIDLbl,cardnrLbl;
