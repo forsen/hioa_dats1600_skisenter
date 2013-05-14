@@ -1,4 +1,5 @@
 import java.util.*;
+import java.text.SimpleDateFormat;
 
 /**
  * Hourcard is a subclass of Timebasedcard.
@@ -70,10 +71,8 @@ public class Hourcard extends Timebasedcard
 			expires = "ikke Validert";
 		if (super.getExpires() != null)
 		{
-			Calendar cal = Calendar.getInstance(); 
-			cal.setTime(super.getExpires());
-			expires = ( "" + cal.get(Calendar.DAY_OF_MONTH) + "." + (cal.get(Calendar.MONTH ) + 1) + "." + cal.get(Calendar.YEAR ) 
-				+ " kl " + cal.get(Calendar.HOUR_OF_DAY) + ":" +  cal.get(Calendar.MINUTE));
+
+			expires = new SimpleDateFormat("dd.MM.yy").format( super.getExpires() );
 		}
 
 		return  "Timeskort\tGår ut: " + expires + "\t"+super.toString();
