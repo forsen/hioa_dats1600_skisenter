@@ -573,7 +573,6 @@ public class CashRegister extends JDialog
 
 		for( int i = 0; i < shoppingCartList.getModel().getSize(); i++ )
 		{
-			System.out.println("Skjer det noe her?");
 			Card pc = shoppingCartList.getModel().getElementAt(i).getCard();
 			if( !pc.getReturned() )
 			{
