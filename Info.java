@@ -12,6 +12,7 @@ import java.net.URL;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
+import java.util.Random;
 
 
 /**
@@ -52,7 +53,7 @@ public class Info extends JFrame
     final static boolean RIGHT_TO_LEFT = false;
     private BufferedImage newsBtnImg, infoBtnImg, offerBtnImg, pricesBtnImg,newsBtnImg1, infoBtnImg1, offerBtnImg1, pricesBtnImg1; 
     private static Listener listener;
-    private static JLabel label;
+    private static JLabel label, weatherLabel;
     private static JButton button, newsButton, infoButton, offersButton, pricesButton;
     private static JPanel newsWindowPnl, infoWindowPnl, spOffersWindowPnl, panel, sideMenu, pricesWindowPnl, contentPanel;
  
@@ -315,9 +316,18 @@ public class Info extends JFrame
 		JScrollPane contentScrollPanel = new JScrollPane(contentPanel);
 		add(contentScrollPanel, c);
 
+
+		String[] weather = {"+4 C, Overskyet", "-2 C, Sol", "-10 C, Sol", "+4 C, Regn", "0 C, Overskyet"};
+		Random random = new Random();
+		int select = random.nextInt(weather.length);
+		String randomWeather = (weather[select]);
+		System.out.println(weather[select]);
+
 		try{
 			ImageIcon image = new ImageIcon("img/offpist_liten.png");
-			label = new JLabel(image);
+			label = new JLabel(randomWeather, image, JLabel.CENTER);
+			label.setHorizontalTextPosition(JLabel.CENTER);
+			label.setVerticalTextPosition(JLabel.BOTTOM);
 			panel.add(label);
 			}
 			catch(Exception e)
