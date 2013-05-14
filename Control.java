@@ -300,7 +300,7 @@ public class Control extends JFrame
 		try
 		{
 			
-			String pattern = "\\d{6}";
+			String pattern = "\\d+";
 			String stringcardNumber = ctrlWindowCustNr.getText();
 			
 			if(stringcardNumber.matches(pattern))
@@ -317,12 +317,12 @@ public class Control extends JFrame
 
 				return validatingCard.getCurrent();
 			} ctrlWindowPassThrough.setBackground(Color.RED);
-			 ctrlWindowPassThroughLabelText.setText("Skriv et gyldig kortnummer (6 siffer)");
+			 ctrlWindowPassThroughLabelText.setText("Skriv et gyldig kortnummer");
 		}
 		catch( NumberFormatException nfe )
 		{
 			 ctrlWindowPassThrough.setBackground(Color.RED);
-			 ctrlWindowPassThroughLabelText.setText("Skriv et gyldig kortnummer (6 siffer)");
+			 ctrlWindowPassThroughLabelText.setText("Skriv et gyldig kortnummer");
 		}
 		catch( NullPointerException npe )
 		{
