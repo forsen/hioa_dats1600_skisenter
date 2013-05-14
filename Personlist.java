@@ -162,7 +162,6 @@ public class Personlist implements Serializable
 
 		return null; 
 	}
-//STATISTIKK//////////////////////////////////////////////////////////////////////////////////////////
 
 /**
  *This methode adds all the Persons registered between the start and the end parameters
@@ -172,7 +171,6 @@ public class Personlist implements Serializable
  * @param end the end of the periode
  * @return Returns the list of persons registered in that periode
  */
-
 
 	public List<Person> totalRegPeople( Date s, Date e )
 	{
@@ -225,9 +223,6 @@ public class Personlist implements Serializable
 		
 		return tempList;
 	}
-
-
-//END OF STATISTIKK///////////////////////////////////////////////////////
 	
 /**
  * goes throu a persons card to see if he has a specific card
