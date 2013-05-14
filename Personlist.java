@@ -211,7 +211,6 @@ public class Personlist implements Serializable
 	public Person deletePerson(Person obj)
 	{
 		
-		System.out.println("inne i deletemetoden");
 		Skiresort.unsaved = true; 
 
 		Iterator<Person> it = registry.iterator();
