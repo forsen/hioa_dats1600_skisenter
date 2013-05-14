@@ -43,6 +43,7 @@ public class Control extends JFrame
 	private BtnListener btnListener;
 	private Color passThroughColor;
 	private Font font;
+	private SimpleDateFormat dateFormatter; 
 
 	private Toolkit toolbox;
 
@@ -80,6 +81,7 @@ public class Control extends JFrame
 
 		contentPanel.setOpaque(false);
 
+		dateFormatter = new SimpleDateFormat("dd.MM.yy HH:mm");
 
 		Border etched = BorderFactory.createEtchedBorder();
 		contentPanel.setBorder(etched);
@@ -354,10 +356,7 @@ public class Control extends JFrame
 					((Timebasedcard) currentCard).setLastValidated( new Date() );
 					lift.registrations( validatingCard );
 					ctrlWindowPassThrough.setBackground(Color.GREEN);
-					Calendar cal = Calendar.getInstance();  
-					cal.setTime(((Timebasedcard) currentCard).getExpires());
-					String date = "" + cal.get(Calendar.DAY_OF_MONTH) +"."+ (cal.get(Calendar.MONTH ) + 1) +"."+  cal.get(Calendar.YEAR ) 
-					+ " Kl " + cal.get(Calendar.HOUR_OF_DAY )+ ":" + cal.get(Calendar.MINUTE );
+					String date = dateFormatter.format(((Timebasedcard) currentCard).getExpires());
 					ctrlWindowPassThroughLabelText.setText("Velkommen: Kortet er gyldig til: " + date);
 
 				}
@@ -367,7 +366,8 @@ public class Control extends JFrame
 					if( now.getTime() - ((Timebasedcard) currentCard).getLastValidated().getTime() >= TIMELIMIT )
 					{
 					ctrlWindowPassThrough.setBackground(Color.GREEN);
-					ctrlWindowPassThroughLabelText.setText("Gyldig: Kortet er gyldig til: " + ((Timebasedcard) currentCard).getExpires());
+					String date = dateFormatter.format(((Timebasedcard) currentCard).getExpires());
+					ctrlWindowPassThroughLabelText.setText("Gyldig: Kortet er gyldig til: " + date );
 					((Timebasedcard) currentCard).setLastValidated( now ); 
 					lift.registrations( validatingCard );
 
@@ -383,7 +383,7 @@ public class Control extends JFrame
 				else
 				{
 					ctrlWindowPassThrough.setBackground(Color.RED);							
-					ctrlWindowPassThroughLabelText.setText("Ugyldig: Ditt kort gikk ut: " + ((Timebasedcard) currentCard).getExpires());
+					ctrlWindowPassThroughLabelText.setText("Ugyldig: Ditt kort gikk ut: " + dateFormatter.format(((Timebasedcard) currentCard).getExpires()));
 				}
 			}
 
