@@ -46,6 +46,8 @@ public class AdminStatisticsPanel extends JPanel
 	public final static int VALIDS = 2;
 	public final static int PERSON = 3; 
 	public final static int REVENUE = 4; 
+	public final int DEFAULTGRAPHS = 1;
+	public final int DEFAULTGRAPHSIZE = 10; 
 
 	private int[][] graph;
 
@@ -84,7 +86,7 @@ public class AdminStatisticsPanel extends JPanel
 		
 		tabDisp = new JTabbedPane();
 
-		graph = new int[1][10];
+		graph = new int[DEFAULTGRAPHS][DEFAULTGRAPHSIZE];
 
 		graphPnl = new GraphPanel( graph, "x", "y", "", 0 ); 
 		displayPnl.setBackground(new Color(200, 230, 255));
@@ -140,7 +142,9 @@ public class AdminStatisticsPanel extends JPanel
 		c.anchor = GridBagConstraints.LINE_START;
 		c.fill = GridBagConstraints.BOTH;
 		c.insets = new Insets(0,0,0,0);
-//FØRSTE - KOLONNE /////////////////////////////////////////
+
+// first column
+
 		c.gridheight = 1; 
 		c.weightx = 0.5;
 		c.gridx = 0; 
@@ -174,7 +178,8 @@ public class AdminStatisticsPanel extends JPanel
 		add(liftPassBtn, c);
 
 
-//ANDRE-KOLONNE //////////////////////////////////////////////
+// second column
+
 		c.gridheight = 1; 
 		c.weightx = 0.5;
 		c.gridx = 1; 
@@ -191,9 +196,7 @@ public class AdminStatisticsPanel extends JPanel
 		c.weighty = 0.2;
 		add(to,c);	
 
-	
-
-//tredje kolonne /////////////////////////////
+// third column
 
 		c.gridheight = 1; 
 		c.weightx = 0.5;

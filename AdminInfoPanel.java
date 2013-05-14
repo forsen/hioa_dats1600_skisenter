@@ -220,7 +220,7 @@ public class AdminInfoPanel extends JPanel
 					{ 
 						listscroll = new JScrollPane(reg );
 						scroll.setViewportView(listscroll);
-						JOptionPane.showMessageDialog(null, "Det er fler enn 1 med samme nr. Velg 1 og trykk på slett Person knappen igjen\n");
+						JOptionPane.showMessageDialog(null, "Det er fler enn én med samme nr. Velg personen som skal slettes, og trykk på slett Person knappen igjen\n");
 						return;
 					}
 
@@ -253,11 +253,8 @@ public class AdminInfoPanel extends JPanel
 		for (int i = 0; i < validations.size(); i++ )
 		{
 			Validations runner = it.next();
-			Calendar cal = Calendar.getInstance();  
-			cal.setTime(runner.getDate());
-			String date = "" + cal.get(Calendar.DAY_OF_MONTH) +"."+ (cal.get(Calendar.MONTH ) + 1) +"."+  cal.get(Calendar.YEAR ) 
-			+ " Kl " + cal.get(Calendar.HOUR_OF_DAY )+ ":" + cal.get(Calendar.MINUTE );
-			
+
+			String date = new SimpleDateFormat("dd.MM.yy HH:mm").format( runner.getDate() );			
 
 			passings[i][0] = runner.getLiftId();
 			passings[i][1] = runner.getCard();
