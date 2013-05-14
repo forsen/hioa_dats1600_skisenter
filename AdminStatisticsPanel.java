@@ -451,6 +451,9 @@ public class AdminStatisticsPanel extends JPanel
 		return end;
 	}
 
+/**
+ * This Listener initiates methodes by listening on clicked buttons.
+ */
 
 	private class Listener implements ActionListener
   	{

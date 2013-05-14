@@ -449,7 +449,9 @@ public class AdminInfoPanel extends JPanel
 	}
 
 	
-
+/**
+ * This Listener initiates methodes by listening on clicked buttons.
+ */
 
 	private class Listener implements ActionListener
   	{
