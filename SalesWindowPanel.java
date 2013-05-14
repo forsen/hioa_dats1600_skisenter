@@ -9,14 +9,13 @@ import java.text.NumberFormat;
 import java.util.Locale;
 
 /**
- * 
- * 
- * @author Erik Haider Forsén
- * @author Ole Hansen
- * @author Julie Hill Roa
- * @version 0.9
- */
-
+  * This class sets up the sales panel, which is placed in the Salesclerk JFrame.
+  * This is where you do the selling and return of cards. 
+  * @author Erik Haider Forsén
+  * @author Ole Hansen
+  * @author Julie Hill Roa
+  * @version 0.9
+  */
 public class SalesWindowPanel extends JPanel
 {
 	private JLabel custIDLbl,cardnrLbl;
@@ -41,6 +40,12 @@ public class SalesWindowPanel extends JPanel
 	private static Border etched;
 	
 
+/**
+  * This constructor will set up all the elements, and place them on the panel
+  * @param cl  	The card list to operate on
+  * @see Salesclerk
+  * @see Cardist
+  */
 
 	public SalesWindowPanel(Cardlist cl)
 	{
@@ -276,6 +281,16 @@ public class SalesWindowPanel extends JPanel
 
 	} 
 
+
+
+/**
+  * This method creates a Skicard object of selected type, with desired amount of discount. 
+  * This card will be added to the shopping cart, if incoming data is ok. 
+  * When a card is bought, a Date object will be created to keep track of buying date.
+  * The method also retrieves a method that updates a "total price in shopping cart"-label.
+  */
+
+
 	private void addToCart()
 	{
 		int cardType = cardTypeList.getSelectedIndex();
@@ -377,6 +392,9 @@ public class SalesWindowPanel extends JPanel
 		}
 	}
 
+/**
+  * This method deletes a card from the shopping cart list. 
+  */
 	private void deleteFromCart()
 	{
 		try
@@ -407,14 +425,15 @@ public class SalesWindowPanel extends JPanel
 
 	}
 
+/**
+  * This method recieves payment, and creates a new CashRegister window.  
+  */
 	private void payment()
 	{
-		// Recieves payment
 
 		CashRegister cr = new CashRegister((Window) this.getRootPane().getParent(), shoppingCart, shoppingCartList );
-
-
 	}
+
 
 	private void newCard()
 	{
@@ -423,6 +442,10 @@ public class SalesWindowPanel extends JPanel
 		updateCartPrice();
 		
 
+/**
+  * This updates the a label, so the seller can see the total sum in the shopping cart, whenever method is being
+  * excecuted. 
+  */
 
 	}
 
@@ -431,6 +454,10 @@ public class SalesWindowPanel extends JPanel
 		cartPrice = shoppingCart.getSum();
 		shoppingScrolList.setBorder(BorderFactory.createTitledBorder(etched, "Handlekurv: " + paymentFormat.format( cartPrice ) ) );
 	}
+
+/**
+  * This method marks a card as returned. 
+  */
 
 	private void returnCard()
 	{
@@ -478,7 +505,10 @@ public class SalesWindowPanel extends JPanel
 	}
 
 
-
+/**
+  * This method returns a card, and places a refund in the shopping cart. 
+  * @param c 	The card which should be returned, if not already returned
+  */
 
 	private void returnCard( Card c )
 	{
@@ -507,6 +537,13 @@ public class SalesWindowPanel extends JPanel
 		}
 	}
 
+
+/**
+  * CardListener makes sure a buyer must be registered, to be able to buy a Seasoncard. 
+  * It also makes sure that a picture has been uploaded, for the customers Seasoncard. 
+  * 
+  */
+
 	private class CardListener implements ListSelectionListener
 	{
 		public void valueChanged( ListSelectionEvent lse )
@@ -525,9 +562,12 @@ public class SalesWindowPanel extends JPanel
 				}
 			}
 		}
-	}
+	} //end of class CardListener
 
-
+/**
+  * BtnListener, to make action happend, when buttons are clicked.
+  * 
+  */
 
 	private class BtnListener implements ActionListener
 	{
@@ -551,5 +591,5 @@ public class SalesWindowPanel extends JPanel
 				returnCard();
 		}
 
-	}
-}
+	} //end of class BtnListener
+} //end of class SalesWindowPanel
