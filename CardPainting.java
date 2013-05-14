@@ -7,7 +7,9 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import javax.imageio.ImageIO;
 import java.awt.geom.RoundRectangle2D; 
-
+import java.text.NumberFormat;
+import java.util.Locale;
+import java.text.SimpleDateFormat;
 
 /**
   * Class to paint Skicards. Will put the resulting painting in a JPanel.
@@ -21,11 +23,6 @@ public class CardPainting extends JPanel
 {
 	private BufferedImage img;
 	private BufferedImage persImg; 
-	private int MARGIN = 10;
-	private int YSTART = 120;
-	private int LINESPACE = 20; 
-	private int WIDTH = 495;
-	private int currentY = YSTART;
 	private int size;
 	private Card printedCard;
 	private Skicard printedSkicard; 
@@ -34,7 +31,22 @@ public class CardPainting extends JPanel
 	private String price; 
 	private String cardNr; 
 	private String customerID; 
-	private Date purchaseDate; 
+	private String purchaseDate; 
+	private NumberFormat paymentFormatter;
+	private SimpleDateFormat dateFormatter;
+
+// CONSTANTS
+	private final int MARGIN = 10;
+	private final int YSTART = 120;
+	private final int LINESPACE = 20; 
+	private final int WIDTH = 495;
+	private final int BIGFONT = 30;
+	private final int SMALLFONT = 10;
+	private final int ROUNDEDCORNER = 15;
+
+// END CONSTANTS
+
+	private int currentY = YSTART;
 
 /**
   * This constructor gather the necessary data to paint this Skicard. It will
@@ -46,6 +58,9 @@ public class CardPainting extends JPanel
 	public CardPainting( Card c )
 	{
 		setBackground( Color.WHITE );
+
+		paymentFormatter = NumberFormat.getCurrencyInstance( new Locale( "no", "NO" ) );
+		dateFormatter = new SimpleDateFormat("dd.MM.yy HH:mm");
 
 		printedCard = c;
 
@@ -64,15 +79,15 @@ public class CardPainting extends JPanel
 					ageGroup = "VOKSEN";
 					break;
 			}
-			price = "Pris: " + printedSkicard.getPrice() + "Kr" ; 
-			purchaseDate = printedSkicard.getBought(); 
+			price = "Pris: " + paymentFormatter.format(printedSkicard.getPrice()) ; 
+			purchaseDate = "Dato: " + dateFormatter.format(printedSkicard.getBought()); 
 		}
 		catch( NullPointerException npe )
 		{
 			type = "";
 			ageGroup = "";
 			price = "";
-			purchaseDate = new Date(); 
+			purchaseDate = "Dato: " + dateFormatter.format( new Date() ); 
 		}
 
 		try 
@@ -148,19 +163,19 @@ public class CardPainting extends JPanel
 		Graphics2D g2d = (Graphics2D) g;
 
 
-		g2d.setFont( new Font( "Arial", Font.PLAIN, 30 ));
+		g2d.setFont( new Font( "Arial", Font.PLAIN, BIGFONT ));
 
 		
 
 		g2d.setColor( new Color( 89, 137, 235 ) );
-		g2d.fillRoundRect(10, 10, 475, 50, 15, 15);
-		g2d.fillRect(10,30,475,440);
+		g2d.fillRoundRect(MARGIN, MARGIN, WIDTH - 2*MARGIN, 50, ROUNDEDCORNER, ROUNDEDCORNER);
+		g2d.fillRect(MARGIN,30,WIDTH - 2*MARGIN,440);
 
 		g2d.setColor( new Color(233,233,233) );
-		g2d.fillRect(10,470,475,160);
+		g2d.fillRect(MARGIN,470,WIDTH - 2*MARGIN,160);
 
 
-		g2d.drawImage( img, (WIDTH/2 - size/2), 20, null );
+		g2d.drawImage( img, (WIDTH/2 - size/2), 2*MARGIN, null );
 
 		g2d.setColor( Color.BLACK );		
 
@@ -168,18 +183,19 @@ public class CardPainting extends JPanel
 		g2d.drawString( ageGroup, 50, 550 );
 		g2d.drawString( price, 50, 595 );
 
-		g2d.drawLine( 10, 630, 485, 630);
+		g2d.drawLine( MARGIN, 630, WIDTH - MARGIN, 630);
 
 
 
 		g2d.drawImage( persImg, 350, 480, null );
 
-		g2d.setFont( new Font( "Arial", Font.PLAIN, 10 ) );
+		g2d.setFont( new Font( "Arial", Font.PLAIN, SMALLFONT ) );
 
 		g2d.drawString( cardNr, 20, 645 );
-		printRightAlignedString( customerID, 485, 0, 645, g2d );
+		printCenteredString( purchaseDate, WIDTH, 0, 645, g2d );
+		printRightAlignedString( customerID, WIDTH, 0, 645, g2d );
 
-		g2d.drawRoundRect(10,10,475,640, 15,15); 
+		g2d.drawRoundRect(MARGIN,MARGIN,WIDTH - 2*MARGIN,640, ROUNDEDCORNER,ROUNDEDCORNER); 
 
 	}
 
@@ -227,7 +243,7 @@ public class CardPainting extends JPanel
 	{
 		int stringLength = (int) g2d.getFontMetrics().getStringBounds(s, g2d).getWidth();
 
-		int start = width - stringLength - 5; 
+		int start = width - stringLength - MARGIN*2; 
 
 		g2d.drawString(s, start + xPos, yPos );
 	}
