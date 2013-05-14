@@ -22,10 +22,14 @@ import javax.imageio.*;
 
 public class Salesclerk extends JFrame
 {
-
-	private final int DELAY = 5; // hvor mange sekunder en melding til statustxt skal vises
+// CONSTANTS
+	private final int DELAY = 5; // how many seconds a message in the statusTxt area should be displayed.
 	private final int LEFT = 20;
 	private final int RIGHT = 40;
+	private final int HEIGHT = 580;
+	private final int WIDTH = 880;
+// END CONSTANTS
+
 	private JButton custWindowBtn, salesWindowBtn, replaceWindowBtn, nextCustBtn;
 	private JPanel custWindowPnl, salesWindowPnl, replaceWindowPnl, statusPnl; 
 	private JPanel framePnl, salesClerkCustInfoPnl;
@@ -98,7 +102,7 @@ public class Salesclerk extends JFrame
 		int height = windowDimension.height;
 		int width = windowDimension.width; 
 
-		setSize(880, 580);
+		setSize(WIDTH, HEIGHT);
 		setLocationByPlatform( true );
 
 		custRegistry = cr; 
