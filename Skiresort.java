@@ -36,8 +36,8 @@ public class Skiresort
 	public static boolean unsaved; 
 
 /**
- * main-method to run the program
- *Creates the Contol-Windows, Salesclerk-Window, Admin-Window and the Info-Window. 
+ * main-method to run the program.
+ * Creates the Contol-Windows, Salesclerk-Window, Admin-Window and the Info-Window. 
  */
 
 	public static void main(String[] args)
@@ -111,7 +111,7 @@ public class Skiresort
 		} );
 	}
 	/**
-	 *This method reads the objects from file and puts them in Personlist, Cardlist and a list of Validations. 
+	 *This method reads the objects from file and puts them into Personlist, Cardlist and a list of Validations. 
 	 */
 
 	private static void readFile()
@@ -180,8 +180,8 @@ public class Skiresort
 	}
 
 	/**
-	 * Checks if you have unsavedobjects when you exit the program. 
-	 * if you do this method displays a dialogbox asking if you want to save or not.
+	 * Checks if you have unsaved objects when you exit the program. 
+	 * if you do, this method displays a dialogbox asking if you want to save or not.
 	 * @return Returns true if the user didn't have anything unsaved, pressed option YES and NO. False if they chose CANCEL
 	 */
 
