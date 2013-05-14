@@ -354,7 +354,7 @@ public class SalesWindowPanel extends JPanel
 
 			if (!stringcNr.isEmpty() )
 			{
-				String pattern = "\\d{6}";
+				String pattern = "\\d+";
 				if(stringcNr.matches(pattern))
 				{
 					int cNr = Integer.parseInt(stringcNr);
@@ -385,7 +385,7 @@ public class SalesWindowPanel extends JPanel
 		}
 		catch( NumberFormatException nfe )
 		{
-			Salesclerk.statusTxt.setText("Kortnr må bestå av 6 siffer.");
+			Salesclerk.statusTxt.setText("Kortnr må bestå av siffer.");
 		}
 		catch( NullPointerException npe )
 		{
@@ -471,7 +471,7 @@ public class SalesWindowPanel extends JPanel
 
 			if (!stringcNr.isEmpty() )
 			{
-				String pattern = "\\d{6}";
+				String pattern = "\\d+";
 				if(stringcNr.matches(pattern))
 				{
 					int cNr = Integer.parseInt(stringcNr);

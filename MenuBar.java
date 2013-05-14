@@ -26,7 +26,7 @@ public class MenuBar
 	private JMenu help; 
 	private MenuListener menuListener;
 
-	private JLabel aboutText;
+	private JTextArea aboutText;
 
 	private JMenuItem save;
 	private JMenuItem exit;
@@ -52,7 +52,7 @@ public class MenuBar
 
 		c = (Container) menuBar.getTopLevelAncestor();
 
-		aboutText = new JLabel();
+		aboutText = new JTextArea();
 
 	}
 
@@ -153,12 +153,12 @@ public class MenuBar
   */
 	private void printAbout()
 	{
-		String cr = "\u00a9";
-		ImageIcon aboutOffpist = new ImageIcon("img/aboutoffpist.png");
-		aboutText = new JLabel("<html>Om Offpist: <br><br> Offpist 1.0 <br> Copyright " + cr + " 2013 Gruppe 35 <br><br> Julie Hill Roa <br> Erik Haider Forsén <br> Ole Gunhildsberg Hansen <br><br> For learning purposes only", JLabel.LEFT);
-		aboutText.setFont(new Font("Calibri", Font.PLAIN, 14));
+		aboutText.setText("\n");
+		aboutText.append("Skrevet av en flott gjeng ungdom\n");
+		aboutText.append("Vi har hatt det veldig gøy da vi skrev dette\n");
+		aboutText.append("Vi fortjener en A!");
 
-		JOptionPane.showMessageDialog(null, aboutText, "Om Offpist", JOptionPane.PLAIN_MESSAGE, aboutOffpist);
+		JOptionPane.showMessageDialog( null, aboutText );
 	}
 
 	private class MenuListener implements ActionListener

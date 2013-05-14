@@ -176,7 +176,7 @@ public class CustWindowPanel extends JPanel
 		
 		try
 		{
-			String pattern = "\\d{8}";
+			String pattern = "\\d+";
 			String snumber = custWindowPhone.getText();
 			if(snumber.matches(pattern))
 			{
@@ -207,7 +207,7 @@ public class CustWindowPanel extends JPanel
 		}
 		catch( NumberFormatException nfe )
 		{
-			Salesclerk.statusTxt.setText( "Telefonnummeret må bestå av 8 siffer" );
+			Salesclerk.statusTxt.setText( "Telefonnummeret må bestå av siffer" );
 		}
 
 
@@ -272,7 +272,7 @@ public class CustWindowPanel extends JPanel
 		String lName = custWindowLastName.getText();
 		try
 		{
-			String pattern = "\\d{8}";
+			String pattern = "\\d+";
 			String number = custWindowPhone.getText();
 			if(number.matches(pattern))
 			{
@@ -289,7 +289,7 @@ public class CustWindowPanel extends JPanel
 
 				Salesclerk.salesClerkSearchInfoTxt.setText( "Har oppdatert:\n"+ Salesclerk.customer.getCustId() + "\n" + Salesclerk.customer.toString() );
 				Salesclerk.statusTxt.setText("Kundeinfo ble oppdatert.");
-			}Salesclerk.statusTxt.setText("Tlf nummer må bestå av 8 siffre.");
+			}Salesclerk.statusTxt.setText("Tlf nummer må bestå av siffre.");
 
 		}
 		catch(NullPointerException npe)
