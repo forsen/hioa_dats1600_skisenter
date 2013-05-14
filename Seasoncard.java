@@ -63,7 +63,7 @@ public class Seasoncard extends Timebasedcard
 			setExpires(calHelper.getTime());
 		}
 
-//		if(Calendar.getInstance().after(calHelper.getTime()))
+
 	}
 
 
