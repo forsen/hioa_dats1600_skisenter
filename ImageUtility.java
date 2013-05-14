@@ -28,10 +28,10 @@ public class ImageUtility
 	File orgfile;
 
 /** 
-  *This method draws a buffred image like the original image, but with a different size and with JPG as last name.
+  *This method draws a buffredImage like the original image, but with a different size and with JPG as extension.
   * 
-  * @param f a File object for the image you want to resize
-  * @return Returns a file object for the new image
+  * @param f Fileobject for the image you want to resize
+  * @return Returns a fileobject for the new image
   * @see CustWindowPanel
   */
 

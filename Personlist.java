@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.text.SimpleDateFormat;
 
 /**
- * Personlist creats a LinkedList of PersonObjects. 
+ * Personlist creats a LinkedList of Personobjects. 
  * 
  * @author Erik Haider Forsén
  * @author Ole Hansen
@@ -29,9 +29,9 @@ public class Personlist implements Serializable
 
 /** 
  *This method adds an element to the list.
- * First it checks if the person excist already, if it doesn't the element will be added.
+ * First it checks if the person already excists, if it doesn't the element will be added.
  * @param obj The Person object you want to add to the list.
- * @return Returns a String to let the user know if it was sucsessfully added of if the object alredy excisted.
+ * @return Returns a String to let the user know if it was sucsessfully added or if the object alredy excisted.
  */
 	public String input(Person obj)
 	{
@@ -69,7 +69,7 @@ public class Personlist implements Serializable
 	}
 
 /**
- *This method search for an Peronobject with the firstname or Lastname containing the String paramaters
+ *This method search for an Person with the firstname or Lastname containing the String paramaters.
  *All of these Persons is added to an DefaultListModel of persons 
  * @param fn is a String with a firstname or a bit of the firstname
  * @param ln is a String with a lastname or a bit of the lastname 
@@ -109,7 +109,7 @@ public class Personlist implements Serializable
 	}
 
 /**
- *This method search for an Peronobject with the phonenumber equal the int paramater
+ *This method search for an Person with the phonenumber equal to the int paramater.
  *All of these Persons is added to an DefaultListModel of persons 
  * 
  * @param nr is a int with a phonenumber
@@ -138,12 +138,12 @@ public class Personlist implements Serializable
 	}
 
 /**
- *This method search for an Peronobject with the phonenumber equal the int nr paramater,
- *firstname is equl to the String fn parameter and lastname equal to the String ln.
+ *This method search for an Person with the phonenumber equal the int nr paramater,
+ *firstname equl to the String fn parameter and lastname equal to the String ln.
  * 
- * @param nr is a int with a phonenumber
- * @param fn is a String with a firstname
- * @param ln is a String with a lastname
+ * @param nr int with a phonenumber
+ * @param fn String with a firstname
+ * @param ln String with a lastname
  * @return Returns the Person that matches all the parameters
  */
 
@@ -164,11 +164,11 @@ public class Personlist implements Serializable
 	}
 
 /**
- *This method adds all the Persons registered between the start and the end parameters
- *All of these Persons is added to an list of persons 
+ *This method adds all the Persons registered between the start and the end parameters.
+ *All of these Persons is added to an list of persons. Mainly used for statistics. 
  * 
- * @param s the start of the periode
- * @param e the end of the periode
+ * @param s the start of the interval
+ * @param e the end of the interval
  * @return Returns the list of persons registered in that periode
  */
 
@@ -202,10 +202,10 @@ public class Personlist implements Serializable
 	}
 
 /**
- * creates a list of cards, bought between the start and end parameters 
- * all of these cards is added to a list of cards
- * @param start the start of the periode 
- * @param end the end of the periode
+ * creates a list of cards, bought between the start and end parameters. 
+ * All of these cards is added to a list of cards. Mainly used for statistics. 
+ * @param start the start of the interval
+ * @param end the end of the inteval
  * @return returns the list of cards bought in that periode
  */
 
@@ -225,7 +225,7 @@ public class Personlist implements Serializable
 	}
 	
 /**
- * goes throu a persons card to see if he has a specific card
+ * goes through a persons card to see if he has a specific card
  * @param nr the cardnumber you want to find
  * @return returns the card 
  */
@@ -271,7 +271,7 @@ public class Personlist implements Serializable
 	}
 
 /**
- * Searching throu the list for a Person with a card with the cardnumber egual to the parameter.
+ * Searching through the list and search for a Person with a card with the cardnumber egual to the parameter.
  * @param c the cardnumber you want to fins the owner to
  * @return returns the owner of the card  
  */
