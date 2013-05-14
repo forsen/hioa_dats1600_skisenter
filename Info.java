@@ -43,6 +43,14 @@ public class Info extends JFrame
 	public final static double FREAKYFRIDAY = 0.5; 
 	private final int HEIGHT = 1000;
 	private final int WIDTH = 1000; 
+
+// WEATHER CONSTANTS
+	public final static String SKY = "Sol";
+	public final static String TEMPERATURE = "-4 C";
+	public final static String SNOWDEPTH = "3 cm";
+	public final static String AIRPRESSURE = "1000 (hPa)";
+	public final static String WIND = "5 m/s";
+
 // END CONSTANTS
 
 
@@ -53,7 +61,7 @@ public class Info extends JFrame
     final static boolean RIGHT_TO_LEFT = false;
     private BufferedImage newsBtnImg, infoBtnImg, offerBtnImg, pricesBtnImg,newsBtnImg1, infoBtnImg1, offerBtnImg1, pricesBtnImg1; 
     private static Listener listener;
-    private static JLabel label, weatherLabel;
+    private static JLabel label;
     private static JButton button, newsButton, infoButton, offersButton, pricesButton;
     private static JPanel newsWindowPnl, infoWindowPnl, spOffersWindowPnl, panel, sideMenu, pricesWindowPnl, contentPanel;
  
@@ -317,17 +325,9 @@ public class Info extends JFrame
 		add(contentScrollPanel, c);
 
 
-		String[] weather = {"+4 C, Overskyet", "-2 C, Sol", "-10 C, Sol", "+4 C, Regn", "0 C, Overskyet"};
-		Random random = new Random();
-		int select = random.nextInt(weather.length);
-		String randomWeather = (weather[select]);
-		System.out.println(weather[select]);
-
 		try{
 			ImageIcon image = new ImageIcon("img/offpist_liten.png");
-			label = new JLabel(randomWeather, image, JLabel.CENTER);
-			label.setHorizontalTextPosition(JLabel.CENTER);
-			label.setVerticalTextPosition(JLabel.BOTTOM);
+			label = new JLabel(image);
 			panel.add(label);
 			}
 			catch(Exception e)

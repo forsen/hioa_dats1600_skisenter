@@ -29,8 +29,8 @@ public class InfoWindowPanel extends JPanel
 	private JLabel headerImg1, headerImg2;
 	private JLabel header;
 	private JLabel content;
-	private JTable liftTable;
-	private JScrollPane liftScrollPane;
+	private JTable liftTable, weatherTable;
+	private JScrollPane liftScrollPane, weatherScrolPane;
 	private BufferedImage snowboarderImg, skimapImg;
 
 
@@ -133,14 +133,36 @@ public class InfoWindowPanel extends JPanel
 		c.gridy=4;
 		add(liftScrollPane, c);
 
+		/* ********************Creates the weathertable******************* */
+		Object rowWeather[][] = {{Info.SKY, Info.TEMPERATURE, Info.SNOWDEPTH, Info.AIRPRESSURE, Info.WIND}};
+    	Object columnWeather[] = {"Skyforhold", "Temperatur", "Snødybde", "Lufttrykk", "Vind" };
 
+    	weatherTable = new JTable(rowWeather, columnWeather);
+    	weatherTable.setEnabled(false);
+    	weatherTable.setBackground(new Color(220, 240, 255));
+    	weatherScrolPane = new JScrollPane(weatherTable);
+    	weatherScrolPane.setPreferredSize(new Dimension(550, 39));
+
+  		/* ******************************************************* */
+		header = new JLabel("<html><br><br><br>Dagens føreforhold</html>");
+		header.setFont(new Font("Calibri", Font.BOLD, BIGFONT));
+		header.setHorizontalAlignment(JLabel.CENTER);
+		c.gridx = 0;
+		c.gridy = 5;
+
+		add(header, c);
+
+	    c.gridx = 0;
+		c.gridy = 6;
+
+	    add(weatherScrolPane, c);
 
 
 		header = new JLabel("<html><br><br><br>Åpningstider</html>");
 		header.setFont(new Font("Calibri", Font.BOLD, BIGFONT));
 		header.setHorizontalAlignment(JLabel.CENTER);
 		c.gridx = 0;
-		c.gridy = 5;
+		c.gridy = 7;
 
 		add(header,c);
 
@@ -155,19 +177,19 @@ public class InfoWindowPanel extends JPanel
 	    content.setHorizontalAlignment(JLabel.CENTER);
 
 		c.gridx = 0;
-		c.gridy = 6;
+		c.gridy = 8;
 
 		add(content, c);
 
 		
-		c.gridy=7;
+		c.gridy=9;
 		add(headerImg1, c);
 
 		header = new JLabel("<html><br><br><br>Kontaktinformasjon</html>");
 		header.setFont(new Font("Calibri", Font.BOLD, BIGFONT));
 		header.setHorizontalAlignment(JLabel.CENTER);
 
-		c.gridy=8;
+		c.gridy=10;
 		add(header, c);
 
 
@@ -182,7 +204,7 @@ public class InfoWindowPanel extends JPanel
 	    content.setFont(new Font("Calibri", Font.PLAIN, SMALLFONT));
 	    content.setHorizontalAlignment(JLabel.CENTER);
 
-		c.gridy=9;
+		c.gridy=11;
 		add(content,c);
 
 
