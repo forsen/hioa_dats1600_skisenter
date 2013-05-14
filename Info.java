@@ -36,6 +36,7 @@ public class Info extends JFrame
 	public final static int CARDPRICE = 70; 
 	public final static int RETURNPRICE = -50; 
 	public final static int LIFTS = 2; 
+	public final static int CLIPS = 10;
 	public final static double GROUPDISCOUNT = 0.9;
 	public final static double FREAKYFRIDAY = 0.5; 
 	private final int HEIGHT = 1000;

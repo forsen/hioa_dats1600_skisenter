@@ -19,14 +19,17 @@ import java.text.NumberFormat;
 
 public class ReceiptPainting extends JPanel
 {
-	private JTextArea printItems;
-	private double[] payments;
-	private double sum;
-	private BufferedImage img;
+// CONSTANTS
 	private int MARGIN = 10;
 	private int YSTART = 120;
 	private int LINESPACE = 20; 
 	private int WIDTH = 350;
+// END CONSTANTS
+	
+	private JTextArea printItems;
+	private double[] payments;
+	private double sum;
+	private BufferedImage img;
 	private int currentY = YSTART;
 	private int size;  
 	private NumberFormat paymentFormat;

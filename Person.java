@@ -178,16 +178,6 @@ public class Person implements Serializable, Comparable<Person>
 	}
 
 /**
-  * Method to decide if this person has any cards associated with him. 
-  * @return Returns true if card list is not empty, false otherwise.
-  */
-/*  NOT IN USE???
-	public boolean hasCard()
-	{
-		return (list != null) && (!list.isEmpty());
-	}
-*/
-/**
   * Method to decide if the incoming person object is identical to this one (in reality the same person)
   * @param p 	The person object to compare
   * @return Returns true if the two person objects is in fact the same person, false otherwise.
@@ -207,12 +197,7 @@ public class Person implements Serializable, Comparable<Person>
 	{
 		return list.listCards();
 	}
-/* NOT IN USE???
-	public boolean isEmpty()
-	{
-		return list.isEmpty();
-	}
-*/
+
 /**
   * Method to add a card to this persons cardlist.
   * @param n 	Card to be added
@@ -317,12 +302,10 @@ public class Person implements Serializable, Comparable<Person>
 	{
 		if( this.created.getTime() > p.created.getTime())
 		{
-			System.out.println( " -1 " );
 			return -1;
 		}
 		else 
 		{
-			System.out.println( "1" );
 			return 1; 
 		}
 	}

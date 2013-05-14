@@ -192,7 +192,6 @@ public class ReplaceWindowPanel extends JPanel
       		if(e.getSource() == replaceWindowRepBtn)
       		{
       			replace();
-      			System.out.println("Du har trykka på erstatt");
       		}
       		
     	}
