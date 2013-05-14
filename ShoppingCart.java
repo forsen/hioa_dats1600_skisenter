@@ -243,7 +243,7 @@ public class ShoppingCart
 					discount = Info.GROUPDISCOUNT;
 				}
 
-				text.append( ci.getSkiCard().getType() );
+				text.append( ci.getSkiCard().getType("") );
 				// tried with \t, but it wouldn't align properly (since the cardtype length differs)
 				text.append( "        " );
 				text.append( paymentFormat.format( ci.getSkiCard().getPrice() ) );
