@@ -13,8 +13,16 @@ import java.text.SimpleDateFormat;
   * @author Julie Hill Roa
   * @version 0.9
   */
+
+
 public class Calculator
 {
+
+// CONSTANTS
+	private final int MAXIMUMXVALUES = 20;
+// END CONSTANTS
+
+
 	private Personlist custRegistry;
 	private Cardlist cardlist;
 	private List<Validations> validations;
@@ -33,8 +41,7 @@ public class Calculator
 	{
 		custRegistry = cr;
 		cardlist = cl;
-		validations = v;
-	
+		validations = v;	
 	}
 
 /**
@@ -91,7 +98,7 @@ public class Calculator
 
 
 
-		if( graph[0].length > 20 )
+		if( graph[0].length > MAXIMUMXVALUES )
 		{
 			for( int i = 0; i < graph.length; i++ )
 				graph[i] = normalize( graph[i], 7 );
@@ -101,14 +108,14 @@ public class Calculator
 		// it is assumed that every month is exactly 4 weeks. That is not
 		// very accurate, and is something that will be looked into for the 
 		// next version. 		
-		if( graph[0].length > 20 )
+		if( graph[0].length > MAXIMUMXVALUES )
 		{
 			for( int i = 0; i < graph.length; i++ )
 				graph[i] = normalize( graph[i], 4 );
 			AdminStatisticsPanel.scale = "Mnd";
 		}
 
-		if( graph[0].length > 20 )
+		if( graph[0].length > MAXIMUMXVALUES )
 		{
 			for( int i = 0; i < graph.length; i++ )
 				graph[i] = normalize( graph[i], 12 );
@@ -160,7 +167,7 @@ public class Calculator
 			graph[0][ daysSinceOpening( p.getCreated() ) - start ] ++;  
 		}		
 
-		if( graph[0].length > 20 )
+		if( graph[0].length > MAXIMUMXVALUES )
 		{
 			graph[0] = normalize( graph[0], 7 );
 			AdminStatisticsPanel.scale = "Uker";
@@ -169,12 +176,12 @@ public class Calculator
 		// it is assumed that every month is exactly 4 weeks. That is not
 		// very accurate, and is something that will be looked into for the 
 		// next version. 
-		if( graph[0].length > 20 )
+		if( graph[0].length > MAXIMUMXVALUES )
 		{
 			graph[0] = normalize( graph[0], 4 );
 			AdminStatisticsPanel.scale = "Mnd";
 		}
-		if( graph[0].length > 20 )
+		if( graph[0].length > MAXIMUMXVALUES )
 		{
 			graph[0] = normalize( graph[0], 12 );
 			AdminStatisticsPanel.scale = "År";
@@ -239,7 +246,7 @@ public class Calculator
 
 
 
-		if( graph[0].length > 20 )
+		if( graph[0].length > MAXIMUMXVALUES )
 		{
 			for( int i = 0; i < graph.length; i++ )
 				graph[i] = normalize( graph[i], 7 );
@@ -249,14 +256,14 @@ public class Calculator
 		// it is assumed that every month is exactly 4 weeks. That is not
 		// very accurate, and is something that will be looked into for the 
 		// next version. 
-		if( graph[0].length > 20 )
+		if( graph[0].length > MAXIMUMXVALUES )
 		{
 			for( int i = 0; i < graph.length; i++ )
 				graph[i] = normalize( graph[i], 4 );
 			AdminStatisticsPanel.scale = "Mnd";
 		}
 
-		if( graph[0].length > 20 )
+		if( graph[0].length > MAXIMUMXVALUES )
 		{
 			for( int i = 0; i < graph.length; i++ )
 				graph[i] = normalize( graph[i], 12 );
@@ -302,7 +309,7 @@ public class Calculator
 		}
 
 
-		if( graph[0].length > 20 )
+		if( graph[0].length > MAXIMUMXVALUES )
 		{
 			for( int i = 0; i < graph.length; i++ )
 				graph[i] = normalize( graph[i], 7 );
@@ -312,14 +319,14 @@ public class Calculator
 		// it is assumed that every month is exactly 4 weeks. That is not
 		// very accurate, and is something that will be looked into for the 
 		// next version. 
-		if( graph[0].length > 20 )
+		if( graph[0].length > MAXIMUMXVALUES )
 		{
 			for( int i = 0; i < graph.length; i++ )
 				graph[i] = normalize( graph[i], 4 );
 			AdminStatisticsPanel.scale = "Mnd";
 		}
 
-		if( graph[0].length > 20 )
+		if( graph[0].length > MAXIMUMXVALUES )
 		{
 			for( int i = 0; i < graph.length; i++ )
 				graph[i] = normalize( graph[i], 12 );
@@ -342,10 +349,6 @@ public class Calculator
 		int[] data = d; 
 
 		int[] newData = new int[ (int) Math.ceil((data.length / (double) s )) ];
-
-
-		System.out.println( "Lengden: " + data.length );
-		System.out.println( "Delt på 7:" + (int) Math.ceil((data.length / (double) 7.0)) );
 
 		int split = s;
 
