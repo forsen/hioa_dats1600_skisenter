@@ -144,14 +144,11 @@ public class ReplaceWindowPanel extends JPanel
 		{
 			int custid = Integer.parseInt(replaceWindowCustIdtf.getText());
 
-			//String item = ""; 
-
 			ReplaceWindowPanel.cardIDList.setModel( Salesclerk.customer.listCards() );	
 			
 		}
 		catch( NumberFormatException nfe )
 		{
-			//JOptionPane.showMessageDialog(null, "Må putte inn siffer");
 			Salesclerk.statusTxt.setText( "Kan kun bestå av siffer.");
 		}
 
@@ -211,7 +208,8 @@ public class ReplaceWindowPanel extends JPanel
 			}
 			catch( NullPointerException npe)
 			{
-				System.out.println( "No Value is selected" );
+				/* this will trigger when a card is selected, and you search for another customer or press the "Ny Kunde" button. 
+				It is expected, and will not break anything. */
 			}
 
 		}
