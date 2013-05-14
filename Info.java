@@ -26,6 +26,7 @@ import java.text.ParseException;
 
 public class Info extends JFrame 
 {
+// CONSTANTS
 	public final static int PUNCHCARDPRICE = 200;
 	public final static int DAYCARDPRICE = 320;
 	public final static int HOURCARDPRICE = 120;
@@ -37,7 +38,11 @@ public class Info extends JFrame
 	public final static int LIFTS = 2; 
 	public final static double GROUPDISCOUNT = 0.9;
 	public final static double FREAKYFRIDAY = 0.5; 
-	
+	private final int HEIGHT = 1000;
+	private final int WIDTH = 1000; 
+// END CONSTANTS
+
+
 	public static Date firstLight;
 
 	final static boolean shouldFill = true;
@@ -401,7 +406,7 @@ public class Info extends JFrame
 		setIconImage(icon);
 		//Display the window.
 		pack();
-		setSize(1000,1000);
+		setSize(WIDTH,HEIGHT);
 		setVisible(true);
 	}
 

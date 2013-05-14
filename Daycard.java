@@ -1,4 +1,5 @@
 import java.util.*;
+import java.text.SimpleDateFormat;
 
 /**
  * Daycard is a subclass of Timebasedcard.
@@ -68,9 +69,7 @@ public class Daycard extends Timebasedcard
 			expires = "ikke Validert";
 		if (super.getExpires() != null)
 		{
-			Calendar cal = Calendar.getInstance(); 
-			cal.setTime(super.getExpires());
-			expires = ( "" + cal.get(Calendar.DAY_OF_MONTH) + "." + (cal.get(Calendar.MONTH ) + 1) + "." + cal.get(Calendar.YEAR ) );
+			expires = new SimpleDateFormat("dd.MM.yy").format( super.getExpires() );
 		}
 
 		return "Dagskort\tGår ut: " + expires + "\t" +super.toString();

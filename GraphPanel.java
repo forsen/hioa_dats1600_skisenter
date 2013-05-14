@@ -17,13 +17,16 @@ import java.util.Iterator;
   */
 public class GraphPanel extends JPanel
 {
-
-	private static final int XAXISLENGTH = 520;
-	private static final int YAXISLENGTH = 450;
-	private static final int ORIGOX = 100; 
-	private static final int ORIGOY = 450; 
-	private static final int MARGIN = 10; 
-	private static final int LINESPACE = 20; 
+// CONSTANTS
+	private final int XAXISLENGTH = 520;
+	private final int YAXISLENGTH = 450;
+	private final int ORIGOX = 100; 
+	private final int ORIGOY = 450; 
+	private final int MARGIN = 10; 
+	private final int LINESPACE = 20; 
+	private final int HEIGHT = 500;
+	private final int WIDTH = 700;
+// END CONSTANTS
 
 	private int xAxisInterval;
 	private double yAxisInterval; 
@@ -70,7 +73,7 @@ public class GraphPanel extends JPanel
 		data = d; 
 		
 		setBackground( Color.WHITE );
-		setPreferredSize (new Dimension(700,500));
+		setPreferredSize (new Dimension(WIDTH,HEIGHT));
 
 		try
 		{
