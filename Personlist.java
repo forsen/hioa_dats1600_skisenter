@@ -226,7 +226,7 @@ public class Personlist implements Serializable
 	
 /**
  * goes throu a persons card to see if he has a specific card
- * @param obj the cardnumber you want to find
+ * @param nr the cardnumber you want to find
  * @return returns the card 
  */
 
