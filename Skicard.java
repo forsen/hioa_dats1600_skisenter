@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
 import java.lang.Math;
+import java.text.NumberFormat;
 
 /**
   * Skicard is the super class for the different types of skicards. 
@@ -198,12 +199,14 @@ public abstract class Skicard implements Serializable
 		if(ageGroup == ADULT)
 			age = "Voksen";
 
+		NumberFormat formatter = NumberFormat.getCurrencyInstance();
+		String formatprice = formatter.format(price);
 
 
 		StringBuilder text = new StringBuilder();
-		text.append("Pris: ");
-		text.append((int)price);
-		text.append(",-");
+		//text.append("Pris: ");
+		text.append(formatprice);
+		//text.append(",-");
 		text.append("\t");
 		text.append("Rabatt: ");
 		text.append("" + disc);

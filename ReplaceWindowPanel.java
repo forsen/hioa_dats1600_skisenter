@@ -164,14 +164,21 @@ public class ReplaceWindowPanel extends JPanel
 	private void replace()
 	{
 		
+		try
+		{
 		Salesclerk.customer.removeCard(card);
 		Card nCard = new Card( new Date() ); 
-		nCard.setSkicardlist( card.getSkicardlist());
-		nCard.setCurrent(card.getCurrent());
-		Salesclerk.customer.addCard(nCard);
+		
+			nCard.setSkicardlist( card.getSkicardlist());
+			nCard.setCurrent(card.getCurrent());
+			Salesclerk.customer.addCard(nCard);
 
-		Salesclerk.statusTxt.setText( "Kortet med kortnr: " + card.getCardID() + " ble er erstattet med kortnr: " + nCard.getCardID());
-
+			Salesclerk.statusTxt.setText( "Kortet med kortnr: " + card.getCardID() + " ble er erstattet med kortnr: " + nCard.getCardID());
+		}
+		catch(NullPointerException npe)
+		{
+			Salesclerk.statusTxt.setText("Du må ha et kunde nummer og velgt et kort i listen.");
+		}
 	}
 
 /**
@@ -202,13 +209,6 @@ public class ReplaceWindowPanel extends JPanel
 			{
 				card = (Card) cardIDList.getSelectedValue();
 				Salesclerk.salesClerkSearchInfoTxt.setText(card.history());
-			}
-			catch( ArrayIndexOutOfBoundsException aioobe )
-			{
-				// when making a new search, index will be out of bound. We use this exception 
-				// to clear the text field.	
-				System.out.println( "This is an exception" );
-
 			}
 			catch( NullPointerException npe)
 			{
