@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.Objects;  
 
 /**
- * Skiresert is the class with the main-methode. 
+ * Skiresert is the class with the main-method. 
  * Skiresort creates the Personlist, Cardlist and List of Validations.
  * 
  * @author Erik Haider Forsén
@@ -36,7 +36,7 @@ public class Skiresort
 	public static boolean unsaved; 
 
 /**
- * main-methode tu run the program
+ * main-method to run the program
  *Creates the Contol-Windows, Salesclerk-Window, Admin-Window and the Info-Window. 
  */
 
@@ -111,7 +111,7 @@ public class Skiresort
 		} );
 	}
 	/**
-	 *This methode reads the objects from file and puts them in Personlist, Cardlist and a list of Validations. 
+	 *This method reads the objects from file and puts them in Personlist, Cardlist and a list of Validations. 
 	 */
 
 	private static void readFile()
@@ -150,7 +150,7 @@ public class Skiresort
 	}
 
 	/**
-	 *This methode saves the objects from Personlist, Cardlist and a list of Validations onto a file 
+	 *This method saves the objects from Personlist, Cardlist and a list of Validations onto a file 
 	 */
 
 	public static void saveFile()
@@ -181,7 +181,7 @@ public class Skiresort
 
 	/**
 	 * Checks if you have unsavedobjects when you exit the program. 
-	 * if you do this methode displays a dialogbox asking if you want to save or not.
+	 * if you do this method displays a dialogbox asking if you want to save or not.
 	 * @return Returns true if the user didn't have anything unsaved, pressed option YES and NO. False if they chose CANCEL
 	 */
 

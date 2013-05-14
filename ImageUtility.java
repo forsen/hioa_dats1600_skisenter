@@ -28,7 +28,7 @@ public class ImageUtility
 	File orgfile;
 
 /** 
-  *This methode draws a buffred image like the original image, but with a different size and with JPG as last name.
+  *This method draws a buffred image like the original image, but with a different size and with JPG as last name.
   * 
   * @param f a File object for the image you want to resize
   * @return Returns a file object for the new image
@@ -72,7 +72,7 @@ public class ImageUtility
 
 	
 /** 
-  *This methode makes a new file with the name of the persons custId, and puts the image drawn by the methode drawImage() 
+  *This method makes a new file with the name of the persons custId, and puts the image drawn by the method drawImage() 
   * onto the new file.
   *
   * @param f File object for the chosen personal image. 

@@ -603,7 +603,7 @@ public class CashRegister extends JDialog
 		}
 	}
 /**
- * This Listener initiates methodes and types inn the number on the butten by listening on clicked buttons.
+ * This Listener initiates methods and types inn the number on the butten by listening on clicked buttons.
  */
 
 

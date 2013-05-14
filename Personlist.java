@@ -20,7 +20,7 @@ public class Personlist implements Serializable
 
 
 /** 
- *This methode checks if the list is empty (No elements in the list)
+ *This method checks if the list is empty (No elements in the list)
  */
 	public boolean isEmpty()
 	{
@@ -28,7 +28,7 @@ public class Personlist implements Serializable
 	}
 
 /** 
- *This methode adds an element to the list.
+ *This method adds an element to the list.
  * First it checks if the person excist already, if it doesn't the element will be added.
  * @param obj The Person object you want to add to the list.
  * @return Returns a String to let the user know if it was sucsessfully added of if the object alredy excisted.
@@ -60,7 +60,7 @@ public class Personlist implements Serializable
 	}
 
 /**
- *This methode sorts the Personlist. 
+ *This method sorts the Personlist. 
  * @see Sortorder  
  */
 	public void sort()
@@ -69,7 +69,7 @@ public class Personlist implements Serializable
 	}
 
 /**
- *This methode search for an Peronobject with the firstname or Lastname containing the String paramaters
+ *This method search for an Peronobject with the firstname or Lastname containing the String paramaters
  *All of these Persons is added to an DefaultListModel of persons 
  * @param fn is a String with a firstname or a bit of the firstname
  * @param ln is a String with a lastname or a bit of the lastname 
@@ -109,7 +109,7 @@ public class Personlist implements Serializable
 	}
 
 /**
- *This methode search for an Peronobject with the phonenumber equal the int paramater
+ *This method search for an Peronobject with the phonenumber equal the int paramater
  *All of these Persons is added to an DefaultListModel of persons 
  * 
  * @param nr is a int with a phonenumber
@@ -138,7 +138,7 @@ public class Personlist implements Serializable
 	}
 
 /**
- *This methode search for an Peronobject with the phonenumber equal the int nr paramater,
+ *This method search for an Peronobject with the phonenumber equal the int nr paramater,
  *firstname is equl to the String fn parameter and lastname equal to the String ln.
  * 
  * @param nr is a int with a phonenumber
@@ -164,7 +164,7 @@ public class Personlist implements Serializable
 	}
 
 /**
- *This methode adds all the Persons registered between the start and the end parameters
+ *This method adds all the Persons registered between the start and the end parameters
  *All of these Persons is added to an list of persons 
  * 
  * @param start the start of the periode
@@ -246,7 +246,7 @@ public class Personlist implements Serializable
 		return null; 
 	}
 /**
- * The methode deletes the person from the list.
+ * The method deletes the person from the list.
  * @param obj the person you want to delete for the list
  * @return returns the deleted person
  */
