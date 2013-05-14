@@ -43,7 +43,7 @@ public class Punchcard extends Skicard
 
 	public void initialized()
 	{
-		clipCount += 11;
+		clipCount += Info.CLIPS + 1;
 	}
 
 /**
