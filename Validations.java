@@ -1,6 +1,6 @@
 import java.util.Date;
-import java.util.Calendar;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 
 /**
  * Validations creates an object of a validation.
@@ -87,10 +87,6 @@ public class Validations implements Serializable
 	{
 		StringBuilder text = new StringBuilder();
 
-		Calendar helper = Calendar.getInstance();
-
-		helper.setTime( date );
-
 
 		text.append( "Heis nr: " + liftId );
 		text.append( "\n" );
@@ -98,11 +94,8 @@ public class Validations implements Serializable
 		text.append( "\n" );
 		text.append( "Korttype: " + card.getCurrent().getType() );
 		text.append( "\n" );
-		text.append( "Passert: " + helper.get(Calendar.DAY_OF_MONTH ));
-		text.append( "." + helper.get(Calendar.MONTH));
-		text.append( "." + helper.get(Calendar.YEAR ));
-		text.append( " " + helper.get(Calendar.HOUR_OF_DAY ));
-		text.append( "." + helper.get(Calendar.MINUTE ) );
+		text.append( "Passert: " );
+		text.append(new SimpleDateFormat("dd.MM.yy HH:mm").format(date));
 		text.append( "\n\n\n");
 
 		return text.toString();
