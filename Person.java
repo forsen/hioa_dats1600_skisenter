@@ -5,8 +5,13 @@ import java.text.SimpleDateFormat;
 
 
 /**
-  * This class creates Person objects. 
-  */
+ * This class creates Person objects. 
+ * 
+ * @author Erik Haider Forsén
+ * @author Ole Hansen
+ * @author Julie Hill Roa
+ * @version 0.9
+ */
 
 public class Person implements Serializable, Comparable<Person>
 {
