@@ -1,3 +1,2 @@
-data.dta
-*.class
-.DS_STORE
+.DS_Store
+build/classes/
